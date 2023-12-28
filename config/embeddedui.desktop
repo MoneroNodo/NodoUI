@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=EmbeddedUI
+Comment=none
+Exec=/usr/bin/NodoUI.sh
+TryExec=/usr/bin/NodoUI.sh
+Type=Application
+

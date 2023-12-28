@@ -1,0 +1,60 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qml/main.qml</file>
+        <file>qml/NodoStatusScreen.qml</file>
+        <file>qml/NodoInfoField.qml</file>
+        <file>qml/NetworksMainScreen.qml</file>
+        <file>qml/NetworksClearnetScreen.qml</file>
+        <file>Images/no_qrcode.png</file>
+        <file>qml/NetworksTorScreen.qml</file>
+        <file>qml/NodoSwitch.qml</file>
+        <file>qml/NetworksI2PScreen.qml</file>
+        <file>qml/NodeMainScreen.qml</file>
+        <file>qml/NodePrivateNodeScreen.qml</file>
+        <file>qml/NodeBandwidthScreen.qml</file>
+        <file>qml/DeviceMainScreen.qml</file>
+        <file>qml/DeviceWifiScreen.qml</file>
+        <file>qml/NodoComboBox.qml</file>
+        <file>qml/DeviceEthernetScreen.qml</file>
+        <file>qml/DeviceSystemScreen.qml</file>
+        <file>qml/MoneroLWSMainScreen.qml</file>
+        <file>qml/MoneroLWSActiveScreen.qml</file>
+        <file>qml/NodoInputField.qml</file>
+        <file>qml/MoneroLWSInactiveScreen.qml</file>
+        <file>qml/MoneroLWSAddAccountScreen.qml</file>
+        <file>qml/MoneroLWSAccountRequestsScreen.qml</file>
+        <file>qml/MinerMainScreen.qml</file>
+        <file>qml/NodoButton.qml</file>
+        <file>qml/DeviceNewsFeedsScreen.qml</file>
+        <file>qml/DeviceSystemRecoveryScreen.qml</file>
+        <file>qml/NodoCheckBox.qml</file>
+        <file>qml/DeviceDisplayScreen.qml</file>
+        <file>qml/NodoSlider.qml</file>
+        <file>Images/nodologo_nightmode_off.png</file>
+        <file>Images/nodologo_nightmode_on.png</file>
+        <file>qml/NewsMainScreen.qml</file>
+        <file>qml/NewsContentScreen.qml</file>
+        <file>Images/Nodo_red.png</file>
+        <file>Images/Nodo_white.png</file>
+        <file>qml/NodoBusyIndicator.qml</file>
+        <file>qml/RefreshIndicator.qml</file>
+        <file>qml/NodoFeedsSwitch.qml</file>
+        <file>qml/NodoFeederScreenSaver.qml</file>
+        <file>qml/NodoHomeScreen.qml</file>
+        <file>qml/NodoScreenSaver.qml</file>
+        <file>qml/NodoTabButton.qml</file>
+        <file>Images/Nodo_ClockFace_Red.png</file>
+        <file>Images/Nodo_ClockFace_White.png</file>
+        <file>Images/HourHand_Red.png</file>
+        <file>Images/HourHand_White.png</file>
+        <file>Images/MinuteHand_Red.png</file>
+        <file>Images/MinuteHand_White.png</file>
+        <file>Images/SecondHand_White.png</file>
+        <file>Images/SecondHand_Red.png</file>
+    </qresource>
+    <qresource prefix="/NodoSystem">
+        <file alias="qmldir">assets/NodoSystem/qmldir</file>
+        <file alias="NodoSystem.qml">assets/NodoSystem/NodoSystem.qml</file>
+        <file alias="Urbanist.ttf">assets/NodoSystem/Urbanist.ttf</file>
+    </qresource>
+</RCC>
