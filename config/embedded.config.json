@@ -16,17 +16,6 @@
             "uri": "https://www.getmonero.org/feed.xml",
             "visible": true
         },
-        "feed_10": {
-            "description_tag": "",
-            "image_attr": "",
-            "imgage_tag": "",
-            "name": "",
-            "num_of_feeds_to_show": 0,
-            "pub_date_tag": "",
-            "selected": false,
-            "uri": "",
-            "visible": false
-        },
         "feed_2": {
             "description_tag": "content:encoded",
             "image_attr": "href",
@@ -105,6 +94,17 @@
             "visible": false
         },
         "feed_9": {
+            "description_tag": "",
+            "image_attr": "",
+            "imgage_tag": "",
+            "name": "",
+            "num_of_feeds_to_show": 0,
+            "pub_date_tag": "",
+            "selected": false,
+            "uri": "",
+            "visible": false
+        },
+        "feed_10": {
             "description_tag": "",
             "image_attr": "",
             "imgage_tag": "",
