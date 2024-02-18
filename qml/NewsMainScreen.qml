@@ -11,7 +11,7 @@ import NodoSystem 1.1
 Item {
     id: newsMainScreen
     anchors.fill: parent
-    anchors.leftMargin: NodoSystem.subMenuLeftMargin
+    // anchors.leftMargin: NodoSystem.subMenuLeftMargin
 
     property int curIndexWitouthZero: 0
     property bool isScreenSaver: false
