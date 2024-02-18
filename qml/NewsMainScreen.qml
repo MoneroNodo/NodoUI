@@ -43,11 +43,7 @@ Item {
 
                     Connections {
                         target: feedParser
-                        /*
-                          If you are here because of the "QML Connections: Implicitly defined onFoo properties in Connections are deprecated." warning,
-                          see comment in NodoComboBox.qml
-                        */
-                        onPostListReady: {
+                        function onPostListReady() {
                             for (var i = 0; i < feedParser.getItemCount(); i++)  {
                                 viewSwipe.addPage(viewSwipe.createPage(feedParser.getItemTitle(i),
                                                    feedParser.getItemDescription(i),
@@ -115,11 +111,7 @@ Item {
                 Connections
                 {
                     target: flick
-                    /*
-                      If you are here because of the "QML Connections: Implicitly defined onFoo properties in Connections are deprecated." warning,
-                      see comment in NodoComboBox.qml
-                    */
-                    onVerticalOvershootChanged: {
+                    function onVerticalOvershootChanged() {
                         if (!target.verticalOvershoot)
                         {
                             if(is_pulldown)
@@ -184,10 +176,6 @@ Item {
             Timer {
                 id: newsMainScreenTimer
                 interval: nodoControl.getScreenSaverItemChangeTimeout(); running: isScreenSaver; repeat: true
-                /*
-                  If you are here because of the "QML Connections: Implicitly defined onFoo properties in Connections are deprecated." warning,
-                  see comment in NodoComboBox.qml
-                */
                 onTriggered: changeFeed()
             }
         }
@@ -198,7 +186,7 @@ Item {
         sourceComponent: newsPage
         Connections{
             target:ldr.item
-            onReloadComponent: {
+            function onReloadComponent() {
                 ldr.sourceComponent = undefined
                 ldr.sourceComponent = newsPage
             }

@@ -32,14 +32,7 @@ ComboBox {
 
         Connections {
             target: control
-            /*
-            Don't change the function definition below to "function onFoo(arguments)"
-            as Qt Creator shows "QML Connections: Implicitly defined onFoo properties in Connections are deprecated..." warning.
-            Current Qt version on device is 5.12 and changing function definitions to
-            "function onFoo(arguments)" will break the code as this format was introduced in
-            Qt version 5.15.
-            */
-            onPressedChanged: {
+            function onPressedChanged() {
                 canvas.requestPaint()
             }
         }
