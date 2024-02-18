@@ -63,70 +63,71 @@ Item {
 
     NodoFeedsSwitch {
         id: deviceNewsFeed0Rect
-        anchors.left: deviceNewsFeedsUseNewsSwitchRect.left
+        anchors.left: deviceNewsFeedsIncludeFeedsLabel.left
         anchors.top: deviceNewsFeedsIncludeFeedsLabel.bottom
+        anchors.topMargin: 20
         index: 0
     }
 
     NodoFeedsSwitch {
         id: deviceNewsFeed1Rect
-        anchors.left: deviceNewsFeedsUseNewsSwitchRect.left
+        anchors.left: deviceNewsFeedsIncludeFeedsLabel.left
         anchors.top: deviceNewsFeed0Rect.bottom
         index: 1
     }
 
     NodoFeedsSwitch {
         id: deviceNewsFeed2Rect
-        anchors.left: deviceNewsFeedsUseNewsSwitchRect.left
+        anchors.left: deviceNewsFeedsIncludeFeedsLabel.left
         anchors.top: deviceNewsFeed1Rect.bottom
         index: 2
     }
 
     NodoFeedsSwitch {
         id: deviceNewsFeed3Rect
-        anchors.left: deviceNewsFeedsUseNewsSwitchRect.left
+        anchors.left: deviceNewsFeedsIncludeFeedsLabel.left
         anchors.top: deviceNewsFeed2Rect.bottom
         index: 3
     }
 
     NodoFeedsSwitch {
         id: deviceNewsFeed4Rect
-        anchors.left: deviceNewsFeedsUseNewsSwitchRect.left
+        anchors.left: deviceNewsFeedsIncludeFeedsLabel.left
         anchors.top: deviceNewsFeed3Rect.bottom
         index: 4
     }
 
     NodoFeedsSwitch {
         id: deviceNewsFeed5Rect
-        anchors.left: deviceNewsFeedsUseNewsSwitchRect.left
+        anchors.left: deviceNewsFeedsIncludeFeedsLabel.left
         anchors.top: deviceNewsFeed4Rect.bottom
         index: 5
     }
 
     NodoFeedsSwitch {
         id: deviceNewsFeed6Rect
-        anchors.left: deviceNewsFeedsUseNewsSwitchRect.left
+        anchors.left: deviceNewsFeedsIncludeFeedsLabel.left
         anchors.top: deviceNewsFeed5Rect.bottom
         index: 6
     }
 
     NodoFeedsSwitch {
         id: deviceNewsFeed7Rect
-        anchors.left: deviceNewsFeedsUseNewsSwitchRect.left
+        anchors.left: deviceNewsFeedsIncludeFeedsLabel.left
         anchors.top: deviceNewsFeed6Rect.bottom
         index: 7
     }
 
     NodoFeedsSwitch {
         id: deviceNewsFeed8Rect
-        anchors.left: deviceNewsFeedsUseNewsSwitchRect.left
+        anchors.left: deviceNewsFeedsIncludeFeedsLabel.left
         anchors.top: deviceNewsFeed7Rect.bottom
         index: 8
     }
 
     NodoFeedsSwitch {
         id: deviceNewsFeed9Rect
-        anchors.left: deviceNewsFeedsUseNewsSwitchRect.left
+        anchors.left: deviceNewsFeedsIncludeFeedsLabel.left
         anchors.top: deviceNewsFeed8Rect.bottom
         index: 9
     }
