@@ -32,8 +32,8 @@ Item {
                 id: nodoLogoButton
                 y: (mainMenuBar.height - nodoLogoButton.height)/2
                 text: qsTr(" ")
-                width: 180
-                imagePath: (nodoControl.appTheme ? "qrc:/Images/nodologo_nightmode_on.png" : "qrc:/Images/nodologo_nightmode_off.png")
+                width: 288 //180
+                imagePath: (nodoControl.appTheme ? "qrc:/Images/nodologo_large_red.png" : "qrc:/Images/nodologo_large.png")
                 onClicked: { pageLoader.source = "NodoStatusScreen.qml" }
             }
 
@@ -150,7 +150,7 @@ Item {
                     repeat: true
                     triggeredOnStart: true
                     onTriggered: {
-                        dateText.text = Qt.formatDateTime(new Date(), "dd MMMM yyyy")
+                        dateText.text = Qt.formatDateTime(new Date(), "dd M yyyy")
                     }
                 }
             }
