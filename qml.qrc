@@ -30,8 +30,8 @@
         <file>qml/NodoCheckBox.qml</file>
         <file>qml/DeviceDisplayScreen.qml</file>
         <file>qml/NodoSlider.qml</file>
-        <file>Images/nodologo_large.png</file>
-        <file>Images/nodologo_large_red.png</file>
+        <file>Images/nodologo_large_resized.png</file>
+        <file>Images/nodologo_large_resized_red.png</file>
         <file>qml/NewsMainScreen.qml</file>
         <file>qml/NewsContentScreen.qml</file>
         <file>Images/Nodo_red.png</file>
