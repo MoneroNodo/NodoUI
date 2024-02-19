@@ -151,7 +151,7 @@ Item {
                     repeat: true
                     triggeredOnStart: true
                     onTriggered: {
-                        dateText.text = Qt.formatDateTime(new Date(), "dd MM yyyy")
+                        dateText.text = Qt.formatDateTime(new Date(), "dd MMM yyyy")
                     }
                 }
             }

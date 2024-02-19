@@ -30,73 +30,71 @@ Item {
         Label {
             id: channelLabel
             x: tagLabel.x - channelLabel.paintedWidth - 10
-            y: 8
+            y: timestampLabel.y
             width: channelLabel.paintedWidth
             height: 22
             text: channelStr
             color: nodoControl.appTheme ? NodoSystem.highlightedColorNightModeOn : NodoSystem.highlightedColorNightModeOff
             font.family: NodoSystem.fontUrbanist.name
-            font.pixelSize: 20
+            font.pixelSize: 38
         }
 
         Label {
             id: tagLabel
             x: authLabel.x - tagLabel.paintedWidth - 10
-            y: 8
+            y: timestampLabel.y
             width: tagLabel.paintedWidth
             height: 22
             text: dataTagStr
             color: nodoControl.appTheme ? NodoSystem.highlightedColorNightModeOn : NodoSystem.highlightedColorNightModeOff
             font.family: NodoSystem.fontUrbanist.name
-            font.pixelSize: 20
+            font.pixelSize: 38
         }
 
         Label {
             id: authLabel
             x: timestampLabel.x - authLabel.paintedWidth - 10
-            y: 8
+            y: timestampLabel.y
             width: authLabel.paintedWidth
             height: 22
             text: headerAuthStr
             color: nodoControl.appTheme ? NodoSystem.highlightedColorNightModeOn : NodoSystem.highlightedColorNightModeOff
             font.family: NodoSystem.fontUrbanist.name
-            font.pixelSize: 20
+            font.pixelSize: 38
         }
 
         Label {
             id: timestampLabel
-            x: root.width - (timestampLabel.paintedWidth + 40)
-            y: 8
+            x: root.width - (timestampLabel.paintedWidth + 20)
+            y: textArea.paintedHeight + 12
             width: timestampLabel.paintedWidth
             height: 22
             text: dataTimestampStr
             color: nodoControl.appTheme ? NodoSystem.highlightedColorNightModeOn : NodoSystem.highlightedColorNightModeOff
             font.family: NodoSystem.fontUrbanist.name
-            font.pixelSize: 20
+            font.pixelSize: 38
         }
 
-        Label {
+        Label { // TITLE
             id: textArea
             x: 8
-            y: channelLabel.height + 10
+            y: 12
             width: root.width - 2*x
-            height: 77
+            height: root.height - textArea.height
             text: headerTextStr
             textFormat: Text.RichText
             color: nodoControl.appTheme ? NodoSystem.highlightedColorNightModeOn : NodoSystem.highlightedColorNightModeOff
             font.family: NodoSystem.fontUrbanist.name
-            font.pixelSize: 22
-            background: Rectangle {
-                color: "black"
-            }
+            font.pixelSize: 92
+            wrapMode: Text.WordWrap
         }
 
-        Flickable {
+        Flickable { // BODY
             id: view
             x: 8
-            y: textArea.height + 30
+            y: timestampLabel.y + timestampLabel.paintedHeight + 16
             width: root.width -1 - 2*x
-            height: root.height - (textArea.height + textArea.y) + 10
+            height: root.height - (timestampLabel.y + timestampLabel.paintedHeight) - 20
             contentWidth: view.width
             contentHeight: view.height
             interactive: true
