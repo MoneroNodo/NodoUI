@@ -17,7 +17,7 @@ Item {
         id: i2pSwitchRect
         anchors.left: networksI2PScreen.left
         anchors.top: networksI2PScreen.top
-        height: 40
+        height: 64
 
         Text{
             id:i2pSwitchText
@@ -35,8 +35,8 @@ Item {
             id: i2pSwitch
             x: i2pSwitchText.width + 20
             y: 0
-            width: 80
-            height: 40
+            width: 128
+            height: 64
             text: qsTr("")
             display: AbstractButton.IconOnly
         }
@@ -46,9 +46,9 @@ Item {
         id: i2pAddressField
         anchors.left: networksI2PScreen.left
         anchors.top: i2pSwitchRect.bottom
-        anchors.topMargin: 10
+        anchors.topMargin: 16
         width: 924
-        height: 38
+        height: 60
         itemSize: labelSize
         itemText: "I2P b32 Addr"
         valueText: "a very long I2P b32 address"
@@ -58,9 +58,9 @@ Item {
         id: i2pPortField
         anchors.left: networksI2PScreen.left
         anchors.top: i2pAddressField.bottom
-        anchors.topMargin: 10
-        width: 200
-        height: 38
+        anchors.topMargin: 16
+        width: 924
+        height: 60
         itemSize: labelSize
         itemText: "Port"
         valueText: ""
@@ -71,9 +71,9 @@ Item {
         id: i2pPeerField
         anchors.left: networksI2PScreen.left
         anchors.top: i2pPortField.bottom
-        anchors.topMargin: 10
+        anchors.topMargin: 16
         width: 924
-        height: 38
+        height: 60
         itemSize: labelSize
         itemText: "Peer"
         valueText: "a very long I2P peer value"
@@ -83,13 +83,13 @@ Item {
         id: i2pAddPeerButton
         anchors.left: networksI2PScreen.left
         anchors.top: i2pPeerField.bottom
-        anchors.topMargin: 10
+        anchors.topMargin: 16
         text: qsTr("Add Peer")
-        height: 38
+        height: 60
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize
-        textLeftPadding: 10
-        textRightPadding: 10
+        textLeftPadding: 16
+        textRightPadding: 16
         frameRadius: 4
     }
 
@@ -97,9 +97,9 @@ Item {
         id: i2pScanToLabel
         anchors.left: networksI2PScreen.left
         anchors.top: i2pAddPeerButton.bottom
-        anchors.topMargin: 40
+        anchors.topMargin: 64
         width: 497
-        height: 38
+        height: 60
         text: qsTr("Scan to add Nodo to your wallet app:")
         font.pixelSize: NodoSystem.textFontSize
         verticalAlignment: Text.AlignVCenter
@@ -111,7 +111,7 @@ Item {
         id: i2pQRCodeImage
         anchors.left: networksI2PScreen.left
         anchors.top: i2pScanToLabel.bottom
-        anchors.topMargin: 10
+        anchors.topMargin: 16
         width: 175
         height: 175
         fillMode: Image.PreserveAspectFit

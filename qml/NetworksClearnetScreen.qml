@@ -9,7 +9,7 @@ import NodoSystem 1.1
 
 Rectangle {
     id: networksClearnetScreen
-    property int labelSize: 100
+    property int labelSize: 160
     color: "black"
 
     NodoInputField {
@@ -17,7 +17,7 @@ Rectangle {
         anchors.left: networksClearnetScreen.left
         anchors.top: networksClearnetScreen.top
         width: 924
-        height: 38
+        height: 60
         itemSize: labelSize
         itemText: "Address"
         valueText: ""
@@ -28,9 +28,9 @@ Rectangle {
         id: clearnetPortField
         anchors.left: networksClearnetScreen.left
         anchors.top: clearnetAddressField.bottom
-        anchors.topMargin: 10
-        width: 180
-        height: 38
+        anchors.topMargin: 16
+        width: 924
+        height: 60
         itemSize: labelSize
         itemText: "Port"
         valueText: ""
@@ -41,9 +41,9 @@ Rectangle {
         id: clearnetPeerField
         anchors.left: networksClearnetScreen.left
         anchors.top: clearnetPortField.bottom
-        anchors.topMargin: 10
+        anchors.topMargin: 16
         width: 924
-        height: 38
+        height: 60
         itemSize: labelSize
         itemText: "Peer"
         valueText: "clearnet.peer.com"
@@ -56,11 +56,11 @@ Rectangle {
         anchors.top: clearnetPeerField.bottom
         anchors.topMargin: 20
         text: qsTr("Add Peer")
-        height: 38
+        height: 60
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize
-        textLeftPadding: 10
-        textRightPadding: 10
+        textLeftPadding: 16
+        textRightPadding: 16
         frameRadius: 4
     }
 
@@ -70,7 +70,7 @@ Rectangle {
         anchors.top: clearnetAddPeerButton.bottom
         anchors.topMargin: 40
         width: 497
-        height: 38
+        height: 60
         text: qsTr("Scan to add Nodo to your wallet app:")
         font.pixelSize: NodoSystem.textFontSize
         verticalAlignment: Text.AlignVCenter

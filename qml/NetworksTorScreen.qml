@@ -16,11 +16,11 @@ Item {
         id: torSwitchRect
         anchors.left: networksTorScreen.left
         anchors.top: networksTorScreen.top
-        height: 40
+        height: 64
 
         Text{
             id:torSwitchText
-            x: 0           
+            x: 0
             y: (torSwitch.height - torSwitchText.height)/2
             width: torSwitchText.paintedWidth
             height: torSwitchText.paintedHeight
@@ -34,8 +34,8 @@ Item {
             id: torSwitch
             x: torSwitchText.width + 20
             y: 0
-            width: 80
-            height: 40
+            width: 128
+            height: 64
             text: qsTr("")
             display: AbstractButton.IconOnly
         }
@@ -45,8 +45,8 @@ Item {
         id: torRouteSwitchRect
         anchors.left: networksTorScreen.left
         anchors.top: torSwitchRect.bottom
-        anchors.topMargin: 10
-        height: 40
+        anchors.topMargin: 16
+        height: 64
 
         Text{
             id:torRouteSwitchText
@@ -64,8 +64,8 @@ Item {
             id: torRouteSwitch
             x: torRouteSwitchText.width + 20
             y: 0
-            width: 80
-            height: 40
+            width: 128
+            height: 64
             text: qsTr("")
             display: AbstractButton.IconOnly
         }
@@ -75,9 +75,9 @@ Item {
         id: torOnionAddressField
         anchors.left: networksTorScreen.left
         anchors.top: torRouteSwitchRect.bottom
-        anchors.topMargin: 10
+        anchors.topMargin: 16
         width: 924
-        height: 38
+        height: 60
         itemSize: labelSize
         itemText: "Onion Address"
         valueText: "a very long onion address"
@@ -87,9 +87,9 @@ Item {
         id: torPortField
         anchors.left: networksTorScreen.left
         anchors.top: torOnionAddressField.bottom
-        anchors.topMargin: 10
-        width: 210
-        height: 38
+        anchors.topMargin: 16
+        width: 924
+        height: 60
         itemSize: labelSize
         itemText: "Port"
         valueText: ""
@@ -100,9 +100,9 @@ Item {
         id: torPeerField
         anchors.left: networksTorScreen.left
         anchors.top: torPortField.bottom
-        anchors.topMargin: 10
+        anchors.topMargin: 16
         width: 924
-        height: 38
+        height: 60
         itemSize: labelSize
         itemText: "Peer"
         valueText: "a very long peer value"
@@ -114,11 +114,11 @@ Item {
         anchors.top: torPeerField.bottom
         anchors.topMargin: 20
         text: qsTr("Add Peer")
-        height: 40
+        height: 64
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize
-        textLeftPadding: 10
-        textRightPadding: 10
+        textLeftPadding: 16
+        textRightPadding: 16
         frameRadius: 4
     }
 
@@ -126,9 +126,9 @@ Item {
         id: torScanToLabel
         anchors.left: networksTorScreen.left
         anchors.top: torAddPeerButton.bottom
-        anchors.topMargin: 40
+        anchors.topMargin: 64
         width: 497
-        height: 38
+        height: 60
         text: qsTr("Scan to add Nodo to your wallet app:")
         font.pixelSize: NodoSystem.textFontSize
         verticalAlignment: Text.AlignVCenter
