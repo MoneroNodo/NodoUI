@@ -10,7 +10,7 @@ import NodoSystem 1.1
 
 Item {
     id: nodePrivateNodeScreen
-    property int labelSize: 110
+    property int labelSize: 176
 
     Text{
         id:privateNodeSwitchText
@@ -26,14 +26,14 @@ Item {
         id: privateNodeSwitchRect
         anchors.left: privateNodeSwitchText.right
         anchors.top: nodePrivateNodeScreen.top
-        height: 40
-        width: 80
+        height: 64
+        width: 128
         color: "black"
-        anchors.leftMargin: 20
+        anchors.leftMargin: 32
         NodoSwitch {
             id: privateNodeSwitch
-            width: 80
-            height: 40
+            width: 128
+            height: 64
             text: qsTr("")
             display: AbstractButton.IconOnly
         }
@@ -43,9 +43,9 @@ Item {
         id: privateNodePortField
         anchors.left: nodePrivateNodeScreen.left
         anchors.top: privateNodeSwitchRect.bottom
-        anchors.topMargin: 20
-        width: 170
-        height: 38
+        anchors.topMargin: 32
+        width: 272
+        height: 60
         itemSize: labelSize
         itemText: "Port"
         valueText: ""
@@ -56,9 +56,9 @@ Item {
         id: privateNodeUserNameField
         anchors.left: nodePrivateNodeScreen.left
         anchors.top: privateNodePortField.bottom
-        anchors.topMargin: 10
-        width: 300
-        height: 38
+        anchors.topMargin: 16
+        width: 480
+        height: 64
         itemSize: labelSize
         itemText: "Username"
         valueText: "nodo"
@@ -68,9 +68,9 @@ Item {
         id: privateNodePasswordField
         anchors.left: nodePrivateNodeScreen.left
         anchors.top: privateNodeUserNameField.bottom
-        anchors.topMargin: 10
-        width: 300
-        height: 38
+        anchors.topMargin: 16
+        width: 480
+        height: 64
         itemSize: labelSize
         itemText: "Password"
     }
@@ -79,13 +79,13 @@ Item {
         id: privateNodeApplyButton
         anchors.left: nodePrivateNodeScreen.left
         anchors.top: privateNodePasswordField.bottom
-        anchors.topMargin: 10
+        anchors.topMargin: 16
         text: qsTr("Apply")
-        height: 38
+        height: 64
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize
-        textLeftPadding: 25
-        textRightPadding: 25
+        textLeftPadding: 40
+        textRightPadding: 40
         frameRadius: 4
     }
 }

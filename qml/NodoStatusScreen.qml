@@ -301,7 +301,7 @@ Rectangle {
             height: hheight
             itemSize: labelSize
             itemText: "CPU Temp"
-            valueText: "<unknown> °C"
+            valueText: "48 °C"
         }
 
         NodoInfoField {

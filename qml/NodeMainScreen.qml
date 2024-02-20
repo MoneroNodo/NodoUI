@@ -47,7 +47,7 @@ Item {
         anchors.left: nodeMainScreen.left
         anchors.right: nodeMainScreen.right
         anchors.bottom: nodeMainScreen.bottom
-        anchors.topMargin: 20
+        anchors.topMargin: 32
         source: "NodePrivateNodeScreen.qml"
     }
 }

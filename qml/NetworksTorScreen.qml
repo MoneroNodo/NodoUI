@@ -10,7 +10,7 @@ import NodoSystem 1.1
 
 Item {
     id: networksTorScreen
-    property int labelSize: 130
+    property int labelSize: 208
 
     Component.onCompleted: {
         nodoConfig.updateRequested()
@@ -130,7 +130,7 @@ Item {
         anchors.left: networksTorScreen.left
         anchors.top: torPeerField.bottom
         anchors.topMargin: 20
-        text: qsTr("Add Peer")
+        text: qsTr("Set Peer")
         height: 64
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize

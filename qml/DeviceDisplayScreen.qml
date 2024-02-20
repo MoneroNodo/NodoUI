@@ -17,7 +17,8 @@ Item {
         id: deviceDisplaySliderLabel
         anchors.left: deviceDisplayScreen.left
         anchors.top: deviceDisplayScreen.top
-        width: 100
+        width: 180
+        height: 32
         text: qsTr("Brightness")
         font.pixelSize: NodoSystem.textFontSize
         verticalAlignment: Text.AlignVCenter
@@ -31,13 +32,13 @@ Item {
         anchors.top: deviceDisplayScreen.top
         anchors.leftMargin: 32
         width: 600
-        height: 51
+        height: 32
         snapMode: Slider.NoSnap
         stepSize: 1
         from: 1
         value: 25
         to: 100
-        handleHight: 50
+        handleHight: 64
         handleWidth: handleHight
         handleRadius: handleHight/2
     }

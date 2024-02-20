@@ -9,7 +9,7 @@ import NodoSystem 1.1
 
 Rectangle {
     id: networksClearnetScreen
-    property int labelSize: 160
+    property int labelSize: 208
     color: "black"
 
     Component.onCompleted: {
@@ -67,7 +67,7 @@ Rectangle {
         anchors.left: networksClearnetScreen.left
         anchors.top: clearnetPeerField.bottom
         anchors.topMargin: 20
-        text: qsTr("Add Peer")
+        text: qsTr("Set Peer")
         height: 60
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize

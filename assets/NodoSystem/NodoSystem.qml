@@ -39,11 +39,11 @@ Item
     property color dataFieldTextBGColorNightModeOn: "#141414"
     property color dataFieldTextBGColorNightModeOff: "white"
 
-    property color buttonTextColorNightModeOn: "#CFCFCF"
+    property color buttonTextColorNightModeOn: "#ffffff"
     property color buttonBGColorNightModeOn: "#AE0000"
 
+    property color buttonTextColorNightModeOff: "#000000"
     property color buttonBGColorNightModeOff: "#FF5100"
-    property color buttonTextColorNightModeOff: "#CFCFCF"
 
     property color dayTextColorNightModeOn: "#F50000"
     property color dayTextColorNightModeOff: "#CFCFCF"

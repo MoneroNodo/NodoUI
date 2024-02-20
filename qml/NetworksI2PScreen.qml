@@ -11,7 +11,8 @@ import NodoSystem 1.1
 Item {
     id: networksI2PScreen
 
-    property int labelSize: 120
+    property int labelSize: 208
+
     Component.onCompleted: {
         nodoConfig.updateRequested()
     }
@@ -64,7 +65,7 @@ Item {
         width: 924
         height: 60
         itemSize: labelSize
-        itemText: "I2P b32 Addr"
+        itemText: "I2P b32 Address"
         valueText: nodoConfig.getStringValueFromKey("config", "i2p_address")
     }
 
@@ -98,7 +99,7 @@ Item {
         anchors.left: networksI2PScreen.left
         anchors.top: i2pPeerField.bottom
         anchors.topMargin: 16
-        text: qsTr("Add Peer")
+        text: qsTr("Set Peer")
         height: 60
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize
