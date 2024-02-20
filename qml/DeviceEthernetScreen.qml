@@ -11,20 +11,20 @@ import NodoSystem 1.1
 Item {
     id: deviceEthernetScreen
     anchors.fill: parent
-    property int labelSize: 120
+    property int labelSize: 192
 
     Rectangle {
         id: ethernetIPConfigSwitchRect
         x: 0
         y: 0
-        height: 40
+        height: 64
 
         Text{
             id: ethernetIPConfigSwitchText
             x: 0
             y: (ethernetIPConfigSwitch.height - ethernetIPConfigSwitchText.paintedHeight)/2
             width: ethernetIPConfigSwitchText.paintedWidth
-            height: ethernetIPConfigSwitchRect.paintedHeight
+            height: ethernetIPConfigSwitchRect.height
             text: "Automatic"
             verticalAlignment: Text.AlignBottom
             color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
@@ -36,7 +36,7 @@ Item {
             id: ethernetIPConfigSwitch
             x: ethernetIPConfigSwitchText.width + 20
             y: 0
-            width: 80
+            width: 128
             height:40
             text: qsTr("")
             display: AbstractButton.IconOnly
@@ -48,7 +48,7 @@ Item {
         x: 0
         y: ethernetIPConfigSwitchRect.y + ethernetIPConfigSwitchRect.height + 20
         width: 370
-        height: 38
+        height: 60
         itemSize: labelSize
         itemText: "IP Address"
         valueText: ""
@@ -60,7 +60,7 @@ Item {
         x: 0
         y: ethernetIPAddressField.y + ethernetIPAddressField.height + 10
         width: 370
-        height: 38
+        height: 60
         itemSize: labelSize
         itemText: "Subnet Mask"
         valueText: ""
@@ -72,7 +72,7 @@ Item {
         x: 0
         y: ethernetSubnetMaskField.y + ethernetSubnetMaskField.height + 10
         width: 370
-        height: 38
+        height: 60
         itemSize: labelSize
         itemText: "Router"
         valueText: ""
@@ -84,7 +84,7 @@ Item {
         x: 0
         y: ethernetRouterField.y + ethernetRouterField.height + 10
         width: 370
-        height: 38
+        height: 60
         itemSize: labelSize
         itemText: "DHCP"
         valueText: ""

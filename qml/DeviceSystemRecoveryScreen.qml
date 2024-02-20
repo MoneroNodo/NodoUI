@@ -25,7 +25,7 @@ Rectangle {
         id: deviceSystemRecoveryResyncBlockchain
         anchors.left: deviceSystemRecoveryScreen.left
         anchors.top: deviceSystemRecoveryRecoverFS.bottom
-        anchors.topMargin: 20
+        anchors.topMargin: 32
         checkBoxText: "Purge and resync blockchain"
     }
 
@@ -35,7 +35,7 @@ Rectangle {
         anchors.top: deviceSystemRecoveryResyncBlockchain.bottom
         anchors.topMargin: 15
         text: qsTr("Start")
-        height: 38
+        height: 60
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         textLeftPadding: 25
@@ -52,7 +52,7 @@ Rectangle {
         anchors.top: systemRecoveryStartButton.top
         anchors.leftMargin: 15
         text: qsTr("Cancel")
-        height: 38
+        height: 60
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         textLeftPadding: 25

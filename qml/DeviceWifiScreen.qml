@@ -10,7 +10,7 @@ import NodoSystem 1.1
 
 Item {
     id: deviceWifiScreen
-    property int labelSize: 120
+    property int labelSize: 192
     anchors.fill: parent
 
     Rectangle {
@@ -18,7 +18,7 @@ Item {
         anchors.left: deviceWifiScreen.left
         anchors.top: deviceWifiScreen.top
 
-        height: 40
+        height: 64
 
         Text{
             id:wifiSwitchText
@@ -36,8 +36,8 @@ Item {
             id: wifiSwitch
             x: wifiSwitchText.width + 20
             y: 0
-            width: 80
-            height: 40
+            width: 128
+            height: 64
             text: qsTr("")
             display: AbstractButton.IconOnly
         }
@@ -48,9 +48,9 @@ Item {
         id: wifiSSIDListComboBox
         anchors.left: deviceWifiScreen.left
         anchors.top: wifiSwitchRect.bottom
-        anchors.topMargin: 10
+        anchors.topMargin: 16
         width: 370
-        height: 38
+        height: 60
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: 15
         model: ["Select ..."]
@@ -62,9 +62,9 @@ Item {
         id: wifiSSIDField
         anchors.left: deviceWifiScreen.left
         anchors.top: wifiSSIDListComboBox.bottom
-        anchors.topMargin: 10
+        anchors.topMargin: 16
         width: 370
-        height: 38
+        height: 60
         itemSize: labelSize
         itemText: "SSID"
         valueText: ""
@@ -74,9 +74,9 @@ Item {
         id: wifiPassphraseField
         anchors.left: deviceWifiScreen.left
         anchors.top: wifiSSIDField.bottom
-        anchors.topMargin: 10
+        anchors.topMargin: 16
         width: 370
-        height: 38
+        height: 60
         itemSize: labelSize
         itemText: "Passphrase"
         valueText: ""
@@ -86,9 +86,9 @@ Item {
         id: wifiStatusField
         anchors.left: deviceWifiScreen.left
         anchors.top: wifiPassphraseField.bottom
-        anchors.topMargin: 10
+        anchors.topMargin: 16
         width: 370
-        height: 38
+        height: 60
         itemSize: labelSize
         itemText: "Status"
         valueText: "enabled"
@@ -98,8 +98,8 @@ Item {
         id: wifiIPConfigSwitchRect
         anchors.left: deviceWifiScreen.left
         anchors.top: wifiStatusField.bottom
-        anchors.topMargin: 20
-        height: 40
+        anchors.topMargin: 32
+        height: 64
 
         Text{
             id:wifiIPConfigSwitchText
@@ -117,8 +117,8 @@ Item {
             id: wifiIPConfigSwitch
             x: wifiIPConfigSwitchText.width + 20
             y: 0
-            width: 80
-            height: 40
+            width: 128
+            height: 64
             text: qsTr("")
             display: AbstractButton.IconOnly
         }
@@ -128,9 +128,9 @@ Item {
         id: wifiIPAddressField
         anchors.left: deviceWifiScreen.left
         anchors.top: wifiIPConfigSwitchRect.bottom
-        anchors.topMargin: 20
+        anchors.topMargin: 32
         width: 370
-        height: 38
+        height: 60
         itemSize: labelSize
         itemText: "IP Address"
         valueText: ""
@@ -141,9 +141,9 @@ Item {
         id: wifiSubnetMaskField
         anchors.left: deviceWifiScreen.left
         anchors.top: wifiIPAddressField.bottom
-        anchors.topMargin: 10
+        anchors.topMargin: 16
         width: 370
-        height: 38
+        height: 60
         itemSize: labelSize
         itemText: "Subnet Mask"
         valueText: ""
@@ -154,9 +154,9 @@ Item {
         id: wifiRouterField
         anchors.left: deviceWifiScreen.left
         anchors.top: wifiSubnetMaskField.bottom
-        anchors.topMargin: 10
+        anchors.topMargin: 16
         width: 370
-        height: 38
+        height: 60
         itemSize: labelSize
         itemText: "Router"
         valueText: ""
@@ -167,9 +167,9 @@ Item {
         id: wifiDHCPField
         anchors.left: deviceWifiScreen.left
         anchors.top: wifiRouterField.bottom
-        anchors.topMargin: 10
+        anchors.topMargin: 16
         width: 370
-        height: 38
+        height: 60
         itemSize: labelSize
         itemText: "DHCP"
         valueText: ""
