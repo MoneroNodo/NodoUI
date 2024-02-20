@@ -29,9 +29,9 @@ Item {
         id: deviceDisplaySlider
         anchors.left: deviceDisplaySliderLabel.right
         anchors.top: deviceDisplayScreen.top
-        anchors.leftMargin: 20
+        anchors.leftMargin: 32
         width: 600
-        height: 20
+        height: 51
         snapMode: Slider.NoSnap
         stepSize: 1
         from: 1
@@ -47,14 +47,14 @@ Item {
         anchors.left: deviceDisplayScreen.left
         anchors.top: deviceDisplaySliderLabel.bottom
         anchors.topMargin: 50
-        height: 40
-        width: 80
+        height: 64
+        width: 128
         color: "black"
 
         NodoSwitch {
             id: deviceDisplayNightModeSwitch
-            height: 40
-            width: 80
+            height: 64
+            width: 128
             text:  qsTr("")
             display: AbstractButton.IconOnly
 
@@ -66,7 +66,7 @@ Item {
         Text{
             id: deviceDisplayNightModeSwitchText
             anchors.left: deviceDisplayNightModeSwitchRect.right
-            anchors.leftMargin: 10
+            anchors.leftMargin: 16
             y: (deviceDisplayNightModeSwitchRect.height - deviceDisplayNightModeSwitchText.height)/2
             text: "Night mode"
             color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
@@ -80,14 +80,14 @@ Item {
         anchors.left: deviceDisplayScreen.left
         anchors.top: deviceDisplayNightModeSwitchRect.bottom
         anchors.topMargin: 30
-        width: 80
-        height: 40
+        width: 128
+        height: 64
         color: "black"
 
         NodoSwitch {
             id: deviceDisplayFlipOrientationSwitch
-            height: 40
-            width: 80
+            height: 64
+            width: 128
 
             text: qsTr("")
             display: AbstractButton.IconOnly
@@ -98,7 +98,7 @@ Item {
             id: deviceDisplayFlipOrientationSwitchText
 
             anchors.left: deviceDisplayFlipOrientationSwitchRect.right
-            anchors.leftMargin: 10
+            anchors.leftMargin: 16
             y: (deviceDisplayFlipOrientationSwitchRect.height - deviceDisplayFlipOrientationSwitchText.height)/2
             text: "Flip Orientation"
             color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
@@ -127,9 +127,9 @@ Item {
         id: screenSaverComboBox
         anchors.left: deviceDisplaySliderLabel.left
         anchors.top: deviceDisplayScreensaverLabel.bottom
-        anchors.topMargin: 10
+        anchors.topMargin: 16
         width: 370
-        height: 38
+        height: 60
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: 15
         currentIndex: nodoControl.getScreenSaverType()

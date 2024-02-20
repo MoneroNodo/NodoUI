@@ -21,7 +21,7 @@ Item {
             id: deviceNewsFeedsUseNewsSwitch
             x: 0
             y: 0
-            width: 80
+            width: 128
             height: parent.height*0.66
             text: qsTr("")
             display: AbstractButton.IconOnly
@@ -50,9 +50,9 @@ Item {
         id: deviceNewsFeedsIncludeFeedsLabel
         anchors.left: deviceNewsFeedsScreen.left
         anchors.top: deviceNewsFeedsScreen.top
-        // anchors.topMargin: 10
+        // anchors.topMargin: 16
         width: 100
-        height: 38
+        height: 60
         text: qsTr("Include these feeds:")
         font.pixelSize: NodoSystem.textFontSize
         verticalAlignment: Text.AlignVCenter
@@ -65,7 +65,7 @@ Item {
         id: deviceNewsFeed0Rect
         anchors.left: deviceNewsFeedsIncludeFeedsLabel.left
         anchors.top: deviceNewsFeedsIncludeFeedsLabel.bottom
-        anchors.topMargin: 20
+        anchors.topMargin: 32
         index: 0
     }
 

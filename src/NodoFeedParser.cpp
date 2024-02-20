@@ -5,7 +5,7 @@
 //const QString html_end = "</body> </html>";
 
 
-const QString html_start = "<!DOCTYPE html> <html> <head> <link href='https://fonts.googleapis.com/css?family=Urbanist' rel='stylesheet'> <style> body { background-color: rgba(255,255,255,0.0); font-family: 'Urbanist'; font-size: 20px;  color: ";
+const QString html_start = "<!DOCTYPE html> <html> <head> <link href='https://fonts.googleapis.com/css?family=Urbanist' rel='stylesheet'> <style> body { background-color: rgba(255,255,255,0.0); font-family: 'Urbanist'; font-size: 32px;  color: ";
 
 //red
 

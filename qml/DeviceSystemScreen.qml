@@ -17,7 +17,7 @@ Rectangle {
             anchors.left: deviceSystemScreen.left
             anchors.top: deviceSystemScreen.top
             text: qsTr("Restart")
-            height: 38
+            height: 60
             font.family: NodoSystem.fontUrbanist.name
             font.pixelSize: NodoSystem.buttonTextFontSize
             textLeftPadding: 15
@@ -29,9 +29,9 @@ Rectangle {
             id: systemShutdownButton
             anchors.left: deviceSystemScreen.left
             anchors.top: systemResetButton.bottom
-            anchors.topMargin: 20
+            anchors.topMargin: 32
             text: qsTr("Shutdown")
-            height: 38
+            height: 60
             font.family: NodoSystem.fontUrbanist.name
             font.pixelSize: NodoSystem.buttonTextFontSize
             textLeftPadding: 25
@@ -43,9 +43,9 @@ Rectangle {
             id: systemRecoveryButton
             anchors.left: deviceSystemScreen.left
             anchors.top: systemShutdownButton.bottom
-            anchors.topMargin: 20
+            anchors.topMargin: 32
             text: qsTr("Recovery")
-            height: 38
+            height: 60
             font.family: NodoSystem.fontUrbanist.name
             font.pixelSize: NodoSystem.buttonTextFontSize
             textLeftPadding: 15

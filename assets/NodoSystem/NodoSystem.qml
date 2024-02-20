@@ -4,17 +4,17 @@ import QtQuick 2.12
 Item
 {  
     readonly property FontLoader fontUrbanist: FontLoader { source: "qrc:/NodoSystem/Urbanist.ttf" }
-    property int topMenuYposition: 20
-    property int topMenuButtonHeight: 80
-    property int topMenuButtonFontSize: 24
-    property int topMenuGapBetweenButtons: 10
-    property int dateTimeFontSize: 35
+    property int topMenuYposition: 32
+    property int topMenuButtonHeight: 128
+    property int topMenuButtonFontSize: 38
+    property int topMenuGapBetweenButtons: 16
+    property int dateTimeFontSize: 56
 
 
-    property int subMenuButtonFontSize: 24
-    property int textFontSize: 20
-    property int buttonTextFontSize: 20
-    property int subMenuLeftMargin: 20
+    property int subMenuButtonFontSize: 38
+    property int textFontSize: 32
+    property int buttonTextFontSize: 32
+    property int subMenuLeftMargin: 32
 
 
     property color defaultColorNightModeOff: "#CFCFCF"
@@ -23,11 +23,11 @@ Item
     property color defaultColorNightModeOn: "#AE0000"
     property color highlightedColorNightModeOn: "#F50000"
 
-    property int infoFieldItemFontSize: 16
-    property int infoFieldValueFontSize: 16
+    property int infoFieldItemFontSize: 25
+    property int infoFieldValueFontSize: 25
 
-    property int inputFieldItemFontSize: 16
-    property int inputFieldValueFontSize: 16
+    property int inputFieldItemFontSize: 25
+    property int inputFieldValueFontSize: 25
 
     property color dataFieldTextColorNightModeOn: "#AE0000"
     property color dataFieldTextColorNightModeOff: "black"
