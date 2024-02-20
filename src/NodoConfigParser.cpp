@@ -2,6 +2,14 @@
 
 NodoConfigParser::NodoConfigParser(QObject *parent) : QObject(parent)
 {
+    readFile();
+    m_timer = new QTimer(this);
+    connect(m_timer, SIGNAL(timeout()), this, SLOT(updateStatus()));
+    m_timer->start(10000);
+}
+
+void NodoConfigParser::readFile(void)
+{
     QString val;
     QFile file;
     file.setFileName(m_json_file_name);
@@ -12,8 +20,14 @@ NodoConfigParser::NodoConfigParser(QObject *parent) : QObject(parent)
 
         m_document = QJsonDocument::fromJson(val.toUtf8());
         m_rootObj = m_document.object();
-        m_feedsObj = m_rootObj[feedObjName].toObject();
-        m_displayObj = m_rootObj[displayObjName].toObject();
+        m_configObj = m_rootObj[configObjName].toObject();
+
+        m_miningObj = m_configObj[miningObjName].toObject();
+        m_ethernetObj = m_configObj[ethernetObjName].toObject();
+        m_wifiObj = m_configObj[wifiObjName].toObject();
+        m_versionsObj = m_configObj[versionsObjName].toObject();
+
+        emit configParserReady();
     }
     else
     {
@@ -21,176 +35,69 @@ NodoConfigParser::NodoConfigParser(QObject *parent) : QObject(parent)
     }
 }
 
-display_settings_t NodoConfigParser::readDisplaySettings(void)
+QString NodoConfigParser::getStringValueFromKey(QString object, QString key)
 {
-    if(m_displayObj.isEmpty())
+    QJsonValue jsonValue;
+    if("mining" == object)
     {
-        qDebug() << "couldn't find display settings";
-        m_displaySettings.screenSaverTimeoutInSec = 50;
-        m_displaySettings.screenSaverItemChangeTimeoutInSec = 10;
-        m_displaySettings.useFeedsAsScreenSaver = 0;
-
-        return m_displaySettings;
+        jsonValue = m_miningObj.value(key);
+    }
+    else if("ethernet" == object)
+    {
+        jsonValue = m_ethernetObj.value(key);
+    }
+    else if("wifi" == object)
+    {
+        jsonValue = m_wifiObj.value(key);
+    }
+    else if("versions" == object)
+    {
+        jsonValue = m_versionsObj.value(key);
+    }
+    else if("config" == object)
+    {
+        jsonValue = m_configObj.value(key);
     }
 
-    QJsonValue jsonValue = m_displayObj.value(m_displayKeyList[DISPLAY_KEY_SS_TIMEOUT]);
-    m_displaySettings.screenSaverTimeoutInSec = jsonValue.toInt();
-
-    jsonValue = m_displayObj.value(m_displayKeyList[DISPLAY_KEY_SS_ITEM_CHANGE_TIMEOUT]);
-    m_displaySettings.screenSaverItemChangeTimeoutInSec = jsonValue.toInt();
-
-    jsonValue = m_displayObj.value(m_displayKeyList[DISPLAY_KEY_USE_FEEDS_AS_SS]);
-    m_displaySettings.useFeedsAsScreenSaver = jsonValue.toInt();
-
-    return m_displaySettings;
+    return jsonValue.toString();
 }
 
-QVector<feeds_t> NodoConfigParser::NodoConfigParser::readFeedKeys(void)
+int NodoConfigParser::getIntValueFromKey(QString object, QString key)
 {
-    m_feeds_str.clear();
-
-    if(m_feedsObj.isEmpty())
+    QJsonValue jsonValue;
+    if("mining" == object)
     {
-        qDebug() << "couldn't find feed keys";
-        m_feedCount = MAX_FEED_COUNT;
-
-        for(int i = 0; i < m_feedCount; i++)
-        {
-            feeds_t tmp_feeds;
-            tmp_feeds.nameItem = "";
-            tmp_feeds.uriItem = "";
-            tmp_feeds.selectedItem = false;
-            tmp_feeds.visibleItem = false;
-            tmp_feeds.numOfFeedsToShowItem = 0;
-            tmp_feeds.description_tag = "";
-            tmp_feeds.image_tag = "";
-            tmp_feeds.image_attr_tag = "";
-            tmp_feeds.pub_date_tag = "";
-
-            m_feeds_str.push_back(tmp_feeds);
-        }
-        return m_feeds_str;
+        jsonValue = m_miningObj.value(key);
+    }
+    else if("ethernet" == object)
+    {
+        jsonValue = m_ethernetObj.value(key);
+    }
+    else if("wifi" == object)
+    {
+        jsonValue = m_wifiObj.value(key);
+    }
+    else if("versions" == object)
+    {
+        jsonValue = m_versionsObj.value(key);
+    }
+    else if("config" == object)
+    {
+        jsonValue = m_configObj.value(key);
     }
 
-    m_feedCount = m_feedsObj.size();
-    if(m_feedCount > MAX_FEED_COUNT)
-    {
-        m_feedCount = MAX_FEED_COUNT;
-    }
-
-    for(int i = 0; i < m_feedCount; i++)
-    {
-        feeds_t tmp_feeds;
-        QJsonObject feeds_obj = m_feedsObj[m_feedNames + QString::number(i, 10)].toObject();
-        QJsonValue jsonValue = feeds_obj.value(m_feedKeyList[KEY_NAME]);
-        tmp_feeds.nameItem = jsonValue.toString();
-
-        jsonValue = feeds_obj.value(m_feedKeyList[KEY_URI]);
-        tmp_feeds.uriItem = jsonValue.toString();
-
-        jsonValue = feeds_obj.value(m_feedKeyList[KEY_SELECTED]);
-        tmp_feeds.selectedItem = jsonValue.toBool();
-
-        jsonValue = feeds_obj.value(m_feedKeyList[KEY_VISIBLE]);
-        tmp_feeds.visibleItem = jsonValue.toBool();
-
-        jsonValue = feeds_obj.value(m_feedKeyList[KEY_NUM_OF_FEEDS_TO_SHOW]);
-        tmp_feeds.numOfFeedsToShowItem = jsonValue.toInt();
-
-        jsonValue = feeds_obj.value(m_feedKeyList[KEY_DESCRIPTION_TAG]);
-        tmp_feeds.description_tag = jsonValue.toString();
-
-        jsonValue = feeds_obj.value(m_feedKeyList[KEY_IMAGE_TAG]);
-        tmp_feeds.image_tag = jsonValue.toString();
-
-        jsonValue = feeds_obj.value(m_feedKeyList[KEY_IMAGE_ATTR]);
-        tmp_feeds.image_attr_tag = jsonValue.toString();
-
-        jsonValue = feeds_obj.value(m_feedKeyList[KEY_PUB_DATE_TAG]);
-        tmp_feeds.pub_date_tag = jsonValue.toString();
-
-        m_feeds_str.push_back(tmp_feeds);
-    }
-    return m_feeds_str;
+    return jsonValue.toInt();
 }
 
-void NodoConfigParser::writeJson(void)
+
+void NodoConfigParser::updateStatus(void)
 {
-    QFile file;
-
-    m_rootObj.insert(feedObjName, m_feedsObj);
-    m_rootObj.insert(displayObjName, m_displayObj);
-    m_document.setObject(m_rootObj);
-    file.setFileName(m_json_file_name);
-    file.open(QFile::WriteOnly | QFile::Text | QFile::Truncate);
-    file.write(m_document.toJson());
-    file.close();
+    readFile();
 }
 
-void NodoConfigParser::writeFeedKeys(feed_keys_t key, int index, bool state)
+void NodoConfigParser::updateRequested(void)
 {
-    if(m_feedsObj.isEmpty())
-    {
-        return;
-    }
-
-    QJsonObject feeds = m_feedsObj[m_feedNames + QString::number(index, 10)].toObject();
-    feeds.insert(m_feedKeyList[key], state);
-    m_feedsObj.insert(m_feedNames + QString::number(index, 10), feeds);
-    writeJson();
+    m_timer->stop();
+    readFile();
+    m_timer->start(10000);
 }
-
-int NodoConfigParser::getFeedCount(void)
-{
-    return m_feedCount;
-}
-
-void NodoConfigParser::writeScreenSaverTimeout(int timeout)
-{
-    if(m_displayObj.isEmpty())
-    {
-        return;
-    }
-
-    m_displayObj.insert(m_displayKeyList[DISPLAY_KEY_SS_TIMEOUT], timeout);
-    writeJson();
-}
-
-int NodoConfigParser::readScreenSaverTimeout(void)
-{
-    return m_displaySettings.screenSaverTimeoutInSec;
-}
-
-void NodoConfigParser::writeScreenSaverItemChangeTimeout(int timeout)
-{
-    if(m_displayObj.isEmpty())
-    {
-        return;
-    }
-
-    m_displayObj.insert(m_displayKeyList[DISPLAY_KEY_SS_ITEM_CHANGE_TIMEOUT], timeout);
-    writeJson();
-}
-
-int NodoConfigParser::readScreenSaverItemChangeTimeout(void)
-{
-    return m_displaySettings.screenSaverItemChangeTimeoutInSec;
-}
-
-
-void NodoConfigParser::writeScreenSaverType(int state)
-{
-    if(m_displayObj.isEmpty())
-    {
-        return;
-    }
-
-    m_displayObj.insert(m_displayKeyList[DISPLAY_KEY_USE_FEEDS_AS_SS], state);
-    writeJson();
-}
-
-int NodoConfigParser::readScreenSaverType(void)
-{
-    return m_displaySettings.useFeedsAsScreenSaver;
-}
-

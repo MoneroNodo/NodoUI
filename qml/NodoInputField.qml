@@ -18,6 +18,7 @@ Item {
     property int leftRadius: 4
     property int rightRadius: 4
     property int textFlag: Qt.ImhNoAutoUppercase
+    property bool readOnlyFlag: false
 
     Rectangle {
         id: labelRectRound
@@ -83,6 +84,7 @@ Item {
                          selectAll()
                 }
                 inputMethodHints: Qt.ImhNoPredictiveText | Qt.ImhNoTextHandles | Qt.ImhNoAutoUppercase | textFlag
+                readOnly: readOnlyFlag
             }
         }
     }

@@ -13,6 +13,24 @@ Item {
     property int labelSize: 120
     anchors.fill: parent
 
+    Component.onCompleted: {
+        nodoConfig.updateRequested()
+    }
+
+    Connections {
+        target: nodoConfig
+        function onConfigParserReady() {
+            wifiSwitch.checked = nodoConfig.getStringValueFromKey("wifi", "enabled") === "TRUE" ? true : false
+            wifiSSIDField.valueText = nodoConfig.getStringValueFromKey("wifi", "ssid")
+            wifiPassphraseField.valueText = ("" === nodoConfig.getStringValueFromKey("wifi", "pw")) ? "" : "******"
+            wifiIPConfigSwitch.checked = nodoConfig.getStringValueFromKey("wifi", "auto") === "TRUE" ? true : false
+            wifiIPAddressField.valueText = nodoConfig.getStringValueFromKey("wifi", "ip")
+            wifiSubnetMaskField.valueText =  nodoConfig.getStringValueFromKey("wifi", "subnet")
+            wifiRouterField.valueText =  nodoConfig.getStringValueFromKey("wifi", "router")
+            wifiDHCPField.valueText =  nodoConfig.getStringValueFromKey("wifi", "dhcp")
+        }
+    }
+
     Rectangle {
         id: wifiSwitchRect
         anchors.left: deviceWifiScreen.left
@@ -40,6 +58,7 @@ Item {
             height: 40
             text: qsTr("")
             display: AbstractButton.IconOnly
+            checked: nodoConfig.getStringValueFromKey("wifi", "enabled") === "TRUE" ? true : false
         }
     }
 
@@ -67,7 +86,7 @@ Item {
         height: 38
         itemSize: labelSize
         itemText: "SSID"
-        valueText: ""
+        valueText: nodoConfig.getStringValueFromKey("wifi", "ssid")
     }
 
     NodoInputField {
@@ -79,7 +98,7 @@ Item {
         height: 38
         itemSize: labelSize
         itemText: "Passphrase"
-        valueText: ""
+        valueText: ("" === nodoConfig.getStringValueFromKey("wifi", "pw")) ? "" : "******"
     }
 
     NodoInfoField {
@@ -121,6 +140,7 @@ Item {
             height: 40
             text: qsTr("")
             display: AbstractButton.IconOnly
+            checked: nodoConfig.getStringValueFromKey("wifi", "auto") === "TRUE" ? true : false
         }
     }
 
@@ -133,7 +153,7 @@ Item {
         height: 38
         itemSize: labelSize
         itemText: "IP Address"
-        valueText: ""
+        valueText: nodoConfig.getStringValueFromKey("wifi", "ip")
         textFlag: Qt.ImhPreferNumbers
     }
 
@@ -146,7 +166,7 @@ Item {
         height: 38
         itemSize: labelSize
         itemText: "Subnet Mask"
-        valueText: ""
+        valueText: nodoConfig.getStringValueFromKey("wifi", "subnet")
         textFlag: Qt.ImhPreferNumbers
     }
 
@@ -159,7 +179,7 @@ Item {
         height: 38
         itemSize: labelSize
         itemText: "Router"
-        valueText: ""
+        valueText: nodoConfig.getStringValueFromKey("wifi", "router")
         textFlag: Qt.ImhPreferNumbers
     }
 
@@ -172,7 +192,7 @@ Item {
         height: 38
         itemSize: labelSize
         itemText: "DHCP"
-        valueText: ""
+        valueText: nodoConfig.getStringValueFromKey("wifi", "dhcp")
         textFlag: Qt.ImhPreferNumbers
     }
 }

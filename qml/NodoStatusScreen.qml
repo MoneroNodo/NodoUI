@@ -14,6 +14,10 @@ Rectangle {
 
     property int labelSize: 150
 
+    Component.onCompleted: {
+        nodoSystemStatus.updateRequested()
+    }
+
     Rectangle {
         id: syncStatus
         anchors.left: statusScreen.left
@@ -23,6 +27,21 @@ Rectangle {
         width: 560
         height: 500
         color: "black"
+
+        Connections {
+            target: nodoSystemStatus
+            function onSystemStatusReady() {
+                syncStatusField.valueText = (true === nodoSystemStatus.getBoolValueFromKey("synchronized")) ? "Synchronized" : "Syncing"
+                timestampField.valueText = nodoSystemStatus.getIntValueFromKey("start_time")
+                currentSyncHeightField.valueText = nodoSystemStatus.getIntValueFromKey("height")
+                moneroVersionField.valueText = nodoSystemStatus.getStringValueFromKey("version")
+                outgoingConnectionsField.valueText = nodoSystemStatus.getIntValueFromKey("outgoing_connections_count")
+                incomingConnectionsField.valueText = nodoSystemStatus.getIntValueFromKey("incoming_connections_count")
+                whitePeerlistSizeField.valueText = nodoSystemStatus.getIntValueFromKey("white_peerlist_size")
+                greyPeerlistSizeField.valueText = nodoSystemStatus.getIntValueFromKey("grey_peerlist_size")
+                updateAvailableField.valueText = (true === nodoSystemStatus.getBoolValueFromKey("update_available")) ? "Update available" : "Update not available"
+            }
+        }
 
         Label {
             id: syncStatusTabName
@@ -48,7 +67,7 @@ Rectangle {
             height: 38
             itemSize: labelSize
             itemText: "Sync Status"
-            valueText: "Synchronised"
+            valueText: (true === nodoSystemStatus.getBoolValueFromKey("synchronized")) ? "Synchronized" : "Syncing"
         }
         
         NodoInfoField {
@@ -61,7 +80,7 @@ Rectangle {
             height: 38
             itemSize: labelSize
             itemText: "Timestamp"
-            valueText: "28/10/2023, 14:03:55"
+            valueText: nodoSystemStatus.getIntValueFromKey("start_time")
         }
         
         NodoInfoField {
@@ -73,7 +92,7 @@ Rectangle {
             height: 38
             itemSize: labelSize
             itemText: "Sync Height"
-            valueText: "2292230"
+            valueText: nodoSystemStatus.getIntValueFromKey("height")
         }
         
         NodoInfoField {
@@ -85,7 +104,7 @@ Rectangle {
             height: 38
             itemSize: labelSize
             itemText: "Monero Version"
-            valueText: "0.18.2.2-eac1b86bb"
+            valueText: nodoSystemStatus.getIntValueFromKey("version")
         }
         
         NodoInfoField {
@@ -97,7 +116,7 @@ Rectangle {
             height: 38
             itemSize: labelSize
             itemText: "Outgoing Peers"
-            valueText: "63"
+            valueText: nodoSystemStatus.getIntValueFromKey("outgoing_connections_count")
         }
 
         NodoInfoField {
@@ -109,7 +128,7 @@ Rectangle {
             height: 38
             itemSize: labelSize
             itemText: "Incoming Peers"
-            valueText: "0"
+            valueText: nodoSystemStatus.getIntValueFromKey("incoming_connections_count")
         }
 
         NodoInfoField {
@@ -121,7 +140,7 @@ Rectangle {
             height: 38
             itemSize: labelSize
             itemText: "White Peerlist"
-            valueText: "999"
+            valueText: nodoSystemStatus.getIntValueFromKey("white_peerlist_size")
         }
 
         NodoInfoField {
@@ -133,7 +152,7 @@ Rectangle {
             height: 38
             itemSize: labelSize
             itemText: "Grey Peerlist"
-            valueText: "4691"
+            valueText: nodoSystemStatus.getIntValueFromKey("grey_peerlist_size")
         }
 
         NodoInfoField {
@@ -145,10 +164,9 @@ Rectangle {
             height: 38
             itemSize: labelSize
             itemText: "Update Available"
-            valueText: "false"
+            valueText: (true === nodoSystemStatus.getBoolValueFromKey("update_available")) ? "Update available" : "Update not available"
         }
     }
-
 
     Rectangle {
         id: systemStatus
@@ -184,7 +202,7 @@ Rectangle {
             height: 38
             itemSize: labelSize
             itemText: "Monero Node"
-            valueText: "running"
+            valueText: ""
         }
 
         NodoInfoField {
@@ -196,8 +214,7 @@ Rectangle {
             height: 38
             itemSize: labelSize
             itemText: "Tor Service"
-            valueText: "Stopped"
-
+            valueText: ""
         }
 
         NodoInfoField {
@@ -209,7 +226,7 @@ Rectangle {
             height: 38
             itemSize: labelSize
             itemText: "I2P Service"
-            valueText: "Inactive (failed)"
+            valueText: ""
         }
 
         NodoInfoField {
@@ -221,8 +238,7 @@ Rectangle {
             height: 38
             itemSize: labelSize
             itemText: "Monero LWS"
-            valueText: "inactive"
-
+            valueText: ""
         }
 
         NodoInfoField {
@@ -234,7 +250,7 @@ Rectangle {
             height: 38
             itemSize: labelSize
             itemText: "Block Explorer"
-            valueText: "inactive"
+            valueText: ""
         }
     }
 
@@ -272,7 +288,7 @@ Rectangle {
             height: 38
             itemSize: labelSize
             itemText: "CPU"
-            valueText: "22.6 %"
+            valueText: ""
         }
 
         NodoInfoField {
@@ -296,7 +312,7 @@ Rectangle {
             height: 38
             itemSize: labelSize
             itemText: "Primary Storage"
-            valueText: "36.4 % in use"
+            valueText: "in use"
         }
 
         NodoInfoField {
@@ -308,7 +324,7 @@ Rectangle {
             height: 38
             itemSize: labelSize
             itemText: "Backup Storage"
-            valueText: "59.0 % in use"
+            valueText: "in use"
         }
 
         NodoInfoField {
@@ -320,7 +336,7 @@ Rectangle {
             height: 38
             itemSize: labelSize
             itemText: "RAM"
-            valueText: "41 % in use"
+            valueText: "in use"
 
         }
     }

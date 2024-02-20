@@ -1,7 +1,7 @@
 #ifndef NODO_SYSTEM_CONTROL_H
 #define NODO_SYSTEM_CONTROL_H
 #include <QObject>
-#include "NodoConfigParser.h"
+#include "NodoEmbeddedUIConfigParser.h"
 
 class NodoSystemControl : public QObject
 {
@@ -9,7 +9,7 @@ class NodoSystemControl : public QObject
     Q_PROPERTY(bool appTheme READ getAppTheme WRITE setAppTheme NOTIFY appThemeChanged)
 
 public:
-    NodoSystemControl(NodoConfigParser *configParser = Q_NULLPTR);
+    NodoSystemControl(NodoEmbeddedUIConfigParser *embeddedUIConfigParser = Q_NULLPTR);
 
     bool getAppTheme(void);
     void setAppTheme(bool appTheme);
@@ -39,7 +39,7 @@ private:
     bool m_appTheme;
     QVector< feeds_t > m_feeds_str;
     display_settings_t m_displaySettings;
-    NodoConfigParser *m_configParser;
+    NodoEmbeddedUIConfigParser *m_embeddedUIConfigParser;
 };
 
 

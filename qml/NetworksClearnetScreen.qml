@@ -12,6 +12,18 @@ Rectangle {
     property int labelSize: 100
     color: "black"
 
+    Component.onCompleted: {
+        nodoConfig.updateRequested()
+    }
+
+    Connections {
+        target: nodoConfig
+        function onConfigParserReady() {
+            clearnetPortField.valueText = nodoConfig.getIntValueFromKey("config", "difficulty")
+            clearnetPeerField.valueText = nodoConfig.getStringValueFromKey("config", "monero_rpc_port")
+        }
+    }
+
     NodoInputField {
         id: clearnetAddressField
         anchors.left: networksClearnetScreen.left
@@ -33,7 +45,7 @@ Rectangle {
         height: 38
         itemSize: labelSize
         itemText: "Port"
-        valueText: ""
+        valueText: nodoConfig.getIntValueFromKey("config", "difficulty")
         textFlag: Qt.ImhDigitsOnly
     }
 
@@ -46,7 +58,7 @@ Rectangle {
         height: 38
         itemSize: labelSize
         itemText: "Peer"
-        valueText: "clearnet.peer.com"
+        valueText: nodoConfig.getStringValueFromKey("config", "monero_rpc_port")
         textFlag: Qt.ImhPreferLowercase
     }
 

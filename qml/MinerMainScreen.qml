@@ -42,6 +42,7 @@ Item {
             width: 80
             text: qsTr("")
             display: AbstractButton.IconOnly
+            checked: nodoConfig.getStringValueFromKey("mining", "enabled") === "TRUE" ? true : false
         }
     }
 
@@ -68,7 +69,7 @@ Item {
         height: 38
         itemSize: 150
         itemText: "Mining Difficulty"
-        valueText: "1234"
+        valueText: nodoConfig.getIntValueFromKey("mining", "difficulty")
 
     }
 
@@ -81,7 +82,7 @@ Item {
         height: 38
         itemSize: 150
         itemText: "Deposit Address"
-        valueText: "some long deposit address"
+        valueText: nodoConfig.getStringValueFromKey("mining", "address")
     }
 
     Label {

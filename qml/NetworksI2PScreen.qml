@@ -12,6 +12,19 @@ Item {
     id: networksI2PScreen
 
     property int labelSize: 120
+    Component.onCompleted: {
+        nodoConfig.updateRequested()
+    }
+
+    Connections {
+        target: nodoConfig
+        function onConfigParserReady() {
+            i2pSwitch.checked = nodoConfig.getStringValueFromKey("config", "i2p_enabled") === "TRUE" ? true : false
+            i2pAddressField.valueText = nodoConfig.getStringValueFromKey("config", "i2p_address")
+            i2pPortField.valueText = nodoConfig.getIntValueFromKey("config", "i2p_port")
+            i2pPeerField.valueText = nodoConfig.getStringValueFromKey("config", "add_i2p_peer")
+        }
+    }
 
     Rectangle {
         id: i2pSwitchRect
@@ -39,6 +52,7 @@ Item {
             height: 40
             text: qsTr("")
             display: AbstractButton.IconOnly
+            checked: nodoConfig.getStringValueFromKey("config", "i2p_enabled") === "TRUE" ? true : false
         }
     }
 
@@ -51,7 +65,7 @@ Item {
         height: 38
         itemSize: labelSize
         itemText: "I2P b32 Addr"
-        valueText: "a very long I2P b32 address"
+        valueText: nodoConfig.getStringValueFromKey("config", "i2p_address")
     }
 
     NodoInputField {
@@ -63,7 +77,7 @@ Item {
         height: 38
         itemSize: labelSize
         itemText: "Port"
-        valueText: ""
+        valueText: nodoConfig.getIntValueFromKey("config", "i2p_port")
         textFlag: Qt.ImhDigitsOnly
     }
 
@@ -76,7 +90,7 @@ Item {
         height: 38
         itemSize: labelSize
         itemText: "Peer"
-        valueText: "a very long I2P peer value"
+        valueText: nodoConfig.getStringValueFromKey("config", "add_i2p_peer")
     }
 
     NodoButton {

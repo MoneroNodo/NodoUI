@@ -17,14 +17,14 @@ const QString html_part_2 = "; text-decoration: none; } </style> </head> <body>"
 const QString html_end = "</body> </html>";
 
 
-NodoFeedParser::NodoFeedParser(NodoConfigParser *configParser) : QObject(configParser)
+NodoFeedParser::NodoFeedParser(NodoEmbeddedUIConfigParser *embeddedUIConfigParser) : QObject(embeddedUIConfigParser)
 {
     m_RSSPostCount = 0;
     m_RSSCount = 0;
     m_receivedRSSCount = 0;
     m_textColor = "yellow";
 
-    m_configParser = configParser;
+    m_embeddedUIConfigParser = embeddedUIConfigParser;
     connect(&m_manager, SIGNAL(finished(QNetworkReply*)), this, SLOT(downloadFinished(QNetworkReply*)));
     connect(this, SIGNAL(feedReceived()), this, SLOT(updateFeedList()));
 }
@@ -49,7 +49,7 @@ void NodoFeedParser::request(void)
     m_all_posts.clear();
 
     m_feeds_str.clear();
-    m_feeds_str = m_configParser->readFeedKeys();
+    m_feeds_str = m_embeddedUIConfigParser->readFeedKeys();
 
     for(int i = 0; i < MAX_FEED_COUNT; i++)
     {

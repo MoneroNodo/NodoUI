@@ -11,7 +11,7 @@ Item {
     x: 0
     y: 0
     property string itemText: "item name"
-    property string valueText: "item value"
+    property string valueText: ""
     property int itemSize: 0
     property int itemFontSize: NodoSystem.infoFieldItemFontSize
     property int valueFontSize: NodoSystem.infoFieldValueFontSize

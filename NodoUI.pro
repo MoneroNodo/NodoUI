@@ -1,5 +1,6 @@
 QT += qml quick core widgets gui
 QT += virtualkeyboard
+QT += network
 TEMPLATE = app
 CONFIG += c++17
 
@@ -17,15 +18,19 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-        src/main.cpp \
+        src/NodoEmbeddedUIConfigParser.cpp \
         src/NodoConfigParser.cpp \
+        src/NodoSystemStatusParser.cpp \
+        src/main.cpp \
         src/NodoFeedParser.cpp \
         src/NodoSystemControl.cpp \
         src/pugixml.cpp \
 
 
 HEADERS += \
+        src/NodoEmbeddedUIConfigParser.h \
         src/NodoConfigParser.h \
+        src/NodoSystemStatusParser.h \
         src/NodoFeedParser.h \
         src/NodoSystemControl.h \
         src/pugixml.hpp \

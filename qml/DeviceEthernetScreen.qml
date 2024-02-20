@@ -13,6 +13,22 @@ Item {
     anchors.fill: parent
     property int labelSize: 120
 
+    Component.onCompleted: {
+        nodoConfig.updateRequested()
+    }
+
+    Connections {
+        target: nodoConfig
+        function onConfigParserReady() {
+            ethernetIPConfigSwitch.checked = nodoConfig.getStringValueFromKey("ethernet", "auto") === "TRUE" ? true : false
+            ethernetIPAddressField.valueText = nodoConfig.getStringValueFromKey("ethernet", "ip")
+            ethernetSubnetMaskField.valueText = nodoConfig.getStringValueFromKey("ethernet", "subnet")
+            ethernetRouterField.valueText = nodoConfig.getStringValueFromKey("ethernet", "router")
+            ethernetDHCPField.valueText = nodoConfig.getStringValueFromKey("ethernet", "dhcp")
+
+        }
+    }
+
     Rectangle {
         id: ethernetIPConfigSwitchRect
         x: 0
@@ -40,6 +56,7 @@ Item {
             height:40
             text: qsTr("")
             display: AbstractButton.IconOnly
+            checked: nodoConfig.getStringValueFromKey("ethernet", "auto") === "TRUE" ? true : false
         }
     }
 
@@ -51,8 +68,9 @@ Item {
         height: 38
         itemSize: labelSize
         itemText: "IP Address"
-        valueText: ""
+        valueText: nodoConfig.getStringValueFromKey("ethernet", "ip")
         textFlag: Qt.ImhPreferNumbers
+        readOnlyFlag: ethernetIPConfigSwitch.checked
     }
 
     NodoInputField {
@@ -63,7 +81,7 @@ Item {
         height: 38
         itemSize: labelSize
         itemText: "Subnet Mask"
-        valueText: ""
+        valueText: nodoConfig.getStringValueFromKey("ethernet", "subnet")
         textFlag: Qt.ImhPreferNumbers
     }
 
@@ -75,7 +93,7 @@ Item {
         height: 38
         itemSize: labelSize
         itemText: "Router"
-        valueText: ""
+        valueText: nodoConfig.getStringValueFromKey("ethernet", "router")
         textFlag: Qt.ImhPreferNumbers
     }
 
@@ -87,7 +105,7 @@ Item {
         height: 38
         itemSize: labelSize
         itemText: "DHCP"
-        valueText: ""
+        valueText: nodoConfig.getStringValueFromKey("ethernet", "dhcp")
         textFlag: Qt.ImhPreferNumbers
     }
 }

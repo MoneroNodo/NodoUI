@@ -10,11 +10,11 @@ import NodoSystem 1.1
 ApplicationWindow {
     id: mainAppWindow
     visible: true
-    width: Screen.desktopAvailableWidth
-    height: Screen.desktopAvailableHeight
+    // width: Screen.desktopAvailableWidth
+    // height: Screen.desktopAvailableHeight
 
-    // width: 1920
-    // height: 1080
+    width: 1920
+    height: 1030
     // visibility: "FullScreen"
 
     title: qsTr("NodoUI");

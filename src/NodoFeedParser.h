@@ -2,7 +2,7 @@
 #define NODO_FEED_PARSER_H
 #include <QObject>
 #include <QVector>
-#include "NodoConfigParser.h"
+#include "NodoEmbeddedUIConfigParser.h"
 #include <QFile>
 #include <QFileInfo>
 #include <QList>
@@ -36,7 +36,7 @@ class NodoFeedParser : public QObject
 {
     Q_OBJECT
 public:
-    explicit NodoFeedParser(NodoConfigParser *configParser = Q_NULLPTR);
+    explicit NodoFeedParser(NodoEmbeddedUIConfigParser *embeddedUIConfigParser = Q_NULLPTR);
 
     Q_INVOKABLE int getItemCount(void);
     Q_INVOKABLE QString getItemTitle(const int index);
@@ -48,9 +48,6 @@ public:
     Q_INVOKABLE QString getItemImage(const int index);
     Q_INVOKABLE void updateRequested(void);
     Q_INVOKABLE void setTextColor(QString textColor);
-
-
-
 
 signals:
     void postListReady(void);
@@ -70,7 +67,7 @@ private:
     void doDownload(const QUrl &url);
     int getIndexFromUri(const QUrl &url);
     bool isFeedValid(int index);
-    NodoConfigParser *m_configParser;
+    NodoEmbeddedUIConfigParser *m_embeddedUIConfigParser;
     QString m_textColor;
 
 private slots:

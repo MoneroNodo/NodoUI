@@ -12,6 +12,21 @@ Item {
     id: networksTorScreen
     property int labelSize: 130
 
+    Component.onCompleted: {
+        nodoConfig.updateRequested()
+    }
+
+    Connections {
+        target: nodoConfig
+        function onConfigParserReady() {
+            torSwitch.checked = nodoConfig.getStringValueFromKey("config", "tor_enabled") === "TRUE" ? true : false
+            torRouteSwitch.checked = nodoConfig.getStringValueFromKey("config", "tor_global_enabled") === "TRUE" ? true : false
+            torOnionAddressField.valueText = nodoConfig.getStringValueFromKey("config", "tor_address")
+            torPortField.valueText = nodoConfig.getIntValueFromKey("config", "tor_port")
+            torPeerField.valueText = nodoConfig.getStringValueFromKey("config", "add_tor_peer")
+        }
+    }
+
     Rectangle {
         id: torSwitchRect
         anchors.left: networksTorScreen.left
@@ -38,6 +53,7 @@ Item {
             height: 40
             text: qsTr("")
             display: AbstractButton.IconOnly
+            checked: nodoConfig.getStringValueFromKey("config", "tor_enabled") === "TRUE" ? true : false
         }
     }
 
@@ -68,6 +84,7 @@ Item {
             height: 40
             text: qsTr("")
             display: AbstractButton.IconOnly
+            checked: nodoConfig.getStringValueFromKey("config", "tor_global_enabled") === "TRUE" ? true : false
         }
     }
 
@@ -80,7 +97,7 @@ Item {
         height: 38
         itemSize: labelSize
         itemText: "Onion Address"
-        valueText: "a very long onion address"
+        valueText: nodoConfig.getStringValueFromKey("config", "tor_address")
     }
 
     NodoInputField {
@@ -92,7 +109,7 @@ Item {
         height: 38
         itemSize: labelSize
         itemText: "Port"
-        valueText: ""
+        valueText: nodoConfig.getIntValueFromKey("config", "tor_port")
         textFlag: Qt.ImhDigitsOnly
     }
 
@@ -105,7 +122,7 @@ Item {
         height: 38
         itemSize: labelSize
         itemText: "Peer"
-        valueText: "a very long peer value"
+        valueText: nodoConfig.getStringValueFromKey("config", "add_tor_peer")
     }
 
     NodoButton {
