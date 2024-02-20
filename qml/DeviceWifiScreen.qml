@@ -71,7 +71,7 @@ Item {
         width: 592
         height: 60
         font.family: NodoSystem.fontUrbanist.name
-        font.pixelSize: 40
+        font.pixelSize: 32
         model: ["Select ..."]
 //        model: ["First", "Second", "Third"]
     }

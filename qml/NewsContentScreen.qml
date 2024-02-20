@@ -29,7 +29,7 @@ Item {
 
         Label {
             id: channelLabel
-            x: tagLabel.x - channelLabel.paintedWidth - 10
+            x:  authLabel.x + authLabel.paintedWidth + 10
             y: timestampLabel.y
             width: channelLabel.paintedWidth
             height: 22
@@ -39,22 +39,22 @@ Item {
             font.pixelSize: 38
         }
 
-        Label {
-            id: tagLabel
-            x: authLabel.x - tagLabel.paintedWidth - 10
-            y: timestampLabel.y
-            width: tagLabel.paintedWidth
-            height: 22
-            text: dataTagStr
-            color: nodoControl.appTheme ? NodoSystem.highlightedColorNightModeOn : "white"
-            font.family: NodoSystem.fontUrbanist.name
-            font.pixelSize: 38
-        }
+//        Label {
+//            id: tagLabel
+//            x: authLabel.x - tagLabel.paintedWidth - 10
+//            y: timestampLabel.y
+//            width: tagLabel.paintedWidth
+//            height: 22
+//            text: dataTagStr
+//            color: nodoControl.appTheme ? NodoSystem.highlightedColorNightModeOn : "white"
+//            font.family: NodoSystem.fontUrbanist.name
+//            font.pixelSize: 38
+//        }
 
         Label {
             id: authLabel
-            x: timestampLabel.x - authLabel.paintedWidth - 10
             y: timestampLabel.y
+            x: 8
             width: authLabel.paintedWidth
             height: 22
             text: headerAuthStr
@@ -65,8 +65,8 @@ Item {
 
         Label {
             id: timestampLabel
-            x: timestamplabel.width + authLabel.width + 10
-            y: textArea.paintedHeight + 12
+            x: channelLabel.x + channelLabel.width + 32
+            y: textArea.paintedHeight + 16
             width: timestampLabel.paintedWidth
             height: 22
             text: dataTimestampStr
@@ -77,7 +77,7 @@ Item {
 
         Label { // TITLE
             id: textArea
-            x: 8
+            x: 10
             y: 12
             width: root.width - 2*x
             height: root.height - textArea.height
@@ -92,7 +92,7 @@ Item {
         Flickable { // BODY
             id: view
             x: 8
-            y: timestampLabel.y + timestampLabel.paintedHeight + 16
+            y: timestampLabel.y + timestampLabel.paintedHeight + 32
             width: root.width -1 - 2*x
             height: root.height - (timestampLabel.y + timestampLabel.paintedHeight) - 20
             contentWidth: view.width
