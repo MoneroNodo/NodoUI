@@ -68,10 +68,10 @@ Item {
         anchors.left: deviceWifiScreen.left
         anchors.top: wifiSwitchRect.bottom
         anchors.topMargin: 16
-        width: 370
+        width: 592
         height: 60
         font.family: NodoSystem.fontUrbanist.name
-        font.pixelSize: 15
+        font.pixelSize: 40
         model: ["Select ..."]
 //        model: ["First", "Second", "Third"]
     }
@@ -82,7 +82,7 @@ Item {
         anchors.left: deviceWifiScreen.left
         anchors.top: wifiSSIDListComboBox.bottom
         anchors.topMargin: 16
-        width: 370
+        width: 592
         height: 60
         itemSize: labelSize
         itemText: "SSID"
@@ -94,7 +94,7 @@ Item {
         anchors.left: deviceWifiScreen.left
         anchors.top: wifiSSIDField.bottom
         anchors.topMargin: 16
-        width: 370
+        width: 592
         height: 60
         itemSize: labelSize
         itemText: "Passphrase"
@@ -106,7 +106,7 @@ Item {
         anchors.left: deviceWifiScreen.left
         anchors.top: wifiPassphraseField.bottom
         anchors.topMargin: 16
-        width: 370
+        width: 592
         height: 60
         itemSize: labelSize
         itemText: "Status"
@@ -115,10 +115,11 @@ Item {
 
     Rectangle {
         id: wifiIPConfigSwitchRect
-        anchors.right: deviceWifiScreen.right
+        //anchors.left: deviceWifiScreen.left
         anchors.top: deviceWifiScreen.top
-        anchors.leftMargin: 32
+        //anchors.topMargin: 32
         height: 64
+        x: 640
 
         Text{
             id:wifiIPConfigSwitchText
@@ -146,10 +147,11 @@ Item {
 
     NodoInputField {
         id: wifiIPAddressField
-        anchors.left: deviceWifiScreen.left
+        //anchors.left: deviceWifiScreen.left
         anchors.top: wifiIPConfigSwitchRect.bottom
-        anchors.topMargin: 32
-        width: 370
+        anchors.topMargin: 16
+        x: 640
+        width: 592
         height: 60
         itemSize: labelSize
         itemText: "IP Address"
@@ -159,10 +161,11 @@ Item {
 
     NodoInputField {
         id: wifiSubnetMaskField
-        anchors.left: deviceWifiScreen.left
+        //anchors.left: deviceWifiScreen.left
         anchors.top: wifiIPAddressField.bottom
         anchors.topMargin: 16
-        width: 370
+        x: 640
+        width: 592
         height: 60
         itemSize: labelSize
         itemText: "Subnet Mask"
@@ -172,10 +175,11 @@ Item {
 
     NodoInputField {
         id: wifiRouterField
-        anchors.left: deviceWifiScreen.left
+        //anchors.left: deviceWifiScreen.left
         anchors.top: wifiSubnetMaskField.bottom
         anchors.topMargin: 16
-        width: 370
+        x: 640
+        width: 592
         height: 60
         itemSize: labelSize
         itemText: "Router"
@@ -185,10 +189,11 @@ Item {
 
     NodoInputField {
         id: wifiDHCPField
-        anchors.left: deviceWifiScreen.left
+        //anchors.left: deviceWifiScreen.left
         anchors.top: wifiRouterField.bottom
         anchors.topMargin: 16
-        width: 370
+        x: 640
+        width: 592
         height: 60
         itemSize: labelSize
         itemText: "DHCP"

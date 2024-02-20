@@ -131,7 +131,7 @@ Item {
         width: 370
         height: 60
         font.family: NodoSystem.fontUrbanist.name
-        font.pixelSize: 15
+        font.pixelSize: 40
         currentIndex: nodoControl.getScreenSaverType()
         model: ["News Carousel", "Analog Clock", "Off"]
         onCurrentIndexChanged: {

@@ -13,7 +13,7 @@ Rectangle {
     anchors.fill: parent
 
     property int labelSize: 240 // 150
-    property int hheight: 44 // 150
+    property int hheight: 64 // 150
 
     Component.onCompleted: {
         nodoSystemStatus.updateRequested()
