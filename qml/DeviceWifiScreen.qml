@@ -115,9 +115,9 @@ Item {
 
     Rectangle {
         id: wifiIPConfigSwitchRect
-        anchors.left: deviceWifiScreen.left
-        anchors.top: wifiStatusField.bottom
-        anchors.topMargin: 32
+        anchors.left: deviceWifiScreen.right
+        anchors.top: wifiStatusField.top
+        anchors.leftMargin: 32
         height: 64
 
         Text{
