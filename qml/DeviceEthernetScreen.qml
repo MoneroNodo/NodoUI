@@ -37,10 +37,11 @@ Item {
 
         Text{
             id: ethernetIPConfigSwitchText
-            x: 0
-            y: (ethernetIPConfigSwitch.height - ethernetIPConfigSwitchText.paintedHeight)/2
             width: ethernetIPConfigSwitchText.paintedWidth
             height: ethernetIPConfigSwitchRect.height
+            x: 0
+            y: 0
+            //y: (ethernetIPConfigSwitchRect.height - etherenetIPConfigSwitch.height)/2
             text: "Automatic"
             verticalAlignment: Text.AlignBottom
             color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
