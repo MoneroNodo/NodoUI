@@ -79,7 +79,7 @@ Rectangle {
 
     Label {
         id: clearnetScanToLabel
-        anchors.left: networksClearnetScreen.left
+        anchors.left: clearnetAddPeerButton.left
         anchors.top: clearnetAddPeerButton.bottom
         anchors.topMargin: 40
         width: 497
@@ -93,18 +93,17 @@ Rectangle {
 
     QtQuick2QREncode {
         id: qr
-        anchors.left: networksClearnetScreen.left
-        anchors.top: clearnetScanToLabel.bottom
-        anchors.topMargin: 20
-        width: 256
-        height: 256
+        x: 1000
+        y: 10
+        width: 512
+        height: 512
         qrSize: Qt.size(width,width)
         qrData: clearnetPeerField + ":" + clearnetPortField
         qrForeground: "black"
         qrBackground: "white"
         qrMargin: 8
-        qrMode: QtQuick1QREncode.MODE_8    //encode model
-				qrLevel: QtQuick1QREncode.LEVEL_Q // encode level
+        qrMode: QtQuick2QREncode.MODE_8    //encode model
+				qrLevel: QtQuick2QREncode.LEVEL_Q // encode level
     }
 
 

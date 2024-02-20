@@ -34,7 +34,7 @@ Item {
             width: channelLabel.paintedWidth
             height: 22
             text: channelStr
-            color: nodoControl.appTheme ? NodoSystem.highlightedColorNightModeOn : NodoSystem.highlightedColorNightModeOff
+            color: nodoControl.appTheme ? NodoSystem.highlightedColorNightModeOn : "white"
             font.family: NodoSystem.fontUrbanist.name
             font.pixelSize: 38
         }
@@ -46,7 +46,7 @@ Item {
             width: tagLabel.paintedWidth
             height: 22
             text: dataTagStr
-            color: nodoControl.appTheme ? NodoSystem.highlightedColorNightModeOn : NodoSystem.highlightedColorNightModeOff
+            color: nodoControl.appTheme ? NodoSystem.highlightedColorNightModeOn : "white"
             font.family: NodoSystem.fontUrbanist.name
             font.pixelSize: 38
         }
@@ -58,7 +58,7 @@ Item {
             width: authLabel.paintedWidth
             height: 22
             text: headerAuthStr
-            color: nodoControl.appTheme ? NodoSystem.highlightedColorNightModeOn : NodoSystem.highlightedColorNightModeOff
+            color: nodoControl.appTheme ? NodoSystem.highlightedColorNightModeOn : "white"
             font.family: NodoSystem.fontUrbanist.name
             font.pixelSize: 38
         }
@@ -70,7 +70,7 @@ Item {
             width: timestampLabel.paintedWidth
             height: 22
             text: dataTimestampStr
-            color: nodoControl.appTheme ? NodoSystem.highlightedColorNightModeOn : NodoSystem.highlightedColorNightModeOff
+            color: nodoControl.appTheme ? NodoSystem.highlightedColorNightModeOn : "white"
             font.family: NodoSystem.fontUrbanist.name
             font.pixelSize: 38
         }
