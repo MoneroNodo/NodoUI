@@ -53,7 +53,7 @@ Item {
             x: ethernetIPConfigSwitchText.width + 20
             y: 0
             width: 128
-            height:40
+            height: 64
             text: qsTr("")
             display: AbstractButton.IconOnly
             checked: nodoConfig.getStringValueFromKey("ethernet", "auto") === "TRUE" ? true : false
