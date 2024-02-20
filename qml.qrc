@@ -52,6 +52,10 @@
         <file>Images/SecondHand_White.png</file>
         <file>Images/SecondHand_Red.png</file>
     </qresource>
+    <qresource prefix="/QtQuick2QREncode">
+        <file alias="qmldir">assets/QtQuick2QREncode/qmldir</file>
+        <file alias="libQtQuick2QREncode.so">assets/NodoSystem/NodoSystem.qml</file>
+    </qresource>
     <qresource prefix="/NodoSystem">
         <file alias="qmldir">assets/NodoSystem/qmldir</file>
         <file alias="NodoSystem.qml">assets/NodoSystem/NodoSystem.qml</file>

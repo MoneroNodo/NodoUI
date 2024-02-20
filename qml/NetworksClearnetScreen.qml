@@ -1,3 +1,4 @@
+import com.duoduo.components 1.0
 import QtQuick 2.12
 import QtQuick.Window 2.12
 import QtQuick.Controls 2.12
@@ -90,17 +91,21 @@ Rectangle {
         font.family: NodoSystem.fontUrbanist.name
     }
 
-    Image {
-        id: clearnetQRCodeImage
+    QtQuick2QREncode {
+        id: qr
         anchors.left: networksClearnetScreen.left
         anchors.top: clearnetScanToLabel.bottom
         anchors.topMargin: 20
-        width: 175
-        height: 175
-        fillMode: Image.PreserveAspectFit
-        source: "qrc:/Images/no_qrcode.png"
+        width: 256
+        height: 256
+        qrSize: Qt.size(width,width)
+        qrData: clearnetPeerField + ":" + clearnetPortField
+        qrForeground: "black"
+        qrBackground: "white"
+        qrMargin: 8
+        qrMode: QtQuick1QREncode.MODE_8    //encode model
+				qrLevel: QtQuick1QREncode.LEVEL_Q // encode level
     }
-
 
 
 }

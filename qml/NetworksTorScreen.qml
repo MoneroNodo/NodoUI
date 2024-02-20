@@ -153,15 +153,22 @@ Item {
         font.family: NodoSystem.fontUrbanist.name
     }
 
-    Image {
-        id: torQRCodeImage
-        anchors.left: networksTorScreen.left
-        anchors.top: torScanToLabel.bottom
-        anchors.topMargin: 8
-        width: 175
-        height: 175
-        fillMode: Image.PreserveAspectFit
-        source: "qrc:/Images/no_qrcode.png"
+    QtQuick2QREncode {
+        id: qr
+        anchors.left: networksClearnetScreen.left
+        anchors.top: clearnetScanToLabel.bottom
+        anchors.topMargin: 20
+        width: 256
+        height: 256
+        qrSize: Qt.size(width,width)
+        qrData: torPeerField + ":" + torPortField
+        qrForeground: "black"
+        qrBackground: "white"
+        qrMargin: 8
+        qrMode: QtQuick1QREncode.MODE_8    //encode model
+				qrLevel: QtQuick1QREncode.LEVEL_Q // encode level
     }
+
+
 }
 

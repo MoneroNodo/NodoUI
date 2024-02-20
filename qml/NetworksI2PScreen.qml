@@ -122,15 +122,22 @@ Item {
         font.family: NodoSystem.fontUrbanist.name
     }
 
-    Image {
-        id: i2pQRCodeImage
-        anchors.left: networksI2PScreen.left
-        anchors.top: i2pScanToLabel.bottom
-        anchors.topMargin: 16
-        width: 175
-        height: 175
-        fillMode: Image.PreserveAspectFit
-        source: "qrc:/Images/no_qrcode.png"
+    QtQuick2QREncode {
+        id: qr
+        anchors.left: networksClearnetScreen.left
+        anchors.top: clearnetScanToLabel.bottom
+        anchors.topMargin: 20
+        width: 256
+        height: 256
+        qrSize: Qt.size(width,width)
+        qrData: i2pPeerField + ":" + i2pPortField
+        qrForeground: "black"
+        qrBackground: "white"
+        qrMargin: 8
+        qrMode: QtQuick1QREncode.MODE_8    //encode model
+				qrLevel: QtQuick1QREncode.LEVEL_Q // encode level
     }
+
+
 }
 
