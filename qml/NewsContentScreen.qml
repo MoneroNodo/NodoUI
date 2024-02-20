@@ -65,7 +65,7 @@ Item {
 
         Label {
             id: timestampLabel
-            x: root.width - (timestampLabel.paintedWidth + 20)
+            x: timestamplabel.width + authLabel.width + 10
             y: textArea.paintedHeight + 12
             width: timestampLabel.paintedWidth
             height: 22
