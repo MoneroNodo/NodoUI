@@ -14,18 +14,18 @@ int main(int argc, char *argv[]) {
 
 	QApplication app(argc, argv);
 	QQmlApplicationEngine engine;
-    // app.setOverrideCursor(Qt::BlankCursor);
+	app.setOverrideCursor(Qt::BlankCursor);
 
-    NodoEmbeddedUIConfigParser *embeddedConfigParser = new NodoEmbeddedUIConfigParser();
-    NodoConfigParser *configParser = new NodoConfigParser();
+	NodoEmbeddedUIConfigParser *embeddedConfigParser = new NodoEmbeddedUIConfigParser();
+	NodoConfigParser *configParser = new NodoConfigParser();
 	NodoSystemControl *systemControl = new NodoSystemControl(embeddedConfigParser);
 	NodoFeedParser *feedParser = new NodoFeedParser(embeddedConfigParser);
-    NodoSystemStatusParser *systemStatusParser = new NodoSystemStatusParser();
+	NodoSystemStatusParser *systemStatusParser = new NodoSystemStatusParser();
 
-    engine.rootContext()->setContextProperty("nodoConfig", configParser);
-    engine.rootContext()->setContextProperty("nodoControl", systemControl);
-    engine.rootContext()->setContextProperty("feedParser", feedParser);
-    engine.rootContext()->setContextProperty("nodoSystemStatus", systemStatusParser);
+	engine.rootContext()->setContextProperty("nodoConfig", configParser);
+	engine.rootContext()->setContextProperty("nodoControl", systemControl);
+	engine.rootContext()->setContextProperty("feedParser", feedParser);
+	engine.rootContext()->setContextProperty("nodoSystemStatus", systemStatusParser);
 
 	engine.addImportPath( ":/" );
 	engine.load(QUrl(QStringLiteral("qrc:/qml/main.qml")));
