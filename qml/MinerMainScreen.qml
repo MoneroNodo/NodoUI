@@ -1,24 +1,36 @@
-import QtQuick 2.12
-import QtQuick.Window 2.12
-import QtQuick.Controls 2.12
-import QtQuick.Layouts 1.12
-import QtQuick.Controls.Material 2.12
-import QtQuick.Controls.Universal 2.12
+import QtQuick 2.15
+import QtQuick.Window 2.15
+import QtQuick.Controls 2.15
+import QtQuick.Layouts 1.15
+import QtQuick.Controls.Material 2.15
+import QtQuick.Controls.Universal 2.15
 import QtQuick.Controls.Styles 1.4
 import NodoSystem 1.1
 
 Item {
     id: minerMainScreen
-    property int labelSize: 120
+    property int labelSize: 0
     anchors.fill: parent
     anchors.leftMargin: NodoSystem.subMenuLeftMargin
+
+    Component.onCompleted: {
+        onCalculateMaximumTextLabelLength()
+    }
+
+    function onCalculateMaximumTextLabelLength() {
+        if(miningDifficultyField.labelRectRoundSize > labelSize)
+            labelSize = miningDifficultyField.labelRectRoundSize
+
+        if(minerDepositAddressField.labelRectRoundSize > labelSize)
+            labelSize = minerDepositAddressField.labelRectRoundSize
+    }
 
     Rectangle {
         id: minerSwitchRect
 		anchors.top: minerMainScreen.top
 		anchors.left: minerMainScreen.left
         anchors.topMargin: 20
-        height: 40
+        height: 64
 		color: "black"
 
         Text{
@@ -27,7 +39,7 @@ Item {
             y: (minerSwitch.height - minerSwitchRectSwitchText.paintedHeight)/2
             width: minerSwitchRectSwitchText.paintedWidth
             height: minerSwitchRectSwitchText.paintedHeight
-            text: "Miner"
+            text: qsTr("Miner")
             verticalAlignment: Text.AlignBottom
             color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
             font.family: NodoSystem.fontUrbanist.name
@@ -38,8 +50,8 @@ Item {
             id: minerSwitch
             x: minerSwitchRectSwitchText.width + 20
             y: 0
-            height: 40
-            width: 80
+            height: 64
+            width: 128
             text: qsTr("")
             display: AbstractButton.IconOnly
             checked: nodoConfig.getStringValueFromKey("mining", "enabled") === "TRUE" ? true : false
@@ -66,9 +78,9 @@ Item {
 		anchors.left: minerMainScreen.left
 		anchors.topMargin: 10
         width: 400
-        height: 38
-        itemSize: 150
-        itemText: "Mining Difficulty"
+        height: NodoSystem.infoFieldLabelHeight
+        itemSize: labelSize
+        itemText: qsTr("Mining Difficulty")
         valueText: nodoConfig.getIntValueFromKey("mining", "difficulty")
 
     }
@@ -79,9 +91,9 @@ Item {
 		anchors.left: minerMainScreen.left
 		anchors.topMargin: 10
         width: 800
-        height: 38
-        itemSize: 150
-        itemText: "Deposit Address"
+        height: NodoSystem.infoFieldLabelHeight
+        itemSize: labelSize
+        itemText: qsTr("Deposit Address")
         valueText: nodoConfig.getStringValueFromKey("mining", "address")
     }
 

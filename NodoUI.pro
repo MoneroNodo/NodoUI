@@ -25,6 +25,7 @@ SOURCES += \
         src/NodoFeedParser.cpp \
         src/NodoSystemControl.cpp \
         src/pugixml.cpp \
+        src/NodoTranslator.cpp \
 
 
 HEADERS += \
@@ -35,6 +36,7 @@ HEADERS += \
         src/NodoSystemControl.h \
         src/pugixml.hpp \
         src/pugiconfig.hpp \
+        src/NodoTranslator.h \
 
 RESOURCES += qml.qrc
 
@@ -42,6 +44,15 @@ disable-xcb {
      CONFIG += disable-desktop
 }
 
+TRANSLATIONS += \
+    i18n/NodoUI_en_GB.ts \
+    i18n/NodoUI_en_US.ts \
+
+DISTFILES += \
+    i18n/NodoUI_en_GB.qm \
+    i18n/NodoUI_en_GB.rs \
+    i18n/NodoUI_en_US.qm \
+    i18n/NodoUI_en_US.ts \
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH = $$PWD/assets

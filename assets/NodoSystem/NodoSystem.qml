@@ -1,5 +1,5 @@
 pragma Singleton
-import QtQuick 2.12
+import QtQuick 2.15
 
 Item
 {  
@@ -16,6 +16,7 @@ Item
     property int buttonTextFontSize: 40
     property int subMenuLeftMargin: 32
 
+    property int infoFieldLabelHeight: 64
 
     property color defaultColorNightModeOff: "#CFCFCF"
     property color highlightedColorNightModeOff: "#FF5100"

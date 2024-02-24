@@ -86,7 +86,7 @@ private:
     const QString feedObjName = "feeds";
     const QString displayObjName = "display";
     const QString m_feedNames = "feed_";
-    const QString m_json_file_name = "/home/nodo/embedded.config.json";
+    const QString m_json_file_name = "/home/nodo/variables/embedded.config.json";
 
     void writeJson(void);
 };

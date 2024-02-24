@@ -1,9 +1,9 @@
-import QtQuick 2.12
-import QtQuick.Window 2.12
-import QtQuick.Controls 2.12
-import QtQuick.Layouts 1.12
-import QtQuick.Controls.Material 2.12
-import QtQuick.Controls.Universal 2.12
+import QtQuick 2.15
+import QtQuick.Window 2.15
+import QtQuick.Controls 2.15
+import QtQuick.Layouts 1.15
+import QtQuick.Controls.Material 2.15
+import QtQuick.Controls.Universal 2.15
 import QtQuick.Controls.Styles 1.4
 import NodoSystem 1.1
 
@@ -32,7 +32,7 @@ Item {
         }
         NodoTabButton {
             id: ethernetButton
-            y: (deviceMainMenuBar.height - ethernetButton.height)/2
+            anchors.top: wifiButton.top
             anchors.left: wifiButton.right
             text: qsTr("ETHERNET")
             font.family: NodoSystem.fontUrbanist.name
@@ -41,7 +41,7 @@ Item {
         }
         NodoTabButton {
             id: systemButton
-            y: (deviceMainMenuBar.height - systemButton.height)/2
+            anchors.top: wifiButton.top
             anchors.left: ethernetButton.right
             text: qsTr("SYSTEM")
             font.family: NodoSystem.fontUrbanist.name
@@ -50,7 +50,7 @@ Item {
         }
         NodoTabButton {
             id: displayButton
-            y: (deviceMainMenuBar.height - displayButton.height)/2
+            anchors.top: wifiButton.top
             anchors.left: systemButton.right
             text: qsTr("DISPLAY")
             font.family: NodoSystem.fontUrbanist.name
@@ -59,7 +59,7 @@ Item {
         }
         NodoTabButton {
             id: newsFeedsButton
-            y: (deviceMainMenuBar.height - newsFeedsButton.height)/2
+            anchors.top: wifiButton.top
             anchors.left: displayButton.right
             text: qsTr("NEWS FEEDS")
             font.family: NodoSystem.fontUrbanist.name

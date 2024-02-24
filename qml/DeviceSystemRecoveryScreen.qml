@@ -1,9 +1,9 @@
-import QtQuick 2.12
-import QtQuick.Window 2.12
-import QtQuick.Controls 2.12
-import QtQuick.Layouts 1.12
-import QtQuick.Controls.Material 2.12
-import QtQuick.Controls.Universal 2.12
+import QtQuick 2.15
+import QtQuick.Window 2.15
+import QtQuick.Controls 2.15
+import QtQuick.Layouts 1.15
+import QtQuick.Controls.Material 2.15
+import QtQuick.Controls.Universal 2.15
 import QtQuick.Controls.Styles 1.4
 import NodoSystem 1.1
 
@@ -17,7 +17,7 @@ Rectangle {
         id: deviceSystemRecoveryRecoverFS
         anchors.left: deviceSystemRecoveryScreen.left
         anchors.top: deviceSystemRecoveryScreen.top
-        checkBoxText: "Attempt to recover filesystem"
+        checkBoxText: qsTr("Attempt to recover filesystem")
     }
 
     NodoCheckBox
@@ -26,7 +26,7 @@ Rectangle {
         anchors.left: deviceSystemRecoveryScreen.left
         anchors.top: deviceSystemRecoveryRecoverFS.bottom
         anchors.topMargin: 32
-        checkBoxText: "Purge and resync blockchain"
+        checkBoxText: qsTr("Purge and resync blockchain")
     }
 
     NodoButton {

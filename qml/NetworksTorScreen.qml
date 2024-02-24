@@ -1,19 +1,31 @@
-import QtQuick 2.12
-import QtQuick.Window 2.12
-import QtQuick.Controls 2.12
-import QtQuick.Layouts 1.12
-import QtQuick.Controls.Material 2.12
-import QtQuick.Controls.Universal 2.12
+import QtQuick 2.15
+import QtQuick.Window 2.15
+import QtQuick.Controls 2.15
+import QtQuick.Layouts 1.15
+import QtQuick.Controls.Material 2.15
+import QtQuick.Controls.Universal 2.15
 import QtQuick.Controls.Styles 1.4
 import QtQuick.VirtualKeyboard 2.1
 import NodoSystem 1.1
 
 Item {
     id: networksTorScreen
-    property int labelSize: 208
+    property int labelSize: 0
 
     Component.onCompleted: {
         nodoConfig.updateRequested()
+        onCalculateMaximumTextLabelLength()
+    }
+
+    function onCalculateMaximumTextLabelLength() {
+        if(torOnionAddressField.labelRectRoundSize > labelSize)
+        labelSize = torOnionAddressField.labelRectRoundSize
+
+        if(torPortField.labelRectRoundSize > labelSize)
+        labelSize = torPortField.labelRectRoundSize
+
+        if(torPeerField.labelRectRoundSize > labelSize)
+        labelSize = torPeerField.labelRectRoundSize
     }
 
     Connections {
@@ -39,7 +51,7 @@ Item {
             y: (torSwitch.height - torSwitchText.height)/2
             width: torSwitchText.paintedWidth
             height: torSwitchText.paintedHeight
-            text: "Tor"
+            text: qsTr("Tor")
             color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
             font.family: NodoSystem.fontUrbanist.name
             font.pixelSize: NodoSystem.textFontSize
@@ -70,7 +82,7 @@ Item {
             y: (torRouteSwitch.height - torRouteSwitchText.height)/2
             width: torRouteSwitchText.paintedWidth
             height: torRouteSwitchText.paintedHeight
-            text: "Route all connections through Tor"
+            text: qsTr("Route all connections through Tor")
             color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
             font.family: NodoSystem.fontUrbanist.name
             font.pixelSize: NodoSystem.textFontSize
@@ -94,9 +106,9 @@ Item {
         anchors.top: torRouteSwitchRect.bottom
         anchors.topMargin: 16
         width: 924
-        height: 60
+        height: NodoSystem.infoFieldLabelHeight
         itemSize: labelSize
-        itemText: "Onion Address"
+        itemText: qsTr("Onion Address")
         valueText: nodoConfig.getStringValueFromKey("config", "tor_address")
     }
 
@@ -106,9 +118,9 @@ Item {
         anchors.top: torOnionAddressField.bottom
         anchors.topMargin: 16
         width: 924
-        height: 60
+        height: NodoSystem.infoFieldLabelHeight
         itemSize: labelSize
-        itemText: "Port"
+        itemText: qsTr("Port")
         valueText: nodoConfig.getIntValueFromKey("config", "tor_port")
         textFlag: Qt.ImhDigitsOnly
     }
@@ -119,9 +131,9 @@ Item {
         anchors.top: torPortField.bottom
         anchors.topMargin: 16
         width: 924
-        height: 60
+        height: NodoSystem.infoFieldLabelHeight
         itemSize: labelSize
-        itemText: "Peer"
+        itemText: qsTr("Peer")
         valueText: nodoConfig.getStringValueFromKey("config", "add_tor_peer")
     }
 
@@ -152,7 +164,7 @@ Item {
         color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
         font.family: NodoSystem.fontUrbanist.name
     }
-
+/*
     QtQuick2QREncode {
         id: qr
         x: 1000
@@ -167,7 +179,7 @@ Item {
         qrMode: QtQuick2QREncode.MODE_8    //encode model
 				qrLevel: QtQuick2QREncode.LEVEL_Q // encode level
     }
-
+*/
 
 
 

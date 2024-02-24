@@ -1,9 +1,9 @@
-import QtQuick 2.12
-import QtQuick.Window 2.12
-import QtQuick.Controls 2.12
-import QtQuick.Layouts 1.12
-import QtQuick.Controls.Material 2.12
-import QtQuick.Controls.Universal 2.12
+import QtQuick 2.15
+import QtQuick.Window 2.15
+import QtQuick.Controls 2.15
+import QtQuick.Layouts 1.15
+import QtQuick.Controls.Material 2.15
+import QtQuick.Controls.Universal 2.15
 import QtQuick.Controls.Styles 1.4
 import QtQuick.VirtualKeyboard 2.1
 import NodoSystem 1.1
@@ -31,7 +31,7 @@ Item {
         anchors.top: moneroLWSMainAddressLabel.bottom
 		anchors.topMargin: 20
         width: 1813
-        height: 38
+        height: NodoSystem.infoFieldLabelHeight
     }
 
 
@@ -55,7 +55,7 @@ Item {
         anchors.top: moneroLWSPrivateViewkeyLabel.bottom
 		anchors.topMargin: 10
         width: 1813
-        height: 38
+        height: NodoSystem.infoFieldLabelHeight
     }
 
     NodoButton {
@@ -64,7 +64,7 @@ Item {
         anchors.top: moneroLWSPrivateViewkeyInput.bottom
 		anchors.topMargin: 20
         text: qsTr("Add Account")
-        height: 38
+        height: NodoSystem.infoFieldLabelHeight
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         textLeftPadding: 25

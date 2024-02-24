@@ -1,20 +1,36 @@
-import QtQuick 2.12
-import QtQuick.Window 2.12
-import QtQuick.Controls 2.12
-import QtQuick.Layouts 1.12
-import QtQuick.Controls.Material 2.12
-import QtQuick.Controls.Universal 2.12
+import QtQuick 2.15
+import QtQuick.Window 2.15
+import QtQuick.Controls 2.15
+import QtQuick.Layouts 1.15
+import QtQuick.Controls.Material 2.15
+import QtQuick.Controls.Universal 2.15
 import QtQuick.Controls.Styles 1.4
-import QtQuick.VirtualKeyboard 2.1
 import NodoSystem 1.1
+import QtQuick.VirtualKeyboard 2.1
+
 
 Item {
     id: deviceEthernetScreen
     anchors.fill: parent
-    property int labelSize: 192
+    property int labelSize: 0
 
     Component.onCompleted: {
         nodoConfig.updateRequested()
+        onCalculateMaximumTextLabelLength()
+    }
+
+    function onCalculateMaximumTextLabelLength() {
+        if(ethernetIPAddressField.labelRectRoundSize > labelSize)
+        labelSize = ethernetIPAddressField.labelRectRoundSize
+
+        if(ethernetSubnetMaskField.labelRectRoundSize > labelSize)
+        labelSize = ethernetSubnetMaskField.labelRectRoundSize
+
+        if(ethernetRouterField.labelRectRoundSize > labelSize)
+        labelSize = ethernetRouterField.labelRectRoundSize
+
+        if(ethernetDHCPField.labelRectRoundSize > labelSize)
+        labelSize = ethernetDHCPField.labelRectRoundSize
     }
 
     Connections {
@@ -42,7 +58,7 @@ Item {
             x: 0
             y: 0
             //y: (ethernetIPConfigSwitchRect.height - etherenetIPConfigSwitch.height)/2
-            text: "Automatic"
+            text: qsTr("Automatic")
             verticalAlignment: Text.AlignBottom
             color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
             font.family: NodoSystem.fontUrbanist.name
@@ -68,7 +84,7 @@ Item {
         width: 370
         height: 60
         itemSize: labelSize
-        itemText: "IP Address"
+        itemText: qsTr("IP Address")
         valueText: nodoConfig.getStringValueFromKey("ethernet", "ip")
         textFlag: Qt.ImhPreferNumbers
         readOnlyFlag: ethernetIPConfigSwitch.checked
@@ -81,7 +97,7 @@ Item {
         width: 370
         height: 60
         itemSize: labelSize
-        itemText: "Subnet Mask"
+        itemText: qsTr("Subnet Mask")
         valueText: nodoConfig.getStringValueFromKey("ethernet", "subnet")
         textFlag: Qt.ImhPreferNumbers
     }
@@ -93,7 +109,7 @@ Item {
         width: 370
         height: 60
         itemSize: labelSize
-        itemText: "Router"
+        itemText: qsTr("Router")
         valueText: nodoConfig.getStringValueFromKey("ethernet", "router")
         textFlag: Qt.ImhPreferNumbers
     }
@@ -105,7 +121,7 @@ Item {
         width: 370
         height: 60
         itemSize: labelSize
-        itemText: "DHCP"
+        itemText: qsTr("DHCP")
         valueText: nodoConfig.getStringValueFromKey("ethernet", "dhcp")
         textFlag: Qt.ImhPreferNumbers
     }

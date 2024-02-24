@@ -1,4 +1,4 @@
 #!/bin/bash
 
-/usr/bin/NodoUI &> /home/nodo/log.txt
+/opt/nodo/NodoUI &> /home/nodo/log.txt
 

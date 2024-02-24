@@ -1,25 +1,37 @@
-import QtQuick 2.12
-import QtQuick.Window 2.12
-import QtQuick.Controls 2.12
-import QtQuick.Layouts 1.12
-import QtQuick.Controls.Material 2.12
-import QtQuick.Controls.Universal 2.12
+import QtQuick 2.15
+import QtQuick.Window 2.15
+import QtQuick.Controls 2.15
+import QtQuick.Layouts 1.15
+import QtQuick.Controls.Material 2.15
+import QtQuick.Controls.Universal 2.15
 import QtQuick.Controls.Styles 1.4
 import NodoSystem 1.1
 
 Item {
     id: moneroLWSInactiveScreen
-    property int labelSize: 90
+    property int labelSize: 0
 	anchors.fill: parent
+
+    Component.onCompleted: {
+        onCalculateMaximumTextLabelLength()
+    }
+
+    function onCalculateMaximumTextLabelLength() {
+        if(moneroLWSinactiveAddressField.labelRectRoundSize > labelSize)
+            labelSize = moneroLWSinactiveAddressField.labelRectRoundSize
+
+        if(moneroLWSinactiveHeightField.labelRectRoundSize > labelSize)
+            labelSize = moneroLWSinactiveHeightField.labelRectRoundSize
+    }
 
     NodoInfoField {
         id: moneroLWSinactiveAddressField
 		anchors.left: moneroLWSInactiveScreen.left
         anchors.top: moneroLWSInactiveScreen.top
-        width: 460
-        height: 38
+        width: labelSize + 330
+        height: NodoSystem.infoFieldLabelHeight
         itemSize: labelSize
-        itemText: "Address"
+        itemText: qsTr("Address")
         valueText: "a very long address"
     }
 
@@ -29,10 +41,10 @@ Item {
 		anchors.left: moneroLWSinactiveAddressField.right
         anchors.top: moneroLWSInactiveScreen.top
 		anchors.leftMargin: 10
-        width: 260
-        height: 38
+        width: labelSize+130
+        height: NodoSystem.infoFieldLabelHeight
         itemSize: labelSize
-        itemText: "Height"
+        itemText: qsTr("Height")
         valueText: "2999185"
     }
 
@@ -42,7 +54,7 @@ Item {
         anchors.top: moneroLWSInactiveScreen.top
 		anchors.leftMargin: 10
         text: qsTr("Reativate")
-        height: 38
+        height: NodoSystem.infoFieldLabelHeight
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         textLeftPadding: 25
@@ -56,7 +68,7 @@ Item {
         anchors.top: moneroLWSInactiveScreen.top
 		anchors.leftMargin: 10
         text: qsTr("Delete")
-        height: 38
+        height: NodoSystem.infoFieldLabelHeight
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         textLeftPadding: 25

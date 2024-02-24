@@ -1,23 +1,35 @@
-import QtQuick 2.12
-import QtQuick.Window 2.12
-import QtQuick.Controls 2.12
-import QtQuick.Layouts 1.12
-import QtQuick.Controls.Material 2.12
-import QtQuick.Controls.Universal 2.12
+import QtQuick 2.15
+import QtQuick.Window 2.15
+import QtQuick.Controls 2.15
+import QtQuick.Layouts 1.15
+import QtQuick.Controls.Material 2.15
+import QtQuick.Controls.Universal 2.15
 import QtQuick.Controls.Styles 1.4
 import NodoSystem 1.1
 
 Item {
     id: moneroLWSAccountCreationRequestsScreen
 	anchors.fill: parent
-    property int labelSize: 120
+    property int labelSize: 0
+
+    Component.onCompleted: {
+        onCalculateMaximumTextLabelLength()
+    }
+
+    function onCalculateMaximumTextLabelLength() {
+        if(moneroLWSAccountRequestsAddressField.labelRectRoundSize > labelSize)
+            labelSize = moneroLWSAccountRequestsAddressField.labelRectRoundSize
+
+        if(moneroLWSAccountRequestsHeightField.labelRectRoundSize > labelSize)
+            labelSize = moneroLWSAccountRequestsHeightField.labelRectRoundSize
+    }
 
     NodoButton {
         id: moneroLWSAcceptAllRequestsButton
 		anchors.left: moneroLWSAccountCreationRequestsScreen.left
         anchors.top: moneroLWSAccountCreationRequestsScreen.top
         text: qsTr("Accept All Requests")
-        height: 38
+        height: NodoSystem.infoFieldLabelHeight
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         textLeftPadding: 25
@@ -30,10 +42,10 @@ Item {
 		anchors.left: moneroLWSAccountCreationRequestsScreen.left
         anchors.top: moneroLWSAcceptAllRequestsButton.bottom
 		anchors.topMargin: 20
-        width: 460
-        height: 38
+        width: labelSize + 330
+        height: NodoSystem.infoFieldLabelHeight
         itemSize: labelSize
-        itemText: "Address"
+        itemText: qsTr("Address")
         valueText: "a very long address"
     }
 
@@ -42,10 +54,10 @@ Item {
 		anchors.left: moneroLWSAccountRequestsAddressField.right
         anchors.top: moneroLWSAccountRequestsAddressField.top
 		anchors.leftMargin: 10
-        width: 260
-        height: 38
+        width: labelSize+130
+        height: NodoSystem.infoFieldLabelHeight
         itemSize: labelSize
-        itemText: "Start Height"
+        itemText: qsTr("Start Height")
         valueText: "2999185"
     }
 
@@ -55,7 +67,7 @@ Item {
         anchors.top: moneroLWSAccountRequestsHeightField.bottom
 		anchors.topMargin: 20
         text: qsTr("Accept")
-        height: 38
+        height: NodoSystem.infoFieldLabelHeight
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         textLeftPadding: 25
@@ -69,7 +81,7 @@ Item {
         anchors.top: moneroLWSAccountRequestsAcceptButton.top
 		anchors.leftMargin: 20
         text: qsTr("Reject")
-        height: 38
+        height: NodoSystem.infoFieldLabelHeight
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         textLeftPadding: 25

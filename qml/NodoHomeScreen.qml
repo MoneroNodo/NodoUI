@@ -1,9 +1,9 @@
-import QtQuick 2.12
-import QtQuick.Window 2.12
-import QtQuick.Controls 2.12
-import QtQuick.Layouts 1.12
-import QtQuick.Controls.Material 2.12
-import QtQuick.Controls.Universal 2.12
+import QtQuick 2.15
+import QtQuick.Window 2.15
+import QtQuick.Controls 2.15
+import QtQuick.Layouts 1.15
+import QtQuick.Controls.Material 2.15
+import QtQuick.Controls.Universal 2.15
 import QtQuick.Controls.Styles 1.4
 import QtQuick.VirtualKeyboard 2.1
 import NodoSystem 1.1
@@ -40,7 +40,7 @@ Item {
 
             NodoTabButton {
                 id: networksButton
-                y: (mainMenuBar.height - networksButton.height)/2
+                anchors.top: nodoLogoButton.top
                 anchors.left: nodoLogoButton.right
                 anchors.leftMargin: 10
                 implicitHeight: NodoSystem.topMenuButtonHeight
@@ -51,8 +51,9 @@ Item {
             }
             NodoTabButton {
                 id: deviceButton
-                y: (mainMenuBar.height - deviceButton.height)/2
+                anchors.top: nodoLogoButton.top
                 anchors.left: networksButton.right
+                implicitHeight: NodoSystem.topMenuButtonHeight
                 text: qsTr("DEVICE")
                 font.family: NodoSystem.fontUrbanist.name
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
@@ -60,8 +61,9 @@ Item {
             }
             NodoTabButton {
                 id: nodeButton
-                y: (mainMenuBar.height - nodeButton.height)/2
+                anchors.top: nodoLogoButton.top
                 anchors.left: deviceButton.right
+                implicitHeight: NodoSystem.topMenuButtonHeight
                 text: qsTr("NODE")
                 font.family: NodoSystem.fontUrbanist.name
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
@@ -69,8 +71,9 @@ Item {
             }
             NodoTabButton {
                 id: minerButton
-                y: (mainMenuBar.height - minerButton.height)/2
+                anchors.top: nodoLogoButton.top
                 anchors.left: nodeButton.right
+                implicitHeight: NodoSystem.topMenuButtonHeight
                 text: qsTr("MINER")
                 font.family: NodoSystem.fontUrbanist.name
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
@@ -78,8 +81,9 @@ Item {
             }
             NodoTabButton {
                 id: moneroLWSButton
-                y: (mainMenuBar.height - moneroLWSButton.height)/2
+                anchors.top: nodoLogoButton.top
                 anchors.left: minerButton.right
+                implicitHeight: NodoSystem.topMenuButtonHeight
                 text: qsTr("LWS")
                 font.family: NodoSystem.fontUrbanist.name
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
@@ -88,8 +92,9 @@ Item {
 
             NodoTabButton {
                 id: newsButton
-                y: (mainMenuBar.height - newsButton.height)/2
+                anchors.top: nodoLogoButton.top
                 text: qsTr("NEWS")
+                implicitHeight: NodoSystem.topMenuButtonHeight
                 font.family: NodoSystem.fontUrbanist.name
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
                 onClicked: { pageLoader.source = "NewsMainScreen.qml" }
@@ -143,6 +148,7 @@ Item {
                 verticalAlignment: Text.AlignVCenter
                 font.family: NodoSystem.fontUrbanist.name
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
+
 
                 Timer {
                     id: dateTimer

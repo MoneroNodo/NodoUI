@@ -27,10 +27,10 @@ RefreshIndicator code used here is from https://github.com/mohammadhasanzadeh/pu
 */
 
 
-import QtQuick 2.12
-import QtQuick.Controls 2.12
-import QtQuick.Controls.Material 2.12
-import QtQuick.Shapes 1.12
+import QtQuick 2.15
+import QtQuick.Controls 2.15
+import QtQuick.Controls.Material 2.15
+import QtQuick.Shapes 1.15
 import NodoSystem 1.1
 
 Pane

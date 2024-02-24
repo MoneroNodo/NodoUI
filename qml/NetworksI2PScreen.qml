@@ -1,9 +1,9 @@
-import QtQuick 2.12
-import QtQuick.Window 2.12
-import QtQuick.Controls 2.12
-import QtQuick.Layouts 1.12
-import QtQuick.Controls.Material 2.12
-import QtQuick.Controls.Universal 2.12
+import QtQuick 2.15
+import QtQuick.Window 2.15
+import QtQuick.Controls 2.15
+import QtQuick.Layouts 1.15
+import QtQuick.Controls.Material 2.15
+import QtQuick.Controls.Universal 2.15
 import QtQuick.Controls.Styles 1.4
 import QtQuick.VirtualKeyboard 2.1
 import NodoSystem 1.1
@@ -11,11 +11,24 @@ import NodoSystem 1.1
 Item {
     id: networksI2PScreen
 
-    property int labelSize: 208
+    property int labelSize: 0
 
     Component.onCompleted: {
         nodoConfig.updateRequested()
+        onCalculateMaximumTextLabelLength()
     }
+
+    function onCalculateMaximumTextLabelLength() {
+        if(i2pAddressField.labelRectRoundSize > labelSize)
+        labelSize = i2pAddressField.labelRectRoundSize
+
+        if(i2pPortField.labelRectRoundSize > labelSize)
+        labelSize = i2pPortField.labelRectRoundSize
+
+        if(i2pPeerField.labelRectRoundSize > labelSize)
+        labelSize = i2pPeerField.labelRectRoundSize
+    }
+
 
     Connections {
         target: nodoConfig
@@ -39,7 +52,7 @@ Item {
             y: (i2pSwitch.height - i2pSwitchText.height)/2
             width: i2pSwitchText.paintedWidth
             height: i2pSwitchText.paintedHeight
-            text: "I2P"
+            text: qsTr("I2P")
             color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
             font.family: NodoSystem.fontUrbanist.name
             font.pixelSize: NodoSystem.textFontSize
@@ -63,9 +76,9 @@ Item {
         anchors.top: i2pSwitchRect.bottom
         anchors.topMargin: 16
         width: 924
-        height: 60
+        height: NodoSystem.infoFieldLabelHeight
         itemSize: labelSize
-        itemText: "I2P b32 Address"
+        itemText: qsTr("I2P b32 Address")
         valueText: nodoConfig.getStringValueFromKey("config", "i2p_address")
     }
 
@@ -75,9 +88,9 @@ Item {
         anchors.top: i2pAddressField.bottom
         anchors.topMargin: 16
         width: 924
-        height: 60
+        height: NodoSystem.infoFieldLabelHeight
         itemSize: labelSize
-        itemText: "Port"
+        itemText: qsTr("Port")
         valueText: nodoConfig.getIntValueFromKey("config", "i2p_port")
         textFlag: Qt.ImhDigitsOnly
     }
@@ -88,9 +101,9 @@ Item {
         anchors.top: i2pPortField.bottom
         anchors.topMargin: 16
         width: 924
-        height: 60
+        height: NodoSystem.infoFieldLabelHeight
         itemSize: labelSize
-        itemText: "Peer"
+        itemText: qsTr("Peer")
         valueText: nodoConfig.getStringValueFromKey("config", "add_i2p_peer")
     }
 
@@ -121,7 +134,7 @@ Item {
         color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
         font.family: NodoSystem.fontUrbanist.name
     }
-
+/*
     QtQuick2QREncode {
         id: qr
         x: 1000
@@ -136,8 +149,7 @@ Item {
         qrMode: QtQuick2QREncode.MODE_8    //encode model
 				qrLevel: QtQuick2QREncode.LEVEL_Q // encode level
     }
-
-
+*/
 
 }
 

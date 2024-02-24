@@ -8,24 +8,30 @@
 #include "NodoFeedParser.h"
 #include "NodoSystemControl.h"
 #include "NodoSystemStatusParser.h"
+#include "NodoTranslator.h"
 
 int main(int argc, char *argv[]) {
 	qputenv("QT_IM_MODULE", QByteArray("qtvirtualkeyboard"));
 
 	QApplication app(argc, argv);
 	QQmlApplicationEngine engine;
-	app.setOverrideCursor(Qt::BlankCursor);
+    // app.setOverrideCursor(Qt::BlankCursor);
 
 	NodoEmbeddedUIConfigParser *embeddedConfigParser = new NodoEmbeddedUIConfigParser();
 	NodoConfigParser *configParser = new NodoConfigParser();
 	NodoSystemControl *systemControl = new NodoSystemControl(embeddedConfigParser);
 	NodoFeedParser *feedParser = new NodoFeedParser(embeddedConfigParser);
 	NodoSystemStatusParser *systemStatusParser = new NodoSystemStatusParser();
+    Translator *translator = new Translator(&engine);
 
+
+    engine.rootContext()->setContextProperty("translator", translator);
 	engine.rootContext()->setContextProperty("nodoConfig", configParser);
 	engine.rootContext()->setContextProperty("nodoControl", systemControl);
 	engine.rootContext()->setContextProperty("feedParser", feedParser);
 	engine.rootContext()->setContextProperty("nodoSystemStatus", systemStatusParser);
+
+
 
 	engine.addImportPath( ":/" );
 	engine.addImportPath( "qrc:/modules" );

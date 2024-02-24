@@ -1,20 +1,32 @@
-import com.duoduo.components 1.0
-import QtQuick 2.12
-import QtQuick.Window 2.12
-import QtQuick.Controls 2.12
-import QtQuick.Layouts 1.12
-import QtQuick.Controls.Material 2.12
-import QtQuick.Controls.Universal 2.12
-import QtQuick.VirtualKeyboard 2.1
+import QtQuick 2.15
+import QtQuick.Window 2.15
+import QtQuick.Controls 2.15
+import QtQuick.Layouts 1.15
+import QtQuick.Controls.Material 2.15
+import QtQuick.Controls.Universal 2.15
+import QtQuick.Controls.Styles 1.4
 import NodoSystem 1.1
+// import com.duoduo.components 1.0
 
 Rectangle {
     id: networksClearnetScreen
-    property int labelSize: 208
+    property int labelSize: 0
     color: "black"
 
     Component.onCompleted: {
         nodoConfig.updateRequested()
+        onCalculateMaximumTextLabelLength()
+    }
+
+    function onCalculateMaximumTextLabelLength() {
+        if(clearnetAddressField.labelRectRoundSize > labelSize)
+        labelSize = clearnetAddressField.labelRectRoundSize
+
+        if(clearnetPortField.labelRectRoundSize > labelSize)
+        labelSize = clearnetPortField.labelRectRoundSize
+
+        if(clearnetPeerField.labelRectRoundSize > labelSize)
+        labelSize = clearnetPeerField.labelRectRoundSize
     }
 
     Connections {
@@ -32,7 +44,7 @@ Rectangle {
         width: 924
         height: 60
         itemSize: labelSize
-        itemText: "Address"
+        itemText: qsTr("Address")
         valueText: ""
         textFlag: Qt.ImhPreferNumbers
     }
@@ -45,7 +57,7 @@ Rectangle {
         width: 924
         height: 60
         itemSize: labelSize
-        itemText: "Port"
+        itemText: qsTr("Port")
         valueText: nodoConfig.getIntValueFromKey("config", "difficulty")
         textFlag: Qt.ImhDigitsOnly
     }
@@ -58,7 +70,7 @@ Rectangle {
         width: 924
         height: 60
         itemSize: labelSize
-        itemText: "Peer"
+        itemText: qsTr("Peer")
         valueText: nodoConfig.getStringValueFromKey("config", "monero_rpc_port")
         textFlag: Qt.ImhPreferLowercase
     }
@@ -90,7 +102,7 @@ Rectangle {
         color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
         font.family: NodoSystem.fontUrbanist.name
     }
-
+/*
     QtQuick2QREncode {
         id: qr
         x: 1000
@@ -105,6 +117,6 @@ Rectangle {
         qrMode: QtQuick2QREncode.MODE_8    //encode model
 				qrLevel: QtQuick2QREncode.LEVEL_Q // encode level
     }
-
+*/
 
 }

@@ -1,9 +1,9 @@
-import QtQuick 2.12
-import QtQuick.Window 2.12
-import QtQuick.Controls 2.12
-import QtQuick.Layouts 1.12
-import QtQuick.Controls.Material 2.12
-import QtQuick.Controls.Universal 2.12
+import QtQuick 2.15
+import QtQuick.Window 2.15
+import QtQuick.Controls 2.15
+import QtQuick.Layouts 1.15
+import QtQuick.Controls.Material 2.15
+import QtQuick.Controls.Universal 2.15
 import QtQuick.Controls.Styles 1.4
 import NodoSystem 1.1
 
@@ -69,7 +69,7 @@ Item {
             anchors.left: deviceDisplayNightModeSwitchRect.right
             anchors.leftMargin: 16
             y: (deviceDisplayNightModeSwitchRect.height - deviceDisplayNightModeSwitchText.height)/2
-            text: "Night mode"
+            text: qsTr("Night mode")
             color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
             font.family: NodoSystem.fontUrbanist.name
             font.pixelSize: NodoSystem.textFontSize
@@ -97,11 +97,10 @@ Item {
 
         Text{
             id: deviceDisplayFlipOrientationSwitchText
-
             anchors.left: deviceDisplayFlipOrientationSwitchRect.right
             anchors.leftMargin: 16
             y: (deviceDisplayFlipOrientationSwitchRect.height - deviceDisplayFlipOrientationSwitchText.height)/2
-            text: "Flip Orientation"
+            text: qsTr("Flip Orientation")
             color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
             font.family: NodoSystem.fontUrbanist.name
             font.pixelSize: NodoSystem.textFontSize
@@ -134,9 +133,54 @@ Item {
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: 32
         currentIndex: nodoControl.getScreenSaverType()
-        model: ["News Carousel", "Analog Clock", "Off"]
+        model: [qsTr("News Carousel"), qsTr("Analog Clock"), qsTr("Off")]
         onCurrentIndexChanged: {
             nodoControl.setScreenSaverType(currentIndex)
         }
     }
+
+    Label {
+        id: deviceDisplayLanguageLabel
+        anchors.left: deviceDisplaySlider.right
+        anchors.top: deviceDisplayScreen.top
+        anchors.leftMargin: 75
+        width: 180
+        height: 32
+        text: qsTr("Language")
+        font.pixelSize: NodoSystem.textFontSize
+        verticalAlignment: Text.AlignVCenter
+        color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
+        font.family: NodoSystem.fontUrbanist.name
+    }
+
+    NodoComboBox
+    {
+        id: deviceDisplayLanguageComboBox
+        anchors.left: deviceDisplayLanguageLabel.left
+        anchors.top: deviceDisplayLanguageLabel.bottom
+        anchors.topMargin: 16
+        width: 370
+        height: 60
+        font.family: NodoSystem.fontUrbanist.name
+        font.pixelSize: 32
+        model: translator.languages
+        displayText: translator.languageByCode(translator.currentLanguage)
+
+        delegate: ItemDelegate {
+            id: languageRect
+            property string code: modelData
+            width: deviceDisplayLanguageComboBox.width
+
+            contentItem: Text {
+                text: translator.languageByCode(code)
+                color: nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn : NodoSystem.dataFieldTextColorNightModeOff
+                font: deviceDisplayLanguageComboBox.font
+                elide: Text.ElideRight
+                verticalAlignment: Text.AlignVCenter
+            }
+            highlighted: code === translator.currentLanguage
+            onClicked: translator.selectLanguage(languageRect.code)
+        }
+    }
+
 }

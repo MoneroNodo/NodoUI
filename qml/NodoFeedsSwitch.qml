@@ -1,9 +1,9 @@
-import QtQuick 2.12
-import QtQuick.Window 2.12
-import QtQuick.Controls 2.12
-import QtQuick.Layouts 1.12
-import QtQuick.Controls.Material 2.12
-import QtQuick.Controls.Universal 2.12
+import QtQuick 2.15
+import QtQuick.Window 2.15
+import QtQuick.Controls 2.15
+import QtQuick.Layouts 1.15
+import QtQuick.Controls.Material 2.15
+import QtQuick.Controls.Universal 2.15
 import QtQuick.Controls.Styles 1.4
 import NodoSystem 1.1
 
@@ -13,13 +13,14 @@ Rectangle {
     id: feedRect
     height: visible ? 60 : 0
     visible: nodoControl.getVisibleState(index)
+    anchors.topMargin: visible ? 16 : 0
 
     NodoSwitch {
         id: feedSwitch
         x: 0
         y: 0
-        width: 80
-        height: parent.height*0.66
+        width: 128
+        height: 64
         text: qsTr("")
         display: AbstractButton.IconOnly
         checked: nodoControl.getSelectedState(index)

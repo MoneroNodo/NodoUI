@@ -1,20 +1,44 @@
-import QtQuick 2.12
-import QtQuick.Window 2.12
-import QtQuick.Controls 2.12
-import QtQuick.Layouts 1.12
-import QtQuick.Controls.Material 2.12
-import QtQuick.Controls.Universal 2.12
+import QtQuick 2.15
+import QtQuick.Window 2.15
+import QtQuick.Controls 2.15
+import QtQuick.Layouts 1.15
+import QtQuick.Controls.Material 2.15
+import QtQuick.Controls.Universal 2.15
 import QtQuick.Controls.Styles 1.4
-import QtQuick.VirtualKeyboard 2.1
 import NodoSystem 1.1
+import QtQuick.VirtualKeyboard 2.1
 
 Item {
     id: deviceWifiScreen
-    property int labelSize: 192
+    property int labelSize: 0
     anchors.fill: parent
 
     Component.onCompleted: {
         nodoConfig.updateRequested()
+        onCalculateMaximumTextLabelLength()
+    }
+
+    function onCalculateMaximumTextLabelLength() {
+        if(wifiSSIDField.labelRectRoundSize > labelSize)
+        labelSize = wifiSSIDField.labelRectRoundSize
+
+        if(wifiPassphraseField.labelRectRoundSize > labelSize)
+        labelSize = wifiPassphraseField.labelRectRoundSize
+
+        if(wifiStatusField.labelRectRoundSize > labelSize)
+        labelSize = wifiStatusField.labelRectRoundSize
+
+        if(wifiIPAddressField.labelRectRoundSize > labelSize)
+        labelSize = wifiIPAddressField.labelRectRoundSize
+
+        if(wifiSubnetMaskField.labelRectRoundSize > labelSize)
+        labelSize = wifiSubnetMaskField.labelRectRoundSize
+
+        if(wifiRouterField.labelRectRoundSize > labelSize)
+        labelSize = wifiRouterField.labelRectRoundSize
+
+        if(wifiDHCPField.labelRectRoundSize > labelSize)
+        labelSize = wifiDHCPField.labelRectRoundSize
     }
 
     Connections {
@@ -44,7 +68,7 @@ Item {
             y: (wifiSwitch.height - wifiSwitchText.height)/2
             width: wifiSwitchText.paintedWidth
             height: wifiSwitchText.paintedHeight
-            text: "Wi-Fi"
+            text: qsTr("Wi-Fi")
             color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
             font.family: NodoSystem.fontUrbanist.name
             font.pixelSize: NodoSystem.textFontSize
@@ -85,7 +109,7 @@ Item {
         width: 592
         height: 60
         itemSize: labelSize
-        itemText: "SSID"
+        itemText: qsTr("SSID")
         valueText: nodoConfig.getStringValueFromKey("wifi", "ssid")
     }
 
@@ -97,7 +121,7 @@ Item {
         width: 592
         height: 60
         itemSize: labelSize
-        itemText: "Passphrase"
+        itemText: qsTr("Passphrase")
         valueText: ("" === nodoConfig.getStringValueFromKey("wifi", "pw")) ? "" : "******"
     }
 
@@ -107,17 +131,15 @@ Item {
         anchors.top: wifiPassphraseField.bottom
         anchors.topMargin: 16
         width: 592
-        height: 60
+        height: NodoSystem.infoFieldLabelHeight
         itemSize: labelSize
-        itemText: "Status"
+        itemText: qsTr("Status")
         valueText: "enabled"
     }
 
     Rectangle {
         id: wifiIPConfigSwitchRect
-        //anchors.left: deviceWifiScreen.left
         anchors.top: deviceWifiScreen.top
-        //anchors.topMargin: 32
         height: 64
         x: 640
 
@@ -127,7 +149,7 @@ Item {
             y: (wifiIPConfigSwitch.height - wifiIPConfigSwitchText.height)/2
             width: wifiIPConfigSwitchText.paintedWidth
             height: wifiIPConfigSwitchText.paintedHeight
-            text: "Automatic"
+            text: qsTr("Automatic")
             color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
             font.family: NodoSystem.fontUrbanist.name
             font.pixelSize: NodoSystem.textFontSize
@@ -154,7 +176,7 @@ Item {
         width: 592
         height: 60
         itemSize: labelSize
-        itemText: "IP Address"
+        itemText: qsTr("IP Address")
         valueText: nodoConfig.getStringValueFromKey("wifi", "ip")
         textFlag: Qt.ImhPreferNumbers
     }
@@ -168,7 +190,7 @@ Item {
         width: 592
         height: 60
         itemSize: labelSize
-        itemText: "Subnet Mask"
+        itemText: qsTr("Subnet Mask")
         valueText: nodoConfig.getStringValueFromKey("wifi", "subnet")
         textFlag: Qt.ImhPreferNumbers
     }
@@ -182,7 +204,7 @@ Item {
         width: 592
         height: 60
         itemSize: labelSize
-        itemText: "Router"
+        itemText: qsTr("Router")
         valueText: nodoConfig.getStringValueFromKey("wifi", "router")
         textFlag: Qt.ImhPreferNumbers
     }
@@ -196,7 +218,7 @@ Item {
         width: 592
         height: 60
         itemSize: labelSize
-        itemText: "DHCP"
+        itemText: qsTr("DHCP")
         valueText: nodoConfig.getStringValueFromKey("wifi", "dhcp")
         textFlag: Qt.ImhPreferNumbers
     }

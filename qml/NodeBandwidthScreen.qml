@@ -1,23 +1,42 @@
-import QtQuick 2.12
-import QtQuick.Window 2.12
-import QtQuick.Controls 2.12
-import QtQuick.Layouts 1.12
-import QtQuick.Controls.Material 2.12
-import QtQuick.Controls.Universal 2.12
+import QtQuick 2.15
+import QtQuick.Window 2.15
+import QtQuick.Controls 2.15
+import QtQuick.Layouts 1.15
+import QtQuick.Controls.Material 2.15
+import QtQuick.Controls.Universal 2.15
 import QtQuick.Controls.Styles 1.4
+import NodoSystem 1.1
 
 Item {
     id: nodeBandwidthScreen
-    property int labelSize: 180
+    property int labelSize: 0
+
+    Component.onCompleted: {
+        onCalculateMaximumTextLabelLength()
+    }
+
+    function onCalculateMaximumTextLabelLength() {
+        if(incomingPeersLimitField.labelRectRoundSize > labelSize)
+            labelSize = incomingPeersLimitField.labelRectRoundSize
+
+        if(outgoingPeersLimitField.labelRectRoundSize > labelSize)
+            labelSize = outgoingPeersLimitField.labelRectRoundSize
+
+        if(rateLimitUpField.labelRectRoundSize > labelSize)
+            labelSize = rateLimitUpField.labelRectRoundSize
+
+        if(rateLimitDownField.labelRectRoundSize > labelSize)
+            labelSize = rateLimitDownField.labelRectRoundSize
+    }
 
     NodoInfoField {
         id: incomingPeersLimitField
         anchors.left: nodeBandwidthScreen.left
         anchors.top: nodeBandwidthScreen.top
-        width: 300
-        height: 38
+        width: labelSize + 120// 300
+        height: NodoSystem.infoFieldLabelHeight
         itemSize: labelSize
-        itemText: "Incoming peers limit"
+        itemText: qsTr("Incoming peers limit")
         valueText: "64"
     }
 
@@ -26,10 +45,10 @@ Item {
         anchors.left: nodeBandwidthScreen.left
         anchors.top: incomingPeersLimitField.bottom
         anchors.topMargin: 10
-        width: 300
-        height: 38
+        width: labelSize + 120//300
+        height: NodoSystem.infoFieldLabelHeight
         itemSize: labelSize
-        itemText: "Outgoing peers limit"
+        itemText: qsTr("Outgoing peers limit")
         valueText: "64"
     }
 
@@ -38,10 +57,10 @@ Item {
         anchors.left: nodeBandwidthScreen.left
         anchors.top: outgoingPeersLimitField.bottom
         anchors.topMargin: 10
-        width: 300
-        height: 38
+        width: labelSize + 120//300
+        height: NodoSystem.infoFieldLabelHeight
         itemSize: labelSize
-        itemText: "Rate-limit up"
+        itemText: qsTr("Rate-limit up")
         valueText: "-1"
     }
 
@@ -50,10 +69,10 @@ Item {
         anchors.left: nodeBandwidthScreen.left
         anchors.top: rateLimitUpField.bottom
         anchors.topMargin: 10
-        width: 300
-        height: 38
+        width: labelSize + 120//300
+        height: NodoSystem.infoFieldLabelHeight
         itemSize: labelSize
-        itemText: "Rate-limit down"
+        itemText: qsTr("Rate-limit down")
         valueText: "-1"
     }
 }

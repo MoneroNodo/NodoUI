@@ -1,12 +1,12 @@
-import QtQuick 2.12
-import QtQuick.Window 2.12
-import QtQuick.Controls 2.12
-import QtQuick.Layouts 1.12
-import QtQuick.Controls.Material 2.12
-import QtQuick.Controls.Universal 2.12
+import QtQuick 2.15
+import QtQuick.Window 2.15
+import QtQuick.Controls 2.15
+import QtQuick.Layouts 1.15
+import QtQuick.Controls.Material 2.15
+import QtQuick.Controls.Universal 2.15
 import QtQuick.Controls.Styles 1.4
 import QtWebKit 3.0
-import QtWebEngine 1.2
+import QtWebEngine 1.10
 import NodoSystem 1.1
 
 
@@ -115,7 +115,6 @@ Item {
 
         Component.onCompleted: {
             textArea1.text = dataTextStr
-            console.log("loaded")
         }
 
         Image {
