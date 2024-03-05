@@ -164,7 +164,7 @@ Item {
         color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
         font.family: NodoSystem.fontUrbanist.name
     }
-/*
+
     QtQuick2QREncode {
         id: qr
         x: 1000
@@ -179,7 +179,7 @@ Item {
         qrMode: QtQuick2QREncode.MODE_8    //encode model
 				qrLevel: QtQuick2QREncode.LEVEL_Q // encode level
     }
-*/
+
 
 
 

@@ -6,7 +6,7 @@ import QtQuick.Controls.Material 2.15
 import QtQuick.Controls.Universal 2.15
 import QtQuick.Controls.Styles 1.4
 import NodoSystem 1.1
-// import com.duoduo.components 1.0
+import com.duoduo.components 1.0
 
 Rectangle {
     id: networksClearnetScreen
@@ -102,7 +102,7 @@ Rectangle {
         color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
         font.family: NodoSystem.fontUrbanist.name
     }
-/*
+
     QtQuick2QREncode {
         id: qr
         x: 1000
@@ -117,6 +117,6 @@ Rectangle {
         qrMode: QtQuick2QREncode.MODE_8    //encode model
 				qrLevel: QtQuick2QREncode.LEVEL_Q // encode level
     }
-*/
+
 
 }

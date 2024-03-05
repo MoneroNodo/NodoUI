@@ -23,6 +23,9 @@ Rectangle {
             textLeftPadding: 15
             textRightPadding: 15
             frameRadius: 4
+            onClicked: {
+                nodoControl.restartDevice();
+            }
         }
 
         NodoButton {
@@ -37,6 +40,9 @@ Rectangle {
             textLeftPadding: 25
             textRightPadding: 25
             frameRadius: 4
+            onClicked: {
+                nodoControl.shutdownDevice();
+            }
         }
 
         NodoButton {

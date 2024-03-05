@@ -1,10 +1,12 @@
-QT += qml quick core widgets gui
+QT += qml quick core widgets gui dbus
 QT += virtualkeyboard
 QT += network
 TEMPLATE = app
 CONFIG += c++17
 
-TARGET = NodoUI
+TARGET = EmbeddedUI
+
+DBUS_INTERFACES += nodo_embedded.xml
 
 # The following define makes your compiler emit warnings if you use
 # any Qt feature that has been marked deprecated (the exact warnings
@@ -26,6 +28,7 @@ SOURCES += \
         src/NodoSystemControl.cpp \
         src/pugixml.cpp \
         src/NodoTranslator.cpp \
+        src/NodoDBusController.cpp \
 
 
 HEADERS += \
@@ -37,6 +40,7 @@ HEADERS += \
         src/pugixml.hpp \
         src/pugiconfig.hpp \
         src/NodoTranslator.h \
+        src/NodoDBusController.h \
 
 RESOURCES += qml.qrc
 
@@ -45,14 +49,15 @@ disable-xcb {
 }
 
 TRANSLATIONS += \
-    i18n/NodoUI_en_GB.ts \
-    i18n/NodoUI_en_US.ts \
+    i18n/EmbeddedUI_en_GB.ts \
+    i18n/EmbeddedUI_en_US.ts \
 
 DISTFILES += \
-    i18n/NodoUI_en_GB.qm \
-    i18n/NodoUI_en_GB.rs \
-    i18n/NodoUI_en_US.qm \
-    i18n/NodoUI_en_US.ts \
+    i18n/EmbeddedUI_en_GB.qm \
+    i18n/EmbeddedUI_en_GB.rs \
+    i18n/EmbeddedUI_en_US.qm \
+    i18n/EmbeddedUI_en_US.ts \
+
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH = $$PWD/assets
@@ -60,6 +65,19 @@ QML2_IMPORT_PATH = $$PWD/assets
 
 # Additional import path used to resolve QML modules just for Qt Quick Designer
 QML_DESIGNER_IMPORT_PATH =
+
+CONFIG(debug, debug|release) {
+    DESTDIR = build
+}
+CONFIG(release, debug|release) {
+    DESTDIR = build
+}
+
+OBJECTS_DIR = $$DESTDIR/obj
+MOC_DIR = $$DESTDIR/moc
+RCC_DIR = $$DESTDIR/qrc
+UI_DIR = $$DESTDIR/u
+
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

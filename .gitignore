@@ -1,1 +1,8 @@
 *.user
+Makefile
+EmbeddedUI/Makefile
+EmbeddedUI/nodo_embedded_interface.*
+EmbeddedUI/build
+NodoDaemon/Makefile
+NodoDaemon/nodo_embedded_adaptor.*
+NodoDaemon/build

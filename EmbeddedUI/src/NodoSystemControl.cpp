@@ -8,6 +8,21 @@ NodoSystemControl::NodoSystemControl(NodoEmbeddedUIConfigParser *embeddedUIConfi
     m_embeddedUIConfigParser = embeddedUIConfigParser;
     m_feeds_str = embeddedUIConfigParser->readFeedKeys();
     m_displaySettings = embeddedUIConfigParser->readDisplaySettings();
+
+    m_controller = new NodoDBusController(this);
+
+    m_connectionStatus = m_controller->isConnected();
+
+    if(m_connectionStatus)
+    {
+        qDebug() << "Connected to the dbus daemon";
+    }
+    else
+    {
+        qDebug() << "Couldn't connect to the dbus daemon";
+    }
+
+    connect(m_controller, SIGNAL(connectionStatusChanged()), this, SLOT(updateConnectionStatus()));
 }
 
 bool NodoSystemControl::getAppTheme(void)
@@ -96,3 +111,38 @@ int NodoSystemControl::getScreenSaverItemChangeTimeout(void)
     return m_displaySettings.screenSaverItemChangeTimeoutInSec*1000;
 }
 
+
+void NodoSystemControl::updateConnectionStatus(void)
+{
+    bool isConnected = m_controller->isConnected();
+    if(m_connectionStatus == isConnected)
+    {
+        return;
+    }
+
+    if(isConnected)
+    {
+        qDebug() << "Connected to the dbus daemon";
+    }
+    else
+    {
+        qDebug() << "Disconnected from the dbus daemon";
+    }
+
+    m_connectionStatus = isConnected;
+}
+
+void NodoSystemControl::restartDevice()
+{
+    m_controller->restart();
+}
+
+void NodoSystemControl::shutdownDevice()
+{
+    m_controller->shutdown();
+}
+
+void NodoSystemControl::systemRecovery(int recoverFS, int rsyncBlockchain)
+{
+    m_controller->startRecovery(recoverFS, rsyncBlockchain);
+}

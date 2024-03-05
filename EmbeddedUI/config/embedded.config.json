@@ -3,7 +3,7 @@
         "screensaver_item_change_timeout_in_sec": 10,
         "screensaver_timeout_in_sec": 20,
         "use_feeds_as_screensaver": 0
-    }
+    },
     "feeds": {
         "feed_0": {
             "selected": true

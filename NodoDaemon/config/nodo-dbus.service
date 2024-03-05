@@ -1,0 +1,11 @@
+# /usr/lib/systemd/system/nodo-dbus.service
+[Unit]
+Description=Monero Nodo Dbus service
+After=dbus.service
+[Service]
+Type=dbus
+BusName=com.monero.nodo
+ExecStart=/opt/nodo/NodoDaemon
+User=root
+[Install]
+WantedBy=multi-user.target

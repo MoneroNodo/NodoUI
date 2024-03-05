@@ -15,7 +15,7 @@ int main(int argc, char *argv[]) {
 
 	QApplication app(argc, argv);
 	QQmlApplicationEngine engine;
-    app.setOverrideCursor(Qt::BlankCursor);
+    // app.setOverrideCursor(Qt::BlankCursor);
 
 	NodoEmbeddedUIConfigParser *embeddedConfigParser = new NodoEmbeddedUIConfigParser();
 	NodoConfigParser *configParser = new NodoConfigParser();

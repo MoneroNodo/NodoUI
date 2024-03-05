@@ -2,6 +2,7 @@
 #define NODO_SYSTEM_CONTROL_H
 #include <QObject>
 #include "NodoEmbeddedUIConfigParser.h"
+#include "NodoDBusController.h"
 
 class NodoSystemControl : public QObject
 {
@@ -32,6 +33,10 @@ public:
     Q_INVOKABLE void setScreenSaverItemChangeTimeout(int timeout);
     Q_INVOKABLE int getScreenSaverItemChangeTimeout(void);
 
+    Q_INVOKABLE void restartDevice();
+    Q_INVOKABLE void shutdownDevice();
+    Q_INVOKABLE void systemRecovery(int recoverFS, int rsyncBlockchain);
+
 signals:
     void appThemeChanged(bool);
 
@@ -40,6 +45,11 @@ private:
     QVector< feeds_t > m_feeds_str;
     display_settings_t m_displaySettings;
     NodoEmbeddedUIConfigParser *m_embeddedUIConfigParser;
+    NodoDBusController *m_controller;
+    bool m_connectionStatus;
+
+private slots:
+    void updateConnectionStatus(void);
 };
 
 

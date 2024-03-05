@@ -42,7 +42,7 @@ Rectangle {
         textRightPadding: 25
         frameRadius: 4
         onClicked: {
-
+            nodoControl.systemRecovery(deviceSystemRecoveryRecoverFS.checked, deviceSystemRecoveryResyncBlockchain.checked);
         }
     }
 
