@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="en_GB">
+<TS version="2.1" language="mn_MN">
 <context>
     <name>DeviceDisplayScreen</name>
     <message>
@@ -11,11 +11,16 @@
     <message>
         <location filename="../qml/DeviceDisplayScreen.qml" line="59"/>
         <source></source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/DeviceDisplayScreen.qml" line="72"/>
         <source>Night mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/DeviceDisplayScreen.qml" line="93"/>
+        <source></source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -57,9 +62,9 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/DeviceEthernetScreen.qml" line="58"/>
+        <location filename="../qml/DeviceEthernetScreen.qml" line="74"/>
         <source></source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/DeviceEthernetScreen.qml" line="87"/>
@@ -167,9 +172,9 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/DeviceWifiScreen.qml" line="59"/>
+        <location filename="../qml/DeviceWifiScreen.qml" line="83"/>
         <source></source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/DeviceWifiScreen.qml" line="112"/>
@@ -189,6 +194,11 @@
     <message>
         <location filename="../qml/DeviceWifiScreen.qml" line="152"/>
         <source>Automatic</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/DeviceWifiScreen.qml" line="164"/>
+        <source></source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -220,9 +230,9 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/MinerMainScreen.qml" line="43"/>
+        <location filename="../qml/MinerMainScreen.qml" line="55"/>
         <source></source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/MinerMainScreen.qml" line="68"/>
@@ -401,9 +411,9 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NetworksI2PScreen.qml" line="54"/>
+        <location filename="../qml/NetworksI2PScreen.qml" line="67"/>
         <source></source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/NetworksI2PScreen.qml" line="81"/>
@@ -457,13 +467,18 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NetworksTorScreen.qml" line="54"/>
+        <location filename="../qml/NetworksTorScreen.qml" line="66"/>
         <source></source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/NetworksTorScreen.qml" line="85"/>
         <source>Route all connections through Tor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/NetworksTorScreen.qml" line="97"/>
+        <source></source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -536,9 +551,9 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodePrivateNodeScreen.qml" line="37"/>
+        <location filename="../qml/NodePrivateNodeScreen.qml" line="52"/>
         <source></source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/NodePrivateNodeScreen.qml" line="65"/>
@@ -564,9 +579,9 @@
 <context>
     <name>NodoFeedsSwitch</name>
     <message>
-        <location filename="../qml/NodoFeedsSwitch.qml" line="23"/>
+        <location filename="../qml/NodoFeedsSwitch.qml" line="24"/>
         <source></source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

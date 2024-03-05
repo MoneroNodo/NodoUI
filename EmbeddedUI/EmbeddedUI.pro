@@ -49,14 +49,121 @@ disable-xcb {
 }
 
 TRANSLATIONS += \
-    i18n/EmbeddedUI_en_GB.ts \
-    i18n/EmbeddedUI_en_US.ts \
+    i18n/EmbeddedUI_af.ts \
+    i18n/EmbeddedUI_am.ts \
+    i18n/EmbeddedUI_ar.ts \
+    i18n/EmbeddedUI_as.ts \
+    i18n/EmbeddedUI_az.ts \
+    i18n/EmbeddedUI_be.ts \
+    i18n/EmbeddedUI_bg.ts \
+    i18n/EmbeddedUI_bn.ts \
+    i18n/EmbeddedUI_bo.ts \
+    i18n/EmbeddedUI_br.ts \
+    i18n/EmbeddedUI_bs.ts \
+    i18n/EmbeddedUI_ca.ts \
+    i18n/EmbeddedUI_cs.ts \
+    i18n/EmbeddedUI_cy.ts \
+    i18n/EmbeddedUI_da.ts \
+    i18n/EmbeddedUI_de.ts \
+    i18n/EmbeddedUI_dsb.ts \
+    i18n/EmbeddedUI_el.ts \
+    i18n/EmbeddedUI_en.ts \
+    i18n/EmbeddedUI_es.ts \
+    i18n/EmbeddedUI_et.ts \
+    i18n/EmbeddedUI_eu.ts \
+    i18n/EmbeddedUI_fa.ts \
+    i18n/EmbeddedUI_fi.ts \
+    i18n/EmbeddedUI_fil.ts \
+    i18n/EmbeddedUI_fo.ts \
+    i18n/EmbeddedUI_fr.ts \
+    i18n/EmbeddedUI_fy.ts \
+    i18n/EmbeddedUI_ga.ts \
+    i18n/EmbeddedUI_gd.ts \
+    i18n/EmbeddedUI_gl.ts \
+    i18n/EmbeddedUI_gsw.ts \
+    i18n/EmbeddedUI_gu.ts \
+    i18n/EmbeddedUI_ha.ts \
+    i18n/EmbeddedUI_he.ts \
+    i18n/EmbeddedUI_hi.ts \
+    i18n/EmbeddedUI_hr.ts \
+    i18n/EmbeddedUI_hsb.ts \
+    i18n/EmbeddedUI_hu.ts \
+    i18n/EmbeddedUI_hy.ts \
+    i18n/EmbeddedUI_id.ts \
+    i18n/EmbeddedUI_ig.ts \
+    i18n/EmbeddedUI_ii.ts \
+    i18n/EmbeddedUI_is.ts \
+    i18n/EmbeddedUI_it.ts \
+    i18n/EmbeddedUI_ja.ts \
+    i18n/EmbeddedUI_ka.ts \
+    i18n/EmbeddedUI_kk.ts \
+    i18n/EmbeddedUI_kl.ts \
+    i18n/EmbeddedUI_km.ts \
+    i18n/EmbeddedUI_kn.ts \
+    i18n/EmbeddedUI_ko.ts \
+    i18n/EmbeddedUI_kok.ts \
+    i18n/EmbeddedUI_ky.ts \
+    i18n/EmbeddedUI_lb.ts \
+    i18n/EmbeddedUI_lo.ts \
+    i18n/EmbeddedUI_lt.ts \
+    i18n/EmbeddedUI_lv.ts \
+    i18n/EmbeddedUI_mi.ts \
+    i18n/EmbeddedUI_mk.ts \
+    i18n/EmbeddedUI_ml.ts \
+    i18n/EmbeddedUI_mn.ts \
+    i18n/EmbeddedUI_mr.ts \
+    i18n/EmbeddedUI_ms.ts \
+    i18n/EmbeddedUI_mt.ts \
+    i18n/EmbeddedUI_my.ts \
+    i18n/EmbeddedUI_nb.ts \
+    i18n/EmbeddedUI_ne.ts \
+    i18n/EmbeddedUI_nl.ts \
+    i18n/EmbeddedUI_nn.ts \
+    i18n/EmbeddedUI_no.ts \
+    i18n/EmbeddedUI_or.ts \
+    i18n/EmbeddedUI_pa.ts \
+    i18n/EmbeddedUI_pl.ts \
+    i18n/EmbeddedUI_ps.ts \
+    i18n/EmbeddedUI_pt.ts \
+    i18n/EmbeddedUI_qu.ts \
+    i18n/EmbeddedUI_rm.ts \
+    i18n/EmbeddedUI_ro.ts \
+    i18n/EmbeddedUI_ru.ts \
+    i18n/EmbeddedUI_rw.ts \
+    i18n/EmbeddedUI_sah.ts \
+    i18n/EmbeddedUI_se.ts \
+    i18n/EmbeddedUI_si.ts \
+    i18n/EmbeddedUI_sk.ts \
+    i18n/EmbeddedUI_sl.ts \
+    i18n/EmbeddedUI_smn.ts \
+    i18n/EmbeddedUI_sq.ts \
+    i18n/EmbeddedUI_sr.ts \
+    i18n/EmbeddedUI_sv.ts \
+    i18n/EmbeddedUI_sw.ts \
+    i18n/EmbeddedUI_ta.ts \
+    i18n/EmbeddedUI_te.ts \
+    i18n/EmbeddedUI_tg.ts \
+    i18n/EmbeddedUI_th.ts \
+    i18n/EmbeddedUI_tk.ts \
+    i18n/EmbeddedUI_tr.ts \
+    i18n/EmbeddedUI_tt.ts \
+    i18n/EmbeddedUI_tzm.ts \
+    i18n/EmbeddedUI_ug.ts \
+    i18n/EmbeddedUI_uk.ts \
+    i18n/EmbeddedUI_ur.ts \
+    i18n/EmbeddedUI_uz.ts \
+    i18n/EmbeddedUI_vi.ts \
+    i18n/EmbeddedUI_wo.ts \
+    i18n/EmbeddedUI_xh.ts \
+    i18n/EmbeddedUI_yo.ts \
+    i18n/EmbeddedUI_zh.ts \
+    i18n/EmbeddedUI_zh-Hans.ts \
+    i18n/EmbeddedUI_zh-Hant.ts \
+    i18n/EmbeddedUI_zu.ts \
 
 DISTFILES += \
-    i18n/EmbeddedUI_en_GB.qm \
-    i18n/EmbeddedUI_en_GB.rs \
-    i18n/EmbeddedUI_en_US.qm \
-    i18n/EmbeddedUI_en_US.ts \
+    i18n/EmbeddedUI_en.qm \
+    i18n/EmbeddedUI_en.rs \
 
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
@@ -83,5 +190,3 @@ UI_DIR = $$DESTDIR/u
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
-
-DISTFILES +=
