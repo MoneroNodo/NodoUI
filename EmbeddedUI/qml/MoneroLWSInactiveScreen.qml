@@ -53,7 +53,7 @@ Item {
 		anchors.left: moneroLWSinactiveHeightField.right
         anchors.top: moneroLWSInactiveScreen.top
 		anchors.leftMargin: 10
-        text: qsTr("Reativate")
+        text: qsTr("Reactivate")
         height: NodoSystem.infoFieldLabelHeight
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize

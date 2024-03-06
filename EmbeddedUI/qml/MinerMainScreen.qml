@@ -104,7 +104,7 @@ Item {
 		anchors.topMargin: 10
         width: 900
         height: 38
-        text: qsTr("Warning: Your deposit address must start with 4! Warning: The deposit address will be publicly viewable. For privacy, use a different vallet!")
+        text: qsTr("Warning: Your deposit address must be a primary address beginning with 4! Warning: The deposit address will be publicly viewable. For privacy, use a different wallet!")
         font.pixelSize: NodoSystem.textFontSize
         verticalAlignment: Text.AlignVCenter
         color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
