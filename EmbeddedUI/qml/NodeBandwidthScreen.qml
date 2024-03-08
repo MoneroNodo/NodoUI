@@ -60,7 +60,7 @@ Item {
         width: labelSize + 120//300
         height: NodoSystem.infoFieldLabelHeight
         itemSize: labelSize
-        itemText: qsTr("Rate-limit up")
+        itemText: qsTr("Bandwidth Up")
         valueText: "-1"
     }
 
@@ -72,7 +72,7 @@ Item {
         width: labelSize + 120//300
         height: NodoSystem.infoFieldLabelHeight
         itemSize: labelSize
-        itemText: qsTr("Rate-limit down")
+        itemText: qsTr("Bandwidth Down")
         valueText: "-1"
     }
 }

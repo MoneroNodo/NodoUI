@@ -111,7 +111,7 @@ Rectangle {
             anchors.topMargin: 20
             width: syncStatusTabName.paintedWidth
             height: 16
-            text: qsTr("Sync Status")
+            text: qsTr("Monero")
             verticalAlignment: Text.AlignBottom
             horizontalAlignment: Text.AlignHCenter
             font.pixelSize: 40 // 24
@@ -127,7 +127,7 @@ Rectangle {
             width: syncStatus.width
             height: NodoSystem.infoFieldLabelHeight//hheight
             itemSize: labelSize
-            itemText: qsTr("Sync Status")
+            itemText: qsTr("Monero")
             valueText: (true === nodoSystemStatus.getBoolValueFromKey("synchronized")) ? "Synchronized" : "Syncing"
         }
 
@@ -246,7 +246,7 @@ Rectangle {
             anchors.topMargin: 20
             width: systemStatusTabName.paintedWidth
             height: 16
-            text: qsTr("System Status")
+            text: qsTr("Services")
             verticalAlignment: Text.AlignBottom
             horizontalAlignment: Text.AlignHCenter
             font.pixelSize: 40
@@ -332,7 +332,7 @@ Rectangle {
             anchors.topMargin: 20
             width: hardwareStatusTabName.paintedWidth
             height: 16
-            text: qsTr("Hardware Status")
+            text: qsTr("System")
             verticalAlignment: Text.AlignBottom
             horizontalAlignment: Text.AlignHCenter
             font.pixelSize: 40
@@ -349,7 +349,7 @@ Rectangle {
             height: NodoSystem.infoFieldLabelHeight//hheight
             itemSize: labelSize
             itemText: qsTr("CPU")
-            valueText: ""
+            valueText: "<loading>"
         }
 
         NodoInfoField {
@@ -361,7 +361,7 @@ Rectangle {
             height: NodoSystem.infoFieldLabelHeight//hheight
             itemSize: labelSize
             itemText: qsTr("CPU Temp")
-            valueText: "48 °C"
+            valueText: "<loading>"
         }
 
         NodoInfoField {
@@ -372,8 +372,8 @@ Rectangle {
             width: hardwareStatus.width
             height: NodoSystem.infoFieldLabelHeight//hheight
             itemSize: labelSize
-            itemText: qsTr("Primary Storage")
-            valueText: "in use"
+            itemText: qsTr("System Storage")
+            valueText: "<loading>"
         }
 
         NodoInfoField {
@@ -384,8 +384,8 @@ Rectangle {
             width: hardwareStatus.width
             height: NodoSystem.infoFieldLabelHeight//hheight
             itemSize: labelSize
-            itemText: qsTr("Backup Storage")
-            valueText: "in use"
+            itemText: qsTr("Blockchain Storage")
+            valueText: "<loading>"
         }
 
         NodoInfoField {

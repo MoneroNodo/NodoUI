@@ -69,7 +69,7 @@ Item {
             anchors.left: deviceDisplayNightModeSwitchRect.right
             anchors.leftMargin: 16
             y: (deviceDisplayNightModeSwitchRect.height - deviceDisplayNightModeSwitchText.height)/2
-            text: qsTr("Night mode")
+            text: qsTr("Night Mode")
             color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
             font.family: NodoSystem.fontUrbanist.name
             font.pixelSize: NodoSystem.textFontSize
