@@ -6,3 +6,4 @@ EmbeddedUI/build
 NodoDaemon/Makefile
 NodoDaemon/nodo_embedded_adaptor.*
 NodoDaemon/build
+.qmake.stash
