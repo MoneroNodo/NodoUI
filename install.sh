@@ -71,3 +71,5 @@ sudo chown nodo:nodo $NODO_CONFIG_PATH/embedded.config.json
 
 sudo systemctl enable nodo-dbus.service
 sudo systemctl start nodo-dbus.service
+sudo systemctl set-default graphical.target
+
