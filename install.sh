@@ -4,7 +4,7 @@ source set_nodo_install_var.sh
 
 sudo apt-get update
 
-sudo apt-get install -y qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools build-essential libqt5virtualkeyboard5-dev qtdeclarative5-dev qml-module-qtquick-controls2 qml-module-qtquick-controls qml-module-qtwebkit libpugixml-dev libcurlpp-dev libcurl4-gnutls-dev qml-module-qtwebview libqt5quickcontrols2-5 qtquickcontrols2-5-dev '^libxcb.*-dev' libx11-xcb-dev libglu1-mesa-dev libxrender-dev libxi-dev libxkbcommon-dev libxkbcommon-x11-dev python3-pyqt5 libqt5svg5-dev qtbase5-private-dev   qml-module-qt-labs-folderlistmodel qml-module-qtquick-shapes sddm x11-xserver-utils  qml-module-qtwebengine qml-module-qtquick-virtualkeyboard qtvirtualkeyboard-plugin qml-module-qtquick2 qtvirtualkeyboard5-examples qttools5-dev-tools
+sudo apt-get install -y qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools build-essential libqt5virtualkeyboard5-dev qtdeclarative5-dev qml-module-qtquick-controls2 qml-module-qtquick-controls qml-module-qtwebkit libpugixml-dev libcurlpp-dev libcurl4-gnutls-dev qml-module-qtwebview libqt5quickcontrols2-5 qtquickcontrols2-5-dev '^libxcb.*-dev' libx11-xcb-dev libglu1-mesa-dev libxrender-dev libxi-dev libxkbcommon-dev libxkbcommon-x11-dev python3-pyqt5 libqt5svg5-dev qtbase5-private-dev   qml-module-qt-labs-folderlistmodel qml-module-qtquick-shapes sddm x11-xserver-utils  qml-module-qtwebengine qml-module-qtquick-virtualkeyboard qtvirtualkeyboard-plugin qml-module-qtquick2 qtvirtualkeyboard5-examples qttools5-dev-tools qml-module-qtqml-models2 qml-module-qtqml-statemachine qml-module-qtqml-workerscript2
 
 #create folders if they don't exist
 if [ ! -d $NODO_APP_PATH ]; then

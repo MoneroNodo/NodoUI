@@ -1,5 +1,5 @@
 import QtQuick 2.15
-import QtQml 2.14
+// import QtQml 2.14
 import QtQuick.Window 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.15
@@ -9,136 +9,141 @@ import QtQuick.Controls.Styles 1.4
 import NodoSystem 1.1
 import QtQuick.VirtualKeyboard 2.2
 import QtQuick.VirtualKeyboard.Settings 2.2
+import QtQuick.Controls 2.2
+import QtWayland.Compositor 1.3
 
-ApplicationWindow {
-    id: mainAppWindow
-    visible: true
-    // width: Screen.desktopAvailableWidth
-    // height: Screen.desktopAvailableHeight
+// ApplicationWindow {
+WaylandCompositor {
+    WaylandOutput {
+        sizeFollowsWindow: true
+        window: Window {
 
-    width: 1920
-    height: 1030
-    // visibility: "FullScreen"
 
-    title: qsTr("NodoUI");
+            id: mainAppWindow
+            visible: true
+            // width: Screen.desktopAvailableWidth
+            // height: Screen.desktopAvailableHeight
 
-    Component.onCompleted: {
-        translator.selectLanguage(translator.currentLanguage)
-    }
+            width: 1920
+            height: 1030
+            // visibility: "FullScreen"
 
-    property bool screenLocked: false;
+            title: qsTr("NodoUI");
 
-    StackView {
-        id: mainAppStackView
-        anchors.fill: parent
-        initialItem: "NodoHomeScreen.qml"
-
-        pushEnter: Transition {
-            PropertyAnimation {
-                property: "opacity"
-                from: 0
-                to:1
-                duration: 0
+            Component.onCompleted: {
+                translator.selectLanguage(translator.currentLanguage)
             }
-        }
-        pushExit: Transition {
-            PropertyAnimation {
-                property: "opacity"
-                from: 1
-                to:0
-                duration: 0
-            }
-        }
-        popEnter: Transition {
-            PropertyAnimation {
-                property: "opacity"
-                from: 0
-                to:1
-                duration: 0
-            }
-        }
-        popExit: Transition {
-            PropertyAnimation {
-                property: "opacity"
-                from: 1
-                to:0
-                duration: 0
-            }
-        }
-    }
 
-    MouseArea {
-        id: mainAppMouseAreaClicked
-        anchors.fill: parent
-        propagateComposedEvents: true
+            property bool screenLocked: false;
 
-        onPressed: {
-            mouse.accepted = false
-            mainAppLockTimer.restart()
-            if(screenLocked === true){
-                mainAppWindow.screenLocked = false
-                mainAppLockTimer.restart()
-                mainAppStackView.pop()
-            }
-        }
-    }
+            StackView {
+                id: mainAppStackView
+                anchors.fill: parent
+                initialItem: "NodoHomeScreen.qml"
 
-    function lockSystem()
-    {
-        if(screenLocked === false){
-            mainAppLockTimer.stop()
-            screenLocked = true
-            if(0 === nodoControl.getScreenSaverType()) {
-                mainAppStackView.push("NodoFeederScreenSaver.qml")
+                pushEnter: Transition {
+                    PropertyAnimation {
+                        property: "opacity"
+                        from: 0
+                        to:1
+                        duration: 0
+                    }
+                }
+                pushExit: Transition {
+                    PropertyAnimation {
+                        property: "opacity"
+                        from: 1
+                        to:0
+                        duration: 0
+                    }
+                }
+                popEnter: Transition {
+                    PropertyAnimation {
+                        property: "opacity"
+                        from: 0
+                        to:1
+                        duration: 0
+                    }
+                }
+                popExit: Transition {
+                    PropertyAnimation {
+                        property: "opacity"
+                        from: 1
+                        to:0
+                        duration: 0
+                    }
+                }
             }
-            else if(1 === nodoControl.getScreenSaverType())
+
+            MouseArea {
+                id: mainAppMouseAreaClicked
+                anchors.fill: parent
+                propagateComposedEvents: true
+
+                onPressed: {
+                    mouse.accepted = false
+                    mainAppLockTimer.restart()
+                    if(parent.screenLocked === true){
+                        mainAppWindow.screenLocked = false
+                        mainAppLockTimer.restart()
+                        mainAppStackView.pop()
+                    }
+                }
+            }
+
+            function lockSystem()
             {
-                mainAppStackView.push("NodoScreenSaver.qml")
+                if(screenLocked === false){
+                    mainAppLockTimer.stop()
+                    screenLocked = true
+                    if(0 === nodoControl.getScreenSaverType()) {
+                        mainAppStackView.push("NodoFeederScreenSaver.qml")
+                    }
+                    else if(1 === nodoControl.getScreenSaverType())
+                    {
+                        mainAppStackView.push("NodoScreenSaver.qml")
+                    }
+                }
             }
-        }
-    }
 
-    Timer {
-        id: mainAppLockTimer
-        interval: nodoControl.getScreenSaverTimeout(); running: true; repeat: false
-        onTriggered: lockSystem()
-    }
-
-    InputPanel {
-        id: inputPanel
-        z: 89
-        y: yPositionWhenHidden
-        x: Screen.orientation === Qt.LandscapeOrientation ? 0 : (parent.width-parent.height) / 2
-        width: Screen.orientation === Qt.LandscapeOrientation ? parent.width : parent.height
-
-        keyboard.shadowInputControl.height: (Screen.orientation === Qt.LandscapeOrientation ? parent.height : parent.width) - keyboard.height
-
-        property real yPositionWhenHidden: Screen.orientation === Qt.LandscapeOrientation ? parent.height : parent.width + (parent.height-parent.width) / 2
-
-        states: State {
-            name: "visible"
-            /*  The visibility of the InputPanel can be bound to the Qt.inputMethod.visible property,
-                but then the handwriting input panel and the keyboard input panel can be visible
-                at the same time. Here the visibility is bound to InputPanel.active property instead,
-                which allows the handwriting panel to control the visibility when necessary.
-            */
-            when: inputPanel.active
-            PropertyChanges {
-                target: inputPanel
-                y: inputPanel.yPositionWhenHidden - inputPanel.height
+            Timer {
+                id: mainAppLockTimer
+                interval: nodoControl.getScreenSaverTimeout(); running: true; repeat: false
+                onTriggered: lockSystem()
             }
-        }
-        transitions: Transition {
-            id: inputPanelTransition
-            from: ""
-            to: "visible"
-            reversible: true
-            enabled: !VirtualKeyboardSettings.fullScreenMode
-            ParallelAnimation {
-                NumberAnimation {
-                    properties: "y"
-                    duration: 250
-                    easing.type: Easing.InOutQuad
+
+            InputPanel {
+                id: inputPanel
+                z: 89
+                y: yPositionWhenHidden
+                x: Screen.orientation === Qt.LandscapeOrientation ? 0 : (parent.width-parent.height) / 2
+                width: Screen.orientation === Qt.LandscapeOrientation ? parent.width : parent.height
+
+                keyboard.shadowInputControl.height: (Screen.orientation === Qt.LandscapeOrientation ? parent.height : parent.width) - keyboard.height
+
+                property real yPositionWhenHidden: Screen.orientation === Qt.LandscapeOrientation ? parent.height : parent.width + (parent.height-parent.width) / 2
+
+                states: State {
+                    name: "visible"
+                    when: inputPanel.active
+                    PropertyChanges {
+                        target: inputPanel
+                        y: inputPanel.yPositionWhenHidden - inputPanel.height
+                    }
+                }
+                transitions: Transition {
+                    id: inputPanelTransition
+                    from: ""
+                    to: "visible"
+                    reversible: true
+                    enabled: !VirtualKeyboardSettings.fullScreenMode
+                    ParallelAnimation {
+                        NumberAnimation {
+                            properties: "y"
+                            duration: 250
+                            easing.type: Easing.InOutQuad
+                        }
+                    }
                 }
             }
         }

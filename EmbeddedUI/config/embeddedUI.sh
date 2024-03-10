@@ -1,4 +1,4 @@
 #!/bin/bash
 
-/opt/nodo/EmbeddedUI &> /home/nodo/log.txt
+QT_DEBUG_PLUGINS=1 /opt/nodo/EmbeddedUI -platform eglfs  &> /home/nodo/log.txt
 

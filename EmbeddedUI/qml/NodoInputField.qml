@@ -36,7 +36,7 @@ Item {
             color: nodoControl.appTheme ? NodoSystem.dataFieldTitleBGColorNightModeOn : NodoSystem.dataFieldTitleBGColorNightModeOff
             anchors.right: labelRectRound.right
 
-            TextInput{
+            Text{
                 id: namelabel
                 width: namelabel.paintedWidth
                 height: root.height
@@ -85,6 +85,7 @@ Item {
                      if(focus)
                          selectAll()
                 }
+
                 inputMethodHints: Qt.ImhNoPredictiveText | Qt.ImhNoTextHandles | Qt.ImhNoAutoUppercase | textFlag
                 readOnly: readOnlyFlag
             }
