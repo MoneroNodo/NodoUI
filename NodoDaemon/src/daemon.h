@@ -23,15 +23,6 @@ signals:
     void serviceManagerNotification(const QString &message);
     void restartNotification(const QString &message);
     void shutdownNotification(const QString &message);
-
-private:
-    QStringList m_services = {
-        "explorer.service",
-        "monero-lws.service",
-        "monerod.service",
-        "p2pool.service",
-        "xmrig.service",
-    };
 };
 
 #endif // DAEMON_H

@@ -33,8 +33,8 @@ void Daemon::startRecovery(int recoverFS, int rsyncBlockchain)
     emit startRecoveryNotification("startRecovery initiated");
 }
 
-QString operations[] = {"start", "stop", "restart", "enable", "disable"};
-QString services[] = {"block-explorer", "monerod", "monero-lws", "xmrig"};
+const static QString operations[] = {"start", "stop", "restart", "enable", "disable"};
+const static QString services[] = {"block-explorer", "monerod", "monero-lws", "xmrig"};
 
 void Daemon::serviceManager(QString operation, QString service)
 {
@@ -42,36 +42,46 @@ void Daemon::serviceManager(QString operation, QString service)
 
     QString program = "/usr/bin/systemctl";
 
-
     bool valid = false;
-    for (uint i = 0; i < 5; i++) {
-      if (operation == operations[i]) {
+    for (uint i = 0; i < 5; i++)
+    {
+      if (operation == operations[i])
+      {
         valid = true;
         break;
       }
     }
     if (!valid)
     {
-        qDebug() << "illegal operation.";
+        qDebug() << "illegal operation: " << operation;
         emit serviceManagerNotification("illegal operation (either one of: start, stop, restart, enable, disable).");
         return;
     }
-    valid = false;
-    for (uint i = 0; i < 4; i++) {
-      if (service == services[i] || service == services[i] + ".service") {
-        valid = true;
-        break;
+
+
+    QStringList service_list = service.split(' ');
+    for (QString s : service_list)
+    {
+      valid = false;
+      for (uint i = 0; i < 4; i++)
+      {
+        if (s == services[i] || s == services[i] + ".service")
+        {
+          valid = true;
+          break;
+        }
+      }
+      if (!valid)
+      {
+          qDebug() << "illegal service: " << s;
+          emit serviceManagerNotification("illegal service.");
+          return;
       }
     }
-    if (!valid)
-    {
-        qDebug() << "illegal service.";
-        emit serviceManagerNotification("illegal service.");
-        return;
-    }
+
     QStringList arguments;
 
-    arguments << operation << service;
+    arguments << operation << service_list;
 
     QProcess process;
     process.start(program, arguments);
