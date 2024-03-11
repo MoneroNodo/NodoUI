@@ -14,7 +14,7 @@ public:
 
 public slots:
     void startRecovery(int recoverFS, int rsyncBlockchain);
-    void serviceManager(QString operation);
+    void serviceManager(QString operation, QString service);
     void restart(void);
     void shutdown(void);
 

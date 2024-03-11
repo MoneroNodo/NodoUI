@@ -9,6 +9,7 @@
 
         <method name="serviceManager">
                 <arg name="operation" type="s" direction="in"/>
+                <arg name="service" type="s" direction="in"/>
         </method>
 
         <method name="restart"/>

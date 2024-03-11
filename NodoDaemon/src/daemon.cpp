@@ -33,28 +33,45 @@ void Daemon::startRecovery(int recoverFS, int rsyncBlockchain)
     emit startRecoveryNotification("startRecovery initiated");
 }
 
-void Daemon::serviceManager(QString operation)
+QString operations[] = {"start", "stop", "restart", "enable", "disable"};
+QString services[] = {"block-explorer", "monerod", "monero-lws", "xmrig"};
+
+void Daemon::serviceManager(QString operation, QString service)
 {
     qDebug() << QString("serviceManager ").append(operation).append(" initiated");
 
     QString program = "/usr/bin/systemctl";
 
 
-    if(("stop" != operation) && ("start" != operation) && ("restart" != operation))
+    bool valid = false;
+    for (uint i = 0; i < 5; i++) {
+      if (operation == operations[i]) {
+        valid = true;
+        break;
+      }
+    }
+    if (!valid)
     {
-        qDebug() << "unknown service request!";
-        emit serviceManagerNotification("unknown service request!");
+        qDebug() << "illegal operation.";
+        emit serviceManagerNotification("illegal operation (either one of: start, stop, restart, enable, disable).");
         return;
     }
-
+    valid = false;
+    for (uint i = 0; i < 4; i++) {
+      if (service == services[i] || service == services[i] + ".service") {
+        valid = true;
+        break;
+      }
+    }
+    if (!valid)
+    {
+        qDebug() << "illegal service.";
+        emit serviceManagerNotification("illegal service.");
+        return;
+    }
     QStringList arguments;
 
-    arguments << operation;
-
-    for(int i = 0; i < m_services.size(); i++)
-    {
-        arguments << m_services.at(i);
-    }
+    arguments << operation << service;
 
     QProcess process;
     process.start(program, arguments);

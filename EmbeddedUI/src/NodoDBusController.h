@@ -14,7 +14,7 @@ public:
     explicit NodoDBusController(QObject *parent = nullptr);
     bool isConnected(void);
     void startRecovery(int recoverFS, int rsyncBlockchain);
-    void serviceManager(QString operation);
+    void serviceManager(QString operation, QString service);
     void restart(void);
     void shutdown(void);
 

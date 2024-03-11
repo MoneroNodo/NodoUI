@@ -41,9 +41,9 @@ void NodoDBusController::startRecovery(int recoverFS, int rsyncBlockchain)
     nodo->startRecovery(recoverFS, rsyncBlockchain);
 }
 
-void NodoDBusController::serviceManager(QString operation)
+void NodoDBusController::serviceManager(QString operation, QString service)
 {
-    nodo->serviceManager(operation);
+    nodo->serviceManager(operation, service);
 }
 
 void NodoDBusController::restart()
