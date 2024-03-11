@@ -61,7 +61,7 @@ Item {
             id: newsFeedsButton
             anchors.top: wifiButton.top
             anchors.left: displayButton.right
-            text: qsTr("NEWS")
+            text: qsTr("NEWS FEEDS")
             font.family: NodoSystem.fontUrbanist.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: { pageLoader.source = "DeviceNewsFeedsScreen.qml" }
