@@ -41,6 +41,14 @@ if [ -e /usr/bin/NodoUI.sh ]; then
     rm /usr/bin/NodoUI.sh
 fi
 
+git clone https://github.com/toby20130333/qtquickqrencode.git  qtquickqrencode
+cd qtquickqrencode
+qmake
+make $PARALLEL_BUILD
+sudo make install
+cd ..
+
+
 #compile the projects
 qmake
 make $PARALLEL_BUILD

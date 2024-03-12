@@ -58,11 +58,11 @@ Item {
         }
     }
 
-    Label {
+    Text {
         id: minerLabel
 		anchors.top: minerSwitchRect.bottom
 		anchors.left: minerMainScreen.left
-		anchors.topMargin: 10
+        anchors.topMargin: 20
         width: 100
         height: 38
         text: qsTr("Mining is done with P2Pool and XMRig")
@@ -76,7 +76,7 @@ Item {
         id: miningDifficultyField
 		anchors.top: minerLabel.bottom
 		anchors.left: minerMainScreen.left
-		anchors.topMargin: 10
+        anchors.topMargin: 20
         width: 400
         height: NodoSystem.infoFieldLabelHeight
         itemSize: labelSize
@@ -89,7 +89,7 @@ Item {
         id: minerDepositAddressField
 		anchors.top: miningDifficultyField.bottom
 		anchors.left: minerMainScreen.left
-		anchors.topMargin: 10
+        anchors.topMargin: 20
         width: 800
         height: NodoSystem.infoFieldLabelHeight
         itemSize: labelSize
@@ -97,14 +97,15 @@ Item {
         valueText: nodoConfig.getStringValueFromKey("mining", "address")
     }
 
-    Label {
+    Text {
         id: warningLabel
 		anchors.top: minerDepositAddressField.bottom
 		anchors.left: minerMainScreen.left
-		anchors.topMargin: 10
-        width: 900
-        height: 38
-        text: qsTr("Warning: Your deposit address must be a primary address beginning with 4! Warning: The deposit address will be publicly viewable. For privacy, use a different wallet!")
+        anchors.topMargin: 20
+        width: 1800
+        height: 100
+        wrapMode: Text.WordWrap
+        text: qsTr("Warning: Your deposit address must be a primary address beginning with 4!\r\nWarning: The deposit address will be publicly viewable. For privacy, use a different wallet!")
         font.pixelSize: NodoSystem.textFontSize
         verticalAlignment: Text.AlignVCenter
         color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff

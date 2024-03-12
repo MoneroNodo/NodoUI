@@ -5,8 +5,8 @@ import QtQuick.Layouts 1.15
 import QtQuick.Controls.Material 2.15
 import QtQuick.Controls.Universal 2.15
 import QtQuick.Controls.Styles 1.4
-import NodoSystem 1.1
 import com.duoduo.components 1.0
+import NodoSystem 1.1
 
 Rectangle {
     id: networksClearnetScreen
