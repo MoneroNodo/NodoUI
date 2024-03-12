@@ -52,7 +52,7 @@ Item {
             y: 0
             height: 64
             width: 128
-            text: qsTr("")
+            text: ""
             display: AbstractButton.IconOnly
             checked: nodoConfig.getStringValueFromKey("mining", "enabled") === "TRUE" ? true : false
         }

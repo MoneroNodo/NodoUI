@@ -56,7 +56,7 @@ Item {
             id: deviceDisplayNightModeSwitch
             height: 64
             width: 128
-            text:  qsTr("")
+            text:  ""
             display: AbstractButton.IconOnly
 
             onCheckedChanged: {
@@ -90,7 +90,7 @@ Item {
             height: 64
             width: 128
 
-            text: qsTr("")
+            text: ""
             display: AbstractButton.IconOnly
             checked: false
         }
@@ -128,12 +128,12 @@ Item {
         anchors.left: deviceDisplaySliderLabel.left
         anchors.top: deviceDisplayScreensaverLabel.bottom
         anchors.topMargin: 16
-        width: 370
+        width: 470
         height: 60
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: 32
         currentIndex: nodoControl.getScreenSaverType()
-        model: [qsTr("News Carousel"), qsTr("Analog Clock"), qsTr("Off")]
+        model: [qsTr("News Carousel"), qsTr("Analog Clock"), qsTr("Digital Clock"), qsTr("Off")]
         onCurrentIndexChanged: {
             nodoControl.setScreenSaverType(currentIndex)
         }
@@ -159,7 +159,7 @@ Item {
         anchors.left: deviceDisplayLanguageLabel.left
         anchors.top: deviceDisplayLanguageLabel.bottom
         anchors.topMargin: 16
-        width: 370
+        width: 470
         height: 60
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: 32

@@ -71,7 +71,7 @@ Item {
             y: 0
             width: 128
             height: 64
-            text: qsTr("")
+            text: ""
             display: AbstractButton.IconOnly
             checked: nodoConfig.getStringValueFromKey("ethernet", "auto") === "TRUE" ? true : false
         }

@@ -49,7 +49,7 @@ Item {
             id: privateNodeSwitch
             width: 128
             height: 64
-            text: qsTr("")
+            text: ""
             display: AbstractButton.IconOnly
         }
     }

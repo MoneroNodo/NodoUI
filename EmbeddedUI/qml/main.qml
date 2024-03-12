@@ -93,7 +93,11 @@ ApplicationWindow {
             }
             else if(1 === nodoControl.getScreenSaverType())
             {
-                mainAppStackView.push("NodoScreenSaver.qml")
+                 mainAppStackView.push("NodoScreenSaver.qml")
+            }
+            else if(2 === nodoControl.getScreenSaverType())
+            {
+                mainAppStackView.push("NodoDigitalClock.qml")
             }
         }
     }

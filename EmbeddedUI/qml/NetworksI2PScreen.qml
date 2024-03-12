@@ -64,7 +64,7 @@ Item {
             y: 0
             width: 128
             height: 64
-            text: qsTr("")
+            text: ""
             display: AbstractButton.IconOnly
             checked: nodoConfig.getStringValueFromKey("config", "i2p_enabled") === "TRUE" ? true : false
         }

@@ -63,7 +63,7 @@ Item {
             y: 0
             width: 128
             height: 64
-            text: qsTr("")
+            text: ""
             display: AbstractButton.IconOnly
             checked: nodoConfig.getStringValueFromKey("config", "tor_enabled") === "TRUE" ? true : false
         }
@@ -94,7 +94,7 @@ Item {
             y: 0
             width: 128
             height: 64
-            text: qsTr("")
+            text: ""
             display: AbstractButton.IconOnly
             checked: nodoConfig.getStringValueFromKey("config", "tor_global_enabled") === "TRUE" ? true : false
         }

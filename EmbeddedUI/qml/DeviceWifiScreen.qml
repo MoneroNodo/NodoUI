@@ -80,7 +80,7 @@ Item {
             y: 0
             width: 128
             height: 64
-            text: qsTr("")
+            text: ""
             display: AbstractButton.IconOnly
             checked: nodoConfig.getStringValueFromKey("wifi", "enabled") === "TRUE" ? true : false
         }
@@ -161,7 +161,7 @@ Item {
             y: 0
             width: 128
             height: 64
-            text: qsTr("")
+            text: ""
             display: AbstractButton.IconOnly
             checked: nodoConfig.getStringValueFromKey("wifi", "auto") === "TRUE" ? true : false
         }

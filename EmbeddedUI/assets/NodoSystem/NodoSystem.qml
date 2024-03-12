@@ -55,4 +55,6 @@ Item
 
 
     property color switchBackgroundColor: "#a6a6a6"
+
+    property int digitalClockPixelSize: 750
 }
