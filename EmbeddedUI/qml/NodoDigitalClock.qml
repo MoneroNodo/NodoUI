@@ -13,6 +13,33 @@ Item {
     height: 1080
     property int clockTopMargin: -50
     property int seperatorTopMargin: -150
+
+    property real hours: 10
+    property real minutes: 10
+
+    function timeChanged() {
+        var date = new Date;
+
+        minutes =  date.getMinutes()
+        hours = date.getHours()%12
+    }
+
+    Timer {
+        id: timer
+        interval: 1000
+        repeat: true
+        running: true
+
+        onTriggered:
+        {
+            onTriggered: digitalClock.timeChanged()
+        }
+    }
+
+    Component.onCompleted: {
+        timeChanged()
+    }
+
     Rectangle {
         id: digitalClockBackground
         anchors.fill: parent
@@ -31,7 +58,7 @@ Item {
                 anchors.top: digitalClockDateBackground.top
                 anchors.left: digitalClockDateBackground.left
                 anchors.topMargin: clockTopMargin
-                text: Qt.formatTime(new Date(),"hh")
+                text: hours
                 font.pixelSize: NodoSystem.digitalClockPixelSize
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
@@ -77,7 +104,7 @@ Item {
                 anchors.top: digitalClockDateBackground.top
                 anchors.left: digitalClockSeperator.right
                 anchors.topMargin: clockTopMargin
-                text: Qt.formatTime(new Date(),"mm")
+                text: minutes
                 font.pixelSize: NodoSystem.digitalClockPixelSize
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
@@ -97,19 +124,6 @@ Item {
             font.pixelSize: 70
             color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
             font.family: NodoSystem.fontUrbanist.name
-        }
-    }
-
-    Timer {
-        id: timer
-        interval: 1000
-        repeat: true
-        running: true
-
-        onTriggered:
-        {
-            digitalClockHour.text = Qt.formatTime(new Date(),"hh")
-            digitalClockMinute.text = Qt.formatTime(new Date(),"mm")
         }
     }
 
