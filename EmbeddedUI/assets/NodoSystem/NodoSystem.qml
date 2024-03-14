@@ -3,8 +3,7 @@ import QtQuick 2.15
 
 Item
 {  
-    readonly property FontLoader fontUrbanist: FontLoader { source: "qrc:/NodoSystem/Urbanist.ttf" }
-    // readonly property FontLoader fontUrbanist: FontLoader { source: "qrc:/NodoSystem/Inter_Regular.ttf" }
+    readonly property FontLoader fontUrbanist: FontLoader { source: "qrc:/NodoSystem/InterRegular.ttf" }
     property int topMenuYposition: 32
     property int topMenuButtonHeight: 128
     property int topMenuButtonFontSize: 35

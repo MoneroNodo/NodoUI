@@ -60,6 +60,6 @@
     <qresource prefix="/NodoSystem">
         <file alias="qmldir">assets/NodoSystem/qmldir</file>
         <file alias="NodoSystem.qml">assets/NodoSystem/NodoSystem.qml</file>
-        <file alias="Urbanist.ttf">assets/NodoSystem/Urbanist.ttf</file>
+        <file alias="InterRegular.ttf">assets/NodoSystem/InterRegular.ttf</file>
     </qresource>
 </RCC>
