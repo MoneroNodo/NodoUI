@@ -17,7 +17,7 @@ ApplicationWindow {
     // height: Screen.desktopAvailableHeight
 
     width: 1920
-    height: 1030
+    height: 1080
     // visibility: "FullScreen"
 
     title: qsTr("NodoUI");
@@ -107,7 +107,36 @@ ApplicationWindow {
         interval: nodoControl.getScreenSaverTimeout(); running: true; repeat: false
         onTriggered: lockSystem()
     }
+    InputPanel {
+        id: inputPanel
+        z: 99
+        x: 0
+        y: mainAppWindow.height
+        width: mainAppWindow.width
 
+        states: State {
+            name: "visible"
+            when: inputPanel.active
+            PropertyChanges {
+                target: inputPanel
+                y: mainAppWindow.height - inputPanel.height
+            }
+        }
+        transitions: Transition {
+            from: ""
+            to: "visible"
+            reversible: true
+            ParallelAnimation {
+                NumberAnimation {
+                    properties: "y"
+                    duration: 250
+                    easing.type: Easing.InOutQuad
+                }
+            }
+        }
+    }
+
+/*
     InputPanel {
         id: inputPanel
         z: 89
@@ -121,11 +150,7 @@ ApplicationWindow {
 
         states: State {
             name: "visible"
-            /*  The visibility of the InputPanel can be bound to the Qt.inputMethod.visible property,
-                but then the handwriting input panel and the keyboard input panel can be visible
-                at the same time. Here the visibility is bound to InputPanel.active property instead,
-                which allows the handwriting panel to control the visibility when necessary.
-            */
+
             when: inputPanel.active
             PropertyChanges {
                 target: inputPanel
@@ -146,6 +171,6 @@ ApplicationWindow {
                 }
             }
         }
-    }
+    }*/
 }
 
