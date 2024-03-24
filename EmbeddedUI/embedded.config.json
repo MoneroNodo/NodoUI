@@ -1,7 +1,7 @@
 {
     "display": {
         "screensaver_item_change_timeout_in_sec": 10,
-        "screensaver_timeout_in_sec": 20,
+        "screensaver_timeout_in_sec": 30,
         "use_feeds_as_screensaver": false
     },
     "feeds": {
