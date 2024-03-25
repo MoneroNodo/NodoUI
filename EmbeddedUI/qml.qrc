@@ -52,6 +52,7 @@
         <file>Images/SecondHand_White.png</file>
         <file>Images/SecondHand_Red.png</file>
         <file>qml/NodoDigitalClock.qml</file>
+        <file>qml/NodoCurrencies.qml</file>
     </qresource>
     <qresource prefix="/QtQuick2QREncode">
         <file alias="qmldir">assets/QtQuick2QREncode/qmldir</file>

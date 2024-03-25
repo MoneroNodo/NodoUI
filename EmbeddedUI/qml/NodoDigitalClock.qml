@@ -104,7 +104,7 @@ Item {
                 anchors.top: digitalClockDateBackground.top
                 anchors.left: digitalClockSeperator.right
                 anchors.topMargin: clockTopMargin
-                text: minutes
+                text: minutes < 10 ? "0"+minutes : minutes
                 font.pixelSize: NodoSystem.digitalClockPixelSize
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter

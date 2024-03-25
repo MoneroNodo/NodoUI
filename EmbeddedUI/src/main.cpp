@@ -9,6 +9,7 @@
 #include "NodoSystemControl.h"
 #include "NodoSystemStatusParser.h"
 #include "NodoTranslator.h"
+#include "NodoPriceTicker.h"
 
 int main(int argc, char *argv[]) {
 	qputenv("QT_IM_MODULE", QByteArray("qtvirtualkeyboard"));
@@ -23,8 +24,9 @@ int main(int argc, char *argv[]) {
 	NodoFeedParser *feedParser = new NodoFeedParser(embeddedConfigParser);
 	NodoSystemStatusParser *systemStatusParser = new NodoSystemStatusParser();
     Translator *translator = new Translator(&engine);
+    NodoPriceTicker *priceTicker = new NodoPriceTicker(configParser);
 
-
+    engine.rootContext()->setContextProperty("priceTicker", priceTicker);
     engine.rootContext()->setContextProperty("translator", translator);
 	engine.rootContext()->setContextProperty("nodoConfig", configParser);
 	engine.rootContext()->setContextProperty("nodoControl", systemControl);

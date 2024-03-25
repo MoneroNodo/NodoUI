@@ -17,6 +17,34 @@ Item {
         anchors.fill: parent
         color: "black"
 
+        function findCurrencyIndex()
+        {
+            var currentCurrencyCode = priceTicker.getCurrentCurrencyCode();
+            for (var i = 0; i < nodoCurrencies.currencyNames.length; i++) {
+                if(currentCurrencyCode === nodoCurrencies.currencyCodes[i])
+                {
+                    priceTicker.setCurrentCurrencyIndex(i)
+                    return;
+                }
+            }
+        }
+
+        Component.onCompleted: {
+            findCurrencyIndex()
+        }
+
+        Connections {
+            target: priceTicker
+            function onCurrencyIndexChanged() {
+                exchangeNameText.text =  "XMR-" + nodoCurrencies.currencyCodes[priceTicker.getCurrentCurrencyIndex()] + ":"
+                exchangeRateText.text = nodoCurrencies.currencySymbols[priceTicker.getCurrentCurrencyIndex()] + "---.--"
+            }
+
+            function onCurrencyReceived() {
+                exchangeRateText.text = nodoCurrencies.currencySymbols[priceTicker.getCurrentCurrencyIndex()] + priceTicker.getCurrency()
+            }
+        }
+
         TabBar {
             id: mainMenuBar
             anchors.top: mainAppWindowRectangle.top
@@ -116,7 +144,7 @@ Item {
                 anchors.right: exchangeRateText.left
                 anchors.rightMargin: 2
                 color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
-                text: qsTr("XMR-USD:")
+                text: "XMR-" + nodoCurrencies.currencyCodes[priceTicker.getCurrentCurrencyIndex()] + ":"
                 font.family: NodoSystem.fontUrbanist.name
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignRight
@@ -130,7 +158,7 @@ Item {
                 anchors.right: dateText.left
                 anchors.rightMargin: 20
                 color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
-                text: qsTr("$154.54")
+                text: nodoCurrencies.currencySymbols[priceTicker.getCurrentCurrencyIndex()] + "---.--"
                 font.family: NodoSystem.fontUrbanist.name
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter

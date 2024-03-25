@@ -29,6 +29,7 @@ SOURCES += \
         src/pugixml.cpp \
         src/NodoTranslator.cpp \
         src/NodoDBusController.cpp \
+        src/NodoPriceTicker.cpp \
 
 
 HEADERS += \
@@ -41,6 +42,7 @@ HEADERS += \
         src/pugiconfig.hpp \
         src/NodoTranslator.h \
         src/NodoDBusController.h \
+        src/NodoPriceTicker.h \
 
 RESOURCES += qml.qrc
 
