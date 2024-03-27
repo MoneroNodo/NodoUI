@@ -7,6 +7,7 @@
 #include <QNetworkReply>
 #include <QSslError>
 #include <QUrl>
+#include <QTimer>
 
 #include "NodoConfigParser.h"
 
@@ -36,12 +37,16 @@ private:
     NodoConfigParser *m_configParser;
 
     QNetworkAccessManager m_manager;
+    QTimer *m_timer;
+
 
     void doDownload(const QString currencyCode);
     double m_currency = 0;
 
 private slots:
     void downloadFinished(QNetworkReply *reply);
+    void updatePriceTicker(void);
+
 };
 
 #endif // NODOPRICETICKER_H
