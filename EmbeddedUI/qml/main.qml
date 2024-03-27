@@ -22,6 +22,10 @@ ApplicationWindow {
 
     title: qsTr("NodoUI");
 
+    NodoCurrencies{
+        id: nodoCurrencies
+    }
+
     Component.onCompleted: {
         translator.selectLanguage(translator.currentLanguage)
     }

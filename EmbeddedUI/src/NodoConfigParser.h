@@ -20,6 +20,9 @@ public:
     Q_INVOKABLE int getIntValueFromKey(QString object, QString key);
     Q_INVOKABLE void updateRequested(void);
 
+    QString getSelectedCurrencyName(void);
+    void setCurrencyName(QString currency);
+
 signals:
     void configParserReady(void);
 
@@ -42,6 +45,8 @@ private:
     QTimer *m_timer;
 
     const QString m_json_file_name =  "/home/nodo/variables/config.json";
+
+    void writeJson(void);
 
 private slots:
     void updateStatus(void);

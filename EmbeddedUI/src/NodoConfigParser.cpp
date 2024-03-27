@@ -101,3 +101,34 @@ void NodoConfigParser::updateRequested(void)
     readFile();
     m_timer->start(10000);
 }
+
+QString NodoConfigParser::getSelectedCurrencyName(void)
+{
+    QJsonValue jsonValue;
+    jsonValue = m_configObj.value("ticker");
+    return jsonValue.toString().toUpper();
+}
+
+void NodoConfigParser::setCurrencyName(QString currency)
+{
+    m_configObj.insert("ticker", currency);
+    writeJson();
+}
+
+void NodoConfigParser::writeJson(void)
+{
+    QFile file;
+
+    m_configObj.insert(miningObjName, m_miningObj);
+    m_configObj.insert(ethernetObjName, m_ethernetObj);
+    m_configObj.insert(wifiObjName, m_wifiObj);
+    m_configObj.insert(versionsObjName, m_versionsObj);
+
+    m_rootObj.insert(configObjName, m_configObj);
+
+    m_document.setObject(m_rootObj);
+    file.setFileName(m_json_file_name);
+    file.open(QFile::WriteOnly | QFile::Text | QFile::Truncate);
+    file.write(m_document.toJson());
+    file.close();
+}

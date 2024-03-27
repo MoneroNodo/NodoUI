@@ -13,6 +13,11 @@ Item {
     property alias themeMode: deviceDisplayNightModeSwitch
     themeMode.checked: nodoControl.appTheme
 
+    Component.onCompleted: {
+        currencyListModel.createCurrencyList()
+        deviceDisplayCurrencyComboBox.currentIndex = priceTicker.getCurrentCurrencyIndex()
+    }
+
     Label {
         id: deviceDisplaySliderLabel
         anchors.left: deviceDisplayScreen.left
@@ -183,4 +188,71 @@ Item {
         }
     }
 
+    Label {
+        id: deviceDisplayCurrencyLabel
+        anchors.left: deviceDisplayCurrencyComboBox.left
+        anchors.top: deviceDisplayLanguageLabel.top
+        // anchors.leftMargin: 16
+        width: 180
+        height: 32
+        text: qsTr("Currency")
+        font.pixelSize: NodoSystem.textFontSize
+        verticalAlignment: Text.AlignVCenter
+        color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
+        font.family: NodoSystem.fontUrbanist.name
+    }
+
+    NodoComboBox
+    {
+        id: deviceDisplayCurrencyComboBox
+        anchors.left: deviceDisplayLanguageComboBox.right
+        anchors.top: deviceDisplayLanguageComboBox.top
+        anchors.leftMargin: 16
+        width: 470
+        height: 60
+        font.family: NodoSystem.fontUrbanist.name
+        font.pixelSize: 32
+        model: currencyListModel
+        currentIndex: priceTicker.getCurrentCurrencyIndex()
+        displayText: nodoCurrencies.currencyNames[currentIndex] + " (" + nodoCurrencies.currencySymbols[currentIndex] + ")"
+
+        delegate: ItemDelegate {
+            id: currencyRect
+            text: name
+            width: deviceDisplayCurrencyComboBox.width
+            property string currencyName: modelData
+
+            contentItem: Text {
+                text: currencyRect.text
+                color: nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn : NodoSystem.dataFieldTextColorNightModeOff
+                font: deviceDisplayCurrencyComboBox.font
+                elide: Text.ElideRight
+                verticalAlignment: Text.AlignVCenter
+            }
+
+            highlighted: currencyName === priceTicker.getCurrentCurrencyName()
+            onClicked : {
+                priceTicker.setCurrentCurrencyIndex(deviceDisplayCurrencyComboBox.highlightedIndex)
+                priceTicker.setCurrentCurrencyCode(nodoCurrencies.currencyCodes[deviceDisplayCurrencyComboBox.highlightedIndex])
+            }
+        }
+    }
+
+    ListModel {
+        id: currencyListModel
+        function createCurrencyList() {
+            for (var i = 0; i < nodoCurrencies.currencyNames.length; i++) {
+                append({"name": nodoCurrencies.currencyNames[i] + " (" + nodoCurrencies.currencySymbols[i] + ")" });
+            }
+        }
+    }
+
+    ListModel {
+        id: timezoneListModel
+        function createTimeZoneList() {
+            for (var i = 0; i < nodoControl.getTimeZoneCount(); i++) {
+                append({"name": nodoControl.getTimeZoneName(i) });
+            }
+        }
+    }
 }
