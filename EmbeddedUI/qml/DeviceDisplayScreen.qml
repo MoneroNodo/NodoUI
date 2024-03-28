@@ -12,6 +12,7 @@ Item {
     anchors.fill: parent
     property alias themeMode: deviceDisplayNightModeSwitch
     themeMode.checked: nodoControl.appTheme
+    property int dropdownLength: 670
 
     Component.onCompleted: {
         currencyListModel.createCurrencyList()
@@ -134,7 +135,7 @@ Item {
         anchors.left: deviceDisplaySliderLabel.left
         anchors.top: deviceDisplayScreensaverLabel.bottom
         anchors.topMargin: 16
-        width: 470
+        width: dropdownLength
         height: 60
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: 32
@@ -149,7 +150,7 @@ Item {
         id: deviceDisplayLanguageLabel
         anchors.left: deviceDisplaySlider.right
         anchors.top: deviceDisplayScreen.top
-        anchors.leftMargin: 75
+        anchors.leftMargin: 175
         width: 180
         height: 32
         text: qsTr("Language")
@@ -165,7 +166,7 @@ Item {
         anchors.left: deviceDisplayLanguageLabel.left
         anchors.top: deviceDisplayLanguageLabel.bottom
         anchors.topMargin: 16
-        width: 470
+        width: dropdownLength
         height: 60
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: 32
@@ -190,10 +191,57 @@ Item {
     }
 
     Label {
+        id: deviceDisplayTimezoneLabel
+        anchors.left: deviceDisplayLanguageLabel.left
+        anchors.top: deviceDisplayLanguageComboBox.bottom
+        anchors.topMargin: 75
+        width: 180
+        height: 32
+        text: qsTr("Time zone")
+        font.pixelSize: NodoSystem.textFontSize
+        verticalAlignment: Text.AlignVCenter
+        color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
+        font.family: NodoSystem.fontUrbanist.name
+    }
+
+    NodoComboBox
+    {
+        id: deviceDisplayTimezoneComboBox
+        anchors.left: deviceDisplayTimezoneLabel.left
+        anchors.top: deviceDisplayTimezoneLabel.bottom
+        anchors.topMargin: 16
+        width: dropdownLength
+        height: 60
+        font.family: NodoSystem.fontUrbanist.name
+        font.pixelSize: 32
+        model: timezoneListModel
+        currentIndex: nodoControl.getTimeZoneIndex()
+        displayText: nodoTimezones.timezoneNames[currentIndex]
+
+        delegate: ItemDelegate {
+            id: timeZoneRect
+            text: name
+            width: deviceDisplayTimezoneComboBox.width
+            property string tzName: modelData
+
+            contentItem: Text {
+                text: timeZoneRect.text
+                color: nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn : NodoSystem.dataFieldTextColorNightModeOff
+                font: deviceDisplayTimezoneComboBox.font
+                elide: Text.ElideRight
+                verticalAlignment: Text.AlignVCenter
+            }
+
+            highlighted: tzName === nodoControl.getChangedDateTime()
+            onClicked : nodoControl.setTimeZoneIndex(deviceDisplayTimezoneComboBox.highlightedIndex)
+        }
+    }
+
+    Label {
         id: deviceDisplayCurrencyLabel
-        anchors.left: deviceDisplayCurrencyComboBox.left
-        anchors.top: deviceDisplayLanguageLabel.top
-        // anchors.leftMargin: 16
+        anchors.left: deviceDisplayLanguageLabel.left
+        anchors.top: deviceDisplayTimezoneComboBox.bottom
+        anchors.topMargin: 75
         width: 180
         height: 32
         text: qsTr("Currency")
@@ -206,10 +254,10 @@ Item {
     NodoComboBox
     {
         id: deviceDisplayCurrencyComboBox
-        anchors.left: deviceDisplayLanguageComboBox.right
-        anchors.top: deviceDisplayLanguageComboBox.top
-        anchors.leftMargin: 16
-        width: 470
+        anchors.left: deviceDisplayCurrencyLabel.left
+        anchors.top: deviceDisplayCurrencyLabel.bottom
+        anchors.topMargin: 16
+        width: dropdownLength
         height: 60
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: 32
@@ -239,52 +287,7 @@ Item {
         }
     }
 
-    Label {
-        id: deviceDisplayTimezoneLabel
-        anchors.left: deviceDisplayLanguageLabel.left
-        anchors.top: deviceDisplayLanguageComboBox.bottom
-        anchors.topMargin: 75
-        width: 180
-        height: 32
-        text: qsTr("Time zone")
-        font.pixelSize: NodoSystem.textFontSize
-        verticalAlignment: Text.AlignVCenter
-        color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
-        font.family: NodoSystem.fontUrbanist.name
-    }
 
-    NodoComboBox
-    {
-        id: deviceDisplayTimezoneComboBox
-        anchors.left: deviceDisplayTimezoneLabel.left
-        anchors.top: deviceDisplayTimezoneLabel.bottom
-        anchors.topMargin: 16
-        width: 470
-        height: 60
-        font.family: NodoSystem.fontUrbanist.name
-        font.pixelSize: 32
-        model: timezoneListModel
-        currentIndex: nodoControl.getTimeZoneIndex()
-        displayText: nodoTimezones.timezoneNames[currentIndex]
-
-        delegate: ItemDelegate {
-            id: timeZoneRect
-            text: name
-            width: deviceDisplayTimezoneComboBox.width
-            property string tzName: modelData
-
-            contentItem: Text {
-                text: timeZoneRect.text
-                color: nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn : NodoSystem.dataFieldTextColorNightModeOff
-                font: deviceDisplayTimezoneComboBox.font
-                elide: Text.ElideRight
-                verticalAlignment: Text.AlignVCenter
-            }
-
-            highlighted: tzName === nodoControl.getChangedDateTime()
-            onClicked : nodoControl.setTimeZoneIndex(deviceDisplayTimezoneComboBox.highlightedIndex)
-        }
-    }
 
 
     ListModel {
