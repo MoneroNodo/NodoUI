@@ -34,7 +34,7 @@ Item {
     property real second_center_y_position: 476 // rotational center of the handle
 
     function timeChanged() {
-        var date = new Date;
+        var date = nodoControl.getChangedDateTime();
 
         miliseconds = date.getUTCMilliseconds()
         seconds = date.getUTCSeconds() + (miliseconds/1000);
@@ -45,8 +45,8 @@ Item {
         minuteAngle = (minutes*6)
         secondAngle = seconds*6
 
-        dayString = Qt.formatDateTime(new Date(), "ddd ")
-        dateString = Qt.formatDateTime(new Date(), "d")
+        dayString = Qt.formatDateTime(nodoControl.getChangedDateTime(), "ddd ")
+        dateString = Qt.formatDateTime(nodoControl.getChangedDateTime(), "d")
     }
 
     Timer {

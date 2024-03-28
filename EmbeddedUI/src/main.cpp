@@ -20,7 +20,7 @@ int main(int argc, char *argv[]) {
 
 	NodoEmbeddedUIConfigParser *embeddedConfigParser = new NodoEmbeddedUIConfigParser();
 	NodoConfigParser *configParser = new NodoConfigParser();
-	NodoSystemControl *systemControl = new NodoSystemControl(embeddedConfigParser);
+    NodoSystemControl *systemControl = new NodoSystemControl(embeddedConfigParser, configParser);
 	NodoFeedParser *feedParser = new NodoFeedParser(embeddedConfigParser);
 	NodoSystemStatusParser *systemStatusParser = new NodoSystemStatusParser();
     Translator *translator = new Translator(&engine);

@@ -15,6 +15,7 @@ Item {
 
     Component.onCompleted: {
         currencyListModel.createCurrencyList()
+        timezoneListModel.createTimeZoneList()
         deviceDisplayCurrencyComboBox.currentIndex = priceTicker.getCurrentCurrencyIndex()
     }
 
@@ -238,6 +239,54 @@ Item {
         }
     }
 
+    Label {
+        id: deviceDisplayTimezoneLabel
+        anchors.left: deviceDisplayLanguageLabel.left
+        anchors.top: deviceDisplayLanguageComboBox.bottom
+        anchors.topMargin: 75
+        width: 180
+        height: 32
+        text: qsTr("Time zone")
+        font.pixelSize: NodoSystem.textFontSize
+        verticalAlignment: Text.AlignVCenter
+        color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
+        font.family: NodoSystem.fontUrbanist.name
+    }
+
+    NodoComboBox
+    {
+        id: deviceDisplayTimezoneComboBox
+        anchors.left: deviceDisplayTimezoneLabel.left
+        anchors.top: deviceDisplayTimezoneLabel.bottom
+        anchors.topMargin: 16
+        width: 470
+        height: 60
+        font.family: NodoSystem.fontUrbanist.name
+        font.pixelSize: 32
+        model: timezoneListModel
+        currentIndex: nodoControl.getTimeZoneIndex()
+        displayText: nodoTimezones.timezoneNames[currentIndex]
+
+        delegate: ItemDelegate {
+            id: timeZoneRect
+            text: name
+            width: deviceDisplayTimezoneComboBox.width
+            property string tzName: modelData
+
+            contentItem: Text {
+                text: timeZoneRect.text
+                color: nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn : NodoSystem.dataFieldTextColorNightModeOff
+                font: deviceDisplayTimezoneComboBox.font
+                elide: Text.ElideRight
+                verticalAlignment: Text.AlignVCenter
+            }
+
+            highlighted: tzName === nodoControl.getChangedDateTime()
+            onClicked : nodoControl.setTimeZoneIndex(deviceDisplayTimezoneComboBox.highlightedIndex)
+        }
+    }
+
+
     ListModel {
         id: currencyListModel
         function createCurrencyList() {
@@ -250,8 +299,8 @@ Item {
     ListModel {
         id: timezoneListModel
         function createTimeZoneList() {
-            for (var i = 0; i < nodoControl.getTimeZoneCount(); i++) {
-                append({"name": nodoControl.getTimeZoneName(i) });
+            for (var i = 0; i < nodoTimezones.timezoneNames.length; i++) {
+                append({"name": nodoTimezones.timezoneNames[i]});
             }
         }
     }

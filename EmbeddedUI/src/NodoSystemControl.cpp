@@ -1,15 +1,19 @@
 #include "NodoSystemControl.h"
 
 
-NodoSystemControl::NodoSystemControl(NodoEmbeddedUIConfigParser *embeddedUIConfigParser) : QObject(embeddedUIConfigParser)
+NodoSystemControl::NodoSystemControl(NodoEmbeddedUIConfigParser *embeddedUIConfigParser, NodoConfigParser *configParser) : QObject(embeddedUIConfigParser)
 {
     m_appTheme = false;
     setAppTheme(m_appTheme);
+
     m_embeddedUIConfigParser = embeddedUIConfigParser;
+    m_configParser = configParser;
+    m_controller = new NodoDBusController(this);
+
     m_feeds_str = embeddedUIConfigParser->readFeedKeys();
     m_displaySettings = embeddedUIConfigParser->readDisplaySettings();
-
-    m_controller = new NodoDBusController(this);
+    m_timezone = m_configParser->getTimezone();
+    m_tz_id = m_tzList.indexOf(m_timezone);
 
     m_connectionStatus = m_controller->isConnected();
 
@@ -145,4 +149,26 @@ void NodoSystemControl::shutdownDevice()
 void NodoSystemControl::systemRecovery(int recoverFS, int rsyncBlockchain)
 {
     m_controller->startRecovery(recoverFS, rsyncBlockchain);
+}
+
+ void NodoSystemControl::setTimeZoneIndex(int tz_id)
+{
+    m_tz_id = tz_id;
+    m_timezone.clear();
+    m_timezone = m_tzList[m_tz_id];
+    m_configParser->setTimezone(m_timezone);
+
+}
+
+int NodoSystemControl::getTimeZoneIndex(void)
+{
+    return m_tz_id;
+}
+
+QDateTime NodoSystemControl::getChangedDateTime(void)
+{
+    QDateTime tmp(QDateTime::currentDateTime());
+    QDateTime changed_dt = tmp.addSecs(QTimeZone(m_tzList[m_tz_id].toUtf8()).standardTimeOffset(tmp));
+
+    return changed_dt;
 }

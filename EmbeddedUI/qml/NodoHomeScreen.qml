@@ -185,7 +185,7 @@ Item {
                     repeat: true
                     triggeredOnStart: true
                     onTriggered: {
-                        dateText.text = Qt.formatDateTime(new Date(), "dd MMM yyyy")
+                        dateText.text = Qt.formatDateTime(nodoControl.getChangedDateTime(), "dd MMM yyyy")
                     }
                 }
             }
@@ -209,7 +209,7 @@ Item {
                     repeat: true
                     triggeredOnStart: true
                     onTriggered: {
-                        timeText.text = Qt.formatDateTime(new Date(), "h:mm AP")
+                        timeText.text = Qt.formatDateTime(nodoControl.getChangedDateTime(), "h:mm AP")
                     }
                 }
             }

@@ -132,3 +132,26 @@ void NodoConfigParser::writeJson(void)
     file.write(m_document.toJson());
     file.close();
 }
+
+QString NodoConfigParser::getTimezone(void)
+{
+    QJsonValue jsonValue;
+    jsonValue = m_configObj.value("timezone");
+    if("" == jsonValue.toString())
+    {
+        qDebug() << "no timezone info. set UTC as default";
+        m_configObj.insert("timezone", "UTC");
+        writeJson();
+
+        return "UTC";
+    }
+    qDebug() << "timezone found: " << jsonValue.toString();
+    return jsonValue.toString();
+}
+
+void NodoConfigParser::setTimezone(QString tz)
+{
+    qDebug() << "new timezone: " << tz;
+    m_configObj.insert("timezone", tz);
+    writeJson();
+}

@@ -18,7 +18,7 @@ Item {
     property real minutes: 10
 
     function timeChanged() {
-        var date = new Date;
+        var date = nodoControl.getChangedDateTime();
 
         minutes =  date.getMinutes()
         hours = date.getHours()%12
@@ -120,7 +120,7 @@ Item {
             anchors.leftMargin: 50
             width: 800
             height: 200
-            text: Qt.formatDateTime(new Date(), "dddd, d MMMM yyyy")
+            text: Qt.formatDateTime(nodoControl.getChangedDateTime(), "dddd, d MMMM yyyy")
             font.pixelSize: 70
             color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
             font.family: NodoSystem.fontUrbanist.name

@@ -1,5 +1,5 @@
 #include "NodoDBusController.h"
-
+#include <QDate>
 NodoDBusController::NodoDBusController(QObject *parent) : QObject{parent}
 {
     m_connectionStatus = false;
@@ -16,6 +16,7 @@ NodoDBusController::NodoDBusController(QObject *parent) : QObject{parent}
 void NodoDBusController::timerEvent(QTimerEvent *event)
 {
     Q_UNUSED(event);
+
     bool previousState = m_connectionStatus;
     if (nodo->isValid())
     {

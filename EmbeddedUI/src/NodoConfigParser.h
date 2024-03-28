@@ -23,6 +23,9 @@ public:
     QString getSelectedCurrencyName(void);
     void setCurrencyName(QString currency);
 
+    QString getTimezone(void);
+    void setTimezone(QString tz);
+
 signals:
     void configParserReady(void);
 

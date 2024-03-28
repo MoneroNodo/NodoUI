@@ -26,6 +26,10 @@ ApplicationWindow {
         id: nodoCurrencies
     }
 
+    NodoTimezones{
+        id: nodoTimezones
+    }
+
     Component.onCompleted: {
         translator.selectLanguage(translator.currentLanguage)
     }
