@@ -12,7 +12,7 @@ Item {
     anchors.fill: parent
     property alias themeMode: deviceDisplayNightModeSwitch
     themeMode.checked: nodoControl.appTheme
-    property int dropdownLength: 670
+    property int dropdownLength: 810
 
     Component.onCompleted: {
         currencyListModel.createCurrencyList()
