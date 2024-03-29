@@ -44,9 +44,12 @@ QString Translator::currentLanguage()
 QString Translator::languageByCode(const QString &code)
 {
     QLocale lo(code);
-    QString l = lo.nativeLanguageName();
-    l[0] = l.at(0).toUpper();
-    return l;
+    QString l_eng = lo.languageToString(lo.language());
+    QString l_native = lo.nativeLanguageName();
+    l_eng[0] = l_eng.at(0).toUpper();
+    l_native[0] = l_native.at(0).toUpper();
+
+    return  l_eng + " - " + l_native;
 }
 
 void Translator::selectLanguage(const QString &language)
