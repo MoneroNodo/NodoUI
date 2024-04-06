@@ -1,5 +1,4 @@
 import QtQuick 2.15
-import QtQml 2.14
 import QtQuick.Window 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.15
@@ -13,12 +12,9 @@ import QtQuick.VirtualKeyboard.Settings 2.2
 ApplicationWindow {
     id: mainAppWindow
     visible: true
-    // width: Screen.desktopAvailableWidth
-    // height: Screen.desktopAvailableHeight
 
     width: 1920
     height: 1080
-    // visibility: "FullScreen"
 
     title: qsTr("NodoUI");
 
@@ -143,42 +139,5 @@ ApplicationWindow {
             }
         }
     }
-
-/*
-    InputPanel {
-        id: inputPanel
-        z: 89
-        y: yPositionWhenHidden
-        x: Screen.orientation === Qt.LandscapeOrientation ? 0 : (parent.width-parent.height) / 2
-        width: Screen.orientation === Qt.LandscapeOrientation ? parent.width : parent.height
-
-        keyboard.shadowInputControl.height: (Screen.orientation === Qt.LandscapeOrientation ? parent.height : parent.width) - keyboard.height
-
-        property real yPositionWhenHidden: Screen.orientation === Qt.LandscapeOrientation ? parent.height : parent.width + (parent.height-parent.width) / 2
-
-        states: State {
-            name: "visible"
-
-            when: inputPanel.active
-            PropertyChanges {
-                target: inputPanel
-                y: inputPanel.yPositionWhenHidden - inputPanel.height
-            }
-        }
-        transitions: Transition {
-            id: inputPanelTransition
-            from: ""
-            to: "visible"
-            reversible: true
-            enabled: !VirtualKeyboardSettings.fullScreenMode
-            ParallelAnimation {
-                NumberAnimation {
-                    properties: "y"
-                    duration: 250
-                    easing.type: Easing.InOutQuad
-                }
-            }
-        }
-    }*/
 }
 
