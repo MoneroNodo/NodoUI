@@ -80,7 +80,7 @@ Item {
             x: 10
             y: 12
             width: root.width - 2*x
-            height: root.height - textArea.height
+            height: root.height - textArea.paintedHeight
             text: headerTextStr
             textFormat: Text.RichText
             color: nodoControl.appTheme ? NodoSystem.highlightedColorNightModeOn : NodoSystem.highlightedColorNightModeOff
@@ -140,6 +140,7 @@ Item {
             opacity: 0.2
             source: imagePath == "" ? "qrc:/Images/Nodo_red.png" : imagePath
         }
+
     }
 }
 
