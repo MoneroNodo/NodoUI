@@ -3,6 +3,12 @@
 #include <QQmlContext>
 #include <Qt>
 
+#include <QSurfaceFormat>
+#include <QTimer>
+#include <QOpenGLContext>
+#include <QOpenGLFunctions>
+#include <QScreen>
+
 #include "NodoEmbeddedUIConfigParser.h"
 #include "NodoConfigParser.h"
 #include "NodoFeedParser.h"
@@ -33,7 +39,11 @@ int main(int argc, char *argv[]) {
 	engine.rootContext()->setContextProperty("feedParser", feedParser);
 	engine.rootContext()->setContextProperty("nodoSystemStatus", systemStatusParser);
 
-
+    // Enable vertical synchronization (vsync)
+    // QSurfaceFormat format;
+    // format.setSwapInterval(1);
+    // format.setSwapBehavior(QSurfaceFormat::DoubleBuffer);
+    // QSurfaceFormat::setDefaultFormat(format);
 
 	engine.addImportPath( ":/" );
 	engine.addImportPath( "qrc:/modules" );

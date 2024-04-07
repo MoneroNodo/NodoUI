@@ -128,7 +128,6 @@ Item {
         font.family: NodoSystem.fontUrbanist.name
     }
 
-
     NodoComboBox
     {
         id: screenSaverComboBox
@@ -286,9 +285,6 @@ Item {
             }
         }
     }
-
-
-
 
     ListModel {
         id: currencyListModel

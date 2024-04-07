@@ -13,6 +13,8 @@ ApplicationWindow {
     id: mainAppWindow
     visible: true
 
+    modality: Qt.WindowModal
+
     width: 1920
     height: 1080
 
