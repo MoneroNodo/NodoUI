@@ -1,7 +1,0 @@
-[Desktop Entry]
-Name=EmbeddedUI
-Comment=none
-Exec=/opt/nodo/embeddedUI.sh
-TryExec=/opt/nodo/embeddedUI.sh
-Type=Application
-

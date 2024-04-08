@@ -1,4 +1,4 @@
 #!/bin/bash
 
-/opt/nodo/EmbeddedUI &> /home/nodo/log.txt
+/opt/nodo/EmbeddedUI -platform eglfs &> /home/nodo/log.txt
 

@@ -140,7 +140,6 @@ Item {
             opacity: 0.2
             source: imagePath == "" ? "qrc:/Images/Nodo_red.png" : imagePath
         }
-
     }
 }
 

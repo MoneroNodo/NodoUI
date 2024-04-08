@@ -1,0 +1,12 @@
+# /usr/lib/systemd/system/nodo-dbus.service
+[Unit]
+Description=Monero Nodo EmbeddedUI service
+Conflicts=getty@tty1.service getty@tty7.service
+After=getty@tty1.service getty@tty7.service
+
+[Service]
+ExecStart=/opt/nodo/embeddedUI.sh &
+
+[Install]
+Alias=display-manager.service
+
