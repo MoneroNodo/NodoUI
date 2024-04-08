@@ -14,9 +14,11 @@ ApplicationWindow {
     visible: true
 
     modality: Qt.WindowModal
-
-    width: 1920
-    height: 1080
+    property int displayRotation: -90
+//    property int displayRotation: 0
+    contentOrientation: Qt.InvertedLandscapeOrientation
+    width: displayRotation == 0 ? 1920 : 1080
+    height: displayRotation == 0 ? 1080 : 1920
 
     title: qsTr("NodoUI");
 
@@ -34,111 +36,124 @@ ApplicationWindow {
 
     property bool screenLocked: false;
 
-    StackView {
-        id: mainAppStackView
-        anchors.fill: parent
-        initialItem: "NodoHomeScreen.qml"
 
-        pushEnter: Transition {
-            PropertyAnimation {
-                property: "opacity"
-                from: 0
-                to:1
-                duration: 0
-            }
-        }
-        pushExit: Transition {
-            PropertyAnimation {
-                property: "opacity"
-                from: 1
-                to:0
-                duration: 0
-            }
-        }
-        popEnter: Transition {
-            PropertyAnimation {
-                property: "opacity"
-                from: 0
-                to:1
-                duration: 0
-            }
-        }
-        popExit: Transition {
-            PropertyAnimation {
-                property: "opacity"
-                from: 1
-                to:0
-                duration: 0
-            }
-        }
-    }
+    Rectangle {
+        id: mainAppWindowMainRect
+        rotation: displayRotation
 
-    MouseArea {
-        id: mainAppMouseAreaClicked
-        anchors.fill: parent
-        propagateComposedEvents: true
+        x: displayRotation == 0 ? 0 : -420
+        y: displayRotation == 0 ? 0 : 420
+        width: displayRotation == 0 ? mainAppWindow.width : mainAppWindow.height
+        height: displayRotation == 0 ? mainAppWindow.height : mainAppWindow.width
+        color: "black"
 
-        onPressed: {
-            mouse.accepted = false
-            mainAppLockTimer.restart()
-            if(screenLocked === true){
-                mainAppWindow.screenLocked = false
-                mainAppLockTimer.restart()
-                mainAppStackView.pop()
-            }
-        }
-    }
+        StackView {
+            id: mainAppStackView
+            anchors.fill: parent
+            initialItem: "NodoHomeScreen.qml"
 
-    function lockSystem()
-    {
-        if(screenLocked === false){
-            mainAppLockTimer.stop()
-            screenLocked = true
-            if(0 === nodoControl.getScreenSaverType()) {
-                mainAppStackView.push("NodoFeederScreenSaver.qml")
-            }
-            else if(1 === nodoControl.getScreenSaverType())
-            {
-                 mainAppStackView.push("NodoScreenSaver.qml")
-            }
-            else if(2 === nodoControl.getScreenSaverType())
-            {
-                mainAppStackView.push("NodoDigitalClock.qml")
-            }
-        }
-    }
-
-    Timer {
-        id: mainAppLockTimer
-        interval: nodoControl.getScreenSaverTimeout(); running: true; repeat: false
-        onTriggered: lockSystem()
-    }
-    InputPanel {
-        id: inputPanel
-        z: 99
-        x: 0
-        y: mainAppWindow.height
-        width: mainAppWindow.width
-
-        states: State {
-            name: "visible"
-            when: inputPanel.active
-            PropertyChanges {
-                target: inputPanel
-                y: mainAppWindow.height - inputPanel.height
-            }
-        }
-        transitions: Transition {
-            from: ""
-            to: "visible"
-            reversible: true
-            ParallelAnimation {
-                NumberAnimation {
-                    properties: "y"
-                    duration: 250
-                    easing.type: Easing.InOutQuad
+            pushEnter: Transition {
+                PropertyAnimation {
+                    property: "opacity"
+                    from: 0
+                    to:1
+                    duration: 0
                 }
             }
+            pushExit: Transition {
+                PropertyAnimation {
+                    property: "opacity"
+                    from: 1
+                    to:0
+                    duration: 0
+                }
+            }
+            popEnter: Transition {
+                PropertyAnimation {
+                    property: "opacity"
+                    from: 0
+                    to:1
+                    duration: 0
+                }
+            }
+            popExit: Transition {
+                PropertyAnimation {
+                    property: "opacity"
+                    from: 1
+                    to:0
+                    duration: 0
+                }
+            }
+        }
+
+        MouseArea {
+            id: mainAppMouseAreaClicked
+            anchors.fill: parent
+            propagateComposedEvents: true
+
+            onPressed: {
+                mouse.accepted = false
+                mainAppLockTimer.restart()
+                if(screenLocked === true){
+                    mainAppWindow.screenLocked = false
+                    mainAppLockTimer.restart()
+                    mainAppStackView.pop()
+                }
+            }
+        }
+
+        InputPanel {
+            id: inputPanel
+            z: 99
+            x: 0
+            y: mainAppWindowMainRect.height
+            width: mainAppWindowMainRect.width
+
+            states: State {
+                name: "visible"
+                when: inputPanel.active
+                PropertyChanges {
+                    target: inputPanel
+                    y: mainAppWindowMainRect.height - inputPanel.height
+                }
+            }
+            transitions: Transition {
+                from: ""
+                to: "visible"
+                reversible: true
+                ParallelAnimation {
+                    NumberAnimation {
+                        properties: "y"
+                        duration: 250
+                        easing.type: Easing.InOutQuad
+                    }
+                }
+            }
+        }
+
+        function lockSystem()
+        {
+            if(screenLocked === false){
+                mainAppLockTimer.stop()
+                screenLocked = true
+                if(0 === nodoControl.getScreenSaverType()) {
+                    mainAppStackView.push("NodoFeederScreenSaver.qml")
+                }
+                else if(1 === nodoControl.getScreenSaverType())
+                {
+                    mainAppStackView.push("NodoScreenSaver.qml")
+                }
+                else if(2 === nodoControl.getScreenSaverType())
+                {
+                    mainAppStackView.push("NodoDigitalClock.qml")
+                }
+            }
+        }
+
+        Timer {
+            id: mainAppLockTimer
+            interval: nodoControl.getScreenSaverTimeout(); running: true; repeat: false
+            onTriggered: mainAppWindowMainRect.lockSystem()
         }
     }
 }
