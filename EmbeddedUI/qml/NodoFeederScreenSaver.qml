@@ -9,8 +9,8 @@ import NodoSystem 1.1
 
 Item {
     id: feederScreenSaver
-    width: Screen.desktopAvailableWidth
-    height: Screen.desktopAvailableHeight
+    width: parent.width
+    height: parent.height
     NewsMainScreen{
         x: 0
         y: 0

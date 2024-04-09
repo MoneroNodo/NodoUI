@@ -10,13 +10,10 @@ import NodoSystem 1.1
 Item {
     id: newsMainScreen
     anchors.fill: parent
-    // anchors.leftMargin: NodoSystem.subMenuLeftMargin
-
-    property int curIndexWitouthZero: 0
     property bool isScreenSaver: false
-    signal reloadPage()
-    property Component refreshIndicatorDelegate: RefreshIndicator {}
-    Component{
+    property int curIndexWitouthZero: 0
+    Component
+    {
         id: newsPage
         Rectangle {
             id: app
@@ -24,125 +21,75 @@ Item {
             width: newsMainScreen.width
             color: "black"
             signal reloadComponent()
-            property bool refreshFlik: false
-            property int threshold: 100
-            property real m_progress: (flick.verticalOvershoot * -100) / threshold
-            property bool is_pulldown: false
             property bool is_increment: true
-            Flickable {
-                id: flick
-                anchors.fill: parent
-                contentHeight : rect.height
 
-                Rectangle{
-                    id: rect
-                    height: newsMainScreen.height - 10
-                    width: newsMainScreen.width
-                    color: "black"
-
-                    Connections {
-                        target: feedParser
-                        function onPostListReady() {
-                            for (var i = 0; i < feedParser.getItemCount(); i++)  {
-                                viewSwipe.addPage(viewSwipe.createPage(feedParser.getItemTitle(i),
-                                                   feedParser.getItemDescription(i),
-                                                   feedParser.getItemChannel(i),
-                                                   feedParser.getItemTag(i),
-                                                   feedParser.getItemAuth(i),
-                                                   feedParser.getItemTimestamp(i),
-                                                   feedParser.getItemImage(i)
-                                                   ))
-
-                            }
-                            busyIndicator.running = false
-                        }
-                    }
-
-                    SwipeView {
-                        id: viewSwipe
-                        width: parent.width
-                        height: parent.height
-
-                        currentIndex: 0
-                        Component.onCompleted: {
-                            feedParser.updateRequested()
-                            busyIndicator.running = true
-                        }
-
-                        function addPage(page) {
-                            addItem(page)
-                            page.visible = true
-                        }
-                        function createPage(title, description, channel, tag, auth, timestamp, img_path){
-                            var component = Qt.createComponent("NewsContentScreen.qml");
-                            var page = component.incubateObject(viewSwipe,
-                                                              {
-                                                                  headerTextStr: title,
-                                                                  dataTextStr: description,
-                                                                  channelStr: channel,
-                                                                  dataTagStr: tag,
-                                                                  headerAuthStr: auth,
-                                                                  dataTimestampStr: timestamp,
-                                                                  imagePath: img_path
-                                                              }
-                                                              );
-                            return page
-                        }
+            Connections {
+                target: feedParser
+                function onPostListReady() {
+                    for (var i = 0; i < feedParser.getItemCount(); i++)  {
+                        viewSwipe.addPage(viewSwipe.createPage(feedParser.getItemTitle(i),
+                                                               feedParser.getItemDescription(i),
+                                                               feedParser.getItemChannel(i),
+                                                               feedParser.getItemTag(i),
+                                                               feedParser.getItemAuth(i),
+                                                               feedParser.getItemTimestamp(i),
+                                                               feedParser.getItemImage(i)
+                                                               ))
 
                     }
+                    busyIndicator.running = false
+                }
+            }
 
-                    Loader {
-                        id: loader
-                        sourceComponent: rect.viewSwipe
-                        active: SwipeView.isCurrentItem || SwipeView.isNextItem || SwipeView.isPreviousItem
-                        asynchronous: true
-                    }
+            SwipeView {
+                id: viewSwipe
+                width: parent.width
+                height: parent.height
 
-                    BusyIndicator {
-                        id: busyIndicator
-                        x: parent.width/2 - busyIndicator.width/2
-                        y: parent.height/2 - busyIndicator.height/2
-                        running: true
-                        palette.dark: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
-                    }
+                currentIndex: 0
+                Component.onCompleted: {
+                    feedParser.updateRequested()
+                    busyIndicator.running = true
                 }
 
-                Connections
-                {
-                    target: flick
-                    function onVerticalOvershootChanged() {
-                        if (!target.verticalOvershoot)
-                        {
-                            if(is_pulldown)
-                            {
-                                for (var i = 0; i < viewSwipe.count; i++)  {
-                                    viewSwipe.removeItem(i)
-                                }
-                                reloadComponent()
-                            }
-                        }
-
-                        if (target.verticalOvershoot < 0)
-                        {
-                            if (Math.abs(flick.verticalOvershoot) > threshold)
-                            {
-                                is_pulldown = true
-                            }
-                        }
-                    }
+                function addPage(page) {
+                    addItem(page)
+                    page.visible = true
                 }
+                function createPage(title, description, channel, tag, auth, timestamp, img_path){
+                    var component = Qt.createComponent("NewsContentScreen.qml");
+                    var page = component.incubateObject(viewSwipe,
+                                                      {
+                                                          headerTextStr: title,
+                                                          dataTextStr: description,
+                                                          channelStr: channel,
+                                                          dataTagStr: tag,
+                                                          headerAuthStr: auth,
+                                                          dataTimestampStr: timestamp,
+                                                          imagePath: img_path
+                                                      }
+                                                      );
+                    return page
+                }
+            }
+
+            Loader {
+                id: loader
+                sourceComponent: app.viewSwipe
+                active: SwipeView.isCurrentItem || SwipeView.isNextItem || SwipeView.isPreviousItem
+                asynchronous: true
+            }
+
+            BusyIndicator {
+                id: busyIndicator
+                x: parent.width/2 - busyIndicator.width/2
+                y: parent.height/2 - busyIndicator.height/2
+                running: true
+                palette.dark: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
             }
 
             Component.onCompleted:{
                 feedParser.setTextColor(nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff)
-            }
-
-            Loader
-            {
-                id: refresh_indicator_loader
-                property real dragProgress: m_progress
-                property var handler: newsMainScreen
-                sourceComponent: m_progress > 0 ? newsMainScreen.refreshIndicatorDelegate : undefined
             }
 
             function changeFeed()
