@@ -152,3 +152,23 @@ void NodoConfigParser::setTimezone(QString tz)
     m_configObj.insert("timezone", tz);
     writeJson();
 }
+
+QString NodoConfigParser::getLanguageCode(void)
+{
+    QJsonValue jsonValue;
+    jsonValue = m_configObj.value("language");
+    if("" == jsonValue.toString())
+    {
+        m_configObj.insert("language", "en_US");
+        writeJson();
+
+        return "en_US";
+    }
+    return jsonValue.toString();
+}
+
+void NodoConfigParser::setLanguageCode(QString code)
+{
+    m_configObj.insert("language", code);
+    writeJson();
+}

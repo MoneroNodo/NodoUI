@@ -14,9 +14,9 @@ ApplicationWindow {
     visible: true
 
     modality: Qt.WindowModal
-    property int displayRotation: -90
-//    property int displayRotation: 0
-    contentOrientation: Qt.InvertedLandscapeOrientation
+    // property int displayRotation: -90
+   property int displayRotation: 0
+    // contentOrientation: Qt.InvertedLandscapeOrientation
     width: displayRotation == 0 ? 1920 : 1080
     height: displayRotation == 0 ? 1080 : 1920
 
@@ -30,9 +30,9 @@ ApplicationWindow {
         id: nodoTimezones
     }
 
-    Component.onCompleted: {
-        translator.selectLanguage(translator.currentLanguage)
-    }
+    // Component.onCompleted: {
+    //     translator.selectLanguage(translator.currentLanguage)
+    // }
 
     property bool screenLocked: false;
 

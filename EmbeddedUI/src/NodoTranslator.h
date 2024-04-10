@@ -6,35 +6,42 @@
 #include <QQmlEngine>
 #include <QTranslator>
 
+#include "NodoConfigParser.h"
+
 class Translator : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QStringList languages READ languages NOTIFY languagesChanged)
-    Q_PROPERTY(QString currentLanguage READ currentLanguage NOTIFY currentLanguageChanged)
+    // Q_PROPERTY(QString currentLanguage READ currentLanguage /*NOTIFY currentLanguageChanged*/)
 
 public:
-    explicit Translator(QQmlEngine *engine, QObject *parent = nullptr);
+    explicit Translator(NodoConfigParser *configParser = Q_NULLPTR, QQmlEngine *engine = Q_NULLPTR);
 
     QStringList languages() const;
-    QString currentLanguage();
-    void initTranslator();
 
-    Q_INVOKABLE void selectLanguage(const QString & language);
-    Q_INVOKABLE QString languageByCode(const QString & code);
+    void initTranslator();
+    Q_INVOKABLE void setLanguageIndex(int index);
+    Q_INVOKABLE int getLanguageIndex(void);
 
 
 signals:
-    void languageChanged();
+    // void languageChanged();
     void languagesChanged();
-    void currentLanguageChanged();
+    // void currentLanguageChanged();
 
 private:
     const QString extension = ".qm";
-    QQmlEngine *m_engine;
     QTranslator *m_translator;
+    QQmlEngine *m_engine;
     QStringList m_languages;
+    QStringList m_language_codes;
     QString m_currentLanguage;
     QDir m_dir;
+    NodoConfigParser *m_configParser;
+
+    QString languageByCode(const QString &code);
+    QString currentLanguage();
+    void setLanguageByCode(const QString &code);
 };
 
 #endif // TRANSLATOR_H

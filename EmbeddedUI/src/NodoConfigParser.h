@@ -26,6 +26,9 @@ public:
     QString getTimezone(void);
     void setTimezone(QString tz);
 
+    QString getLanguageCode(void);
+    void setLanguageCode(QString code);
+
 signals:
     void configParserReady(void);
 
