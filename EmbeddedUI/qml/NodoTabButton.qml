@@ -30,7 +30,7 @@ TabButton {
         color: control.checked ? (nodoControl.appTheme ? NodoSystem.highlightedColorNightModeOn : NodoSystem.highlightedColorNightModeOff) :
                                  (nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff)
 
-        topPadding: 21
+        topPadding: NodoSystem.topMenuTextTopPadding
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
         leftPadding: control.textLeftPadding
