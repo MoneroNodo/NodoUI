@@ -145,6 +145,7 @@ Item {
                 anchors.rightMargin: 2
                 color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
                 text: "XMR-" + nodoCurrencies.currencyCodes[priceTicker.getCurrentCurrencyIndex()] + ":"
+                topPadding: NodoSystem.topMenuTextTopPadding
                 font.family: NodoSystem.fontUrbanist.name
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignRight
@@ -159,6 +160,7 @@ Item {
                 anchors.rightMargin: 20
                 color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
                 text: nodoCurrencies.currencySymbols[priceTicker.getCurrentCurrencyIndex()] + "---.--"
+                topPadding: NodoSystem.topMenuTextTopPadding
                 font.family: NodoSystem.fontUrbanist.name
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
@@ -172,6 +174,7 @@ Item {
                 anchors.right: timeText.left
                 anchors.rightMargin: 20
                 color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
+                topPadding: NodoSystem.topMenuTextTopPadding
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
                 font.family: NodoSystem.fontUrbanist.name
@@ -197,6 +200,7 @@ Item {
                 anchors.right: rightMenu.right
                 anchors.rightMargin: 10
                 color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
+                topPadding: NodoSystem.topMenuTextTopPadding
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
                 font.family: NodoSystem.fontUrbanist.name

@@ -17,6 +17,7 @@ Item
     property int subMenuLeftMargin: 32
 
     property int infoFieldLabelHeight: 64
+    property int topMenuTextTopPadding: 21
 
     property color defaultColorNightModeOff: "#CFCFCF"
     property color highlightedColorNightModeOff: "#FF5100"
