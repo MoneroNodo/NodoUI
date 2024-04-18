@@ -30,12 +30,7 @@ ApplicationWindow {
         id: nodoTimezones
     }
 
-    // Component.onCompleted: {
-    //     translator.selectLanguage(translator.currentLanguage)
-    // }
-
     property bool screenLocked: false;
-
 
     Rectangle {
         id: mainAppWindowMainRect

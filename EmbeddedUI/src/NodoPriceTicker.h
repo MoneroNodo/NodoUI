@@ -46,6 +46,7 @@ private:
 private slots:
     void downloadFinished(QNetworkReply *reply);
     void updatePriceTicker(void);
+    void sslErrors(const QList<QSslError> &errors);
 
 };
 

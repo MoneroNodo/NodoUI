@@ -93,3 +93,13 @@ void NodoPriceTicker::updatePriceTicker(void)
 {
     doDownload(m_currentCurrencyCode);
 }
+
+void NodoPriceTicker::sslErrors(const QList<QSslError> &sslErrors)
+{
+#ifndef QT_NO_SSL
+    foreach (const QSslError &error, sslErrors)
+        qDebug() << "SSL error: " << qPrintable(error.errorString());
+#else
+    Q_UNUSED(sslErrors);
+#endif
+}
