@@ -13,6 +13,7 @@ Item {
     id: networksI2PScreen
 
     property int labelSize: 0
+    property int infoFieldWidth: 1200
 
     Component.onCompleted: {
         nodoConfig.updateRequested()
@@ -45,27 +46,22 @@ Item {
         id: i2pSwitchRect
         anchors.left: networksI2PScreen.left
         anchors.top: networksI2PScreen.top
-        height: 64
+        height: NodoSystem.nodoItemHeight
 
-        Text{
-            id:i2pSwitchText
-            x: 0
-            y: (i2pSwitch.height - i2pSwitchText.height)/2
-            width: i2pSwitchText.paintedWidth
-            height: i2pSwitchText.paintedHeight
+        NodoLabel{
+            id: i2pSwitchText
+            height: i2pSwitchRect.height
+            anchors.left: i2pSwitchRect.left
+            anchors.top: i2pSwitchRect.top
             text: qsTr("I2P")
-            color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
-            font.family: NodoSystem.fontUrbanist.name
-            font.pixelSize: NodoSystem.textFontSize
         }
 
         NodoSwitch {
             id: i2pSwitch
-            x: i2pSwitchText.width + 20
-            y: 0
-            width: 128
-            height: 64
-            text: ""
+            anchors.left: i2pSwitchText.right
+            anchors.leftMargin: NodoSystem.padding
+            height: i2pSwitchRect.height
+            width: 2*i2pSwitchRect.height
             display: AbstractButton.IconOnly
             checked: nodoConfig.getStringValueFromKey("config", "i2p_enabled") === "TRUE" ? true : false
         }
@@ -75,8 +71,8 @@ Item {
         id: i2pAddressField
         anchors.left: networksI2PScreen.left
         anchors.top: i2pSwitchRect.bottom
-        anchors.topMargin: 16
-        width: 924
+        anchors.topMargin: NodoSystem.nodoTopMargin
+        width: infoFieldWidth
         height: NodoSystem.infoFieldLabelHeight
         itemSize: labelSize
         itemText: qsTr("I2P b32 Address")
@@ -87,8 +83,8 @@ Item {
         id: i2pPortField
         anchors.left: networksI2PScreen.left
         anchors.top: i2pAddressField.bottom
-        anchors.topMargin: 16
-        width: 924
+        anchors.topMargin: NodoSystem.nodoTopMargin
+        width: infoFieldWidth
         height: NodoSystem.infoFieldLabelHeight
         itemSize: labelSize
         itemText: qsTr("Port")
@@ -100,8 +96,8 @@ Item {
         id: i2pPeerField
         anchors.left: networksI2PScreen.left
         anchors.top: i2pPortField.bottom
-        anchors.topMargin: 16
-        width: 924
+        anchors.topMargin: NodoSystem.nodoTopMargin
+        width: infoFieldWidth
         height: NodoSystem.infoFieldLabelHeight
         itemSize: labelSize
         itemText: qsTr("Peer")
@@ -112,14 +108,11 @@ Item {
         id: i2pAddPeerButton
         anchors.left: networksI2PScreen.left
         anchors.top: i2pPeerField.bottom
-        anchors.topMargin: 16
+        anchors.topMargin: NodoSystem.nodoTopMargin
         text: qsTr("Set Peer")
         height: 60
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize
-        textLeftPadding: 16
-        textRightPadding: 16
-        frameRadius: 4
     }
 
     Label {
@@ -136,21 +129,29 @@ Item {
         font.family: NodoSystem.fontUrbanist.name
     }
 
-    QtQuick2QREncode {
-        id: qr
-        x: 1000
-        y: 10
+    Rectangle{
+        id: qrCodeRect
+        anchors.right: networksI2PScreen.right
+        anchors.top: networksI2PScreen.top
+        anchors.topMargin: NodoSystem.nodoTopMargin
+        anchors.rightMargin: 100
+        color: "black"
         width: 512
         height: 512
-        qrSize: Qt.size(width,width)
-        qrData: i2pPeerField + ":" + i2pPortField
-        qrForeground: "black"
-        qrBackground: "white"
-        qrMargin: 8
-        qrMode: QtQuick2QREncode.MODE_8    //encode model
-				qrLevel: QtQuick2QREncode.LEVEL_Q // encode level
-    }
 
+        QtQuick2QREncode {
+            id: qr
+            width: qrCodeRect.width
+            height: qrCodeRect.height
+            qrSize: Qt.size(width,width)
+            qrData: i2pPeerField + ":" + i2pPortField
+            qrForeground: "black"
+            qrBackground: "white"
+            qrMargin: 8
+            qrMode: QtQuick2QREncode.MODE_8    //encode model
+            qrLevel: QtQuick2QREncode.LEVEL_Q // encode level
+        }
+    }
 
 }
 

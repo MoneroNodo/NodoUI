@@ -84,9 +84,6 @@ Rectangle {
         height: 60
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize
-        textLeftPadding: 16
-        textRightPadding: 16
-        frameRadius: 4
     }
 
     Label {
@@ -103,20 +100,27 @@ Rectangle {
         font.family: NodoSystem.fontUrbanist.name
     }
 
-    QtQuick2QREncode {
-        id: qr
-        x: 1000
-        y: 10
+    Rectangle{
+        id: qrCodeRect
+        anchors.right: networksClearnetScreen.right
+        anchors.top: networksClearnetScreen.top
+        anchors.topMargin: NodoSystem.nodoTopMargin
+        anchors.rightMargin: 100
+        color: "black"
         width: 512
         height: 512
-        qrSize: Qt.size(width,width)
-        qrData: clearnetPeerField + ":" + clearnetPortField
-        qrForeground: "black"
-        qrBackground: "white"
-        qrMargin: 8
-        qrMode: QtQuick2QREncode.MODE_8    //encode model
-				qrLevel: QtQuick2QREncode.LEVEL_Q // encode level
+
+        QtQuick2QREncode {
+            id: qr
+            width: qrCodeRect.width
+            height: qrCodeRect.height
+            qrSize: Qt.size(width,width)
+            qrData: clearnetPeerField + ":" + clearnetPortField
+            qrForeground: "black"
+            qrBackground: "white"
+            qrMargin: 8
+            qrMode: QtQuick2QREncode.MODE_8    //encode model
+            qrLevel: QtQuick2QREncode.LEVEL_Q // encode level
+        }
     }
-
-
 }

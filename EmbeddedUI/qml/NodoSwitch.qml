@@ -10,21 +10,22 @@ import NodoSystem 1.1
 Switch {
     id: control
 
-    indicator: Rectangle {
+    indicator: NodoCanvas {
         id: background
-        width: control.width
         height: control.height
-        y: (parent.height  - height) / 2
-        radius: control.height/2
-        color: control.checked ? (nodoControl.appTheme ? NodoSystem.highlightedColorNightModeOn : NodoSystem.highlightedColorNightModeOff) : NodoSystem.switchBackgroundColor
+        width: control.width
 
-        Rectangle {
+        y: (parent.height  - height) / 2
+
+        color: control.checked ? (nodoControl.appTheme ? NodoSystem.highlightedColorNightModeOn : NodoSystem.highlightedColorNightModeOff) : NodoSystem.switchBackgroundColor
+        NodoCanvas {
             id: knob
+            cornerColor: background.color
             x: control.checked ? control.width - control.height*0.9 : control.height*0.1
             y: (control.height - height) / 2
             width: parent.height*0.8
             height: parent.height*0.8
-            radius: knob.height/2
+            color: "white"
         }
     }
 

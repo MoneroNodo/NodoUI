@@ -12,26 +12,25 @@ Slider {
     value: 0.5
     property int handleHight: 20
     property int handleWidth: 20
-    property int handleRadius: 0
 
-    background: Rectangle {
+    background: NodoCanvas {
+        id: sliderBackground
         x: control.leftPadding
         y: control.topPadding + control.height / 2 - height / 2
         width: control.width
         height: control.height
-        radius: height*0.4
         color: nodoControl.appTheme ? NodoSystem.highlightedColorNightModeOn : NodoSystem.highlightedColorNightModeOff
-
     }
 
-    handle: Rectangle {
+    handle: NodoCanvas {
         id: sliderHandle
+        cornerColor: sliderBackground.color
         x: control.leftPadding + control.visualPosition * (control.width - width)
         y: control.topPadding + control.height / 2 - height / 2
         width:handleWidth
         height: handleHight
-        radius: handleRadius
         color: "#ffffff"
-        border.color: "#ffffff"
     }
+
+
 }

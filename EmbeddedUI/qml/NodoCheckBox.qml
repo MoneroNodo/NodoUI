@@ -8,18 +8,28 @@ import QtQuick.Controls.Styles 1.4
 import NodoSystem 1.1
 
 CheckBox {
-    id: control
-    property string checkBoxText: ""
+    id: checkBox
 
-    Text{
-        x: control.width
-        y: control.topPadding + (control.availableHeight - height) / 2
-        text: qsTr(checkBoxText)
-        color: "white"
+    property string backgroundColor:  nodoControl.appTheme ? NodoSystem.buttonBGColorNightModeOn : NodoSystem.buttonBGColorNightModeOff
+
+    background: NodoCanvas {
+        color: checkBox.backgroundColor
+    }
+
+    indicator: Text {
+        width: checkBox.width
+        height: checkBox.height
+        x: 1
+        y: -5
+        text: "\u2713"
         font.family: NodoSystem.fontUrbanist.name
-        font.pixelSize: NodoSystem.textFontSize
-
+        font.pixelSize: checkBox.width
+        color: "white"
+        visible: checkBox.checked
     }
 }
+
+
+
 
 

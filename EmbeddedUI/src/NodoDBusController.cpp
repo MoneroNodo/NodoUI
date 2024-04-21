@@ -59,5 +59,5 @@ void NodoDBusController::shutdown()
 
 void NodoDBusController::updateTextEdit(QString message)
 {
-
+    Q_UNUSED(message);
 }

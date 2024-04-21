@@ -32,17 +32,14 @@ Item {
         height: NodoSystem.infoFieldLabelHeight
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize
-        textLeftPadding: 25
-        textRightPadding: 25
-        frameRadius: 4
     }
 
     NodoInfoField {
         id: moneroLWSAccountRequestsAddressField
 		anchors.left: moneroLWSAccountCreationRequestsScreen.left
         anchors.top: moneroLWSAcceptAllRequestsButton.bottom
-		anchors.topMargin: 20
-        width: labelSize + 330
+        anchors.topMargin: NodoSystem.nodoTopMargin
+        width: labelSize + 300
         height: NodoSystem.infoFieldLabelHeight
         itemSize: labelSize
         itemText: qsTr("Address")
@@ -53,8 +50,8 @@ Item {
         id: moneroLWSAccountRequestsHeightField
 		anchors.left: moneroLWSAccountRequestsAddressField.right
         anchors.top: moneroLWSAccountRequestsAddressField.top
-		anchors.leftMargin: 10
-        width: labelSize+130
+        anchors.leftMargin: 20
+        width: labelSize+300
         height: NodoSystem.infoFieldLabelHeight
         itemSize: labelSize
         itemText: qsTr("Start Height")
@@ -65,14 +62,11 @@ Item {
         id: moneroLWSAccountRequestsAcceptButton
 		anchors.left: moneroLWSAccountCreationRequestsScreen.left
         anchors.top: moneroLWSAccountRequestsHeightField.bottom
-		anchors.topMargin: 20
+        anchors.topMargin: NodoSystem.nodoTopMargin
         text: qsTr("Accept")
         height: NodoSystem.infoFieldLabelHeight
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize
-        textLeftPadding: 25
-        textRightPadding: 25
-        frameRadius: 4
     }
 
     NodoButton {
@@ -84,9 +78,6 @@ Item {
         height: NodoSystem.infoFieldLabelHeight
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize
-        textLeftPadding: 25
-        textRightPadding: 25
-        frameRadius: 4
     }
 }
 

@@ -10,6 +10,7 @@ import NodoSystem 1.1
 Item {
     id: nodeBandwidthScreen
     property int labelSize: 0
+    property int inputFieldWidth: 600
 
     Component.onCompleted: {
         onCalculateMaximumTextLabelLength()
@@ -33,7 +34,7 @@ Item {
         id: incomingPeersLimitField
         anchors.left: nodeBandwidthScreen.left
         anchors.top: nodeBandwidthScreen.top
-        width: labelSize + 120// 300
+        width: inputFieldWidth
         height: NodoSystem.infoFieldLabelHeight
         itemSize: labelSize
         itemText: qsTr("Incoming peers limit")
@@ -44,8 +45,8 @@ Item {
         id: outgoingPeersLimitField
         anchors.left: nodeBandwidthScreen.left
         anchors.top: incomingPeersLimitField.bottom
-        anchors.topMargin: 10
-        width: labelSize + 120//300
+        anchors.topMargin: NodoSystem.nodoTopMargin
+        width: inputFieldWidth
         height: NodoSystem.infoFieldLabelHeight
         itemSize: labelSize
         itemText: qsTr("Outgoing peers limit")
@@ -56,8 +57,8 @@ Item {
         id: rateLimitUpField
         anchors.left: nodeBandwidthScreen.left
         anchors.top: outgoingPeersLimitField.bottom
-        anchors.topMargin: 10
-        width: labelSize + 120//300
+        anchors.topMargin: NodoSystem.nodoTopMargin
+        width: inputFieldWidth
         height: NodoSystem.infoFieldLabelHeight
         itemSize: labelSize
         itemText: qsTr("Bandwidth Up")
@@ -68,8 +69,8 @@ Item {
         id: rateLimitDownField
         anchors.left: nodeBandwidthScreen.left
         anchors.top: rateLimitUpField.bottom
-        anchors.topMargin: 10
-        width: labelSize + 120//300
+        anchors.topMargin: NodoSystem.nodoTopMargin
+        width: inputFieldWidth
         height: NodoSystem.infoFieldLabelHeight
         itemSize: labelSize
         itemText: qsTr("Bandwidth Down")

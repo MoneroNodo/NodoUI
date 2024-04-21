@@ -84,8 +84,8 @@ Rectangle {
         anchors.left: statusScreen.left
         anchors.top: statusScreen.top
         anchors.topMargin: 20
-        anchors.leftMargin: 50
-        width: 560
+        anchors.leftMargin: 30
+        width: 600
         height: 500
         color: "black"
 
@@ -235,7 +235,7 @@ Rectangle {
         anchors.top: statusScreen.top
         anchors.topMargin: 20
 
-        width: 560
+        width: 600
         height: 500
         color: "black"
 
@@ -320,8 +320,8 @@ Rectangle {
         anchors.right: statusScreen.right
         anchors.top: statusScreen.top
         anchors.topMargin: 20
-        anchors.rightMargin: 50
-        width: 560
+        anchors.rightMargin: 30
+        width: 600
         height: 500
         color: "black"
 

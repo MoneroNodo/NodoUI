@@ -15,30 +15,28 @@ Rectangle {
     visible: nodoControl.getVisibleState(index)
     anchors.topMargin: visible ? 16 : 0
 
+    property int labelItemSize: 0
+    property int labelRectRoundSize: feedSwitchText.labelRectRoundSize
+
+
+    NodoLabel{
+        id: feedSwitchText
+        height: NodoSystem.nodoItemHeight
+        itemSize: labelItemSize
+        text: nodoControl.getFeederNameState(index)
+    }
+
     NodoSwitch {
         id: feedSwitch
-        x: 0
-        y: 0
-        width: 128
-        height: 64
-        text: ""
+        anchors.left: feedSwitchText.right
+        anchors.leftMargin: NodoSystem.padding
+        height: NodoSystem.nodoItemHeight
+        width: 2*height
         display: AbstractButton.IconOnly
         checked: nodoControl.getSelectedState(index)
 
         onCheckedChanged: {
             nodoControl.setSelectedState(index, checked)
         }
-    }
-
-    Text{
-        id: feedSwitchText
-        x: feedSwitch.width + 10
-        y: (feedSwitch.height - feedSwitchText.height)/2
-        width: feedSwitchText.paintedWidth
-        height: feedSwitchText.paintedHeight
-        text: nodoControl.getFeederNameState(index)
-        color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
-        font.family: NodoSystem.fontUrbanist.name
-        font.pixelSize: NodoSystem.textFontSize
     }
 }

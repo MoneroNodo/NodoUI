@@ -11,18 +11,16 @@ Rectangle {
     id: deviceSystemScreen
     anchors.fill: parent
     color: "black"
+    property int buttonTopMargin: 32
 
         NodoButton {
             id: systemResetButton
             anchors.left: deviceSystemScreen.left
             anchors.top: deviceSystemScreen.top
             text: qsTr("Restart")
-            height: 60
+            height: NodoSystem.nodoItemHeight
             font.family: NodoSystem.fontUrbanist.name
             font.pixelSize: NodoSystem.buttonTextFontSize
-            textLeftPadding: 15
-            textRightPadding: 15
-            frameRadius: 4
             onClicked: {
                 nodoControl.restartDevice();
             }
@@ -32,14 +30,11 @@ Rectangle {
             id: systemShutdownButton
             anchors.left: deviceSystemScreen.left
             anchors.top: systemResetButton.bottom
-            anchors.topMargin: 32
+            anchors.topMargin: buttonTopMargin
             text: qsTr("Shutdown")
-            height: 60
+            height: NodoSystem.nodoItemHeight
             font.family: NodoSystem.fontUrbanist.name
             font.pixelSize: NodoSystem.buttonTextFontSize
-            textLeftPadding: 25
-            textRightPadding: 25
-            frameRadius: 4
             onClicked: {
                 nodoControl.shutdownDevice();
             }
@@ -49,15 +44,12 @@ Rectangle {
             id: systemRecoveryButton
             anchors.left: deviceSystemScreen.left
             anchors.top: systemShutdownButton.bottom
-            anchors.topMargin: 32
+            anchors.topMargin: buttonTopMargin
             text: qsTr("Recovery")
-            height: 60
+            height: NodoSystem.nodoItemHeight
             font.family: NodoSystem.fontUrbanist.name
             font.pixelSize: NodoSystem.buttonTextFontSize
-            textLeftPadding: 15
-            textRightPadding: 15
             backgroundColor:  nodoControl.appTheme ? "#F50000" : "#F50000"
-            frameRadius: 4
             onClicked: {
                 pageLoader.source = "DeviceSystemRecoveryScreen.qml"
             }

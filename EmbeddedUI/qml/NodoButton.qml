@@ -12,14 +12,14 @@ Button {
     x: 0
     y: 0
     flat: true
-    width: buttonText.paintedWidth + buttonText.leftPadding + buttonText.rightPadding
     implicitHeight: 30
     property string buttonTextColor: nodoControl.appTheme ? NodoSystem.buttonTextColorNightModeOn : NodoSystem.buttonTextColorNightModeOff
-    property int textLeftPadding: 5
-    property int textRightPadding: 5
+    property int textLeftPadding: NodoSystem.textPadding
+    property int textRightPadding: NodoSystem.textPadding
     property string backgroundColor:  nodoControl.appTheme ? NodoSystem.buttonBGColorNightModeOn : NodoSystem.buttonBGColorNightModeOff
-    property int frameRadius: 0
     property bool isActive: false
+    property int buttonWidth: buttonText.paintedWidth + textLeftPadding + textRightPadding
+    width: buttonWidth > NodoSystem.nodoItemWidth ? buttonWidth : NodoSystem.nodoItemWidth
 
     contentItem: Text {
         id: buttonText
@@ -36,9 +36,7 @@ Button {
         color: root.buttonTextColor
     }
 
-    background: Rectangle {
+    background: NodoCanvas {
         color: root.backgroundColor
-        radius: root.frameRadius
-
     }
 }

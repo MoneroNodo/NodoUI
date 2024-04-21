@@ -29,7 +29,7 @@ Item {
         id: moneroLWSActiveAddressField
 		anchors.left: moneroLWSActiveScreen.left
         anchors.top: moneroLWSActiveScreen.top
-        width: labelSize+330
+        width: labelSize+300
         height: NodoSystem.infoFieldLabelHeight
         itemSize: labelSize
         itemText: qsTr("Address")
@@ -41,8 +41,8 @@ Item {
         id: moneroLWSActiveHeightField
 		anchors.left: moneroLWSActiveAddressField.right
         anchors.top: moneroLWSActiveScreen.top
-		anchors.leftMargin: 10
-        width: labelSize+130
+        anchors.leftMargin: 20
+        width: labelSize+300
         height: NodoSystem.infoFieldLabelHeight
         itemSize: labelSize
         itemText: qsTr("Height")
@@ -53,50 +53,32 @@ Item {
         id: moneroLWSDeactivateButton
 		anchors.left: moneroLWSActiveHeightField.right
         anchors.top: moneroLWSActiveScreen.top
-		anchors.leftMargin: 10
+        anchors.leftMargin: 20
         text: qsTr("Deactivate")
         height: NodoSystem.infoFieldLabelHeight
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize
-        textLeftPadding: 25
-        textRightPadding: 25
-        frameRadius: 4
-    }
-
-    Label {
-        id: moneroLWSRescanHeightLabel
-		anchors.left: moneroLWSActiveScreen.left
-        anchors.top: moneroLWSActiveAddressField.bottom
-		anchors.topMargin: 10
-        width: 100
-        height: 38
-        text: qsTr("Rescan Height")
-        font.pixelSize: NodoSystem.textFontSize
-        verticalAlignment: Text.AlignVCenter
-        color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
-        font.family: NodoSystem.fontUrbanist.name
     }
 
     NodoInputField {
         id: moneroLWSRescanHeightInput
-		anchors.left: moneroLWSActiveScreen.left
-        anchors.top: moneroLWSRescanHeightLabel.bottom
-		anchors.topMargin: 10
-        width: labelSize+30
-        height: NodoSystem.infoFieldLabelHeight
+        anchors.left: moneroLWSActiveScreen.left
+        anchors.top: moneroLWSActiveAddressField.bottom
+        anchors.topMargin: NodoSystem.nodoTopMargin
+        width: 600
+        height: NodoSystem.inputFieldLabelHeight
+        itemText: qsTr("Rescan Height")
+        valueText: ""
     }
 
     NodoButton {
         id: moneroLWSRescanButton
 		anchors.left: moneroLWSActiveScreen.left
         anchors.top: moneroLWSRescanHeightInput.bottom
-		anchors.topMargin: 10
+        anchors.topMargin: NodoSystem.nodoTopMargin
         text: qsTr("Rescan")
         height: NodoSystem.infoFieldLabelHeight
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize
-        textLeftPadding: 25
-        textRightPadding: 25
-        frameRadius: 4
     }
 }

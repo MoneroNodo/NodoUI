@@ -44,7 +44,6 @@ QString NodoPriceTicker::getCurrentCurrencyCode(void)
 void NodoPriceTicker::setCurrentCurrencyCode(QString code)
 {
     m_currentCurrencyCode = code;
-    qDebug() << "c code: " << code;
     m_configParser->setCurrencyName(code);
     doDownload(m_currentCurrencyCode);
 }

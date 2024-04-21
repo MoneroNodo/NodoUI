@@ -11,6 +11,8 @@ import QtQuick.VirtualKeyboard 2.1
 Item {
     id: deviceWifiScreen
     property int labelSize: 0
+    property int inputFieldWidth: 600
+
     anchors.fill: parent
 
     Component.onCompleted: {
@@ -59,28 +61,23 @@ Item {
         id: wifiSwitchRect
         anchors.left: deviceWifiScreen.left
         anchors.top: deviceWifiScreen.top
+        height: NodoSystem.nodoItemHeight
 
-        height: 64
-
-        Text{
-            id:wifiSwitchText
-            x: 0
-            y: (wifiSwitch.height - wifiSwitchText.height)/2
-            width: wifiSwitchText.paintedWidth
-            height: wifiSwitchText.paintedHeight
+        NodoLabel{
+            id: wifiSwitchText
+            height: wifiSwitchRect.height
+            anchors.top: wifiSwitchRect.top
+            anchors.left: wifiSwitchRect.left
             text: qsTr("Wi-Fi")
-            color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
-            font.family: NodoSystem.fontUrbanist.name
-            font.pixelSize: NodoSystem.textFontSize
         }
 
         NodoSwitch {
             id: wifiSwitch
-            x: wifiSwitchText.width + 20
-            y: 0
-            width: 128
-            height: 64
-            text: ""
+            anchors.left: wifiSwitchText.right
+            anchors.top: wifiSwitchText.top
+            anchors.leftMargin: NodoSystem.padding
+            width: 2*wifiSwitchRect.height
+            height: wifiSwitchRect.height
             display: AbstractButton.IconOnly
             checked: nodoConfig.getStringValueFromKey("wifi", "enabled") === "TRUE" ? true : false
         }
@@ -91,13 +88,10 @@ Item {
         id: wifiSSIDListComboBox
         anchors.left: deviceWifiScreen.left
         anchors.top: wifiSwitchRect.bottom
-        anchors.topMargin: 16
-        width: 592
-        height: 60
-        font.family: NodoSystem.fontUrbanist.name
-        font.pixelSize: 32
+        anchors.topMargin: NodoSystem.nodoTopMargin
+        width: inputFieldWidth
+        height: NodoSystem.nodoComboboxHeight
         model: ["Select ..."]
-//        model: ["First", "Second", "Third"]
     }
 
 
@@ -105,9 +99,9 @@ Item {
         id: wifiSSIDField
         anchors.left: deviceWifiScreen.left
         anchors.top: wifiSSIDListComboBox.bottom
-        anchors.topMargin: 16
-        width: 592
-        height: 60
+        anchors.topMargin: NodoSystem.nodoTopMargin
+        width: inputFieldWidth
+        height: NodoSystem.inputFieldLabelHeight
         itemSize: labelSize
         itemText: qsTr("SSID")
         valueText: nodoConfig.getStringValueFromKey("wifi", "ssid")
@@ -117,9 +111,9 @@ Item {
         id: wifiPassphraseField
         anchors.left: deviceWifiScreen.left
         anchors.top: wifiSSIDField.bottom
-        anchors.topMargin: 16
-        width: 592
-        height: 60
+        anchors.topMargin: NodoSystem.nodoTopMargin
+        width: inputFieldWidth
+        height: NodoSystem.inputFieldLabelHeight
         itemSize: labelSize
         itemText: qsTr("Passphrase")
         valueText: ("" === nodoConfig.getStringValueFromKey("wifi", "pw")) ? "" : "******"
@@ -129,8 +123,8 @@ Item {
         id: wifiStatusField
         anchors.left: deviceWifiScreen.left
         anchors.top: wifiPassphraseField.bottom
-        anchors.topMargin: 16
-        width: 592
+        anchors.topMargin: NodoSystem.nodoTopMargin
+        width: inputFieldWidth
         height: NodoSystem.infoFieldLabelHeight
         itemSize: labelSize
         itemText: qsTr("Status")
@@ -140,28 +134,24 @@ Item {
     Rectangle {
         id: wifiIPConfigSwitchRect
         anchors.top: deviceWifiScreen.top
-        height: 64
         x: 640
+        height: NodoSystem.nodoItemHeight
 
-        Text{
-            id:wifiIPConfigSwitchText
-            x: 0
-            y: (wifiIPConfigSwitch.height - wifiIPConfigSwitchText.height)/2
-            width: wifiIPConfigSwitchText.paintedWidth
-            height: wifiIPConfigSwitchText.paintedHeight
+        NodoLabel{
+            id: wifiIPConfigSwitchText
+            height: wifiIPConfigSwitchRect.height
+            anchors.top: wifiIPConfigSwitchRect.top
+            anchors.left: wifiIPConfigSwitchRect.left
             text: qsTr("Automatic")
-            color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
-            font.family: NodoSystem.fontUrbanist.name
-            font.pixelSize: NodoSystem.textFontSize
         }
 
         NodoSwitch {
-            id: wifiIPConfigSwitch
-            x: wifiIPConfigSwitchText.width + 20
-            y: 0
-            width: 128
-            height: 64
-            text: ""
+            id: wifiIPConfigSwitch          
+            anchors.left: wifiIPConfigSwitchText.right
+            anchors.top: wifiIPConfigSwitchText.top
+            anchors.leftMargin: NodoSystem.padding
+            width: 2*wifiIPConfigSwitchRect.height
+            height: wifiIPConfigSwitchRect.height
             display: AbstractButton.IconOnly
             checked: nodoConfig.getStringValueFromKey("wifi", "auto") === "TRUE" ? true : false
         }
@@ -169,12 +159,11 @@ Item {
 
     NodoInputField {
         id: wifiIPAddressField
-        //anchors.left: deviceWifiScreen.left
         anchors.top: wifiIPConfigSwitchRect.bottom
-        anchors.topMargin: 16
-        x: 640
-        width: 592
-        height: 60
+        anchors.left: wifiIPConfigSwitchRect.left
+        anchors.topMargin: NodoSystem.nodoTopMargin
+        width: inputFieldWidth
+        height: NodoSystem.inputFieldLabelHeight
         itemSize: labelSize
         itemText: qsTr("IP Address")
         valueText: nodoConfig.getStringValueFromKey("wifi", "ip")
@@ -183,12 +172,11 @@ Item {
 
     NodoInputField {
         id: wifiSubnetMaskField
-        //anchors.left: deviceWifiScreen.left
         anchors.top: wifiIPAddressField.bottom
-        anchors.topMargin: 16
-        x: 640
-        width: 592
-        height: 60
+        anchors.left: wifiIPConfigSwitchRect.left
+        anchors.topMargin: NodoSystem.nodoTopMargin
+        width: inputFieldWidth
+        height: NodoSystem.inputFieldLabelHeight
         itemSize: labelSize
         itemText: qsTr("Subnet Mask")
         valueText: nodoConfig.getStringValueFromKey("wifi", "subnet")
@@ -197,12 +185,11 @@ Item {
 
     NodoInputField {
         id: wifiRouterField
-        //anchors.left: deviceWifiScreen.left
         anchors.top: wifiSubnetMaskField.bottom
-        anchors.topMargin: 16
-        x: 640
-        width: 592
-        height: 60
+        anchors.left: wifiIPConfigSwitchRect.left
+        anchors.topMargin: NodoSystem.nodoTopMargin
+        width: inputFieldWidth
+        height: NodoSystem.inputFieldLabelHeight
         itemSize: labelSize
         itemText: qsTr("Router")
         valueText: nodoConfig.getStringValueFromKey("wifi", "router")
@@ -211,12 +198,11 @@ Item {
 
     NodoInputField {
         id: wifiDHCPField
-        //anchors.left: deviceWifiScreen.left
         anchors.top: wifiRouterField.bottom
-        anchors.topMargin: 16
-        x: 640
-        width: 592
-        height: 60
+        anchors.left: wifiIPConfigSwitchRect.left
+        anchors.topMargin: NodoSystem.nodoTopMargin
+        width: inputFieldWidth
+        height: NodoSystem.inputFieldLabelHeight
         itemSize: labelSize
         itemText: qsTr("DHCP")
         valueText: nodoConfig.getStringValueFromKey("wifi", "dhcp")

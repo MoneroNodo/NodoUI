@@ -11,65 +11,53 @@ import NodoSystem 1.1
 Item {
     id: moneroLWSAddAccountScreen
 	anchors.fill: parent
+    property int labelSize: 0
+    property int infoFieldSize: 1700
 
-    Label {
-        id: moneroLWSMainAddressLabel
-		anchors.left: moneroLWSAddAccountScreen.left
-        anchors.top: moneroLWSAddAccountScreen.top
-        width: 200
-        height: 38
-        text: qsTr("Main Address (Starts with 4)")
-        font.pixelSize: NodoSystem.textFontSize
-        verticalAlignment: Text.AlignVCenter
-        color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
-        font.family: NodoSystem.fontUrbanist.name
+    Component.onCompleted: {
+        onCalculateMaximumTextLabelLength()
+    }
+
+    function onCalculateMaximumTextLabelLength() {
+        if(moneroLWSMainAddressInput.labelRectRoundSize > labelSize)
+        labelSize = moneroLWSMainAddressInput.labelRectRoundSize
+
+        if(moneroLWSPrivateViewkeyLabel.labelRectRoundSize > labelSize)
+        labelSize = moneroLWSPrivateViewkeyLabel.labelRectRoundSize
     }
 
     NodoInputField {
         id: moneroLWSMainAddressInput
 		anchors.left: moneroLWSAddAccountScreen.left
-        anchors.top: moneroLWSMainAddressLabel.bottom
-		anchors.topMargin: 20
-        width: 1813
+        anchors.top: moneroLWSAddAccountScreen.top
+        width: infoFieldSize
+        itemSize: labelSize
+        itemText: qsTr("Main Address (Starts with 4)")
+        valueText: ""
         height: NodoSystem.infoFieldLabelHeight
     }
 
-
-    Label {
-        id: moneroLWSPrivateViewkeyLabel
-		anchors.left: moneroLWSAddAccountScreen.left
-        anchors.top: moneroLWSMainAddressInput.bottom
-		anchors.topMargin: 10
-        width: 110
-        height: 38
-        text: qsTr("Private Viewkey")
-        font.pixelSize: NodoSystem.textFontSize
-        verticalAlignment: Text.AlignVCenter
-        color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
-        font.family: NodoSystem.fontUrbanist.name
-    }
-
     NodoInputField {
-        id: moneroLWSPrivateViewkeyInput
-		anchors.left: moneroLWSAddAccountScreen.left
-        anchors.top: moneroLWSPrivateViewkeyLabel.bottom
-		anchors.topMargin: 10
-        width: 1813
+        id: moneroLWSPrivateViewkeyLabel
+        anchors.left: moneroLWSAddAccountScreen.left
+        anchors.top: moneroLWSMainAddressInput.bottom
+        anchors.topMargin: NodoSystem.nodoTopMargin
+        width: infoFieldSize
+        itemSize: labelSize
+        itemText: qsTr("Private Viewkey")
+        valueText: ""
         height: NodoSystem.infoFieldLabelHeight
     }
 
     NodoButton {
         id: moneroLWSAddAccountButton
-		anchors.left: moneroLWSAddAccountScreen.left
-        anchors.top: moneroLWSPrivateViewkeyInput.bottom
-		anchors.topMargin: 20
+        anchors.left: moneroLWSAddAccountScreen.left
+        anchors.top: moneroLWSPrivateViewkeyLabel.bottom
+        anchors.topMargin: NodoSystem.nodoTopMargin
         text: qsTr("Add Account")
         height: NodoSystem.infoFieldLabelHeight
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize
-        textLeftPadding: 25
-        textRightPadding: 25
-        frameRadius: 4
     }
 }
 

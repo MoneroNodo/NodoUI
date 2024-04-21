@@ -12,35 +12,83 @@ Rectangle {
     color: "black"
     anchors.fill: parent
 
-    NodoCheckBox
-    {
-        id: deviceSystemRecoveryRecoverFS
-        anchors.left: deviceSystemRecoveryScreen.left
-        anchors.top: deviceSystemRecoveryScreen.top
-        checkBoxText: qsTr("Attempt to recover filesystem")
+    property int labelSize: 0
+    property int checkBoxMargin: 5
+
+    Component.onCompleted: {
+        onCalculateMaximumTextLabelLength()
     }
 
-    NodoCheckBox
-    {
-        id: deviceSystemRecoveryResyncBlockchain
+    function onCalculateMaximumTextLabelLength() {
+        if(deviceSystemRecoveryRecoverFSText.labelRectRoundSize > labelSize)
+        labelSize = deviceSystemRecoveryRecoverFSText.labelRectRoundSize
+
+        if(deviceSystemRecoveryResyncBlockchainText.labelRectRoundSize > labelSize)
+        labelSize = deviceSystemRecoveryResyncBlockchainText.labelRectRoundSize
+    }
+
+    Rectangle {
+        id: deviceSystemRecoveryScreenRect
         anchors.left: deviceSystemRecoveryScreen.left
-        anchors.top: deviceSystemRecoveryRecoverFS.bottom
-        anchors.topMargin: 32
-        checkBoxText: qsTr("Purge and resync blockchain")
+        anchors.top: deviceSystemRecoveryScreen.top
+        height: NodoSystem.nodoItemHeight
+        color: "black"
+
+        NodoCheckBox
+        {
+            id: deviceSystemRecoveryRecoverFS
+            height: deviceSystemRecoveryScreenRect.height
+            width: height
+            anchors.left: deviceSystemRecoveryScreenRect.left
+            anchors.top: deviceSystemRecoveryScreenRect.top
+        }
+
+        NodoLabel{
+            id: deviceSystemRecoveryRecoverFSText
+            width: labelSize
+            height: deviceSystemRecoveryRecoverFS.height
+            anchors.left: deviceSystemRecoveryRecoverFS.right
+            anchors.leftMargin: checkBoxMargin
+            text: qsTr("Attempt to recover filesystem")
+        }
+    }
+
+    Rectangle {
+        id: deviceSystemRecoveryResyncBlockchainRect
+        anchors.left: deviceSystemRecoveryScreen.left
+        anchors.top: deviceSystemRecoveryScreenRect.bottom
+        anchors.topMargin: NodoSystem.nodoTopMargin
+        height: NodoSystem.nodoItemHeight
+        color: "black"
+
+        NodoCheckBox
+        {
+            id: deviceSystemRecoveryResyncBlockchain
+            height: deviceSystemRecoveryResyncBlockchainRect.height
+            width: height
+            anchors.left: deviceSystemRecoveryResyncBlockchainRect.left
+            anchors.top: deviceSystemRecoveryResyncBlockchainRect.top
+        }
+
+        NodoLabel{
+            id: deviceSystemRecoveryResyncBlockchainText
+            width: labelSize
+            height: deviceSystemRecoveryResyncBlockchain.height
+            anchors.left: deviceSystemRecoveryResyncBlockchain.right
+            anchors.leftMargin: checkBoxMargin
+            text: qsTr("Purge and resync blockchain")
+        }
     }
 
     NodoButton {
         id: systemRecoveryStartButton
         anchors.left: deviceSystemRecoveryScreen.left
-        anchors.top: deviceSystemRecoveryResyncBlockchain.bottom
-        anchors.topMargin: 15
+        anchors.top: deviceSystemRecoveryResyncBlockchainRect.bottom
+        anchors.topMargin: 80
         text: qsTr("Start")
-        height: 60
+        height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize
-        textLeftPadding: 25
-        textRightPadding: 25
-        frameRadius: 4
         onClicked: {
             nodoControl.systemRecovery(deviceSystemRecoveryRecoverFS.checked, deviceSystemRecoveryResyncBlockchain.checked);
         }
@@ -50,14 +98,11 @@ Rectangle {
         id: systemRecoveryCancelButton
         anchors.left: systemRecoveryStartButton.right
         anchors.top: systemRecoveryStartButton.top
-        anchors.leftMargin: 15
+        anchors.leftMargin: 16
         text: qsTr("Cancel")
-        height: 60
+        height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize
-        textLeftPadding: 25
-        textRightPadding: 25
-        frameRadius: 4
         onClicked: {
             pageLoader.source = "DeviceSystemScreen.qml"
         }

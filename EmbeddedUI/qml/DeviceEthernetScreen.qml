@@ -13,6 +13,7 @@ Item {
     id: deviceEthernetScreen
     anchors.fill: parent
     property int labelSize: 0
+    property int inputFieldWidth: 600
 
     Component.onCompleted: {
         nodoConfig.updateRequested()
@@ -41,7 +42,6 @@ Item {
             ethernetSubnetMaskField.valueText = nodoConfig.getStringValueFromKey("ethernet", "subnet")
             ethernetRouterField.valueText = nodoConfig.getStringValueFromKey("ethernet", "router")
             ethernetDHCPField.valueText = nodoConfig.getStringValueFromKey("ethernet", "dhcp")
-
         }
     }
 
@@ -49,29 +49,23 @@ Item {
         id: ethernetIPConfigSwitchRect
         x: 0
         y: 0
-        height: 64
+        height: NodoSystem.nodoItemHeight
 
-        Text{
+        NodoLabel{
             id: ethernetIPConfigSwitchText
-            width: ethernetIPConfigSwitchText.paintedWidth
             height: ethernetIPConfigSwitchRect.height
-            x: 0
-            y: 0
-            //y: (ethernetIPConfigSwitchRect.height - etherenetIPConfigSwitch.height)/2
+            anchors.top: ethernetIPConfigSwitchRect.top
+            anchors.left: ethernetIPConfigSwitchRect.left
             text: qsTr("Automatic")
-            verticalAlignment: Text.AlignBottom
-            color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
-            font.family: NodoSystem.fontUrbanist.name
-            font.pixelSize: NodoSystem.textFontSize
         }
 
         NodoSwitch {
             id: ethernetIPConfigSwitch
-            x: ethernetIPConfigSwitchText.width + 20
-            y: 0
-            width: 128
-            height: 64
-            text: ""
+            anchors.left: ethernetIPConfigSwitchText.right
+            anchors.top: ethernetIPConfigSwitchText.top
+            anchors.leftMargin: NodoSystem.padding
+            width: 2*ethernetIPConfigSwitchRect.height
+            height: ethernetIPConfigSwitchRect.height
             display: AbstractButton.IconOnly
             checked: nodoConfig.getStringValueFromKey("ethernet", "auto") === "TRUE" ? true : false
         }
@@ -79,10 +73,11 @@ Item {
 
     NodoInputField {
         id: ethernetIPAddressField
-        x: 0
-        y: ethernetIPConfigSwitchRect.y + ethernetIPConfigSwitchRect.height + 20
-        width: 370
-        height: 60
+        anchors.left: ethernetIPConfigSwitchRect.left
+        anchors.top: ethernetIPConfigSwitchRect.bottom
+        anchors.topMargin: NodoSystem.nodoTopMargin
+        width: inputFieldWidth
+        height: NodoSystem.inputFieldLabelHeight
         itemSize: labelSize
         itemText: qsTr("IP Address")
         valueText: nodoConfig.getStringValueFromKey("ethernet", "ip")
@@ -92,10 +87,11 @@ Item {
 
     NodoInputField {
         id: ethernetSubnetMaskField
-        x: 0
-        y: ethernetIPAddressField.y + ethernetIPAddressField.height + 10
-        width: 370
-        height: 60
+        anchors.left: ethernetIPConfigSwitchRect.left
+        anchors.top: ethernetIPAddressField.bottom
+        anchors.topMargin: NodoSystem.nodoTopMargin
+        width: inputFieldWidth
+        height: NodoSystem.inputFieldLabelHeight
         itemSize: labelSize
         itemText: qsTr("Subnet Mask")
         valueText: nodoConfig.getStringValueFromKey("ethernet", "subnet")
@@ -104,10 +100,11 @@ Item {
 
     NodoInputField {
         id: ethernetRouterField
-        x: 0
-        y: ethernetSubnetMaskField.y + ethernetSubnetMaskField.height + 10
-        width: 370
-        height: 60
+        anchors.left: ethernetIPConfigSwitchRect.left
+        anchors.top: ethernetSubnetMaskField.bottom
+        anchors.topMargin: NodoSystem.nodoTopMargin
+        width: inputFieldWidth
+        height: NodoSystem.inputFieldLabelHeight
         itemSize: labelSize
         itemText: qsTr("Router")
         valueText: nodoConfig.getStringValueFromKey("ethernet", "router")
@@ -116,10 +113,11 @@ Item {
 
     NodoInputField {
         id: ethernetDHCPField
-        x: 0
-        y: ethernetRouterField.y + ethernetRouterField.height + 10
-        width: 370
-        height: 60
+        anchors.left: ethernetRouterField.left
+        anchors.top: ethernetSubnetMaskField.bottom
+        anchors.topMargin: NodoSystem.nodoTopMargin
+        width: inputFieldWidth
+        height: NodoSystem.inputFieldLabelHeight
         itemSize: labelSize
         itemText: qsTr("DHCP")
         valueText: nodoConfig.getStringValueFromKey("ethernet", "dhcp")

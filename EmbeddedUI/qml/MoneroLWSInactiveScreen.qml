@@ -28,7 +28,7 @@ Item {
         id: moneroLWSinactiveAddressField
 		anchors.left: moneroLWSInactiveScreen.left
         anchors.top: moneroLWSInactiveScreen.top
-        width: labelSize + 330
+        width: labelSize + 300
         height: NodoSystem.infoFieldLabelHeight
         itemSize: labelSize
         itemText: qsTr("Address")
@@ -40,8 +40,8 @@ Item {
         id: moneroLWSinactiveHeightField
 		anchors.left: moneroLWSinactiveAddressField.right
         anchors.top: moneroLWSInactiveScreen.top
-		anchors.leftMargin: 10
-        width: labelSize+130
+        anchors.leftMargin: 20
+        width: labelSize + 300
         height: NodoSystem.infoFieldLabelHeight
         itemSize: labelSize
         itemText: qsTr("Height")
@@ -52,27 +52,21 @@ Item {
         id: moneroLWSReactivateButton
 		anchors.left: moneroLWSinactiveHeightField.right
         anchors.top: moneroLWSInactiveScreen.top
-		anchors.leftMargin: 10
+        anchors.leftMargin: 20
         text: qsTr("Reactivate")
         height: NodoSystem.infoFieldLabelHeight
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize
-        textLeftPadding: 25
-        textRightPadding: 25
-        frameRadius: 4
     }
 
     NodoButton {
         id: moneroLWSDeleteButton
 		anchors.left: moneroLWSReactivateButton.right
         anchors.top: moneroLWSInactiveScreen.top
-		anchors.leftMargin: 10
+        anchors.leftMargin: 20
         text: qsTr("Delete")
         height: NodoSystem.infoFieldLabelHeight
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize
-        textLeftPadding: 25
-        textRightPadding: 25
-        frameRadius: 4
     }
 }
