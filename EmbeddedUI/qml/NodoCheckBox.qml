@@ -13,14 +13,14 @@ CheckBox {
     property string backgroundColor:  nodoControl.appTheme ? NodoSystem.buttonBGColorNightModeOn : NodoSystem.buttonBGColorNightModeOff
 
     background: NodoCanvas {
-        color: checkBox.backgroundColor
+        color: checked ? checkBox.backgroundColor : NodoSystem.dataFieldTextBGColorNightModeOff
     }
 
     indicator: Text {
         width: checkBox.width
         height: checkBox.height
         x: 1
-        y: -5
+        y: -6
         text: "\u2713"
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: checkBox.width
