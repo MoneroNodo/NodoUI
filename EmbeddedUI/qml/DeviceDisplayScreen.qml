@@ -18,38 +18,44 @@ Item {
         deviceDisplayCurrencyComboBox.currentIndex = priceTicker.getCurrentCurrencyIndex()
     }
 
-    NodoLabel{
-        id: deviceDisplaySliderLabel
+    Rectangle {
+        id: deviceDisplayBrightnessRect
         anchors.left: deviceDisplayScreen.left
         anchors.top: deviceDisplayScreen.top
         height: NodoSystem.nodoItemHeight
-        text: qsTr("Brightness")
-        verticalAlignment: Text.AlignVCenter
-    }
 
-    NodoSlider {
-        id: deviceDisplaySlider
-        anchors.left: deviceDisplaySliderLabel.right
-        anchors.top: deviceDisplayScreen.top
-        anchors.leftMargin: NodoSystem.padding
-        width: 600
-        height: NodoSystem.nodoItemHeight
-        snapMode: Slider.NoSnap
-        stepSize: 1
-        from: 1
-        value: 25
-        to: 100
-        handleHight: height*0.8
-        handleWidth: handleHight
+        NodoLabel{
+            id: deviceDisplaySliderLabel
+            anchors.left: deviceDisplayBrightnessRect.left
+            anchors.top: deviceDisplayBrightnessRect.top
+            height: deviceDisplayBrightnessRect.height
+            text: qsTr("Brightness")
+            verticalAlignment: Text.AlignVCenter
+        }
+
+        NodoSlider {
+            id: deviceDisplaySlider
+            anchors.left: deviceDisplaySliderLabel.right
+            anchors.top: deviceDisplayBrightnessRect.top
+            anchors.leftMargin: NodoSystem.padding
+            width: 600
+            height: deviceDisplayBrightnessRect.height
+            snapMode: Slider.NoSnap
+            stepSize: 1
+            from: 1
+            value: 128
+            to: 255
+            handleHight: height*0.8
+            handleWidth: handleHight
+        }
     }
 
     Rectangle {
         id: deviceDisplayNightModeSwitchRect
         anchors.left: deviceDisplayScreen.left
-        anchors.top: deviceDisplaySliderLabel.bottom
+        anchors.top: deviceDisplayBrightnessRect.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         height: NodoSystem.nodoItemHeight
-        color: "black"
 
         NodoLabel{
             id: deviceDisplayNightModeSwitchText
@@ -78,7 +84,6 @@ Item {
         anchors.top: deviceDisplayNightModeSwitchRect.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         height: NodoSystem.nodoItemHeight
-        color: "black"
 
         NodoLabel{
             id: deviceDisplayFlipOrientationSwitchText
@@ -101,7 +106,7 @@ Item {
 
     Rectangle {
         id: screenSaverRect
-        anchors.left: deviceDisplaySliderLabel.left
+        anchors.left: deviceDisplayScreen.left
         anchors.top: deviceDisplayFlipOrientationSwitchRect.bottom
         anchors.topMargin: 30
         height: NodoSystem.nodoItemHeight
@@ -132,23 +137,24 @@ Item {
 
     Rectangle {
         id: languageRect
-        anchors.left: deviceDisplaySlider.right
+        anchors.right: deviceDisplayScreen.right
         anchors.top: deviceDisplayScreen.top
-        anchors.leftMargin: 16
+        anchors.rightMargin: 32
         height: NodoSystem.nodoItemHeight
 
         NodoLabel {
             id: deviceDisplayLanguageLabel
             height: languageRect.height
             anchors.top: languageRect.top
-            anchors.left: languageRect.left
+            anchors.right: deviceDisplayLanguageComboBox.left
+            anchors.rightMargin: NodoSystem.padding
             text: qsTr("Language")
         }
 
         NodoComboBox
         {
             id: deviceDisplayLanguageComboBox
-            anchors.left: deviceDisplayLanguageLabel.right
+            anchors.right: languageRect.right
             anchors.top: deviceDisplayLanguageLabel.top
             width: dropdownLength
             height: languageRect.height
@@ -162,24 +168,26 @@ Item {
 
     Rectangle {
         id: timezoneRect
-        anchors.left: languageRect.left
+        anchors.right: deviceDisplayScreen.right
         anchors.top: languageRect.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
+        anchors.rightMargin: 32
         height: NodoSystem.nodoItemHeight
 
         NodoLabel {
             id: deviceDisplayTimezoneLabel
             height: timezoneRect.height
-            anchors.left: timezoneRect.left
             anchors.top: timezoneRect.top
+            anchors.right: deviceDisplayTimezoneComboBox.left
+            anchors.rightMargin: NodoSystem.padding
             text: qsTr("Time zone")
         }
 
         NodoComboBox
         {
             id: deviceDisplayTimezoneComboBox
-            anchors.left: deviceDisplayTimezoneLabel.right
-            anchors.top: timezoneRect.top
+            anchors.right: timezoneRect.right
+            anchors.top: deviceDisplayTimezoneLabel.top
             width: dropdownLength
             height: timezoneRect.height
             currentIndex: nodoControl.getTimeZoneIndex()
@@ -200,15 +208,16 @@ Item {
         NodoLabel {
             id: deviceDisplayCurrencyLabel
             height: currencyRect.height
-            anchors.left: currencyRect.left
             anchors.top: currencyRect.top
+            anchors.right: deviceDisplayCurrencyComboBox.left
+            anchors.rightMargin: NodoSystem.padding
             text: qsTr("Currency")
         }
 
         NodoComboBox
         {
             id: deviceDisplayCurrencyComboBox
-            anchors.left: deviceDisplayCurrencyLabel.right
+            anchors.right: currencyRect.right
             anchors.top: deviceDisplayCurrencyLabel.top
             width: dropdownLength
             height: currencyRect.height

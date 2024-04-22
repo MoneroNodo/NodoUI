@@ -14,13 +14,14 @@ Rectangle {
     property color cornerColor: "black"
     property int rectangleWidth: 11
     property int rectangleHeight: 8
+    antialiasing: true
 
     Shape {
         x: 0
         y: 0
         width: rectangleWidth
         height: rectangleHeight
-
+	antialiasing: true
         ShapePath {
             strokeWidth: 0
             strokeColor: cornerColor
@@ -36,7 +37,7 @@ Rectangle {
         y: 0
         width: rectangleWidth
         height: rectangleHeight
-
+	antialiasing: true
         ShapePath {
             strokeWidth: 0
             strokeColor: cornerColor
@@ -52,7 +53,7 @@ Rectangle {
         y: canvas.height - rectangleHeight
         width: rectangleWidth
         height: rectangleHeight
-
+	antialiasing: true
         ShapePath {
             strokeWidth: 0
             strokeColor: cornerColor
@@ -68,7 +69,7 @@ Rectangle {
         y: canvas.height - rectangleHeight
         width: rectangleWidth
         height: rectangleHeight
-
+	antialiasing: true
         ShapePath {
             strokeWidth: 0
             strokeColor: cornerColor

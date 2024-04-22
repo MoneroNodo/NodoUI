@@ -23,6 +23,7 @@ ComboBox {
         }
         background: Rectangle {color: highlighted ? (nodoControl.appTheme ? NodoSystem.comboBoxHighligtedItemBGColorNightModeOn : NodoSystem.comboBoxHighligtedItemBGColorNightModeOff) :
                                                     (nodoControl.appTheme ? NodoSystem.dataFieldTitleBGColorNightModeOn : NodoSystem.dataFieldTitleBGColorNightModeOff)}
+
         highlighted: control.highlightedIndex === index
     }
 
@@ -55,6 +56,7 @@ ComboBox {
     contentItem: Text {
         leftPadding: 10
         rightPadding: control.indicator.width + control.spacing
+
         text: control.displayText
         font: control.font
         color: nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn : NodoSystem.dataFieldTextColorNightModeOff

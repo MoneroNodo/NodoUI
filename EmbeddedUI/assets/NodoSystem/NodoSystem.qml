@@ -10,6 +10,7 @@ Item
     property int topMenuGapBetweenButtons: 16
     property int dateTimeFontSize: 56
 
+
     property int subMenuButtonFontSize: 32
     property int textFontSize: 32
     property int buttonTextFontSize: 32
@@ -64,8 +65,9 @@ Item
     property int nodoTopMargin: 16
 
     property int comboboxFontSize: 25
+
     property color comboBoxHighligtedItemBGColorNightModeOff: "#FA5501"
     property color comboBoxHighligtedItemBGColorNightModeOn: "#F50000"
-    property color comboBoxTextColor: "#FCFCFC"
 
+    property color comboBoxTextColor: "#FCFCFC"
 }
