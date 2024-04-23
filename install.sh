@@ -42,13 +42,14 @@ make $PARALLEL_BUILD
 sudo make install
 cd ..
 
-
 #compile the projects
 qmake "CONFIG-=qml_debug" "CONFIG+=qtquickcompiler" "CONFIG-=separate_debug_info"
 make $PARALLEL_BUILD
 
-#copy files
+sudo systemctl stop nodo-dbus
+sudo systemctl stop embeddedUI
 
+#copy files
 sudo cp $EMBEDDED_UI_PROJECT_PATH/build/EmbeddedUI $NODO_APP_PATH
 sudo cp $EMBEDDED_UI_PROJECT_PATH/config/embeddedUI.sh $NODO_APP_PATH
 sudo cp $EMBEDDED_UI_PROJECT_PATH/config/embedded.config.json $NODO_CONFIG_PATH
