@@ -6,6 +6,7 @@ import QtQuick.Controls.Material 2.15
 import QtQuick.Controls.Universal 2.15
 import QtQuick.Controls.Styles 1.4
 import NodoSystem 1.1
+import NodoCanvas 1.0
 
 Switch {
     id: control
@@ -20,7 +21,7 @@ Switch {
         color: control.checked ? (nodoControl.appTheme ? NodoSystem.highlightedColorNightModeOn : NodoSystem.highlightedColorNightModeOff) : NodoSystem.switchBackgroundColor
         NodoCanvas {
             id: knob
-            cornerColor: background.color
+            // cornerColor: background.color
             x: control.checked ? control.width - control.height*0.9 : control.height*0.1
             y: (control.height - height) / 2
             width: parent.height*0.8

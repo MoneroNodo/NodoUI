@@ -1,3 +1,6 @@
 TEMPLATE = subdirs
-SUBDIRS = EmbeddedUI \
+CONFIG += ordered
+
+SUBDIRS = EmbeddedUI/assets/NodoCanvasPlugin \
+          EmbeddedUI \
 	  NodoDaemon

@@ -53,7 +53,6 @@
         <file>qml/NodoDigitalClock.qml</file>
         <file>qml/NodoCurrencies.qml</file>
         <file>qml/NodoTimezones.qml</file>
-        <file>qml/NodoCanvas.qml</file>
         <file>qml/NodoLabel.qml</file>
     </qresource>
     <qresource prefix="/NodoSystem">

@@ -68,6 +68,8 @@ sudo cp $EMBEDDED_UI_PROJECT_PATH/i18n/*.qm $NODO_I18N_PATH
 sudo chmod a+x $NODO_APP_PATH/EmbeddedUI
 sudo chmod a+x $NODO_APP_PATH/embeddedUI.sh
 
+sudo cp -a $EMBEDDED_UI_PROJECT_PATH/build/NodoCanvas /opt/nodo
+
 sudo chown nodo:nodo $NODO_CONFIG_PATH/embedded.config.json
 
 sudo systemctl enable nodo-dbus.service

@@ -6,6 +6,7 @@ import QtQuick.Controls.Material 2.15
 import QtQuick.Controls.Universal 2.15
 import QtQuick.Controls.Styles 1.4
 import NodoSystem 1.1
+import NodoCanvas 1.0
 
 /*
 slider drag bugfix:
@@ -45,10 +46,10 @@ Slider {
 
     handle: NodoCanvas {
         id: sliderHandle
-        cornerColor: sliderBackground.color
+        // cornerColor: sliderBackground.color
         x: control.visualPosition * (control.width - width)
         y: control.height / 2 - height / 2
-        width:handleWidth
+        width: handleWidth
         height: handleHight
         color: "#ffffff"
 

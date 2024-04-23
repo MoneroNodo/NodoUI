@@ -6,6 +6,7 @@ import QtQuick.Controls.Material 2.15
 import QtQuick.Controls.Universal 2.15
 import QtQuick.Controls.Styles 1.4
 import NodoSystem 1.1
+import NodoCanvas 1.0
 
 ComboBox {
     id: control
@@ -67,10 +68,12 @@ ComboBox {
     background: NodoCanvas {
         implicitWidth: 120
         implicitHeight: 40
+        width: control.width
         color: nodoControl.appTheme ? NodoSystem.dataFieldTextBGColorNightModeOn : NodoSystem.dataFieldTextBGColorNightModeOff
     }
 
     popup: Popup {
+        id: comboboxPopup
         y: control.height - 1
         width: control.width
         implicitHeight: contentItem.implicitHeight + topPadding + bottomPadding
@@ -88,6 +91,8 @@ ComboBox {
         }
 
         background: NodoCanvas {
+            width: control.width
+            height: comboboxPopup.implicitHeight
             color: nodoControl.appTheme ? NodoSystem.dataFieldTitleBGColorNightModeOn : NodoSystem.dataFieldTitleBGColorNightModeOff
         }
     }

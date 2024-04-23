@@ -6,13 +6,14 @@ import QtQuick.Controls.Material 2.15
 import QtQuick.Controls.Universal 2.15
 import QtQuick.Controls.Styles 1.4
 import NodoSystem 1.1
+import NodoCanvas 1.0
 
 Item {
     id: deviceDisplayScreen
     anchors.fill: parent
     property alias themeMode: deviceDisplayNightModeSwitch
     themeMode.checked: nodoControl.appTheme
-    property int dropdownLength: 600
+    property int dropdownLength: 900
 
     Component.onCompleted: {
         deviceDisplayCurrencyComboBox.currentIndex = priceTicker.getCurrentCurrencyIndex()
@@ -38,7 +39,7 @@ Item {
             anchors.left: deviceDisplaySliderLabel.right
             anchors.top: deviceDisplayBrightnessRect.top
             anchors.leftMargin: NodoSystem.padding
-            width: 600
+            width: dropdownLength
             height: deviceDisplayBrightnessRect.height
             snapMode: Slider.NoSnap
             stepSize: 1
@@ -137,16 +138,19 @@ Item {
 
     Rectangle {
         id: languageRect
-        anchors.right: deviceDisplayScreen.right
-        anchors.top: deviceDisplayScreen.top
-        anchors.rightMargin: 32
+        anchors.left: deviceDisplayScreen.left
+        anchors.top: screenSaverRect.bottom
+        anchors.topMargin: NodoSystem.nodoTopMargin
         height: NodoSystem.nodoItemHeight
+        // anchors.right: deviceDisplayScreen.right
+        // anchors.top: deviceDisplayScreen.top
+        // anchors.rightMargin: 32
 
         NodoLabel {
             id: deviceDisplayLanguageLabel
             height: languageRect.height
             anchors.top: languageRect.top
-            anchors.right: deviceDisplayLanguageComboBox.left
+            anchors.left: languageRect.left
             anchors.rightMargin: NodoSystem.padding
             text: qsTr("Language")
         }
@@ -154,7 +158,8 @@ Item {
         NodoComboBox
         {
             id: deviceDisplayLanguageComboBox
-            anchors.right: languageRect.right
+            anchors.left: deviceDisplayLanguageLabel.right
+            anchors.leftMargin: NodoSystem.padding
             anchors.top: deviceDisplayLanguageLabel.top
             width: dropdownLength
             height: languageRect.height
@@ -168,17 +173,20 @@ Item {
 
     Rectangle {
         id: timezoneRect
-        anchors.right: deviceDisplayScreen.right
+        anchors.left: deviceDisplayScreen.left
         anchors.top: languageRect.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
-        anchors.rightMargin: 32
+        // anchors.right: deviceDisplayScreen.right
+        // anchors.top: languageRect.bottom
+        // anchors.topMargin: NodoSystem.nodoTopMargin
+        // anchors.rightMargin: 32
         height: NodoSystem.nodoItemHeight
 
         NodoLabel {
             id: deviceDisplayTimezoneLabel
             height: timezoneRect.height
             anchors.top: timezoneRect.top
-            anchors.right: deviceDisplayTimezoneComboBox.left
+            anchors.left: timezoneRect.left
             anchors.rightMargin: NodoSystem.padding
             text: qsTr("Time zone")
         }
@@ -186,7 +194,8 @@ Item {
         NodoComboBox
         {
             id: deviceDisplayTimezoneComboBox
-            anchors.right: timezoneRect.right
+            anchors.left: deviceDisplayTimezoneLabel.right
+            anchors.leftMargin: NodoSystem.padding
             anchors.top: deviceDisplayTimezoneLabel.top
             width: dropdownLength
             height: timezoneRect.height
@@ -200,16 +209,19 @@ Item {
 
     Rectangle {
         id: currencyRect
-        anchors.left: languageRect.left
+        anchors.left: deviceDisplayScreen.left
         anchors.top: timezoneRect.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
+        // anchors.left: languageRect.left
+        // anchors.top: timezoneRect.bottom
+        // anchors.topMargin: NodoSystem.nodoTopMargin
         height: NodoSystem.nodoItemHeight
 
         NodoLabel {
             id: deviceDisplayCurrencyLabel
             height: currencyRect.height
             anchors.top: currencyRect.top
-            anchors.right: deviceDisplayCurrencyComboBox.left
+            anchors.left: currencyRect.left
             anchors.rightMargin: NodoSystem.padding
             text: qsTr("Currency")
         }
@@ -217,7 +229,8 @@ Item {
         NodoComboBox
         {
             id: deviceDisplayCurrencyComboBox
-            anchors.right: currencyRect.right
+            anchors.left: deviceDisplayCurrencyLabel.right
+            anchors.leftMargin: NodoSystem.padding
             anchors.top: deviceDisplayCurrencyLabel.top
             width: dropdownLength
             height: currencyRect.height
