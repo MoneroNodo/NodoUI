@@ -35,12 +35,12 @@ if [ -e /usr/bin/NodoUI.sh ]; then
     rm /usr/bin/NodoUI.sh
 fi
 
-git clone https://github.com/toby20130333/qtquickqrencode.git  qtquickqrencode
-cd qtquickqrencode
-qmake "CONFIG-=qml_debug" "CONFIG+=qtquickcompiler" "CONFIG-=separate_debug_info"
-make $PARALLEL_BUILD
-sudo make install
-cd ..
+#git clone https://github.com/toby20130333/qtquickqrencode.git  qtquickqrencode
+#cd qtquickqrencode
+#qmake "CONFIG-=qml_debug" "CONFIG+=qtquickcompiler" "CONFIG-=separate_debug_info"
+#make $PARALLEL_BUILD
+#sudo make install
+#cd ..
 
 #compile the projects
 qmake "CONFIG-=qml_debug" "CONFIG+=qtquickcompiler" "CONFIG-=separate_debug_info"
@@ -70,6 +70,7 @@ sudo chmod a+x $NODO_APP_PATH/EmbeddedUI
 sudo chmod a+x $NODO_APP_PATH/embeddedUI.sh
 
 sudo cp -a $EMBEDDED_UI_PROJECT_PATH/build/NodoCanvas /opt/nodo
+sudo cp -a $EMBEDDED_UI_PROJECT_PATH/build/QtQuick2QREncode /opt/nodo
 
 sudo chown nodo:nodo $NODO_CONFIG_PATH/embedded.config.json
 

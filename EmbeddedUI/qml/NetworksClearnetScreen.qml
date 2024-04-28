@@ -5,7 +5,7 @@ import QtQuick.Layouts 1.15
 import QtQuick.Controls.Material 2.15
 import QtQuick.Controls.Universal 2.15
 import QtQuick.Controls.Styles 1.4
-import com.duoduo.components 1.0
+import QtQuick2QREncode 1.0
 import NodoSystem 1.1
 
 Rectangle {
@@ -86,20 +86,6 @@ Rectangle {
         font.pixelSize: NodoSystem.buttonTextFontSize
     }
 
-    Label {
-        id: clearnetScanToLabel
-        anchors.left: clearnetAddPeerButton.left
-        anchors.top: clearnetAddPeerButton.bottom
-        anchors.topMargin: 40
-        width: 497
-        height: 60
-        text: qsTr("Scan to add Nodo to your wallet app:")
-        font.pixelSize: NodoSystem.textFontSize
-        verticalAlignment: Text.AlignVCenter
-        color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
-        font.family: NodoSystem.fontUrbanist.name
-    }
-
     Rectangle{
         id: qrCodeRect
         anchors.right: networksClearnetScreen.right
@@ -115,7 +101,7 @@ Rectangle {
             width: qrCodeRect.width
             height: qrCodeRect.height
             qrSize: Qt.size(width,width)
-            qrData: clearnetPeerField + ":" + clearnetPortField
+            qrData: clearnetPeerField.valueText + ":" + clearnetPortField.valueText
             qrForeground: "black"
             qrBackground: "white"
             qrMargin: 8
