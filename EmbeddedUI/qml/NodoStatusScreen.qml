@@ -26,8 +26,8 @@ Rectangle {
         if(timestampField.labelRectRoundSize > labelSize)
         labelSize = timestampField.labelRectRoundSize
 
-        if(currentSyncHeightField.labelRectRoundSize > labelSize)
-        labelSize = currentSyncHeightField.labelRectRoundSize
+        if(currentBlockHeightField.labelRectRoundSize > labelSize)
+        labelSize = currentBlockHeightField.labelRectRoundSize
 
         if(moneroVersionField.labelRectRoundSize > labelSize)
         labelSize = moneroVersionField.labelRectRoundSize
@@ -50,6 +50,9 @@ Rectangle {
         if(moneroNodeField.labelRectRoundSize > labelSize)
         labelSize = moneroNodeField.labelRectRoundSize
 
+        if(minerServiceField.labelRectRoundSize > labelSize)
+        labelSize = minerServiceField.labelRectRoundSize
+
         if(torServiceField.labelRectRoundSize > labelSize)
         labelSize = torServiceField.labelRectRoundSize
 
@@ -68,14 +71,14 @@ Rectangle {
         if(cpuTemperatureField.labelRectRoundSize > labelSize)
         labelSize = cpuTemperatureField.labelRectRoundSize
 
-        if(primaryStorageField.labelRectRoundSize > labelSize)
-        labelSize = primaryStorageField.labelRectRoundSize
-
-        if(backupStorageField.labelRectRoundSize > labelSize)
-        labelSize = backupStorageField.labelRectRoundSize
-
         if(ramField.labelRectRoundSize > labelSize)
         labelSize = ramField.labelRectRoundSize
+
+        if(blockchainStorageField.labelRectRoundSize > labelSize)
+        labelSize = primaryStorageField.labelRectRoundSize
+
+        if(systemStorageField.labelRectRoundSize > labelSize)
+        labelSize = backupStorageField.labelRectRoundSize
     }
 
 
@@ -94,7 +97,7 @@ Rectangle {
             function onSystemStatusReady() {
                 syncStatusField.valueText = (true === nodoSystemStatus.getBoolValueFromKey("synchronized")) ? "Synchronized" : "Syncing"
                 timestampField.valueText = nodoSystemStatus.getIntValueFromKey("start_time")
-                currentSyncHeightField.valueText = nodoSystemStatus.getIntValueFromKey("height")
+                currentBlockHeightField.valueText = nodoSystemStatus.getIntValueFromKey("height")
                 moneroVersionField.valueText = nodoSystemStatus.getStringValueFromKey("version")
                 outgoingConnectionsField.valueText = nodoSystemStatus.getIntValueFromKey("outgoing_connections_count")
                 incomingConnectionsField.valueText = nodoSystemStatus.getIntValueFromKey("incoming_connections_count")
@@ -111,7 +114,7 @@ Rectangle {
             anchors.topMargin: 20
             width: syncStatusTabName.paintedWidth
             height: 16
-            text: qsTr("Monero")
+            text: qsTr("Node")
             verticalAlignment: Text.AlignBottom
             horizontalAlignment: Text.AlignHCenter
             font.pixelSize: 40 // 24
@@ -127,7 +130,7 @@ Rectangle {
             width: syncStatus.width
             height: NodoSystem.infoFieldLabelHeight//hheight
             itemSize: labelSize
-            itemText: qsTr("Monero")
+            itemText: qsTr("Sync Status")
             valueText: (true === nodoSystemStatus.getBoolValueFromKey("synchronized")) ? "Synchronized" : "Syncing"
         }
 
@@ -145,26 +148,26 @@ Rectangle {
         }
 
         NodoInfoField {
-            id: currentSyncHeightField
+            id: currentBlockHeightField
             anchors.left: syncStatus.left
             anchors.top: timestampField.bottom
             anchors.topMargin: 8
             width: syncStatus.width
             height: NodoSystem.infoFieldLabelHeight//hheight
             itemSize: labelSize
-            itemText: qsTr("Sync Height")
+            itemText: qsTr("Block Height")
             valueText: nodoSystemStatus.getIntValueFromKey("height")
         }
 
         NodoInfoField {
             id: moneroVersionField
             anchors.left: syncStatus.left
-            anchors.top: currentSyncHeightField.bottom
+            anchors.top: currentBlockHeightField.bottom
             anchors.topMargin: 8
             width: syncStatus.width
             height: NodoSystem.infoFieldLabelHeight//hheight
             itemSize: labelSize
-            itemText: qsTr("Monero Version")
+            itemText: qsTr("Version")
             valueText: nodoSystemStatus.getIntValueFromKey("version")
         }
 
@@ -224,8 +227,8 @@ Rectangle {
             width: syncStatus.width
             height: NodoSystem.infoFieldLabelHeight//hheight
             itemSize: labelSize
-            itemText: qsTr("Update Available")
-            valueText: (true === nodoSystemStatus.getBoolValueFromKey("update_available")) ? "Update available" : "Update not available"
+            itemText: qsTr("Update")
+            valueText: (true === nodoSystemStatus.getBoolValueFromKey("update_available")) ? "Available" : "Up to date"
         }
     }
 
@@ -262,14 +265,26 @@ Rectangle {
             width: systemStatus.width
             height: NodoSystem.infoFieldLabelHeight//hheight
             itemSize: labelSize
-            itemText: qsTr("Monero Node")
+            itemText: qsTr("Monero Daemon")
+            valueText: ""
+        }
+
+        NodoInfoField {
+            id: minerServiceField
+            anchors.left: systemStatus.left
+            anchors.top: moneroNodeField.bottom
+            anchors.topMargin: 8
+            width: systemStatus.width
+            height: NodoSystem.infoFieldLabelHeight//hheight
+            itemSize: labelSize
+            itemText: qsTr("Monero Miner")
             valueText: ""
         }
 
         NodoInfoField {
             id: torServiceField
             anchors.left: systemStatus.left
-            anchors.top: moneroNodeField.bottom
+            anchors.top: minerServiceField.bottom
             anchors.topMargin: 8
             width: systemStatus.width
             height: NodoSystem.infoFieldLabelHeight//hheight
@@ -360,26 +375,26 @@ Rectangle {
             width: hardwareStatus.width
             height: NodoSystem.infoFieldLabelHeight//hheight
             itemSize: labelSize
-            itemText: qsTr("CPU Temp")
+            itemText: qsTr("Temperature")
             valueText: "<loading>"
         }
 
         NodoInfoField {
-            id: primaryStorageField
+            id: ramField
             anchors.left: hardwareStatus.left
             anchors.top: cpuTemperatureField.bottom
             anchors.topMargin: 8
             width: hardwareStatus.width
             height: NodoSystem.infoFieldLabelHeight//hheight
             itemSize: labelSize
-            itemText: qsTr("System Storage")
-            valueText: "<loading>"
+            itemText: qsTr("RAM")
+            valueText: "in use"
         }
 
         NodoInfoField {
-            id: backupStorageField
+            id: blockchainStorageField
             anchors.left: hardwareStatus.left
-            anchors.top: primaryStorageField.bottom
+            anchors.top: ramField.bottom
             anchors.topMargin: 8
             width: hardwareStatus.width
             height: NodoSystem.infoFieldLabelHeight//hheight
@@ -389,16 +404,15 @@ Rectangle {
         }
 
         NodoInfoField {
-            id: ramField
+            id: systemStorageField
             anchors.left: hardwareStatus.left
-            anchors.top: backupStorageField.bottom
+            anchors.top: blockchainStorageField.bottom
             anchors.topMargin: 8
             width: hardwareStatus.width
-            height: NodoSystem.infoFieldLabelHeight//hheight
+            height: NodoSystem.infoFieldLabelHeight// height
             itemSize: labelSize
-            itemText: qsTr("RAM")
-            valueText: "in use"
-
+            itemText: qsTr("System Storage")
+            valueText: "<loading>"
         }
     }
 }

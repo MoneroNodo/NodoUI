@@ -14,9 +14,9 @@ ApplicationWindow {
     visible: true
 
     modality: Qt.WindowModal
-    property int displayRotation: 0 //ugly fix. activate this to run on PC
-    // property int displayRotation: -90 //ugly fix. comment out this to run on PC
-    // contentOrientation: Qt.InvertedLandscapeOrientation //ugly fix. comment out this to run on PC
+    // property int displayRotation: 0 //ugly fix. activate this to run on PC
+    property int displayRotation: -90 //ugly fix. comment out this to run on PC
+    contentOrientation: Qt.InvertedLandscapeOrientation //ugly fix. comment out this to run on PC
 
     width: displayRotation == 0 ? 1920 : 1080
     height: displayRotation == 0 ? 1080 : 1920
