@@ -40,7 +40,8 @@ typedef struct {
 typedef enum {
     DISPLAY_KEY_SS_TIMEOUT,
     DISPLAY_KEY_SS_ITEM_CHANGE_TIMEOUT,
-    DISPLAY_KEY_USE_FEEDS_AS_SS
+    DISPLAY_KEY_USE_FEEDS_AS_SS,
+    DISPLAY_KEY_CHANGE_ORIENTATION
 }display_keys_t;
 
 
@@ -48,6 +49,7 @@ typedef struct {
     int screenSaverTimeoutInSec;
     int screenSaverItemChangeTimeoutInSec;
     int useFeedsAsScreenSaver;
+    int displayOrientation;
 }display_settings_t;
 
 
@@ -71,6 +73,9 @@ public:
     void writeScreenSaverType(int state);
     int readScreenSaverType(void);
 
+    void writeDisplayOrientation(int orientation);
+    int readDisplayOrientation(void);
+
 private:
     int m_feedCount = 0;
     QJsonDocument m_document;
@@ -82,7 +87,7 @@ private:
     display_settings_t m_displaySettings;
 
     const QStringList m_feedKeyList = {"name", "uri", "selected", "visible", "num_of_feeds_to_show", "description_tag", "image_tag", "image_attr", "pub_date_tag"};
-    const QStringList m_displayKeyList = {"screensaver_timeout_in_sec", "screensaver_item_change_timeout_in_sec", "use_feeds_as_screensaver"};
+    const QStringList m_displayKeyList = {"screensaver_timeout_in_sec", "screensaver_item_change_timeout_in_sec", "use_feeds_as_screensaver", "display_orientation"};
     const QString feedObjName = "feeds";
     const QString displayObjName = "display";
     const QString m_feedNames = "feed_";

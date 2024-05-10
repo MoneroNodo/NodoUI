@@ -100,7 +100,47 @@ Item {
             height: deviceDisplayFlipOrientationSwitchRect.height
             width: 2*deviceDisplayFlipOrientationSwitchRect.height
             display: AbstractButton.IconOnly
-            checked: false
+            property int displayRotation: nodoControl.getOrientation()
+            checked:
+            {
+                if((displayRotation === -90) || (displayRotation === 0))
+                {
+                    false
+                }
+                else if((displayRotation === 90) || (displayRotation === 180))
+                {
+                    true
+                }
+            }
+            state:
+            {
+                if((displayRotation === -90) || (displayRotation === 0))
+                {
+                    "not_rotated"
+                }
+                else if((displayRotation === 90) || (displayRotation === 180))
+                {
+                    "rotated"
+                }
+            }
+            onCheckedChanged: {
+                if (checked)
+                {
+                    if(displayRotation == -90)
+                        displayRotation = 90
+                    else if(displayRotation == 0)
+                        displayRotation = 180
+                }
+                else
+                {
+                    if(displayRotation == 90)
+                        displayRotation = -90
+                    else if(displayRotation == 180)
+                        displayRotation = 0
+
+                }
+                nodoControl.setOrientation(displayRotation)
+            }
         }
     }
 
@@ -141,9 +181,6 @@ Item {
         anchors.top: screenSaverRect.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         height: NodoSystem.nodoItemHeight
-        // anchors.right: deviceDisplayScreen.right
-        // anchors.top: deviceDisplayScreen.top
-        // anchors.rightMargin: 32
 
         NodoLabel {
             id: deviceDisplayLanguageLabel
@@ -175,10 +212,6 @@ Item {
         anchors.left: deviceDisplayScreen.left
         anchors.top: languageRect.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
-        // anchors.right: deviceDisplayScreen.right
-        // anchors.top: languageRect.bottom
-        // anchors.topMargin: NodoSystem.nodoTopMargin
-        // anchors.rightMargin: 32
         height: NodoSystem.nodoItemHeight
 
         NodoLabel {
@@ -211,9 +244,6 @@ Item {
         anchors.left: deviceDisplayScreen.left
         anchors.top: timezoneRect.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
-        // anchors.left: languageRect.left
-        // anchors.top: timezoneRect.bottom
-        // anchors.topMargin: NodoSystem.nodoTopMargin
         height: NodoSystem.nodoItemHeight
 
         NodoLabel {

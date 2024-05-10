@@ -52,11 +52,16 @@ public:
     Q_INVOKABLE void setPasswordMode(int passwordMode);
     Q_INVOKABLE int getPasswordMode(void);
 
+    Q_INVOKABLE void setOrientation(int orientation);
+    Q_INVOKABLE int getOrientation(void);
+
+
 signals:
     void appThemeChanged(bool);
     void inputFieldTextChanged(void);
     void echoModeChanged(void);
     void passwordModeChanged(void);
+    void orientationChanged(void);
 
 private:
     bool m_appTheme;

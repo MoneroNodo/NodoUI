@@ -207,3 +207,16 @@ int NodoSystemControl::getPasswordMode(void)
 {
     return m_passwordMode;
 }
+
+
+void NodoSystemControl::setOrientation(int orientation)
+{
+    m_embeddedUIConfigParser->writeDisplayOrientation(orientation);
+    m_displaySettings = m_embeddedUIConfigParser->readDisplaySettings();
+    emit orientationChanged();
+}
+
+int NodoSystemControl::getOrientation(void)
+{
+    return m_displaySettings.displayOrientation;
+}

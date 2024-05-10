@@ -14,12 +14,10 @@ ApplicationWindow {
     visible: true
 
     modality: Qt.WindowModal
-    // property int displayRotation: 0 //ugly fix. activate this to run on PC
-    property int displayRotation: -90 //ugly fix. comment out this to run on PC
-    contentOrientation: Qt.InvertedLandscapeOrientation //ugly fix. comment out this to run on PC
+    property int displayRotation: nodoControl.getOrientation()
 
-    width: displayRotation == 0 ? 1920 : 1080
-    height: displayRotation == 0 ? 1080 : 1920
+    width: displayRotation == 0 || displayRotation == 180 ? 1920 : 1080
+    height: displayRotation == 0 || displayRotation == 180 ? 1080 : 1920
 
     title: qsTr("NodoUI");
 
@@ -35,12 +33,23 @@ ApplicationWindow {
 
     Rectangle {
         id: mainAppWindowMainRect
+
         rotation: displayRotation
 
-        x: displayRotation == 0 ? 0 : -420
-        y: displayRotation == 0 ? 0 : 420
-        width: displayRotation == 0 ? mainAppWindow.width : mainAppWindow.height
-        height: displayRotation == 0 ? mainAppWindow.height : mainAppWindow.width
+        x: displayRotation == 0 || displayRotation == 180 ? 0 : -420
+        y: displayRotation == 0 || displayRotation == 180 ? 0 : 420
+        width: displayRotation == 0 || displayRotation == 180 ? mainAppWindow.width : mainAppWindow.height
+        height: displayRotation == 0 || displayRotation == 180 ? mainAppWindow.height : mainAppWindow.width
+
+        Connections {
+            target: nodoControl
+            function onOrientationChanged()
+            {
+                mainAppWindow.displayRotation = nodoControl.getOrientation()
+                mainAppWindowMainRect.rotation = nodoControl.getOrientation()
+            }
+        }
+
         color: "black"
 
         StackView {
@@ -99,7 +108,6 @@ ApplicationWindow {
         }
 
         NodoInputFieldPreview
-        // NodoLabel
         {
             id: previewPanel
             x: 0

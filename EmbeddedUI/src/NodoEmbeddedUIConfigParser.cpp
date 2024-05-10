@@ -29,6 +29,7 @@ display_settings_t NodoEmbeddedUIConfigParser::NodoEmbeddedUIConfigParser::readD
         m_displaySettings.screenSaverTimeoutInSec = 50;
         m_displaySettings.screenSaverItemChangeTimeoutInSec = 10;
         m_displaySettings.useFeedsAsScreenSaver = 0;
+        m_displaySettings.displayOrientation = 0;
 
         return m_displaySettings;
     }
@@ -41,6 +42,9 @@ display_settings_t NodoEmbeddedUIConfigParser::NodoEmbeddedUIConfigParser::readD
 
     jsonValue = m_displayObj.value(m_displayKeyList[DISPLAY_KEY_USE_FEEDS_AS_SS]);
     m_displaySettings.useFeedsAsScreenSaver = jsonValue.toInt();
+
+    jsonValue = m_displayObj.value(m_displayKeyList[DISPLAY_KEY_CHANGE_ORIENTATION]);
+    m_displaySettings.displayOrientation = jsonValue.toInt();
 
     return m_displaySettings;
 }
@@ -192,5 +196,22 @@ void NodoEmbeddedUIConfigParser::writeScreenSaverType(int state)
 int NodoEmbeddedUIConfigParser::readScreenSaverType(void)
 {
     return m_displaySettings.useFeedsAsScreenSaver;
+}
+
+
+void NodoEmbeddedUIConfigParser::writeDisplayOrientation(int orientation)
+{
+    if(m_displayObj.isEmpty())
+    {
+        return;
+    }
+
+    m_displayObj.insert(m_displayKeyList[DISPLAY_KEY_CHANGE_ORIENTATION], orientation);
+    writeJson();
+}
+
+int NodoEmbeddedUIConfigParser::readDisplayOrientation(void)
+{
+    return m_displaySettings.displayOrientation;
 }
 
