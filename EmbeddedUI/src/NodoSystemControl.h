@@ -43,8 +43,20 @@ public:
     Q_INVOKABLE QDateTime getChangedDateTime(void);
     Q_INVOKABLE int getTimeZoneIndex(void);
 
+    Q_INVOKABLE void setInputFieldText(QString text);
+    Q_INVOKABLE QString getInputFieldText(void);
+
+    Q_INVOKABLE void setEchoMode(int echoMode);
+    Q_INVOKABLE int getEchoMode(void);
+
+    Q_INVOKABLE void setPasswordMode(int passwordMode);
+    Q_INVOKABLE int getPasswordMode(void);
+
 signals:
     void appThemeChanged(bool);
+    void inputFieldTextChanged(void);
+    void echoModeChanged(void);
+    void passwordModeChanged(void);
 
 private:
     bool m_appTheme;
@@ -56,6 +68,9 @@ private:
     bool m_connectionStatus;
     int m_tz_id;
     QString m_timezone;
+    QString m_inputFieldText;
+    int m_echoMode = -1;
+    int m_passwordMode = -1;
 
     QStringList m_tzList = {
         "UTC",

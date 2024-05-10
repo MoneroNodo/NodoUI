@@ -12,6 +12,7 @@ Label {
     id: root
     leftPadding: 20
     rightPadding: 20
+    property color backgroundColor: nodoControl.appTheme ? NodoSystem.dataFieldTitleBGColorNightModeOn : NodoSystem.dataFieldTitleBGColorNightModeOff
 
     property int labelWidth: root.paintedWidth + root.leftPadding + root.rightPadding
     property int itemSize: 0
@@ -25,6 +26,8 @@ Label {
 
     background: NodoCanvas {
         width: root.width
-        color: nodoControl.appTheme ? NodoSystem.dataFieldTitleBGColorNightModeOn : NodoSystem.dataFieldTitleBGColorNightModeOff
+        color: backgroundColor
     }
 }
+
+

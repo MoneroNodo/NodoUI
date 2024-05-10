@@ -173,3 +173,37 @@ QDateTime NodoSystemControl::getChangedDateTime(void)
 
     return changed_dt;
 }
+
+void NodoSystemControl::setInputFieldText(QString text)
+{
+    m_inputFieldText.clear();
+    m_inputFieldText = text;
+    emit inputFieldTextChanged();
+}
+
+QString NodoSystemControl::getInputFieldText(void)
+{
+    return m_inputFieldText;
+}
+
+void NodoSystemControl::setEchoMode(int echoMode)
+{
+    m_echoMode = echoMode;
+    emit echoModeChanged();
+}
+
+int NodoSystemControl::getEchoMode(void)
+{
+    return m_echoMode;
+}
+
+void NodoSystemControl::setPasswordMode(int passwordMode)
+{
+    m_passwordMode = passwordMode;
+    emit passwordModeChanged();
+}
+
+int NodoSystemControl::getPasswordMode(void)
+{
+    return m_passwordMode;
+}

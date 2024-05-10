@@ -172,3 +172,14 @@ void NodoConfigParser::setLanguageCode(QString code)
     m_configObj.insert("language", code);
     writeJson();
 }
+
+QString NodoConfigParser::getDBPathDir(void)
+{
+    QJsonValue jsonValue;
+    jsonValue = m_configObj.value("data_dir");
+    if("" == jsonValue.toString())
+    {
+        return "";
+    }
+    return jsonValue.toString();
+}

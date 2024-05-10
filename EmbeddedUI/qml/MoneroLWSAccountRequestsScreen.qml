@@ -10,18 +10,28 @@ import NodoSystem 1.1
 Item {
     id: moneroLWSAccountCreationRequestsScreen
 	anchors.fill: parent
-    property int labelSize: 0
 
-    Component.onCompleted: {
-        onCalculateMaximumTextLabelLength()
+    function createRequestListModels() {
+        requestListModel.clear()
+
+        for (var index = 0; index < moneroLWS.getRequestAccountSize(); index++) {
+            var accountParams = { "requestAddress": moneroLWS.getRequestAccountAddress(index), "scanHeight": moneroLWS.getRequestAccountScanHeight(index)}
+            requestListModel.append(accountParams)
+        }
     }
 
-    function onCalculateMaximumTextLabelLength() {
-        if(moneroLWSAccountRequestsAddressField.labelRectRoundSize > labelSize)
-            labelSize = moneroLWSAccountRequestsAddressField.labelRectRoundSize
+    Component.onCompleted: {
+        if(moneroLWS.isListRequestsCompleted())
+        {
+            createRequestListModels()
+        }
+    }
 
-        if(moneroLWSAccountRequestsHeightField.labelRectRoundSize > labelSize)
-            labelSize = moneroLWSAccountRequestsHeightField.labelRectRoundSize
+    Connections {
+        target: moneroLWS
+        function listRequestsCompleted() {
+            createListModels()
+        }
     }
 
     NodoButton {
@@ -32,52 +42,34 @@ Item {
         height: NodoSystem.infoFieldLabelHeight
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize
+        isActive: requestListModel.count > 0 ? true : false
+        onClicked: {
+            moneroLWS.acceptAllRequests()
+        }
     }
 
-    NodoInfoField {
-        id: moneroLWSAccountRequestsAddressField
-		anchors.left: moneroLWSAccountCreationRequestsScreen.left
+    ListView {
+        id: requestList
         anchors.top: moneroLWSAcceptAllRequestsButton.bottom
-        anchors.topMargin: NodoSystem.nodoTopMargin
-        width: labelSize + 300
-        height: NodoSystem.infoFieldLabelHeight
-        itemSize: labelSize
-        itemText: qsTr("Address")
-        valueText: "a very long address"
-    }
+        anchors.left: moneroLWSAccountCreationRequestsScreen.left
+        anchors.bottom: moneroLWSAccountCreationRequestsScreen.bottom
+        anchors.leftMargin: 10
+        anchors.topMargin: 10
+        model: requestListModel
+        visible: true
+        width: 1840
+        clip: true
 
-    NodoInfoField {
-        id: moneroLWSAccountRequestsHeightField
-		anchors.left: moneroLWSAccountRequestsAddressField.right
-        anchors.top: moneroLWSAccountRequestsAddressField.top
-        anchors.leftMargin: 20
-        width: labelSize+300
-        height: NodoSystem.infoFieldLabelHeight
-        itemSize: labelSize
-        itemText: qsTr("Start Height")
-        valueText: "2999185"
+        delegate: MoneroLWSAccountRequestsScreenDelegate {
+            id: requestListDelegate
+            requestAddress: model.requestAddress
+            scanHeight: model.scanHeight
+            width: requestList.width
+        }
+        spacing: 15
     }
-
-    NodoButton {
-        id: moneroLWSAccountRequestsAcceptButton
-		anchors.left: moneroLWSAccountCreationRequestsScreen.left
-        anchors.top: moneroLWSAccountRequestsHeightField.bottom
-        anchors.topMargin: NodoSystem.nodoTopMargin
-        text: qsTr("Accept")
-        height: NodoSystem.infoFieldLabelHeight
-        font.family: NodoSystem.fontUrbanist.name
-        font.pixelSize: NodoSystem.buttonTextFontSize
-    }
-
-    NodoButton {
-        id: moneroLWSAccountRequestsRejectButton
-		anchors.left: moneroLWSAccountRequestsAcceptButton.right
-        anchors.top: moneroLWSAccountRequestsAcceptButton.top
-		anchors.leftMargin: 20
-        text: qsTr("Reject")
-        height: NodoSystem.infoFieldLabelHeight
-        font.family: NodoSystem.fontUrbanist.name
-        font.pixelSize: NodoSystem.buttonTextFontSize
+    ListModel {
+        id: requestListModel
     }
 }
 

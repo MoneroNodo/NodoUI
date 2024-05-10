@@ -5,7 +5,7 @@ Item
 {
     readonly property FontLoader fontUrbanist: FontLoader { source: "qrc:/NodoSystem/InterRegular.ttf" }
     property int topMenuYposition: 32
-    property int topMenuButtonHeight: 128
+    property int topMenuButtonHeight: 100
     property int topMenuButtonFontSize: 32
     property int topMenuGapBetweenButtons: 16
     property int dateTimeFontSize: 56
@@ -54,6 +54,7 @@ Item
     property color dateTextColorNightModeOff: "#9D9D9D"
 
     property color switchBackgroundColor: "#181818"
+    property color buttonDisabledColor: "#464646"
 
     property int digitalClockPixelSize: 750
 

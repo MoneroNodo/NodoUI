@@ -18,13 +18,17 @@ NodoSystemStatusParser::NodoSystemStatusParser(QObject *parent) : QObject(parent
 
 void NodoSystemStatusParser::replyFinished(QNetworkReply *reply) {
     QString answer = reply->readAll();
-
     if(!answer.isEmpty())
     {
         m_document = QJsonDocument::fromJson(answer.toUtf8());
         m_rootObj = m_document.object();
-        emit systemStatusReady();
     }
+    else
+    {
+        m_document = QJsonDocument();
+        m_rootObj = QJsonObject();
+    }
+    emit systemStatusReady();
 }
 
 QString NodoSystemStatusParser::getStringValueFromKey(QString key)

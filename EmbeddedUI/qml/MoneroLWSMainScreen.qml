@@ -12,6 +12,11 @@ Item {
     anchors.fill: parent
     anchors.leftMargin: NodoSystem.subMenuLeftMargin
 
+    Component.onCompleted: {
+        moneroLWS.listAccounts()
+        moneroLWS.listRequests()
+    }
+
     TabBar {
         id: moneroLWSMenuBar
         anchors.top: moneroLWSMainScreen.top

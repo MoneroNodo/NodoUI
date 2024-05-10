@@ -89,6 +89,7 @@ Item {
         height: NodoSystem.infoFieldLabelHeight
         itemSize: labelSize
         itemText: qsTr("Password")
+        passwordInput: true
     }
 
     NodoButton {

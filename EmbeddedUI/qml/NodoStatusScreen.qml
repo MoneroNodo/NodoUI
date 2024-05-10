@@ -263,7 +263,7 @@ Rectangle {
             anchors.top: systemStatusTabName.bottom
             anchors.topMargin: 8
             width: systemStatus.width
-            height: NodoSystem.infoFieldLabelHeight//hheight
+            height: NodoSystem.infoFieldLabelHeight
             itemSize: labelSize
             itemText: qsTr("Monero Daemon")
             valueText: ""
@@ -275,7 +275,7 @@ Rectangle {
             anchors.top: moneroNodeField.bottom
             anchors.topMargin: 8
             width: systemStatus.width
-            height: NodoSystem.infoFieldLabelHeight//hheight
+            height: NodoSystem.infoFieldLabelHeight
             itemSize: labelSize
             itemText: qsTr("Monero Miner")
             valueText: ""
@@ -287,7 +287,7 @@ Rectangle {
             anchors.top: minerServiceField.bottom
             anchors.topMargin: 8
             width: systemStatus.width
-            height: NodoSystem.infoFieldLabelHeight//hheight
+            height: NodoSystem.infoFieldLabelHeight
             itemSize: labelSize
             itemText: qsTr("Tor Service")
             valueText: ""
@@ -299,7 +299,7 @@ Rectangle {
             anchors.top: torServiceField.bottom
             anchors.topMargin: 8
             width: systemStatus.width
-            height: NodoSystem.infoFieldLabelHeight//hheight
+            height: NodoSystem.infoFieldLabelHeight
             itemSize: labelSize
             itemText: qsTr("I2P Service")
             valueText: ""
@@ -311,7 +311,7 @@ Rectangle {
             anchors.top: i2pServiceField.bottom
             anchors.topMargin: 8
             width: systemStatus.width
-            height: NodoSystem.infoFieldLabelHeight//hheight
+            height: NodoSystem.infoFieldLabelHeight
             itemSize: labelSize
             itemText: qsTr("Monero LWS")
             valueText: ""
@@ -323,7 +323,7 @@ Rectangle {
             anchors.top: moneroLWSField.bottom
             anchors.topMargin: 8
             width: systemStatus.width
-            height: NodoSystem.infoFieldLabelHeight//hheight
+            height: NodoSystem.infoFieldLabelHeight
             itemSize: labelSize
             itemText: qsTr("Block Explorer")
             valueText: ""

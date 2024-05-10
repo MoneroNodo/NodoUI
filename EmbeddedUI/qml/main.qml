@@ -98,11 +98,30 @@ ApplicationWindow {
             }
         }
 
+        NodoInputFieldPreview
+        // NodoLabel
+        {
+            id: previewPanel
+            x: 0
+            y: mainAppWindowMainRect.height
+            width: mainAppWindowMainRect.width
+            height: NodoSystem.infoFieldLabelHeight
+            // focus: true
+
+
+            Connections {
+                target: nodoControl
+                function onInputFieldTextChanged() {
+                    previewPanel.text = nodoControl.getInputFieldText()
+                }
+            }
+        }
+
         InputPanel {
             id: inputPanel
             z: 99
             x: 0
-            y: mainAppWindowMainRect.height
+            y: mainAppWindowMainRect.height + previewPanel.height
             width: mainAppWindowMainRect.width
 
             states: State {
@@ -110,6 +129,11 @@ ApplicationWindow {
                 when: inputPanel.active
                 PropertyChanges {
                     target: inputPanel
+                    y: mainAppWindowMainRect.height + previewPanel.height - inputPanel.height
+                }
+
+                PropertyChanges {
+                    target: previewPanel
                     y: mainAppWindowMainRect.height - inputPanel.height
                 }
             }

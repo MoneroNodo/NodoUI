@@ -18,9 +18,10 @@ Button {
     property int textLeftPadding: NodoSystem.textPadding
     property int textRightPadding: NodoSystem.textPadding
     property string backgroundColor:  nodoControl.appTheme ? NodoSystem.buttonBGColorNightModeOn : NodoSystem.buttonBGColorNightModeOff
-    property bool isActive: false
+    property bool isActive: true
     property int buttonWidth: buttonText.paintedWidth + textLeftPadding + textRightPadding
     width: buttonWidth > NodoSystem.nodoItemWidth ? buttonWidth : NodoSystem.nodoItemWidth
+    enabled: isActive
 
     contentItem: Text {
         id: buttonText
@@ -39,6 +40,6 @@ Button {
 
     background: NodoCanvas {
         width: root.width
-        color: root.backgroundColor
+        color: isActive == false ? NodoSystem.buttonDisabledColor : root.backgroundColor
     }
 }

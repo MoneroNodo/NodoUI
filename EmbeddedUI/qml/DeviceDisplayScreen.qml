@@ -31,7 +31,6 @@ Item {
             anchors.top: deviceDisplayBrightnessRect.top
             height: deviceDisplayBrightnessRect.height
             text: qsTr("Brightness")
-            verticalAlignment: Text.AlignVCenter
         }
 
         NodoSlider {

@@ -82,7 +82,7 @@ Item {
         itemSize: labelSize
         itemText: qsTr("IP Address")
         valueText: nodoConfig.getStringValueFromKey("ethernet", "ip")
-        textFlag: Qt.ImhPreferNumbers
+        textFlag: Qt.ImhDigitsOnly
         readOnlyFlag: ethernetIPConfigSwitch.checked
     }
 
@@ -96,7 +96,7 @@ Item {
         itemSize: labelSize
         itemText: qsTr("Subnet Mask")
         valueText: nodoConfig.getStringValueFromKey("ethernet", "subnet")
-        textFlag: Qt.ImhPreferNumbers
+        textFlag: Qt.ImhDigitsOnly
     }
 
     NodoInputField {
@@ -109,7 +109,7 @@ Item {
         itemSize: labelSize
         itemText: qsTr("Router")
         valueText: nodoConfig.getStringValueFromKey("ethernet", "router")
-        textFlag: Qt.ImhPreferNumbers
+        textFlag: Qt.ImhDigitsOnly
     }
 
     NodoInputField {
@@ -122,7 +122,7 @@ Item {
         itemSize: labelSize
         itemText: qsTr("DHCP")
         valueText: nodoConfig.getStringValueFromKey("ethernet", "dhcp")
-        textFlag: Qt.ImhPreferNumbers
+        textFlag: Qt.ImhDigitsOnly
     }
 }
 

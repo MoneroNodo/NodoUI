@@ -9,64 +9,51 @@ import NodoSystem 1.1
 
 Item {
     id: moneroLWSInactiveScreen
-    property int labelSize: 0
 	anchors.fill: parent
 
+    function createListModels() {
+        inactiveListModel.clear()
+
+        for (var index = 0; index < moneroLWS.getInactiveAccountSize(); index++) {
+            var accountParams = { "inactiveAddress": moneroLWS.getInactiveAccountAddress(index), "scanHeight": moneroLWS.getInactiveAccountScanHeight(index)}
+            inactiveListModel.append(accountParams)
+        }
+    }
+
     Component.onCompleted: {
-        onCalculateMaximumTextLabelLength()
+        if(moneroLWS.isListAccountsCompleted())
+        {
+            createListModels()
+        }
     }
 
-    function onCalculateMaximumTextLabelLength() {
-        if(moneroLWSinactiveAddressField.labelRectRoundSize > labelSize)
-            labelSize = moneroLWSinactiveAddressField.labelRectRoundSize
-
-        if(moneroLWSinactiveHeightField.labelRectRoundSize > labelSize)
-            labelSize = moneroLWSinactiveHeightField.labelRectRoundSize
+    Connections {
+        target: moneroLWS
+        function onListAccountsCompleted() {
+            createListModels()
+        }
     }
 
-    NodoInfoField {
-        id: moneroLWSinactiveAddressField
-		anchors.left: moneroLWSInactiveScreen.left
+    ListView {
+        id: inactiveList
         anchors.top: moneroLWSInactiveScreen.top
-        width: labelSize + 300
-        height: NodoSystem.infoFieldLabelHeight
-        itemSize: labelSize
-        itemText: qsTr("Address")
-        valueText: "a very long address"
+        anchors.left: moneroLWSInactiveScreen.left
+        anchors.bottom: moneroLWSInactiveScreen.bottom
+        anchors.leftMargin: 10
+        model: inactiveListModel
+        visible: true
+        width: 1840
+        clip: true
+
+        delegate: MoneroLWSInactiveScreenDelegate {
+            id: inactiveListDelegate
+            inactiveAddress: model.inactiveAddress
+            scanHeight: model.scanHeight
+            width: inactiveList.width
+        }
+        spacing: 15
     }
-
-
-    NodoInfoField {
-        id: moneroLWSinactiveHeightField
-		anchors.left: moneroLWSinactiveAddressField.right
-        anchors.top: moneroLWSInactiveScreen.top
-        anchors.leftMargin: 20
-        width: labelSize + 300
-        height: NodoSystem.infoFieldLabelHeight
-        itemSize: labelSize
-        itemText: qsTr("Height")
-        valueText: "2999185"
-    }
-
-    NodoButton {
-        id: moneroLWSReactivateButton
-		anchors.left: moneroLWSinactiveHeightField.right
-        anchors.top: moneroLWSInactiveScreen.top
-        anchors.leftMargin: 20
-        text: qsTr("Reactivate")
-        height: NodoSystem.infoFieldLabelHeight
-        font.family: NodoSystem.fontUrbanist.name
-        font.pixelSize: NodoSystem.buttonTextFontSize
-    }
-
-    NodoButton {
-        id: moneroLWSDeleteButton
-		anchors.left: moneroLWSReactivateButton.right
-        anchors.top: moneroLWSInactiveScreen.top
-        anchors.leftMargin: 20
-        text: qsTr("Delete")
-        height: NodoSystem.infoFieldLabelHeight
-        font.family: NodoSystem.fontUrbanist.name
-        font.pixelSize: NodoSystem.buttonTextFontSize
+    ListModel {
+        id: inactiveListModel
     }
 }

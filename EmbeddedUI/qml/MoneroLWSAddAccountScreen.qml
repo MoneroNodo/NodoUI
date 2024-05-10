@@ -12,7 +12,7 @@ Item {
     id: moneroLWSAddAccountScreen
 	anchors.fill: parent
     property int labelSize: 0
-    property int infoFieldSize: 1700
+    property int infoFieldSize: 1850
 
     Component.onCompleted: {
         onCalculateMaximumTextLabelLength()
@@ -58,6 +58,11 @@ Item {
         height: NodoSystem.infoFieldLabelHeight
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize
+        isActive: moneroLWSMainAddressInput.valueText.length == 95 ? moneroLWSPrivateViewkeyLabel.valueText.length ==64 ? true : false : false
+
+        onClicked: {
+            moneroLWS.addAccount(moneroLWSMainAddressInput.valueText, moneroLWSPrivateViewkeyLabel.valueText)
+        }
     }
 }
 

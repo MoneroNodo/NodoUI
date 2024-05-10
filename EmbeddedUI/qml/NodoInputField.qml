@@ -24,6 +24,9 @@ Item {
     property int labelWidth: namelabel.paintedWidth + textLeftPadding + textRightPadding
     property int itemSize: 0
     property int labelRectRoundSize: labelWidth > NodoSystem.nodoItemWidth ? labelWidth : NodoSystem.nodoItemWidth
+    property bool passwordInput: false
+
+    signal textEdited()
 
     NodoCanvas {
         id: labelCanvas
@@ -52,26 +55,83 @@ Item {
         width: root.width - labelCanvas.width
         height: root.height
         color: nodoControl.appTheme ? NodoSystem.dataFieldTextBGColorNightModeOn : NodoSystem.dataFieldTextBGColorNightModeOff
+        property int defaultEchoMode: passwordInput == true ? TextInput.Password: TextInput.Normal
 
         TextInput {
             id: valueLabel
-            x:0
+            anchors.left: valueCanvas.left
+            anchors.leftMargin: textLeftPadding
+            anchors.right: passwordButton.visible ? passwordButton.left : valueCanvas.right
             y:0
-            width: valueCanvas.width
             height: root.height
-            text: qsTr(valueText)
-            leftPadding: textLeftPadding
+            text: valueText
             rightPadding: textRightPadding
             verticalAlignment: Text.AlignVCenter
             font.family: NodoSystem.fontUrbanist.name
             font.pixelSize: valueFontSize
+            clip: true
             color: nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn  : NodoSystem.dataFieldTextColorNightModeOff
+            echoMode: valueCanvas.defaultEchoMode
             onFocusChanged:{
                 if(focus)
+                {
                     selectAll()
+                    nodoControl.setEchoMode(valueLabel.echoMode)
+                    nodoControl.setPasswordMode(passwordInput)
+                }
+                else {
+                    echoMode: valueCanvas.defaultEchoMode
+                }
+
+                nodoControl.setInputFieldText("")
             }
+            onTextEdited:
+            {
+                valueText = valueLabel.text
+                root.textEdited()
+                nodoControl.setInputFieldText(valueText)
+            }
+
             inputMethodHints: Qt.ImhNoPredictiveText | Qt.ImhNoTextHandles | Qt.ImhNoAutoUppercase | textFlag
             readOnly: readOnlyFlag
+
+            Connections {
+                target: nodoControl
+                function onEchoModeChanged()
+                {
+                    if((valueLabel.focus) && (passwordInput === true))
+                    {
+                        valueLabel.echoMode = nodoControl.getEchoMode()
+                        passwordButton.hidePassword = nodoControl.getEchoMode()
+                    }
+                }
+            }
         }
+
+        NodoPasswordButton {
+            id: passwordButton
+            visible: passwordInput
+            anchors.right: valueCanvas.right
+            anchors.top: valueCanvas.top
+            anchors.topMargin: 4
+            anchors.rightMargin: 11
+            width: valueCanvas.height - 8
+            height: valueCanvas.height - 8
+
+            onHideStatusChanged: {
+                if(passwordButton.hidePassword === true)
+                {
+                    valueLabel.echoMode = TextInput.Password
+                }
+                else
+                {
+                    valueLabel.echoMode = TextInput.Normal
+
+                }
+                valueLabel.focus = true
+                nodoControl.setEchoMode(valueLabel.echoMode)
+            }
+        }
+
     }
 }

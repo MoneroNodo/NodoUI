@@ -6,7 +6,7 @@ After=getty@tty1.service getty@tty7.service
 
 [Service]
 ExecStart=/opt/nodo/embeddedUI.sh &
-
+User=nodo
 [Install]
 Alias=display-manager.service
 

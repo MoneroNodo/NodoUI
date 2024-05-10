@@ -64,20 +64,20 @@
             "visible": true
         },
         "feed_6": {
-            "description_tag": "description",
+            "description_tag": "",
             "image_attr": "",
             "image_tag": "",
-            "name": "The Monero Standard",
-            "num_of_feeds_to_show": 5,
-            "pub_date_tag": "pubDate",
-            "selected": true,
-            "uri": "https://localmonero.co/static/rss/the-monero-standard/feed.xml",
-            "visible": true
+            "name": "",
+            "num_of_feeds_to_show": 0,
+            "pub_date_tag": "",
+            "selected": false,
+            "uri": "",
+            "visible": false
         },
         "feed_7": {
             "description_tag": "",
             "image_attr": "",
-            "imgage_tag": "",
+            "image_tag": "",
             "name": "",
             "num_of_feeds_to_show": 0,
             "pub_date_tag": "",
@@ -88,7 +88,7 @@
         "feed_8": {
             "description_tag": "",
             "image_attr": "",
-            "imgage_tag": "",
+            "image_tag": "",
             "name": "",
             "num_of_feeds_to_show": 0,
             "pub_date_tag": "",
@@ -99,7 +99,7 @@
         "feed_9": {
             "description_tag": "",
             "image_attr": "",
-            "imgage_tag": "",
+            "image_tag": "",
             "name": "",
             "num_of_feeds_to_show": 0,
             "pub_date_tag": "",
@@ -110,7 +110,7 @@
         "feed_10": {
             "description_tag": "",
             "image_attr": "",
-            "imgage_tag": "",
+            "image_tag": "",
             "name": "",
             "num_of_feeds_to_show": 0,
             "pub_date_tag": "",

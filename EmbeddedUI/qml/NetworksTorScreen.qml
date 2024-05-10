@@ -20,14 +20,20 @@ Item {
     }
 
     function onCalculateMaximumTextLabelLength() {
+        if(torSwitchText.labelRectRoundSize > labelSize)
+            labelSize = torSwitchText.labelRectRoundSize
+
         if(torOnionAddressField.labelRectRoundSize > labelSize)
-        labelSize = torOnionAddressField.labelRectRoundSize
+            labelSize = torOnionAddressField.labelRectRoundSize
 
         if(torPortField.labelRectRoundSize > labelSize)
-        labelSize = torPortField.labelRectRoundSize
+            labelSize = torPortField.labelRectRoundSize
 
         if(torPeerField.labelRectRoundSize > labelSize)
-        labelSize = torPeerField.labelRectRoundSize
+            labelSize = torPeerField.labelRectRoundSize
+
+        if(torRouteSwitchText.labelRectRoundSize > labelSize)
+            labelSize = torRouteSwitchText.labelRectRoundSize
     }
 
     Connections {
@@ -52,6 +58,7 @@ Item {
             height: torSwitchRect.height
             anchors.left: torSwitchRect.left
             anchors.top: torSwitchRect.top
+            itemSize: labelSize
             text: qsTr("Tor")
         }
 
@@ -78,6 +85,7 @@ Item {
             height: torRouteSwitchRect.height
             anchors.left: torRouteSwitchRect.left
             anchors.top: torRouteSwitchRect.top
+            itemSize: labelSize
             text: qsTr("Route all connections through Tor")
         }
 

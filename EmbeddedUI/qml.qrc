@@ -5,7 +5,6 @@
         <file>qml/NodoInfoField.qml</file>
         <file>qml/NetworksMainScreen.qml</file>
         <file>qml/NetworksClearnetScreen.qml</file>
-        <file>Images/no_qrcode.png</file>
         <file>qml/NetworksTorScreen.qml</file>
         <file>qml/NodoSwitch.qml</file>
         <file>qml/NetworksI2PScreen.qml</file>
@@ -54,6 +53,13 @@
         <file>qml/NodoCurrencies.qml</file>
         <file>qml/NodoTimezones.qml</file>
         <file>qml/NodoLabel.qml</file>
+        <file>qml/MoneroLWSActiveScreenDelegate.qml</file>
+        <file>qml/MoneroLWSInactiveScreenDelegate.qml</file>
+        <file>qml/MoneroLWSAccountRequestsScreenDelegate.qml</file>
+        <file>qml/NodoPasswordButton.qml</file>
+        <file>qml/NodoInputFieldPreview.qml</file>
+        <file>Images/eye-off.png</file>
+        <file>Images/eye.png</file>
     </qresource>
     <qresource prefix="/NodoSystem">
         <file alias="qmldir">assets/NodoSystem/qmldir</file>

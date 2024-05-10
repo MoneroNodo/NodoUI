@@ -28,6 +28,7 @@ public:
 
     QString getLanguageCode(void);
     void setLanguageCode(QString code);
+    QString getDBPathDir(void);
 
 signals:
     void configParserReady(void);

@@ -188,7 +188,11 @@ Item {
                     repeat: true
                     triggeredOnStart: true
                     onTriggered: {
-                        dateText.text = Qt.formatDateTime(nodoControl.getChangedDateTime(), "dd MMM yyyy")
+                        var m_day = Qt.formatDateTime(nodoControl.getChangedDateTime(), "dd")
+                        var m_month = Qt.formatDateTime(nodoControl.getChangedDateTime(), "MMM")
+                        var m_year = Qt.formatDateTime(nodoControl.getChangedDateTime(), "yyyy")
+
+                        dateText.text = m_day + " "  + m_month.toUpperCase() + " " + m_year
                     }
                 }
             }
@@ -225,7 +229,6 @@ Item {
             anchors.left: mainAppWindowRectangle.left
             anchors.right: mainAppWindowRectangle.right
             anchors.bottom: mainAppWindowRectangle.bottom
-            anchors.topMargin: 20
             source: "NodoStatusScreen.qml"
         }
 

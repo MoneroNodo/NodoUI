@@ -118,6 +118,7 @@ Item {
         itemSize: labelSize
         itemText: qsTr("Passphrase")
         valueText: ("" === nodoConfig.getStringValueFromKey("wifi", "pw")) ? "" : "******"
+        passwordInput: true
     }
 
     NodoInfoField {
@@ -168,7 +169,7 @@ Item {
         itemSize: labelSize
         itemText: qsTr("IP Address")
         valueText: nodoConfig.getStringValueFromKey("wifi", "ip")
-        textFlag: Qt.ImhPreferNumbers
+        textFlag: Qt.ImhDigitsOnly
     }
 
     NodoInputField {
@@ -181,7 +182,7 @@ Item {
         itemSize: labelSize
         itemText: qsTr("Subnet Mask")
         valueText: nodoConfig.getStringValueFromKey("wifi", "subnet")
-        textFlag: Qt.ImhPreferNumbers
+        textFlag: Qt.ImhDigitsOnly
     }
 
     NodoInputField {
@@ -194,7 +195,7 @@ Item {
         itemSize: labelSize
         itemText: qsTr("Router")
         valueText: nodoConfig.getStringValueFromKey("wifi", "router")
-        textFlag: Qt.ImhPreferNumbers
+        textFlag: Qt.ImhDigitsOnly
     }
 
     NodoInputField {
@@ -207,7 +208,7 @@ Item {
         itemSize: labelSize
         itemText: qsTr("DHCP")
         valueText: nodoConfig.getStringValueFromKey("wifi", "dhcp")
-        textFlag: Qt.ImhPreferNumbers
+        textFlag: Qt.ImhDigitsOnly
     }
 }
 
