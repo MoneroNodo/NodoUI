@@ -220,3 +220,13 @@ int NodoSystemControl::getOrientation(void)
 {
     return m_displaySettings.displayOrientation;
 }
+
+void NodoSystemControl::setBacklightLevel(int backlightLevel)
+{
+    m_controller->setBacklightLevel(backlightLevel);
+}
+
+int NodoSystemControl::getBacklightLevel(void)
+{
+    return m_controller->getBacklightLevel();
+}

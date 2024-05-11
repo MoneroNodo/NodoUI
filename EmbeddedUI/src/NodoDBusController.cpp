@@ -61,3 +61,13 @@ void NodoDBusController::updateTextEdit(QString message)
 {
     Q_UNUSED(message);
 }
+
+void NodoDBusController::setBacklightLevel(int backlightLevel)
+{
+    nodo->setBacklightLevel(backlightLevel);
+}
+
+int NodoDBusController::getBacklightLevel(void)
+{
+    return nodo->getBacklightLevel();
+}

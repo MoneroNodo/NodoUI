@@ -17,6 +17,9 @@ public:
     void serviceManager(QString operation, QString service);
     void restart(void);
     void shutdown(void);
+    void setBacklightLevel(int backlightLevel);
+    int getBacklightLevel(void);
+
 
 protected:
     void timerEvent(QTimerEvent *event);

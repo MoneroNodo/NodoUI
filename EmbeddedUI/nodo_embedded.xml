@@ -16,6 +16,14 @@
 
         <method name="shutdown"/>
 
+        <method name="setBacklightLevel">
+            <arg name="backlightLevel" type="i" direction="in"/>
+        </method>
+
+        <method name="getBacklightLevel">
+            <arg name="backlightLevel" type="i" direction="out"/>
+        </method>
+
         <signal name="startRecoveryNotification">
                 <arg name="message" type="s" direction="out"/>
         </signal>

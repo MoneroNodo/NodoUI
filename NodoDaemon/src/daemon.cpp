@@ -2,6 +2,18 @@
 
 #define DISABLE_PROCESS_CALLS
 
+#define BACKLIGHT_CONTROL_FILE "/sys/class/backlight/fde30000.dsi.0/brightness"
+#define BRIGHTNESS_RANGE_MIN 0
+#define BRIGHTNESS_RANGE_MAX 100
+
+#define BRIGHTNESS_LEVEL_MIN 0
+#define BRIGHTNESS_LEVEL_MAX 255
+
+#define MIN_ALLOWED_BRIGHTNESS_LEVEL 13 // min allowed level is BRIGHTNESS_LEVEL_MIN + (5% of BRIGHTNESS_LEVEL_MAX)
+#define MAX_ALLOWED_BRIGHTNESS_LEVEL 243 // max allowed level is BRIGHTNESS_LEVEL_MAX - (5% of BRIGHTNESS_LEVEL_MAX)
+
+#define m_scaleFactor 2.3 // (MAX_ALLOWED_BRIGHTNESS_LEVEL - MIN_ALLOWED_BRIGHTNESS_LEVEL) / (BRIGHTNESS_RANGE_MAX - BRIGHTNESS_RANGE_MIN)
+
 Daemon::Daemon()
 {
     new EmbeddedInterfaceAdaptor(this);
@@ -138,3 +150,55 @@ void Daemon::shutdown(void)
     emit shutdownNotification("received shutdown request");
 }
 
+void Daemon::setBacklightLevel(int backlightLevel)
+{
+    if(backlightLevel < BRIGHTNESS_RANGE_MIN)
+    {
+        backlightLevel = BRIGHTNESS_RANGE_MIN;
+    }
+
+    if(backlightLevel > BRIGHTNESS_RANGE_MAX)
+    {
+        backlightLevel = BRIGHTNESS_RANGE_MAX;
+    }
+
+    int blLevel = (int)(MIN_ALLOWED_BRIGHTNESS_LEVEL + backlightLevel*m_scaleFactor);
+
+    QString filename = BACKLIGHT_CONTROL_FILE;
+    QFile file(filename);
+    if (file.open(QIODevice::WriteOnly)) {
+        QTextStream stream(&file);
+        stream << QString::number(blLevel);
+    }
+    else {
+        qDebug() << "file open error";
+    }
+    file.close();
+}
+
+int Daemon::getBacklightLevel(void)
+{
+    int retVal = BRIGHTNESS_RANGE_MAX/2;
+
+    QFile file(BACKLIGHT_CONTROL_FILE);
+    if (!file.open(QIODevice::ReadWrite))
+    {
+        qDebug() << "file read error";
+        return BRIGHTNESS_RANGE_MAX;
+    }
+
+    while (!file.atEnd()) {
+        bool ok;
+
+        QByteArray line = file.readLine();
+        retVal = line.toInt(&ok, 10);
+
+        return (int)(retVal/m_scaleFactor);
+        file.close();
+    }
+
+    if(file.isOpen())
+        file.close();
+
+    return retVal;
+}

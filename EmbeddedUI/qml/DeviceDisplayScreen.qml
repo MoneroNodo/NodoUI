@@ -17,6 +17,7 @@ Item {
 
     Component.onCompleted: {
         deviceDisplayCurrencyComboBox.currentIndex = priceTicker.getCurrentCurrencyIndex()
+        deviceDisplaySlider.value = nodoControl.getBacklightLevel()
     }
 
     Rectangle {
@@ -42,11 +43,14 @@ Item {
             height: deviceDisplayBrightnessRect.height
             snapMode: Slider.NoSnap
             stepSize: 1
-            from: 1
-            value: 128
-            to: 255
+            from: 0
+            value: 50
+            to: 100
             handleHight: height*0.8
             handleWidth: handleHight
+            onValueChanged: {
+                nodoControl.setBacklightLevel(value)
+            }
         }
     }
 

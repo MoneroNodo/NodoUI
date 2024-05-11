@@ -17,6 +17,8 @@ public slots:
     void serviceManager(QString operation, QString service);
     void restart(void);
     void shutdown(void);
+    void setBacklightLevel(int backlightLevel);
+    int getBacklightLevel(void);
 
 signals:
     void startRecoveryNotification(const QString &message);

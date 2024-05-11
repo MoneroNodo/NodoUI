@@ -1,6 +1,6 @@
 #include "MoneroLWS.h"
 
-#define ENABLE_TEST_CODE
+// #define ENABLE_TEST_CODE
 
 MoneroLWS::MoneroLWS(NodoConfigParser *configParser)
 {
@@ -50,6 +50,7 @@ void MoneroLWS::listRequests(void)
     QStringList arguments;
     arguments << dbPathDirArg << "list_requests";
     QString result = callCommand(arguments);
+    parseRequests(result);
 }
 
 void MoneroLWS::deactivateAccount(QString address)

@@ -55,6 +55,8 @@ public:
     Q_INVOKABLE void setOrientation(int orientation);
     Q_INVOKABLE int getOrientation(void);
 
+    Q_INVOKABLE void setBacklightLevel(int backlightLevel);
+    Q_INVOKABLE int getBacklightLevel(void);
 
 signals:
     void appThemeChanged(bool);
