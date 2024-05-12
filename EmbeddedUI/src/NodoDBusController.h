@@ -19,20 +19,22 @@ public:
     void shutdown(void);
     void setBacklightLevel(int backlightLevel);
     int getBacklightLevel(void);
-
+    void getServiceStatus(void);
 
 protected:
     void timerEvent(QTimerEvent *event);
 
 private slots:
     void updateTextEdit(QString message);
+    void updateServiceStatus(QString message);
 
 private:
     com::moneronodo::embeddedInterface *nodo;
     bool m_connectionStatus;
 
 signals:
-    void connectionStatusChanged();
+    void connectionStatusChanged(void);
+    void serviceStatusReceived(QString statusMessage);
 };
 
 #endif // NODODBUSCONTROLLER_H

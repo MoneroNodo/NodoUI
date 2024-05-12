@@ -202,3 +202,30 @@ int Daemon::getBacklightLevel(void)
 
     return retVal;
 }
+
+void Daemon::getServiceStatus(void)
+{
+    qDebug() << "received service status request";
+
+    QString program = "/usr/bin/systemctl";
+    QString serviceList[] = {"monerod", "miner", "tor", "i2p", "monero-lws", "block-explorer"};
+
+    QStringList arguments;
+    arguments << "is-active" << serviceList[0] << serviceList[1] << serviceList[2] << serviceList[3] << serviceList[4] << serviceList[5];
+
+    QProcess process;
+
+    process.start(program, arguments);
+    process.waitForFinished(-1);
+    QString retVal = process.readAll();
+    QStringList status = retVal.split("\n", Qt::SkipEmptyParts);
+    QString statusMessage;
+
+    for(int i = 0; i < status.size(); i++)
+    {
+        statusMessage.append(serviceList[i]).append(":").append(status.at(i)).append("\n");
+    }
+
+    // qDebug() << statusMessage;
+    emit serviceStatusReadyNotification(statusMessage);
+}

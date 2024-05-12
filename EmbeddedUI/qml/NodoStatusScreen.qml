@@ -16,7 +16,12 @@ Rectangle {
 
     Component.onCompleted: {
         nodoSystemStatus.updateRequested()
+        nodoControl.startServiceStatusUpdate()
         onCalculateMaximumTextLabelLength()
+    }
+
+    Component.onDestruction: {
+        serviceStatusTimer.stop()
     }
 
     function onCalculateMaximumTextLabelLength() {
@@ -104,6 +109,18 @@ Rectangle {
                 whitePeerlistSizeField.valueText = nodoSystemStatus.getIntValueFromKey("white_peerlist_size")
                 greyPeerlistSizeField.valueText = nodoSystemStatus.getIntValueFromKey("grey_peerlist_size")
                 updateAvailableField.valueText = (true === nodoSystemStatus.getBoolValueFromKey("update_available")) ? "Update available" : "Update not available"
+            }
+        }
+
+        Connections {
+            target: nodoControl
+            function onServiceStatusReady() {
+                moneroNodeField.valueText = nodoControl.getServiceStatus("monerod")
+                minerServiceField.valueText = nodoControl.getServiceStatus("miner")
+                torServiceField.valueText = nodoControl.getServiceStatus("tor")
+                i2pServiceField.valueText = nodoControl.getServiceStatus("i2p")
+                moneroLWSField.valueText = nodoControl.getServiceStatus("monero-lws")
+                blockExplorerField.valueText = nodoControl.getServiceStatus("block-explorer")
             }
         }
 
@@ -414,6 +431,14 @@ Rectangle {
             itemText: qsTr("System Storage")
             valueText: "<loading>"
         }
+    }
+
+    Timer {
+        id: serviceStatusTimer
+        interval: 3000;
+        running: true;
+        repeat: true;
+        onTriggered: nodoControl.startServiceStatusUpdate()
     }
 }
 

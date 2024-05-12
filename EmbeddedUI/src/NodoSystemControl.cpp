@@ -27,6 +27,7 @@ NodoSystemControl::NodoSystemControl(NodoEmbeddedUIConfigParser *embeddedUIConfi
     }
 
     connect(m_controller, SIGNAL(connectionStatusChanged()), this, SLOT(updateConnectionStatus()));
+    connect(m_controller, SIGNAL(serviceStatusReceived(QString)), this, SLOT(updateServiceStatus(QString)));
 }
 
 bool NodoSystemControl::getAppTheme(void)
@@ -230,3 +231,38 @@ int NodoSystemControl::getBacklightLevel(void)
 {
     return m_controller->getBacklightLevel();
 }
+
+void NodoSystemControl::startServiceStatusUpdate(void)
+{
+    m_controller->getServiceStatus();
+}
+
+void NodoSystemControl::updateServiceStatus(QString statusMessage)
+{
+    m_serviceStatusMessage.clear();
+    m_serviceStatusMessage = statusMessage;
+    emit serviceStatusReady();
+}
+
+QString NodoSystemControl::getServiceStatus(QString serviceName)
+{
+    if(m_serviceStatusMessage.isEmpty())
+    {
+        return "N/A";
+    }
+
+    QStringList statusList = m_serviceStatusMessage.split("\n", Qt::SkipEmptyParts);
+
+    for(int i = 0; i < statusList.size(); i++)
+    {
+        QStringList service = statusList[i].split(":");
+        if(service[0] == serviceName)
+        {
+            return service[1];
+        }
+    }
+
+    return "N/A";
+}
+
+

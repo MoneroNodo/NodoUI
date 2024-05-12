@@ -19,12 +19,16 @@ public slots:
     void shutdown(void);
     void setBacklightLevel(int backlightLevel);
     int getBacklightLevel(void);
+    void getServiceStatus(void);
 
 signals:
     void startRecoveryNotification(const QString &message);
     void serviceManagerNotification(const QString &message);
     void restartNotification(const QString &message);
     void shutdownNotification(const QString &message);
+    void serviceStatusReadyNotification(const QString &message);
+
+
 };
 
 #endif // DAEMON_H

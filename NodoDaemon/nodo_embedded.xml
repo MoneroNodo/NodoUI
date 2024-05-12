@@ -24,6 +24,8 @@
             <arg name="backlightLevel" type="i" direction="out"/>
         </method>
 
+        <method name="getServiceStatus"/>
+
         <signal name="startRecoveryNotification">
                 <arg name="message" type="s" direction="out"/>
         </signal>
@@ -39,5 +41,10 @@
         <signal name="shutdownNotification">
                 <arg name="message" type="s" direction="out"/>
         </signal>
+
+        <signal name="serviceStatusReadyNotification">
+                <arg name="message" type="s" direction="out"/>
+        </signal>
+
     </interface>
 </node>

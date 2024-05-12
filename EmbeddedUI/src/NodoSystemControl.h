@@ -58,12 +58,16 @@ public:
     Q_INVOKABLE void setBacklightLevel(int backlightLevel);
     Q_INVOKABLE int getBacklightLevel(void);
 
+    Q_INVOKABLE void startServiceStatusUpdate(void);
+    Q_INVOKABLE QString getServiceStatus(QString serviceName);
+
 signals:
     void appThemeChanged(bool);
     void inputFieldTextChanged(void);
     void echoModeChanged(void);
     void passwordModeChanged(void);
     void orientationChanged(void);
+    void serviceStatusReady(void);
 
 private:
     bool m_appTheme;
@@ -78,6 +82,7 @@ private:
     QString m_inputFieldText;
     int m_echoMode = -1;
     int m_passwordMode = -1;
+    QString m_serviceStatusMessage;
 
     QStringList m_tzList = {
         "UTC",
@@ -124,6 +129,8 @@ private:
 
 private slots:
     void updateConnectionStatus(void);
+    void updateServiceStatus(QString statusMessage);
+
 };
 
 

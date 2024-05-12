@@ -8,7 +8,7 @@ NodoDBusController::NodoDBusController(QObject *parent) : QObject{parent}
     connect(nodo, SIGNAL(serviceManagerNotification(QString)), this, SLOT(updateTextEdit(QString)));
     connect(nodo, SIGNAL(restartNotification(QString)), this, SLOT(updateTextEdit(QString)));
     connect(nodo, SIGNAL(shutdownNotification(QString)), this, SLOT(updateTextEdit(QString)));
-
+    connect(nodo, SIGNAL(serviceStatusReadyNotification(QString)), this, SLOT(updateServiceStatus(QString)));
 
     startTimer(1000);
 }
@@ -70,4 +70,13 @@ void NodoDBusController::setBacklightLevel(int backlightLevel)
 int NodoDBusController::getBacklightLevel(void)
 {
     return nodo->getBacklightLevel();
+}
+
+void NodoDBusController::updateServiceStatus(QString message)
+{
+    emit serviceStatusReceived(message);
+}
+void NodoDBusController::getServiceStatus(void)
+{
+    nodo->getServiceStatus();
 }
