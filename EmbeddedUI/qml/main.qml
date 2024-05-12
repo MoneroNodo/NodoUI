@@ -16,8 +16,11 @@ ApplicationWindow {
     modality: Qt.WindowModal
     property int displayRotation: nodoControl.getOrientation()
 
+    contentOrientation: displayRotation == -90 ? Qt.InvertedLandscapeOrientation : displayRotation == 90 ? Qt.LandscapeOrientation : displayRotation == 0 ? Qt.PortraitOrientation : Qt.InvertedPortraitOrientation
+
     width: displayRotation == 0 || displayRotation == 180 ? 1920 : 1080
     height: displayRotation == 0 || displayRotation == 180 ? 1080 : 1920
+
 
     title: qsTr("NodoUI");
 
@@ -47,6 +50,8 @@ ApplicationWindow {
             {
                 mainAppWindow.displayRotation = nodoControl.getOrientation()
                 mainAppWindowMainRect.rotation = nodoControl.getOrientation()
+                mainAppWindow.contentOrientation = displayRotation == -90 ? Qt.InvertedLandscapeOrientation : displayRotation == 90 ? Qt.LandscapeOrientation : displayRotation == 0 ? Qt.PortraitOrientation : Qt.InvertedPortraitOrientation
+
             }
         }
 
