@@ -10,6 +10,18 @@ NodoConfigParser::NodoConfigParser(QObject *parent) : QObject(parent)
 
 void NodoConfigParser::readFile(void)
 {
+    m_mutex.lock();
+    QFile lockfile(m_json_lock_file_name);
+
+    while(true == lockfile.exists())
+    {
+        QThread::msleep(100);
+    }
+
+    lockfile.open(QFile::WriteOnly | QFile::Text);
+    lockfile.write(" ");
+    lockfile.close();
+
     QString val;
     QFile file;
     file.setFileName(m_json_file_name);
@@ -33,6 +45,9 @@ void NodoConfigParser::readFile(void)
     {
         qDebug() << "couldn't open config file " + m_json_file_name;
     }
+
+    lockfile.remove();
+    m_mutex.unlock();
 }
 
 QString NodoConfigParser::getStringValueFromKey(QString object, QString key)
@@ -117,7 +132,18 @@ void NodoConfigParser::setCurrencyName(QString currency)
 
 void NodoConfigParser::writeJson(void)
 {
+    m_mutex.lock();
     QFile file;
+    QFile lockfile(m_json_lock_file_name);
+
+    while(true == lockfile.exists())
+    {
+        QThread::msleep(100);
+    }
+
+    lockfile.open(QFile::WriteOnly | QFile::Text);
+    lockfile.write(" ");
+    lockfile.close();
 
     m_configObj.insert(miningObjName, m_miningObj);
     m_configObj.insert(ethernetObjName, m_ethernetObj);
@@ -131,6 +157,10 @@ void NodoConfigParser::writeJson(void)
     file.open(QFile::WriteOnly | QFile::Text | QFile::Truncate);
     file.write(m_document.toJson());
     file.close();
+
+
+    lockfile.remove();
+    m_mutex.unlock();
 }
 
 QString NodoConfigParser::getTimezone(void)
@@ -182,4 +212,23 @@ QString NodoConfigParser::getDBPathDir(void)
         return "";
     }
     return jsonValue.toString();
+}
+
+void NodoConfigParser::setTheme(bool theme)
+{
+    m_configObj.insert("night_mode", theme);
+    writeJson();
+}
+
+bool NodoConfigParser::getTheme(void)
+{
+    QJsonValue jsonValue;
+    jsonValue = m_configObj.value("night_mode");
+    if(jsonValue.isNull())
+    {
+        m_configObj.insert("night_mode", false);
+        writeJson();
+        return false;
+    }
+    return jsonValue.toBool();
 }

@@ -61,6 +61,14 @@ public:
     Q_INVOKABLE void startServiceStatusUpdate(void);
     Q_INVOKABLE QString getServiceStatus(QString serviceName);
 
+    Q_INVOKABLE void startSystemStatusUpdate(void);
+    Q_INVOKABLE QString getCPUUsage(void);
+    Q_INVOKABLE QString getTemperature(void);
+    Q_INVOKABLE QString getRAMUsage(void);
+    Q_INVOKABLE QString getBlockChainStorageUsage(void);
+    Q_INVOKABLE QString getSystemStorageUsage(void);
+
+
 signals:
     void appThemeChanged(bool);
     void inputFieldTextChanged(void);
@@ -68,6 +76,7 @@ signals:
     void passwordModeChanged(void);
     void orientationChanged(void);
     void serviceStatusReady(void);
+    void systemStatusReady(void);
 
 private:
     bool m_appTheme;
@@ -83,6 +92,13 @@ private:
     int m_echoMode = -1;
     int m_passwordMode = -1;
     QString m_serviceStatusMessage;
+
+    QString m_CPUUsage;
+    QString m_Temperature;
+    QString m_RAMUsage;
+    QString m_blockchainStorage;
+    QString m_systemStorage;
+
 
     QStringList m_tzList = {
         "UTC",

@@ -9,6 +9,8 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QTimer>
+#include <QMutex>
+#include <QThread>
 
 class NodoConfigParser : public QObject
 {
@@ -30,6 +32,10 @@ public:
     void setLanguageCode(QString code);
     QString getDBPathDir(void);
 
+    void setTheme(bool theme);
+    bool getTheme(void);
+
+
 signals:
     void configParserReady(void);
 
@@ -50,8 +56,10 @@ private:
     const QString wifiObjName = "wifi";
     const QString versionsObjName = "versions";
     QTimer *m_timer;
+    QMutex m_mutex;
 
     const QString m_json_file_name =  "/home/nodo/variables/config.json";
+    const QString m_json_lock_file_name = "/home/nodo/variables/config.json.lock";
 
     void writeJson(void);
 

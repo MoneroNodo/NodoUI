@@ -20,6 +20,11 @@ Daemon::Daemon()
     QDBusConnection connection = QDBusConnection::systemBus();
     connection.registerObject("/com/monero/nodo", this);
     connection.registerService("com.monero.nodo");
+
+    m_timer = new QTimer(this);
+    connect(m_timer, SIGNAL(timeout()), this, SLOT(updateParams()));
+    m_timer->start(3000);
+
 }
 
 void Daemon::startRecovery(int recoverFS, int rsyncBlockchain)
@@ -229,3 +234,196 @@ void Daemon::getServiceStatus(void)
     // qDebug() << statusMessage;
     emit serviceStatusReadyNotification(statusMessage);
 }
+
+void Daemon::updateParams(void)
+{
+    readCPUUsage();
+    readAverageCPUFreq();
+    readRAMUsage();
+    readCPUTemperature();
+    readBlockchainStorageUsage();
+    readSystemStorageUsage();
+}
+
+void Daemon::readCPUUsage(void)
+{
+    QFile file("/proc/stat");
+    file.open(QFile::ReadOnly);
+    const QList<QByteArray> times = file.readLine().simplified().split(' ').mid(1);
+    const int idleTime = times.at(3).toInt();
+    int totalTime = 0;
+    foreach (const QByteArray &time, times) {
+        totalTime += time.toInt();
+    }
+
+    m_CPUUsage = (1 - (1.0*idleTime-m_prevIdleTime) / (totalTime-m_prevTotalTime)) * 100.0;
+
+    m_prevIdleTime = idleTime;
+    m_prevTotalTime = totalTime;
+}
+
+void Daemon::readAverageCPUFreq(void)
+{
+    QProcess process;
+    QString program = "/usr/bin/cat";
+
+
+    for(int i = 0; i < 8; i++)
+    {
+        QStringList arguments;
+        QString path("/sys/devices/system/cpu/cpu");
+        path.append(QString::number(i)).append("/cpufreq/cpuinfo_cur_freq");
+        // path.append(QString::number(i)).append("/cpufreq/scaling_cur_freq");
+        arguments << path;
+
+        process.start(program, arguments);
+        process.waitForFinished(10000);
+        process.waitForReadyRead(10000);
+
+        QString retVal = process.readAll();
+
+        QStringList status = retVal.split("\n", Qt::SkipEmptyParts);
+        bool ok;
+        m_AverageCPUFreq += status.at(0).toDouble(&ok)/1000;
+    }
+
+    m_AverageCPUFreq = m_AverageCPUFreq/8;
+}
+
+void Daemon::readRAMUsage(void)
+{
+    QProcess process;
+    QString program = "/usr/bin/free";
+    QStringList arguments;
+    arguments << "-h" << "--si";
+
+
+    process.start(program, arguments);
+    process.waitForFinished(-1);
+    QString retVal = process.readAll();
+
+    QStringList status = retVal.split("\n", Qt::SkipEmptyParts);
+
+    for(int i = 0; i < status.size(); i++)
+    {
+        if(-1 != status.at(i).indexOf("Mem:"))
+        {
+            bool ok;
+            QStringList status2 = status.at(i).split(" ", Qt::SkipEmptyParts);
+            m_TotalRAM = status2.at(1).chopped(1).toFloat(&ok);
+            m_RAMUsage = status2.at(2).chopped(1).toFloat(&ok);
+        }
+    }
+}
+
+void Daemon::readCPUTemperature(void)
+{
+    QProcess process;
+    QString program = "/usr/bin/cat";
+    QStringList arguments;
+    arguments << "/sys/devices/virtual/thermal/thermal_zone0/temp";
+
+    process.start(program, arguments);
+    process.waitForFinished(-1);
+    QString retVal = process.readAll();
+    bool ok;
+    m_CPUTemperature = retVal.toFloat(&ok)/(1000.0);
+}
+
+void Daemon::readBlockchainStorageUsage(void)
+{
+    QProcess process;
+    QString program = "/usr/bin/df";
+    QStringList arguments;
+    arguments << "-h";
+
+    process.start(program, arguments);
+    process.waitForFinished(-1);
+    QString retVal = process.readAll();
+
+    QStringList status = retVal.split("\n", Qt::SkipEmptyParts);
+
+    for(int i = 0; i < status.size(); i++)
+    {
+        if(-1 != status.at(i).indexOf("/dev/nvme0n1p1"))
+        {
+            bool ok;
+            QStringList status2 = status.at(i).split(" ", Qt::SkipEmptyParts);
+            m_blockChainStorageTotal = status2.at(1).chopped(1).toFloat(&ok);
+            m_blockChainStorageUsed = status2.at(2).chopped(1).toFloat(&ok);
+        }
+    }
+}
+
+void Daemon::readSystemStorageUsage(void)
+{
+    QProcess process;
+    QString program = "/usr/bin/df";
+    QStringList arguments;
+    arguments << "-h";
+
+    process.start(program, arguments);
+    process.waitForFinished(-1);
+    QString retVal = process.readAll();
+
+    QStringList status = retVal.split("\n", Qt::SkipEmptyParts);
+
+    for(int i = 0; i < status.size(); i++)
+    {
+        if(-1 != status.at(i).indexOf("overlay"))
+        // if(-1 != status.at(i).indexOf("/dev/nvme0n1p2"))
+        {
+            bool ok;
+            QStringList status2 = status.at(i).split(" ", Qt::SkipEmptyParts);
+            m_systemStorageTotal = status2.at(1).chopped(1).toFloat(&ok);
+            m_systemStorageUsed = status2.at(2).chopped(1).toFloat(&ok);
+        }
+    }
+}
+
+
+double Daemon::getCPUUsage(void)
+{
+    return m_CPUUsage;
+}
+
+double Daemon::getAverageCPUFreq(void)
+{
+    return m_AverageCPUFreq;
+}
+
+double Daemon::getRAMUsage(void)
+{
+    return m_RAMUsage;
+}
+
+double Daemon::getTotalRAM(void)
+{
+    return m_TotalRAM;
+}
+
+double Daemon::getCPUTemperature(void)
+{
+    return m_CPUTemperature;
+}
+
+double Daemon::getBlockchainStorageUsage(void)
+{
+    return m_blockChainStorageUsed;
+}
+
+double Daemon::getTotalBlockchainStorage(void)
+{
+    return m_blockChainStorageTotal;
+}
+
+double Daemon::getSystemStorageUsage(void)
+{
+    return m_systemStorageUsed;
+}
+
+double Daemon::getTotalSystemStorage(void)
+{
+    return m_systemStorageTotal;
+}
+

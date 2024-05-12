@@ -26,6 +26,44 @@
 
         <method name="getServiceStatus"/>
 
+
+        <method name="getCPUUsage">
+            <arg name="CPUUsage" type="d" direction="out"/>
+        </method>
+
+        <method name="getAverageCPUFreq">
+            <arg name="averageCPUFreq" type="d" direction="out"/>
+        </method>
+
+        <method name="getRAMUsage">
+            <arg name="RAMUsage" type="d" direction="out"/>
+        </method>
+
+        <method name="getTotalRAM">
+            <arg name="totalRAM" type="d" direction="out"/>
+        </method>
+
+        <method name="getCPUTemperature">
+            <arg name="CPUTemperature" type="d" direction="out"/>
+        </method>
+
+        <method name="getBlockchainStorageUsage">
+            <arg name="blockchainStorageUsage" type="d" direction="out"/>
+        </method>
+
+        <method name="getTotalBlockchainStorage">
+            <arg name="totalBlockchainStorage" type="d" direction="out"/>
+        </method>
+
+        <method name="getSystemStorageUsage">
+            <arg name="systemStorageUsage" type="d" direction="out"/>
+        </method>
+
+        <method name="getTotalSystemStorage">
+            <arg name="totalSystemStorage" type="d" direction="out"/>
+        </method>
+
+
         <signal name="startRecoveryNotification">
                 <arg name="message" type="s" direction="out"/>
         </signal>

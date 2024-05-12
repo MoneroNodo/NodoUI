@@ -3,9 +3,6 @@
 
 NodoSystemControl::NodoSystemControl(NodoEmbeddedUIConfigParser *embeddedUIConfigParser, NodoConfigParser *configParser) : QObject(embeddedUIConfigParser)
 {
-    m_appTheme = false;
-    setAppTheme(m_appTheme);
-
     m_embeddedUIConfigParser = embeddedUIConfigParser;
     m_configParser = configParser;
     m_controller = new NodoDBusController(this);
@@ -26,6 +23,8 @@ NodoSystemControl::NodoSystemControl(NodoEmbeddedUIConfigParser *embeddedUIConfi
         qDebug() << "Couldn't connect to the dbus daemon";
     }
 
+    m_appTheme = m_configParser->getTheme();
+
     connect(m_controller, SIGNAL(connectionStatusChanged()), this, SLOT(updateConnectionStatus()));
     connect(m_controller, SIGNAL(serviceStatusReceived(QString)), this, SLOT(updateServiceStatus(QString)));
 }
@@ -40,6 +39,7 @@ void NodoSystemControl::setAppTheme(bool appTheme)
 {
     // qDebug() << "set theme: " << appTheme;
     m_appTheme = appTheme;
+    m_configParser->setTheme(m_appTheme);
     emit appThemeChanged(m_appTheme);
 }
 
@@ -265,4 +265,48 @@ QString NodoSystemControl::getServiceStatus(QString serviceName)
     return "N/A";
 }
 
+void NodoSystemControl::startSystemStatusUpdate(void)
+{
+    double CPUUsage = m_controller->getCPUUsage();
+    double averageCPUFreq = m_controller->getAverageCPUFreq();
+    double RAMUsed = m_controller->getRAMUsage();
+    double RAMTotal = m_controller->getTotalRAM();
+    double CPUTemperature = m_controller->getCPUTemperature();
+    double blockChainStorageUsed = m_controller->getBlockchainStorageUsage();
+    double blockChainStorageTotal = m_controller->getTotalBlockchainStorage();
+    double systemStorageUsed = m_controller->getSystemStorageUsage();
+    double systemStorageTotal = m_controller->getTotalSystemStorage();
 
+    m_CPUUsage = QString("%1").arg(averageCPUFreq, 0, 'f', 1).append(" MHz (").append(QString("%1").arg(CPUUsage, 0, 'f', 1)).append("%)");
+    m_Temperature = QString("%1").arg(CPUTemperature, 0, 'f', 1).append("°C");
+    m_RAMUsage = QString::number(RAMUsed).append("/").append(QString::number(RAMTotal)).append("GB (").append(QString("%1").arg((RAMUsed/RAMTotal)*100, 0, 'f', 1)).append("%)");
+    m_blockchainStorage = QString::number(blockChainStorageUsed).append("/").append(QString::number(blockChainStorageTotal)).append("GB (").append(QString("%1").arg((blockChainStorageUsed/blockChainStorageTotal)*100, 0, 'f', 1)).append("%)");
+    m_systemStorage = QString::number(systemStorageUsed).append("/").append(QString::number(systemStorageTotal)).append("GB (").append(QString("%1").arg((systemStorageUsed/systemStorageTotal)*100, 0, 'f', 1)).append("%)");
+
+    emit systemStatusReady();
+}
+
+QString NodoSystemControl::getCPUUsage(void)
+{
+    return m_CPUUsage;
+}
+
+QString NodoSystemControl::getTemperature(void)
+{
+    return m_Temperature;
+}
+
+QString NodoSystemControl::getRAMUsage(void)
+{
+    return m_RAMUsage;
+}
+
+QString NodoSystemControl::getBlockChainStorageUsage(void)
+{
+    return m_blockchainStorage;
+}
+
+QString NodoSystemControl::getSystemStorageUsage(void)
+{
+    return m_systemStorage;
+}

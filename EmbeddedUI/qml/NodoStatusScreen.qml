@@ -18,6 +18,7 @@ Rectangle {
         nodoSystemStatus.updateRequested()
         nodoControl.startServiceStatusUpdate()
         onCalculateMaximumTextLabelLength()
+        nodoControl.startSystemStatusUpdate()
     }
 
     Component.onDestruction: {
@@ -123,6 +124,18 @@ Rectangle {
                 blockExplorerField.valueText = nodoControl.getServiceStatus("block-explorer")
             }
         }
+
+        Connections {
+            target: nodoControl
+            function onSystemStatusReady() {
+                cpuField.valueText = nodoControl.getCPUUsage()
+                cpuTemperatureField.valueText = nodoControl.getTemperature()
+                ramField.valueText = nodoControl.getRAMUsage()
+                blockchainStorageField.valueText = nodoControl.getBlockChainStorageUsage()
+                systemStorageField.valueText = nodoControl.getSystemStorageUsage()
+            }
+        }
+
 
         Label {
             id: syncStatusTabName
@@ -438,7 +451,11 @@ Rectangle {
         interval: 3000;
         running: true;
         repeat: true;
-        onTriggered: nodoControl.startServiceStatusUpdate()
+        onTriggered:
+        {
+            nodoControl.startServiceStatusUpdate()
+            nodoControl.startSystemStatusUpdate()
+        }
     }
 }
 

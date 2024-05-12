@@ -80,3 +80,49 @@ void NodoDBusController::getServiceStatus(void)
 {
     nodo->getServiceStatus();
 }
+
+double NodoDBusController::getCPUUsage(void)
+{
+    return nodo->getCPUUsage();
+}
+
+double NodoDBusController::getAverageCPUFreq(void)
+{
+    return nodo->getAverageCPUFreq();
+}
+
+double NodoDBusController::getRAMUsage(void)
+{
+    return nodo->getRAMUsage();
+}
+
+double NodoDBusController::getTotalRAM(void)
+{
+    return nodo->getTotalRAM();
+}
+
+double NodoDBusController::getCPUTemperature(void)
+{
+    return nodo->getCPUTemperature();
+}
+
+double NodoDBusController::getBlockchainStorageUsage(void)
+{
+    return nodo->getBlockchainStorageUsage();
+}
+
+double NodoDBusController::getTotalBlockchainStorage(void)
+{
+    return nodo->getTotalBlockchainStorage();
+}
+
+double NodoDBusController::getSystemStorageUsage(void)
+{
+    return nodo->getSystemStorageUsage();
+}
+
+double NodoDBusController::getTotalSystemStorage(void)
+{
+    return nodo->getTotalSystemStorage();
+}
+

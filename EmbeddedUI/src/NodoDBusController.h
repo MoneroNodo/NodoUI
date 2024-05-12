@@ -21,6 +21,18 @@ public:
     int getBacklightLevel(void);
     void getServiceStatus(void);
 
+
+    double getCPUUsage(void);
+    double getAverageCPUFreq(void);
+    double getRAMUsage(void);
+    double getTotalRAM(void);
+    double getCPUTemperature(void);
+    double getBlockchainStorageUsage(void);
+    double getTotalBlockchainStorage(void);
+    double getSystemStorageUsage(void);
+    double getTotalSystemStorage(void);
+
+
 protected:
     void timerEvent(QTimerEvent *event);
 
