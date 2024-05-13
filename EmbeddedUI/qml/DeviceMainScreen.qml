@@ -66,6 +66,15 @@ Item {
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: { pageLoader.source = "DeviceNewsFeedsScreen.qml" }
         }
+        NodoTabButton {
+            id: sshButton
+            anchors.top: wifiButton.top
+            anchors.left: newsFeedsButton.right
+            text: qsTr("SSH")
+            font.family: NodoSystem.fontUrbanist.name
+            font.pixelSize: NodoSystem.topMenuButtonFontSize
+            onClicked: { pageLoader.source = "DeviceSSHScreen.qml" }
+        }
     }
 
     Loader {

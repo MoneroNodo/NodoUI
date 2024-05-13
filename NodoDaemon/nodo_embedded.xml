@@ -63,6 +63,9 @@
             <arg name="totalSystemStorage" type="d" direction="out"/>
         </method>
 
+        <method name="setPassword">
+            <arg name="pw" type="s" direction="in"/>
+        </method>
 
         <signal name="startRecoveryNotification">
                 <arg name="message" type="s" direction="out"/>

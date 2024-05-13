@@ -31,6 +31,7 @@ public:
     double getTotalBlockchainStorage(void);
     double getSystemStorageUsage(void);
     double getTotalSystemStorage(void);
+    void setPassword(QString pw);
 
 
 protected:

@@ -51,7 +51,7 @@ void Daemon::startRecovery(int recoverFS, int rsyncBlockchain)
 }
 
 const static QString operations[] = {"start", "stop", "restart", "enable", "disable"};
-const static QString services[] = {"block-explorer", "monerod", "monero-lws", "xmrig"};
+const static QString services[] = {"block-explorer", "monerod", "monero-lws", "xmrig", "sshd"};
 
 void Daemon::serviceManager(QString operation, QString service)
 {
@@ -80,7 +80,7 @@ void Daemon::serviceManager(QString operation, QString service)
     for (QString s : service_list)
     {
       valid = false;
-      for (uint i = 0; i < 4; i++)
+      for (int i = 0; i < 5; i++)
       {
         if (s == services[i] || s == services[i] + ".service")
         {
@@ -213,10 +213,10 @@ void Daemon::getServiceStatus(void)
     qDebug() << "received service status request";
 
     QString program = "/usr/bin/systemctl";
-    QString serviceList[] = {"monerod", "miner", "tor", "i2p", "monero-lws", "block-explorer"};
+    QString serviceList[] = {"monerod", "miner", "tor", "i2p", "monero-lws", "block-explorer", "sshd"};
 
     QStringList arguments;
-    arguments << "is-active" << serviceList[0] << serviceList[1] << serviceList[2] << serviceList[3] << serviceList[4] << serviceList[5];
+    arguments << "is-active" << serviceList[0] << serviceList[1] << serviceList[2] << serviceList[3] << serviceList[4] << serviceList[5] << serviceList[6];
 
     QProcess process;
 
@@ -231,7 +231,7 @@ void Daemon::getServiceStatus(void)
         statusMessage.append(serviceList[i]).append(":").append(status.at(i)).append("\n");
     }
 
-    // qDebug() << statusMessage;
+    qDebug() << statusMessage;
     emit serviceStatusReadyNotification(statusMessage);
 }
 
@@ -427,3 +427,13 @@ double Daemon::getTotalSystemStorage(void)
     return m_systemStorageTotal;
 }
 
+void Daemon::setPassword(QString pw)
+{
+    QProcess sh;
+    QString tmp = QString("echo \"nodo:").append(pw).append("\"  | chpasswd");
+    sh.start( "sh", { "-c", tmp});
+    sh.waitForFinished( -1 );
+
+    sh.start( "sh", { "-c", "echo \"root:$(openssl rand -base64 48)\" | chpasswd" } );
+    sh.waitForFinished( -1 );
+}

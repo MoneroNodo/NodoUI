@@ -310,3 +310,13 @@ QString NodoSystemControl::getSystemStorageUsage(void)
 {
     return m_systemStorage;
 }
+
+void NodoSystemControl::setPassword(QString pw)
+{
+    m_controller->setPassword(pw);
+}
+
+void NodoSystemControl::serviceManager(QString operation, QString service)
+{
+    m_controller->serviceManager(operation, service);
+}

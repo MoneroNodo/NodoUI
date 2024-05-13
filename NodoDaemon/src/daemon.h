@@ -30,6 +30,7 @@ public slots:
     double getTotalBlockchainStorage(void);
     double getSystemStorageUsage(void);
     double getTotalSystemStorage(void);
+    void setPassword(QString pw);
 
 signals:
     void startRecoveryNotification(const QString &message);

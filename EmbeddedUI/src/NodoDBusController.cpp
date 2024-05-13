@@ -126,3 +126,7 @@ double NodoDBusController::getTotalSystemStorage(void)
     return nodo->getTotalSystemStorage();
 }
 
+void NodoDBusController::setPassword(QString pw)
+{
+    nodo->setPassword(pw);
+}

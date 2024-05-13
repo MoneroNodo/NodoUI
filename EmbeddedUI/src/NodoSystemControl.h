@@ -68,6 +68,9 @@ public:
     Q_INVOKABLE QString getBlockChainStorageUsage(void);
     Q_INVOKABLE QString getSystemStorageUsage(void);
 
+    Q_INVOKABLE void setPassword(QString pw);
+    Q_INVOKABLE void serviceManager(QString operation, QString service);
+
 
 signals:
     void appThemeChanged(bool);

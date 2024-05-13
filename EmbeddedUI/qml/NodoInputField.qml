@@ -113,10 +113,10 @@ Item {
             visible: passwordInput
             anchors.right: valueCanvas.right
             anchors.top: valueCanvas.top
-            anchors.topMargin: 4
+            anchors.topMargin: 15
             anchors.rightMargin: 11
-            width: valueCanvas.height - 8
-            height: valueCanvas.height - 8
+            width: valueCanvas.height - 30
+            height: valueCanvas.height - 30
 
             onHideStatusChanged: {
                 if(passwordButton.hidePassword === true)
