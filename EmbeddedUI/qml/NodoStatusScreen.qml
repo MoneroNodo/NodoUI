@@ -13,6 +13,7 @@ Rectangle {
     anchors.fill: parent
 
     property int labelSize: 0
+    property int fieldTopMargin: 5
 
     Component.onCompleted: {
         nodoSystemStatus.updateRequested()
@@ -27,64 +28,82 @@ Rectangle {
 
     function onCalculateMaximumTextLabelLength() {
         if(syncStatusField.labelRectRoundSize > labelSize)
-        labelSize = syncStatusField.labelRectRoundSize
+            labelSize = syncStatusField.labelRectRoundSize
 
         if(timestampField.labelRectRoundSize > labelSize)
-        labelSize = timestampField.labelRectRoundSize
+            labelSize = timestampField.labelRectRoundSize
 
         if(currentBlockHeightField.labelRectRoundSize > labelSize)
-        labelSize = currentBlockHeightField.labelRectRoundSize
+            labelSize = currentBlockHeightField.labelRectRoundSize
 
         if(moneroVersionField.labelRectRoundSize > labelSize)
-        labelSize = moneroVersionField.labelRectRoundSize
+            labelSize = moneroVersionField.labelRectRoundSize
 
         if(outgoingConnectionsField.labelRectRoundSize > labelSize)
-        labelSize = outgoingConnectionsField.labelRectRoundSize
+            labelSize = outgoingConnectionsField.labelRectRoundSize
 
         if(incomingConnectionsField.labelRectRoundSize > labelSize)
-        labelSize = incomingConnectionsField.labelRectRoundSize
+            labelSize = incomingConnectionsField.labelRectRoundSize
 
         if(whitePeerlistSizeField.labelRectRoundSize > labelSize)
-        labelSize = whitePeerlistSizeField.labelRectRoundSize
+            labelSize = whitePeerlistSizeField.labelRectRoundSize
 
         if(greyPeerlistSizeField.labelRectRoundSize > labelSize)
-        labelSize = greyPeerlistSizeField.labelRectRoundSize
+            labelSize = greyPeerlistSizeField.labelRectRoundSize
 
         if(updateAvailableField.labelRectRoundSize > labelSize)
-        labelSize = updateAvailableField.labelRectRoundSize
+            labelSize = updateAvailableField.labelRectRoundSize
 
         if(moneroNodeField.labelRectRoundSize > labelSize)
-        labelSize = moneroNodeField.labelRectRoundSize
+            labelSize = moneroNodeField.labelRectRoundSize
 
         if(minerServiceField.labelRectRoundSize > labelSize)
-        labelSize = minerServiceField.labelRectRoundSize
+            labelSize = minerServiceField.labelRectRoundSize
 
         if(torServiceField.labelRectRoundSize > labelSize)
-        labelSize = torServiceField.labelRectRoundSize
+            labelSize = torServiceField.labelRectRoundSize
 
         if(i2pServiceField.labelRectRoundSize > labelSize)
-        labelSize = i2pServiceField.labelRectRoundSize
+            labelSize = i2pServiceField.labelRectRoundSize
 
         if(moneroLWSField.labelRectRoundSize > labelSize)
-        labelSize = moneroLWSField.labelRectRoundSize
+            labelSize = moneroLWSField.labelRectRoundSize
 
         if(blockExplorerField.labelRectRoundSize > labelSize)
-        labelSize = blockExplorerField.labelRectRoundSize
+            labelSize = blockExplorerField.labelRectRoundSize
 
         if(cpuField.labelRectRoundSize > labelSize)
-        labelSize = cpuField.labelRectRoundSize
+            labelSize = cpuField.labelRectRoundSize
 
         if(cpuTemperatureField.labelRectRoundSize > labelSize)
-        labelSize = cpuTemperatureField.labelRectRoundSize
+            labelSize = cpuTemperatureField.labelRectRoundSize
 
         if(ramField.labelRectRoundSize > labelSize)
-        labelSize = ramField.labelRectRoundSize
+            labelSize = ramField.labelRectRoundSize
 
         if(blockchainStorageField.labelRectRoundSize > labelSize)
-        labelSize = primaryStorageField.labelRectRoundSize
+            labelSize = blockchainStorageField.labelRectRoundSize
 
         if(systemStorageField.labelRectRoundSize > labelSize)
-        labelSize = backupStorageField.labelRectRoundSize
+            labelSize = systemStorageField.labelRectRoundSize
+
+        if(hashRateField.labelRectRoundSize > labelSize)
+            labelSize = hashRateField.labelRectRoundSize
+
+        if(dailyTXAvgField.labelRectRoundSize > labelSize)
+            labelSize = dailyTXAvgField.labelRectRoundSize
+
+        if(mempoolSizeField.labelRectRoundSize > labelSize)
+            labelSize = mempoolSizeField.labelRectRoundSize
+
+        if(avgTXFeeField.labelRectRoundSize > labelSize)
+            labelSize = avgTXFeeField.labelRectRoundSize
+
+        if(tXPerSecondField.labelRectRoundSize > labelSize)
+            labelSize = tXPerSecondField.labelRectRoundSize
+
+        if(blocksPerHourField.labelRectRoundSize > labelSize)
+            labelSize = blocksPerHourField.labelRectRoundSize
     }
 
 
@@ -141,7 +160,7 @@ Rectangle {
             id: syncStatusTabName
             anchors.left: syncStatus.left
             anchors.top: syncStatus.top
-            anchors.topMargin: 20
+            anchors.topMargin: 30
             width: syncStatusTabName.paintedWidth
             height: 16
             text: qsTr("Node")
@@ -156,7 +175,7 @@ Rectangle {
             id: syncStatusField
             anchors.left: syncStatus.left
             anchors.top: syncStatusTabName.bottom
-            anchors.topMargin: 8 // 5
+            anchors.topMargin: fieldTopMargin
             width: syncStatus.width
             height: NodoSystem.infoFieldLabelHeight//hheight
             itemSize: labelSize
@@ -168,7 +187,7 @@ Rectangle {
             id: timestampField
             anchors.left: syncStatus.left
             anchors.top: syncStatusField.bottom
-            anchors.topMargin: 8
+            anchors.topMargin: fieldTopMargin
 
             width: syncStatus.width
             height: NodoSystem.infoFieldLabelHeight//hheight
@@ -181,7 +200,7 @@ Rectangle {
             id: currentBlockHeightField
             anchors.left: syncStatus.left
             anchors.top: timestampField.bottom
-            anchors.topMargin: 8
+            anchors.topMargin: fieldTopMargin
             width: syncStatus.width
             height: NodoSystem.infoFieldLabelHeight//hheight
             itemSize: labelSize
@@ -193,7 +212,7 @@ Rectangle {
             id: moneroVersionField
             anchors.left: syncStatus.left
             anchors.top: currentBlockHeightField.bottom
-            anchors.topMargin: 8
+            anchors.topMargin: fieldTopMargin
             width: syncStatus.width
             height: NodoSystem.infoFieldLabelHeight//hheight
             itemSize: labelSize
@@ -205,7 +224,7 @@ Rectangle {
             id: outgoingConnectionsField
             anchors.left: syncStatus.left
             anchors.top: moneroVersionField.bottom
-            anchors.topMargin: 8
+            anchors.topMargin: fieldTopMargin
             width: syncStatus.width
             height: NodoSystem.infoFieldLabelHeight//hheight
             itemSize: labelSize
@@ -217,7 +236,7 @@ Rectangle {
             id: incomingConnectionsField
             anchors.left: syncStatus.left
             anchors.top: outgoingConnectionsField.bottom
-            anchors.topMargin: 8
+            anchors.topMargin: fieldTopMargin
             width: syncStatus.width
             height: NodoSystem.infoFieldLabelHeight//hheight
             itemSize: labelSize
@@ -229,7 +248,7 @@ Rectangle {
             id: whitePeerlistSizeField
             anchors.left: syncStatus.left
             anchors.top: incomingConnectionsField.bottom
-            anchors.topMargin: 8
+            anchors.topMargin: fieldTopMargin
             width: syncStatus.width
             height: NodoSystem.infoFieldLabelHeight//hheight
             itemSize: labelSize
@@ -241,7 +260,7 @@ Rectangle {
             id: greyPeerlistSizeField
             anchors.left: syncStatus.left
             anchors.top: whitePeerlistSizeField.bottom
-            anchors.topMargin: 8
+            anchors.topMargin: fieldTopMargin
             width: syncStatus.width
             height: NodoSystem.infoFieldLabelHeight//hheight
             itemSize: labelSize
@@ -253,7 +272,7 @@ Rectangle {
             id: updateAvailableField
             anchors.left: syncStatus.left
             anchors.top: greyPeerlistSizeField.bottom
-            anchors.topMargin: 8
+            anchors.topMargin: fieldTopMargin
             width: syncStatus.width
             height: NodoSystem.infoFieldLabelHeight//hheight
             itemSize: labelSize
@@ -269,14 +288,14 @@ Rectangle {
         anchors.topMargin: 20
 
         width: 600
-        height: 500
+        height: 470
         color: "black"
 
         Label {
             id: systemStatusTabName
             anchors.left: systemStatus.left
             anchors.top: systemStatus.top
-            anchors.topMargin: 20
+            anchors.topMargin: 30
             width: systemStatusTabName.paintedWidth
             height: 16
             text: qsTr("Services")
@@ -291,7 +310,7 @@ Rectangle {
             id: moneroNodeField
             anchors.left: systemStatus.left
             anchors.top: systemStatusTabName.bottom
-            anchors.topMargin: 8
+            anchors.topMargin: fieldTopMargin
             width: systemStatus.width
             height: NodoSystem.infoFieldLabelHeight
             itemSize: labelSize
@@ -303,7 +322,7 @@ Rectangle {
             id: minerServiceField
             anchors.left: systemStatus.left
             anchors.top: moneroNodeField.bottom
-            anchors.topMargin: 8
+            anchors.topMargin: fieldTopMargin
             width: systemStatus.width
             height: NodoSystem.infoFieldLabelHeight
             itemSize: labelSize
@@ -315,7 +334,7 @@ Rectangle {
             id: torServiceField
             anchors.left: systemStatus.left
             anchors.top: minerServiceField.bottom
-            anchors.topMargin: 8
+            anchors.topMargin: fieldTopMargin
             width: systemStatus.width
             height: NodoSystem.infoFieldLabelHeight
             itemSize: labelSize
@@ -327,7 +346,7 @@ Rectangle {
             id: i2pServiceField
             anchors.left: systemStatus.left
             anchors.top: torServiceField.bottom
-            anchors.topMargin: 8
+            anchors.topMargin: fieldTopMargin
             width: systemStatus.width
             height: NodoSystem.infoFieldLabelHeight
             itemSize: labelSize
@@ -339,7 +358,7 @@ Rectangle {
             id: moneroLWSField
             anchors.left: systemStatus.left
             anchors.top: i2pServiceField.bottom
-            anchors.topMargin: 8
+            anchors.topMargin: fieldTopMargin
             width: systemStatus.width
             height: NodoSystem.infoFieldLabelHeight
             itemSize: labelSize
@@ -351,11 +370,109 @@ Rectangle {
             id: blockExplorerField
             anchors.left: systemStatus.left
             anchors.top: moneroLWSField.bottom
-            anchors.topMargin: 8
+            anchors.topMargin: fieldTopMargin
             width: systemStatus.width
             height: NodoSystem.infoFieldLabelHeight
             itemSize: labelSize
             itemText: qsTr("Block Explorer")
+            valueText: ""
+        }
+    }
+
+    Rectangle {
+        id: moneroStatus
+        anchors.horizontalCenter: statusScreen.horizontalCenter
+        anchors.top: systemStatus.bottom
+        anchors.topMargin: 20
+
+        width: 600
+        height: 470
+        color: "black"
+
+        Label {
+            id: moneroStatusTabName
+            anchors.left: moneroStatus.left
+            anchors.top: moneroStatus.top
+            anchors.topMargin: 30
+            width: moneroStatusTabName.paintedWidth
+            height: 16
+            text: qsTr("Monero")
+            verticalAlignment: Text.AlignBottom
+            horizontalAlignment: Text.AlignHCenter
+            font.pixelSize: 40
+            color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
+            font.family: NodoSystem.fontUrbanist.name
+        }
+
+        NodoInfoField {
+            id: hashRateField
+            anchors.left: moneroStatus.left
+            anchors.top: moneroStatusTabName.bottom
+            anchors.topMargin: fieldTopMargin
+            width: moneroStatus.width
+            height: NodoSystem.infoFieldLabelHeight
+            itemSize: labelSize
+            itemText: qsTr("Hash Rate")
+            valueText: ""
+        }
+
+        NodoInfoField {
+            id: dailyTXAvgField
+            anchors.left: moneroStatus.left
+            anchors.top: hashRateField.bottom
+            anchors.topMargin: fieldTopMargin
+            width: moneroStatus.width
+            height: NodoSystem.infoFieldLabelHeight
+            itemSize: labelSize
+            itemText: qsTr("Daily TX Avg (24h)")
+            valueText: ""
+        }
+
+        NodoInfoField {
+            id: mempoolSizeField
+            anchors.left: moneroStatus.left
+            anchors.top: dailyTXAvgField.bottom
+            anchors.topMargin: fieldTopMargin
+            width: moneroStatus.width
+            height: NodoSystem.infoFieldLabelHeight
+            itemSize: labelSize
+            itemText: qsTr("Mempool Size")
+            valueText: ""
+        }
+
+        NodoInfoField {
+            id: avgTXFeeField
+            anchors.left: moneroStatus.left
+            anchors.top: mempoolSizeField.bottom
+            anchors.topMargin: fieldTopMargin
+            width: moneroStatus.width
+            height: NodoSystem.infoFieldLabelHeight
+            itemSize: labelSize
+            itemText: qsTr("Avg TX fee (24h)")
+            valueText: ""
+        }
+
+        NodoInfoField {
+            id: tXPerSecondField
+            anchors.left: avgTXFeeField.left
+            anchors.top: avgTXFeeField.bottom
+            anchors.topMargin: fieldTopMargin
+            width: moneroStatus.width
+            height: NodoSystem.infoFieldLabelHeight
+            itemSize: labelSize
+            itemText: qsTr("TX per second")
+            valueText: ""
+        }
+
+        NodoInfoField {
+            id: blocksPerHourField
+            anchors.left: moneroStatus.left
+            anchors.top: tXPerSecondField.bottom
+            anchors.topMargin: fieldTopMargin
+            width: moneroStatus.width
+            height: NodoSystem.infoFieldLabelHeight
+            itemSize: labelSize
+            itemText: qsTr("Blocks per hour")
             valueText: ""
         }
     }
@@ -374,7 +491,7 @@ Rectangle {
             id: hardwareStatusTabName
             anchors.left: hardwareStatus.left
             anchors.top: hardwareStatus.top
-            anchors.topMargin: 20
+            anchors.topMargin: 30
             width: hardwareStatusTabName.paintedWidth
             height: 16
             text: qsTr("System")
@@ -389,7 +506,7 @@ Rectangle {
             id: cpuField
             anchors.left: hardwareStatus.left
             anchors.top: hardwareStatusTabName.bottom
-            anchors.topMargin: 8
+            anchors.topMargin: fieldTopMargin
             width: hardwareStatus.width
             height: NodoSystem.infoFieldLabelHeight//hheight
             itemSize: labelSize
@@ -401,7 +518,7 @@ Rectangle {
             id: cpuTemperatureField
             anchors.left: hardwareStatus.left
             anchors.top: cpuField.bottom
-            anchors.topMargin: 8
+            anchors.topMargin: fieldTopMargin
             width: hardwareStatus.width
             height: NodoSystem.infoFieldLabelHeight//hheight
             itemSize: labelSize
@@ -413,7 +530,7 @@ Rectangle {
             id: ramField
             anchors.left: hardwareStatus.left
             anchors.top: cpuTemperatureField.bottom
-            anchors.topMargin: 8
+            anchors.topMargin: fieldTopMargin
             width: hardwareStatus.width
             height: NodoSystem.infoFieldLabelHeight//hheight
             itemSize: labelSize
@@ -425,7 +542,7 @@ Rectangle {
             id: blockchainStorageField
             anchors.left: hardwareStatus.left
             anchors.top: ramField.bottom
-            anchors.topMargin: 8
+            anchors.topMargin: fieldTopMargin
             width: hardwareStatus.width
             height: NodoSystem.infoFieldLabelHeight//hheight
             itemSize: labelSize
@@ -437,7 +554,7 @@ Rectangle {
             id: systemStorageField
             anchors.left: hardwareStatus.left
             anchors.top: blockchainStorageField.bottom
-            anchors.topMargin: 8
+            anchors.topMargin: fieldTopMargin
             width: hardwareStatus.width
             height: NodoSystem.infoFieldLabelHeight// height
             itemSize: labelSize
