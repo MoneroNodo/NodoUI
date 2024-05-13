@@ -130,7 +130,7 @@ Item {
             width: qrCodeRect.width
             height: qrCodeRect.height
             qrSize: Qt.size(width,width)
-            qrData: i2pPeerField.valueText + ":" + i2pPortField.valueText
+            qrData: i2pAddressField.valueText + ":" + i2pPortField.valueText
             qrForeground: "black"
             qrBackground: "white"
             qrMargin: 8

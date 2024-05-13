@@ -101,7 +101,7 @@ Rectangle {
             width: qrCodeRect.width
             height: qrCodeRect.height
             qrSize: Qt.size(width,width)
-            qrData: clearnetPeerField.valueText + ":" + clearnetPortField.valueText
+            qrData: clearnetAddressField.valueText + ":" + clearnetPortField.valueText
             qrForeground: "black"
             qrBackground: "white"
             qrMargin: 8

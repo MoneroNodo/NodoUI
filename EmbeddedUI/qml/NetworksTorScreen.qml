@@ -163,7 +163,7 @@ Item {
             width: qrCodeRect.width
             height: qrCodeRect.height
             qrSize: Qt.size(width,width)
-            qrData: torPeerField.valueText + ":" + torPortField.valueText
+            qrData: torOnionAddressField.valueText + ":" + torPortField.valueText
             qrForeground: "black"
             qrBackground: "white"
             qrMargin: 8
