@@ -74,6 +74,9 @@ sudo cp -a $EMBEDDED_UI_PROJECT_PATH/build/QtQuick2QREncode /opt/nodo
 
 sudo chown nodo:nodo $NODO_CONFIG_PATH/embedded.config.json
 
+sudo usermod -aG video monero
+sudo usermod -aG input monero
+
 sudo systemctl enable nodo-dbus.service
 sudo systemctl start nodo-dbus.service
 

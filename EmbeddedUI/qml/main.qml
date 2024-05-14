@@ -8,10 +8,12 @@ import QtQuick.Controls.Styles 1.4
 import NodoSystem 1.1
 import QtQuick.VirtualKeyboard 2.2
 import QtQuick.VirtualKeyboard.Settings 2.2
+import QtQuick.VirtualKeyboard.Styles 2.15
 
 ApplicationWindow {
     id: mainAppWindow
     visible: true
+    visibility: "FullScreen"
 
     modality: Qt.WindowModal
     property int displayRotation: nodoControl.getOrientation()
