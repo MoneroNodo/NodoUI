@@ -1,6 +1,6 @@
 #include "MoneroLWS.h"
 
-#define ENABLE_TEST_CODE
+// #define ENABLE_TEST_CODE
 
 MoneroLWS::MoneroLWS(NodoConfigParser *configParser)
 {
