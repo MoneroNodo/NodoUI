@@ -1,6 +1,6 @@
 {
     "display": {
-        "display_orientation": 0,
+        "display_orientation": -90,
         "screensaver_item_change_timeout_in_sec": 10,
         "screensaver_timeout_in_sec": 30,
         "use_feeds_as_screensaver": 2
