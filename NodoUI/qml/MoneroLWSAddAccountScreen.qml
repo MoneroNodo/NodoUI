@@ -32,7 +32,7 @@ Item {
         anchors.top: moneroLWSAddAccountScreen.top
         width: infoFieldSize
         itemSize: labelSize
-        itemText: qsTr("Main Address (Starts with 4)")
+        itemText: qsTr("Address")
         valueText: ""
         height: NodoSystem.infoFieldLabelHeight
     }

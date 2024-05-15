@@ -25,7 +25,7 @@ Item {
         NodoTabButton {
             id: wifiButton
             y: (deviceMainMenuBar.height - wifiButton.height)/2
-            text: qsTr("WIFI")
+            text: qsTr("WI-FI")
             font.family: NodoSystem.fontUrbanist.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: { pageLoader.source = "DeviceWifiScreen.qml" }

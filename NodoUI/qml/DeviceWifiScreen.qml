@@ -116,7 +116,7 @@ Item {
         width: inputFieldWidth
         height: NodoSystem.inputFieldLabelHeight
         itemSize: labelSize
-        itemText: qsTr("Passphrase")
+        itemText: qsTr("Pasword")
         valueText: ("" === nodoConfig.getStringValueFromKey("wifi", "pw")) ? "" : "******"
         passwordInput: true
     }

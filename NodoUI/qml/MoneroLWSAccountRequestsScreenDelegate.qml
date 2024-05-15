@@ -51,7 +51,7 @@ NodoCanvas {
         width: labelSize+300
         height: NodoSystem.infoFieldLabelHeight
         itemSize: labelSize
-        itemText: qsTr("Start Height")
+        itemText: qsTr("Height")
         valueText: scanHeight
     }
 
