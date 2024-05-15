@@ -18,61 +18,37 @@ if [ ! -d $NODO_CONFIG_PATH ]; then
     sudo mkdir -p $NODO_CONFIG_PATH
 fi
 
-#remove old executables
-if [ -e /opt/nodo/NodoUI ]; then
-    rm /opt/nodo/NodoUI
-fi
-
-if [ -e /opt/nodo/NodoUI.sh ]; then
-    rm /opt/nodo/NodoUI.sh
-fi
-
-if [ -e /usr/bin/NodoUI ]; then
-    rm /usr/bin/NodoUI
-fi
-
-if [ -e /usr/bin/NodoUI.sh ]; then
-    rm /usr/bin/NodoUI.sh
-fi
-
-#git clone https://github.com/toby20130333/qtquickqrencode.git  qtquickqrencode
-#cd qtquickqrencode
-#qmake "CONFIG-=qml_debug" "CONFIG+=qtquickcompiler" "CONFIG-=separate_debug_info"
-#make $PARALLEL_BUILD
-#sudo make install
-#cd ..
-
 #compile the projects
 qmake "CONFIG-=qml_debug" "CONFIG+=qtquickcompiler" "CONFIG-=separate_debug_info"
 make $PARALLEL_BUILD
 
 sudo systemctl stop nodo-dbus
-sudo systemctl stop embeddedUI
+sudo systemctl stop nodoUI
 
 #copy files
-sudo cp $EMBEDDED_UI_PROJECT_PATH/build/EmbeddedUI $NODO_APP_PATH
-sudo cp $EMBEDDED_UI_PROJECT_PATH/config/embeddedUI.sh $NODO_APP_PATH
-sudo cp $EMBEDDED_UI_PROJECT_PATH/config/embedded.config.json $NODO_CONFIG_PATH
-sudo cp $EMBEDDED_UI_PROJECT_PATH/config/embeddedUI.service /usr/lib/systemd/system/
+sudo cp $NODO_UI_PROJECT_PATH/build/NodoUI $NODO_APP_PATH
+sudo cp $NODO_UI_PROJECT_PATH/config/nodoUI.sh $NODO_APP_PATH
+sudo cp $NODO_UI_PROJECT_PATH/config/nodoUI.config.json $NODO_CONFIG_PATH
+sudo cp $NODO_UI_PROJECT_PATH/config/nodoUI.service /usr/lib/systemd/system/
 
 sudo cp $NODO_DAEMON_PROJECT_PATH/build/NodoDaemon $NODO_APP_PATH
 sudo cp $NODO_DAEMON_PROJECT_PATH/config/com.monero.nodo.conf /usr/share/dbus-1/system.d/
 sudo cp $NODO_DAEMON_PROJECT_PATH/config/com.monero.nodo.service /usr/share/dbus-1/system-services/
 sudo cp $NODO_DAEMON_PROJECT_PATH/config/nodo-dbus.service /usr/lib/systemd/system/
 
-lupdate $EMBEDDED_UI_PROJECT_PATH/EmbeddedUI.pro
-lrelease $EMBEDDED_UI_PROJECT_PATH/EmbeddedUI.pro
+lupdate $NODO_UI_PROJECT_PATH/NodoUI.pro
+lrelease $NODO_UI_PROJECT_PATH/NodoUI.pro
 
-sudo cp $EMBEDDED_UI_PROJECT_PATH/i18n/*.qm $NODO_I18N_PATH
+sudo cp $NODO_UI_PROJECT_PATH/i18n/*.qm $NODO_I18N_PATH
 
 #permissions etc.
-sudo chmod a+x $NODO_APP_PATH/EmbeddedUI
-sudo chmod a+x $NODO_APP_PATH/embeddedUI.sh
+sudo chmod a+x $NODO_APP_PATH/NodoUI
+sudo chmod a+x $NODO_APP_PATH/nodoUI.sh
 
-sudo cp -a $EMBEDDED_UI_PROJECT_PATH/build/NodoCanvas /opt/nodo
-sudo cp -a $EMBEDDED_UI_PROJECT_PATH/build/QtQuick2QREncode /opt/nodo
+sudo cp -a $NODO_UI_PROJECT_PATH/build/NodoCanvas /opt/nodo
+sudo cp -a $NODO_UI_PROJECT_PATH/build/QtQuick2QREncode /opt/nodo
 
-sudo chown nodo:nodo $NODO_CONFIG_PATH/embedded.config.json
+sudo chown nodo:nodo $NODO_CONFIG_PATH/nodoUI.config.json
 
 sudo usermod -aG video monero
 sudo usermod -aG input monero
@@ -80,8 +56,8 @@ sudo usermod -aG input monero
 sudo systemctl enable nodo-dbus.service
 sudo systemctl start nodo-dbus.service
 
-sudo systemctl enable embeddedUI.service
-sudo systemctl start embeddedUI.service
+sudo systemctl enable nodoUI.service
+sudo systemctl start nodoUI.service
 
 sudo systemctl set-default graphical.target
 

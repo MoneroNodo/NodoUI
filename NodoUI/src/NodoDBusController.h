@@ -4,7 +4,7 @@
 #include <QObject>
 #include <QTimer>
 
-#include "nodo_embedded_interface.h"
+#include "nodo_dbus_interface.h"
 
 
 class NodoDBusController : public QObject

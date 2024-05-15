@@ -1,11 +1,11 @@
-# /usr/lib/systemd/system/nodo-dbus.service
+# /usr/lib/systemd/system/nodoUI.service
 [Unit]
-Description=Monero Nodo EmbeddedUI service
+Description=Monero Nodo NodoUI service
 Conflicts=getty@tty1.service getty@tty7.service
 After=getty@tty1.service getty@tty7.service
 
 [Service]
-ExecStart=/opt/nodo/embeddedUI.sh &
+ExecStart=/opt/nodo/nodoUI.sh &
 User=monero
 
 [Install]

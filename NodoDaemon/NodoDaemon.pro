@@ -1,6 +1,6 @@
 QT       += core dbus
 
-DBUS_ADAPTORS += nodo_embedded.xml
+DBUS_ADAPTORS += nodo_dbus.xml
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 

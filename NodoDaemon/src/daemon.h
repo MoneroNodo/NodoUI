@@ -4,7 +4,7 @@
 #include <QObject>
 #include <QtDBus/QDBusConnection>
 #include <QTimer>
-#include "nodo_embedded_adaptor.h"
+#include "nodo_dbus_adaptor.h"
 
 class Daemon : public QObject
 {
