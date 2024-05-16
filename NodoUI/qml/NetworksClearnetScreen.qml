@@ -16,6 +16,7 @@ Rectangle {
     Component.onCompleted: {
         nodoConfig.updateRequested()
         onCalculateMaximumTextLabelLength()
+        nodoControl.requestNetworkIP();
     }
 
     function onCalculateMaximumTextLabelLength() {
@@ -34,6 +35,13 @@ Rectangle {
         function onConfigParserReady() {
             clearnetPortField.valueText = nodoConfig.getIntValueFromKey("config", "difficulty")
             clearnetPeerField.valueText = nodoConfig.getStringValueFromKey("config", "monero_rpc_port")
+        }
+    }
+
+    Connections {
+        target: nodoControl
+        function onNetworkConnStatusReady() {
+            clearnetAddressField.valueText = nodoControl.getNetworkIP();
         }
     }
 

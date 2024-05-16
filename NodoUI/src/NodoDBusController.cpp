@@ -9,6 +9,7 @@ NodoDBusController::NodoDBusController(QObject *parent) : QObject{parent}
     connect(nodo, SIGNAL(restartNotification(QString)), this, SLOT(updateTextEdit(QString)));
     connect(nodo, SIGNAL(shutdownNotification(QString)), this, SLOT(updateTextEdit(QString)));
     connect(nodo, SIGNAL(serviceStatusReadyNotification(QString)), this, SLOT(updateServiceStatus(QString)));
+    connect(nodo, SIGNAL(networkConfigurationChanged()), this, SLOT(updateNetworkConfiguration()));
 
     startTimer(1000);
 }
@@ -129,4 +130,18 @@ double NodoDBusController::getTotalSystemStorage(void)
 void NodoDBusController::setPassword(QString pw)
 {
     nodo->setPassword(pw);
+}
+
+QString NodoDBusController::getConnectedDeviceConfig(void)
+{
+    m_networkConfig.clear();
+    m_networkConfig = nodo->getConnectedDeviceConfig();
+
+    return m_networkConfig;
+}
+
+void NodoDBusController::updateNetworkConfiguration(void)
+{
+    getConnectedDeviceConfig();
+    emit newNetworkConfigurationReceived();
 }

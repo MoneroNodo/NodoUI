@@ -27,6 +27,9 @@ NodoSystemControl::NodoSystemControl(NodoEmbeddedUIConfigParser *embeddedUIConfi
 
     connect(m_controller, SIGNAL(connectionStatusChanged()), this, SLOT(updateConnectionStatus()));
     connect(m_controller, SIGNAL(serviceStatusReceived(QString)), this, SLOT(updateServiceStatus(QString)));
+    connect(m_controller, SIGNAL(newNetworkConfigurationReceived()), this, SLOT(updateNetworkConfig()));
+
+
 }
 
 bool NodoSystemControl::getAppTheme(void)
@@ -319,4 +322,28 @@ void NodoSystemControl::setPassword(QString pw)
 void NodoSystemControl::serviceManager(QString operation, QString service)
 {
     m_controller->serviceManager(operation, service);
+}
+
+void NodoSystemControl::requestNetworkIP(void)
+{
+    updateNetworkConfig();
+}
+
+
+void NodoSystemControl::updateNetworkConfig(void)
+{
+    m_networkIP.clear();
+    QString nmConfig = m_controller->getConnectedDeviceConfig();
+    if(!nmConfig.isEmpty())
+    {
+        QStringList params = nmConfig.split("\n", Qt::SkipEmptyParts);
+        m_networkIP = params.at(0);
+    }
+
+    emit networkConnStatusReady();
+}
+
+QString NodoSystemControl::getNetworkIP(void)
+{
+    return m_networkIP;
 }

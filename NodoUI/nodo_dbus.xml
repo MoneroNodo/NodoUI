@@ -66,6 +66,10 @@
             <arg name="pw" type="s" direction="in"/>
         </method>
 
+        <method name="getConnectedDeviceConfig">
+            <arg name="networkConfig" type="s" direction="out"/>
+        </method>
+
 
         <signal name="startRecoveryNotification">
                 <arg name="message" type="s" direction="out"/>
@@ -87,5 +91,8 @@
         <signal name="serviceStatusReadyNotification">
                 <arg name="message" type="s" direction="out"/>
         </signal>
+
+        <signal name="networkConfigurationChanged"/>
+
     </interface>
 </node>

@@ -22,8 +22,13 @@ Daemon::Daemon()
     connection.registerService("com.monero.nodo");
 
     m_timer = new QTimer(this);
+    m_networkTimer = new QTimer(this);
+
     connect(m_timer, SIGNAL(timeout()), this, SLOT(updateParams()));
-    m_timer->start(3000);
+    connect(m_networkTimer, SIGNAL(timeout()), this, SLOT(readNetworkConfigurations()));
+
+    m_timer->start(0);
+    m_networkTimer->start(0);
 
 }
 
@@ -436,4 +441,100 @@ void Daemon::setPassword(QString pw)
 
     sh.start( "sh", { "-c", "echo \"root:$(openssl rand -base64 48)\" | chpasswd" } );
     sh.waitForFinished( -1 );
+}
+
+QString Daemon::getConnectedDeviceConfig(void)
+{
+    QString retVal;
+    if(ethernet_config.connected) //ethernet connection has higher priority
+    {
+        retVal.append(ethernet_config.ip).append("\n").append(ethernet_config.netmask).append("\n").append(ethernet_config.broadcast);
+    }
+    else if(wifi_config.connected)
+    {
+        retVal.append(wifi_config.ip).append("\n").append(wifi_config.netmask).append("\n").append(wifi_config.broadcast);
+    }
+
+    return retVal;
+}
+
+void Daemon::readNetworkConfigurations(void)
+{
+    m_networkTimer->stop();
+    bool isConfigChanged = false;
+
+    QList<QNetworkInterface> allInterfaces = QNetworkInterface::allInterfaces();
+    QNetworkInterface interface;
+
+    network_config_t tmp_wifi, tmp_ethernet;
+    tmp_wifi.connected = false;
+    tmp_wifi.ip.clear();
+    tmp_wifi.netmask.clear();
+    tmp_wifi.broadcast.clear();
+
+    tmp_ethernet.connected = false;
+    tmp_ethernet.ip.clear();
+    tmp_ethernet.netmask.clear();
+    tmp_ethernet.broadcast.clear();
+
+    foreach(interface, allInterfaces) {
+        if(interface.type() == QNetworkInterface::Wifi)
+        {
+            QList<QNetworkAddressEntry> allEntries = interface.addressEntries();
+            for(int i = 0; i < allEntries.size(); i++)
+            {
+                if(allEntries.at(i).ip().protocol() == QAbstractSocket::IPv4Protocol)
+                {
+                    tmp_wifi.connected = true;
+                    tmp_wifi.ip = allEntries.at(i).ip().toString();
+                    tmp_wifi.netmask = allEntries.at(i).netmask().toString();
+                    tmp_wifi.broadcast = allEntries.at(i).broadcast().toString();
+                    break;
+                }
+            }
+        }
+
+        if(interface.type() == QNetworkInterface::Ethernet)
+        {
+            QList<QNetworkAddressEntry> allEntries = interface.addressEntries();
+            for(int i = 0; i < allEntries.size(); i++)
+            {
+                if(allEntries.at(i).ip().protocol() == QAbstractSocket::IPv4Protocol)
+                {
+                    tmp_ethernet.connected = true;
+                    tmp_ethernet.ip = allEntries.at(i).ip().toString();
+                    tmp_ethernet.netmask = allEntries.at(i).netmask().toString();
+                    tmp_ethernet.broadcast = allEntries.at(i).broadcast().toString();
+                    break;
+                }
+            }
+        }
+    }
+
+    if((wifi_config.connected != tmp_wifi.connected) || (wifi_config.broadcast != tmp_wifi.broadcast) || (wifi_config.ip != tmp_wifi.ip) || (wifi_config.netmask != tmp_wifi.netmask))
+    {
+        wifi_config.statusChanged = true;
+        wifi_config.connected = tmp_wifi.connected;
+        wifi_config.ip = tmp_wifi.ip;
+        wifi_config.netmask = tmp_wifi.netmask;
+        wifi_config.broadcast = tmp_wifi.broadcast;
+        isConfigChanged = true;
+    }
+
+    if((ethernet_config.connected != tmp_ethernet.connected) || (ethernet_config.broadcast != tmp_ethernet.broadcast) || (ethernet_config.ip != tmp_ethernet.ip) || (ethernet_config.netmask != tmp_ethernet.netmask))
+    {
+        ethernet_config.statusChanged = true;
+        ethernet_config.connected = tmp_ethernet.connected;
+        ethernet_config.ip = tmp_ethernet.ip;
+        ethernet_config.netmask = tmp_ethernet.netmask;
+        ethernet_config.broadcast = tmp_ethernet.broadcast;
+        isConfigChanged = true;
+    }
+
+    if(true == isConfigChanged)
+    {
+        emit networkConfigurationChanged();
+    }
+
+    m_networkTimer->start(3000);
 }

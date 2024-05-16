@@ -32,6 +32,7 @@ public:
     double getSystemStorageUsage(void);
     double getTotalSystemStorage(void);
     void setPassword(QString pw);
+    QString getConnectedDeviceConfig(void);
 
 
 protected:
@@ -40,14 +41,17 @@ protected:
 private slots:
     void updateTextEdit(QString message);
     void updateServiceStatus(QString message);
+    void updateNetworkConfiguration(void);
 
 private:
     com::moneronodo::embeddedInterface *nodo;
     bool m_connectionStatus;
+    QString m_networkConfig;
 
 signals:
     void connectionStatusChanged(void);
     void serviceStatusReceived(QString statusMessage);
+    void newNetworkConfigurationReceived(void);
 };
 
 #endif // NODODBUSCONTROLLER_H

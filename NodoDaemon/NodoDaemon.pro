@@ -1,4 +1,4 @@
-QT       += core dbus
+QT       += core dbus network
 
 DBUS_ADAPTORS += nodo_dbus.xml
 

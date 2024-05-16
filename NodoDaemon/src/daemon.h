@@ -4,7 +4,18 @@
 #include <QObject>
 #include <QtDBus/QDBusConnection>
 #include <QTimer>
+#include <QHostAddress>
+#include <QNetworkInterface>
 #include "nodo_dbus_adaptor.h"
+
+typedef struct
+{
+    QString ip;
+    QString netmask;
+    QString broadcast;
+    bool connected;
+    bool statusChanged;
+}network_config_t;
 
 class Daemon : public QObject
 {
@@ -31,6 +42,7 @@ public slots:
     double getSystemStorageUsage(void);
     double getTotalSystemStorage(void);
     void setPassword(QString pw);
+    QString getConnectedDeviceConfig(void);
 
 signals:
     void startRecoveryNotification(const QString &message);
@@ -38,6 +50,7 @@ signals:
     void restartNotification(const QString &message);
     void shutdownNotification(const QString &message);
     void serviceStatusReadyNotification(const QString &message);
+    void networkConfigurationChanged(void);
 
 
 private:
@@ -52,7 +65,9 @@ private:
     double m_blockChainStorageTotal = 0;
     double m_systemStorageUsed = 0;
     double m_systemStorageTotal = 0;
+    network_config_t wifi_config, ethernet_config;
 
+    QTimer *m_networkTimer;
     QTimer *m_timer;
 
     void readCPUUsage(void);
@@ -64,6 +79,7 @@ private:
 
 private slots:
     void updateParams(void);
+    void readNetworkConfigurations(void);
 
 };
 

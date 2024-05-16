@@ -71,6 +71,9 @@ public:
     Q_INVOKABLE void setPassword(QString pw);
     Q_INVOKABLE void serviceManager(QString operation, QString service);
 
+    Q_INVOKABLE void requestNetworkIP(void);
+    Q_INVOKABLE QString getNetworkIP(void);
+
 
 signals:
     void appThemeChanged(bool);
@@ -80,6 +83,7 @@ signals:
     void orientationChanged(void);
     void serviceStatusReady(void);
     void systemStatusReady(void);
+    void networkConnStatusReady(void);
 
 private:
     bool m_appTheme;
@@ -101,6 +105,7 @@ private:
     QString m_RAMUsage;
     QString m_blockchainStorage;
     QString m_systemStorage;
+    QString m_networkIP;
 
 
     QStringList m_tzList = {
@@ -149,7 +154,7 @@ private:
 private slots:
     void updateConnectionStatus(void);
     void updateServiceStatus(QString statusMessage);
-
+    void updateNetworkConfig(void);
 };
 
 
