@@ -11,7 +11,6 @@ import NodoSystem 1.1
 
 Item {
     id: networksI2PScreen
-
     property int labelSize: 0
     property int infoFieldWidth: 1200
 

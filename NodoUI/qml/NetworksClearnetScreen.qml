@@ -8,10 +8,9 @@ import QtQuick.Controls.Styles 1.4
 import QtQuick2QREncode 1.0
 import NodoSystem 1.1
 
-Rectangle {
+Item {
     id: networksClearnetScreen
     property int labelSize: 0
-    color: "black"
 
     Component.onCompleted: {
         nodoConfig.updateRequested()

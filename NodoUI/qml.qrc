@@ -25,7 +25,6 @@
         <file>qml/MinerMainScreen.qml</file>
         <file>qml/NodoButton.qml</file>
         <file>qml/DeviceNewsFeedsScreen.qml</file>
-        <file>qml/DeviceSystemRecoveryScreen.qml</file>
         <file>qml/NodoCheckBox.qml</file>
         <file>qml/DeviceDisplayScreen.qml</file>
         <file>qml/NodoSlider.qml</file>
