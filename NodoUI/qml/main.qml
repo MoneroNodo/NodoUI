@@ -50,8 +50,9 @@ ApplicationWindow {
             target: nodoControl
             function onOrientationChanged()
             {
-                mainAppWindow.displayRotation = nodoControl.getOrientation()
-                mainAppWindowMainRect.rotation = nodoControl.getOrientation()
+                var orientation = nodoControl.getOrientation()
+                mainAppWindow.displayRotation = orientation
+                mainAppWindowMainRect.rotation = orientation
                 mainAppWindow.contentOrientation = displayRotation == -90 ? Qt.InvertedLandscapeOrientation : displayRotation == 90 ? Qt.LandscapeOrientation : displayRotation == 0 ? Qt.PortraitOrientation : Qt.InvertedPortraitOrientation
 
             }
@@ -171,6 +172,7 @@ ApplicationWindow {
             if(screenLocked === false){
                 mainAppLockTimer.stop()
                 screenLocked = true
+                mainAppStackView.pop()
                 if(0 === nodoControl.getScreenSaverType()) {
                     mainAppStackView.push("NodoFeederScreenSaver.qml")
                 }

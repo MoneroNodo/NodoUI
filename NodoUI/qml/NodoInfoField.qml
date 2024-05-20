@@ -33,7 +33,7 @@ Item {
             id: namelabel
             width: namelabel.paintedWidth
             height: root.height
-            text: qsTr(itemText)
+            text: itemText
             leftPadding: textLeftPadding
             rightPadding: textRightPadding
             verticalAlignment: Text.AlignVCenter
@@ -55,7 +55,7 @@ Item {
             id: valueLabel
             width: valueCanvas.width
             height: root.height
-            text: qsTr(valueText)
+            text: valueText
             leftPadding: textLeftPadding
             rightPadding: textRightPadding
             verticalAlignment: Text.AlignVCenter

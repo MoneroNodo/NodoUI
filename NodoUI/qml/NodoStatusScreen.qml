@@ -120,7 +120,7 @@ Rectangle {
         Connections {
             target: nodoSystemStatus
             function onSystemStatusReady() {
-                syncStatusField.valueText = (true === nodoSystemStatus.getBoolValueFromKey("synchronized")) ? "Synchronized" : "Syncing"
+                syncStatusField.valueText = (true === nodoSystemStatus.getBoolValueFromKey("synchronized")) ? qsTr("Synchronized") : qsTr("Synchronizing")
                 timestampField.valueText = nodoSystemStatus.getIntValueFromKey("start_time")
                 currentBlockHeightField.valueText = nodoSystemStatus.getIntValueFromKey("height")
                 moneroVersionField.valueText = nodoSystemStatus.getStringValueFromKey("version")
@@ -128,7 +128,7 @@ Rectangle {
                 incomingConnectionsField.valueText = nodoSystemStatus.getIntValueFromKey("incoming_connections_count")
                 whitePeerlistSizeField.valueText = nodoSystemStatus.getIntValueFromKey("white_peerlist_size")
                 greyPeerlistSizeField.valueText = nodoSystemStatus.getIntValueFromKey("grey_peerlist_size")
-                updateAvailableField.valueText = (true === nodoSystemStatus.getBoolValueFromKey("update_available")) ? "Update available" : "Update not available"
+                updateAvailableField.valueText = (true === nodoSystemStatus.getBoolValueFromKey("update_available")) ? qsTr("Update available") : qsTr("Update not available")
             }
         }
 
@@ -177,10 +177,10 @@ Rectangle {
             anchors.top: syncStatusTabName.bottom
             anchors.topMargin: fieldTopMargin
             width: syncStatus.width
-            height: NodoSystem.infoFieldLabelHeight//hheight
+            height: NodoSystem.infoFieldLabelHeight
             itemSize: labelSize
             itemText: qsTr("Sync Status")
-            valueText: (true === nodoSystemStatus.getBoolValueFromKey("synchronized")) ? "Synchronized" : "Syncing"
+            valueText: (true === nodoSystemStatus.getBoolValueFromKey("synchronized")) ? qsTr("Synchronized") : qsTr("Synchronizing")
         }
 
         NodoInfoField {
@@ -190,7 +190,7 @@ Rectangle {
             anchors.topMargin: fieldTopMargin
 
             width: syncStatus.width
-            height: NodoSystem.infoFieldLabelHeight//hheight
+            height: NodoSystem.infoFieldLabelHeight
             itemSize: labelSize
             itemText: qsTr("Timestamp")
             valueText: nodoSystemStatus.getIntValueFromKey("start_time")
@@ -202,7 +202,7 @@ Rectangle {
             anchors.top: timestampField.bottom
             anchors.topMargin: fieldTopMargin
             width: syncStatus.width
-            height: NodoSystem.infoFieldLabelHeight//hheight
+            height: NodoSystem.infoFieldLabelHeight
             itemSize: labelSize
             itemText: qsTr("Block Height")
             valueText: nodoSystemStatus.getIntValueFromKey("height")
@@ -214,7 +214,7 @@ Rectangle {
             anchors.top: currentBlockHeightField.bottom
             anchors.topMargin: fieldTopMargin
             width: syncStatus.width
-            height: NodoSystem.infoFieldLabelHeight//hheight
+            height: NodoSystem.infoFieldLabelHeight
             itemSize: labelSize
             itemText: qsTr("Version")
             valueText: nodoSystemStatus.getIntValueFromKey("version")
@@ -226,7 +226,7 @@ Rectangle {
             anchors.top: moneroVersionField.bottom
             anchors.topMargin: fieldTopMargin
             width: syncStatus.width
-            height: NodoSystem.infoFieldLabelHeight//hheight
+            height: NodoSystem.infoFieldLabelHeight
             itemSize: labelSize
             itemText: qsTr("Outgoing Peers")
             valueText: nodoSystemStatus.getIntValueFromKey("outgoing_connections_count")
@@ -238,7 +238,7 @@ Rectangle {
             anchors.top: outgoingConnectionsField.bottom
             anchors.topMargin: fieldTopMargin
             width: syncStatus.width
-            height: NodoSystem.infoFieldLabelHeight//hheight
+            height: NodoSystem.infoFieldLabelHeight
             itemSize: labelSize
             itemText: qsTr("Incoming Peers")
             valueText: nodoSystemStatus.getIntValueFromKey("incoming_connections_count")
@@ -250,7 +250,7 @@ Rectangle {
             anchors.top: incomingConnectionsField.bottom
             anchors.topMargin: fieldTopMargin
             width: syncStatus.width
-            height: NodoSystem.infoFieldLabelHeight//hheight
+            height: NodoSystem.infoFieldLabelHeight
             itemSize: labelSize
             itemText: qsTr("White Peerlist")
             valueText: nodoSystemStatus.getIntValueFromKey("white_peerlist_size")
@@ -262,7 +262,7 @@ Rectangle {
             anchors.top: whitePeerlistSizeField.bottom
             anchors.topMargin: fieldTopMargin
             width: syncStatus.width
-            height: NodoSystem.infoFieldLabelHeight//hheight
+            height: NodoSystem.infoFieldLabelHeight
             itemSize: labelSize
             itemText: qsTr("Grey Peerlist")
             valueText: nodoSystemStatus.getIntValueFromKey("grey_peerlist_size")
@@ -274,10 +274,10 @@ Rectangle {
             anchors.top: greyPeerlistSizeField.bottom
             anchors.topMargin: fieldTopMargin
             width: syncStatus.width
-            height: NodoSystem.infoFieldLabelHeight//hheight
+            height: NodoSystem.infoFieldLabelHeight
             itemSize: labelSize
             itemText: qsTr("Update")
-            valueText: (true === nodoSystemStatus.getBoolValueFromKey("update_available")) ? "Available" : "Up to date"
+            valueText: (true === nodoSystemStatus.getBoolValueFromKey("update_available")) ? qsTr("Available") : qsTr("Up to date")
         }
     }
 
@@ -508,7 +508,7 @@ Rectangle {
             anchors.top: hardwareStatusTabName.bottom
             anchors.topMargin: fieldTopMargin
             width: hardwareStatus.width
-            height: NodoSystem.infoFieldLabelHeight//hheight
+            height: NodoSystem.infoFieldLabelHeight
             itemSize: labelSize
             itemText: qsTr("CPU")
             valueText: "<loading>"
@@ -520,7 +520,7 @@ Rectangle {
             anchors.top: cpuField.bottom
             anchors.topMargin: fieldTopMargin
             width: hardwareStatus.width
-            height: NodoSystem.infoFieldLabelHeight//hheight
+            height: NodoSystem.infoFieldLabelHeight
             itemSize: labelSize
             itemText: qsTr("Temperature")
             valueText: "<loading>"
@@ -532,7 +532,7 @@ Rectangle {
             anchors.top: cpuTemperatureField.bottom
             anchors.topMargin: fieldTopMargin
             width: hardwareStatus.width
-            height: NodoSystem.infoFieldLabelHeight//hheight
+            height: NodoSystem.infoFieldLabelHeight
             itemSize: labelSize
             itemText: qsTr("RAM")
             valueText: "in use"
@@ -544,7 +544,7 @@ Rectangle {
             anchors.top: ramField.bottom
             anchors.topMargin: fieldTopMargin
             width: hardwareStatus.width
-            height: NodoSystem.infoFieldLabelHeight//hheight
+            height: NodoSystem.infoFieldLabelHeight
             itemSize: labelSize
             itemText: qsTr("Blockchain Storage")
             valueText: "<loading>"
@@ -556,7 +556,7 @@ Rectangle {
             anchors.top: blockchainStorageField.bottom
             anchors.topMargin: fieldTopMargin
             width: hardwareStatus.width
-            height: NodoSystem.infoFieldLabelHeight// height
+            height: NodoSystem.infoFieldLabelHeight
             itemSize: labelSize
             itemText: qsTr("System Storage")
             valueText: "<loading>"

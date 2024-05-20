@@ -37,7 +37,6 @@ NodoCanvas {
         anchors.topMargin: 10
         anchors.leftMargin: 10
         anchors.rightMargin: 10
-        // width: 1820
         itemSize: 0
         height: NodoSystem.infoFieldLabelHeight
         itemText: qsTr("Address")
