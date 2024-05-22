@@ -1,10 +1,7 @@
-import QtQuick 2.15
-import QtQuick.Window 2.15
-import QtQuick.Controls 2.15
-import QtQuick.Layouts 1.15
-import QtQuick.Controls.Material 2.15
-import QtQuick.Controls.Universal 2.15
-import QtQuick.Controls.Styles 1.4
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Layouts
+import QtQuick.VirtualKeyboard
 import NodoSystem 1.1
 import NodoCanvas 1.0
 
@@ -13,7 +10,7 @@ Button {
     x: 0
     y: 0
     flat: true
-    implicitHeight: 30
+    implicitHeight: 32
     property string buttonTextColor: nodoControl.appTheme ? NodoSystem.buttonTextColorNightModeOn : NodoSystem.buttonTextColorNightModeOff
     property int textLeftPadding: NodoSystem.textPadding
     property int textRightPadding: NodoSystem.textPadding
@@ -25,9 +22,10 @@ Button {
 
     contentItem: Text {
         id: buttonText
-        y: 0
+        y: (root.implicitHeight - buttonText.paintedHeight)/2
+        x: (root.width - buttonText.paintedWidth)/2
         width: buttonText.paintedWidth
-        height: root.implicitHeight
+        height: root.height
         text: root.text
         textFormat: Text.PlainText
         verticalAlignment: Text.AlignVCenter

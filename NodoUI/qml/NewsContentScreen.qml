@@ -1,16 +1,11 @@
-import QtQuick 2.15
-import QtQuick.Window 2.15
-import QtQuick.Controls 2.15
-import QtQuick.Layouts 1.15
-import QtQuick.Controls.Material 2.15
-import QtQuick.Controls.Universal 2.15
-import QtQuick.Controls.Styles 1.4
-import QtWebKit 3.0
-import QtWebEngine 1.10
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Layouts
+import QtQuick.VirtualKeyboard
 import NodoSystem 1.1
+import NodoCanvas 1.0
 
-
-Item {
+Rectangle {
     id: root
 
     property string headerTextStr: "header"
@@ -20,6 +15,7 @@ Item {
     property string headerAuthStr: "auth"
     property string dataTimestampStr: "timestamp"
     property string imagePath: ""
+    color: "black"
 
     ScrollView
     {

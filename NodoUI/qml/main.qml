@@ -1,14 +1,11 @@
-import QtQuick 2.15
-import QtQuick.Window 2.15
-import QtQuick.Controls 2.15
-import QtQuick.Layouts 1.15
-import QtQuick.Controls.Material 2.15
-import QtQuick.Controls.Universal 2.15
-import QtQuick.Controls.Styles 1.4
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Layouts
+import QtQuick.VirtualKeyboard
+import QtQuick.VirtualKeyboard.Settings
 import NodoSystem 1.1
-import QtQuick.VirtualKeyboard 2.2
-import QtQuick.VirtualKeyboard.Settings 2.2
-import QtQuick.VirtualKeyboard.Styles 2.15
+import NodoCanvas 1.0
+
 
 ApplicationWindow {
     id: mainAppWindow
@@ -104,7 +101,7 @@ ApplicationWindow {
             anchors.fill: parent
             propagateComposedEvents: true
 
-            onPressed: {
+            onPressed: (mouse)=> {
                 mouse.accepted = false
                 mainAppLockTimer.restart()
                 if(screenLocked === true){
@@ -122,8 +119,6 @@ ApplicationWindow {
             y: mainAppWindowMainRect.height
             width: mainAppWindowMainRect.width
             height: NodoSystem.infoFieldLabelHeight
-            // focus: true
-
 
             Connections {
                 target: nodoControl
@@ -145,12 +140,12 @@ ApplicationWindow {
                 when: inputPanel.active
                 PropertyChanges {
                     target: inputPanel
-                    y: mainAppWindowMainRect.height + previewPanel.height - inputPanel.height
+                    y: mainAppWindowMainRect.height + previewPanel.height - inputPanel.height - 70
                 }
 
                 PropertyChanges {
                     target: previewPanel
-                    y: mainAppWindowMainRect.height - inputPanel.height
+                    y: mainAppWindowMainRect.height - inputPanel.height -70
                 }
             }
             transitions: Transition {
@@ -172,6 +167,7 @@ ApplicationWindow {
             if(screenLocked === false){
                 mainAppLockTimer.stop()
                 screenLocked = true
+                systemPopup.close()
                 mainAppStackView.pop()
                 if(0 === nodoControl.getScreenSaverType()) {
                     mainAppStackView.push("NodoFeederScreenSaver.qml")
@@ -191,6 +187,93 @@ ApplicationWindow {
             id: mainAppLockTimer
             interval: nodoControl.getScreenSaverTimeout(); running: true; repeat: false
             onTriggered: mainAppWindowMainRect.lockSystem()
+        }
+
+        Popup {
+            id: systemPopup
+            x: (mainAppWindowMainRect.width - width)/2
+            y: (mainAppWindowMainRect.height - height)/2
+            width: 655
+            height: 200
+            modal: true
+            property string applyButtonText: ""
+            property int commandID: -1
+            parent: mainAppWindowMainRect
+
+            Overlay.modal: Item {
+                Rectangle{
+                    color: 'black'
+                    opacity: 0.3
+                    width: mainAppWindowMainRect.width
+                    height: mainAppWindowMainRect.height
+                }
+            }
+
+            background: null
+            contentItem: NodoCanvas {
+                id: popupContent
+
+                width: systemPopup.width
+                height: systemPopup.height
+
+                color: "#141414"
+
+                Text {
+                    id: popupMessage
+                    anchors.top: popupContent.top
+                    anchors.topMargin: 20
+                    x: (popupContent.width - popupMessage.paintedWidth)/2
+
+                    text: qsTr("Are you sure?")
+                    font.pixelSize: NodoSystem.infoFieldItemFontSize
+                    font.family: NodoSystem.fontUrbanist.name
+                    color: nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn  : NodoSystem.dataFieldTextColorNightModeOff
+                }
+
+                NodoButton {
+                    id: applyButton
+                    text: systemPopup.applyButtonText
+                    anchors.top: popupMessage.bottom
+                    anchors.left: popupContent.left
+                    anchors.topMargin: 30
+                    anchors.leftMargin: 12
+                    height: NodoSystem.nodoItemHeight
+                    font.family: NodoSystem.fontUrbanist.name
+                    font.pixelSize: NodoSystem.buttonTextFontSize
+
+                    onClicked: {
+                        if(0 == systemPopup.commandID)
+                        {
+                            nodoControl.restartDevice();
+                            //console.log("restarting")
+                        }
+                        else if(1 == systemPopup.commandID)
+                        {
+                            nodoControl.shutdownDevice();
+                            //console.log("shuting down")
+                        }
+                        else if(2 == systemPopup.commandID)
+                        {
+                            nodoControl.systemRecovery(deviceSystemRecoveryRecoverFS.checked, deviceSystemRecoveryResyncBlockchain.checked);
+                            //console.log("recovering")
+                        }
+                    }
+                }
+
+                NodoButton {
+                    id: cancelButton
+                    text: qsTr("Cancel")
+                    anchors.top: applyButton.top
+                    anchors.left: applyButton.right
+                    anchors.leftMargin: 16
+                    height: NodoSystem.nodoItemHeight
+                    font.family: NodoSystem.fontUrbanist.name
+                    font.pixelSize: NodoSystem.buttonTextFontSize
+                    onClicked: {
+                        systemPopup.close()
+                    }
+                }
+            }
         }
     }
 }

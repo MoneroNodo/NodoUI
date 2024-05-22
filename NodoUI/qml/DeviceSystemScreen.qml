@@ -1,11 +1,9 @@
-import QtQuick 2.15
-import QtQuick.Window 2.15
-import QtQuick.Controls 2.15
-import QtQuick.Layouts 1.15
-import QtQuick.Controls.Material 2.15
-import QtQuick.Controls.Universal 2.15
-import QtQuick.Controls.Styles 1.4
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Layouts
+import QtQuick.VirtualKeyboard
 import NodoSystem 1.1
+import NodoCanvas 1.0
 
 Rectangle {
     id: deviceSystemMainScreen
@@ -28,7 +26,10 @@ Rectangle {
             font.family: NodoSystem.fontUrbanist.name
             font.pixelSize: NodoSystem.buttonTextFontSize
             onClicked: {
-                nodoControl.restartDevice();
+                // nodoControl.restartDevice();
+                systemPopup.commandID = 0;
+                systemPopup.applyButtonText = systemResetButton.text
+                systemPopup.open();
             }
         }
 
@@ -42,7 +43,10 @@ Rectangle {
             font.family: NodoSystem.fontUrbanist.name
             font.pixelSize: NodoSystem.buttonTextFontSize
             onClicked: {
-                nodoControl.shutdownDevice();
+                // nodoControl.shutdownDevice();
+                systemPopup.commandID = 1;
+                systemPopup.applyButtonText = systemShutdownButton.text
+                systemPopup.open();
             }
         }
 
@@ -83,7 +87,6 @@ Rectangle {
             if(deviceSystemRecoveryResyncBlockchainText.labelRectRoundSize > labelSize)
             labelSize = deviceSystemRecoveryResyncBlockchainText.labelRectRoundSize
         }
-
 
         Rectangle {
             id: deviceSystemRecoveryScreen
@@ -152,7 +155,10 @@ Rectangle {
                 font.family: NodoSystem.fontUrbanist.name
                 font.pixelSize: NodoSystem.buttonTextFontSize
                 onClicked: {
-                    nodoControl.systemRecovery(deviceSystemRecoveryRecoverFS.checked, deviceSystemRecoveryResyncBlockchain.checked);
+                    systemPopup.commandID = 2;
+                    systemPopup.applyButtonText = qsTr("Recover")
+                    systemPopup.open();
+                    // nodoControl.systemRecovery(deviceSystemRecoveryRecoverFS.checked, deviceSystemRecoveryResyncBlockchain.checked);
                 }
             }
 

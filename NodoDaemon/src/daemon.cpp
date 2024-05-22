@@ -438,9 +438,6 @@ void Daemon::setPassword(QString pw)
     QString tmp = QString("echo \"nodo:").append(pw).append("\"  | chpasswd");
     sh.start( "sh", { "-c", tmp});
     sh.waitForFinished( -1 );
-
-    sh.start( "sh", { "-c", "echo \"root:$(openssl rand -base64 48)\" | chpasswd" } );
-    sh.waitForFinished( -1 );
 }
 
 QString Daemon::getConnectedDeviceConfig(void)

@@ -6,7 +6,7 @@ sudo apt-get update
 
 sudo bash -e ./install_mesa.sh
 
-sudo apt-get install -y qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools build-essential libqt5virtualkeyboard5-dev qtdeclarative5-dev qml-module-qtquick-controls2 qml-module-qtquick-controls qml-module-qtwebkit libpugixml-dev libcurlpp-dev libcurl4-gnutls-dev qml-module-qtwebview libqt5quickcontrols2-5 qtquickcontrols2-5-dev libglu1-mesa-dev python3-pyqt5 libqt5svg5-dev qtbase5-private-dev qml-module-qt-labs-folderlistmodel qml-module-qtquick-shapes qml-module-qtwebengine qml-module-qtquick-virtualkeyboard qtvirtualkeyboard-plugin qml-module-qtquick2 qttools5-dev-tools
+sudo apt-get install -y libglu1-mesa-dev qt6-base-dev libqt6qml6 libqt6qmlcompiler6 libqt6qmlcore6 libqt6quick6 libqt6quickcontrols2-6 qt6-declarative-dev qml6-module-qtquick-virtualkeyboard libqt6virtualkeyboard6 qt6-virtualkeyboard-dev qt6-virtualkeyboard-plugin libcurlpp-dev libcurl4-gnutls-dev qt6-l10n-tools qt6-tools-dev-tools qml6-module-qtquick-controls qml6-module-qtquick qml6-module-qtquick-dialogs qml6-module-qtquick-layouts qml6-module-qtquick-shapes qml6-module-qtquick-window qml6-module-qtqml-workerscript qml6-module-qtquick-templates qml6-module-qtwebengine qml6-module-qt-labs-folderlistmodel qt6-svg-dev
 
 #create folders if they don't exist
 if [ ! -d $NODO_APP_PATH ]; then
@@ -19,11 +19,11 @@ if [ ! -d $NODO_CONFIG_PATH ]; then
 fi
 
 #compile the projects
-qmake "CONFIG-=qml_debug" "CONFIG+=qtquickcompiler" "CONFIG-=separate_debug_info"
+qmake6 "CONFIG-=qml_debug" "CONFIG+=qtquickcompiler" "CONFIG-=separate_debug_info"
 make $PARALLEL_BUILD
 
-sudo systemctl stop nodo-dbus
-sudo systemctl stop nodoUI
+#sudo systemctl stop nodo-dbus
+#sudo systemctl stop nodoUI
 
 #copy files
 sudo cp $NODO_UI_PROJECT_PATH/build/NodoUI $NODO_APP_PATH
@@ -36,8 +36,8 @@ sudo cp $NODO_DAEMON_PROJECT_PATH/config/com.monero.nodo.conf /usr/share/dbus-1/
 sudo cp $NODO_DAEMON_PROJECT_PATH/config/com.monero.nodo.service /usr/share/dbus-1/system-services/
 sudo cp $NODO_DAEMON_PROJECT_PATH/config/nodo-dbus.service /usr/lib/systemd/system/
 
-lupdate $NODO_UI_PROJECT_PATH/NodoUI.pro
-lrelease $NODO_UI_PROJECT_PATH/NodoUI.pro
+/usr/lib/qt6/bin/lupdate $NODO_UI_PROJECT_PATH/NodoUI.pro
+/usr/lib/qt6/bin/lrelease $NODO_UI_PROJECT_PATH/NodoUI.pro
 
 sudo cp $NODO_UI_PROJECT_PATH/i18n/*.qm $NODO_I18N_PATH
 

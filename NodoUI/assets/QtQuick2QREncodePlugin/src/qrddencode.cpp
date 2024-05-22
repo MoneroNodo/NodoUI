@@ -53,7 +53,7 @@ void QREnCode::paint(QPainter *painter)
         double wrap_x = (w - icon_width) / 2.0;
         double wrap_y = (w- icon_height) / 2.0;
         QRectF wrap(wrap_x - 5, wrap_y - 5, icon_width + 10, icon_height + 10);
-        painter->drawRoundRect(wrap, 50, 50);
+        painter->drawRoundedRect(wrap, 50, 50);
         if(qrLogo.isEmpty() || qrLogo == QRENCODE_WEBSITE){
             painter->drawText(wrap,QRENCODE_WEBSITE);
         }else{

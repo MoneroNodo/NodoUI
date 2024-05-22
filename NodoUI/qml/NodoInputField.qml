@@ -1,10 +1,7 @@
-import QtQuick 2.15
-import QtQuick.Window 2.15
-import QtQuick.Controls 2.15
-import QtQuick.Layouts 1.15
-import QtQuick.Controls.Material 2.15
-import QtQuick.Controls.Universal 2.15
-import QtQuick.Controls.Styles 1.4
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Layouts
+import QtQuick.VirtualKeyboard
 import NodoSystem 1.1
 import NodoCanvas 1.0
 
@@ -38,7 +35,7 @@ Item {
             id: namelabel
             width: namelabel.paintedWidth
             height: root.height
-            text: qsTr(itemText)
+            text: itemText
             leftPadding: textLeftPadding
             rightPadding: textRightPadding
             verticalAlignment: Text.AlignVCenter
@@ -72,6 +69,7 @@ Item {
             clip: true
             color: nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn  : NodoSystem.dataFieldTextColorNightModeOff
             echoMode: valueCanvas.defaultEchoMode
+            activeFocusOnPress: true
             onFocusChanged:{
                 if(focus)
                 {
@@ -106,6 +104,10 @@ Item {
                     }
                 }
             }
+
+            Keys.onReturnPressed: {
+                Qt.inputMethod.hide();
+            }
         }
 
         NodoPasswordButton {
@@ -132,6 +134,5 @@ Item {
                 nodoControl.setEchoMode(valueLabel.echoMode)
             }
         }
-
     }
 }
