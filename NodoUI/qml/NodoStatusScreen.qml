@@ -126,7 +126,7 @@ Rectangle {
                 incomingConnectionsField.valueText = nodoSystemStatus.getIntValueFromKey("incoming_connections_count")
                 whitePeerlistSizeField.valueText = nodoSystemStatus.getIntValueFromKey("white_peerlist_size")
                 greyPeerlistSizeField.valueText = nodoSystemStatus.getIntValueFromKey("grey_peerlist_size")
-                updateAvailableField.valueText = (true === nodoSystemStatus.getBoolValueFromKey("update_available")) ? qsTr("Update available") : qsTr("Update not available")
+                updateAvailableField.valueText = (true === nodoSystemStatus.getBoolValueFromKey("update_available")) ? qsTr("Update available") : qsTr("Up to date")
             }
         }
 
@@ -275,7 +275,7 @@ Rectangle {
             height: NodoSystem.infoFieldLabelHeight
             itemSize: labelSize
             itemText: qsTr("Update")
-            valueText: (true === nodoSystemStatus.getBoolValueFromKey("update_available")) ? qsTr("Available") : qsTr("Up to date")
+            valueText: (true === nodoSystemStatus.getBoolValueFromKey("update_available")) ? qsTr("Update available") : qsTr("Up to date")
         }
     }
 
