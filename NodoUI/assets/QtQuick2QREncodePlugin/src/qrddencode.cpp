@@ -1,5 +1,5 @@
 ﻿#include "qrddencode.h"
-#define QRENCODE_WEBSITE "www.heilqt.com"
+#define QRENCODE_WEBSITE ""
 
 QREnCode::QREnCode(QQuickItem *parent):
     QQuickPaintedItem(parent)
@@ -134,6 +134,7 @@ void QREnCode::setQrData(const QString &data)
     if(qrData !=data){
         qrData = data;
         emit qrDataChanged(qrData);
+        update();
     }
 }
 

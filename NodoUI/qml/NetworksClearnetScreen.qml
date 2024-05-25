@@ -39,7 +39,7 @@ Item {
         target: nodoControl
         function onNetworkConnStatusReady() {
             clearnetAddressField.valueText = nodoControl.getNetworkIP();
-            QtQuick2QREncode.qrData = clearnetAddressField.valueText + ":" + clearnetPortField.valueText
+            qr.setQrData(clearnetAddressField.valueText + ":" + clearnetPortField.valueText)
         }
     }
 

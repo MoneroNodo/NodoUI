@@ -41,7 +41,7 @@ Item {
             torOnionAddressField.valueText = nodoConfig.getStringValueFromKey("config", "tor_address")
             torPortField.valueText = nodoConfig.getIntValueFromKey("config", "tor_port")
             torPeerField.valueText = nodoConfig.getStringValueFromKey("config", "add_tor_peer")
-            QtQuick2QREncode.qrData = torOnionAddressField.valueText + ":" + torPortField.valueText
+            qr.qrData = torOnionAddressField.valueText + ":" + torPortField.valueText
         }
     }
 
