@@ -22,8 +22,13 @@ fi
 qmake6 "CONFIG-=qml_debug" "CONFIG+=qtquickcompiler" "CONFIG-=separate_debug_info"
 make $PARALLEL_BUILD
 
-#sudo systemctl stop nodo-dbus
-#sudo systemctl stop nodoUI
+if systemctl is-active --quiet nodo-dbus.service; then
+    sudo systemctl stop nodo-dbus.service
+fi
+
+if systemctl is-active --quiet nodoUI.service; then
+    sudo systemctl stop nodoUI.service
+fi
 
 #copy files
 sudo cp $NODO_UI_PROJECT_PATH/build/NodoUI $NODO_APP_PATH
