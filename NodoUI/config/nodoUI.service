@@ -6,7 +6,7 @@ After=getty@tty1.service getty@tty7.service
 
 [Service]
 ExecStart=/opt/nodo/nodoUI.sh &
-User=monero
+User=nodo
 
 [Install]
 Alias=display-manager.service
