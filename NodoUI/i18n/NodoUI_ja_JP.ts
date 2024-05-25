@@ -1117,12 +1117,8 @@ Warning: The deposit address will be publicly viewable. For privacy, use a diffe
     </message>
     <message>
         <location filename="../qml/NodoStatusScreen.qml" line="129"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="278"/>
         <source>Update available</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="129"/>
-        <source>Update not available</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1176,11 +1172,7 @@ Warning: The deposit address will be publicly viewable. For privacy, use a diffe
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="278"/>
-        <source>Available</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
+        <location filename="../qml/NodoStatusScreen.qml" line="129"/>
         <location filename="../qml/NodoStatusScreen.qml" line="278"/>
         <source>Up to date</source>
         <translation type="unfinished"></translation>
