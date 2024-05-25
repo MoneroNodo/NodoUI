@@ -35,6 +35,7 @@ Item {
             i2pAddressField.valueText = nodoConfig.getStringValueFromKey("config", "i2p_address")
             i2pPortField.valueText = nodoConfig.getIntValueFromKey("config", "i2p_port")
             i2pPeerField.valueText = nodoConfig.getStringValueFromKey("config", "add_i2p_peer")
+            QtQuick2QREncode.qrData = i2pAddressField.valueText + ":" + i2pPortField.valueText
         }
     }
 
