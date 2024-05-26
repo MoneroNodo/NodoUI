@@ -33,6 +33,11 @@ ApplicationWindow {
 
     property bool screenLocked: false;
 
+    Component.onCompleted:
+    {
+        nodoControl.restartScreenSaverTimer();
+    }
+
     Rectangle {
         id: mainAppWindowMainRect
 
@@ -51,7 +56,11 @@ ApplicationWindow {
                 mainAppWindow.displayRotation = orientation
                 mainAppWindowMainRect.rotation = orientation
                 mainAppWindow.contentOrientation = displayRotation == -90 ? Qt.InvertedLandscapeOrientation : displayRotation == 90 ? Qt.LandscapeOrientation : displayRotation == 0 ? Qt.PortraitOrientation : Qt.InvertedPortraitOrientation
+            }
 
+            function onScreenSaverTimedout()
+            {
+                mainAppWindowMainRect.lockSystem();
             }
         }
 
@@ -102,14 +111,45 @@ ApplicationWindow {
             propagateComposedEvents: true
 
             onPressed: (mouse)=> {
-                mouse.accepted = false
-                mainAppLockTimer.restart()
+                mouse.accepted = false;
+                nodoControl.restartScreenSaverTimer();
+
+                // mainAppLockTimer.interval = nodoControl.getScreenSaverTimeout();
+                // mainAppLockTimer.start()
                 if(mainAppWindow.screenLocked === true){
                     mainAppWindow.screenLocked = false
                     mainAppStackView.pop()
                 }
             }
         }
+
+        function lockSystem()
+        {
+            if(mainAppWindow.screenLocked === false){
+                nodoControl.stopScreenSaverTimer();
+                // mainAppLockTimer.stop()
+                mainAppWindow.screenLocked = true
+                systemPopup.close()
+                mainAppStackView.pop()
+                if(0 === nodoControl.getScreenSaverType()) {
+                    mainAppStackView.push("NodoFeederScreenSaver.qml")
+                }
+                else if(1 === nodoControl.getScreenSaverType())
+                {
+                    mainAppStackView.push("NodoScreenSaver.qml")
+                }
+                else if(2 === nodoControl.getScreenSaverType())
+                {
+                    mainAppStackView.push("NodoDigitalClock.qml")
+                }
+            }
+        }
+
+        // Timer {
+        //     id: mainAppLockTimer
+        //     interval: nodoControl.getScreenSaverTimeout(); running: true; repeat: false
+        //     onTriggered: mainAppWindowMainRect.lockSystem()
+        // }
 
         NodoInputFieldPreview
         {
@@ -159,33 +199,6 @@ ApplicationWindow {
                     }
                 }
             }
-        }
-
-        function lockSystem()
-        {
-            if(screenLocked === false){
-                mainAppLockTimer.stop()
-                screenLocked = true
-                systemPopup.close()
-                mainAppStackView.pop()
-                if(0 === nodoControl.getScreenSaverType()) {
-                    mainAppStackView.push("NodoFeederScreenSaver.qml")
-                }
-                else if(1 === nodoControl.getScreenSaverType())
-                {
-                    mainAppStackView.push("NodoScreenSaver.qml")
-                }
-                else if(2 === nodoControl.getScreenSaverType())
-                {
-                    mainAppStackView.push("NodoDigitalClock.qml")
-                }
-            }
-        }
-
-        Timer {
-            id: mainAppLockTimer
-            interval: nodoControl.getScreenSaverTimeout(); running: true; repeat: false
-            onTriggered: mainAppWindowMainRect.lockSystem()
         }
 
         Popup {

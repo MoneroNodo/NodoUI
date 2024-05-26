@@ -5,6 +5,7 @@
 #include "NodoConfigParser.h"
 #include "NodoDBusController.h"
 #include <QTimeZone>
+#include <QTimer>
 
 class NodoSystemControl : public QObject
 {
@@ -74,6 +75,8 @@ public:
     Q_INVOKABLE void requestNetworkIP(void);
     Q_INVOKABLE QString getNetworkIP(void);
 
+    Q_INVOKABLE void restartScreenSaverTimer(void);
+    Q_INVOKABLE void stopScreenSaverTimer(void);
 
 signals:
     void appThemeChanged(bool);
@@ -84,6 +87,7 @@ signals:
     void serviceStatusReady(void);
     void systemStatusReady(void);
     void networkConnStatusReady(void);
+    void screenSaverTimedout(void);
 
 private:
     bool m_appTheme;
@@ -106,6 +110,7 @@ private:
     QString m_blockchainStorage;
     QString m_systemStorage;
     QString m_networkIP;
+    QTimer *m_screenSaverTimer;
 
 
     QStringList m_tzList = {
@@ -155,6 +160,7 @@ private slots:
     void updateConnectionStatus(void);
     void updateServiceStatus(QString statusMessage);
     void updateNetworkConfig(void);
+    void timedout(void);
 };
 
 
