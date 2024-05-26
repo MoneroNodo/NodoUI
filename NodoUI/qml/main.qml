@@ -114,8 +114,6 @@ ApplicationWindow {
                 mouse.accepted = false;
                 nodoControl.restartScreenSaverTimer();
 
-                // mainAppLockTimer.interval = nodoControl.getScreenSaverTimeout();
-                // mainAppLockTimer.start()
                 if(mainAppWindow.screenLocked === true){
                     mainAppWindow.screenLocked = false
                     mainAppStackView.pop()
@@ -127,7 +125,6 @@ ApplicationWindow {
         {
             if(mainAppWindow.screenLocked === false){
                 nodoControl.stopScreenSaverTimer();
-                // mainAppLockTimer.stop()
                 mainAppWindow.screenLocked = true
                 systemPopup.close()
                 mainAppStackView.pop()
@@ -144,12 +141,6 @@ ApplicationWindow {
                 }
             }
         }
-
-        // Timer {
-        //     id: mainAppLockTimer
-        //     interval: nodoControl.getScreenSaverTimeout(); running: true; repeat: false
-        //     onTriggered: mainAppWindowMainRect.lockSystem()
-        // }
 
         NodoInputFieldPreview
         {
@@ -257,17 +248,14 @@ ApplicationWindow {
                         if(0 == systemPopup.commandID)
                         {
                             nodoControl.restartDevice();
-                            //console.log("restarting")
                         }
                         else if(1 == systemPopup.commandID)
                         {
                             nodoControl.shutdownDevice();
-                            //console.log("shuting down")
                         }
                         else if(2 == systemPopup.commandID)
                         {
                             nodoControl.systemRecovery(deviceSystemRecoveryRecoverFS.checked, deviceSystemRecoveryResyncBlockchain.checked);
-                            //console.log("recovering")
                         }
                     }
                 }
