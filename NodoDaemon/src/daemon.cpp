@@ -218,7 +218,7 @@ void Daemon::getServiceStatus(void)
     qDebug() << "received service status request";
 
     QString program = "/usr/bin/systemctl";
-    QString serviceList[] = {"monerod", "miner", "tor", "i2p", "monero-lws", "block-explorer", "sshd"};
+    QString serviceList[] = {"monerod", "xmrig", "tor", "i2pd", "monero-lws", "block-explorer", "sshd"};
 
     QStringList arguments;
     arguments << "is-active" << serviceList[0] << serviceList[1] << serviceList[2] << serviceList[3] << serviceList[4] << serviceList[5] << serviceList[6];

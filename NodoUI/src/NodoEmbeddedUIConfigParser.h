@@ -87,7 +87,7 @@ private:
     display_settings_t m_displaySettings;
 
     const QStringList m_feedKeyList = {"name", "uri", "selected", "visible", "num_of_feeds_to_show", "description_tag", "image_tag", "image_attr", "pub_date_tag"};
-    const QStringList m_displayKeyList = {"screensaver_timeout_in_sec", "screensaver_item_change_timeout_in_sec", "use_feeds_as_screensaver", "display_orientation"};
+    const QStringList m_displayKeyList = {"screensaver_timeout_in_sec", "screensaver_item_change_timeout_in_sec", "screensaver_type", "display_orientation"};
     const QString feedObjName = "feeds";
     const QString displayObjName = "display";
     const QString m_feedNames = "feed_";
