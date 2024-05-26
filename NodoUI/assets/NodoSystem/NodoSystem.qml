@@ -58,7 +58,7 @@ Item
 
     property int digitalClockPixelSize: 750
 
-    property int padding: 2
+    property int padding: 0
     property int textPadding: 20
     property int nodoItemHeight: 64
     property int nodoItemWidth: 300

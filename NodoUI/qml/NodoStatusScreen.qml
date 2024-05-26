@@ -13,7 +13,7 @@ Rectangle {
     property int labelSize: 0
     property int fieldTopMargin: 5
 
-    property int componentWidth: 602
+    property int componentWidth: 600
     property int componentLeftMargin: 8
     property int componentBottomMargin: 8
     property int componentTopMargin: 34

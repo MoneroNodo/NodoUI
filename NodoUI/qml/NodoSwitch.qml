@@ -18,7 +18,6 @@ Switch {
         color: control.checked ? (nodoControl.appTheme ? NodoSystem.highlightedColorNightModeOn : NodoSystem.highlightedColorNightModeOff) : NodoSystem.switchBackgroundColor
         NodoCanvas {
             id: knob
-            // cornerColor: background.color
             x: control.checked ? control.width - control.height*0.9 : control.height*0.1
             y: (control.height - height) / 2
             width: parent.height*0.8

@@ -104,9 +104,8 @@ ApplicationWindow {
             onPressed: (mouse)=> {
                 mouse.accepted = false
                 mainAppLockTimer.restart()
-                if(screenLocked === true){
+                if(mainAppWindow.screenLocked === true){
                     mainAppWindow.screenLocked = false
-                    mainAppLockTimer.restart()
                     mainAppStackView.pop()
                 }
             }
