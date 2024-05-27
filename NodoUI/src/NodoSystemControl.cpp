@@ -26,12 +26,11 @@ NodoSystemControl::NodoSystemControl(NodoEmbeddedUIConfigParser *embeddedUIConfi
     m_appTheme = m_configParser->getTheme();
 
     m_screenSaverTimer = new QTimer(this);
+    connect(m_screenSaverTimer, SIGNAL(timeout()), this, SLOT(timedout()));
 
     connect(m_controller, SIGNAL(connectionStatusChanged()), this, SLOT(updateConnectionStatus()));
     connect(m_controller, SIGNAL(serviceStatusReceived(QString)), this, SLOT(updateServiceStatus(QString)));
     connect(m_controller, SIGNAL(newNetworkConfigurationReceived()), this, SLOT(updateNetworkConfig()));
-
-
 }
 
 bool NodoSystemControl::getAppTheme(void)
@@ -353,18 +352,16 @@ QString NodoSystemControl::getNetworkIP(void)
 void NodoSystemControl::restartScreenSaverTimer(void)
 {
     stopScreenSaverTimer();
-    m_screenSaverTimer->singleShot(getScreenSaverTimeout(), this, SLOT(timedout()));
+    m_screenSaverTimer->start(getScreenSaverTimeout());
 }
 
 void NodoSystemControl::stopScreenSaverTimer(void)
 {
-    if(m_screenSaverTimer->isActive())
-    {
-        m_screenSaverTimer->stop();
-    }
+    m_screenSaverTimer->stop();
 }
 
 void NodoSystemControl::timedout(void)
 {
+    qDebug() << "time out";
     emit screenSaverTimedout();
 }
