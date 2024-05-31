@@ -31,6 +31,15 @@ NodoSystemControl::NodoSystemControl(NodoEmbeddedUIConfigParser *embeddedUIConfi
     connect(m_controller, SIGNAL(connectionStatusChanged()), this, SLOT(updateConnectionStatus()));
     connect(m_controller, SIGNAL(serviceStatusReceived(QString)), this, SLOT(updateServiceStatus(QString)));
     connect(m_controller, SIGNAL(newNetworkConfigurationReceived()), this, SLOT(updateNetworkConfig()));
+
+    if(m_configParser->getStringValueFromKey("mining", "enabled") == "TRUE")
+    {
+        serviceManager("start", "xmrig");
+    }
+    else
+    {
+        serviceManager("stop", "xmrig");
+    }
 }
 
 bool NodoSystemControl::getAppTheme(void)

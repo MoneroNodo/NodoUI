@@ -232,3 +232,18 @@ bool NodoConfigParser::getTheme(void)
     }
     return jsonValue.toBool();
 }
+
+void NodoConfigParser::setMinerServiceStatus(bool status)
+{
+    QString s;
+    if(status)
+    {
+        s = "TRUE";
+    }
+    else
+    {
+        s = "FALSE";
+    }
+    m_miningObj.insert("enabled", s);
+    writeJson();
+}

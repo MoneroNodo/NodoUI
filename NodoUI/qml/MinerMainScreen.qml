@@ -37,6 +37,18 @@ Item {
             height: minerSwitchRectSwitchText.height
             display: AbstractButton.IconOnly
             checked: nodoConfig.getStringValueFromKey("mining", "enabled") === "TRUE" ? true : false
+            onCheckedChanged:
+            {
+                nodoConfig.setMinerServiceStatus(minerSwitch.checked)
+                if(checked)
+                {
+                    nodoControl.serviceManager("start", "xmrig");
+                }
+                else
+                {
+                    nodoControl.serviceManager("stop", "xmrig");
+                }
+            }
         }
     }
 
