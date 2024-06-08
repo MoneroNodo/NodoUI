@@ -123,7 +123,7 @@ Item {
         textFlag: Qt.ImhDigitsOnly
     }
 
-    NodoInfoField {
+    NodoInputField {
         id: torPeerField
         anchors.left: networksTorScreen.left
         anchors.top: torPortField.bottom

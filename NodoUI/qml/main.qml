@@ -111,7 +111,7 @@ ApplicationWindow {
             propagateComposedEvents: true
 
             onPressed: (mouse)=> {
-                console.log("pressed")
+                // console.log("pressed")
                 mouse.accepted = false;
                 nodoControl.restartScreenSaverTimer();
 

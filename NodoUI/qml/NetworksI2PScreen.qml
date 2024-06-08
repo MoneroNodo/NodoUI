@@ -89,7 +89,7 @@ Item {
         textFlag: Qt.ImhDigitsOnly
     }
 
-    NodoInfoField {
+    NodoInputField {
         id: i2pPeerField
         anchors.left: networksI2PScreen.left
         anchors.top: i2pPortField.bottom
