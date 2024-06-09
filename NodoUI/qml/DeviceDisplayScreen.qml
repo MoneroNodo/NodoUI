@@ -221,7 +221,7 @@ Item {
             anchors.top: timezoneRect.top
             anchors.left: timezoneRect.left
             anchors.rightMargin: NodoSystem.padding
-            text: qsTr("Time zone")
+            text: qsTr("Time Zone")
         }
 
         NodoComboBox
