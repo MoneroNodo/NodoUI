@@ -71,7 +71,7 @@ Item {
         anchors.top: minerLabel.bottom
 		anchors.left: minerMainScreen.left
         anchors.topMargin: NodoSystem.nodoTopMargin
-        width: 800
+        width: 1840
         height: NodoSystem.infoFieldLabelHeight
         itemSize: 300
         itemText: qsTr("Deposit Address")
