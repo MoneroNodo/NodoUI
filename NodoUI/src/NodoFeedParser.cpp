@@ -108,11 +108,18 @@ void NodoFeedParser::downloadFinished(QNetworkReply *reply)
 		
         pugi::xml_document doc;
         int index = getIndexFromUri(url);
+
+        if(-1 == index)
+        {
+            qDebug() << "something went wrong. the URL: " << url;
+            return;
+        }
+
         doc.load(reply->readAll());
 		
-        post_t parser;
         int counter = 0;
         for (pugi::xpath_node xn : doc.select_nodes(".//*[self::entry or self::item]")) {
+            post_t parser;
             if (counter++ >= m_feeds_str.at(index).numOfFeedsToShowItem)
             {
                 break;

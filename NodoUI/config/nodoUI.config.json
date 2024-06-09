@@ -58,11 +58,11 @@
             "image_attr": "url",
             "image_tag": "media:content",
             "name": "Revuo Monero",
-            "num_of_feeds_to_show": 0,
+            "num_of_feeds_to_show": 5,
             "pub_date_tag": "updated",
             "selected": true,
-            "uri": "https://revuo-xmr.com/atom.xml",
-            "visible": false
+            "uri": "https://www.revuo-xmr.com/atom.xml",
+            "visible": true
         },
         "feed_5": {
             "description_tag": "content:encoded",
