@@ -74,7 +74,7 @@ Rectangle {
         visible: false
 
         property int labelSize: 0
-        property int checkBoxMargin: 5
+        property int checkBoxMargin: 0
 
         Component.onCompleted: {
             onCalculateMaximumTextLabelLength()
@@ -158,7 +158,6 @@ Rectangle {
                     systemPopup.commandID = 2;
                     systemPopup.applyButtonText = qsTr("Recover")
                     systemPopup.open();
-                    // nodoControl.systemRecovery(deviceSystemRecoveryRecoverFS.checked, deviceSystemRecoveryResyncBlockchain.checked);
                 }
             }
 
