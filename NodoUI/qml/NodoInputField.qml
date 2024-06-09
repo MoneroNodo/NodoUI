@@ -24,6 +24,7 @@ Item {
     property bool passwordInput: false
 
     signal textEdited()
+    signal textEditFinished()
 
     NodoCanvas {
         id: labelCanvas
@@ -107,6 +108,7 @@ Item {
 
             Keys.onReturnPressed: {
                 Qt.inputMethod.hide();
+                root.textEditFinished()
             }
         }
 

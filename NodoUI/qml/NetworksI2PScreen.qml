@@ -87,6 +87,8 @@ Item {
         itemText: qsTr("Port")
         valueText: nodoConfig.getIntValueFromKey("config", "i2p_port")
         textFlag: Qt.ImhDigitsOnly
+        onTextEditFinished: {
+        }
     }
 
     NodoInputField {
@@ -99,6 +101,8 @@ Item {
         itemSize: labelSize
         itemText: qsTr("Peer")
         valueText: nodoConfig.getStringValueFromKey("config", "add_i2p_peer")
+        onTextEditFinished: {
+        }
     }
 
     NodoButton {

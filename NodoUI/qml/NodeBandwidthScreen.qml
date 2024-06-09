@@ -28,7 +28,7 @@ Item {
             labelSize = rateLimitDownField.labelRectRoundSize
     }
 
-    NodoInfoField {
+    NodoInputField {
         id: incomingPeersLimitField
         anchors.left: nodeBandwidthScreen.left
         anchors.top: nodeBandwidthScreen.top
@@ -37,9 +37,12 @@ Item {
         itemSize: labelSize
         itemText: qsTr("Incoming peers limit")
         valueText: "64"
+        textFlag: Qt.ImhDigitsOnly
+        onTextEditFinished: {
+        }
     }
 
-    NodoInfoField {
+    NodoInputField {
         id: outgoingPeersLimitField
         anchors.left: nodeBandwidthScreen.left
         anchors.top: incomingPeersLimitField.bottom
@@ -49,9 +52,12 @@ Item {
         itemSize: labelSize
         itemText: qsTr("Outgoing peers limit")
         valueText: "64"
+        textFlag: Qt.ImhDigitsOnly
+        onTextEditFinished: {
+        }
     }
 
-    NodoInfoField {
+    NodoInputField {
         id: rateLimitUpField
         anchors.left: nodeBandwidthScreen.left
         anchors.top: outgoingPeersLimitField.bottom
@@ -61,9 +67,12 @@ Item {
         itemSize: labelSize
         itemText: qsTr("Bandwidth Up")
         valueText: "-1"
+        textFlag: Qt.ImhDigitsOnly
+        onTextEditFinished: {
+        }
     }
 
-    NodoInfoField {
+    NodoInputField {
         id: rateLimitDownField
         anchors.left: nodeBandwidthScreen.left
         anchors.top: rateLimitUpField.bottom
@@ -73,6 +82,9 @@ Item {
         itemSize: labelSize
         itemText: qsTr("Bandwidth Down")
         valueText: "-1"
+        textFlag: Qt.ImhDigitsOnly
+        onTextEditFinished: {
+        }
     }
 }
 

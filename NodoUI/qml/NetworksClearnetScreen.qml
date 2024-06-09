@@ -30,7 +30,7 @@ Item {
     Connections {
         target: nodoConfig
         function onConfigParserReady() {
-            clearnetPortField.valueText = nodoConfig.getIntValueFromKey("config", "monero_rpc_port")
+            clearnetPortField.valueText = nodoConfig.getIntValueFromKey("config", "monero_public_port")
             clearnetPeerField.valueText = nodoConfig.getStringValueFromKey("config", "add_clearnet_peer")
         }
     }
@@ -63,8 +63,10 @@ Item {
         height: 60
         itemSize: labelSize
         itemText: qsTr("Port")
-        valueText: nodoConfig.getIntValueFromKey("config", "monero_rpc_port")
+        valueText: nodoConfig.getIntValueFromKey("config", "monero_public_port")
         textFlag: Qt.ImhDigitsOnly
+        onTextEditFinished: {
+        }
     }
 
     NodoInputField {
@@ -78,6 +80,8 @@ Item {
         itemText: qsTr("Peer")
         valueText: nodoConfig.getStringValueFromKey("config", "add_clearnet_peer")
         textFlag: Qt.ImhPreferLowercase
+        onTextEditFinished: {
+        }
     }
 
     NodoButton {

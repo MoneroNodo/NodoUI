@@ -118,8 +118,9 @@ Item {
             NodoTabButton {
                 id: newsButton
                 anchors.top: nodoLogoButton.top
-                text: qsTr("NEWS")
+                anchors.left: moneroLWSButton.right
                 implicitHeight: NodoSystem.topMenuButtonHeight
+                text: qsTr("NEWS")
                 font.family: NodoSystem.fontUrbanist.name
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
                 onClicked: { pageLoader.source = "NewsMainScreen.qml" }

@@ -121,6 +121,8 @@ Item {
         itemText: qsTr("Port")
         valueText: nodoConfig.getIntValueFromKey("config", "tor_port")
         textFlag: Qt.ImhDigitsOnly
+        onTextEditFinished: {
+        }
     }
 
     NodoInputField {
@@ -133,6 +135,8 @@ Item {
         itemSize: labelSize
         itemText: qsTr("Peer")
         valueText: nodoConfig.getStringValueFromKey("config", "add_tor_peer")
+        onTextEditFinished: {
+        }
     }
 
     NodoButton {
