@@ -186,7 +186,7 @@ Item {
                     repeat: true
                     triggeredOnStart: true
                     onTriggered: {
-                        var m_day = Qt.formatDateTime(nodoControl.getChangedDateTime(), "dd")
+                        var m_day = Qt.formatDateTime(nodoControl.getChangedDateTime(), "d")
                         var m_month = Qt.formatDateTime(nodoControl.getChangedDateTime(), "MMM")
                         var m_year = Qt.formatDateTime(nodoControl.getChangedDateTime(), "yyyy")
 
