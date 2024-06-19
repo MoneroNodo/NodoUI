@@ -4,10 +4,7 @@ NodoDBusController::NodoDBusController(QObject *parent) : QObject{parent}
 {
     m_connectionStatus = false;
     nodo = new com::moneronodo::embeddedInterface("com.monero.nodo", "/com/monero/nodo", QDBusConnection::systemBus(), this);
-    connect(nodo, SIGNAL(startRecoveryNotification(QString)), this, SLOT(updateTextEdit(QString)));
-    connect(nodo, SIGNAL(serviceManagerNotification(QString)), this, SLOT(updateTextEdit(QString)));
-    connect(nodo, SIGNAL(restartNotification(QString)), this, SLOT(updateTextEdit(QString)));
-    connect(nodo, SIGNAL(shutdownNotification(QString)), this, SLOT(updateTextEdit(QString)));
+    connect(nodo, SIGNAL(serviceManagerNotification(QString)), this, SIGNAL(serviceManagerNotificationReceived(QString)));
     connect(nodo, SIGNAL(serviceStatusReadyNotification(QString)), this, SLOT(updateServiceStatus(QString)));
     connect(nodo, SIGNAL(networkConfigurationChanged()), this, SLOT(updateNetworkConfiguration()));
 

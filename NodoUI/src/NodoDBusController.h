@@ -52,6 +52,7 @@ signals:
     void connectionStatusChanged(void);
     void serviceStatusReceived(QString statusMessage);
     void newNetworkConfigurationReceived(void);
+    void serviceManagerNotificationReceived(QString message);
 };
 
 #endif // NODODBUSCONTROLLER_H

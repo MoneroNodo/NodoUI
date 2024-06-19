@@ -31,6 +31,10 @@ ApplicationWindow {
         id: nodoTimezones
     }
 
+    NodoMessages {
+        id: systemMessages
+    }
+
     property bool screenLocked: false;
 
     Component.onCompleted:
@@ -202,6 +206,7 @@ ApplicationWindow {
             modal: true
             property string applyButtonText: ""
             property int commandID: -1
+            property string popupMessageText: systemMessages.messages[NodoMessages.Message.Are_you_sure]
             parent: mainAppWindowMainRect
 
             Overlay.modal: Item {
@@ -228,7 +233,7 @@ ApplicationWindow {
                     anchors.topMargin: 20
                     x: (popupContent.width - popupMessage.paintedWidth)/2
 
-                    text: qsTr("Are you sure?")
+                    text: systemPopup.popupMessageText
                     font.pixelSize: NodoSystem.infoFieldItemFontSize
                     font.family: NodoSystem.fontUrbanist.name
                     color: nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn  : NodoSystem.dataFieldTextColorNightModeOff
@@ -240,13 +245,17 @@ ApplicationWindow {
                     anchors.top: popupMessage.bottom
                     anchors.left: popupContent.left
                     anchors.topMargin: 30
-                    anchors.leftMargin: 12
+                    anchors.leftMargin: systemPopup.commandID > -1 ? 12 : (systemPopup.width - applyButton.width)/2
                     height: NodoSystem.nodoItemHeight
                     font.family: NodoSystem.fontUrbanist.name
                     font.pixelSize: NodoSystem.buttonTextFontSize
 
                     onClicked: {
-                        if(0 == systemPopup.commandID)
+                        if(-1 == systemPopup.commandID)
+                        {
+                            systemPopup.close()
+                        }
+                        else if(0 == systemPopup.commandID)
                         {
                             nodoControl.restartDevice();
                         }
@@ -258,18 +267,20 @@ ApplicationWindow {
                         {
                             nodoControl.systemRecovery(deviceSystemRecoveryRecoverFS.checked, deviceSystemRecoveryResyncBlockchain.checked);
                         }
+
                     }
                 }
 
                 NodoButton {
                     id: cancelButton
-                    text: qsTr("Cancel")
+                    text: systemMessages.messages[NodoMessages.Message.Cancel]
                     anchors.top: applyButton.top
                     anchors.left: applyButton.right
                     anchors.leftMargin: 16
                     height: NodoSystem.nodoItemHeight
                     font.family: NodoSystem.fontUrbanist.name
                     font.pixelSize: NodoSystem.buttonTextFontSize
+                    visible: systemPopup.commandID === -1 ? false : true
                     onClicked: {
                         systemPopup.close()
                     }

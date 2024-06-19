@@ -31,6 +31,7 @@ NodoSystemControl::NodoSystemControl(NodoEmbeddedUIConfigParser *embeddedUIConfi
     connect(m_controller, SIGNAL(connectionStatusChanged()), this, SLOT(updateConnectionStatus()));
     connect(m_controller, SIGNAL(serviceStatusReceived(QString)), this, SLOT(updateServiceStatus(QString)));
     connect(m_controller, SIGNAL(newNetworkConfigurationReceived()), this, SLOT(updateNetworkConfig()));
+    connect(m_controller, SIGNAL(serviceManagerNotificationReceived(QString)), this, SLOT(processNotification(QString)));
 
     if(m_configParser->getStringValueFromKey("mining", "enabled") == "TRUE")
     {
@@ -347,6 +348,13 @@ void NodoSystemControl::updateNetworkConfig(void)
     if(!nmConfig.isEmpty())
     {
         QStringList params = nmConfig.split("\n", Qt::SkipEmptyParts);
+        if(params.count() != 3)
+        {
+            m_networkIP = "nan";
+            m_serviceStatus = -2;
+            emit serviceStatusMessageReceived();
+            return;
+        }
         m_networkIP = params.at(0);
     }
 
@@ -374,3 +382,87 @@ void NodoSystemControl::timedout(void)
     qDebug() << "time out";
     emit screenSaverTimedout();
 }
+
+void NodoSystemControl::setClearnetPort(QString port)
+{
+    m_serviceStatusNeeded = 1;
+    m_configParser->setClearnetPort(port);
+    m_controller->serviceManager("restart", "monerod");
+}
+
+void NodoSystemControl::setClearnetPeer(QString peer)
+{
+    m_serviceStatusNeeded = 1;
+    m_configParser->setClearnetPeer(peer);
+    m_controller->serviceManager("restart", "monerod");
+}
+
+int NodoSystemControl::getServiceMessageStatusCode(void)
+{
+    return m_serviceStatus;
+}
+
+void NodoSystemControl::setTorPort(QString port)
+{
+    m_serviceStatusNeeded = 1;
+    m_configParser->setTorPort(port);
+    m_controller->serviceManager("restart", "monerod");
+}
+
+
+void NodoSystemControl::setI2pPort(QString port)
+{
+    m_serviceStatusNeeded = 1;
+    m_configParser->setI2pPort(port);
+    m_controller->serviceManager("restart", "monerod");
+}
+
+void NodoSystemControl::processNotification(QString message)
+{
+    QStringList serviceStat = message.split(":");
+    if(serviceStat.size() != 3)
+    {
+        m_serviceStatus = -2;
+        emit serviceStatusMessageReceived();
+        return;
+    }
+
+    if(("monerod" == serviceStat[0]) && "restart" == serviceStat[1])
+    {
+        if("1" == serviceStat[2])
+        {
+            m_serviceStatus = 0;
+        }
+        else
+        {
+            m_serviceStatus = -1;
+        }
+        emit serviceStatusMessageReceived();
+    }
+}
+
+
+
+
+
+//QTimer::singleShot(4000, this, SLOT(processNotificationTest()));
+
+/*
+void NodoSystemControl::processNotificationTest(void)
+{
+    QString message = "monerod:restart:0";
+    QStringList serviceStat = message.split(":");
+    if(("monerod" == serviceStat[0]) && "restart" == serviceStat[1])
+    {
+        if("1" == serviceStat[2])
+        {
+            m_serviceStatus = 0;
+        }
+        else
+        {
+            m_serviceStatus = -1;
+        }
+        emit serviceStatusMessageReceived();
+    }
+}
+*/

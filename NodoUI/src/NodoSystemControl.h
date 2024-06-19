@@ -78,6 +78,16 @@ public:
     Q_INVOKABLE void restartScreenSaverTimer(void);
     Q_INVOKABLE void stopScreenSaverTimer(void);
 
+    Q_INVOKABLE void setClearnetPort(QString port);
+    Q_INVOKABLE void setClearnetPeer(QString peer);
+
+    Q_INVOKABLE void setTorPort(QString port);
+
+    Q_INVOKABLE void setI2pPort(QString port);
+
+    Q_INVOKABLE int getServiceMessageStatusCode(void);
+
+
 signals:
     void appThemeChanged(bool);
     void inputFieldTextChanged(void);
@@ -88,6 +98,7 @@ signals:
     void systemStatusReady(void);
     void networkConnStatusReady(void);
     void screenSaverTimedout(void);
+    void serviceStatusMessageReceived(void);
 
 private:
     bool m_appTheme;
@@ -103,6 +114,9 @@ private:
     int m_echoMode = -1;
     int m_passwordMode = -1;
     QString m_serviceStatusMessage;
+    bool m_serviceStatusNeeded = false;
+    int m_serviceStatus;
+
 
     QString m_CPUUsage;
     QString m_Temperature;
@@ -161,6 +175,8 @@ private slots:
     void updateServiceStatus(QString statusMessage);
     void updateNetworkConfig(void);
     void timedout(void);
+    void processNotification(QString message);
+    // void processNotificationTest(void);
 };
 
 

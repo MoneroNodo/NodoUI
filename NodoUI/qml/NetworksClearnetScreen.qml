@@ -9,6 +9,9 @@ import QtQuick2QREncode 1.0
 Item {
     id: networksClearnetScreen
     property int labelSize: 0
+    property int clearnetPort
+    property string clearnetPeer
+    property bool inputFieldReadOnly: false
 
     Component.onCompleted: {
         nodoConfig.updateRequested()
@@ -30,8 +33,8 @@ Item {
     Connections {
         target: nodoConfig
         function onConfigParserReady() {
-            clearnetPortField.valueText = nodoConfig.getIntValueFromKey("config", "monero_public_port")
-            clearnetPeerField.valueText = nodoConfig.getStringValueFromKey("config", "add_clearnet_peer")
+            networksClearnetScreen.clearnetPort = nodoConfig.getIntValueFromKey("config", "monero_public_port")
+            networksClearnetScreen.clearnetPeer = nodoConfig.getStringValueFromKey("config", "add_clearnet_peer")
         }
     }
 
@@ -40,6 +43,26 @@ Item {
         function onNetworkConnStatusReady() {
             clearnetAddressField.valueText = nodoControl.getNetworkIP();
             qr.setQrData(clearnetAddressField.valueText + ":" + clearnetPortField.valueText)
+        }
+
+        function onServiceStatusMessageReceived() {
+            var statusMessage = nodoControl.getServiceMessageStatusCode();
+            if(-1 === statusMessage)
+            {
+                systemPopup.popupMessageText = systemMessages.messages[NodoMessages.Message.Restarting_monerod_service_failed]
+                systemPopup.commandID = -1;
+                systemPopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Close]
+                systemPopup.open();
+            }
+            else if(-2 === statusMessage)
+            {
+                systemPopup.popupMessageText = systemMessages.messages[NodoMessages.Message.Connection_with_nodo_dbus_service_failed]
+                systemPopup.commandID = -1;
+                systemPopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Close]
+                systemPopup.open();
+            }
+
+            inputFieldReadOnly = false;
         }
     }
 
@@ -63,9 +86,14 @@ Item {
         height: 60
         itemSize: labelSize
         itemText: qsTr("Port")
-        valueText: nodoConfig.getIntValueFromKey("config", "monero_public_port")
+        valueText: networksClearnetScreen.clearnetPort
         textFlag: Qt.ImhDigitsOnly
+        readOnlyFlag: networksClearnetScreen.inputFieldReadOnly
         onTextEditFinished: {
+            if(clearnetPortField.valueText !== networksClearnetScreen.clearnetPort.toString())
+            {
+                clearnetApplyPortButton.isActive = true
+            }
         }
     }
 
@@ -78,21 +106,51 @@ Item {
         height: 60
         itemSize: labelSize
         itemText: qsTr("Peer")
-        valueText: nodoConfig.getStringValueFromKey("config", "add_clearnet_peer")
+        valueText: networksClearnetScreen.clearnetPeer
         textFlag: Qt.ImhPreferLowercase
+        readOnlyFlag: networksClearnetScreen.inputFieldReadOnly
         onTextEditFinished: {
+            if(clearnetPeerField.valueText !== networksClearnetScreen.clearnetPeer)
+            {
+                clearnetAddPeerButton.isActive = true
+            }
+        }
+    }
+
+    NodoButton {
+        id: clearnetApplyPortButton
+        anchors.left: networksClearnetScreen.left
+        anchors.top: clearnetPeerField.bottom
+        anchors.topMargin: 20
+        text: qsTr("Apply Port")
+        height: 60
+        font.family: NodoSystem.fontUrbanist.name
+        font.pixelSize: NodoSystem.buttonTextFontSize
+        isActive: false
+        onClicked:
+        {
+            isActive = false
+            networksClearnetScreen.inputFieldReadOnly = true;
+            nodoControl.setClearnetPort(clearnetPortField.valueText)
         }
     }
 
     NodoButton {
         id: clearnetAddPeerButton
         anchors.left: networksClearnetScreen.left
-        anchors.top: clearnetPeerField.bottom
+        anchors.top: clearnetApplyPortButton.bottom
         anchors.topMargin: 20
         text: qsTr("Set Peer")
         height: 60
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize
+        isActive: false
+        onClicked:
+        {
+            isActive = false
+            networksClearnetScreen.inputFieldReadOnly = true;
+            nodoControl.setClearnetPeer(clearnetPeerField.valueText)
+        }
     }
 
     Rectangle{

@@ -247,3 +247,27 @@ void NodoConfigParser::setMinerServiceStatus(bool status)
     m_miningObj.insert("enabled", s);
     writeJson();
 }
+
+void NodoConfigParser::setClearnetPort(QString port)
+{
+    m_configObj.insert("monero_public_port", port.toInt());
+    writeJson();
+}
+
+void NodoConfigParser::setClearnetPeer(QString peer)
+{
+    m_configObj.insert("add_clearnet_peer", peer);
+    writeJson();
+}
+
+void NodoConfigParser::setTorPort(QString port)
+{
+    m_configObj.insert("tor_port", port.toInt());
+    writeJson();
+}
+
+void NodoConfigParser::setI2pPort(QString port)
+{
+    m_configObj.insert("i2p_port", port.toInt());
+    writeJson();
+}

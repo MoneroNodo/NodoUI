@@ -60,6 +60,7 @@
         <file>Images/eye-off.png</file>
         <file>Images/eye.png</file>
         <file>qml/DeviceSSHScreen.qml</file>
+        <file>qml/NodoMessages.qml</file>
     </qresource>
     <qresource prefix="/NodoSystem">
         <file alias="qmldir">assets/NodoSystem/qmldir</file>

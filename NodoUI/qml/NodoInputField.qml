@@ -68,9 +68,12 @@ Item {
             font.family: NodoSystem.fontUrbanist.name
             font.pixelSize: valueFontSize
             clip: true
-            color: nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn  : NodoSystem.dataFieldTextColorNightModeOff
+            color: (readOnlyFlag === true) ? NodoSystem.buttonDisabledColor : nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn : NodoSystem.dataFieldTextColorNightModeOff
             echoMode: valueCanvas.defaultEchoMode
             activeFocusOnPress: true
+            inputMethodHints: Qt.ImhNoPredictiveText | Qt.ImhNoTextHandles | Qt.ImhNoAutoUppercase | textFlag
+            readOnly: readOnlyFlag
+
             onFocusChanged:{
                 if(focus)
                 {
@@ -82,7 +85,7 @@ Item {
                     echoMode: valueCanvas.defaultEchoMode
                 }
 
-                nodoControl.setInputFieldText("")
+                nodoControl.setInputFieldText(valueText/*""*/)
             }
             onTextEdited:
             {
@@ -90,9 +93,6 @@ Item {
                 root.textEdited()
                 nodoControl.setInputFieldText(valueText)
             }
-
-            inputMethodHints: Qt.ImhNoPredictiveText | Qt.ImhNoTextHandles | Qt.ImhNoAutoUppercase | textFlag
-            readOnly: readOnlyFlag
 
             Connections {
                 target: nodoControl
@@ -130,7 +130,6 @@ Item {
                 else
                 {
                     valueLabel.echoMode = TextInput.Normal
-
                 }
                 valueLabel.focus = true
                 nodoControl.setEchoMode(valueLabel.echoMode)

@@ -36,6 +36,12 @@ public:
     void setTheme(bool theme);
     bool getTheme(void);
 
+    void setClearnetPort(QString port);
+    void setClearnetPeer(QString peer);
+
+    void setTorPort(QString port);
+    void setI2pPort(QString port);
+
 
 signals:
     void configParserReady(void);

@@ -10,6 +10,12 @@ Item {
     id: networksTorScreen
     property int labelSize: 0
     property int infoFieldWidth: 1000
+    property int torPort
+    property string torPeer
+    property string torOnionAddress
+    property bool torSwitchStatus
+    property bool torRouteSwitchStatus
+    property bool torPortFieldReadOnly: false
 
     Component.onCompleted: {
         nodoConfig.updateRequested()
@@ -36,14 +42,37 @@ Item {
     Connections {
         target: nodoConfig
         function onConfigParserReady() {
-            torSwitch.checked = nodoConfig.getStringValueFromKey("config", "tor_enabled") === "TRUE" ? true : false
-            torRouteSwitch.checked = nodoConfig.getStringValueFromKey("config", "tor_global_enabled") === "TRUE" ? true : false
-            torOnionAddressField.valueText = nodoConfig.getStringValueFromKey("config", "tor_address")
-            torPortField.valueText = nodoConfig.getIntValueFromKey("config", "tor_port")
-            torPeerField.valueText = nodoConfig.getStringValueFromKey("config", "add_tor_peer")
-            qr.qrData = torOnionAddressField.valueText + ":" + torPortField.valueText
+            networksTorScreen.torSwitchStatus = nodoConfig.getStringValueFromKey("config", "tor_enabled") === "TRUE" ? true : false
+            networksTorScreen.torRouteSwitchStatus = nodoConfig.getStringValueFromKey("config", "tor_global_enabled") === "TRUE" ? true : false
+            networksTorScreen.torOnionAddress = nodoConfig.getStringValueFromKey("config", "tor_address")
+            networksTorScreen.torPort = nodoConfig.getIntValueFromKey("config", "tor_port")
+            networksTorScreen.torPeer = nodoConfig.getStringValueFromKey("config", "add_tor_peer")
         }
     }
+
+    Connections {
+        target: nodoControl
+        function onServiceStatusMessageReceived() {
+            var statusMessage = nodoControl.getServiceMessageStatusCode();
+            if(-1 === statusMessage)
+            {
+                systemPopup.popupMessageText = systemMessages.messages[NodoMessages.Message.Restarting_monerod_service_failed]
+                systemPopup.commandID = -1;
+                systemPopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Close]
+                systemPopup.open();
+            }
+            else if(-2 === statusMessage)
+            {
+                systemPopup.popupMessageText = systemMessages.messages[NodoMessages.Message.Connection_with_nodo_dbus_service_failed]
+                systemPopup.commandID = -1;
+                systemPopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Close]
+                systemPopup.open();
+            }
+
+            torPortFieldReadOnly = false;
+        }
+    }
+
 
     Rectangle {
         id: torSwitchRect
@@ -67,7 +96,7 @@ Item {
             height: torSwitchRect.height
             width: 2*torSwitchRect.height
             display: AbstractButton.IconOnly
-            checked: nodoConfig.getStringValueFromKey("config", "tor_enabled") === "TRUE" ? true : false
+            checked: networksTorScreen.torSwitchStatus
         }
     }
 
@@ -94,7 +123,7 @@ Item {
             height: torRouteSwitchRect.height
             width: 2*torRouteSwitchRect.height
             display: AbstractButton.IconOnly
-            checked: nodoConfig.getStringValueFromKey("config", "tor_global_enabled") === "TRUE" ? true : false
+            checked: networksTorScreen.torRouteSwitchStatus
         }
     }
 
@@ -107,7 +136,7 @@ Item {
         height: NodoSystem.infoFieldLabelHeight
         itemSize: labelSize
         itemText: qsTr("Onion Address")
-        valueText: nodoConfig.getStringValueFromKey("config", "tor_address")
+        valueText: networksTorScreen.torOnionAddress
     }
 
     NodoInputField {
@@ -119,9 +148,14 @@ Item {
         height: NodoSystem.infoFieldLabelHeight
         itemSize: labelSize
         itemText: qsTr("Port")
-        valueText: nodoConfig.getIntValueFromKey("config", "tor_port")
+        valueText: networksTorScreen.torPort
         textFlag: Qt.ImhDigitsOnly
+        readOnlyFlag: networksTorScreen.torPortFieldReadOnly
         onTextEditFinished: {
+            if(torPortField.valueText !== networksTorScreen.torPort.toString())
+            {
+                torApplyPortButton.isActive = true
+            }
         }
     }
 
@@ -134,15 +168,34 @@ Item {
         height: NodoSystem.infoFieldLabelHeight
         itemSize: labelSize
         itemText: qsTr("Peer")
-        valueText: nodoConfig.getStringValueFromKey("config", "add_tor_peer")
+        valueText: networksTorScreen.torPeer
         onTextEditFinished: {
+
+        }
+    }
+
+    NodoButton {
+        id: torApplyPortButton
+        anchors.left: networksTorScreen.left
+        anchors.top: torPeerField.bottom
+        anchors.topMargin: 20
+        text: qsTr("Apply Port")
+        height: 60
+        font.family: NodoSystem.fontUrbanist.name
+        font.pixelSize: NodoSystem.buttonTextFontSize
+        isActive: false
+        onClicked:
+        {
+            isActive = false
+            networksTorScreen.torPortFieldReadOnly = true;
+            nodoControl.setTorPort(torPortField.valueText)
         }
     }
 
     NodoButton {
         id: torAddPeerButton
         anchors.left: networksTorScreen.left
-        anchors.top: torPeerField.bottom
+        anchors.top: torApplyPortButton.bottom
         anchors.topMargin: 20
         text: qsTr("Set Peer")
         height: 64

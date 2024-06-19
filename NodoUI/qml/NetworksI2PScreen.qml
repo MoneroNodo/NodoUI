@@ -11,6 +11,12 @@ Item {
     property int labelSize: 0
     property int infoFieldWidth: 1200
 
+    property int i2pPort
+    property string i2pPeer
+    property string i2pAddress
+    property bool i2pSwitchStatus
+    property bool i2pPortFieldReadOnly: false
+
     Component.onCompleted: {
         nodoConfig.updateRequested()
         onCalculateMaximumTextLabelLength()
@@ -31,13 +37,36 @@ Item {
     Connections {
         target: nodoConfig
         function onConfigParserReady() {
-            i2pSwitch.checked = nodoConfig.getStringValueFromKey("config", "i2p_enabled") === "TRUE" ? true : false
-            i2pAddressField.valueText = nodoConfig.getStringValueFromKey("config", "i2p_address")
-            i2pPortField.valueText = nodoConfig.getIntValueFromKey("config", "i2p_port")
-            i2pPeerField.valueText = nodoConfig.getStringValueFromKey("config", "add_i2p_peer")
-            qr.qrData = i2pAddressField.valueText + ":" + i2pPortField.valueText
+            networksI2PScreen.i2pSwitchStatus = nodoConfig.getStringValueFromKey("config", "i2p_enabled") === "TRUE" ? true : false
+            networksI2PScreen.i2pAddress = nodoConfig.getStringValueFromKey("config", "i2p_address")
+            networksI2PScreen.i2pPort = nodoConfig.getIntValueFromKey("config", "i2p_port")
+            networksI2PScreen.i2pPeer = nodoConfig.getStringValueFromKey("config", "add_i2p_peer")
         }
     }
+
+    Connections {
+        target: nodoControl
+        function onServiceStatusMessageReceived() {
+            var statusMessage = nodoControl.getServiceMessageStatusCode();
+            if(-1 === statusMessage)
+            {
+                systemPopup.popupMessageText = systemMessages.messages[NodoMessages.Message.Restarting_monerod_service_failed]
+                systemPopup.commandID = -1;
+                systemPopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Close]
+                systemPopup.open();
+            }
+            else if(-2 === statusMessage)
+            {
+                systemPopup.popupMessageText = systemMessages.messages[NodoMessages.Message.Connection_with_nodo_dbus_service_failed]
+                systemPopup.commandID = -1;
+                systemPopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Close]
+                systemPopup.open();
+            }
+
+            i2pPortFieldReadOnly = false;
+        }
+    }
+
 
     Rectangle {
         id: i2pSwitchRect
@@ -60,7 +89,7 @@ Item {
             height: i2pSwitchRect.height
             width: 2*i2pSwitchRect.height
             display: AbstractButton.IconOnly
-            checked: nodoConfig.getStringValueFromKey("config", "i2p_enabled") === "TRUE" ? true : false
+            checked: networksI2PScreen.i2pSwitchStatus
         }
     }
 
@@ -73,7 +102,7 @@ Item {
         height: NodoSystem.infoFieldLabelHeight
         itemSize: labelSize
         itemText: qsTr("I2P b32 Address")
-        valueText: nodoConfig.getStringValueFromKey("config", "i2p_address")
+        valueText: networksI2PScreen.i2pAddress
     }
 
     NodoInputField {
@@ -85,9 +114,14 @@ Item {
         height: NodoSystem.infoFieldLabelHeight
         itemSize: labelSize
         itemText: qsTr("Port")
-        valueText: nodoConfig.getIntValueFromKey("config", "i2p_port")
+        valueText: networksI2PScreen.i2pPort
         textFlag: Qt.ImhDigitsOnly
+        readOnlyFlag: networksI2PScreen.i2pPortFieldReadOnly
         onTextEditFinished: {
+            if(i2pPortField.valueText !== networksI2PScreen.i2pPort.toString())
+            {
+                i2pApplyPortButton.isActive = true
+            }
         }
     }
 
@@ -100,15 +134,33 @@ Item {
         height: NodoSystem.infoFieldLabelHeight
         itemSize: labelSize
         itemText: qsTr("Peer")
-        valueText: nodoConfig.getStringValueFromKey("config", "add_i2p_peer")
+        valueText: networksI2PScreen.i2pPeer
         onTextEditFinished: {
+        }
+    }
+
+    NodoButton {
+        id: i2pApplyPortButton
+        anchors.left: networksI2PScreen.left
+        anchors.top: i2pPortField.bottom
+        anchors.topMargin: 20
+        text: qsTr("Apply Port")
+        height: 60
+        font.family: NodoSystem.fontUrbanist.name
+        font.pixelSize: NodoSystem.buttonTextFontSize
+        isActive: false
+        onClicked:
+        {
+            isActive = false
+            networksI2PScreen.i2pPortFieldReadOnly = true;
+            nodoControl.setI2pPort(i2pPortField.valueText)
         }
     }
 
     NodoButton {
         id: i2pAddPeerButton
         anchors.left: networksI2PScreen.left
-        anchors.top: i2pPeerField.bottom
+        anchors.top: i2pApplyPortButton.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         text: qsTr("Set Peer")
         height: 60

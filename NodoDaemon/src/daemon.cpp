@@ -56,7 +56,7 @@ void Daemon::startRecovery(int recoverFS, int rsyncBlockchain)
 }
 
 const static QString operations[] = {"start", "stop", "restart", "enable", "disable"};
-const static QString services[] = {"block-explorer", "monerod", "monero-lws", "xmrig", "sshd"};
+const static QString services[] = {"block-explorer", "monerod", "monero-lws", "xmrig", "sshd" , "p2pool", "webui"};
 
 void Daemon::serviceManager(QString operation, QString service)
 {
@@ -76,7 +76,7 @@ void Daemon::serviceManager(QString operation, QString service)
     if (!valid)
     {
         qDebug() << "illegal operation: " << operation;
-        emit serviceManagerNotification("illegal operation (either one of: start, stop, restart, enable, disable).");
+        emit serviceManagerNotification(service.append(":").append(operation).append(":").append("0"));
         return;
     }
 
@@ -110,7 +110,7 @@ void Daemon::serviceManager(QString operation, QString service)
     if(!process.waitForStarted())
     {
         qDebug() << QString("failed to ").append(operation).append(" service").append(". Exiting...");
-        emit serviceManagerNotification(QString("failed to ").append(operation).append(" service ").append(". Exiting..."));
+        emit serviceManagerNotification(service.append(":").append(operation).append(":").append("0"));
 
         return;
     }
@@ -118,13 +118,13 @@ void Daemon::serviceManager(QString operation, QString service)
     if(!process.waitForFinished())
     {
         qDebug() << QString("failed to ").append(operation).append(" service ").append(". Exiting...");
-        emit serviceManagerNotification(QString("failed to ").append(operation).append("service ").append(". Exiting..."));
+        emit serviceManagerNotification(service.append(":").append(operation).append(":").append("0"));
 
         return;
     }
 
     qDebug() << "success";
-    emit serviceManagerNotification("success");
+    emit serviceManagerNotification(service.append(":").append(operation).append(":").append("1"));
 }
 
 void Daemon::restart(void)

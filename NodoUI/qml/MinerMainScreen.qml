@@ -66,7 +66,7 @@ Item {
         font.family: NodoSystem.fontUrbanist.name
     }
 
-    NodoInfoField {
+    NodoInputField {
         id: minerDepositAddressField
         anchors.top: minerLabel.bottom
 		anchors.left: minerMainScreen.left
@@ -76,6 +76,8 @@ Item {
         itemSize: 300
         itemText: qsTr("Deposit Address")
         valueText: nodoConfig.getStringValueFromKey("mining", "address")
+        onTextEditFinished: {
+        }
     }
 
     Text {

@@ -26,7 +26,6 @@ Rectangle {
             font.family: NodoSystem.fontUrbanist.name
             font.pixelSize: NodoSystem.buttonTextFontSize
             onClicked: {
-                // nodoControl.restartDevice();
                 systemPopup.commandID = 0;
                 systemPopup.applyButtonText = systemResetButton.text
                 systemPopup.open();
@@ -43,7 +42,6 @@ Rectangle {
             font.family: NodoSystem.fontUrbanist.name
             font.pixelSize: NodoSystem.buttonTextFontSize
             onClicked: {
-                // nodoControl.shutdownDevice();
                 systemPopup.commandID = 1;
                 systemPopup.applyButtonText = systemShutdownButton.text
                 systemPopup.open();
@@ -166,7 +164,7 @@ Rectangle {
                 anchors.left: systemRecoveryStartButton.right
                 anchors.top: systemRecoveryStartButton.top
                 anchors.leftMargin: 16
-                text: qsTr("Cancel")
+                text: systemMessages.messages[NodoMessages.Message.Cancel]
                 height: NodoSystem.nodoItemHeight
                 font.family: NodoSystem.fontUrbanist.name
                 font.pixelSize: NodoSystem.buttonTextFontSize
