@@ -16,10 +16,14 @@ Item {
     property bool torSwitchStatus
     property bool torRouteSwitchStatus
     property bool torPortFieldReadOnly: false
+    property bool torPeerFieldReadOnly: false
 
     Component.onCompleted: {
         nodoConfig.updateRequested()
         onCalculateMaximumTextLabelLength()
+        var enabled = !nodoControl.isComponentEnabled();
+        torPortFieldReadOnly = enabled
+        torPeerFieldReadOnly = enabled
     }
 
     function onCalculateMaximumTextLabelLength() {
@@ -52,24 +56,21 @@ Item {
 
     Connections {
         target: nodoControl
-        function onServiceStatusMessageReceived() {
-            var statusMessage = nodoControl.getServiceMessageStatusCode();
-            if(-1 === statusMessage)
+        function onErrorDetected() {
+            var errorCode = nodoControl.getErrorCode();
+            if(0 !== errorCode)
             {
-                systemPopup.popupMessageText = systemMessages.messages[NodoMessages.Message.Restarting_monerod_service_failed]
+                systemPopup.popupMessageText = nodoControl.getErrorMessage()
                 systemPopup.commandID = -1;
                 systemPopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Close]
                 systemPopup.open();
             }
-            else if(-2 === statusMessage)
-            {
-                systemPopup.popupMessageText = systemMessages.messages[NodoMessages.Message.Connection_with_nodo_dbus_service_failed]
-                systemPopup.commandID = -1;
-                systemPopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Close]
-                systemPopup.open();
-            }
+        }
 
-            torPortFieldReadOnly = false;
+        function onComponentEnabledStatusChanged() {
+            var enabled = !nodoControl.isComponentEnabled();
+            torPortFieldReadOnly = enabled
+            torPeerFieldReadOnly = enabled
         }
     }
 
@@ -169,8 +170,12 @@ Item {
         itemSize: labelSize
         itemText: qsTr("Peer")
         valueText: networksTorScreen.torPeer
+        readOnlyFlag: networksTorScreen.torPeerFieldReadOnly
         onTextEditFinished: {
-
+            if(torPeerField.valueText !== networksTorScreen.torPeer)
+            {
+                torAddPeerButton.isActive = true
+            }
         }
     }
 
@@ -187,7 +192,6 @@ Item {
         onClicked:
         {
             isActive = false
-            networksTorScreen.torPortFieldReadOnly = true;
             nodoControl.setTorPort(torPortField.valueText)
         }
     }
@@ -201,6 +205,12 @@ Item {
         height: 64
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize
+        isActive: false
+        onClicked:
+        {
+            isActive = false
+            nodoControl.setTorPeer(torPeerField.valueText)
+        }
     }
 
     Rectangle{

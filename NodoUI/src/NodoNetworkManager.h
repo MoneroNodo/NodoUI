@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QTimer>
+#include "NodoNotificationMessages.h"
 
 #include "nodo_nm_interface.h"
 typedef struct
@@ -75,6 +76,9 @@ public:
     Q_INVOKABLE QString getConnectedEthernetGateway(void);
     Q_INVOKABLE bool isConnectedEthernetProfileAvailable(void);
 
+    Q_INVOKABLE int getErrorCode(void);
+    Q_INVOKABLE QString getErrorMessage(void);
+
 signals:
     void networkConnStatusReady(void);
 
@@ -85,6 +89,7 @@ signals:
     void ethernetScanCopleted(void);
     void ethernetDeviceStatusChanged();
     void connectedEthernetParamsUpdated();
+    void errorDetected(void);
 
 private:
     com::moneronodo::embeddedNetworkInterface *nm;
@@ -99,6 +104,9 @@ private:
     QVector< network_parameters_t > m_ethernetScanList;
     network_parameters_t m_connectedEthernetParams;
     bool m_stopEthScanRequested = false;
+    int m_errorCode;
+
+    NodoNotifier m_notifier;
 
 private slots:
     void updateNetworkConfig(void);

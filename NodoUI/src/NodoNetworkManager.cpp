@@ -59,7 +59,9 @@ void NodoNetworkManager::updateNetworkConfig(void)
         QStringList params = nmConfig.split("\n", Qt::SkipEmptyParts);
         if(params.count() != 3)
         {
-            m_networkIP = "nan";
+            m_errorCode = CONNECTION_TO_NODONM_DBUS_FAILED;
+            emit errorDetected();
+            return;
         }
         else
         {
@@ -348,4 +350,14 @@ QString NodoNetworkManager::getConnectedEthernetGateway(void)
 bool NodoNetworkManager::isConnectedEthernetProfileAvailable(void)
 {
     return m_connectedEthernetParams.connected;
+}
+
+int NodoNetworkManager::getErrorCode(void)
+{
+    return m_errorCode;
+}
+
+QString NodoNetworkManager::getErrorMessage(void)
+{
+    return m_notifier.getMessageText((m_messageIDs)m_errorCode);
 }

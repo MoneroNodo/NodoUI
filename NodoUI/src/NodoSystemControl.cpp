@@ -349,47 +349,79 @@ void NodoSystemControl::timedout(void)
     emit screenSaverTimedout();
 }
 
+int NodoSystemControl::getErrorCode(void)
+{
+    return m_errorCode;
+}
+
+QString NodoSystemControl::getErrorMessage(void)
+{
+    return m_notifier.getMessageText((m_messageIDs)m_errorCode);
+}
+
 void NodoSystemControl::setClearnetPort(QString port)
 {
-    m_serviceStatusNeeded = 1;
+    enableComponent(false);
     m_configParser->setClearnetPort(port);
     m_dbusController->serviceManager("restart", "monerod");
 }
 
 void NodoSystemControl::setClearnetPeer(QString peer)
 {
-    m_serviceStatusNeeded = 1;
+    enableComponent(false);
     m_configParser->setClearnetPeer(peer);
     m_dbusController->serviceManager("restart", "monerod");
 }
 
-int NodoSystemControl::getServiceMessageStatusCode(void)
-{
-    return m_serviceStatus;
-}
-
 void NodoSystemControl::setTorPort(QString port)
 {
-    m_serviceStatusNeeded = 1;
+    enableComponent(false);
     m_configParser->setTorPort(port);
     m_dbusController->serviceManager("restart", "monerod");
 }
 
+void NodoSystemControl::setTorPeer(QString peer)
+{
+    enableComponent(false);
+    m_configParser->setTorPeer(peer);
+    m_dbusController->serviceManager("restart", "monerod");
+}
 
 void NodoSystemControl::setI2pPort(QString port)
 {
-    m_serviceStatusNeeded = 1;
+    enableComponent(false);
     m_configParser->setI2pPort(port);
     m_dbusController->serviceManager("restart", "monerod");
+}
+
+void NodoSystemControl::setI2pPeer(QString peer)
+{
+    enableComponent(false);
+    m_configParser->setI2pPeer(peer);
+    m_dbusController->serviceManager("restart", "monerod");
+}
+
+bool NodoSystemControl::isComponentEnabled(void)
+{
+    return m_componentEnabled;
+}
+
+void NodoSystemControl::enableComponent(bool enabled)
+{
+    m_componentEnabled = enabled;
+    emit componentEnabledStatusChanged();
 }
 
 void NodoSystemControl::processNotification(QString message)
 {
     QStringList serviceStat = message.split(":");
+
+    enableComponent(true);
+
     if(serviceStat.size() != 3)
     {
-        m_serviceStatus = -2;
-        emit serviceStatusMessageReceived();
+        m_errorCode = CONNECTION_TO_NODO_DBUS_FAILED;
+        emit errorDetected();
         return;
     }
 
@@ -397,13 +429,14 @@ void NodoSystemControl::processNotification(QString message)
     {
         if("1" == serviceStat[2])
         {
-            m_serviceStatus = 0;
+            m_errorCode = NO_ERROR;
         }
         else
         {
-            m_serviceStatus = -1;
+            m_errorCode = RESTARTING_MONERO_FAILED;
+            emit errorDetected();
+            return;
         }
-        emit serviceStatusMessageReceived();
     }
 }
 
@@ -413,19 +446,32 @@ void NodoSystemControl::processNotification(QString message)
 /*
 void NodoSystemControl::processNotificationTest(void)
 {
-    QString message = "monerod:restart:0";
+    QString message = "monerod:restart:1";
     QStringList serviceStat = message.split(":");
+
+    m_componentEnabled = true;
+    emit componentEnabledStatusChanged();
+
+    if(serviceStat.size() != 3)
+    {
+        m_errorCode = CONNECTION_TO_NODO_DBUS_FAILED;
+        emit errorDetected();
+        return;
+    }
+
     if(("monerod" == serviceStat[0]) && "restart" == serviceStat[1])
     {
         if("1" == serviceStat[2])
         {
-            m_serviceStatus = 0;
+            m_errorCode = NO_ERROR;
         }
         else
         {
-            m_serviceStatus = -1;
+            m_errorCode = RESTARTING_MONERO_FAILED;
+            emit errorDetected();
+            return;
         }
-        emit serviceStatusMessageReceived();
     }
 }
 */
+

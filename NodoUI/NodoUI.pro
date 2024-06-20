@@ -45,6 +45,7 @@ HEADERS += \
         src/NodoEmbeddedUIConfigParser.h \
         src/NodoConfigParser.h \
         src/NodoNetworkManager.h \
+    src/NodoNotificationMessages.h \
         src/NodoSystemStatusParser.h \
         src/NodoFeedParser.h \
         src/NodoSystemControl.h \

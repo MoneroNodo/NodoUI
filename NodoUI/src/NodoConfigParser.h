@@ -40,7 +40,9 @@ public:
     void setClearnetPeer(QString peer);
 
     void setTorPort(QString port);
+    void setTorPeer(QString peer);
     void setI2pPort(QString port);
+    void setI2pPeer(QString peer);
 
 
 signals:

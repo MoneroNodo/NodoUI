@@ -6,6 +6,7 @@
 #include "NodoDBusController.h"
 #include <QTimeZone>
 #include <QTimer>
+#include "NodoNotificationMessages.h"
 
 class NodoSystemControl : public QObject
 {
@@ -78,11 +79,15 @@ public:
     Q_INVOKABLE void setClearnetPeer(QString peer);
 
     Q_INVOKABLE void setTorPort(QString port);
+    Q_INVOKABLE void setTorPeer(QString peer);
 
     Q_INVOKABLE void setI2pPort(QString port);
+    Q_INVOKABLE void setI2pPeer(QString peer);
 
-    Q_INVOKABLE int getServiceMessageStatusCode(void);
+    Q_INVOKABLE int getErrorCode(void);
+    Q_INVOKABLE QString getErrorMessage(void);
 
+    Q_INVOKABLE bool isComponentEnabled(void);
 
 signals:
     void appThemeChanged(bool);
@@ -93,7 +98,8 @@ signals:
     void serviceStatusReady(void);
     void systemStatusReady(void);
     void screenSaverTimedout(void);
-    void serviceStatusMessageReceived(void);
+    void errorDetected(void);
+    void componentEnabledStatusChanged(void);
 
 private:
     bool m_appTheme;
@@ -102,6 +108,10 @@ private:
     NodoEmbeddedUIConfigParser *m_embeddedUIConfigParser;
     NodoConfigParser *m_configParser;
     NodoDBusController *m_dbusController;
+
+    NodoNotifier m_notifier;
+    bool m_componentEnabled = true;
+
     bool m_dbusConnectionStatus;
     int m_tz_id;
     QString m_timezone;
@@ -109,8 +119,7 @@ private:
     int m_echoMode = -1;
     int m_passwordMode = -1;
     QString m_serviceStatusMessage;
-    bool m_serviceStatusNeeded = false;
-    int m_serviceStatus;
+    int m_errorCode;
 
 
     QString m_CPUUsage;
@@ -162,6 +171,8 @@ private:
         "UTC-12:00",
         "UTC-13:00",
     };
+
+    void enableComponent(bool enabled);
 
 private slots:
     void updateDbusConnectionStatus(void);

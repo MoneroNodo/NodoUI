@@ -206,7 +206,7 @@ ApplicationWindow {
             modal: true
             property string applyButtonText: ""
             property int commandID: -1
-            property string popupMessageText: systemMessages.messages[NodoMessages.Message.Are_you_sure]
+            property string popupMessageText: qsTr("Are you sure?")
             parent: mainAppWindowMainRect
 
             Overlay.modal: Item {

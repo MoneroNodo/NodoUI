@@ -16,10 +16,14 @@ Item {
     property string i2pAddress
     property bool i2pSwitchStatus
     property bool i2pPortFieldReadOnly: false
+    property bool i2pPeerFieldReadOnly: false
 
     Component.onCompleted: {
         nodoConfig.updateRequested()
         onCalculateMaximumTextLabelLength()
+        var enabled = !nodoControl.isComponentEnabled();
+        i2pPortFieldReadOnly = enabled
+        i2pPeerFieldReadOnly = enabled
     }
 
     function onCalculateMaximumTextLabelLength() {
@@ -46,24 +50,21 @@ Item {
 
     Connections {
         target: nodoControl
-        function onServiceStatusMessageReceived() {
-            var statusMessage = nodoControl.getServiceMessageStatusCode();
-            if(-1 === statusMessage)
+        function onErrorDetected() {
+            var errorCode = nodoControl.getErrorCode();
+            if(0 !== errorCode)
             {
-                systemPopup.popupMessageText = systemMessages.messages[NodoMessages.Message.Restarting_monerod_service_failed]
+                systemPopup.popupMessageText = nodoControl.getErrorMessage()
                 systemPopup.commandID = -1;
                 systemPopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Close]
                 systemPopup.open();
             }
-            else if(-2 === statusMessage)
-            {
-                systemPopup.popupMessageText = systemMessages.messages[NodoMessages.Message.Connection_with_nodo_dbus_service_failed]
-                systemPopup.commandID = -1;
-                systemPopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Close]
-                systemPopup.open();
-            }
+        }
 
-            i2pPortFieldReadOnly = false;
+        function onComponentEnabledStatusChanged() {
+            var enabled = !nodoControl.isComponentEnabled();
+            i2pPortFieldReadOnly = enabled
+            i2pPeerFieldReadOnly = enabled
         }
     }
 
@@ -135,7 +136,12 @@ Item {
         itemSize: labelSize
         itemText: qsTr("Peer")
         valueText: networksI2PScreen.i2pPeer
+        readOnlyFlag: networksI2PScreen.i2pPeerFieldReadOnly
         onTextEditFinished: {
+            if(i2pPeerField.valueText !== networksI2PScreen.i2pPeer)
+            {
+                i2pAddPeerButton.isActive = true
+            }
         }
     }
 
@@ -152,7 +158,6 @@ Item {
         onClicked:
         {
             isActive = false
-            networksI2PScreen.i2pPortFieldReadOnly = true;
             nodoControl.setI2pPort(i2pPortField.valueText)
         }
     }
@@ -166,6 +171,12 @@ Item {
         height: 60
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize
+        isActive: false
+        onClicked:
+        {
+            isActive = false
+            nodoControl.setI2pPeer(i2pPeerField.valueText)
+        }
     }
 
     Rectangle{

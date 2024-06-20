@@ -266,8 +266,20 @@ void NodoConfigParser::setTorPort(QString port)
     writeJson();
 }
 
+void NodoConfigParser::setTorPeer(QString peer)
+{
+    m_configObj.insert("add_tor_peer", peer);
+    writeJson();
+}
+
 void NodoConfigParser::setI2pPort(QString port)
 {
     m_configObj.insert("i2p_port", port.toInt());
+    writeJson();
+}
+
+void NodoConfigParser::setI2pPeer(QString peer)
+{
+    m_configObj.insert("add_i2p_peer", peer);
     writeJson();
 }

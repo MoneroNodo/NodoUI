@@ -17,6 +17,7 @@ Item {
         nodoConfig.updateRequested()
         onCalculateMaximumTextLabelLength()
         networkManager.requestNetworkIP();
+        networksClearnetScreen.inputFieldReadOnly = !nodoControl.isComponentEnabled();
     }
 
     function onCalculateMaximumTextLabelLength() {
@@ -44,29 +45,32 @@ Item {
             clearnetAddressField.valueText = networkManager.getNetworkIP();
             qr.setQrData(clearnetAddressField.valueText + ":" + clearnetPortField.valueText)
         }
+
+        function onErrorDetected() {
+            var errorCode = networkManager.getErrorCode();
+            if(4 === errorCode)
+            {
+                clearnetAddressField.valueText = "nan";
+            }
+
+            systemPopup.popupMessageText = networkManager.getErrorMessage()
+            systemPopup.commandID = -1;
+            systemPopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Close]
+            systemPopup.open();
+        }
     }
 
     Connections {
         target: nodoControl
+        function onErrorDetected() {
+            systemPopup.popupMessageText = nodoControl.getErrorMessage()
+            systemPopup.commandID = -1;
+            systemPopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Close]
+            systemPopup.open();
+        }
 
-        function onServiceStatusMessageReceived() {
-            var statusMessage = nodoControl.getServiceMessageStatusCode();
-            if(-1 === statusMessage)
-            {
-                systemPopup.popupMessageText = systemMessages.messages[NodoMessages.Message.Restarting_monerod_service_failed]
-                systemPopup.commandID = -1;
-                systemPopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Close]
-                systemPopup.open();
-            }
-            else if(-2 === statusMessage)
-            {
-                systemPopup.popupMessageText = systemMessages.messages[NodoMessages.Message.Connection_with_nodo_dbus_service_failed]
-                systemPopup.commandID = -1;
-                systemPopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Close]
-                systemPopup.open();
-            }
-
-            inputFieldReadOnly = false;
+        function onComponentEnabledStatusChanged() {
+            inputFieldReadOnly = !nodoControl.isComponentEnabled();
         }
     }
 
@@ -134,7 +138,7 @@ Item {
         onClicked:
         {
             isActive = false
-            networksClearnetScreen.inputFieldReadOnly = true;
+            // networksClearnetScreen.inputFieldReadOnly = true;
             nodoControl.setClearnetPort(clearnetPortField.valueText)
         }
     }
@@ -152,7 +156,7 @@ Item {
         onClicked:
         {
             isActive = false
-            networksClearnetScreen.inputFieldReadOnly = true;
+            // networksClearnetScreen.inputFieldReadOnly = true;
             nodoControl.setClearnetPeer(clearnetPeerField.valueText)
         }
     }
