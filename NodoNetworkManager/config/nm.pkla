@@ -1,0 +1,5 @@
+[Let adm group modify system settings for network]
+Identity=unix-group:adm
+Action=org.freedesktop.NetworkManager.*
+ResultAny=yes
+

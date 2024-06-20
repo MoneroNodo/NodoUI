@@ -1,0 +1,93 @@
+<!DOCTYPE node PUBLIC "-//freedesktop//DTD D-BUS Object Introspection 1.0//EN"
+	"http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
+<node>
+    <interface name="com.moneronodo.embeddedNetworkInterface">
+    <method name="getConnectedDeviceConfig">
+        <arg name="networkConfig" type="s" direction="out"/>
+    </method>
+
+    <method name="forgetNetwork">
+            <arg name="connectionName" type="s" direction="in"/>
+    </method>
+
+
+
+    <method name="enableWiFi">
+            <arg name="enable" type="b" direction="in"/>
+    </method>
+
+    <method name="GetWiFiStatus">
+            <arg name="wifiStatus" type="b" direction="out"/>
+    </method>
+
+    <method name="connectToWiFi">
+            <arg name="ssid" type="s" direction="in"/>
+            <arg name="password" type="s" direction="in"/>
+            <arg name="dhcp" type="b" direction="in"/>
+            <arg name="ip" type="s" direction="in"/>
+            <arg name="netmask" type="s" direction="in"/>
+            <arg name="gateway" type="s" direction="in"/>
+            <arg name="DNS" type="s" direction="in"/>
+    </method>
+
+    <method name="activateWiFi">
+        <arg name="ssid" type="s" direction="in"/>
+    </method>
+
+    <method name="disconnectFromWiFi">
+            <arg name="ssid" type="s" direction="in"/>
+    </method>
+
+
+
+    <method name="enableEthernet">
+            <arg name="enable" type="b" direction="in"/>
+    </method>
+
+    <method name="GetEthernetStatus">
+            <arg name="ethernetStatus" type="b" direction="out"/>
+    </method>
+
+    <method name="connectToEthernet">
+            <arg name="connectionName" type="s" direction="in"/>
+            <arg name="dhcp" type="b" direction="in"/>
+            <arg name="ip" type="s" direction="in"/>
+            <arg name="netmask" type="s" direction="in"/>
+            <arg name="gateway" type="s" direction="in"/>
+            <arg name="DNS" type="s" direction="in"/>
+    </method>
+
+    <method name="activateEthernetConnection">
+        <arg name="connectionName" type="s" direction="in"/>
+    </method>
+
+    <method name="disconnectFromEthernet">
+            <arg name="connectionName" type="s" direction="in"/>
+    </method>
+
+
+
+    <signal name="networkConfigurationChangedNotification"/>
+
+
+
+    <signal name="wifiDeviceStatusChangedNotification">
+            <arg name="devStatus" type="b" direction="out"/>
+    </signal>
+
+    <signal name="wifiScanCompletedNotification">
+            <arg name="message" type="s" direction="out"/>
+    </signal>
+
+
+
+    <signal name="ethDeviceStatusChangedNotification">
+            <arg name="devStatus" type="b" direction="out"/>
+    </signal>
+
+    <signal name="ethScanCompletedNotification">
+            <arg name="message" type="s" direction="out"/>
+    </signal>
+
+    </interface>
+</node>
