@@ -267,7 +267,6 @@ ApplicationWindow {
                         {
                             nodoControl.systemRecovery(deviceSystemRecoveryRecoverFS.checked, deviceSystemRecoveryResyncBlockchain.checked);
                         }
-
                     }
                 }
 

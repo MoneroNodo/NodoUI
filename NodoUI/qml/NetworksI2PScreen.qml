@@ -142,7 +142,7 @@ Item {
     NodoButton {
         id: i2pApplyPortButton
         anchors.left: networksI2PScreen.left
-        anchors.top: i2pPortField.bottom
+        anchors.top: i2pPeerField.bottom
         anchors.topMargin: 20
         text: qsTr("Apply Port")
         height: 60

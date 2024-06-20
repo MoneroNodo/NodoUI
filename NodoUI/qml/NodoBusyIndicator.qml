@@ -7,6 +7,7 @@ import NodoCanvas 1.0
 
 BusyIndicator {
     id: control
+    property color indicatorColor: "red"
 
     contentItem: Item {
         implicitWidth: 64
@@ -14,10 +15,10 @@ BusyIndicator {
 
         Item {
             id: item
-            x: parent.width / 2 - 32
-            y: parent.height / 2 - 32
-            width: 64
-            height: 64
+            x: 0//parent.width / 2 - 32
+            y: 0//parent.height / 2 - 32
+            width: parent.width
+            height: parent.height
             opacity: control.running ? 1 : 0
 
             Behavior on opacity {
@@ -37,23 +38,23 @@ BusyIndicator {
 
             Repeater {
                 id: repeater
-                model: 10
+                model: 8
 
                 Rectangle {
                     x: item.width / 2 - width / 2
                     y: item.height / 2 - height / 2
-                    implicitWidth: 10
-                    implicitHeight: 10
+                    implicitWidth: item.width/6
+                    implicitHeight: item.width/6
                     radius: 5
-                    color: "red"
+                    color: indicatorColor
                     transform: [
                         Translate {
                             y: -Math.min(item.width, item.height) * 0.5 + 5
                         },
                         Rotation {
                             angle: index / repeater.count * 360
-                            origin.x: 5
-                            origin.y: 5
+                            origin.x: implicitWidth/2
+                            origin.y: implicitHeight/2
                         }
                     ]
                 }

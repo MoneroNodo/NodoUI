@@ -19,10 +19,11 @@ Label {
     font.family: NodoSystem.fontUrbanist.name
     font.pixelSize: NodoSystem.infoFieldItemFontSize
     verticalAlignment: Text.AlignVCenter
-    color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
+    color: nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn  : NodoSystem.dataFieldTextColorNightModeOff
 
     background: NodoCanvas {
         width: root.width
+        height: root.height
         color: backgroundColor
     }
 }

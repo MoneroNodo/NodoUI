@@ -2,11 +2,10 @@
 #include <QDate>
 NodoDBusController::NodoDBusController(QObject *parent) : QObject{parent}
 {
-    m_connectionStatus = false;
+    m_dbusAdapterConnectionStatus = false;
     nodo = new com::moneronodo::embeddedInterface("com.monero.nodo", "/com/monero/nodo", QDBusConnection::systemBus(), this);
     connect(nodo, SIGNAL(serviceManagerNotification(QString)), this, SIGNAL(serviceManagerNotificationReceived(QString)));
     connect(nodo, SIGNAL(serviceStatusReadyNotification(QString)), this, SLOT(updateServiceStatus(QString)));
-    connect(nodo, SIGNAL(networkConfigurationChanged()), this, SLOT(updateNetworkConfiguration()));
 
     startTimer(1000);
 }
@@ -15,24 +14,24 @@ void NodoDBusController::timerEvent(QTimerEvent *event)
 {
     Q_UNUSED(event);
 
-    bool previousState = m_connectionStatus;
+    bool previousState = m_dbusAdapterConnectionStatus;
     if (nodo->isValid())
     {
-        m_connectionStatus = true;
+        m_dbusAdapterConnectionStatus = true;
     }
     else
     {
-        m_connectionStatus = false;
+        m_dbusAdapterConnectionStatus = false;
     }
-    if(previousState == m_connectionStatus)
+    if(previousState == m_dbusAdapterConnectionStatus)
     {
-        emit connectionStatusChanged();
+        emit dbusConnectionStatusChanged();
     }
 }
 
 bool NodoDBusController::isConnected()
 {
-    return m_connectionStatus;
+    return m_dbusAdapterConnectionStatus;
 }
 
 void NodoDBusController::startRecovery(int recoverFS, int rsyncBlockchain)
@@ -127,18 +126,4 @@ double NodoDBusController::getTotalSystemStorage(void)
 void NodoDBusController::setPassword(QString pw)
 {
     nodo->setPassword(pw);
-}
-
-QString NodoDBusController::getConnectedDeviceConfig(void)
-{
-    m_networkConfig.clear();
-    m_networkConfig = nodo->getConnectedDeviceConfig();
-
-    return m_networkConfig;
-}
-
-void NodoDBusController::updateNetworkConfiguration(void)
-{
-    getConnectedDeviceConfig();
-    emit newNetworkConfigurationReceived();
 }

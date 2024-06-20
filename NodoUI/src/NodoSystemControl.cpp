@@ -5,16 +5,16 @@ NodoSystemControl::NodoSystemControl(NodoEmbeddedUIConfigParser *embeddedUIConfi
 {
     m_embeddedUIConfigParser = embeddedUIConfigParser;
     m_configParser = configParser;
-    m_controller = new NodoDBusController(this);
+    m_dbusController = new NodoDBusController(this);
 
     m_feeds_str = embeddedUIConfigParser->readFeedKeys();
     m_displaySettings = embeddedUIConfigParser->readDisplaySettings();
     m_timezone = m_configParser->getTimezone();
     m_tz_id = m_tzList.indexOf(m_timezone);
 
-    m_connectionStatus = m_controller->isConnected();
+    m_dbusConnectionStatus = m_dbusController->isConnected();
 
-    if(m_connectionStatus)
+    if(m_dbusConnectionStatus)
     {
         qDebug() << "Connected to the dbus daemon";
     }
@@ -28,10 +28,9 @@ NodoSystemControl::NodoSystemControl(NodoEmbeddedUIConfigParser *embeddedUIConfi
     m_screenSaverTimer = new QTimer(this);
     connect(m_screenSaverTimer, SIGNAL(timeout()), this, SLOT(timedout()));
 
-    connect(m_controller, SIGNAL(connectionStatusChanged()), this, SLOT(updateConnectionStatus()));
-    connect(m_controller, SIGNAL(serviceStatusReceived(QString)), this, SLOT(updateServiceStatus(QString)));
-    connect(m_controller, SIGNAL(newNetworkConfigurationReceived()), this, SLOT(updateNetworkConfig()));
-    connect(m_controller, SIGNAL(serviceManagerNotificationReceived(QString)), this, SLOT(processNotification(QString)));
+    connect(m_dbusController, SIGNAL(dbusConnectionStatusChanged()), this, SLOT(updateDbusConnectionStatus()));
+    connect(m_dbusController, SIGNAL(serviceStatusReceived(QString)), this, SLOT(updateServiceStatus(QString)));
+    connect(m_dbusController, SIGNAL(serviceManagerNotificationReceived(QString)), this, SLOT(processNotification(QString)));
 
     if(m_configParser->getStringValueFromKey("mining", "enabled") == "TRUE")
     {
@@ -45,13 +44,11 @@ NodoSystemControl::NodoSystemControl(NodoEmbeddedUIConfigParser *embeddedUIConfi
 
 bool NodoSystemControl::getAppTheme(void)
 {
-    // qDebug() << "get theme: " << m_appTheme;
     return m_appTheme;
 }
 
 void NodoSystemControl::setAppTheme(bool appTheme)
 {
-    // qDebug() << "set theme: " << appTheme;
     m_appTheme = appTheme;
     m_configParser->setTheme(m_appTheme);
     emit appThemeChanged(m_appTheme);
@@ -131,10 +128,10 @@ int NodoSystemControl::getScreenSaverItemChangeTimeout(void)
 }
 
 
-void NodoSystemControl::updateConnectionStatus(void)
+void NodoSystemControl::updateDbusConnectionStatus(void)
 {
-    bool isConnected = m_controller->isConnected();
-    if(m_connectionStatus == isConnected)
+    bool isConnected = m_dbusController->isConnected();
+    if(m_dbusConnectionStatus == isConnected)
     {
         return;
     }
@@ -148,22 +145,22 @@ void NodoSystemControl::updateConnectionStatus(void)
         qDebug() << "Disconnected from the dbus daemon";
     }
 
-    m_connectionStatus = isConnected;
+    m_dbusConnectionStatus = isConnected;
 }
 
 void NodoSystemControl::restartDevice()
 {
-    m_controller->restart();
+    m_dbusController->restart();
 }
 
 void NodoSystemControl::shutdownDevice()
 {
-    m_controller->shutdown();
+    m_dbusController->shutdown();
 }
 
 void NodoSystemControl::systemRecovery(int recoverFS, int rsyncBlockchain)
 {
-    m_controller->startRecovery(recoverFS, rsyncBlockchain);
+    m_dbusController->startRecovery(recoverFS, rsyncBlockchain);
 }
 
  void NodoSystemControl::setTimeZoneIndex(int tz_id)
@@ -238,17 +235,17 @@ int NodoSystemControl::getOrientation(void)
 
 void NodoSystemControl::setBacklightLevel(int backlightLevel)
 {
-    m_controller->setBacklightLevel(backlightLevel);
+    m_dbusController->setBacklightLevel(backlightLevel);
 }
 
 int NodoSystemControl::getBacklightLevel(void)
 {
-    return m_controller->getBacklightLevel();
+    return m_dbusController->getBacklightLevel();
 }
 
 void NodoSystemControl::startServiceStatusUpdate(void)
 {
-    m_controller->getServiceStatus();
+    m_dbusController->getServiceStatus();
 }
 
 void NodoSystemControl::updateServiceStatus(QString statusMessage)
@@ -281,15 +278,15 @@ QString NodoSystemControl::getServiceStatus(QString serviceName)
 
 void NodoSystemControl::startSystemStatusUpdate(void)
 {
-    double CPUUsage = m_controller->getCPUUsage();
-    double averageCPUFreq = m_controller->getAverageCPUFreq();
-    double RAMUsed = m_controller->getRAMUsage();
-    double RAMTotal = m_controller->getTotalRAM();
-    double CPUTemperature = m_controller->getCPUTemperature();
-    double blockChainStorageUsed = m_controller->getBlockchainStorageUsage();
-    double blockChainStorageTotal = m_controller->getTotalBlockchainStorage();
-    double systemStorageUsed = m_controller->getSystemStorageUsage();
-    double systemStorageTotal = m_controller->getTotalSystemStorage();
+    double CPUUsage = m_dbusController->getCPUUsage();
+    double averageCPUFreq = m_dbusController->getAverageCPUFreq();
+    double RAMUsed = m_dbusController->getRAMUsage();
+    double RAMTotal = m_dbusController->getTotalRAM();
+    double CPUTemperature = m_dbusController->getCPUTemperature();
+    double blockChainStorageUsed = m_dbusController->getBlockchainStorageUsage();
+    double blockChainStorageTotal = m_dbusController->getTotalBlockchainStorage();
+    double systemStorageUsed = m_dbusController->getSystemStorageUsage();
+    double systemStorageTotal = m_dbusController->getTotalSystemStorage();
 
     m_CPUUsage = QString("%1").arg(averageCPUFreq, 0, 'f', 1).append(" MHz (").append(QString("%1").arg(CPUUsage, 0, 'f', 1)).append("%)");
     m_Temperature = QString("%1").arg(CPUTemperature, 0, 'f', 1).append("°C");
@@ -327,43 +324,12 @@ QString NodoSystemControl::getSystemStorageUsage(void)
 
 void NodoSystemControl::setPassword(QString pw)
 {
-    m_controller->setPassword(pw);
+    m_dbusController->setPassword(pw);
 }
 
 void NodoSystemControl::serviceManager(QString operation, QString service)
 {
-    m_controller->serviceManager(operation, service);
-}
-
-void NodoSystemControl::requestNetworkIP(void)
-{
-    updateNetworkConfig();
-}
-
-
-void NodoSystemControl::updateNetworkConfig(void)
-{
-    m_networkIP.clear();
-    QString nmConfig = m_controller->getConnectedDeviceConfig();
-    if(!nmConfig.isEmpty())
-    {
-        QStringList params = nmConfig.split("\n", Qt::SkipEmptyParts);
-        if(params.count() != 3)
-        {
-            m_networkIP = "nan";
-            m_serviceStatus = -2;
-            emit serviceStatusMessageReceived();
-            return;
-        }
-        m_networkIP = params.at(0);
-    }
-
-    emit networkConnStatusReady();
-}
-
-QString NodoSystemControl::getNetworkIP(void)
-{
-    return m_networkIP;
+    m_dbusController->serviceManager(operation, service);
 }
 
 void NodoSystemControl::restartScreenSaverTimer(void)
@@ -387,14 +353,14 @@ void NodoSystemControl::setClearnetPort(QString port)
 {
     m_serviceStatusNeeded = 1;
     m_configParser->setClearnetPort(port);
-    m_controller->serviceManager("restart", "monerod");
+    m_dbusController->serviceManager("restart", "monerod");
 }
 
 void NodoSystemControl::setClearnetPeer(QString peer)
 {
     m_serviceStatusNeeded = 1;
     m_configParser->setClearnetPeer(peer);
-    m_controller->serviceManager("restart", "monerod");
+    m_dbusController->serviceManager("restart", "monerod");
 }
 
 int NodoSystemControl::getServiceMessageStatusCode(void)
@@ -406,7 +372,7 @@ void NodoSystemControl::setTorPort(QString port)
 {
     m_serviceStatusNeeded = 1;
     m_configParser->setTorPort(port);
-    m_controller->serviceManager("restart", "monerod");
+    m_dbusController->serviceManager("restart", "monerod");
 }
 
 
@@ -414,7 +380,7 @@ void NodoSystemControl::setI2pPort(QString port)
 {
     m_serviceStatusNeeded = 1;
     m_configParser->setI2pPort(port);
-    m_controller->serviceManager("restart", "monerod");
+    m_dbusController->serviceManager("restart", "monerod");
 }
 
 void NodoSystemControl::processNotification(QString message)
@@ -440,9 +406,6 @@ void NodoSystemControl::processNotification(QString message)
         emit serviceStatusMessageReceived();
     }
 }
-
-
-
 
 
 //QTimer::singleShot(4000, this, SLOT(processNotificationTest()));

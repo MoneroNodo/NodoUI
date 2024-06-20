@@ -22,6 +22,8 @@ Item {
     property int itemSize: 0
     property int labelRectRoundSize: labelWidth > NodoSystem.nodoItemWidth ? labelWidth : NodoSystem.nodoItemWidth
     property bool passwordInput: false
+    property alias inputMask: valueLabel.inputMask
+    property alias validator: valueLabel.validator
 
     signal textEdited()
     signal textEditFinished()

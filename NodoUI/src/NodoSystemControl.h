@@ -18,7 +18,6 @@ public:
     bool getAppTheme(void);
     void setAppTheme(bool appTheme);
 
-
     Q_INVOKABLE void setVisibleState(int index, bool state);
     Q_INVOKABLE bool getVisibleState(int index);
 
@@ -72,9 +71,6 @@ public:
     Q_INVOKABLE void setPassword(QString pw);
     Q_INVOKABLE void serviceManager(QString operation, QString service);
 
-    Q_INVOKABLE void requestNetworkIP(void);
-    Q_INVOKABLE QString getNetworkIP(void);
-
     Q_INVOKABLE void restartScreenSaverTimer(void);
     Q_INVOKABLE void stopScreenSaverTimer(void);
 
@@ -96,7 +92,6 @@ signals:
     void orientationChanged(void);
     void serviceStatusReady(void);
     void systemStatusReady(void);
-    void networkConnStatusReady(void);
     void screenSaverTimedout(void);
     void serviceStatusMessageReceived(void);
 
@@ -106,8 +101,8 @@ private:
     display_settings_t m_displaySettings;
     NodoEmbeddedUIConfigParser *m_embeddedUIConfigParser;
     NodoConfigParser *m_configParser;
-    NodoDBusController *m_controller;
-    bool m_connectionStatus;
+    NodoDBusController *m_dbusController;
+    bool m_dbusConnectionStatus;
     int m_tz_id;
     QString m_timezone;
     QString m_inputFieldText;
@@ -123,9 +118,7 @@ private:
     QString m_RAMUsage;
     QString m_blockchainStorage;
     QString m_systemStorage;
-    QString m_networkIP;
     QTimer *m_screenSaverTimer;
-
 
     QStringList m_tzList = {
         "UTC",
@@ -171,9 +164,8 @@ private:
     };
 
 private slots:
-    void updateConnectionStatus(void);
+    void updateDbusConnectionStatus(void);
     void updateServiceStatus(QString statusMessage);
-    void updateNetworkConfig(void);
     void timedout(void);
     void processNotification(QString message);
     // void processNotificationTest(void);

@@ -16,7 +16,7 @@ Item {
     Component.onCompleted: {
         nodoConfig.updateRequested()
         onCalculateMaximumTextLabelLength()
-        nodoControl.requestNetworkIP();
+        networkManager.requestNetworkIP();
     }
 
     function onCalculateMaximumTextLabelLength() {
@@ -39,11 +39,15 @@ Item {
     }
 
     Connections {
-        target: nodoControl
+        target: networkManager
         function onNetworkConnStatusReady() {
-            clearnetAddressField.valueText = nodoControl.getNetworkIP();
+            clearnetAddressField.valueText = networkManager.getNetworkIP();
             qr.setQrData(clearnetAddressField.valueText + ":" + clearnetPortField.valueText)
         }
+    }
+
+    Connections {
+        target: nodoControl
 
         function onServiceStatusMessageReceived() {
             var statusMessage = nodoControl.getServiceMessageStatusCode();

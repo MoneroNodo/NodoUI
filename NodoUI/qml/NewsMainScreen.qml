@@ -83,7 +83,7 @@ Item {
                 x: parent.width/2 - busyIndicator.width/2
                 y: parent.height/2 - busyIndicator.height/2
                 running: true
-                palette.dark: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
+                indicatorColor: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
             }
 
             Component.onCompleted:{

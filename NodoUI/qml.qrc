@@ -60,6 +60,16 @@
         <file>Images/eye-off.png</file>
         <file>Images/eye.png</file>
         <file>qml/DeviceSSHScreen.qml</file>
+        <file>qml/NodoWiFiNetworkScreen.qml</file>
+        <file>qml/NodoNetworkListView.qml</file>
+        <file>qml/NodoNetworkListDelegate.qml</file>
+        <file>Images/wifi_secure.png</file>
+        <file>Images/WifiSignal_0.png</file>
+        <file>Images/WifiSignal_1.png</file>
+        <file>Images/WifiSignal_2.png</file>
+        <file>Images/WifiSignal_3.png</file>
+        <file>Images/WifiSignal_4.png</file>
+        <file>qml/NodoNetworkConnectedProfile.qml</file>
         <file>qml/NodoMessages.qml</file>
     </qresource>
     <qresource prefix="/NodoSystem">
