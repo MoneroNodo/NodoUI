@@ -27,12 +27,12 @@ public:
 
 private:
     QStringList m_messageList = {
-                                 "No Error",
-                                 "Restarting tor service failed!",
-                                 "Restarting monerod service failed!",
-                                 "Connection to Nodo service failed!",
-                                 "Connection to Nodonm service failed!",
-                                 "IP couldn't be read!"
+                                 tr("No Error"),
+                                 tr("Restarting tor service failed!"),
+                                 tr("Restarting monerod service failed!"),
+                                 tr("Connection to Nodo service failed!"),
+                                 tr("Connection to Nodonm service failed!"),
+                                 tr("IP couldn't be read!")
     };
 };
 
