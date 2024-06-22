@@ -195,7 +195,7 @@ Item {
         onClicked:
         {
             isActive = false
-            // nodoControl.setNodeBandwidthParameters(incomingPeersLimitField.valueText, outgoingPeersLimitField.valueText, rateLimitUpField.valueText, rateLimitDownField.valueText)
+            nodoControl.setNodeBandwidthParameters(incomingPeersLimitField.valueText, outgoingPeersLimitField.valueText, rateLimitUpField.valueText, rateLimitDownField.valueText)
         }
     }
 }
