@@ -47,7 +47,7 @@ Item {
             height: wifiEnabledRect.height
             anchors.left: wifiEnabledRect.left
             anchors.top: wifiEnabledRect.top
-            text: wifiEnabledSwitch.checked ? qsTr("Wi-Fi on"):  qsTr("Wifi off")
+            text: qsTr("Wi-Fi")
         }
 
         NodoSwitch {
