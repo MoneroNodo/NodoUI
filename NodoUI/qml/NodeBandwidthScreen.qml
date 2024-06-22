@@ -71,7 +71,7 @@ Item {
         valueText: nodeBandwidthScreen.incomingPeersLimit
         textFlag: Qt.ImhDigitsOnly
         readOnlyFlag: nodeBandwidthScreen.inputFieldReadOnly
-        validator: IntValidator{bottom: 0;}
+        validator: IntValidator{bottom: 0; top: 65535}
         onTextEditFinished: {
             if(incomingPeersLimitField.valueText !== nodeBandwidthScreen.incomingPeersLimit.toString())
             {
@@ -92,7 +92,7 @@ Item {
         valueText: nodeBandwidthScreen.outgoingPeersLimit
         textFlag: Qt.ImhDigitsOnly
         readOnlyFlag: nodeBandwidthScreen.inputFieldReadOnly
-        validator: IntValidator{bottom: 0;}
+        validator: IntValidator{bottom: 0; top: 65535}
         onTextEditFinished: {
             if(outgoingPeersLimitField.valueText !== nodeBandwidthScreen.outgoingPeersLimit.toString())
             {
