@@ -107,7 +107,9 @@ int NodoConfigParser::getIntValueFromKey(QString object, QString key)
 
 void NodoConfigParser::updateStatus(void)
 {
+    m_timer->stop();
     readFile();
+     m_timer->start(10000);
 }
 
 void NodoConfigParser::updateRequested(void)

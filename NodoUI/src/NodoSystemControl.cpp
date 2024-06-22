@@ -168,7 +168,6 @@ void NodoSystemControl::systemRecovery(int recoverFS, int rsyncBlockchain)
     m_tz_id = tz_id;
     m_timezone.clear();
     m_timezone = m_tzList[m_tz_id];
-    qDebug() << m_timezone;
     m_configParser->setTimezone(m_timezone);
 
 }
@@ -345,7 +344,6 @@ void NodoSystemControl::stopScreenSaverTimer(void)
 
 void NodoSystemControl::timedout(void)
 {
-    qDebug() << "time out";
     emit screenSaverTimedout();
 }
 

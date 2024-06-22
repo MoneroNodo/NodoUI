@@ -5,7 +5,8 @@ NodoNetworkManager::NodoNetworkManager(QObject *parent)
 {
     nm = new com::moneronodo::embeddedNetworkInterface("com.monero.nodonm", "/com/monero/nodonm", QDBusConnection::systemBus(), this);
 
-    connect(nm, SIGNAL(networkConfigurationChangedNotification()), this, SLOT(updateNetworkConfig()));
+    connect(nm, SIGNAL(networkConfigurationChangedNotification(bool)), this, SLOT(updateNetworkConfig(bool)));
+    connect(nm, SIGNAL(networkConfigurationChangedNotification(bool)), this, SIGNAL(networkConnStatusReceived(bool)));
 
     connect(nm, SIGNAL(wifiDeviceStatusChangedNotification(bool)), this, SLOT(processWifiDeviceStatus(bool)));
     connect(nm, SIGNAL(wifiScanCompletedNotification(QString)), this, SLOT(parseWifiNetworkList(QString)));
@@ -19,6 +20,12 @@ NodoNetworkManager::NodoNetworkManager(QObject *parent)
     m_stopWifiScanRequested = false;
     m_stopEthScanRequested = false;
 }
+
+bool NodoNetworkManager::getAvailableConnectionStatus(void)
+{
+    return nm->isAvtiveConnectionAvailable();
+}
+
 
 void NodoNetworkManager::processWifiDeviceStatus(bool wifiDeviceStatus)
 {
@@ -42,7 +49,7 @@ void NodoNetworkManager::setWifiDeviceStatus(bool wifiDeviceStatus)
 
 void NodoNetworkManager::requestNetworkIP(void)
 {
-    updateNetworkConfig();
+    updateNetworkConfig(true);
 }
 
 QString NodoNetworkManager::getNetworkIP(void)
@@ -50,8 +57,9 @@ QString NodoNetworkManager::getNetworkIP(void)
     return m_networkIP;
 }
 
-void NodoNetworkManager::updateNetworkConfig(void)
+void NodoNetworkManager::updateNetworkConfig(bool netConnStat)
 {
+    Q_UNUSED(netConnStat)
     m_networkIP.clear();
     QString nmConfig = nm->getConnectedDeviceConfig();
     if(!nmConfig.isEmpty())

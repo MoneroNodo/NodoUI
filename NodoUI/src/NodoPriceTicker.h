@@ -10,12 +10,13 @@
 #include <QTimer>
 
 #include "NodoConfigParser.h"
+#include "NodoNetworkManager.h"
 
 class NodoPriceTicker : public QObject
 {
     Q_OBJECT
 public:
-    explicit NodoPriceTicker(NodoConfigParser *configParser = Q_NULLPTR);
+    explicit NodoPriceTicker(NodoConfigParser *configParser = Q_NULLPTR, NodoNetworkManager *networkManager = Q_NULLPTR);
 
     Q_INVOKABLE int getCurrentCurrencyIndex(void);
     Q_INVOKABLE void setCurrentCurrencyIndex(int index);
@@ -35,6 +36,7 @@ private:
     QString m_currentCurrencyName = "";
     QString m_currentCurrencyCode = "";
     NodoConfigParser *m_configParser;
+    NodoNetworkManager *m_networkManager;
 
     QNetworkAccessManager m_manager;
     QTimer *m_timer;
@@ -47,6 +49,7 @@ private slots:
     void downloadFinished(QNetworkReply *reply);
     void updatePriceTicker(void);
     void sslErrors(const QList<QSslError> &errors);
+    void checkConnectionStatus(bool netConnStat);
 
 };
 

@@ -14,9 +14,13 @@
 
 #include "nodo_nm_adaptor.h"
 
+#if 1
 #define WIFI_DEVICE_NAME "wlan0"
 #define ETHERNET_DEVICE_NAME "eth0"
-
+#else
+#define WIFI_DEVICE_NAME "wlo1"
+#define ETHERNET_DEVICE_NAME "enxf8e43bdcaba0"
+#endif
 
 typedef struct
 {
@@ -43,6 +47,7 @@ public slots:
     /***************general controls**********************/
     QString getConnectedDeviceConfig(void);
     void forgetNetwork(QString connectionName);
+    bool isAvtiveConnectionAvailable(void);
 
     /***************wifi controls*************************/
     void enableWiFi(bool enable);
@@ -62,7 +67,7 @@ public slots:
 
 signals:
     /***************general controls**********************/
-    void networkConfigurationChangedNotification(void);
+    void networkConfigurationChangedNotification(bool netConnStat);
 
     /***************wifi controls*************************/
     void wifiDeviceStatusChangedNotification(bool devStatus);

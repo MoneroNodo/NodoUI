@@ -19,6 +19,7 @@ int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
     QQmlApplicationEngine engine;
 
+    NodoNetworkManager *networkManager = new NodoNetworkManager();
     NodoEmbeddedUIConfigParser *embeddedConfigParser = new NodoEmbeddedUIConfigParser();
     NodoConfigParser *configParser = new NodoConfigParser();
     MoneroLWS *moneroLWS = new MoneroLWS(configParser);
@@ -27,8 +28,8 @@ int main(int argc, char *argv[]) {
     NodoFeedParser *feedParser = new NodoFeedParser(embeddedConfigParser);
 
     Translator *translator = new Translator(configParser, &engine);
-    NodoPriceTicker *priceTicker = new NodoPriceTicker(configParser);
-    NodoNetworkManager *networkManager = new NodoNetworkManager();
+    NodoPriceTicker *priceTicker = new NodoPriceTicker(configParser, networkManager);
+
 
     engine.rootContext()->setContextProperty("moneroLWS", moneroLWS);
     engine.rootContext()->setContextProperty("priceTicker", priceTicker);

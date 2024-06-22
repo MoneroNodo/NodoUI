@@ -11,6 +11,10 @@
             <arg name="connectionName" type="s" direction="in"/>
     </method>
 
+    <method name="isAvtiveConnectionAvailable">
+        <arg name="connResult" type="b" direction="out"/>
+    </method>
+
 
 
     <method name="enableWiFi">
@@ -68,7 +72,9 @@
 
 
 
-    <signal name="networkConfigurationChangedNotification"/>
+    <signal name="networkConfigurationChangedNotification">
+            <arg name="netConnStat" type="b" direction="out"/>
+    </signal>
 
 
 

@@ -1,19 +1,35 @@
 #include "NodoPriceTicker.h"
 #include "qdebug.h"
 
-NodoPriceTicker::NodoPriceTicker(NodoConfigParser *configParser) : QObject(configParser)
+NodoPriceTicker::NodoPriceTicker(NodoConfigParser *configParser, NodoNetworkManager *networkManager) : QObject(configParser)
 {
     m_currentCurrencyIndex = 0;
     m_configParser = configParser;
+    m_networkManager = networkManager;
     m_currentCurrencyCode = m_configParser->getSelectedCurrencyName();
     m_timer = new QTimer(this);
 
+    connect(m_networkManager, SIGNAL(networkConnStatusReceived(bool)), this, SLOT(checkConnectionStatus(bool)));
     connect(&m_manager, SIGNAL(finished(QNetworkReply*)), this, SLOT(downloadFinished(QNetworkReply*)));
     connect(m_timer, SIGNAL(timeout()), this, SLOT(updatePriceTicker()));
 
-    doDownload(m_currentCurrencyCode);
+    if(m_networkManager->getAvailableConnectionStatus())
+    {
+        doDownload(m_currentCurrencyCode);
+    }
 }
 
+void NodoPriceTicker::checkConnectionStatus(bool netConnStat)
+{
+    if(netConnStat)
+    {
+        doDownload(m_currentCurrencyCode);
+    }
+    else
+    {
+         m_timer->stop();
+    }
+}
 
 int NodoPriceTicker::getCurrentCurrencyIndex(void)
 {

@@ -79,8 +79,11 @@ public:
     Q_INVOKABLE int getErrorCode(void);
     Q_INVOKABLE QString getErrorMessage(void);
 
+    bool getAvailableConnectionStatus(void);
+
 signals:
     void networkConnStatusReady(void);
+    void networkConnStatusReceived(bool netConnStat);
 
     void wifiScanCopleted(void);
     void wifiDeviceStatusChanged();
@@ -90,6 +93,9 @@ signals:
     void ethernetDeviceStatusChanged();
     void connectedEthernetParamsUpdated();
     void errorDetected(void);
+
+
+
 
 private:
     com::moneronodo::embeddedNetworkInterface *nm;
@@ -109,7 +115,7 @@ private:
     NodoNotifier m_notifier;
 
 private slots:
-    void updateNetworkConfig(void);
+    void updateNetworkConfig(bool netConnStat);
 
     void processWifiDeviceStatus(bool wifiDeviceStatus);
     void parseWifiNetworkList(QString networkList);

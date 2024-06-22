@@ -149,7 +149,7 @@ void NodoNetworkManager::readNetworkConfigurations(void)
 
     if(true == isConfigChanged)
     {
-        emit networkConfigurationChangedNotification();
+        emit networkConfigurationChangedNotification(ethernet_config.connected | wifi_config.connected);
     }
 }
 
@@ -185,6 +185,11 @@ void NodoNetworkManager::runScanNetworks(void)
     scanEthernetNetworks();
 
     m_networkTimer->start(5000);
+}
+
+bool NodoNetworkManager::isAvtiveConnectionAvailable(void)
+{
+    return (ethernet_config.connected | wifi_config.connected);
 }
 
 /***************wifi controls*************************/
