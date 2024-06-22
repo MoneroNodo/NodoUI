@@ -11,6 +11,7 @@ Item {
     y: 0
     property string itemText: ""
     property string valueText: ""
+    // property string valueUnit: ""
     property int itemFontSize: NodoSystem.inputFieldItemFontSize
     property int valueFontSize: NodoSystem.inputFieldValueFontSize
     property int textFlag: Qt.ImhNoAutoUppercase
@@ -25,7 +26,7 @@ Item {
     property alias inputMask: valueLabel.inputMask
     property alias validator: valueLabel.validator
 
-    signal textEdited()
+    // signal textEdited()
     signal textEditFinished()
 
     NodoCanvas {
@@ -57,6 +58,18 @@ Item {
         color: nodoControl.appTheme ? NodoSystem.dataFieldTextBGColorNightModeOn : NodoSystem.dataFieldTextBGColorNightModeOff
         property int defaultEchoMode: passwordInput == true ? TextInput.Password: TextInput.Normal
 
+        // Text {
+        //     id: unit
+        //     text: valueUnit
+        //     // z: -1
+        //     x: valueLabel.contentWidth + 30
+        //     height: root.height
+        //     verticalAlignment: Text.AlignVCenter
+        //     font.family: NodoSystem.fontUrbanist.name
+        //     font.pixelSize: valueFontSize
+        //     color: (readOnlyFlag === true) ? NodoSystem.buttonDisabledColor : nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn : NodoSystem.dataFieldTextColorNightModeOff
+        // }
+
         TextInput {
             id: valueLabel
             anchors.left: valueCanvas.left
@@ -87,12 +100,12 @@ Item {
                     echoMode: valueCanvas.defaultEchoMode
                 }
 
-                nodoControl.setInputFieldText(valueText/*""*/)
+                nodoControl.setInputFieldText(valueText)
             }
             onTextEdited:
             {
                 valueText = valueLabel.text
-                root.textEdited()
+                // root.textEdited()
                 nodoControl.setInputFieldText(valueText)
             }
 

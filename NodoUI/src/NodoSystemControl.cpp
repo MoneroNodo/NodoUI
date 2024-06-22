@@ -412,6 +412,13 @@ void NodoSystemControl::enableComponent(bool enabled)
     emit componentEnabledStatusChanged();
 }
 
+void NodoSystemControl::setNodeBandwidthParameters(QString in_peers, QString out_peers, QString limit_rate_up, QString limit_rate_down)
+{
+    enableComponent(false);
+    m_configParser->setNodeBandwidthParameters(in_peers, out_peers, limit_rate_up, limit_rate_down);
+    m_dbusController->serviceManager("restart", "monerod");
+}
+
 void NodoSystemControl::processNotification(QString message)
 {
     QStringList serviceStat = message.split(":");

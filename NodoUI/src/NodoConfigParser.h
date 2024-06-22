@@ -43,7 +43,7 @@ public:
     void setTorPeer(QString peer);
     void setI2pPort(QString port);
     void setI2pPeer(QString peer);
-
+    void setNodeBandwidthParameters(QString in_peers, QString out_peers, QString limit_rate_up, QString limit_rate_down);
 
 signals:
     void configParserReady(void);

@@ -5,7 +5,7 @@ NodoConfigParser::NodoConfigParser(QObject *parent) : QObject(parent)
     readFile();
     m_timer = new QTimer(this);
     connect(m_timer, SIGNAL(timeout()), this, SLOT(updateStatus()));
-    m_timer->start(10000);
+    m_timer->start(0);
 }
 
 void NodoConfigParser::readFile(void)
@@ -161,6 +161,8 @@ void NodoConfigParser::writeJson(void)
 
     lockfile.remove();
     m_mutex.unlock();
+
+    m_timer->start(0);
 }
 
 QString NodoConfigParser::getTimezone(void)
@@ -281,5 +283,16 @@ void NodoConfigParser::setI2pPort(QString port)
 void NodoConfigParser::setI2pPeer(QString peer)
 {
     m_configObj.insert("add_i2p_peer", peer);
+    writeJson();
+}
+
+void NodoConfigParser::setNodeBandwidthParameters(QString in_peers, QString out_peers, QString limit_rate_up, QString limit_rate_down)
+{
+    qDebug() << in_peers << out_peers << limit_rate_up << limit_rate_down;
+
+    m_configObj.insert("in_peers", in_peers.toInt());
+    m_configObj.insert("out_peers", out_peers.toInt());
+    m_configObj.insert("limit_rate_up", limit_rate_up.toInt());
+    m_configObj.insert("limit_rate_down", limit_rate_down.toInt());
     writeJson();
 }

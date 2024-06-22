@@ -7,6 +7,7 @@
 #include <QTimeZone>
 #include <QTimer>
 #include "NodoNotificationMessages.h"
+#include "NodoSystemStatusParser.h"
 
 class NodoSystemControl : public QObject
 {
@@ -86,6 +87,8 @@ public:
 
     Q_INVOKABLE int getErrorCode(void);
     Q_INVOKABLE QString getErrorMessage(void);
+
+    Q_INVOKABLE void setNodeBandwidthParameters(QString in_peers, QString out_peers, QString limit_rate_up, QString limit_rate_down);
 
     Q_INVOKABLE bool isComponentEnabled(void);
 

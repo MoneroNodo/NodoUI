@@ -138,7 +138,6 @@ Item {
         onClicked:
         {
             isActive = false
-            // networksClearnetScreen.inputFieldReadOnly = true;
             nodoControl.setClearnetPort(clearnetPortField.valueText)
         }
     }
@@ -156,7 +155,6 @@ Item {
         onClicked:
         {
             isActive = false
-            // networksClearnetScreen.inputFieldReadOnly = true;
             nodoControl.setClearnetPeer(clearnetPeerField.valueText)
         }
     }

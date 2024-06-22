@@ -22,8 +22,8 @@ Daemon::Daemon()
     connection.registerService("com.monero.nodo");
 
     m_timer = new QTimer(this);
-    // connect(m_timer, SIGNAL(timeout()), this, SLOT(updateParams()));
-    // m_timer->start(0);
+    connect(m_timer, SIGNAL(timeout()), this, SLOT(updateParams()));
+    m_timer->start(1000);
 
 }
 
@@ -237,12 +237,14 @@ void Daemon::getServiceStatus(void)
 
 void Daemon::updateParams(void)
 {
+    m_timer->stop();
     readCPUUsage();
     readAverageCPUFreq();
     readRAMUsage();
     readCPUTemperature();
     readBlockchainStorageUsage();
     readSystemStorageUsage();
+    m_timer->start(1000);
 }
 
 void Daemon::readCPUUsage(void)
