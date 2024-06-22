@@ -71,6 +71,7 @@ Item {
         valueText: nodeBandwidthScreen.incomingPeersLimit
         textFlag: Qt.ImhDigitsOnly
         readOnlyFlag: nodeBandwidthScreen.inputFieldReadOnly
+        validator: IntValidator{bottom: 0;}
         onTextEditFinished: {
             if(incomingPeersLimitField.valueText !== nodeBandwidthScreen.incomingPeersLimit.toString())
             {
@@ -91,6 +92,7 @@ Item {
         valueText: nodeBandwidthScreen.outgoingPeersLimit
         textFlag: Qt.ImhDigitsOnly
         readOnlyFlag: nodeBandwidthScreen.inputFieldReadOnly
+        validator: IntValidator{bottom: 0;}
         onTextEditFinished: {
             if(outgoingPeersLimitField.valueText !== nodeBandwidthScreen.outgoingPeersLimit.toString())
             {
@@ -111,6 +113,7 @@ Item {
         valueText: nodeBandwidthScreen.rateLimitUp !== -1 ? nodeBandwidthScreen.rateLimitUp : ""
         textFlag: Qt.ImhPreferNumbers
         readOnlyFlag: nodeBandwidthScreen.inputFieldReadOnly
+        validator: IntValidator{bottom: -1;}
         onTextEditFinished: {
             if(rateLimitUpField.valueText !== nodeBandwidthScreen.rateLimitUp.toString())
             {
@@ -150,6 +153,7 @@ Item {
         valueText: nodeBandwidthScreen.rateLimitDown !== -1 ? nodeBandwidthScreen.rateLimitDown : ""
         textFlag: Qt.ImhPreferNumbers
         readOnlyFlag: nodeBandwidthScreen.inputFieldReadOnly
+        validator: IntValidator{bottom: -1;}
         onTextEditFinished: {
             if(rateLimitDownField.valueText !== nodeBandwidthScreen.rateLimitDown.toString())
             {
@@ -191,7 +195,7 @@ Item {
         onClicked:
         {
             isActive = false
-            nodoControl.setNodeBandwidthParameters(incomingPeersLimitField.valueText, outgoingPeersLimitField.valueText, rateLimitUpField.valueText, rateLimitDownField.valueText)
+            // nodoControl.setNodeBandwidthParameters(incomingPeersLimitField.valueText, outgoingPeersLimitField.valueText, rateLimitUpField.valueText, rateLimitDownField.valueText)
         }
     }
 }
