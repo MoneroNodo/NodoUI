@@ -95,7 +95,8 @@ signals:
     void errorDetected(void);
 
 
-
+protected:
+    void timerEvent(QTimerEvent *event);
 
 private:
     com::moneronodo::embeddedNetworkInterface *nm;
@@ -113,6 +114,7 @@ private:
     int m_errorCode;
 
     NodoNotifier m_notifier;
+    bool m_dbusNetworkAdapterConnectionStatus;
 
 private slots:
     void updateNetworkConfig(bool netConnStat);

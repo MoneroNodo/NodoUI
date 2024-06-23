@@ -9,6 +9,7 @@ NodoNetworkManager::NodoNetworkManager()
     connection.registerService("com.monero.nodonm");
 
     m_networkProcess = new QProcess();
+    getNetforkDeviceNames();
     GetWiFiStatus();
 
     m_networkTimer = new QTimer(this);
@@ -122,8 +123,8 @@ void NodoNetworkManager::readNetworkConfigurations(void)
 {
     bool isConfigChanged = false;
     network_parameters_t tmp_wifi, tmp_ethernet;
-    readNetworkConfig(WIFI_DEVICE_NAME, &tmp_wifi);
-    readNetworkConfig(ETHERNET_DEVICE_NAME, &tmp_ethernet);
+    readNetworkConfig(m_wifi_dev_name, &tmp_wifi);
+    readNetworkConfig(m_eth_dev_name, &tmp_ethernet);
 
     if((wifi_config.connected != tmp_wifi.connected) || (wifi_config.gateway != tmp_wifi.gateway) || (wifi_config.IP != tmp_wifi.IP) || (wifi_config.netmask != tmp_wifi.netmask))
     {
@@ -151,6 +152,69 @@ void NodoNetworkManager::readNetworkConfigurations(void)
     {
         emit networkConfigurationChangedNotification(ethernet_config.connected | wifi_config.connected);
     }
+}
+
+void NodoNetworkManager::getNetforkDeviceNames(void)
+{
+    QStringList arguments;
+    int cnt = 0;
+    arguments << "-t" << "-f" << "GENERAL.TYPE,GENERAL.DEVICE" << "device" << "show";
+
+    QString result = callnmcli(arguments);
+
+    while(result.isEmpty())
+    {
+        cnt++;
+        QThread::sleep(1);
+        result = callnmcli(arguments);
+        if(cnt >= 5)
+        {
+            m_eth_dev_name = "eth0";
+            m_wifi_dev_name = "wlan0";
+
+            return;
+        }
+    }
+
+
+    QStringList sl = result.split("\n", Qt::SkipEmptyParts);
+    for(int i = 0; i < sl.size(); i++)
+    {
+        QStringList params = sl[i].split(":");
+        if(params[0] == "GENERAL.TYPE")
+        {
+            if(params[1] == "wifi")
+            {
+                QStringList params2 = sl[i+1].split(":");
+                if(params2[0] == "GENERAL.DEVICE")
+                {
+                    m_wifi_dev_name = params2[1];
+                    continue;
+                }
+            }
+            else if(params[1] == "ethernet")
+            {
+                QStringList params2 = sl[i+1].split(":");
+                if(params2[0] == "GENERAL.DEVICE")
+                {
+                    m_eth_dev_name = params2[1];
+                    continue;
+                }
+            }
+        }
+    }
+
+    if(m_eth_dev_name.isEmpty())
+    {
+        m_eth_dev_name = "eth0";
+    }
+
+    if(m_wifi_dev_name.isEmpty())
+    {
+        m_wifi_dev_name = "wlan0";
+    }
+
+    qDebug() << "m_wifi_dev_name: " << m_wifi_dev_name << ";m_eth_dev_name: " << m_eth_dev_name;
 }
 
 QString NodoNetworkManager::getConnectedDeviceConfig(void)
@@ -410,7 +474,7 @@ void NodoNetworkManager::enableEthernet(bool enable)
 {
     QStringList arguments;
 
-    arguments << "link" << "set" << ETHERNET_DEVICE_NAME;
+    arguments << "link" << "set" << m_eth_dev_name;
     if(enable)
     {
         arguments << "up";
@@ -428,7 +492,7 @@ bool NodoNetworkManager::GetEthernetStatus(void)
 {
     QStringList arguments;
 
-    arguments << "-br" << "link" << "show" << ETHERNET_DEVICE_NAME;
+    arguments << "-br" << "link" << "show" << m_eth_dev_name;
 
     QString result = callip(arguments);
 
@@ -529,11 +593,11 @@ void NodoNetworkManager::connectToEthernet(QString connectionName, bool DHCP, QS
     int prefix = calculatePrefix(netmask);
     if(DHCP)
     {
-        arguments << "con" << "add" << "type" << "ethernet" << "con-name" << connectionName << "ifname" << ETHERNET_DEVICE_NAME;
+        arguments << "con" << "add" << "type" << "ethernet" << "con-name" << connectionName << "ifname" << m_eth_dev_name;
     }
     else
     {
-        arguments << "con" << "add" << "type" << "ethernet" << "con-name" << connectionName << "ifname" << ETHERNET_DEVICE_NAME << "ip4" << IP.append("/").append(QString::number(prefix, 10)) << "gw4" << gateway << "ipv4.dns" << DNS ;
+        arguments << "con" << "add" << "type" << "ethernet" << "con-name" << connectionName << "ifname" << m_eth_dev_name << "ip4" << IP.append("/").append(QString::number(prefix, 10)) << "gw4" << gateway << "ipv4.dns" << DNS ;
     }
 
     QString result = callnmcli(arguments);

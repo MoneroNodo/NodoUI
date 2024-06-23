@@ -13,17 +13,19 @@ NodoPriceTicker::NodoPriceTicker(NodoConfigParser *configParser, NodoNetworkMana
     connect(&m_manager, SIGNAL(finished(QNetworkReply*)), this, SLOT(downloadFinished(QNetworkReply*)));
     connect(m_timer, SIGNAL(timeout()), this, SLOT(updatePriceTicker()));
 
-    if(m_networkManager->getAvailableConnectionStatus())
-    {
-        doDownload(m_currentCurrencyCode);
-    }
+    // if(m_networkManager->getAvailableConnectionStatus())
+    // {
+    //     m_timer->start(2000);
+    //     // doDownload(m_currentCurrencyCode);
+    // }
 }
 
 void NodoPriceTicker::checkConnectionStatus(bool netConnStat)
 {
     if(netConnStat)
     {
-        doDownload(m_currentCurrencyCode);
+        m_timer->start(2000);
+        // doDownload(m_currentCurrencyCode);
     }
     else
     {
@@ -112,8 +114,14 @@ void NodoPriceTicker::updatePriceTicker(void)
 void NodoPriceTicker::sslErrors(const QList<QSslError> &sslErrors)
 {
 #ifndef QT_NO_SSL
-    foreach (const QSslError &error, sslErrors)
+    foreach (const QSslError &error, sslErrors){
+        if(error.CertificateNotYetValid)
+        {
+            qDebug() << "not yet valid error";
+            m_timer->start(2000);
+        }
         qDebug() << "SSL error: " << qPrintable(error.errorString());
+    }
 #else
     Q_UNUSED(sslErrors);
 #endif

@@ -3,6 +3,10 @@
 NodoNetworkManager::NodoNetworkManager(QObject *parent)
     : QObject{parent}
 {
+    m_dbusNetworkAdapterConnectionStatus = false;
+    m_wifiDeviceStatus = false;
+    m_ethernetDeviceStatus = false;
+
     nm = new com::moneronodo::embeddedNetworkInterface("com.monero.nodonm", "/com/monero/nodonm", QDBusConnection::systemBus(), this);
 
     connect(nm, SIGNAL(networkConfigurationChangedNotification(bool)), this, SLOT(updateNetworkConfig(bool)));
@@ -11,14 +15,37 @@ NodoNetworkManager::NodoNetworkManager(QObject *parent)
     connect(nm, SIGNAL(wifiDeviceStatusChangedNotification(bool)), this, SLOT(processWifiDeviceStatus(bool)));
     connect(nm, SIGNAL(wifiScanCompletedNotification(QString)), this, SLOT(parseWifiNetworkList(QString)));
 
-    m_wifiDeviceStatus = nm->GetWiFiStatus();
-    m_ethernetDeviceStatus = nm->GetEthernetStatus();
-
     m_connectedWifiParams.connected = false;
     m_connectedEthernetParams.connected = false;
 
     m_stopWifiScanRequested = false;
     m_stopEthScanRequested = false;
+
+    startTimer(1000);
+}
+
+void NodoNetworkManager::timerEvent(QTimerEvent *event)
+{
+    Q_UNUSED(event);
+
+    bool previousState = m_dbusNetworkAdapterConnectionStatus;
+    if (nm->isValid())
+    {
+        m_dbusNetworkAdapterConnectionStatus = true;
+
+        if(previousState != m_dbusNetworkAdapterConnectionStatus)
+        {
+            m_wifiDeviceStatus = nm->GetWiFiStatus();
+            m_ethernetDeviceStatus = nm->GetEthernetStatus();
+
+            bool netConnStat = nm->isAvtiveConnectionAvailable();
+            networkConnStatusReceived(netConnStat);
+        }
+    }
+    else
+    {
+        m_dbusNetworkAdapterConnectionStatus = false;
+    }
 }
 
 bool NodoNetworkManager::getAvailableConnectionStatus(void)

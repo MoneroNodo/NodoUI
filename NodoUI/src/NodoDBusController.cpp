@@ -23,8 +23,9 @@ void NodoDBusController::timerEvent(QTimerEvent *event)
     {
         m_dbusAdapterConnectionStatus = false;
     }
-    if(previousState == m_dbusAdapterConnectionStatus)
+    if(previousState != m_dbusAdapterConnectionStatus)
     {
+        qDebug() << "m_dbusAdapterConnectionStatus";
         emit dbusConnectionStatusChanged();
     }
 }

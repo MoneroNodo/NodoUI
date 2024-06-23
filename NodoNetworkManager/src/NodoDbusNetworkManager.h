@@ -14,14 +14,6 @@
 
 #include "nodo_nm_adaptor.h"
 
-#if 1
-#define WIFI_DEVICE_NAME "wlan0"
-#define ETHERNET_DEVICE_NAME "eth0"
-#else
-#define WIFI_DEVICE_NAME "wlo1"
-#define ETHERNET_DEVICE_NAME "enxf8e43bdcaba0"
-#endif
-
 typedef struct
 {
     QString SSID;
@@ -87,11 +79,13 @@ private:
     bool m_isWifiEnabled = false;
     network_parameters_t wifi_config;
     QString m_ssidList;
+    QString m_wifi_dev_name;
 
     /***************ethernet controls**********************/
     network_parameters_t ethernet_config;
     bool m_isEthernetEnabled = false;
     QString m_ethernetList;
+    QString m_eth_dev_name;
 
     /***************general controls**********************/
     QString callnmcli(QStringList arguments);
@@ -100,6 +94,7 @@ private:
     QString calculateNetmask(int prefix);
     void readNetworkConfig(QString device, network_parameters_t *nmp);
     void readNetworkConfigurations(void);
+    void getNetforkDeviceNames(void);
 
     /***************wifi controls*************************/
     QString listSavedWifiNetworks(void);
