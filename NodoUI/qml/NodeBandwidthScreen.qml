@@ -13,8 +13,11 @@ Item {
     property int incomingPeersLimit
     property int outgoingPeersLimit
     property int rateLimitUp
+    property string rateLimitUpEdited
+    property string rateLimitDownEdited
     property int rateLimitDown
     property string bwUnit: qsTr("kB/s")
+    property string unlimitedbw: "∞"
 
     Component.onCompleted: {
         nodoConfig.updateRequested()
@@ -29,6 +32,9 @@ Item {
             nodeBandwidthScreen.outgoingPeersLimit = nodoConfig.getIntValueFromKey("config", "out_peers")
             nodeBandwidthScreen.rateLimitUp = nodoConfig.getIntValueFromKey("config", "limit_rate_up")
             nodeBandwidthScreen.rateLimitDown = nodoConfig.getIntValueFromKey("config", "limit_rate_down")
+
+            nodeBandwidthScreen.rateLimitUpEdited = nodeBandwidthScreen.rateLimitUp
+            nodeBandwidthScreen.rateLimitDownEdited = nodeBandwidthScreen.rateLimitDown
         }
     }
 
@@ -110,12 +116,23 @@ Item {
         height: NodoSystem.infoFieldLabelHeight
         itemSize: labelSize
         itemText: qsTr("Bandwidth Up")
-        valueText: nodeBandwidthScreen.rateLimitUp !== -1 ? nodeBandwidthScreen.rateLimitUp : ""
+        valueText: nodeBandwidthScreen.rateLimitUp !== -1 ? nodeBandwidthScreen.rateLimitUp : nodeBandwidthScreen.unlimitedbw
         textFlag: Qt.ImhPreferNumbers
         readOnlyFlag: nodeBandwidthScreen.inputFieldReadOnly
         validator: IntValidator{bottom: -1;}
         onTextEditFinished: {
-            if(rateLimitUpField.valueText !== nodeBandwidthScreen.rateLimitUp.toString())
+            nodeBandwidthScreen.rateLimitUpEdited = rateLimitUpField.valueText;
+            if(nodeBandwidthScreen.rateLimitUpEdited === nodeBandwidthScreen.unlimitedbw)
+            {
+                nodeBandwidthScreen.rateLimitUpEdited = "-1";
+            }
+
+            if(rateLimitUpField.valueText === "-1")
+            {
+                rateLimitUpField.valueText = nodeBandwidthScreen.unlimitedbw
+            }
+
+            if(nodeBandwidthScreen.rateLimitUpEdited !== nodeBandwidthScreen.rateLimitUp.toString())
             {
                 nodeBandwidthApplyButton.isActive = true
             }
@@ -150,12 +167,23 @@ Item {
         height: NodoSystem.infoFieldLabelHeight
         itemSize: labelSize
         itemText: qsTr("Bandwidth Down")
-        valueText: nodeBandwidthScreen.rateLimitDown !== -1 ? nodeBandwidthScreen.rateLimitDown : ""
+        valueText: nodeBandwidthScreen.rateLimitDown !== -1 ? nodeBandwidthScreen.rateLimitDown : nodeBandwidthScreen.unlimitedbw
         textFlag: Qt.ImhPreferNumbers
         readOnlyFlag: nodeBandwidthScreen.inputFieldReadOnly
         validator: IntValidator{bottom: -1;}
         onTextEditFinished: {
-            if(rateLimitDownField.valueText !== nodeBandwidthScreen.rateLimitDown.toString())
+            nodeBandwidthScreen.rateLimitDownEdited = rateLimitDownField.valueText;
+            if(nodeBandwidthScreen.rateLimitDownEdited === nodeBandwidthScreen.unlimitedbw)
+            {
+                nodeBandwidthScreen.rateLimitDownEdited = "-1";
+            }
+
+            if(rateLimitDownField.valueText === "-1")
+            {
+                rateLimitDownField.valueText = nodeBandwidthScreen.unlimitedbw
+            }
+
+            if(nodeBandwidthScreen.rateLimitDownEdited !== nodeBandwidthScreen.rateLimitDown.toString())
             {
                 nodeBandwidthApplyButton.isActive = true
             }
@@ -195,7 +223,8 @@ Item {
         onClicked:
         {
             isActive = false
-            nodoControl.setNodeBandwidthParameters(incomingPeersLimitField.valueText, outgoingPeersLimitField.valueText, rateLimitUpField.valueText, rateLimitDownField.valueText)
+            // console.log("rateLimitUp: " + nodeBandwidthScreen.rateLimitUpEdited + " rateLimitDown: " + nodeBandwidthScreen.rateLimitDownEdited)
+            nodoControl.setNodeBandwidthParameters(incomingPeersLimitField.valueText, outgoingPeersLimitField.valueText, nodeBandwidthScreen.rateLimitUpEdited, nodeBandwidthScreen.rateLimitDownEdited)
         }
     }
 }

@@ -58,18 +58,6 @@ Item {
         color: nodoControl.appTheme ? NodoSystem.dataFieldTextBGColorNightModeOn : NodoSystem.dataFieldTextBGColorNightModeOff
         property int defaultEchoMode: passwordInput == true ? TextInput.Password: TextInput.Normal
 
-        // Text {
-        //     id: unit
-        //     text: valueUnit
-        //     // z: -1
-        //     x: valueLabel.contentWidth + 30
-        //     height: root.height
-        //     verticalAlignment: Text.AlignVCenter
-        //     font.family: NodoSystem.fontUrbanist.name
-        //     font.pixelSize: valueFontSize
-        //     color: (readOnlyFlag === true) ? NodoSystem.buttonDisabledColor : nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn : NodoSystem.dataFieldTextColorNightModeOff
-        // }
-
         TextInput {
             id: valueLabel
             anchors.left: valueCanvas.left
