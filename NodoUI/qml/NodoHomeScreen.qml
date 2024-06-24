@@ -48,6 +48,7 @@ Item {
             anchors.left: mainAppWindowRectangle.left
             anchors.leftMargin: 10
             height: NodoSystem.topMenuButtonHeight
+            implicitWidth: newsButton.x + newsButton.width
 
             background: Rectangle {
                 color: "black"
@@ -58,8 +59,7 @@ Item {
                 y: (mainMenuBar.height - nodoLogoButton.height)/2
                 text: " "
                 width: 288 //180
-                imagePath: (nodoControl.appTheme ? "qrc:/Images/nodologo_large_resized_red.png" :
-                "qrc:/Images/nodologo_large_resized.png")
+                imagePath: (nodoControl.appTheme ? "qrc:/Images/nodologo_large_resized_red.png" : "qrc:/Images/nodologo_large_resized.png")
                 onClicked: { pageLoader.source = "NodoStatusScreen.qml" }
             }
 
@@ -125,6 +125,7 @@ Item {
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
                 onClicked: { pageLoader.source = "NewsMainScreen.qml" }
             }
+
         }
 
         Rectangle {

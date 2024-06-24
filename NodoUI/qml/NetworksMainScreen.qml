@@ -10,15 +10,12 @@ Item {
     anchors.fill: parent
     anchors.leftMargin: NodoSystem.subMenuLeftMargin
 
-    property alias clearnetButton: clearnetButton
-    property alias torButton: torButton
-    property alias i2pButton: i2pButton
-
     TabBar {
         id: networksMenuBar
         anchors.top: networksMainScreen.top
         anchors.left: networksMainScreen.left
         height: NodoSystem.topMenuButtonHeight
+        contentWidth: parent.width
 
         background: Rectangle {
             color: "black"
@@ -26,28 +23,31 @@ Item {
 
         NodoTabButton {
             id: clearnetButton
-            y: (networksMenuBar.height - clearnetButton.height)/2
             text: qsTr("CLEARNET")
+            y: (networksMenuBar.height - clearnetButton.height)/2
             font.family: NodoSystem.fontUrbanist.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
+            implicitHeight: NodoSystem.topMenuButtonHeight
             onClicked: { pageLoader.source = "NetworksClearnetScreen.qml" }
         }
         NodoTabButton {
             id: torButton
-            y: (networksMenuBar.height - torButton.height)/2
             anchors.left: clearnetButton.right
+            anchors.top: clearnetButton.top
             text: qsTr("TOR")
             font.family: NodoSystem.fontUrbanist.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
+            implicitHeight: NodoSystem.topMenuButtonHeight
             onClicked: { pageLoader.source = "NetworksTorScreen.qml" }
         }
         NodoTabButton {
             id: i2pButton
-            y: (networksMenuBar.height - i2pButton.height)/2
             anchors.left: torButton.right
+            anchors.top: clearnetButton.top
             text: qsTr("I2P")
             font.family: NodoSystem.fontUrbanist.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
+            implicitHeight: NodoSystem.topMenuButtonHeight
             onClicked: { pageLoader.source = "NetworksI2PScreen.qml" }
         }
     }

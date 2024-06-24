@@ -20,6 +20,7 @@ Item {
         anchors.top: moneroLWSMainScreen.top
         anchors.left: moneroLWSMainScreen.left
         height: NodoSystem.topMenuButtonHeight
+        contentWidth: parent.width
 
         background: Rectangle {
             color: "black"

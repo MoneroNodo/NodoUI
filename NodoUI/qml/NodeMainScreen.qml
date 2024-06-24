@@ -15,6 +15,7 @@ Item {
         anchors.top: nodeMainScreen.top
         anchors.left: nodeMainScreen.left
         height: NodoSystem.topMenuButtonHeight
+        contentWidth: parent.width
 
         background: Rectangle {
             color: "black"
