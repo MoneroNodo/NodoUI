@@ -288,6 +288,28 @@ void NodoConfigParser::setI2pPeer(QString peer)
     writeJson();
 }
 
+void NodoConfigParser::setrpcEnabledStatus(bool status)
+{
+    QString stat;
+    if(status)
+    {
+        stat = "TRUE";
+    }
+    else
+    {
+        stat = "FALSE";
+    }
+
+    m_configObj.insert("rpc_enabled", stat);
+    writeJson();
+}
+
+void NodoConfigParser::setrpcPort(QString port)
+{
+    m_configObj.insert("monero_rpc_port", port.toInt());
+    writeJson();
+}
+
 void NodoConfigParser::setNodeBandwidthParameters(QString in_peers, QString out_peers, QString limit_rate_up, QString limit_rate_down)
 {
     qDebug() << in_peers << out_peers << limit_rate_up << limit_rate_down;
@@ -298,3 +320,4 @@ void NodoConfigParser::setNodeBandwidthParameters(QString in_peers, QString out_
     m_configObj.insert("limit_rate_down", limit_rate_down.toInt());
     writeJson();
 }
+

@@ -9,9 +9,14 @@ Item {
     id: nodePrivateNodeScreen
     property int labelSize: 0
     property int inputFieldWidth: 600
+    property bool isRPCEnabled
+    property int rpcPort
 
     Component.onCompleted: {
         onCalculateMaximumTextLabelLength()
+        nodePrivateNodeScreen.isRPCEnabled = nodoControl.getrpcEnabledStatus()
+        nodePrivateNodeScreen.rpcPort = nodoControl.getrpcPort()
+        privateNodePortField.readOnlyFlag = !nodePrivateNodeScreen.isRPCEnabled
     }
 
     function onCalculateMaximumTextLabelLength() {
@@ -23,6 +28,34 @@ Item {
 
         if(privateNodePasswordField.labelRectRoundSize > labelSize)
         labelSize = privateNodePasswordField.labelRectRoundSize
+    }
+
+    Connections {
+        target: nodoConfig
+        function onConfigParserReady() {
+            nodePrivateNodeScreen.isRPCEnabled = nodoControl.getrpcEnabledStatus()
+            nodePrivateNodeScreen.rpcPort = nodoControl.getrpcPort()
+        }
+    }
+
+    Connections {
+        target: nodoControl
+        function onErrorDetected() {
+            var errorCode = nodoControl.getErrorCode();
+            if(0 !== errorCode)
+            {
+                systemPopup.popupMessageText = nodoControl.getErrorMessage()
+                systemPopup.commandID = -1;
+                systemPopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Close]
+                systemPopup.open();
+            }
+        }
+
+        function onComponentEnabledStatusChanged() {
+            var enabled = nodoControl.isComponentEnabled();
+            privateNodeSwitch.enabled = enabled
+            privateNodePortField.readOnlyFlag = enabled === true ? !privateNodeSwitch.checked : true
+        }
     }
 
     Rectangle {
@@ -48,6 +81,14 @@ Item {
             width: 2*privateNodeSwitchRect.height
             height: privateNodeSwitchRect.height
             display: AbstractButton.IconOnly
+            checked: nodePrivateNodeScreen.isRPCEnabled
+            onCheckedChanged: {
+                if(checked !== nodePrivateNodeScreen.isRPCEnabled)
+                {
+                    nodePrivateNodeScreen.isRPCEnabled = checked
+                    nodoControl.setrpcEnabledStatus(nodePrivateNodeScreen.isRPCEnabled)
+                }
+            }
         }
     }
 
@@ -60,8 +101,16 @@ Item {
         width: inputFieldWidth
         itemSize: labelSize
         itemText: qsTr("Port")
-        valueText: ""
+        valueText: nodePrivateNodeScreen.rpcPort
         textFlag: Qt.ImhDigitsOnly
+        validator: IntValidator{bottom: 0; top: 65535}
+        onTextEditFinished: {
+            if(privateNodePortField.valueText !== nodePrivateNodeScreen.rpcPort.toString())
+            {
+                hiddenInputField.focus = true
+                nodoControl.setrpcPort(privateNodePortField.valueText)
+            }
+        }
     }
 
     NodoInputField {
@@ -97,6 +146,18 @@ Item {
         height: NodoSystem.infoFieldLabelHeight
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize
+    }
+
+/*
+    When enter pressed, privateNodePortField doesn't lose its focus and keyboard is displayed again.
+    The only purpose of this input field is to take over focus from the privateNodePortField
+*/
+    NodoInputField {
+        id: hiddenInputField
+        anchors.left: nodePrivateNodeScreen.left
+        anchors.top: privateNodeApplyButton.bottom
+        visible: false
+        readOnlyFlag: true
     }
 }
 

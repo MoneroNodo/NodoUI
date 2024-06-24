@@ -9,6 +9,8 @@
 #include "NodoNotificationMessages.h"
 #include "NodoSystemStatusParser.h"
 
+// #define ENABLE_TEST_CODE
+
 class NodoSystemControl : public QObject
 {
     Q_OBJECT
@@ -91,6 +93,11 @@ public:
     Q_INVOKABLE void setNodeBandwidthParameters(QString in_peers, QString out_peers, QString limit_rate_up, QString limit_rate_down);
 
     Q_INVOKABLE bool isComponentEnabled(void);
+
+    Q_INVOKABLE bool getrpcEnabledStatus(void);
+    Q_INVOKABLE void setrpcEnabledStatus(bool status);
+    Q_INVOKABLE int getrpcPort(void);
+    Q_INVOKABLE void setrpcPort(QString port);
 
 signals:
     void appThemeChanged(bool);
@@ -182,7 +189,10 @@ private slots:
     void updateServiceStatus(QString statusMessage);
     void timedout(void);
     void processNotification(QString message);
-    // void processNotificationTest(void);
+
+#ifdef ENABLE_TEST_CODE
+    void processNotificationTest(void);
+#endif
 };
 
 

@@ -152,6 +152,7 @@ Item {
         valueText: networksTorScreen.torPort
         textFlag: Qt.ImhDigitsOnly
         readOnlyFlag: networksTorScreen.torPortFieldReadOnly
+        validator: IntValidator{bottom: 0; top: 65535}
         onTextEditFinished: {
             if(torPortField.valueText !== networksTorScreen.torPort.toString())
             {

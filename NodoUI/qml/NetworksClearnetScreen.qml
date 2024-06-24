@@ -97,6 +97,7 @@ Item {
         valueText: networksClearnetScreen.clearnetPort
         textFlag: Qt.ImhDigitsOnly
         readOnlyFlag: networksClearnetScreen.inputFieldReadOnly
+        validator: IntValidator{bottom: 0; top: 65535}
         onTextEditFinished: {
             if(clearnetPortField.valueText !== networksClearnetScreen.clearnetPort.toString())
             {

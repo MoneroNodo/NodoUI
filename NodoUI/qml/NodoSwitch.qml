@@ -15,7 +15,25 @@ Switch {
 
         y: (parent.height  - height) / 2
 
-        color: control.checked ? (nodoControl.appTheme ? NodoSystem.highlightedColorNightModeOn : NodoSystem.highlightedColorNightModeOff) : NodoSystem.switchBackgroundColor
+        color: {
+            if(control.checked)
+            {
+                if(nodoControl.appTheme)
+                {
+                    NodoSystem.highlightedColorNightModeOn
+                }
+                else
+                {
+                    NodoSystem.highlightedColorNightModeOff
+                }
+            }
+            else
+            {
+                NodoSystem.switchBackgroundColor
+            }
+        }
+        opacity: control.enabled ? 1.0 : 0.6
+
         NodoCanvas {
             id: knob
             x: control.checked ? control.width - control.height*0.9 : control.height*0.1
@@ -40,7 +58,7 @@ Switch {
     states: [
         State {
             name: "on"
-            PropertyChanges { target: background; color: nodoControl.appTheme ? NodoSystem.highlightedColorNightModeOn : NodoSystem.highlightedColorNightModeOff }
+            PropertyChanges { target: background; color: nodoControl.appTheme ? NodoSystem.highlightedColorNightModeOn : NodoSystem.highlightedColorNightModeOff}
             PropertyChanges { target: knob; x: control.width - control.height*0.9 }
             PropertyChanges { target: control; checked: true }
         },

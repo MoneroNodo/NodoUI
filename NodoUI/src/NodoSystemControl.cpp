@@ -410,6 +410,40 @@ void NodoSystemControl::enableComponent(bool enabled)
     emit componentEnabledStatusChanged();
 }
 
+bool NodoSystemControl::getrpcEnabledStatus(void)
+{
+    QString retVal = m_configParser->getStringValueFromKey("config", "rpc_enabled");
+    if("false" == retVal.toLower())
+    {
+        return false;
+    }
+    else if("true" == retVal.toLower())
+    {
+        return true;
+    }
+
+    return false;
+}
+
+void NodoSystemControl::setrpcEnabledStatus(bool status)
+{
+    enableComponent(false);
+    m_configParser->setrpcEnabledStatus(status);
+    m_dbusController->serviceManager("restart", "monerod");
+}
+
+int NodoSystemControl::getrpcPort(void)
+{
+    return m_configParser->getIntValueFromKey("config", "monero_rpc_port");
+}
+
+void NodoSystemControl::setrpcPort(QString port)
+{
+    enableComponent(false);
+    m_configParser->setrpcPort(port);
+    m_dbusController->serviceManager("restart", "monerod");
+}
+
 void NodoSystemControl::setNodeBandwidthParameters(QString in_peers, QString out_peers, QString limit_rate_up, QString limit_rate_down)
 {
     enableComponent(false);
@@ -446,12 +480,13 @@ void NodoSystemControl::processNotification(QString message)
 }
 
 
+#ifdef ENABLE_TEST_CODE
+
 //QTimer::singleShot(4000, this, SLOT(processNotificationTest()));
 
-/*
 void NodoSystemControl::processNotificationTest(void)
 {
-    QString message = "monerod:restart:1";
+    QString message = "monerod:restart:0";
     QStringList serviceStat = message.split(":");
 
     m_componentEnabled = true;
@@ -478,5 +513,6 @@ void NodoSystemControl::processNotificationTest(void)
         }
     }
 }
-*/
+#endif
+
 

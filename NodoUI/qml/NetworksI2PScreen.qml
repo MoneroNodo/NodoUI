@@ -118,6 +118,7 @@ Item {
         valueText: networksI2PScreen.i2pPort
         textFlag: Qt.ImhDigitsOnly
         readOnlyFlag: networksI2PScreen.i2pPortFieldReadOnly
+        validator: IntValidator{bottom: 0; top: 65535}
         onTextEditFinished: {
             if(i2pPortField.valueText !== networksI2PScreen.i2pPort.toString())
             {
