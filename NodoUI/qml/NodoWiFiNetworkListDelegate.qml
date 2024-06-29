@@ -22,12 +22,15 @@ NodoCanvas {
 
     height: defaultHeight
 
-    property string ssidName: networkManager.getSSIDName(ssidIndex)
+    property string ssidName
+    property string connectionPath
 
     color: "#181818"
 
     Component.onCompleted:
     {
+        ssidName = networkManager.getSSIDName(ssidIndex)
+        connectionPath = networkManager.getSSIDConnectionPath(ssidIndex)
         ssidEncryption = networkManager.getSSIDEncryptionType(ssidIndex)
         ssidSignalStrength = networkManager.getSSIDSignalStrength(ssidIndex)
         ssidFrequency = networkManager.getSSIDFrequency(ssidIndex)/1000
@@ -77,7 +80,7 @@ NodoCanvas {
         width: mainRect.buttonSize
         height: networkDelegateItemHeight
         font.pixelSize: NodoSystem.infoFieldItemFontSize
-        text: qsTr("Connect")
+        text: systemMessages.messages[NodoMessages.Message.Connect]
         visible: true
         isActive: true
         fitMinimal: true
@@ -86,30 +89,27 @@ NodoCanvas {
             if(networkManager.isWiFiConnectedBefore(ssidIndex))
             {
                 connectButton.isActive = false
-                connectButton.text = qsTr("Connecting")
+                connectButton.text = systemMessages.messages[NodoMessages.Message.Connecting]
                 connectButton.update()
-                networkManager.activateWiFi(mainRect.ssidName)
-                networkManager.startWifiScan()
+                networkManager.activateWiFi(connectionPath)
             }
             else
             {
-                if(ssidEncryption === "" )
+                if(ssidEncryption === "WEP" )
                 {
                     connectButton.isActive = false
-                    connectButton.text = qsTr("Connecting")
+                    connectButton.text = systemMessages.messages[NodoMessages.Message.Connecting]
                     connectButton.update()
-                    networkManager.connectToWiFi(mainRect.ssidName, passwordInputField.valueText, dhcpSwitch.checked, wifiIPAddressField.valueText, wifiSubnetMaskField.valueText, wifiRouterField.valueText, wifiDNSField.valueText)
-                    networkManager.startWifiScan()
+                    networkManager.connectToWiFi(mainRect.ssidName, passwordInputField.valueText, dhcpSwitch.checked, wifiIPAddressField.valueText, wifiSubnetMaskField.valueText, wifiRouterField.valueText, wifiDNSField.valueText, ssidEncryption)
                 }
                 else
                 {
                     if(passwordInputField.valueText.length >= 8)
                     {
                         connectButton.isActive = false
-                        connectButton.text = qsTr("Connecting")
+                        connectButton.text = systemMessages.messages[NodoMessages.Message.Connecting]
                         connectButton.update()
-                        networkManager.connectToWiFi(mainRect.ssidName, passwordInputField.valueText, dhcpSwitch.checked, wifiIPAddressField.valueText, wifiSubnetMaskField.valueText, wifiRouterField.valueText, wifiDNSField.valueText)
-                        networkManager.startWifiScan()
+                        networkManager.connectToWiFi(mainRect.ssidName, passwordInputField.valueText, dhcpSwitch.checked, wifiIPAddressField.valueText, wifiSubnetMaskField.valueText, wifiRouterField.valueText, wifiDNSField.valueText, ssidEncryption)
                     }
                     else
                     {
@@ -130,13 +130,13 @@ NodoCanvas {
         width: mainRect.buttonSize
         height: networkDelegateItemHeight
         font.pixelSize: NodoSystem.infoFieldItemFontSize
-        text: qsTr("Forget")
+        text: systemMessages.messages[NodoMessages.Message.Forget]
         visible: networkManager.isWiFiConnectedBefore(ssidIndex)
         isActive: true
         fitMinimal: true
         onClicked: {
             forgetButton.isActive = false
-            networkManager.forgetNetwork(mainRect.ssidName)
+            networkManager.forgetWirelessNetwork(mainRect.connectionPath)
         }
     }
 
@@ -210,7 +210,7 @@ NodoCanvas {
         anchors.leftMargin: 11
         anchors.topMargin: 10
         width: mainRect.width - (22)
-        height: frequencyField.y + frequencyField.height + 8
+        height: frequencyField.y + frequencyField.height
         visible:  mainRect.state === "showDetails" ? true : false
         color: "transparent"
 
@@ -222,7 +222,7 @@ NodoCanvas {
             width: showDetailsRect.width
             itemSize: 300
             height: networkDelegateItemHeight
-            itemText: qsTr("SSID")
+            itemText: systemMessages.messages[NodoMessages.Message.SSID]
             valueText: ssidNameLabel.text
         }
 
@@ -234,7 +234,7 @@ NodoCanvas {
             width: showDetailsRect.width
             itemSize: 300
             height: networkDelegateItemHeight
-            itemText: qsTr("Signal Strength")
+            itemText: systemMessages.messages[NodoMessages.Message.SignalStrength]
             valueText: mainRect.ssidSignalStrength + "%"
         }
 
@@ -246,7 +246,7 @@ NodoCanvas {
             width: showDetailsRect.width
             itemSize: 300
             height: networkDelegateItemHeight
-            itemText: qsTr("Security Type")
+            itemText: systemMessages.messages[NodoMessages.Message.SecurityType]
             valueText: mainRect.ssidEncryption
         }
 
@@ -258,7 +258,7 @@ NodoCanvas {
             width: showDetailsRect.width
             itemSize: 300
             height: networkDelegateItemHeight
-            itemText: qsTr("Frequency")
+            itemText: systemMessages.messages[NodoMessages.Message.Frequency]
             valueText: {
                 var freq = mainRect.ssidFrequency
                 freq.toFixed(1) + " GHz"
@@ -284,7 +284,7 @@ NodoCanvas {
             width: connectToANetworkRect.width
             height: networkDelegateItemHeight
             itemSize: labelSize
-            itemText: qsTr("Password")
+            itemText: systemMessages.messages[NodoMessages.Message.Password]
             valueText:""
             passwordInput: true
         }
@@ -298,7 +298,7 @@ NodoCanvas {
             width: mainRect.buttonSize
             height: networkDelegateItemHeight
             font.pixelSize: NodoSystem.infoFieldItemFontSize
-            text: "Advanced"
+            text: systemMessages.messages[NodoMessages.Message.Advanced]
             visible:  connectToANetworkRect.visible
             fitMinimal: true
             onClicked: {
@@ -344,7 +344,7 @@ NodoCanvas {
                     anchors.left: dhcpSwitchRect.left
                     anchors.top: dhcpSwitchRect.top
                     itemSize: labelSize
-                    text: "DHCP"
+                    text: systemMessages.messages[NodoMessages.Message.DHCP]
                 }
 
                 NodoSwitch {
@@ -376,7 +376,7 @@ NodoCanvas {
                 width: advancedSettingsRect.width
                 height: networkDelegateItemHeight
                 itemSize: labelSize
-                itemText: qsTr("IP Address")
+                itemText: systemMessages.messages[NodoMessages.Message.IPAddress]
                 valueText: ""
                 textFlag: Qt.ImhDigitsOnly
                 inputMask: "000.000.000.000;0"
@@ -393,7 +393,7 @@ NodoCanvas {
                 width: advancedSettingsRect.width
                 height: networkDelegateItemHeight
                 itemSize: labelSize
-                itemText: qsTr("Subnet Mask")
+                itemText: systemMessages.messages[NodoMessages.Message.SubnetMask]
                 valueText: ""
                 textFlag: Qt.ImhDigitsOnly
                 inputMask: "000.000.000.000;0"
@@ -410,7 +410,7 @@ NodoCanvas {
                 width: advancedSettingsRect.width
                 height: networkDelegateItemHeight
                 itemSize: labelSize
-                itemText: qsTr("Router")
+                itemText: systemMessages.messages[NodoMessages.Message.Router]
                 valueText: ""
                 textFlag: Qt.ImhDigitsOnly
                 inputMask: "000.000.000.000;0"
@@ -427,7 +427,7 @@ NodoCanvas {
                 width: advancedSettingsRect.width
                 height: networkDelegateItemHeight
                 itemSize: labelSize
-                itemText: qsTr("DNS")
+                itemText: systemMessages.messages[NodoMessages.Message.DNS]
                 valueText: ""
                 textFlag: Qt.ImhDigitsOnly
                 inputMask: "000.000.000.000;0"
@@ -466,18 +466,18 @@ NodoCanvas {
         },
         State {
             name: "showPasswordField"
-            PropertyChanges { target: mainRect; height: 80 + connectToANetworkRect.height + advancedSettingsRect.height}
-            PropertyChanges { target: advancedSettingsRect; height: 73 }
+            PropertyChanges { target: mainRect; height: 72 + connectToANetworkRect.height + advancedSettingsRect.height}
+            PropertyChanges { target: advancedSettingsRect; height: 65 }
         },
         State {
             name: "showAdvancedConfigField"
-            PropertyChanges { target: mainRect; height: 155 + connectToANetworkRect.height + advancedSettingsRect.height}
-            PropertyChanges { target: advancedSettingsRect; height: 73 }
+            PropertyChanges { target: mainRect; height: 147 + connectToANetworkRect.height + advancedSettingsRect.height}
+            PropertyChanges { target: advancedSettingsRect; height: 65 }
         },
         State {
             name: "showStaticConfigField"
-            PropertyChanges { target: mainRect; height: 605 }
-            PropertyChanges { target: advancedSettingsRect; height: 343 }
+            PropertyChanges { target: mainRect; height: 590 }
+            PropertyChanges { target: advancedSettingsRect; height: 335 }
         }
     ]
 

@@ -11,7 +11,6 @@ Item {
     y: 0
     property string itemText: ""
     property string valueText: ""
-    // property string valueUnit: ""
     property int itemFontSize: NodoSystem.inputFieldItemFontSize
     property int valueFontSize: NodoSystem.inputFieldValueFontSize
     property int textFlag: Qt.ImhNoAutoUppercase

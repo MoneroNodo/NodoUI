@@ -436,3 +436,4 @@ void Daemon::setPassword(QString pw)
     sh.start( "sh", { "-c", tmp});
     sh.waitForFinished( -1 );
 }
+

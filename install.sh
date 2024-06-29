@@ -45,11 +45,6 @@ sudo cp $NODO_DAEMON_PROJECT_PATH/config/com.monero.nodo.conf /usr/share/dbus-1/
 sudo cp $NODO_DAEMON_PROJECT_PATH/config/com.monero.nodo.service /usr/share/dbus-1/system-services/
 sudo cp $NODO_DAEMON_PROJECT_PATH/config/nodo-dbus.service /usr/lib/systemd/system/
 
-sudo cp $NODO_NETWORK_PROJECT_PATH/build/NodoNetworkManager $NODO_APP_PATH
-sudo cp $NODO_NETWORK_PROJECT_PATH/config/com.monero.nodonm.conf /usr/share/dbus-1/system.d/
-sudo cp $NODO_NETWORK_PROJECT_PATH/config/com.monero.nodonm.service /usr/share/dbus-1/system-services/
-sudo cp $NODO_NETWORK_PROJECT_PATH/config/nodonm-dbus.service /usr/lib/systemd/system/
-
 
 /usr/lib/qt6/bin/lupdate $NODO_UI_PROJECT_PATH/NodoUI.pro
 /usr/lib/qt6/bin/lrelease $NODO_UI_PROJECT_PATH/NodoUI.pro
@@ -67,17 +62,12 @@ sudo chown nodo:nodo $NODO_CONFIG_PATH/nodoUI.config.json
 sudo usermod -aG video nodo
 sudo usermod -aG input nodo
 sudo usermod -aG adm nodo
-sudo mkdir -p /etc/polkit-1/localauthority/50-local.d
-sudo cp $NODO_NETWORK_PROJECT_PATH/config/nm.pkla /etc/polkit-1/localauthority/50-local.d
 
 sudo systemctl enable nodo-dbus.service
 sudo systemctl start nodo-dbus.service
 
 sudo systemctl enable nodoUI.service
 sudo systemctl start nodoUI.service
-
-sudo systemctl enable nodonm-dbus.service
-sudo systemctl start nodonm-dbus.service
 
 sudo systemctl set-default graphical.target
 

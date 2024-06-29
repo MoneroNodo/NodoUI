@@ -1,82 +1,101 @@
 #include "NodoNetworkManager.h"
 
 NodoNetworkManager::NodoNetworkManager(QObject *parent)
-    : QObject{parent}
 {
-    m_dbusNetworkAdapterConnectionStatus = false;
-    m_wifiDeviceStatus = false;
-    m_ethernetDeviceStatus = false;
+    Q_UNUSED(parent);
+    m_wired = new NodoWiredController();
+    m_wireless = new NodoWirelessController();
 
-    nm = new com::moneronodo::embeddedNetworkInterface("com.monero.nodonm", "/com/monero/nodonm", QDBusConnection::systemBus(), this);
+    connect(m_wired, SIGNAL(deviceStatusChangedNotification(unsigned)), this, SLOT(processWiredDeviceStatus(unsigned)));
+    connect(m_wired, SIGNAL(scanCompletedNotification(QString)), this, SLOT(parseWiredNetworkList(QString)));
+    connect(m_wired, SIGNAL(connectionProfileCreated()), this, SIGNAL(wiredConnectionProfileCreated()));
 
-    connect(nm, SIGNAL(networkConfigurationChangedNotification(bool)), this, SLOT(updateNetworkConfig(bool)));
-    connect(nm, SIGNAL(networkConfigurationChangedNotification(bool)), this, SIGNAL(networkConnStatusReceived(bool)));
+    connect(m_wireless, SIGNAL(deviceStatusChangedNotification(unsigned)), this, SLOT(processWirelessDeviceStatus(unsigned)));
+    connect(m_wireless, SIGNAL(scanCompletedNotification(QString)), this, SLOT(parseWirelessNetworkList(QString)));
+    connect(m_wireless, SIGNAL(apScanStatus()), this, SIGNAL(aPScanStatusReceived()));
 
-    connect(nm, SIGNAL(wifiDeviceStatusChangedNotification(bool)), this, SLOT(processWifiDeviceStatus(bool)));
-    connect(nm, SIGNAL(wifiScanCompletedNotification(QString)), this, SLOT(parseWifiNetworkList(QString)));
+    m_wirelessActiveConnection.connected = false;
+    m_wiredActiveConnection.connected = false;
 
-    m_connectedWifiParams.connected = false;
-    m_connectedEthernetParams.connected = false;
+    getEthernetDeviceStatus();
+    getWifiDeviceStatus();
 
-    m_stopWifiScanRequested = false;
-    m_stopEthScanRequested = false;
 
-    startTimer(1000);
-}
-
-void NodoNetworkManager::timerEvent(QTimerEvent *event)
-{
-    Q_UNUSED(event);
-
-    bool previousState = m_dbusNetworkAdapterConnectionStatus;
-    if (nm->isValid())
+    if((m_wiredDeviceConnectionStatus == 100) || (m_wirelessDeviceConnectionStatus == 100))
     {
-        m_dbusNetworkAdapterConnectionStatus = true;
-
-        if(previousState != m_dbusNetworkAdapterConnectionStatus)
-        {
-            m_wifiDeviceStatus = nm->GetWiFiStatus();
-            m_ethernetDeviceStatus = nm->GetEthernetStatus();
-
-            bool netConnStat = nm->isAvtiveConnectionAvailable();
-            networkConnStatusReceived(netConnStat);
-        }
+        checkNetworkStatusAndIP();
     }
-    else
+
+    if((m_wiredDeviceConnectionStatus == 30) || (m_wiredDeviceConnectionStatus == 100))
     {
-        m_dbusNetworkAdapterConnectionStatus = false;
+        m_wired->scanConnections();
+    }
+
+    if((m_wirelessDeviceConnectionStatus == 30) || (m_wirelessDeviceConnectionStatus == 100))
+    {
+        m_wireless->scanAccessPoints();
     }
 }
 
-bool NodoNetworkManager::getAvailableConnectionStatus(void)
+void NodoNetworkManager::processWirelessDeviceStatus(unsigned wifiDeviceStatus)
 {
-    return nm->isAvtiveConnectionAvailable();
-}
+    m_wirelessDeviceConnectionStatus = wifiDeviceStatus;
 
+    if(m_wirelessDeviceConnectionStatus > 20)
+    {
+        m_wireless->scanAccessPoints();
+    }
 
-void NodoNetworkManager::processWifiDeviceStatus(bool wifiDeviceStatus)
-{
-    m_wifiDeviceStatus = wifiDeviceStatus;
+    checkNetworkStatusAndIP();
     emit wifiDeviceStatusChanged();
 }
 
-bool NodoNetworkManager::getWifiDeviceStatus(void)
+int NodoNetworkManager::getWifiDeviceStatus(void)
 {
-    return m_wifiDeviceStatus;
+    m_wirelessDeviceConnectionStatus = m_wireless->getDeviceConnectionStatus();
+    return m_wirelessDeviceConnectionStatus;
 }
 
 void NodoNetworkManager::setWifiDeviceStatus(bool wifiDeviceStatus)
 {
-    if(m_wifiDeviceStatus != wifiDeviceStatus)
+    m_wireless->enableWireless(wifiDeviceStatus);
+}
+
+void NodoNetworkManager::checkNetworkStatusAndIP(void)
+{
+    m_networkIP.clear();
+    bool tmpConnState = true;
+
+    QString wirelessIP = m_wireless->getIP();
+    QString wiredIP = m_wired->getIP();
+
+    if(wirelessIP.isEmpty() && wiredIP.isEmpty())
     {
-        nm->enableWiFi(wifiDeviceStatus);
-        m_wifiDeviceStatus = wifiDeviceStatus;
+        tmpConnState = false;
+        m_networkIP = "nan";
+    }
+
+    if(!wiredIP.isEmpty())
+    {
+        m_networkIP = wiredIP;
+    }
+    else if(!wirelessIP.isEmpty())
+    {
+        m_networkIP = wirelessIP;
+    }
+
+    emit iPReady();
+
+    if(tmpConnState != isConnectedNetworkAvailable)
+    {
+        isConnectedNetworkAvailable = tmpConnState;
+        emit networkStatusChanged();
     }
 }
 
-void NodoNetworkManager::requestNetworkIP(void)
+bool NodoNetworkManager::isConnected(void)
 {
-    updateNetworkConfig(true);
+    return isConnectedNetworkAvailable;
 }
 
 QString NodoNetworkManager::getNetworkIP(void)
@@ -84,41 +103,18 @@ QString NodoNetworkManager::getNetworkIP(void)
     return m_networkIP;
 }
 
-void NodoNetworkManager::updateNetworkConfig(bool netConnStat)
+void NodoNetworkManager::parseWirelessNetworkList(QString networkList)
 {
-    Q_UNUSED(netConnStat)
-    m_networkIP.clear();
-    QString nmConfig = nm->getConnectedDeviceConfig();
-    if(!nmConfig.isEmpty())
-    {
-        QStringList params = nmConfig.split("\n", Qt::SkipEmptyParts);
-        if(params.count() != 3)
-        {
-            m_errorCode = CONNECTION_TO_NODONM_DBUS_FAILED;
-            emit errorDetected();
-            return;
-        }
-        else
-        {
-            m_networkIP = params.at(0);
-        }
-    }
-
-    emit networkConnStatusReady();
-}
-
-void NodoNetworkManager::parseWifiNetworkList(QString networkList)
-{
-    m_wifiScanList.clear();
-    m_connectedWifiParams.connectionName.clear();
-    m_connectedWifiParams.IP.clear();
-    m_connectedWifiParams.netmask.clear();
-    m_connectedWifiParams.gateway.clear();
-    m_connectedWifiParams.connected = false;
-    m_connectedWifiParams.connectedBefore = false;
-    m_connectedWifiParams.signalStrength = -1;
-    m_connectedWifiParams.encryption.clear();
-    m_connectedWifiParams.frequency = 0;
+    m_wirelessScanList.clear();
+    m_wirelessActiveConnection.connectionName.clear();
+    m_wirelessActiveConnection.IP.clear();
+    m_wirelessActiveConnection.netmask.clear();
+    m_wirelessActiveConnection.gateway.clear();
+    m_wirelessActiveConnection.connected = false;
+    m_wirelessActiveConnection.connectedBefore = false;
+    m_wirelessActiveConnection.signalStrength = -1;
+    m_wirelessActiveConnection.encryption.clear();
+    m_wirelessActiveConnection.frequency = 0;
 
     QStringList SSIDs = networkList.split("\n", Qt::SkipEmptyParts);
     for(int i = 0; i < SSIDs.size(); i++)
@@ -135,141 +131,230 @@ void NodoNetworkManager::parseWifiNetworkList(QString networkList)
         test.signalStrength = SSID_params[6].toInt(&ok, 10);
         test.encryption = SSID_params[7];
         test.frequency = SSID_params[8];
+        test.dbusConnectionPath = SSID_params[9];
 
         if(!test.connected)
         {
-            m_wifiScanList.append(test);
+            m_wirelessScanList.append(test);
         }
         else
         {
-            m_connectedWifiParams.connectionName = test.connectionName;
-            m_connectedWifiParams.IP = test.IP;
-            m_connectedWifiParams.netmask = test.netmask;
-            m_connectedWifiParams.gateway = test.gateway;
-            m_connectedWifiParams.connected = test.connected;
-            m_connectedWifiParams.connectedBefore = test.connectedBefore;
-            m_connectedWifiParams.signalStrength = test.signalStrength;
-            m_connectedWifiParams.encryption = test.encryption;
-            m_connectedWifiParams.frequency = test.frequency;
+            m_wirelessActiveConnection.connectionName = test.connectionName;
+            m_wirelessActiveConnection.IP = test.IP;
+            m_wirelessActiveConnection.netmask = test.netmask;
+            m_wirelessActiveConnection.gateway = test.gateway;
+            m_wirelessActiveConnection.connected = test.connected;
+            m_wirelessActiveConnection.connectedBefore = test.connectedBefore;
+            m_wirelessActiveConnection.signalStrength = test.signalStrength;
+            m_wirelessActiveConnection.encryption = test.encryption;
+            m_wirelessActiveConnection.frequency = test.frequency;
+            m_wirelessActiveConnection.dbusConnectionPath = test.dbusConnectionPath;
         }
     }
 
-    if(!m_stopWifiScanRequested)
-    {
-        emit connectedSSIDParamsUpdated();
-        emit wifiScanCopleted();
-    }
+    emit connectedSSIDParamsUpdated();
+    emit wifiScanCopleted();
 }
 
 int NodoNetworkManager::getSSIDListSize(void)
 {
-    return m_wifiScanList.size();
+    return m_wirelessScanList.size();
 }
 
 int NodoNetworkManager::getSSIDSignalStrength(int index)
 {
-    return m_wifiScanList.at(index).signalStrength;
+    return m_wirelessScanList.at(index).signalStrength;
 }
 
 QString NodoNetworkManager::getSSIDName(int index)
 {
-    return m_wifiScanList.at(index).connectionName;
+    return m_wirelessScanList.at(index).connectionName;
 }
 
 double NodoNetworkManager::getSSIDFrequency(int index)
 {
     bool ok;
-    QStringList fields = m_wifiScanList.at(index).frequency.split(" ");
+    QStringList fields = m_wirelessScanList.at(index).frequency.split(" ");
     return QString(fields[0]).toDouble(&ok);
 }
 
 QString NodoNetworkManager::getSSIDEncryptionType(int index)
 {
-    return m_wifiScanList.at(index).encryption;
+    return m_wirelessScanList.at(index).encryption;
 }
 
 void NodoNetworkManager::disconnectFromWiFi()
 {
-    nm->disconnectFromWiFi(m_connectedWifiParams.connectionName);
+    m_wireless->deactivateConnection();
 }
 
 bool NodoNetworkManager::isWiFiConnectedBefore(int index)
 {
-    return m_wifiScanList.at(index).connectedBefore;
+    return m_wirelessScanList.at(index).connectedBefore;
 }
 
-void NodoNetworkManager::activateWiFi(QString ssidName)
+void NodoNetworkManager::activateWiFi(QString path)
 {
-    nm->activateWiFi(ssidName);
+    m_wireless->activateConnection(path);
 }
 
-void NodoNetworkManager::connectToWiFi(QString ssidName, QString password, bool DHCP, QString IP, QString netmask, QString gateway, QString DNS)
+void NodoNetworkManager::connectToWiFi(QString ssidName, QString password, bool DHCP, QString IP, QString netmask, QString gateway, QString DNS, QString security)
 {
-    nm->connectToWiFi(ssidName, password, DHCP, IP, netmask, gateway, DNS);
+    m_wireless->addConnection(ssidName, password, DHCP, IP, netmask, gateway, DNS, security);
 }
 
 void NodoNetworkManager::startWifiScan(void)
 {
-    m_stopWifiScanRequested = false;
+    m_wireless->startScan();
 }
 
 void NodoNetworkManager::stopWifiScan(void)
 {
-    m_stopWifiScanRequested = true;
+    m_wireless->stopScan();
 }
 
-void NodoNetworkManager::forgetNetwork(QString connectionName)
+void NodoNetworkManager::forgetWiredNetwork(QString connectionPath)
 {
-    nm->forgetNetwork(connectionName);
+    m_wired->forgetConnection(connectionPath);
+}
+
+void NodoNetworkManager::forgetWirelessNetwork(QString connectionPath)
+{
+    m_wireless->forgetConnection(connectionPath);
 }
 
 bool NodoNetworkManager::isConnectedSSIDAvailable(void)
 {
-    return m_connectedWifiParams.connected;
+    return m_wirelessActiveConnection.connected;
 }
 
 QString NodoNetworkManager::getConnectedSSIDName(void)
 {
-    return m_connectedWifiParams.connectionName;
+    return m_wirelessActiveConnection.connectionName;
 }
 
 QString NodoNetworkManager::getConnectedSSIDIP(void)
 {
-    return m_connectedWifiParams.IP;
+    return m_wirelessActiveConnection.IP;
 }
 
 QString NodoNetworkManager::getConnectedSSIDGateway(void)
 {
-    return m_connectedWifiParams.gateway;
+    return m_wirelessActiveConnection.gateway;
 }
 
 QString NodoNetworkManager::getConnectedSSIDEncryptionType(void)
 {
-    return m_connectedWifiParams.encryption;
+    return m_wirelessActiveConnection.encryption;
 }
 
 int NodoNetworkManager::getConnectedSSIDSignalStrength(void)
 {
-    return m_connectedWifiParams.signalStrength;
+    return m_wirelessActiveConnection.signalStrength;
 }
 
 double NodoNetworkManager::getConnectedSSIDFrequency(void)
 {
     bool ok;
-    QStringList fields = m_connectedWifiParams.frequency.split(" ");
+    QStringList fields = m_wirelessActiveConnection.frequency.split(" ");
     return QString(fields[0]).toDouble(&ok);
 }
 
-
-void NodoNetworkManager::parseEthernetNetworkList(QString networkList)
+void NodoNetworkManager::startEthScan(void)
 {
-    m_ethernetScanList.clear();
-    m_connectedEthernetParams.connectionName.clear();
-    m_connectedEthernetParams.IP.clear();
-    m_connectedEthernetParams.netmask.clear();
-    m_connectedEthernetParams.gateway.clear();
-    m_connectedEthernetParams.connected = false;
-    m_connectedEthernetParams.connectedBefore = false;
+    m_wired->scanConnections();
+}
+
+void NodoNetworkManager::stopEthScan(void)
+{
+}
+
+int NodoNetworkManager::getEthernetDeviceStatus(void)
+{
+    m_wiredDeviceConnectionStatus = m_wired->getDeviceConnectionStatus();
+    return m_wiredDeviceConnectionStatus;
+}
+
+void NodoNetworkManager::setEthernetDeviceStatus(bool ethDeviceStatus)
+{
+    Q_UNUSED(ethDeviceStatus);
+}
+
+int NodoNetworkManager::getEthernetConnectionListSize(void)
+{
+    return m_wiredScanList.size();
+}
+
+QString NodoNetworkManager::getEthernetConnectionName(int index)
+{
+    return m_wiredScanList.at(index).connectionName;
+}
+
+void NodoNetworkManager::disconnectFromEthernet(void)
+{
+    m_wired->deactivateConnection();
+}
+
+bool NodoNetworkManager::isEthernetConnectedBefore(int index)
+{
+    return m_wiredScanList.at(index).connectedBefore;
+}
+
+void NodoNetworkManager::activateEthernetConnection(int index)
+{
+    m_wired->activateConnection(index);
+}
+
+void NodoNetworkManager::connectToEthernet(QString connectionName, bool DHCP, QString IP, QString netmask, QString gateway, QString DNS)
+{
+    m_wired->addConnection(connectionName, DHCP, IP, netmask, gateway, DNS);
+}
+
+QString NodoNetworkManager::getConnectedEthernetProfileName(void)
+{
+    return m_wiredActiveConnection.connectionName;
+}
+
+QString NodoNetworkManager::getConnectedEthernetIP(void)
+{
+    return m_wiredActiveConnection.IP;
+}
+
+QString NodoNetworkManager::getConnectedEthernetGateway(void)
+{
+    return m_wiredActiveConnection.gateway;
+}
+
+bool NodoNetworkManager::isConnectedEthernetProfileAvailable(void)
+{
+    return m_wiredActiveConnection.connected;
+}
+
+int NodoNetworkManager::getErrorCode(void)
+{
+    return m_errorCode;
+}
+
+QString NodoNetworkManager::getErrorMessage(void)
+{
+    return m_notifier.getMessageText((m_messageIDs)m_errorCode);
+}
+
+QString NodoNetworkManager::ethernetConnectionSpeed(void)
+{
+    return QString::number(m_wired->getDeviceSpeed()).append(" MBit/s");
+}
+
+void NodoNetworkManager::parseWiredNetworkList(QString networkList)
+{
+    m_wiredScanList.clear();
+    m_wiredActiveConnection.connectionName.clear();
+    m_wiredActiveConnection.IP.clear();
+    m_wiredActiveConnection.netmask.clear();
+    m_wiredActiveConnection.gateway.clear();
+    m_wiredActiveConnection.connected = false;
+    m_wiredActiveConnection.connectedBefore = false;
+    m_wiredActiveConnection.dbusConnectionPath.clear();
 
     QStringList ehtConnList = networkList.split("\n", Qt::SkipEmptyParts);
     for(int i = 0; i < ehtConnList.size(); i++)
@@ -284,115 +369,56 @@ void NodoNetworkManager::parseEthernetNetworkList(QString networkList)
         test.gateway = eth_params[3];
         test.connected = (bool)eth_params[4].toInt(&ok, 10);
         test.connectedBefore = (bool)eth_params[5].toInt(&ok, 10);
+        test.dbusConnectionPath = eth_params[6];
 
         if(!test.connected)
         {
-            m_ethernetScanList.append(test);
+            m_wiredScanList.append(test);
         }
         else
         {
-            m_connectedEthernetParams.connectionName = test.connectionName;
-            m_connectedEthernetParams.IP = test.IP;
-            m_connectedEthernetParams.netmask = test.netmask;
-            m_connectedEthernetParams.gateway = test.gateway;
-            m_connectedEthernetParams.connected = test.connected;
-            m_connectedEthernetParams.connectedBefore = test.connectedBefore;
+            m_wiredActiveConnection.connectionName = test.connectionName;
+            m_wiredActiveConnection.IP = test.IP;
+            m_wiredActiveConnection.netmask = test.netmask;
+            m_wiredActiveConnection.gateway = test.gateway;
+            m_wiredActiveConnection.connected = test.connected;
+            m_wiredActiveConnection.connectedBefore = test.connectedBefore;
+            m_wiredActiveConnection.dbusConnectionPath = test.dbusConnectionPath;
         }
     }
 
-    if(!m_stopEthScanRequested)
-    {
-        emit connectedEthernetParamsUpdated();
-        emit ethernetScanCopleted();
-    }
+    emit connectedEthernetParamsUpdated();
+    emit ethernetScanCopleted();
 }
 
-void NodoNetworkManager::startEthScan(void)
+void NodoNetworkManager::processWiredDeviceStatus(unsigned ethDeviceStatus)
 {
-    m_stopEthScanRequested = false;
-}
-
-void NodoNetworkManager::stopEthScan(void)
-{
-    m_stopEthScanRequested = true;
-}
-
-void NodoNetworkManager::processEthernetDeviceStatus(bool ethDeviceStatus)
-{
-    m_ethernetDeviceStatus = ethDeviceStatus;
+    m_wiredDeviceConnectionStatus = ethDeviceStatus;
+    checkNetworkStatusAndIP();
     emit ethernetDeviceStatusChanged();
 }
 
-bool NodoNetworkManager::getEthernetDeviceStatus(void)
+QString NodoNetworkManager::getEthernetConnectionPath(int index)
 {
-    return m_ethernetDeviceStatus;
+    return m_wiredScanList.at(index).dbusConnectionPath;
 }
 
-void NodoNetworkManager::setEthernetDeviceStatus(bool ethDeviceStatus)
+QString NodoNetworkManager::getConnectedEthernetConnectionPath(void)
 {
-    if(m_ethernetDeviceStatus != ethDeviceStatus)
-    {
-        nm->enableWiFi(ethDeviceStatus);
-        m_ethernetDeviceStatus = ethDeviceStatus;
-    }
+    return m_wiredActiveConnection.dbusConnectionPath;
 }
 
-int NodoNetworkManager::getEthernetConnectionListSize(void)
+QString NodoNetworkManager::getConnectedSSIDConnectionPath(void)
 {
-    return m_ethernetScanList.size();
+    return m_wirelessActiveConnection.dbusConnectionPath;
 }
 
-QString NodoNetworkManager::getEthernetConnectionName(int index)
+QString NodoNetworkManager::getSSIDConnectionPath(int index)
 {
-    return m_ethernetScanList.at(index).connectionName;
+    return m_wirelessScanList.at(index).dbusConnectionPath;
 }
 
-void NodoNetworkManager::disconnectFromEthernet(void)
+bool NodoNetworkManager::getAPScanStatus(void)
 {
-    nm->disconnectFromEthernet(m_connectedEthernetParams.connectionName);
-}
-
-bool NodoNetworkManager::isEthernetConnectedBefore(int index)
-{
-    return m_ethernetScanList.at(index).connectedBefore;
-}
-
-void NodoNetworkManager::activateEthernetConnection(QString connectionName)
-{
-    nm->activateEthernetConnection(connectionName);
-}
-
-void NodoNetworkManager::connectToEthernet(QString connectionName, bool DHCP, QString IP, QString netmask, QString gateway, QString DNS)
-{
-    nm->connectToEthernet(connectionName, DHCP, IP, netmask, gateway, DNS);
-}
-
-QString NodoNetworkManager::getConnectedEthernetProfileName(void)
-{
-    return m_connectedEthernetParams.connectionName;
-}
-
-QString NodoNetworkManager::getConnectedEthernetIP(void)
-{
-    return m_connectedEthernetParams.IP;
-}
-
-QString NodoNetworkManager::getConnectedEthernetGateway(void)
-{
-    return m_connectedEthernetParams.gateway;
-}
-
-bool NodoNetworkManager::isConnectedEthernetProfileAvailable(void)
-{
-    return m_connectedEthernetParams.connected;
-}
-
-int NodoNetworkManager::getErrorCode(void)
-{
-    return m_errorCode;
-}
-
-QString NodoNetworkManager::getErrorMessage(void)
-{
-    return m_notifier.getMessageText((m_messageIDs)m_errorCode);
+    return m_wireless->getAPScanStatus();
 }

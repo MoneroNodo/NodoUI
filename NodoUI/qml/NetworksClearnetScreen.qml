@@ -16,7 +16,7 @@ Item {
     Component.onCompleted: {
         nodoConfig.updateRequested()
         onCalculateMaximumTextLabelLength()
-        networkManager.requestNetworkIP();
+        networkManager.checkNetworkStatusAndIP();
         networksClearnetScreen.inputFieldReadOnly = !nodoControl.isComponentEnabled();
     }
 
@@ -41,7 +41,7 @@ Item {
 
     Connections {
         target: networkManager
-        function onNetworkConnStatusReady() {
+        function onIPReady() {
             clearnetAddressField.valueText = networkManager.getNetworkIP();
             qr.setQrData(clearnetAddressField.valueText + ":" + clearnetPortField.valueText)
         }

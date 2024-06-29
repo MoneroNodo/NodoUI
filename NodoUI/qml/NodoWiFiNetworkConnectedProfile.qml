@@ -19,6 +19,7 @@ NodoCanvas {
     property string ssidEncryption
     property int ssidSignalStrength
     property double ssidFrequency
+    property string ssidConnectionPath
     property int spacing: 1
 
     height: defaultHeight
@@ -45,15 +46,13 @@ NodoCanvas {
         ssidEncryption = networkManager.getConnectedSSIDEncryptionType()
         ssidSignalStrength = networkManager.getConnectedSSIDSignalStrength()
         ssidFrequency = networkManager.getConnectedSSIDFrequency()/1000
+        ssidConnectionPath = networkManager.getConnectedSSIDConnectionPath()
 
-        if(!networkManager.isConnectedSSIDAvailable())
-        {
-            mainRect.state = ""
-            connectButton.isActive = true
-            connectButton.text = qsTr("Disconnect")
-            connectButton.update()
-            forgetButton.isActive = true
-        }
+        mainRect.state = ""
+        connectButton.isActive = true
+        connectButton.text = systemMessages.messages[NodoMessages.Message.Disconnect]
+        connectButton.update()
+        forgetButton.isActive = true
     }
 
     function onCalculateMaximumTextLabelLength() {
@@ -98,13 +97,13 @@ NodoCanvas {
         width: mainRect.buttonSize
         height: networkDelegateItemHeight
         font.pixelSize: NodoSystem.infoFieldItemFontSize
-        text: qsTr("Disconnect")
+        text: systemMessages.messages[NodoMessages.Message.Disconnect]
         visible: true
         isActive: true
         fitMinimal: true
         onClicked: {
             connectButton.isActive = false
-            connectButton.text = qsTr("Disconnecting")
+            connectButton.text = systemMessages.messages[NodoMessages.Message.Disconnecting]
             connectButton.update()
             networkManager.disconnectFromWiFi()
         }
@@ -119,13 +118,13 @@ NodoCanvas {
         width: mainRect.buttonSize
         height: networkDelegateItemHeight
         font.pixelSize: NodoSystem.infoFieldItemFontSize
-        text: qsTr("Forget")
+        text: systemMessages.messages[NodoMessages.Message.Forget]
         visible: true
         isActive: true
         fitMinimal: true
         onClicked: {
             forgetButton.isActive = false
-            networkManager.forgetNetwork(mainRect.ssidName)
+            networkManager.forgetWirelessNetwork(mainRect.ssidConnectionPath)
         }
     }
 
@@ -200,7 +199,7 @@ NodoCanvas {
         anchors.leftMargin: 11
         anchors.rightMargin: 11
         anchors.topMargin: 10
-        height: frequencyField.y + frequencyField.height + 16
+        height: frequencyField.y + frequencyField.height
         visible:  mainRect.state === "showDetails" ? true : false
         color: "transparent"
 
@@ -212,7 +211,7 @@ NodoCanvas {
             width: showDetailsRect.width
             itemSize: labelSize
             height: networkDelegateItemHeight
-            itemText: qsTr("Address")
+            itemText: systemMessages.messages[NodoMessages.Message.IPAddress]
             valueText: mainRect.ssidIP
         }
 
@@ -224,7 +223,7 @@ NodoCanvas {
             width: showDetailsRect.width
             itemSize: labelSize
             height:  networkDelegateItemHeight
-            itemText: qsTr("Router")
+            itemText: systemMessages.messages[NodoMessages.Message.Router]
             valueText: mainRect.ssidGateway
         }
 
@@ -236,7 +235,7 @@ NodoCanvas {
             width: showDetailsRect.width
             itemSize: labelSize
             height: networkDelegateItemHeight
-            itemText: qsTr("SSID")
+            itemText: systemMessages.messages[NodoMessages.Message.SSID]
             valueText: mainRect.ssidName
         }
 
@@ -248,7 +247,7 @@ NodoCanvas {
             width: showDetailsRect.width
             itemSize: labelSize
             height: networkDelegateItemHeight
-            itemText: qsTr("Signal Strength")
+            itemText: systemMessages.messages[NodoMessages.Message.SignalStrength]
             valueText: mainRect.ssidSignalStrength + "%"
         }
 
@@ -260,7 +259,7 @@ NodoCanvas {
             width: showDetailsRect.width
             itemSize: labelSize
             height: networkDelegateItemHeight
-            itemText: qsTr("Security Type")
+            itemText: systemMessages.messages[NodoMessages.Message.SecurityType]
             valueText: mainRect.ssidEncryption
         }
 
@@ -272,7 +271,7 @@ NodoCanvas {
             width: showDetailsRect.width
             itemSize: labelSize
             height: networkDelegateItemHeight
-            itemText: qsTr("Frequency")
+            itemText: systemMessages.messages[NodoMessages.Message.Frequency]
             valueText: {
                 var freq = mainRect.ssidFrequency
                 freq.toFixed(1) + " GHz"

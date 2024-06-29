@@ -1,5 +1,0 @@
-# /usr/share/dbus-1/system-service/com.monero.nodonm.service
-[D-BUS Service]
-Name=com.monero.nodonm
-Exec=/bin/false
-SystemdService=nodonm-dbus

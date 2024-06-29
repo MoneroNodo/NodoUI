@@ -61,16 +61,20 @@
         <file>Images/eye.png</file>
         <file>qml/DeviceSSHScreen.qml</file>
         <file>qml/NodoWiFiNetworkScreen.qml</file>
-        <file>qml/NodoNetworkListView.qml</file>
-        <file>qml/NodoNetworkListDelegate.qml</file>
+        <file>qml/NodoWiFiNetworkListView.qml</file>
+        <file>qml/NodoWiFiNetworkListDelegate.qml</file>
         <file>Images/wifi_secure.png</file>
         <file>Images/WifiSignal_0.png</file>
         <file>Images/WifiSignal_1.png</file>
         <file>Images/WifiSignal_2.png</file>
         <file>Images/WifiSignal_3.png</file>
         <file>Images/WifiSignal_4.png</file>
-        <file>qml/NodoNetworkConnectedProfile.qml</file>
+        <file>qml/NodoWiFiNetworkConnectedProfile.qml</file>
         <file>qml/NodoMessages.qml</file>
+        <file>qml/NodoEthernetNetworkScreen.qml</file>
+        <file>qml/NodoEthernetNetworkListDelegate.qml</file>
+        <file>qml/NodoEthernetNetworkListView.qml</file>
+        <file>qml/NodoEthernetNetworkConnectedProfile.qml</file>
     </qresource>
     <qresource prefix="/NodoSystem">
         <file alias="qmldir">assets/NodoSystem/qmldir</file>

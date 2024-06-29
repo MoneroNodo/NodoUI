@@ -49,7 +49,7 @@ private slots:
     void downloadFinished(QNetworkReply *reply);
     void updatePriceTicker(void);
     void sslErrors(const QList<QSslError> &errors);
-    void checkConnectionStatus(bool netConnStat);
+    void checkConnectionStatus(void);
 
 };
 

@@ -19,7 +19,7 @@ NodoCanvas {
     Component.onCompleted: {
         onCalculateMaximumTextLabelLength()
         getCurrentNetworkStatus()
-        // getWifiList()
+        getWifiList()
     }
 
     function onCalculateMaximumTextLabelLength() {
@@ -32,7 +32,6 @@ NodoCanvas {
 
     function getWifiList() {
         isScanComplete = false;
-        var ssidSize = networkManager.getSSIDListSize()
 
         wifiListModel.clear()
         for (var index = 0;index < networkManager.getSSIDListSize(); index++) {
@@ -56,6 +55,10 @@ NodoCanvas {
 
         function onConnectedSSIDParamsUpdated() {
             getCurrentNetworkStatus()
+        }
+
+        function onAPScanStatusReceived() {
+            isScanComplete = !networkManager.getAPScanStatus()
         }
     }
 
@@ -99,10 +102,10 @@ NodoCanvas {
                     font.pixelSize: NodoSystem.infoFieldItemFontSize
                     font.family: NodoSystem.fontUrbanist.name
                     height: NodoSystem.nodoItemHeight
-                    text: qsTr("Current network")
+                    text: systemMessages.messages[NodoMessages.Message.CurrentNetwork]
                 }
 
-                NodoNetworkConnectedProfile {
+                NodoWiFiNetworkConnectedProfile {
                     id: currentWifiDelegate
                     anchors.left: currentNetworkCanvas.left
                     anchors.top: currentNetworkLabel.bottom
@@ -134,7 +137,7 @@ NodoCanvas {
                     font.pixelSize: NodoSystem.infoFieldItemFontSize
                     font.family: NodoSystem.fontUrbanist.name
                     height: NodoSystem.nodoItemHeight
-                    text: qsTr("Available networks")
+                    text: systemMessages.messages[NodoMessages.Message.AvailableNetworks]
                 }
 
                 NodoBusyIndicator {
@@ -164,10 +167,10 @@ NodoCanvas {
                     anchors.rightMargin: 11
 
                     model: wifiListModel
-                    visible: isScanComplete
+                    visible: true //isScanComplete
                     interactive: false
 
-                    delegate: NodoNetworkListDelegate {
+                    delegate: NodoWiFiNetworkListDelegate {
                         id: networkDelegate
                         ssidIndex: model.ssidIndex
                         width: ssidList.width

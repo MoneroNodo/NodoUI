@@ -12,7 +12,10 @@ typedef enum {
     RESTARTING_MONERO_FAILED,
     CONNECTION_TO_NODO_DBUS_FAILED,
     CONNECTION_TO_NODONM_DBUS_FAILED,
-    GATHERING_IP_FAILED
+    GATHERING_IP_FAILED,
+    NO_NETWORK_DEVICE,
+    CABLE_DISCONNECTED
+
 } m_messageIDs;
 
 class NodoNotifier : public QObject
@@ -27,12 +30,14 @@ public:
 
 private:
     QStringList m_messageList = {
-                                 tr("No Error"),
-                                 tr("Restarting tor service failed!"),
-                                 tr("Restarting monerod service failed!"),
-                                 tr("Connection to Nodo service failed!"),
-                                 tr("Connection to Nodonm service failed!"),
-                                 tr("IP couldn't be read!")
+                                tr("No Error"),
+                                tr("Restarting tor service failed!"),
+                                tr("Restarting monerod service failed!"),
+                                tr("Connection to Network Manager service failed!"),
+                                tr("Connection to Nodonm service failed!"),
+                                tr("IP couldn't be read!"),
+                                tr("No network device found!"),
+                                tr("Cable disconnected!")
     };
 };
 

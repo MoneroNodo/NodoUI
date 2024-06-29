@@ -9,23 +9,21 @@ NodoPriceTicker::NodoPriceTicker(NodoConfigParser *configParser, NodoNetworkMana
     m_currentCurrencyCode = m_configParser->getSelectedCurrencyName();
     m_timer = new QTimer(this);
 
-    connect(m_networkManager, SIGNAL(networkConnStatusReceived(bool)), this, SLOT(checkConnectionStatus(bool)));
+    connect(m_networkManager, SIGNAL(networkStatusChanged()), this, SLOT(checkConnectionStatus()));
     connect(&m_manager, SIGNAL(finished(QNetworkReply*)), this, SLOT(downloadFinished(QNetworkReply*)));
     connect(m_timer, SIGNAL(timeout()), this, SLOT(updatePriceTicker()));
 
-    // if(m_networkManager->getAvailableConnectionStatus())
-    // {
-    //     m_timer->start(2000);
-    //     // doDownload(m_currentCurrencyCode);
-    // }
+    if(m_networkManager->isConnected())
+    {
+        m_timer->start(500);
+    }
 }
 
-void NodoPriceTicker::checkConnectionStatus(bool netConnStat)
+void NodoPriceTicker::checkConnectionStatus(void)
 {
-    if(netConnStat)
+    if(m_networkManager->isConnected())
     {
         m_timer->start(2000);
-        // doDownload(m_currentCurrencyCode);
     }
     else
     {

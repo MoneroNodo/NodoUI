@@ -223,7 +223,6 @@ Item {
         onClicked:
         {
             isActive = false
-            // console.log("rateLimitUp: " + nodeBandwidthScreen.rateLimitUpEdited + " rateLimitDown: " + nodeBandwidthScreen.rateLimitDownEdited)
             nodoControl.setNodeBandwidthParameters(incomingPeersLimitField.valueText, outgoingPeersLimitField.valueText, nodeBandwidthScreen.rateLimitUpEdited, nodeBandwidthScreen.rateLimitDownEdited)
         }
     }

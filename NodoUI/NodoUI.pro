@@ -11,8 +11,7 @@ QTPLUGIN += qtvirtualkeyboardplugin
 
 TARGET = NodoUI
 
-DBUS_INTERFACES += nodo_dbus.xml \
-                   nodo_nm.xml
+DBUS_INTERFACES += nodo_dbus.xml
 
 # The following define makes your compiler emit warnings if you use
 # any Qt feature that has been marked deprecated (the exact warnings
@@ -27,10 +26,13 @@ DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs depr
 
 SOURCES += \
         src/MoneroLWS.cpp \
+    src/NetworkManagerCommon.cpp \
         src/NodoEmbeddedUIConfigParser.cpp \
         src/NodoConfigParser.cpp \
         src/NodoNetworkManager.cpp \
         src/NodoSystemStatusParser.cpp \
+    src/NodoWiredController.cpp \
+    src/NodoWirelessController.cpp \
         src/main.cpp \
         src/NodoFeedParser.cpp \
         src/NodoSystemControl.cpp \
@@ -42,6 +44,7 @@ SOURCES += \
 
 HEADERS += \
         src/MoneroLWS.h \
+    src/NetworkManagerCommon.h \
         src/NodoEmbeddedUIConfigParser.h \
         src/NodoConfigParser.h \
         src/NodoNetworkManager.h \
@@ -49,6 +52,8 @@ HEADERS += \
         src/NodoSystemStatusParser.h \
         src/NodoFeedParser.h \
         src/NodoSystemControl.h \
+    src/NodoWiredController.h \
+    src/NodoWirelessController.h \
         src/pugixml.hpp \
         src/pugiconfig.hpp \
         src/NodoTranslator.h \

@@ -97,7 +97,7 @@ Item {
         anchors.left: nodePrivateNodeScreen.left
         anchors.top: privateNodeSwitchRect.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
-        height: NodoSystem.infoFieldLabelHeight
+        height: NodoSystem.inputFieldLabelHeight
         width: inputFieldWidth
         itemSize: labelSize
         itemText: qsTr("Port")
@@ -119,7 +119,7 @@ Item {
         anchors.top: privateNodePortField.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         width: inputFieldWidth
-        height: NodoSystem.infoFieldLabelHeight
+        height: NodoSystem.inputFieldLabelHeight
         itemSize: labelSize
         itemText: qsTr("Username")
         valueText: "nodo"
@@ -131,7 +131,7 @@ Item {
         anchors.top: privateNodeUserNameField.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         width: inputFieldWidth
-        height: NodoSystem.infoFieldLabelHeight
+        height: NodoSystem.inputFieldLabelHeight
         itemSize: labelSize
         itemText: qsTr("Password")
         passwordInput: true
@@ -143,7 +143,7 @@ Item {
         anchors.top: privateNodePasswordField.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         text: qsTr("Apply")
-        height: NodoSystem.infoFieldLabelHeight
+        height: NodoSystem.inputFieldLabelHeight
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize
     }
