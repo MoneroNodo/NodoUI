@@ -12,12 +12,22 @@ Item {
     property int clearnetPort
     property string clearnetPeer
     property bool inputFieldReadOnly: false
+    property bool isRPCEnabled
+    property int rpcPort
+    property string rpcUser
+    property string rpcPassword
+    property string qrCodeAddress
 
-    Component.onCompleted: {
-        nodoConfig.updateRequested()
-        onCalculateMaximumTextLabelLength()
-        networkManager.checkNetworkStatusAndIP();
-        networksClearnetScreen.inputFieldReadOnly = !nodoControl.isComponentEnabled();
+
+    function updateParams()
+    {
+        networksClearnetScreen.isRPCEnabled = nodoControl.getrpcEnabledStatus()
+        if(networksClearnetScreen.isRPCEnabled)
+        {
+            networksClearnetScreen.rpcPort = nodoControl.getrpcPort()
+            networksClearnetScreen.rpcUser = nodoControl.getrpcUser()
+            networksClearnetScreen.rpcPassword = nodoControl.getrpcPassword()
+        }
     }
 
     function onCalculateMaximumTextLabelLength() {
@@ -31,11 +41,29 @@ Item {
         labelSize = clearnetPeerField.labelRectRoundSize
     }
 
+    function createAddress()
+    {
+        var address = "xmrrpc://:"
+        if(networksClearnetScreen.isRPCEnabled) //Clearnet (private): xmrrpc://:rpcuser:rpcpassword@192.168.2.100:monero_rpc_port?label=Nodo
+        {
+            address = address + networksClearnetScreen.rpcUser + ":" + networksClearnetScreen.rpcPassword + "@" + clearnetAddressField.valueText + ":" + networksClearnetScreen.rpcPort.toString() + "?label=Nodo"
+
+        }
+        else //Clearnet: xmrrpc://:@192.168.2.100:monero_public_port?label=Nodo
+        {
+            address = address + "@" + clearnetAddressField.valueText + ":" + clearnetPortField.valueText + "?label=Nodo"
+        }
+        return address
+    }
+
+
+
     Connections {
         target: nodoConfig
         function onConfigParserReady() {
             networksClearnetScreen.clearnetPort = nodoConfig.getIntValueFromKey("config", "monero_public_port")
             networksClearnetScreen.clearnetPeer = nodoConfig.getStringValueFromKey("config", "add_clearnet_peer")
+            updateParams()
         }
     }
 
@@ -43,7 +71,6 @@ Item {
         target: networkManager
         function onIPReady() {
             clearnetAddressField.valueText = networkManager.getNetworkIP();
-            qr.setQrData(clearnetAddressField.valueText + ":" + clearnetPortField.valueText)
         }
 
         function onErrorDetected() {
@@ -72,6 +99,14 @@ Item {
         function onComponentEnabledStatusChanged() {
             inputFieldReadOnly = !nodoControl.isComponentEnabled();
         }
+    }
+
+    Component.onCompleted: {
+        nodoConfig.updateRequested()
+        onCalculateMaximumTextLabelLength()
+        networkManager.checkNetworkStatusAndIP();
+        networksClearnetScreen.inputFieldReadOnly = !nodoControl.isComponentEnabled();
+        updateParams()
     }
 
     NodoInfoField {
@@ -106,7 +141,8 @@ Item {
         }
     }
 
-    NodoInputField {
+    // NodoInputField {
+    NodoInfoField {
         id: clearnetPeerField
         anchors.left: networksClearnetScreen.left
         anchors.top: clearnetPortField.bottom
@@ -116,14 +152,14 @@ Item {
         itemSize: labelSize
         itemText: qsTr("Peer")
         valueText: networksClearnetScreen.clearnetPeer
-        textFlag: Qt.ImhPreferLowercase
-        readOnlyFlag: networksClearnetScreen.inputFieldReadOnly
-        onTextEditFinished: {
-            if(clearnetPeerField.valueText !== networksClearnetScreen.clearnetPeer)
-            {
-                clearnetAddPeerButton.isActive = true
-            }
-        }
+        // textFlag: Qt.ImhPreferLowercase
+        // readOnlyFlag: networksClearnetScreen.inputFieldReadOnly
+        // onTextEditFinished: {
+        //     if(clearnetPeerField.valueText !== networksClearnetScreen.clearnetPeer)
+        //     {
+        //         clearnetAddPeerButton.isActive = true
+        //     }
+        // }
     }
 
     NodoButton {
@@ -142,7 +178,7 @@ Item {
             nodoControl.setClearnetPort(clearnetPortField.valueText)
         }
     }
-
+/*
     NodoButton {
         id: clearnetAddPeerButton
         anchors.left: networksClearnetScreen.left
@@ -153,13 +189,14 @@ Item {
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         isActive: false
+        visible: false
         onClicked:
         {
             isActive = false
             nodoControl.setClearnetPeer(clearnetPeerField.valueText)
         }
     }
-
+*/
     Rectangle{
         id: qrCodeRect
         anchors.right: networksClearnetScreen.right
@@ -175,7 +212,7 @@ Item {
             width: qrCodeRect.width
             height: qrCodeRect.height
             qrSize: Qt.size(width,width)
-            qrData: clearnetAddressField.valueText + ":" + clearnetPortField.valueText
+            qrData: createAddress()
             qrForeground: "black"
             qrBackground: "white"
             qrMargin: 8

@@ -127,7 +127,8 @@ Item {
         }
     }
 
-    NodoInputField {
+    // NodoInputField {
+    NodoInfoField {
         id: i2pPeerField
         anchors.left: networksI2PScreen.left
         anchors.top: i2pPortField.bottom
@@ -137,13 +138,13 @@ Item {
         itemSize: labelSize
         itemText: qsTr("Peer")
         valueText: networksI2PScreen.i2pPeer
-        readOnlyFlag: networksI2PScreen.i2pPeerFieldReadOnly
-        onTextEditFinished: {
-            if(i2pPeerField.valueText !== networksI2PScreen.i2pPeer)
-            {
-                i2pAddPeerButton.isActive = true
-            }
-        }
+        // readOnlyFlag: networksI2PScreen.i2pPeerFieldReadOnly
+        // onTextEditFinished: {
+        //     if(i2pPeerField.valueText !== networksI2PScreen.i2pPeer)
+        //     {
+        //         i2pAddPeerButton.isActive = true
+        //     }
+        // }
     }
 
     NodoButton {
@@ -162,7 +163,7 @@ Item {
             nodoControl.setI2pPort(i2pPortField.valueText)
         }
     }
-
+/*
     NodoButton {
         id: i2pAddPeerButton
         anchors.left: networksI2PScreen.left
@@ -179,7 +180,7 @@ Item {
             nodoControl.setI2pPeer(i2pPeerField.valueText)
         }
     }
-
+*/
     Rectangle{
         id: qrCodeRect
         anchors.right: networksI2PScreen.right
@@ -195,7 +196,7 @@ Item {
             width: qrCodeRect.width
             height: qrCodeRect.height
             qrSize: Qt.size(width,width)
-            qrData: i2pAddressField.valueText + ":" + i2pPortField.valueText
+            qrData: "xmrrpc://:@" + i2pAddressField.valueText + ":" + i2pPortField.valueText + "?label=Nodo I2P Node"
             qrForeground: "black"
             qrBackground: "white"
             qrMargin: 8
@@ -203,6 +204,4 @@ Item {
             qrLevel: QtQuick2QREncode.LEVEL_Q // encode level
         }
     }
-
 }
-

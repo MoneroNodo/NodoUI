@@ -9,21 +9,21 @@ import QtQuick2QREncode 1.0
 Item {
     id: networksTorScreen
     property int labelSize: 0
-    property int infoFieldWidth: 1000
+    property int infoFieldWidth: 1350
     property int torPort
     property string torPeer
     property string torOnionAddress
     property bool torSwitchStatus
     property bool torRouteSwitchStatus
     property bool torPortFieldReadOnly: false
-    property bool torPeerFieldReadOnly: false
+    // property bool torPeerFieldReadOnly: false
 
     Component.onCompleted: {
         nodoConfig.updateRequested()
         onCalculateMaximumTextLabelLength()
         var enabled = !nodoControl.isComponentEnabled();
         torPortFieldReadOnly = enabled
-        torPeerFieldReadOnly = enabled
+        // torPeerFieldReadOnly = enabled
     }
 
     function onCalculateMaximumTextLabelLength() {
@@ -70,7 +70,7 @@ Item {
         function onComponentEnabledStatusChanged() {
             var enabled = !nodoControl.isComponentEnabled();
             torPortFieldReadOnly = enabled
-            torPeerFieldReadOnly = enabled
+            // torPeerFieldReadOnly = enabled
         }
     }
 
@@ -161,7 +161,8 @@ Item {
         }
     }
 
-    NodoInputField {
+    // NodoInputField {
+    NodoInfoField {
         id: torPeerField
         anchors.left: networksTorScreen.left
         anchors.top: torPortField.bottom
@@ -171,13 +172,13 @@ Item {
         itemSize: labelSize
         itemText: qsTr("Peer")
         valueText: networksTorScreen.torPeer
-        readOnlyFlag: networksTorScreen.torPeerFieldReadOnly
-        onTextEditFinished: {
-            if(torPeerField.valueText !== networksTorScreen.torPeer)
-            {
-                torAddPeerButton.isActive = true
-            }
-        }
+        // readOnlyFlag: networksTorScreen.torPeerFieldReadOnly
+        // onTextEditFinished: {
+        //     if(torPeerField.valueText !== networksTorScreen.torPeer)
+        //     {
+        //         torAddPeerButton.isActive = true
+        //     }
+        // }
     }
 
     NodoButton {
@@ -196,7 +197,7 @@ Item {
             nodoControl.setTorPort(torPortField.valueText)
         }
     }
-
+/*
     NodoButton {
         id: torAddPeerButton
         anchors.left: networksTorScreen.left
@@ -213,13 +214,13 @@ Item {
             nodoControl.setTorPeer(torPeerField.valueText)
         }
     }
-
+*/
     Rectangle{
         id: qrCodeRect
         anchors.right: networksTorScreen.right
         anchors.top: networksTorScreen.top
         anchors.topMargin: NodoSystem.nodoTopMargin
-        anchors.rightMargin: 100
+        anchors.rightMargin: 10
         color: "black"
         width: 512
         height: 512
@@ -229,7 +230,7 @@ Item {
             width: qrCodeRect.width
             height: qrCodeRect.height
             qrSize: Qt.size(width,width)
-            qrData: torOnionAddressField.valueText + ":" + torPortField.valueText
+            qrData: "xmrrpc://:@" + torOnionAddressField.valueText + ":" + torPortField.valueText + "?label=Nodo Tor Node"
             qrForeground: "black"
             qrBackground: "white"
             qrMargin: 8
@@ -238,4 +239,3 @@ Item {
         }
     }
 }
-

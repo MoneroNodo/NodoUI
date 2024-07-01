@@ -444,6 +444,16 @@ void NodoSystemControl::setrpcPort(QString port)
     m_dbusController->serviceManager("restart", "monerod");
 }
 
+QString NodoSystemControl::getrpcUser(void)
+{
+    return m_configParser->getStringValueFromKey("config", "rpcu");
+}
+
+QString NodoSystemControl::getrpcPassword(void)
+{
+    return m_configParser->getStringValueFromKey("config", "rpcp");
+}
+
 void NodoSystemControl::setNodeBandwidthParameters(QString in_peers, QString out_peers, QString limit_rate_up, QString limit_rate_down)
 {
     enableComponent(false);

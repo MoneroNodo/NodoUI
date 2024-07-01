@@ -98,6 +98,8 @@ public:
     Q_INVOKABLE void setrpcEnabledStatus(bool status);
     Q_INVOKABLE int getrpcPort(void);
     Q_INVOKABLE void setrpcPort(QString port);
+    Q_INVOKABLE QString getrpcUser(void);
+    Q_INVOKABLE QString getrpcPassword(void);
 
 signals:
     void appThemeChanged(bool);
