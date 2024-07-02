@@ -12,29 +12,23 @@ Item {
     property int infoFieldWidth: 1200
 
     property int i2pPort
-    property string i2pPeer
     property string i2pAddress
     property bool i2pSwitchStatus
     property bool i2pPortFieldReadOnly: false
-    property bool i2pPeerFieldReadOnly: false
 
     Component.onCompleted: {
         nodoConfig.updateRequested()
         onCalculateMaximumTextLabelLength()
         var enabled = !nodoControl.isComponentEnabled();
         i2pPortFieldReadOnly = enabled
-        i2pPeerFieldReadOnly = enabled
     }
 
     function onCalculateMaximumTextLabelLength() {
         if(i2pAddressField.labelRectRoundSize > labelSize)
-        labelSize = i2pAddressField.labelRectRoundSize
+            labelSize = i2pAddressField.labelRectRoundSize
 
         if(i2pPortField.labelRectRoundSize > labelSize)
-        labelSize = i2pPortField.labelRectRoundSize
-
-        if(i2pPeerField.labelRectRoundSize > labelSize)
-        labelSize = i2pPeerField.labelRectRoundSize
+            labelSize = i2pPortField.labelRectRoundSize
     }
 
 
@@ -44,7 +38,6 @@ Item {
             networksI2PScreen.i2pSwitchStatus = nodoConfig.getStringValueFromKey("config", "i2p_enabled") === "TRUE" ? true : false
             networksI2PScreen.i2pAddress = nodoConfig.getStringValueFromKey("config", "i2p_address")
             networksI2PScreen.i2pPort = nodoConfig.getIntValueFromKey("config", "i2p_port")
-            networksI2PScreen.i2pPeer = nodoConfig.getStringValueFromKey("config", "add_i2p_peer")
         }
     }
 
@@ -64,7 +57,6 @@ Item {
         function onComponentEnabledStatusChanged() {
             var enabled = !nodoControl.isComponentEnabled();
             i2pPortFieldReadOnly = enabled
-            i2pPeerFieldReadOnly = enabled
         }
     }
 
@@ -127,30 +119,10 @@ Item {
         }
     }
 
-    // NodoInputField {
-    NodoInfoField {
-        id: i2pPeerField
-        anchors.left: networksI2PScreen.left
-        anchors.top: i2pPortField.bottom
-        anchors.topMargin: NodoSystem.nodoTopMargin
-        width: infoFieldWidth
-        height: NodoSystem.infoFieldLabelHeight
-        itemSize: labelSize
-        itemText: qsTr("Peer")
-        valueText: networksI2PScreen.i2pPeer
-        // readOnlyFlag: networksI2PScreen.i2pPeerFieldReadOnly
-        // onTextEditFinished: {
-        //     if(i2pPeerField.valueText !== networksI2PScreen.i2pPeer)
-        //     {
-        //         i2pAddPeerButton.isActive = true
-        //     }
-        // }
-    }
-
     NodoButton {
         id: i2pApplyPortButton
         anchors.left: networksI2PScreen.left
-        anchors.top: i2pPeerField.bottom
+        anchors.top: i2pPortField.bottom
         anchors.topMargin: 20
         text: qsTr("Apply Port")
         height: 60
@@ -163,24 +135,7 @@ Item {
             nodoControl.setI2pPort(i2pPortField.valueText)
         }
     }
-/*
-    NodoButton {
-        id: i2pAddPeerButton
-        anchors.left: networksI2PScreen.left
-        anchors.top: i2pApplyPortButton.bottom
-        anchors.topMargin: NodoSystem.nodoTopMargin
-        text: qsTr("Set Peer")
-        height: 60
-        font.family: NodoSystem.fontUrbanist.name
-        font.pixelSize: NodoSystem.buttonTextFontSize
-        isActive: false
-        onClicked:
-        {
-            isActive = false
-            nodoControl.setI2pPeer(i2pPeerField.valueText)
-        }
-    }
-*/
+
     Rectangle{
         id: qrCodeRect
         anchors.right: networksI2PScreen.right

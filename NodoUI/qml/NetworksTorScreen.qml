@@ -9,21 +9,18 @@ import QtQuick2QREncode 1.0
 Item {
     id: networksTorScreen
     property int labelSize: 0
-    property int infoFieldWidth: 1350
+    property int infoFieldWidth: 1200
     property int torPort
-    property string torPeer
     property string torOnionAddress
     property bool torSwitchStatus
     property bool torRouteSwitchStatus
     property bool torPortFieldReadOnly: false
-    // property bool torPeerFieldReadOnly: false
 
     Component.onCompleted: {
         nodoConfig.updateRequested()
         onCalculateMaximumTextLabelLength()
         var enabled = !nodoControl.isComponentEnabled();
         torPortFieldReadOnly = enabled
-        // torPeerFieldReadOnly = enabled
     }
 
     function onCalculateMaximumTextLabelLength() {
@@ -35,12 +32,6 @@ Item {
 
         if(torPortField.labelRectRoundSize > labelSize)
             labelSize = torPortField.labelRectRoundSize
-
-        if(torPeerField.labelRectRoundSize > labelSize)
-            labelSize = torPeerField.labelRectRoundSize
-
-        if(torRouteSwitchText.labelRectRoundSize > labelSize)
-            labelSize = torRouteSwitchText.labelRectRoundSize
     }
 
     Connections {
@@ -50,7 +41,6 @@ Item {
             networksTorScreen.torRouteSwitchStatus = nodoConfig.getStringValueFromKey("config", "tor_global_enabled") === "TRUE" ? true : false
             networksTorScreen.torOnionAddress = nodoConfig.getStringValueFromKey("config", "tor_address")
             networksTorScreen.torPort = nodoConfig.getIntValueFromKey("config", "tor_port")
-            networksTorScreen.torPeer = nodoConfig.getStringValueFromKey("config", "add_tor_peer")
         }
     }
 
@@ -70,7 +60,6 @@ Item {
         function onComponentEnabledStatusChanged() {
             var enabled = !nodoControl.isComponentEnabled();
             torPortFieldReadOnly = enabled
-            // torPeerFieldReadOnly = enabled
         }
     }
 
@@ -113,7 +102,6 @@ Item {
             height: torRouteSwitchRect.height
             anchors.left: torRouteSwitchRect.left
             anchors.top: torRouteSwitchRect.top
-            itemSize: labelSize
             text: qsTr("Route all connections through Tor")
         }
 
@@ -161,30 +149,10 @@ Item {
         }
     }
 
-    // NodoInputField {
-    NodoInfoField {
-        id: torPeerField
-        anchors.left: networksTorScreen.left
-        anchors.top: torPortField.bottom
-        anchors.topMargin: NodoSystem.nodoTopMargin
-        width: infoFieldWidth
-        height: NodoSystem.infoFieldLabelHeight
-        itemSize: labelSize
-        itemText: qsTr("Peer")
-        valueText: networksTorScreen.torPeer
-        // readOnlyFlag: networksTorScreen.torPeerFieldReadOnly
-        // onTextEditFinished: {
-        //     if(torPeerField.valueText !== networksTorScreen.torPeer)
-        //     {
-        //         torAddPeerButton.isActive = true
-        //     }
-        // }
-    }
-
     NodoButton {
         id: torApplyPortButton
         anchors.left: networksTorScreen.left
-        anchors.top: torPeerField.bottom
+        anchors.top: torPortField.bottom
         anchors.topMargin: 20
         text: qsTr("Apply Port")
         height: 60
@@ -197,30 +165,13 @@ Item {
             nodoControl.setTorPort(torPortField.valueText)
         }
     }
-/*
-    NodoButton {
-        id: torAddPeerButton
-        anchors.left: networksTorScreen.left
-        anchors.top: torApplyPortButton.bottom
-        anchors.topMargin: 20
-        text: qsTr("Set Peer")
-        height: 64
-        font.family: NodoSystem.fontUrbanist.name
-        font.pixelSize: NodoSystem.buttonTextFontSize
-        isActive: false
-        onClicked:
-        {
-            isActive = false
-            nodoControl.setTorPeer(torPeerField.valueText)
-        }
-    }
-*/
+
     Rectangle{
         id: qrCodeRect
         anchors.right: networksTorScreen.right
         anchors.top: networksTorScreen.top
         anchors.topMargin: NodoSystem.nodoTopMargin
-        anchors.rightMargin: 10
+        anchors.rightMargin: 100
         color: "black"
         width: 512
         height: 512

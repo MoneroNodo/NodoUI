@@ -364,13 +364,6 @@ void NodoSystemControl::setClearnetPort(QString port)
     m_dbusController->serviceManager("restart", "monerod");
 }
 
-void NodoSystemControl::setClearnetPeer(QString peer)
-{
-    enableComponent(false);
-    m_configParser->setClearnetPeer(peer);
-    m_dbusController->serviceManager("restart", "monerod");
-}
-
 void NodoSystemControl::setTorPort(QString port)
 {
     enableComponent(false);
@@ -378,24 +371,10 @@ void NodoSystemControl::setTorPort(QString port)
     m_dbusController->serviceManager("restart", "monerod");
 }
 
-void NodoSystemControl::setTorPeer(QString peer)
-{
-    enableComponent(false);
-    m_configParser->setTorPeer(peer);
-    m_dbusController->serviceManager("restart", "monerod");
-}
-
 void NodoSystemControl::setI2pPort(QString port)
 {
     enableComponent(false);
     m_configParser->setI2pPort(port);
-    m_dbusController->serviceManager("restart", "monerod");
-}
-
-void NodoSystemControl::setI2pPeer(QString peer)
-{
-    enableComponent(false);
-    m_configParser->setI2pPeer(peer);
     m_dbusController->serviceManager("restart", "monerod");
 }
 

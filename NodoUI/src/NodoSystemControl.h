@@ -79,13 +79,8 @@ public:
     Q_INVOKABLE void stopScreenSaverTimer(void);
 
     Q_INVOKABLE void setClearnetPort(QString port);
-    Q_INVOKABLE void setClearnetPeer(QString peer);
-
     Q_INVOKABLE void setTorPort(QString port);
-    Q_INVOKABLE void setTorPeer(QString peer);
-
     Q_INVOKABLE void setI2pPort(QString port);
-    Q_INVOKABLE void setI2pPeer(QString peer);
 
     Q_INVOKABLE int getErrorCode(void);
     Q_INVOKABLE QString getErrorMessage(void);

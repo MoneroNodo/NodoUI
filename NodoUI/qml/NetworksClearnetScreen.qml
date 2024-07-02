@@ -10,7 +10,6 @@ Item {
     id: networksClearnetScreen
     property int labelSize: 0
     property int clearnetPort
-    property string clearnetPeer
     property bool inputFieldReadOnly: false
     property bool isRPCEnabled
     property int rpcPort
@@ -32,13 +31,10 @@ Item {
 
     function onCalculateMaximumTextLabelLength() {
         if(clearnetAddressField.labelRectRoundSize > labelSize)
-        labelSize = clearnetAddressField.labelRectRoundSize
+            labelSize = clearnetAddressField.labelRectRoundSize
 
         if(clearnetPortField.labelRectRoundSize > labelSize)
-        labelSize = clearnetPortField.labelRectRoundSize
-
-        if(clearnetPeerField.labelRectRoundSize > labelSize)
-        labelSize = clearnetPeerField.labelRectRoundSize
+            labelSize = clearnetPortField.labelRectRoundSize
     }
 
     function createAddress()
@@ -62,7 +58,6 @@ Item {
         target: nodoConfig
         function onConfigParserReady() {
             networksClearnetScreen.clearnetPort = nodoConfig.getIntValueFromKey("config", "monero_public_port")
-            networksClearnetScreen.clearnetPeer = nodoConfig.getStringValueFromKey("config", "add_clearnet_peer")
             updateParams()
         }
     }
@@ -141,31 +136,10 @@ Item {
         }
     }
 
-    // NodoInputField {
-    NodoInfoField {
-        id: clearnetPeerField
-        anchors.left: networksClearnetScreen.left
-        anchors.top: clearnetPortField.bottom
-        anchors.topMargin: 16
-        width: 924
-        height: 60
-        itemSize: labelSize
-        itemText: qsTr("Peer")
-        valueText: networksClearnetScreen.clearnetPeer
-        // textFlag: Qt.ImhPreferLowercase
-        // readOnlyFlag: networksClearnetScreen.inputFieldReadOnly
-        // onTextEditFinished: {
-        //     if(clearnetPeerField.valueText !== networksClearnetScreen.clearnetPeer)
-        //     {
-        //         clearnetAddPeerButton.isActive = true
-        //     }
-        // }
-    }
-
     NodoButton {
         id: clearnetApplyPortButton
         anchors.left: networksClearnetScreen.left
-        anchors.top: clearnetPeerField.bottom
+        anchors.top: clearnetPortField.bottom
         anchors.topMargin: 20
         text: qsTr("Apply Port")
         height: 60
@@ -178,25 +152,7 @@ Item {
             nodoControl.setClearnetPort(clearnetPortField.valueText)
         }
     }
-/*
-    NodoButton {
-        id: clearnetAddPeerButton
-        anchors.left: networksClearnetScreen.left
-        anchors.top: clearnetApplyPortButton.bottom
-        anchors.topMargin: 20
-        text: qsTr("Set Peer")
-        height: 60
-        font.family: NodoSystem.fontUrbanist.name
-        font.pixelSize: NodoSystem.buttonTextFontSize
-        isActive: false
-        visible: false
-        onClicked:
-        {
-            isActive = false
-            nodoControl.setClearnetPeer(clearnetPeerField.valueText)
-        }
-    }
-*/
+
     Rectangle{
         id: qrCodeRect
         anchors.right: networksClearnetScreen.right

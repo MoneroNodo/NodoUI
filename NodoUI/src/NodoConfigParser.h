@@ -37,12 +37,9 @@ public:
     bool getTheme(void);
 
     void setClearnetPort(QString port);
-    void setClearnetPeer(QString peer);
-
     void setTorPort(QString port);
-    void setTorPeer(QString peer);
     void setI2pPort(QString port);
-    void setI2pPeer(QString peer);
+
     void setNodeBandwidthParameters(QString in_peers, QString out_peers, QString limit_rate_up, QString limit_rate_down);
     void setrpcEnabledStatus(bool status);
     void setrpcPort(QString port);
