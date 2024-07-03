@@ -111,7 +111,7 @@ Item {
         width: 924
         height: 60
         itemSize: labelSize
-        itemText: qsTr("Address")
+        itemText: systemMessages.messages[NodoMessages.Message.Address] //qsTr("Address")
         valueText: ""
     }
 
@@ -123,7 +123,7 @@ Item {
         width: 924
         height: 60
         itemSize: labelSize
-        itemText: qsTr("Port")
+        itemText: systemMessages.messages[NodoMessages.Message.Port] //qsTr("Port")
         valueText: networksClearnetScreen.clearnetPort
         textFlag: Qt.ImhDigitsOnly
         readOnlyFlag: networksClearnetScreen.inputFieldReadOnly
@@ -141,7 +141,7 @@ Item {
         anchors.left: networksClearnetScreen.left
         anchors.top: clearnetPortField.bottom
         anchors.topMargin: 20
-        text: qsTr("Apply Port")
+        text: systemMessages.messages[NodoMessages.Message.ApplyPort] //qsTr("Apply Port")
         height: 60
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize

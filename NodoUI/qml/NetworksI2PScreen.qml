@@ -106,7 +106,7 @@ Item {
         width: infoFieldWidth
         height: NodoSystem.infoFieldLabelHeight
         itemSize: labelSize
-        itemText: qsTr("Port")
+        itemText: systemMessages.messages[NodoMessages.Message.Port] //qsTr("Port")
         valueText: networksI2PScreen.i2pPort
         textFlag: Qt.ImhDigitsOnly
         readOnlyFlag: networksI2PScreen.i2pPortFieldReadOnly
@@ -124,7 +124,7 @@ Item {
         anchors.left: networksI2PScreen.left
         anchors.top: i2pPortField.bottom
         anchors.topMargin: 20
-        text: qsTr("Apply Port")
+        text: systemMessages.messages[NodoMessages.Message.ApplyPort] //qsTr("Apply Port")
         height: 60
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize

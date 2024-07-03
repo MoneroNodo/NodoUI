@@ -7,6 +7,8 @@ Item {
         AddNewConnection,
         Add,
         Adding,
+        Apply,
+        ApplyPort,
         Forget,
         Connect,
         Connecting,
@@ -30,7 +32,9 @@ Item {
         AvailableNetworks,
         Advanced,
         NoNetworkDevice,
-        CableDisconnected
+        CableDisconnected,
+        Address,
+        Port
     }
 
     property var messages:[
@@ -39,6 +43,8 @@ Item {
         qsTr("Add new connection"),
         qsTr("Add"),
         qsTr("Adding"),
+        qsTr("Apply"),
+        qsTr("Apply Port"),
         qsTr("Forget"),
         qsTr("Connect"),
         qsTr("Connecting"),
@@ -62,7 +68,9 @@ Item {
         qsTr("Available networks"),
         qsTr("Advanced"),
         qsTr("No network device found!"),
-        qsTr("Cable disconnected!")
+        qsTr("Cable disconnected!"),
+        qsTr("Address"),
+        qsTr("Port"),
     ]
 }
 

@@ -93,7 +93,7 @@ Item {
         anchors.left: deviceSSHScreen.left
         anchors.top: deviceSSHPasswordField.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
-        text: qsTr("Apply")
+        text: systemMessages.messages[NodoMessages.Message.Apply] //qsTr("Apply")
         height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize

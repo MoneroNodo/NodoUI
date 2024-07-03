@@ -36,7 +36,7 @@ NodoCanvas {
         anchors.rightMargin: 10
         itemSize: 0
         height: NodoSystem.infoFieldLabelHeight
-        itemText: qsTr("Address")
+        itemText: systemMessages.messages[NodoMessages.Message.Address] //qsTr("Address")
         valueText: activeAddress
     }
 
