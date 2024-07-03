@@ -58,7 +58,7 @@ Item {
                 id: nodoLogoButton
                 y: (mainMenuBar.height - nodoLogoButton.height)/2
                 text: " "
-                width: 288 //180
+                width: 288
                 imagePath: (nodoControl.appTheme ? "qrc:/Images/nodologo_large_resized_red.png" : "qrc:/Images/nodologo_large_resized.png")
                 onClicked: { pageLoader.source = "NodoStatusScreen.qml" }
             }

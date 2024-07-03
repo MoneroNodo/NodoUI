@@ -167,7 +167,7 @@ NodoCanvas {
                     anchors.rightMargin: 11
 
                     model: wifiListModel
-                    visible: true //isScanComplete
+                    visible: true
                     interactive: false
 
                     delegate: NodoWiFiNetworkListDelegate {

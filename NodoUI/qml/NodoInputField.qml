@@ -25,7 +25,6 @@ Item {
     property alias inputMask: valueLabel.inputMask
     property alias validator: valueLabel.validator
 
-    // signal textEdited()
     signal textEditFinished()
 
     NodoCanvas {
@@ -92,7 +91,6 @@ Item {
             onTextEdited:
             {
                 valueText = valueLabel.text
-                // root.textEdited()
                 nodoControl.setInputFieldText(valueText)
             }
 

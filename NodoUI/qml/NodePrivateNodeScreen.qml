@@ -100,7 +100,7 @@ Item {
         height: NodoSystem.inputFieldLabelHeight
         width: inputFieldWidth
         itemSize: labelSize
-        itemText: systemMessages.messages[NodoMessages.Message.Port] //qsTr("Port")
+        itemText: systemMessages.messages[NodoMessages.Message.Port]
         valueText: nodePrivateNodeScreen.rpcPort
         textFlag: Qt.ImhDigitsOnly
         validator: IntValidator{bottom: 0; top: 65535}
@@ -142,7 +142,7 @@ Item {
         anchors.left: nodePrivateNodeScreen.left
         anchors.top: privateNodePasswordField.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
-        text: systemMessages.messages[NodoMessages.Message.Apply] //qsTr("Apply")
+        text: systemMessages.messages[NodoMessages.Message.Apply]
         height: NodoSystem.inputFieldLabelHeight
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize

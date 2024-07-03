@@ -18,7 +18,6 @@ Button {
     property bool isActive: true
     property bool fitMinimal: false
     property int buttonWidth: buttonText.paintedWidth + textLeftPadding + textRightPadding
-    // width: buttonWidth > NodoSystem.nodoItemWidth ? buttonWidth : NodoSystem.nodoItemWidth
     width: fitMinimal == false ?  (buttonWidth > NodoSystem.nodoItemWidth ? buttonWidth : NodoSystem.nodoItemWidth) : buttonWidth
     enabled: isActive
 

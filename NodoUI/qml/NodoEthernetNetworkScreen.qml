@@ -283,7 +283,7 @@ Item {
                 font.pixelSize: NodoSystem.infoFieldItemFontSize
                 text: systemMessages.messages[NodoMessages.Message.Add]
                 visible: createNewConnectionRect.visible
-                isActive: false//ethConnectionNameField.valueText === "" ? false : true
+                isActive: false
                 fitMinimal: false
                 onClicked:
                 {

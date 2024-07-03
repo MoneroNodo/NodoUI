@@ -34,7 +34,8 @@ Item {
         NoNetworkDevice,
         CableDisconnected,
         Address,
-        Port
+        Port,
+        Loading
     }
 
     property var messages:[
@@ -71,6 +72,7 @@ Item {
         qsTr("Cable disconnected!"),
         qsTr("Address"),
         qsTr("Port"),
+        qsTr("<loading>"),
     ]
 }
 

@@ -79,7 +79,7 @@ Item {
             height: wifiEnabledRect.height
             width: 2*wifiEnabledRect.height
             display: AbstractButton.IconOnly
-            checked: networkManager.getWifiDeviceStatus() > 20 ? true : false//wifiNetworkScreen.isWirelessEnabled
+            checked: networkManager.getWifiDeviceStatus() > 20 ? true : false
             onCheckedChanged: {
                 networkManager.setWifiDeviceStatus(wifiEnabledSwitch.checked)
             }

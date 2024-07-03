@@ -40,12 +40,12 @@ Item {
     function createAddress()
     {
         var address = "xmrrpc://:"
-        if(networksClearnetScreen.isRPCEnabled) //Clearnet (private): xmrrpc://:rpcuser:rpcpassword@192.168.2.100:monero_rpc_port?label=Nodo
+        if(networksClearnetScreen.isRPCEnabled) //Clearnet (private)
         {
             address = address + networksClearnetScreen.rpcUser + ":" + networksClearnetScreen.rpcPassword + "@" + clearnetAddressField.valueText + ":" + networksClearnetScreen.rpcPort.toString() + "?label=Nodo"
 
         }
-        else //Clearnet: xmrrpc://:@192.168.2.100:monero_public_port?label=Nodo
+        else //Clearnet (public)
         {
             address = address + "@" + clearnetAddressField.valueText + ":" + clearnetPortField.valueText + "?label=Nodo"
         }
@@ -111,7 +111,7 @@ Item {
         width: 924
         height: 60
         itemSize: labelSize
-        itemText: systemMessages.messages[NodoMessages.Message.Address] //qsTr("Address")
+        itemText: systemMessages.messages[NodoMessages.Message.Address]
         valueText: ""
     }
 
@@ -123,7 +123,7 @@ Item {
         width: 924
         height: 60
         itemSize: labelSize
-        itemText: systemMessages.messages[NodoMessages.Message.Port] //qsTr("Port")
+        itemText: systemMessages.messages[NodoMessages.Message.Port]
         valueText: networksClearnetScreen.clearnetPort
         textFlag: Qt.ImhDigitsOnly
         readOnlyFlag: networksClearnetScreen.inputFieldReadOnly
@@ -141,7 +141,7 @@ Item {
         anchors.left: networksClearnetScreen.left
         anchors.top: clearnetPortField.bottom
         anchors.topMargin: 20
-        text: systemMessages.messages[NodoMessages.Message.ApplyPort] //qsTr("Apply Port")
+        text: systemMessages.messages[NodoMessages.Message.ApplyPort]
         height: 60
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize

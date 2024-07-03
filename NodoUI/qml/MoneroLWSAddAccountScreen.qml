@@ -29,7 +29,7 @@ Item {
         anchors.top: moneroLWSAddAccountScreen.top
         width: infoFieldSize
         itemSize: labelSize
-        itemText: systemMessages.messages[NodoMessages.Message.Address] //qsTr("Address")
+        itemText: systemMessages.messages[NodoMessages.Message.Address]
         valueText: ""
         height: NodoSystem.infoFieldLabelHeight
     }

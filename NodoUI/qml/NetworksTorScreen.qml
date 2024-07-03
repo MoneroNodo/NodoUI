@@ -136,7 +136,7 @@ Item {
         width: infoFieldWidth
         height: NodoSystem.infoFieldLabelHeight
         itemSize: labelSize
-        itemText: systemMessages.messages[NodoMessages.Message.Port] //qsTr("Port")
+        itemText: systemMessages.messages[NodoMessages.Message.Port]
         valueText: networksTorScreen.torPort
         textFlag: Qt.ImhDigitsOnly
         readOnlyFlag: networksTorScreen.torPortFieldReadOnly
@@ -154,7 +154,7 @@ Item {
         anchors.left: networksTorScreen.left
         anchors.top: torPortField.bottom
         anchors.topMargin: 20
-        text: systemMessages.messages[NodoMessages.Message.ApplyPort] //qsTr("Apply Port")
+        text: systemMessages.messages[NodoMessages.Message.ApplyPort]
         height: 60
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize

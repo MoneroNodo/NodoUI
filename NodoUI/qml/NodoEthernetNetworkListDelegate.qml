@@ -56,7 +56,6 @@ NodoCanvas {
                 connectButton.text = systemMessages.messages[NodoMessages.Message.Connecting]
                 connectButton.update()
                 networkManager.activateEthernetConnection(mainRect.ethConnIndex)
-                // networkManager.startEthScan()
         }
     }
 

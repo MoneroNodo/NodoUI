@@ -215,7 +215,7 @@ Item {
         anchors.left: nodeBandwidthScreen.left
         anchors.top: rateLimitDownField.bottom
         anchors.topMargin: 20
-        text: systemMessages.messages[NodoMessages.Message.Apply] //qsTr("Apply")
+        text: systemMessages.messages[NodoMessages.Message.Apply]
         height: 60
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize

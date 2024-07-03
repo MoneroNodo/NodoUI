@@ -517,7 +517,7 @@ Rectangle {
             height: NodoSystem.infoFieldLabelHeight
             itemSize: labelSize
             itemText: qsTr("CPU")
-            valueText: "<loading>"
+            valueText: systemMessages.messages[NodoMessages.Message.Loading]
         }
 
         NodoInfoField {
@@ -529,7 +529,7 @@ Rectangle {
             height: NodoSystem.infoFieldLabelHeight
             itemSize: labelSize
             itemText: qsTr("Temperature")
-            valueText: "<loading>"
+            valueText: systemMessages.messages[NodoMessages.Message.Loading]
         }
 
         NodoInfoField {
@@ -553,7 +553,7 @@ Rectangle {
             height: NodoSystem.infoFieldLabelHeight
             itemSize: labelSize
             itemText: qsTr("Blockchain Storage")
-            valueText: "<loading>"
+            valueText: systemMessages.messages[NodoMessages.Message.Loading]
         }
 
         NodoInfoField {
@@ -565,7 +565,7 @@ Rectangle {
             height: NodoSystem.infoFieldLabelHeight
             itemSize: labelSize
             itemText: qsTr("System Storage")
-            valueText: "<loading>"
+            valueText: systemMessages.messages[NodoMessages.Message.Loading]
         }
     }
 

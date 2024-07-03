@@ -43,7 +43,6 @@ Slider {
 
     handle: NodoCanvas {
         id: sliderHandle
-        // cornerColor: sliderBackground.color
         x: control.visualPosition * (control.width - width)
         y: control.height / 2 - height / 2
         width: handleWidth
