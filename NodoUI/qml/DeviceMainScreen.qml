@@ -14,8 +14,8 @@ Item {
         id: deviceMainMenuBar
         anchors.top: deviceMainScreen.top
         anchors.left: deviceMainScreen.left
-        height: NodoSystem.topMenuButtonHeight
-        contentWidth: parent.width
+        height: NodoSystem.subMenuButtonHeight
+        contentWidth: 1400
 
         background: Rectangle {
             color: "black"

@@ -135,7 +135,7 @@ Item {
             anchors.right: mainAppWindowRectangle.right
             anchors.bottom: mainMenuBar.bottom
             color: "black"
-
+/*
             Text {
                 id: exchangeNameText
                 anchors.top: rightMenu.top
@@ -165,7 +165,7 @@ Item {
                 horizontalAlignment: Text.AlignHCenter
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
             }
-
+*/
             Text {
                 id: dateText
                 anchors.top: rightMenu.top
@@ -219,6 +219,45 @@ Item {
                         timeText.text = Qt.formatDateTime(nodoControl.getChangedDateTime(), "h:mm AP")
                     }
                 }
+            }
+        }
+
+        Rectangle {
+            id: priceTickerRect
+            // anchors.left: mainMenuBar.right
+            anchors.right: mainAppWindowRectangle.right
+            anchors.top: rightMenu.bottom
+            anchors.topMargin: 30
+            color: "black"
+
+            Text {
+                id: exchangeNameText
+                anchors.top: priceTickerRect.top
+                anchors.bottom: priceTickerRect.bottom
+                anchors.right: exchangeRateText.left
+                anchors.rightMargin: 2
+                color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
+                text: "XMR-" + nodoCurrencies.currencyCodes[priceTicker.getCurrentCurrencyIndex()] + ":"
+                topPadding: NodoSystem.topMenuTextTopPadding
+                font.family: NodoSystem.fontUrbanist.name
+                verticalAlignment: Text.AlignVCenter
+                horizontalAlignment: Text.AlignRight
+                font.pixelSize: NodoSystem.topMenuButtonFontSize
+            }
+
+            Text {
+                id: exchangeRateText
+                anchors.top: priceTickerRect.top
+                anchors.bottom: priceTickerRect.bottom
+                anchors.right: priceTickerRect.right
+                anchors.rightMargin: 10
+                color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
+                text: nodoCurrencies.currencySymbols[priceTicker.getCurrentCurrencyIndex()] + "---.--"
+                topPadding: NodoSystem.topMenuTextTopPadding
+                font.family: NodoSystem.fontUrbanist.name
+                verticalAlignment: Text.AlignVCenter
+                horizontalAlignment: Text.AlignHCenter
+                font.pixelSize: NodoSystem.topMenuButtonFontSize
             }
         }
 

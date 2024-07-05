@@ -16,9 +16,9 @@ Item {
         id: minerSwitchRect
 		anchors.top: minerMainScreen.top
 		anchors.left: minerMainScreen.left
-        anchors.topMargin: 20
+        anchors.topMargin: NodoSystem.subMenuButtonHeight + 32
         height: NodoSystem.nodoItemHeight
-		color: "black"
+        color: "black"
 
         NodoLabel{
             id: minerSwitchRectSwitchText

@@ -10,7 +10,7 @@ Item
     property int topMenuGapBetweenButtons: 16
     property int dateTimeFontSize: 56
 
-
+    property int subMenuButtonHeight: 60
     property int subMenuButtonFontSize: 32
     property int textFontSize: 32
     property int buttonTextFontSize: 32

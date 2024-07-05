@@ -10,15 +10,15 @@ import NodoCanvas 1.0
 ApplicationWindow {
     id: mainAppWindow
     visible: true
-    // visibility: "FullScreen"
+    visibility: "FullScreen"
 
     modality: Qt.WindowModal
     property int displayRotation: nodoControl.getOrientation()
 
     contentOrientation: displayRotation == -90 ? Qt.InvertedLandscapeOrientation : displayRotation == 90 ? Qt.LandscapeOrientation : displayRotation == 0 ? Qt.PortraitOrientation : Qt.InvertedPortraitOrientation
 
-    width: displayRotation == 0 || displayRotation == 180 ? 1920 : 1030
-    height: displayRotation == 0 || displayRotation == 180 ? 1030 : 1920
+    width: displayRotation == 0 || displayRotation == 180 ? 1920 : 1080
+    height: displayRotation == 0 || displayRotation == 180 ? 1080 : 1920
 
 
     title: qsTr("NodoUI");

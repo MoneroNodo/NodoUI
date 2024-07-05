@@ -19,8 +19,8 @@ Item {
         id: moneroLWSMenuBar
         anchors.top: moneroLWSMainScreen.top
         anchors.left: moneroLWSMainScreen.left
-        height: NodoSystem.topMenuButtonHeight
-        contentWidth: parent.width
+        height: NodoSystem.subMenuButtonHeight
+        contentWidth: 1400
 
         background: Rectangle {
             color: "black"

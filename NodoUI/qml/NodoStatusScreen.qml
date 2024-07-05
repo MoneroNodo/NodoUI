@@ -9,6 +9,7 @@ Rectangle {
     id: statusScreen
     color: "black"
     anchors.fill: parent
+    anchors.topMargin: 60
 
     property int labelSize: 0
     property int fieldTopMargin: 5

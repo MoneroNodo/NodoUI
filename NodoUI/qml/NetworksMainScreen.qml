@@ -14,8 +14,8 @@ Item {
         id: networksMenuBar
         anchors.top: networksMainScreen.top
         anchors.left: networksMainScreen.left
-        height: NodoSystem.topMenuButtonHeight
-        contentWidth: parent.width
+        height: NodoSystem.subMenuButtonHeight
+        contentWidth: 1400
 
         background: Rectangle {
             color: "black"
@@ -23,11 +23,10 @@ Item {
 
         NodoTabButton {
             id: clearnetButton
-            text: qsTr("CLEARNET")
             y: (networksMenuBar.height - clearnetButton.height)/2
+            text: qsTr("CLEARNET")
             font.family: NodoSystem.fontUrbanist.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
-            implicitHeight: NodoSystem.topMenuButtonHeight
             onClicked: { pageLoader.source = "NetworksClearnetScreen.qml" }
         }
         NodoTabButton {
@@ -37,7 +36,6 @@ Item {
             text: qsTr("TOR")
             font.family: NodoSystem.fontUrbanist.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
-            implicitHeight: NodoSystem.topMenuButtonHeight
             onClicked: { pageLoader.source = "NetworksTorScreen.qml" }
         }
         NodoTabButton {
@@ -47,7 +45,6 @@ Item {
             text: qsTr("I2P")
             font.family: NodoSystem.fontUrbanist.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
-            implicitHeight: NodoSystem.topMenuButtonHeight
             onClicked: { pageLoader.source = "NetworksI2PScreen.qml" }
         }
     }
