@@ -69,7 +69,7 @@ Item {
         anchors.left: moneroLWSMainScreen.left
         anchors.right: moneroLWSMainScreen.right
         anchors.bottom: moneroLWSMainScreen.bottom
-        anchors.topMargin: 20
+        anchors.topMargin: 40
         source: "MoneroLWSActiveScreen.qml"
     }
 }

@@ -123,7 +123,10 @@ Item {
                 text: qsTr("NEWS")
                 font.family: NodoSystem.fontUrbanist.name
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
-                onClicked: { pageLoader.source = "NewsMainScreen.qml" }
+                onClicked: {
+                    pageLoader.source = "NewsMainScreen.qml"
+                    pageLoader.anchors.topMargin = 60
+                }
             }
 
         }

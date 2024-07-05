@@ -82,7 +82,7 @@ Item {
         anchors.left: deviceMainScreen.left
         anchors.right: deviceMainScreen.right
         anchors.bottom: deviceMainScreen.bottom
-        anchors.topMargin: 32
+        anchors.topMargin: 40
         source: "DeviceWifiScreen.qml"
     }
 }

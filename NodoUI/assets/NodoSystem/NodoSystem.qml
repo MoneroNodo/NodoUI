@@ -6,12 +6,12 @@ Item
     readonly property FontLoader fontUrbanist: FontLoader { source: "qrc:/NodoSystem/InterRegular.ttf" }
     property int topMenuYposition: 32
     property int topMenuButtonHeight: 100
-    property int topMenuButtonFontSize: 32
+    property int topMenuButtonFontSize: 40
     property int topMenuGapBetweenButtons: 16
     property int dateTimeFontSize: 56
 
     property int subMenuButtonHeight: 60
-    property int subMenuButtonFontSize: 32
+    property int subMenuButtonFontSize: 40
     property int textFontSize: 32
     property int buttonTextFontSize: 32
     property int subMenuLeftMargin: 32

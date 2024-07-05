@@ -55,7 +55,7 @@ Item {
         anchors.left: networksMainScreen.left
         anchors.right: networksMainScreen.right
         anchors.bottom: networksMainScreen.bottom
-        anchors.topMargin: 20
+        anchors.topMargin: 40
         source: "NetworksClearnetScreen.qml"
     }
 }
