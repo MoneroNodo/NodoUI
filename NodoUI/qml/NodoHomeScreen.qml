@@ -62,22 +62,11 @@ Item {
                 imagePath: (nodoControl.appTheme ? "qrc:/Images/nodologo_large_resized_red.png" : "qrc:/Images/nodologo_large_resized.png")
                 onClicked: { pageLoader.source = "NodoStatusScreen.qml" }
             }
-
-            NodoTabButton {
-                id: networksButton
-                anchors.top: nodoLogoButton.top
-                anchors.left: nodoLogoButton.right
-                anchors.leftMargin: 10
-                implicitHeight: NodoSystem.topMenuButtonHeight
-                text: qsTr("NETWORKS")
-                font.family: NodoSystem.fontUrbanist.name
-                font.pixelSize: NodoSystem.topMenuButtonFontSize
-                onClicked: { pageLoader.source = "NetworksMainScreen.qml" }
-            }
             NodoTabButton {
                 id: deviceButton
                 anchors.top: nodoLogoButton.top
-                anchors.left: networksButton.right
+                anchors.left: nodoLogoButton.right
+                anchors.leftMargin: 10
                 implicitHeight: NodoSystem.topMenuButtonHeight
                 text: qsTr("DEVICE")
                 font.family: NodoSystem.fontUrbanist.name
@@ -85,9 +74,20 @@ Item {
                 onClicked: { pageLoader.source = "DeviceMainScreen.qml" }
             }
             NodoTabButton {
-                id: nodeButton
+                id: networksButton
                 anchors.top: nodoLogoButton.top
                 anchors.left: deviceButton.right
+                implicitHeight: NodoSystem.topMenuButtonHeight
+                text: qsTr("NETWORKS")
+                font.family: NodoSystem.fontUrbanist.name
+                font.pixelSize: NodoSystem.topMenuButtonFontSize
+                onClicked: { pageLoader.source = "NetworksMainScreen.qml" }
+            }
+
+            NodoTabButton {
+                id: nodeButton
+                anchors.top: nodoLogoButton.top
+                anchors.left: networksButton.right
                 implicitHeight: NodoSystem.topMenuButtonHeight
                 text: qsTr("NODE")
                 font.family: NodoSystem.fontUrbanist.name
