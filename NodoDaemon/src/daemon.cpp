@@ -240,10 +240,15 @@ void Daemon::updateParams(void)
     m_timer->stop();
     readCPUUsage();
     readAverageCPUFreq();
+    readCPUTemperature();
+    readGPUUsage();
+    readMaxGPUSpeed();
+    readCurrentGPUSpeed();
     readRAMUsage();
     readCPUTemperature();
     readBlockchainStorageUsage();
     readSystemStorageUsage();
+
     m_timer->start(1000);
 }
 
@@ -330,6 +335,51 @@ void Daemon::readCPUTemperature(void)
     QString retVal = process.readAll();
     bool ok;
     m_CPUTemperature = retVal.toFloat(&ok)/(1000.0);
+}
+
+void Daemon::readGPUUsage(void)
+{
+    QProcess process;
+    QString program = "/usr/bin/cat";
+    QStringList arguments;
+    arguments << "/sys/devices/platform/fb000000.gpu/misc/mali0/device/utilisation";
+
+    process.start(program, arguments);
+    process.waitForFinished(-1);
+    QString retVal = process.readAll();
+
+    bool ok;
+    m_GPUUsage = retVal.toFloat(&ok);
+}
+
+void Daemon::readMaxGPUSpeed(void)
+{
+    QProcess process;
+    QString program = "/usr/bin/cat";
+    QStringList arguments;
+    arguments << "/sys/devices/platform/fb000000.gpu/devfreq/fb000000.gpu/max_freq";
+
+    process.start(program, arguments);
+    process.waitForFinished(-1);
+    QString retVal = process.readAll();
+
+    bool ok;
+    m_maxGPUFreq = retVal.toFloat(&ok)/(1000000.0);
+}
+
+void Daemon::readCurrentGPUSpeed(void)
+{
+    QProcess process;
+    QString program = "/usr/bin/cat";
+    QStringList arguments;
+    arguments << "/sys/devices/platform/fb000000.gpu/devfreq/fb000000.gpu/cur_freq";
+
+    process.start(program, arguments);
+    process.waitForFinished(-1);
+    QString retVal = process.readAll();
+
+    bool ok;
+    m_currentGPUFreq = retVal.toFloat(&ok)/(1000000.0);
 }
 
 void Daemon::readBlockchainStorageUsage(void)
@@ -437,3 +487,18 @@ void Daemon::setPassword(QString pw)
     sh.waitForFinished( -1 );
 }
 
+
+double Daemon::getGPUUsage(void)
+{
+    return m_GPUUsage;
+}
+
+double Daemon::getMaxGPUSpeed(void)
+{
+    return m_maxGPUFreq;
+}
+
+double Daemon::getCurrentGPUSpeed(void)
+{
+    return m_currentGPUFreq;
+}

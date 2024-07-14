@@ -67,6 +67,23 @@
             <arg name="pw" type="s" direction="in"/>
         </method>
 
+
+        <method name="getGPUUsage">
+            <arg name="GPUUsage" type="d" direction="out"/>
+        </method>
+
+        <method name="getMaxGPUSpeed">
+            <arg name="maxGPUSpeed" type="d" direction="out"/>
+        </method>
+
+        <method name="getCurrentGPUSpeed">
+            <arg name="currentGPUSpeed" type="d" direction="out"/>
+        </method>
+
+
+
+
+
         <signal name="startRecoveryNotification">
                 <arg name="message" type="s" direction="out"/>
         </signal>

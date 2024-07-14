@@ -286,13 +286,16 @@ void NodoSystemControl::startSystemStatusUpdate(void)
     double blockChainStorageTotal = m_dbusController->getTotalBlockchainStorage();
     double systemStorageUsed = m_dbusController->getSystemStorageUsage();
     double systemStorageTotal = m_dbusController->getTotalSystemStorage();
+    double GPUUsage = m_dbusController->getGPUUsage();
+    double currentCPUFreq = m_dbusController->getCurrentGPUSpeed();
+    // double maxCPUFreq = m_dbusController->getMaxGPUSpeed();
 
     m_CPUUsage = QString("%1").arg(averageCPUFreq, 0, 'f', 1).append(" MHz (").append(QString("%1").arg(CPUUsage, 0, 'f', 1)).append("%)");
     m_Temperature = QString("%1").arg(CPUTemperature, 0, 'f', 1).append("°C");
     m_RAMUsage = QString::number(RAMUsed).append("/").append(QString::number(RAMTotal)).append("GB (").append(QString("%1").arg((RAMUsed/RAMTotal)*100, 0, 'f', 1)).append("%)");
     m_blockchainStorage = QString::number(blockChainStorageUsed).append("/").append(QString::number(blockChainStorageTotal)).append("GB (").append(QString("%1").arg((blockChainStorageUsed/blockChainStorageTotal)*100, 0, 'f', 1)).append("%)");
     m_systemStorage = QString::number(systemStorageUsed).append("/").append(QString::number(systemStorageTotal)).append("GB (").append(QString("%1").arg((systemStorageUsed/systemStorageTotal)*100, 0, 'f', 1)).append("%)");
-
+    m_GPUUsage = QString("%1").arg(currentCPUFreq, 0, 'f', 1).append(" MHz (").append(QString("%1").arg(GPUUsage, 0, 'f', 1)).append("%)");
     emit systemStatusReady();
 }
 
@@ -319,6 +322,11 @@ QString NodoSystemControl::getBlockChainStorageUsage(void)
 QString NodoSystemControl::getSystemStorageUsage(void)
 {
     return m_systemStorage;
+}
+
+QString NodoSystemControl::getGPUUsage(void)
+{
+    return m_GPUUsage;
 }
 
 void NodoSystemControl::setPassword(QString pw)

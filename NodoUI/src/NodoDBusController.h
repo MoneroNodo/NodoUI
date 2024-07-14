@@ -32,6 +32,10 @@ public:
     double getSystemStorageUsage(void);
     double getTotalSystemStorage(void);
     void setPassword(QString pw);
+    double getGPUUsage(void);
+    double getMaxGPUSpeed(void);
+    double getCurrentGPUSpeed(void);
+
 
 protected:
     void timerEvent(QTimerEvent *event);

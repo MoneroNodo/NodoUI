@@ -128,3 +128,18 @@ void NodoDBusController::setPassword(QString pw)
 {
     nodo->setPassword(pw);
 }
+
+double NodoDBusController::getGPUUsage(void)
+{
+    return nodo->getGPUUsage();
+}
+
+double NodoDBusController::getMaxGPUSpeed(void)
+{
+    return nodo->getMaxGPUSpeed();
+}
+
+double NodoDBusController::getCurrentGPUSpeed(void)
+{
+    return nodo->getCurrentGPUSpeed();
+}

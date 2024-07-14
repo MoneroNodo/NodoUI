@@ -33,6 +33,9 @@ public slots:
     double getSystemStorageUsage(void);
     double getTotalSystemStorage(void);
     void setPassword(QString pw);
+    double getGPUUsage(void);
+    double getMaxGPUSpeed(void);
+    double getCurrentGPUSpeed(void);
 
 signals:
     void startRecoveryNotification(const QString &message);
@@ -53,6 +56,9 @@ private:
     double m_blockChainStorageTotal = 0;
     double m_systemStorageUsed = 0;
     double m_systemStorageTotal = 0;
+    double m_GPUUsage = 0;
+    double m_maxGPUFreq = 0;
+    double m_currentGPUFreq = 0;
 
     QTimer *m_timer;
 
@@ -60,8 +66,12 @@ private:
     void readAverageCPUFreq(void);
     void readRAMUsage(void);
     void readCPUTemperature(void);
+    void readGPUUsage(void);
+    void readMaxGPUSpeed(void);
+    void readCurrentGPUSpeed(void);
     void readBlockchainStorageUsage(void);
     void readSystemStorageUsage(void);
+
 
 
 private slots:

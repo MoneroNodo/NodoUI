@@ -138,37 +138,7 @@ Item {
             anchors.right: mainAppWindowRectangle.right
             anchors.bottom: mainMenuBar.bottom
             color: "black"
-/*
-            Text {
-                id: exchangeNameText
-                anchors.top: rightMenu.top
-                anchors.bottom: rightMenu.bottom
-                anchors.right: exchangeRateText.left
-                anchors.rightMargin: 2
-                color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
-                text: "XMR-" + nodoCurrencies.currencyCodes[priceTicker.getCurrentCurrencyIndex()] + ":"
-                topPadding: NodoSystem.topMenuTextTopPadding
-                font.family: NodoSystem.fontUrbanist.name
-                verticalAlignment: Text.AlignVCenter
-                horizontalAlignment: Text.AlignRight
-                font.pixelSize: NodoSystem.topMenuButtonFontSize
-            }
 
-            Text {
-                id: exchangeRateText
-                anchors.top: rightMenu.top
-                anchors.bottom: rightMenu.bottom
-                anchors.right: dateText.left
-                anchors.rightMargin: 20
-                color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
-                text: nodoCurrencies.currencySymbols[priceTicker.getCurrentCurrencyIndex()] + "---.--"
-                topPadding: NodoSystem.topMenuTextTopPadding
-                font.family: NodoSystem.fontUrbanist.name
-                verticalAlignment: Text.AlignVCenter
-                horizontalAlignment: Text.AlignHCenter
-                font.pixelSize: NodoSystem.topMenuButtonFontSize
-            }
-*/
             Text {
                 id: dateText
                 anchors.top: rightMenu.top

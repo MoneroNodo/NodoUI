@@ -137,30 +137,6 @@ Rectangle {
             }
         }
 
-        Connections {
-            target: nodoControl
-            function onServiceStatusReady() {
-                moneroNodeField.valueText = nodoControl.getServiceStatus("monerod")
-                minerServiceField.valueText = nodoControl.getServiceStatus("xmrig")
-                torServiceField.valueText = nodoControl.getServiceStatus("tor")
-                i2pServiceField.valueText = nodoControl.getServiceStatus("i2pd")
-                moneroLWSField.valueText = nodoControl.getServiceStatus("monero-lws")
-                blockExplorerField.valueText = nodoControl.getServiceStatus("block-explorer")
-            }
-        }
-
-        Connections {
-            target: nodoControl
-            function onSystemStatusReady() {
-                cpuField.valueText = nodoControl.getCPUUsage()
-                cpuTemperatureField.valueText = nodoControl.getTemperature()
-                ramField.valueText = nodoControl.getRAMUsage()
-                blockchainStorageField.valueText = nodoControl.getBlockChainStorageUsage()
-                systemStorageField.valueText = nodoControl.getSystemStorageUsage()
-            }
-        }
-
-
         Label {
             id: syncStatusTabName
             anchors.left: syncStatus.left
@@ -294,6 +270,18 @@ Rectangle {
         width: componentWidth + 2 + (2*componentLeftMargin)
         height: blockExplorerField.y + blockExplorerField.height + componentBottomMargin
         color: cardBackgroundColor
+
+        Connections {
+            target: nodoControl
+            function onServiceStatusReady() {
+                moneroNodeField.valueText = nodoControl.getServiceStatus("monerod")
+                minerServiceField.valueText = nodoControl.getServiceStatus("xmrig")
+                torServiceField.valueText = nodoControl.getServiceStatus("tor")
+                i2pServiceField.valueText = nodoControl.getServiceStatus("i2pd")
+                moneroLWSField.valueText = nodoControl.getServiceStatus("monero-lws")
+                blockExplorerField.valueText = nodoControl.getServiceStatus("block-explorer")
+            }
+        }
 
         Label {
             id: systemStatusTabName
@@ -493,6 +481,18 @@ Rectangle {
         height: systemStorageField.y + systemStorageField.height + componentBottomMargin
         color: cardBackgroundColor
 
+        Connections {
+            target: nodoControl
+            function onSystemStatusReady() {
+                cpuField.valueText = nodoControl.getCPUUsage()
+                cpuTemperatureField.valueText = nodoControl.getTemperature()
+                ramField.valueText = nodoControl.getRAMUsage()
+                blockchainStorageField.valueText = nodoControl.getBlockChainStorageUsage()
+                systemStorageField.valueText = nodoControl.getSystemStorageUsage()
+                gpuField.valueText = nodoControl.getGPUUsage()
+            }
+        }
+
         Label {
             id: hardwareStatusTabName
             anchors.left: hardwareStatus.left
@@ -566,6 +566,18 @@ Rectangle {
             height: NodoSystem.infoFieldLabelHeight
             itemSize: labelSize
             itemText: qsTr("System Storage")
+            valueText: systemMessages.messages[NodoMessages.Message.Loading]
+        }
+
+        NodoInfoField {
+            id: gpuField
+            anchors.left: hardwareStatusTabName.left
+            anchors.top: systemStorageField.bottom
+            anchors.topMargin: fieldTopMargin
+            width: componentWidth
+            height: NodoSystem.infoFieldLabelHeight
+            itemSize: labelSize
+            itemText: qsTr("GPU")
             valueText: systemMessages.messages[NodoMessages.Message.Loading]
         }
     }
