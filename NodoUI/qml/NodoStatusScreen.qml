@@ -534,9 +534,21 @@ Rectangle {
         }
 
         NodoInfoField {
-            id: ramField
+            id: gpuField
             anchors.left: hardwareStatusTabName.left
             anchors.top: cpuTemperatureField.bottom
+            anchors.topMargin: fieldTopMargin
+            width: componentWidth
+            height: NodoSystem.infoFieldLabelHeight
+            itemSize: labelSize
+            itemText: qsTr("GPU")
+            valueText: systemMessages.messages[NodoMessages.Message.Loading]
+        }
+
+        NodoInfoField {
+            id: ramField
+            anchors.left: hardwareStatusTabName.left
+            anchors.top: gpuField.bottom
             anchors.topMargin: fieldTopMargin
             width: componentWidth
             height: NodoSystem.infoFieldLabelHeight
@@ -566,18 +578,6 @@ Rectangle {
             height: NodoSystem.infoFieldLabelHeight
             itemSize: labelSize
             itemText: qsTr("System Storage")
-            valueText: systemMessages.messages[NodoMessages.Message.Loading]
-        }
-
-        NodoInfoField {
-            id: gpuField
-            anchors.left: hardwareStatusTabName.left
-            anchors.top: systemStorageField.bottom
-            anchors.topMargin: fieldTopMargin
-            width: componentWidth
-            height: NodoSystem.infoFieldLabelHeight
-            itemSize: labelSize
-            itemText: qsTr("GPU")
             valueText: systemMessages.messages[NodoMessages.Message.Loading]
         }
     }
