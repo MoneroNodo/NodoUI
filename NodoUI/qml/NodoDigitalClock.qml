@@ -19,7 +19,12 @@ Item {
         var date = nodoControl.getChangedDateTime();
 
         minutes =  date.getMinutes()
-        hours = date.getHours()%12
+        hours = date.getHours()
+        if(hours > 12)
+        {
+            hours = hours - 12
+        }
+
         digitalClockDate.text = Qt.formatDateTime(date, "dddd, d MMMM yyyy")
     }
 
