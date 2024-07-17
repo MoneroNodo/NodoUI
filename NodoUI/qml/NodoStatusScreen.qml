@@ -480,18 +480,6 @@ Rectangle {
             itemText: qsTr("TX per second")
             valueText: ""
         }
-
-        NodoInfoField {
-            id: blocksPerHourField
-            anchors.left: moneroStatusTabName.left
-            anchors.top: tXPerSecondField.bottom
-            anchors.topMargin: fieldTopMargin
-            width: componentWidth
-            height: NodoSystem.infoFieldLabelHeight
-            itemSize: labelSize
-            itemText: qsTr("Blocks per hour")
-            valueText: ""
-        }
     }
 
     NodoCanvas {
