@@ -30,6 +30,7 @@ SOURCES += \
         src/NodoEmbeddedUIConfigParser.cpp \
         src/NodoConfigParser.cpp \
         src/NodoNetworkManager.cpp \
+    src/NodoSyncInfo.cpp \
         src/NodoSystemStatusParser.cpp \
     src/NodoWiredController.cpp \
     src/NodoWirelessController.cpp \
@@ -49,6 +50,7 @@ HEADERS += \
         src/NodoConfigParser.h \
         src/NodoNetworkManager.h \
     src/NodoNotificationMessages.h \
+    src/NodoSyncInfo.h \
         src/NodoSystemStatusParser.h \
         src/NodoFeedParser.h \
         src/NodoSystemControl.h \

@@ -18,7 +18,6 @@ public:
     Q_INVOKABLE QString getStringValueFromKey(QString key);
     Q_INVOKABLE int getIntValueFromKey(QString key);
     Q_INVOKABLE bool getBoolValueFromKey(QString key);
-    // Q_INVOKABLE void updateSystemStatus(void);
     Q_INVOKABLE void updateRequested(void);
 
 
@@ -35,9 +34,9 @@ private:
     NodoConfigParser *m_configParser;
 
 private slots:
-   void replyFinished(QNetworkReply *reply);
+    void replyFinished(QNetworkReply *reply);
     void updateStatus(void);
-   void updateConfigParameters(void);
+    void updateConfigParameters(void);
 };
 
 #endif /* NODO_SYSTEM_STATUS_PARSER_H */

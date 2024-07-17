@@ -16,7 +16,7 @@ public:
     explicit NodoNetworkManager(QObject *parent = Q_NULLPTR);
     Q_INVOKABLE void checkNetworkStatusAndIP(void);
     Q_INVOKABLE QString getNetworkIP(void);
-    bool isConnected(void);
+    Q_INVOKABLE bool isConnected(void);
 
     Q_INVOKABLE void forgetWirelessNetwork(QString connectionPath);
     Q_INVOKABLE int getWifiDeviceStatus(void);

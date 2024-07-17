@@ -12,6 +12,7 @@
 #include "NodoPriceTicker.h"
 #include "MoneroLWS.h"
 #include "NodoNetworkManager.h"
+#include "NodoSyncInfo.h"
 
 int main(int argc, char *argv[]) {
     qputenv("QT_IM_MODULE", QByteArray("qtvirtualkeyboard"));
@@ -26,6 +27,7 @@ int main(int argc, char *argv[]) {
     NodoSystemStatusParser *systemStatusParser = new NodoSystemStatusParser(configParser);
     NodoSystemControl *systemControl = new NodoSystemControl(embeddedConfigParser, configParser);
     NodoFeedParser *feedParser = new NodoFeedParser(embeddedConfigParser);
+    NodoSyncInfo *syncInfo = new NodoSyncInfo();
 
     Translator *translator = new Translator(configParser, &engine);
     NodoPriceTicker *priceTicker = new NodoPriceTicker(configParser, networkManager);
@@ -39,6 +41,7 @@ int main(int argc, char *argv[]) {
     engine.rootContext()->setContextProperty("feedParser", feedParser);
     engine.rootContext()->setContextProperty("nodoSystemStatus", systemStatusParser);
     engine.rootContext()->setContextProperty("networkManager", networkManager);
+    engine.rootContext()->setContextProperty("syncInfo", syncInfo);
 
     engine.addImportPath( ":/" );
     engine.addImportPath( "qrc:/modules" );

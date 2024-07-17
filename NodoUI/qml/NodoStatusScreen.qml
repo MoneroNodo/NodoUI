@@ -20,9 +20,12 @@ Rectangle {
     property int componentTopMargin: 34
     property int cardMargin: 13
     property color cardBackgroundColor: "#111111"
+    property bool isConnected
 
     Component.onCompleted: {
+        statusScreen.isConnected = networkManager.isConnected()
         nodoSystemStatus.updateRequested()
+        syncInfo.updateRequested()
         nodoControl.startServiceStatusUpdate()
         onCalculateMaximumTextLabelLength()
         nodoControl.startSystemStatusUpdate()
@@ -125,7 +128,6 @@ Rectangle {
         Connections {
             target: nodoSystemStatus
             function onSystemStatusReady() {
-                syncStatusField.valueText = (true === nodoSystemStatus.getBoolValueFromKey("synchronized")) ? qsTr("Synchronized") : qsTr("Synchronizing")
                 timestampField.valueText = nodoSystemStatus.getIntValueFromKey("start_time")
                 currentBlockHeightField.valueText = nodoSystemStatus.getIntValueFromKey("height")
                 moneroVersionField.valueText = nodoSystemStatus.getStringValueFromKey("version")
@@ -134,6 +136,27 @@ Rectangle {
                 whitePeerlistSizeField.valueText = nodoSystemStatus.getIntValueFromKey("white_peerlist_size")
                 greyPeerlistSizeField.valueText = nodoSystemStatus.getIntValueFromKey("grey_peerlist_size")
                 updateAvailableField.valueText = (true === nodoSystemStatus.getBoolValueFromKey("update_available")) ? qsTr("Update available") : qsTr("Up to date")
+            }
+        }
+
+        Connections {
+            target: syncInfo
+            function onSyncStatusReady() {
+                var syncPercentage = syncInfo.getSyncPercentage()
+                if(statusScreen.isConnected){
+                    syncStatusField.valueText = (syncPercentage === -1) ? qsTr("Not Synchronizing") : ((syncPercentage === 100) ? qsTr("Synchronized (100%)") : qsTr("Synchronizing") + " (" + syncPercentage + "%)")
+                }
+                else{
+                    syncStatusField.valueText = qsTr("Not Connected")
+                }
+
+            }
+        }
+
+        Connections {
+            target: networkManager
+            function onNetworkStatusChanged() {
+                statusScreen.isConnected = networkManager.isConnected()
             }
         }
 
@@ -591,6 +614,7 @@ Rectangle {
         {
             nodoControl.startServiceStatusUpdate()
             nodoControl.startSystemStatusUpdate()
+            syncInfo.startSyncStatusUpdate()
         }
     }
 }
