@@ -361,7 +361,7 @@ void NodoSystemControl::sstimedout(void)
 void NodoSystemControl::restartLockScreenTimer(void)
 {
     stopLockScreenTimer();
-    m_lockScreenTimer->start(1000*getLockAfterTime());//*60
+    m_lockScreenTimer->start(60*1000*getLockAfterTime());
 }
 
 void NodoSystemControl::stopLockScreenTimer(void)
