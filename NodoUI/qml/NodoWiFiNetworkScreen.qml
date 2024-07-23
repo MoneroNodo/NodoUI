@@ -92,7 +92,7 @@ Item {
         anchors.left: wifiNetworkScreen.left
         anchors.right: wifiNetworkScreen.right
         anchors.bottom: wifiNetworkScreen.bottom
-        anchors.topMargin: 16
+        anchors.topMargin: NodoSystem.nodoTopMargin
         color: "black"
         visible: wifiEnabledSwitch.checked
 

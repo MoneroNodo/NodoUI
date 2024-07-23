@@ -11,7 +11,6 @@ Rectangle {
     id: feedRect
     height: visible ? 60 : 0
     visible: nodoControl.getVisibleState(index)
-    anchors.topMargin: visible ? 16 : 0
 
     property int labelItemSize: 0
     property int labelRectRoundSize: feedSwitchText.labelRectRoundSize

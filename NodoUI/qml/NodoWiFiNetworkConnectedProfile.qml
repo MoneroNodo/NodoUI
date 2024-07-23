@@ -23,7 +23,7 @@ NodoCanvas {
     property int spacing: 1
 
     height: defaultHeight
-    color: "#181818"
+    color: "#1F1F1F"
 
     Component.onCompleted:
     {
@@ -80,7 +80,7 @@ NodoCanvas {
         anchors.top: mainRect.top
         anchors.left: mainRect.left
         anchors.topMargin: 4
-        anchors.leftMargin: 11
+        anchors.leftMargin: 20
         font.pixelSize: NodoSystem.infoFieldItemFontSize
         font.family: NodoSystem.fontUrbanist.name
         height: 40

@@ -161,11 +161,11 @@ Item {
                     repeat: true
                     triggeredOnStart: true
                     onTriggered: {
+                        var m_daystr = Qt.formatDateTime(nodoControl.getChangedDateTime(), "ddd")
                         var m_day = Qt.formatDateTime(nodoControl.getChangedDateTime(), "d")
                         var m_month = Qt.formatDateTime(nodoControl.getChangedDateTime(), "MMM")
-                        var m_year = Qt.formatDateTime(nodoControl.getChangedDateTime(), "yyyy")
 
-                        dateText.text = m_day + " "  + m_month.toUpperCase() + " " + m_year
+                        dateText.text = m_daystr.toUpperCase() + " " +m_day + " "  + m_month.toUpperCase()
                     }
                 }
             }
@@ -198,7 +198,6 @@ Item {
 
         Rectangle {
             id: priceTickerRect
-            // anchors.left: mainMenuBar.right
             anchors.right: mainAppWindowRectangle.right
             anchors.top: rightMenu.bottom
             anchors.topMargin: 30

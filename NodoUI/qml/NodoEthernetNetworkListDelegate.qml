@@ -29,7 +29,7 @@ NodoCanvas {
         anchors.top: mainRect.top
         anchors.left: mainRect.left
         anchors.topMargin: 4
-        anchors.leftMargin: 11
+        anchors.leftMargin: 20
         font.pixelSize: NodoSystem.infoFieldItemFontSize
         font.family: NodoSystem.fontUrbanist.name
         height: 40

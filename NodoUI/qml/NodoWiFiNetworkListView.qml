@@ -14,20 +14,11 @@ NodoCanvas {
 
     property bool isScanComplete: false
     property bool isConnectedWifiAvailable: false
-    color: "#141414"
+    color: "black"
 
     Component.onCompleted: {
-        onCalculateMaximumTextLabelLength()
         getCurrentNetworkStatus()
         getWifiList()
-    }
-
-    function onCalculateMaximumTextLabelLength() {
-        if(currentNetworkLabel.labelRectRoundSize > labelSize)
-            labelSize = currentNetworkLabel.labelRectRoundSize
-
-        if(availableNetworksLabel.labelRectRoundSize > labelSize)
-            labelSize = availableNetworksLabel.labelRectRoundSize
     }
 
     function getWifiList() {
@@ -65,11 +56,7 @@ NodoCanvas {
     ScrollView {
         id: scrollMain
         anchors.fill: parent
-
-        anchors.leftMargin: 11
-        anchors.rightMargin: 11
-        anchors.topMargin: 8
-        anchors.bottomMargin: 8
+        anchors.bottomMargin: 65
 
         ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
         ScrollBar.vertical.policy: ScrollBar.AlwaysOff
@@ -86,34 +73,15 @@ NodoCanvas {
                 anchors.left: wifiNetworkList.left
                 anchors.top: wifiNetworkList.top
                 anchors.right: wifiNetworkList.right
-                color: "#141414"
+                color: "black"
                 visible: isConnectedWifiAvailable
-                height: currentWifiDelegate.y + currentWifiDelegate.height+8
-
-                NodoLabel {
-                    id: currentNetworkLabel
-                    anchors.left: currentNetworkCanvas.left
-                    anchors.top: currentNetworkCanvas.top
-                    anchors.topMargin: 8
-                    anchors.bottomMargin: 8
-                    anchors.leftMargin: 11
-                    anchors.rightMargin: 11
-
-                    font.pixelSize: NodoSystem.infoFieldItemFontSize
-                    font.family: NodoSystem.fontUrbanist.name
-                    height: NodoSystem.nodoItemHeight
-                    text: systemMessages.messages[NodoMessages.Message.CurrentNetwork]
-                }
+                height: currentWifiDelegate.y + currentWifiDelegate.height
 
                 NodoWiFiNetworkConnectedProfile {
                     id: currentWifiDelegate
                     anchors.left: currentNetworkCanvas.left
-                    anchors.top: currentNetworkLabel.bottom
+                    anchors.top: currentNetworkCanvas.top
                     anchors.right: currentNetworkCanvas.right
-                    anchors.topMargin: 3
-                    anchors.bottomMargin: 8
-                    anchors.leftMargin: 11
-                    anchors.rightMargin: 11
                 }
             }
 
@@ -121,50 +89,17 @@ NodoCanvas {
                 id: availableNetworksCanvas
                 anchors.left: wifiNetworkList.left
                 anchors.top: isConnectedWifiAvailable ? currentNetworkCanvas.bottom : wifiNetworkList.top
-                anchors.topMargin: isConnectedWifiAvailable ? 5 : 0
+                // anchors.topMargin: isConnectedWifiAvailable ? 3 : 0
                 anchors.right: wifiNetworkList.right
-                color: "#141414"
-                height: availableNetworksLabel.height + ssidList.contentHeight + 16
-
-                NodoLabel {
-                    id: availableNetworksLabel
-                    anchors.left: availableNetworksCanvas.left
-                    anchors.top: availableNetworksCanvas.top
-                    anchors.topMargin: 8
-                    anchors.bottomMargin: 8
-                    anchors.leftMargin: 11
-                    anchors.rightMargin: 11
-                    font.pixelSize: NodoSystem.infoFieldItemFontSize
-                    font.family: NodoSystem.fontUrbanist.name
-                    height: NodoSystem.nodoItemHeight
-                    text: systemMessages.messages[NodoMessages.Message.AvailableNetworks]
-                }
-
-                NodoBusyIndicator {
-                    id: busyIndicator
-                    width: 48
-                    height: 48
-                    anchors.top: availableNetworksCanvas.top
-                    anchors.right: availableNetworksCanvas.right
-                    anchors.topMargin: availableNetworksLabel.height - height
-                    anchors.rightMargin: 22
-                    running: !isScanComplete
-                    visible: !isScanComplete
-                    indicatorColor: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
-                }
-
-
+                color: "black"
+                height: ssidList.contentHeight + 16
 
                 ListView {
                     id: ssidList
                     anchors.left: availableNetworksCanvas.left
-                    anchors.top: availableNetworksLabel.bottom
+                    anchors.top: availableNetworksCanvas.top
                     anchors.right: availableNetworksCanvas.right
                     anchors.bottom: availableNetworksCanvas.bottom
-                    anchors.topMargin: 3
-                    anchors.bottomMargin: 8
-                    anchors.leftMargin: 11
-                    anchors.rightMargin: 11
 
                     model: wifiListModel
                     visible: true
@@ -176,7 +111,7 @@ NodoCanvas {
                         width: ssidList.width
                     }
 
-                    spacing: 3
+                    spacing: 0
                 }
             }
         }
