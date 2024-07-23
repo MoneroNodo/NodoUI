@@ -26,7 +26,9 @@ NodoSystemControl::NodoSystemControl(NodoEmbeddedUIConfigParser *embeddedUIConfi
     m_appTheme = m_configParser->getTheme();
 
     m_screenSaverTimer = new QTimer(this);
-    connect(m_screenSaverTimer, SIGNAL(timeout()), this, SLOT(timedout()));
+    m_lockScreenTimer = new QTimer(this);
+    connect(m_screenSaverTimer, SIGNAL(timeout()), this, SLOT(sstimedout()));
+    connect(m_lockScreenTimer, SIGNAL(timeout()), this, SLOT(lstimedout()));
 
     connect(m_dbusController, SIGNAL(dbusConnectionStatusChanged()), this, SLOT(updateDbusConnectionStatus()));
     connect(m_dbusController, SIGNAL(serviceStatusReceived(QString)), this, SLOT(updateServiceStatus(QString)));
@@ -98,7 +100,7 @@ void NodoSystemControl::setScreenSaverType(int state)
 
 int NodoSystemControl::getScreenSaverType(void)
 {
-    return m_displaySettings.useFeedsAsScreenSaver;
+    return m_displaySettings.screenSaverType;
 }
 
 
@@ -350,10 +352,28 @@ void NodoSystemControl::stopScreenSaverTimer(void)
     m_screenSaverTimer->stop();
 }
 
-void NodoSystemControl::timedout(void)
+void NodoSystemControl::sstimedout(void)
 {
     emit screenSaverTimedout();
 }
+
+
+void NodoSystemControl::restartLockScreenTimer(void)
+{
+    stopLockScreenTimer();
+    m_lockScreenTimer->start(1000*getLockAfterTime());//*60
+}
+
+void NodoSystemControl::stopLockScreenTimer(void)
+{
+    m_lockScreenTimer->stop();
+}
+
+void NodoSystemControl::lstimedout(void)
+{
+    emit lockScreenTimedout();
+}
+
 
 int NodoSystemControl::getErrorCode(void)
 {
@@ -474,6 +494,55 @@ void NodoSystemControl::processNotification(QString message)
             return;
         }
     }
+}
+
+
+bool NodoSystemControl::isPinEnabled(void)
+{
+    return m_embeddedUIConfigParser->readPinEnabledStatus();
+}
+
+bool NodoSystemControl::verifyPinCode(QString pin)
+{
+    bool retval = m_embeddedUIConfigParser->comparePinHash(pin);
+
+    return retval;
+}
+
+void NodoSystemControl::setPin(QString newPin)
+{
+    enableComponent(true);
+
+    if (false == m_embeddedUIConfigParser->setNewPin(newPin))
+    {
+        m_errorCode = SOMETHING_IS_WRONG;
+    }
+    else
+    {
+        restartLockScreenTimer();
+        m_errorCode = NEW_PIN_IS_SET;
+    }
+
+    m_displaySettings = m_embeddedUIConfigParser->readDisplaySettings();
+    emit errorDetected();
+}
+
+void NodoSystemControl::disablePin(void)
+{
+    m_embeddedUIConfigParser->disablePin();
+    m_displaySettings = m_embeddedUIConfigParser->readDisplaySettings();
+}
+
+int NodoSystemControl::getLockAfterTime(void)
+{
+    return m_embeddedUIConfigParser->getLockAfterTime();
+}
+
+void NodoSystemControl::setLockAfterTime(QString newTime)
+{
+    m_embeddedUIConfigParser->setLockAfterTime(newTime.toInt());
+    m_displaySettings = m_embeddedUIConfigParser->readDisplaySettings();
+    restartLockScreenTimer();
 }
 
 

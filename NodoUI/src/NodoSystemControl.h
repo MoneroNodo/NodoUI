@@ -97,6 +97,17 @@ public:
     Q_INVOKABLE QString getrpcUser(void);
     Q_INVOKABLE QString getrpcPassword(void);
 
+    Q_INVOKABLE bool isPinEnabled(void);
+    Q_INVOKABLE bool verifyPinCode(QString pin);
+    Q_INVOKABLE void setPin(QString newPin);
+    Q_INVOKABLE void disablePin(void);
+    Q_INVOKABLE int getLockAfterTime(void);
+    Q_INVOKABLE void setLockAfterTime(QString newTime);
+
+    Q_INVOKABLE void restartLockScreenTimer(void);
+    Q_INVOKABLE void stopLockScreenTimer(void);
+
+
 signals:
     void appThemeChanged(bool);
     void inputFieldTextChanged(void);
@@ -106,6 +117,7 @@ signals:
     void serviceStatusReady(void);
     void systemStatusReady(void);
     void screenSaverTimedout(void);
+    void lockScreenTimedout(void);
     void errorDetected(void);
     void componentEnabledStatusChanged(void);
 
@@ -136,6 +148,7 @@ private:
     QString m_blockchainStorage;
     QString m_systemStorage;
     QTimer *m_screenSaverTimer;
+    QTimer *m_lockScreenTimer;
     QString m_GPUUsage;
 
     QStringList m_tzList = {
@@ -186,7 +199,8 @@ private:
 private slots:
     void updateDbusConnectionStatus(void);
     void updateServiceStatus(QString statusMessage);
-    void timedout(void);
+    void sstimedout(void);
+    void lstimedout(void);
     void processNotification(QString message);
 
 #ifdef ENABLE_TEST_CODE

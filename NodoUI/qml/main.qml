@@ -36,10 +36,16 @@ ApplicationWindow {
     }
 
     property bool screenLocked: false;
+    property bool screenSaverActive: false;
 
     Component.onCompleted:
     {
         nodoControl.restartScreenSaverTimer();
+
+        if(nodoControl.isPinEnabled())
+        {
+            nodoControl.restartLockScreenTimer();
+        }
     }
 
     Rectangle {
@@ -64,7 +70,22 @@ ApplicationWindow {
 
             function onScreenSaverTimedout()
             {
-                mainAppWindowMainRect.lockSystem();
+                mainAppWindowMainRect.displayScreenSaver();
+            }
+
+            function onLockScreenTimedout()
+            {
+                if(nodoControl.isPinEnabled())
+                {
+                    mainAppWindowMainRect.lockScreen();
+                }
+            }
+        }
+
+        Connections{
+            target: mainAppStackView.currentItem
+            function onPinCodeCorrect() {
+                mainAppStackView.pop()
             }
         }
 
@@ -115,33 +136,68 @@ ApplicationWindow {
             propagateComposedEvents: true
 
             onPressed: (mouse)=> {
-                mouse.accepted = false;
-                nodoControl.restartScreenSaverTimer();
+                           mouse.accepted = false;
+                           nodoControl.restartScreenSaverTimer();
+                           if(nodoControl.isPinEnabled())
+                           {
+                               nodoControl.restartLockScreenTimer();
+                           }
 
-                if(mainAppWindow.screenLocked === true){
-                    mainAppWindow.screenLocked = false
-                    mainAppStackView.pop()
+                           if(mainAppWindow.screenSaverActive === true){
+                               mainAppWindow.screenSaverActive = false
+                               mainAppStackView.pop();
+                               if(mainAppWindow.screenLocked === true)
+                               {
+                                   mainAppWindow.screenLocked = false
+                                   mainAppStackView.push("NodoLockScreen.qml")
+                                   nodoControl.stopLockScreenTimer()
+                               }
+                           }
+                           else
+                           {
+                               if(mainAppWindow.screenLocked === true)
+                               {
+                                   mainAppWindow.screenLocked = false
+                               }
+                           }
+                       }
+        }
+
+        function displayScreenSaver()
+        {
+            if(mainAppWindow.screenSaverActive === false){
+                nodoControl.stopScreenSaverTimer();
+
+                mainAppWindow.screenSaverActive = true
+                systemPopup.close()
+                mainAppStackView.pop()
+                var screenSaverType = nodoControl.getScreenSaverType()
+
+                if(0 === screenSaverType) {
+                    mainAppStackView.push("NodoFeederScreenSaver.qml")
+                }
+                else if(1 === screenSaverType)
+                {
+                    mainAppStackView.push("NodoScreenSaver.qml")
+                }
+                else if(2 === screenSaverType)
+                {
+                    mainAppStackView.push("NodoDigitalClock.qml")
                 }
             }
         }
 
-        function lockSystem()
+        function lockScreen()
         {
-            if(mainAppWindow.screenLocked === false){
-                nodoControl.stopScreenSaverTimer();
+            if(mainAppWindow.screenLocked === false)
+            {
+                nodoControl.stopLockScreenTimer();
                 mainAppWindow.screenLocked = true
-                systemPopup.close()
-                mainAppStackView.pop()
-                if(0 === nodoControl.getScreenSaverType()) {
-                    mainAppStackView.push("NodoFeederScreenSaver.qml")
-                }
-                else if(1 === nodoControl.getScreenSaverType())
+                if(mainAppWindow.screenSaverActive === false)
                 {
-                    mainAppStackView.push("NodoScreenSaver.qml")
-                }
-                else if(2 === nodoControl.getScreenSaverType())
-                {
-                    mainAppStackView.push("NodoDigitalClock.qml")
+                    systemPopup.close()
+                    mainAppStackView.pop()
+                    mainAppStackView.push("NodoLockScreen.qml")
                 }
             }
         }

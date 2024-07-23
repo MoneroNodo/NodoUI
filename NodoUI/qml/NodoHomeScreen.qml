@@ -8,6 +8,7 @@ import NodoCanvas 1.0
 Item {
     property color defaultColor: NodoSystem.defaultColorNightModeOff
     property color highlightedColor: NodoSystem.defaultColorNightModeOn
+    signal pinCodeCorrect()
 
     Rectangle {
         id: mainAppWindowRectangle

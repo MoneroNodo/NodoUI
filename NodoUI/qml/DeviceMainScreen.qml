@@ -57,9 +57,18 @@ Item {
             onClicked: { pageLoader.source = "DeviceDisplayScreen.qml" }
         }
         NodoTabButton {
-            id: newsFeedsButton
+            id: pinButton
             anchors.top: wifiButton.top
             anchors.left: displayButton.right
+            text: qsTr("PIN")
+            font.family: NodoSystem.fontUrbanist.name
+            font.pixelSize: NodoSystem.topMenuButtonFontSize
+            onClicked: { pageLoader.source = "DevicePinScreen.qml" }
+        }
+        NodoTabButton {
+            id: newsFeedsButton
+            anchors.top: wifiButton.top
+            anchors.left: pinButton.right
             text: qsTr("NEWS FEEDS")
             font.family: NodoSystem.fontUrbanist.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize

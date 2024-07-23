@@ -8,6 +8,7 @@
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
+#include <QCryptographicHash>
 
 #define MAX_FEED_COUNT 10
 
@@ -40,16 +41,20 @@ typedef struct {
 typedef enum {
     DISPLAY_KEY_SS_TIMEOUT,
     DISPLAY_KEY_SS_ITEM_CHANGE_TIMEOUT,
-    DISPLAY_KEY_USE_FEEDS_AS_SS,
-    DISPLAY_KEY_CHANGE_ORIENTATION
+    DISPLAY_KEY_SCREEN_SAVER_TYPE,
+    DISPLAY_KEY_CHANGE_ORIENTATION,
+    DISPLAY_KEY_PIN_HASH,
+    DISPLAY_KEY_LOCK_AFTER,
 }display_keys_t;
 
 
 typedef struct {
     int screenSaverTimeoutInSec;
     int screenSaverItemChangeTimeoutInSec;
-    int useFeedsAsScreenSaver;
+    int screenSaverType;
     int displayOrientation;
+    QString pinHash;
+    int lockAfter;
 }display_settings_t;
 
 
@@ -76,6 +81,13 @@ public:
     void writeDisplayOrientation(int orientation);
     int readDisplayOrientation(void);
 
+    bool readPinEnabledStatus(void);
+    bool comparePinHash(QString pin);
+    bool setNewPin(QString newPin);
+    void disablePin(void);
+    int getLockAfterTime(void);
+    void setLockAfterTime(int newTime);
+
 private:
     int m_feedCount = 0;
     QJsonDocument m_document;
@@ -87,7 +99,7 @@ private:
     display_settings_t m_displaySettings;
 
     const QStringList m_feedKeyList = {"name", "uri", "selected", "visible", "num_of_feeds_to_show", "description_tag", "image_tag", "image_attr", "pub_date_tag"};
-    const QStringList m_displayKeyList = {"screensaver_timeout_in_sec", "screensaver_item_change_timeout_in_sec", "screensaver_type", "display_orientation"};
+    const QStringList m_displayKeyList = {"screensaver_timeout_in_sec", "screensaver_item_change_timeout_in_sec", "screensaver_type", "display_orientation", "pin_hash", "lock_after_in_min"};
     const QString feedObjName = "feeds";
     const QString displayObjName = "display";
     const QString m_feedNames = "feed_";

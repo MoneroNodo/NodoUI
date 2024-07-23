@@ -21,15 +21,17 @@ NodoEmbeddedUIConfigParser::NodoEmbeddedUIConfigParser(QObject *parent) : QObjec
     }
 }
 
-display_settings_t NodoEmbeddedUIConfigParser::NodoEmbeddedUIConfigParser::readDisplaySettings(void)
+display_settings_t NodoEmbeddedUIConfigParser::readDisplaySettings(void)
 {
     if(m_displayObj.isEmpty())
     {
         qDebug() << "couldn't find display settings";
         m_displaySettings.screenSaverTimeoutInSec = 50;
         m_displaySettings.screenSaverItemChangeTimeoutInSec = 10;
-        m_displaySettings.useFeedsAsScreenSaver = 0;
+        m_displaySettings.screenSaverType = 0;
         m_displaySettings.displayOrientation = 0;
+        m_displaySettings.pinHash = "";
+        m_displaySettings.lockAfter = 0;
 
         return m_displaySettings;
     }
@@ -40,11 +42,17 @@ display_settings_t NodoEmbeddedUIConfigParser::NodoEmbeddedUIConfigParser::readD
     jsonValue = m_displayObj.value(m_displayKeyList[DISPLAY_KEY_SS_ITEM_CHANGE_TIMEOUT]);
     m_displaySettings.screenSaverItemChangeTimeoutInSec = jsonValue.toInt();
 
-    jsonValue = m_displayObj.value(m_displayKeyList[DISPLAY_KEY_USE_FEEDS_AS_SS]);
-    m_displaySettings.useFeedsAsScreenSaver = jsonValue.toInt();
+    jsonValue = m_displayObj.value(m_displayKeyList[DISPLAY_KEY_SCREEN_SAVER_TYPE]);
+    m_displaySettings.screenSaverType = jsonValue.toInt();
 
     jsonValue = m_displayObj.value(m_displayKeyList[DISPLAY_KEY_CHANGE_ORIENTATION]);
     m_displaySettings.displayOrientation = jsonValue.toInt();
+
+    jsonValue = m_displayObj.value(m_displayKeyList[DISPLAY_KEY_PIN_HASH]);
+    m_displaySettings.pinHash = jsonValue.toString();
+
+    jsonValue = m_displayObj.value(m_displayKeyList[DISPLAY_KEY_LOCK_AFTER]);
+    m_displaySettings.lockAfter = jsonValue.toInt();
 
     return m_displaySettings;
 }
@@ -189,13 +197,13 @@ void NodoEmbeddedUIConfigParser::writeScreenSaverType(int state)
         return;
     }
 
-    m_displayObj.insert(m_displayKeyList[DISPLAY_KEY_USE_FEEDS_AS_SS], state);
+    m_displayObj.insert(m_displayKeyList[DISPLAY_KEY_SCREEN_SAVER_TYPE], state);
     writeJson();
 }
 
 int NodoEmbeddedUIConfigParser::readScreenSaverType(void)
 {
-    return m_displaySettings.useFeedsAsScreenSaver;
+    return m_displaySettings.screenSaverType;
 }
 
 
@@ -213,5 +221,67 @@ void NodoEmbeddedUIConfigParser::writeDisplayOrientation(int orientation)
 int NodoEmbeddedUIConfigParser::readDisplayOrientation(void)
 {
     return m_displaySettings.displayOrientation;
+}
+
+bool NodoEmbeddedUIConfigParser::readPinEnabledStatus(void)
+{
+    return !m_displaySettings.pinHash.isEmpty();
+}
+
+bool NodoEmbeddedUIConfigParser::comparePinHash(QString pin)
+{
+    QByteArrayView pinHash = QCryptographicHash::hash(pin.toUtf8(), QCryptographicHash::Sha256);
+    QByteArray hashText = QByteArray(pinHash.toByteArray(), pinHash.size()).toHex().constData();
+    if(hashText == m_displaySettings.pinHash.toUtf8())
+    {
+        return true;
+    }
+
+    return false;
+}
+
+bool NodoEmbeddedUIConfigParser::setNewPin(QString newPin)
+{
+    if(m_displayObj.isEmpty())
+    {
+        return false;
+    }
+
+    QByteArrayView pinHash = QCryptographicHash::hash(newPin.toUtf8(), QCryptographicHash::Sha256);
+    QByteArray hashText = QByteArray(pinHash.toByteArray(), pinHash.size()).toHex().constData();
+
+    m_displayObj.insert(m_displayKeyList[DISPLAY_KEY_PIN_HASH], QString(hashText));
+
+    writeJson();
+
+    return true;
+}
+
+void NodoEmbeddedUIConfigParser::disablePin(void)
+{
+    if(m_displayObj.isEmpty())
+    {
+        return;
+    }
+
+    m_displayObj.insert(m_displayKeyList[DISPLAY_KEY_PIN_HASH], QString(""));
+
+    writeJson();
+}
+
+int NodoEmbeddedUIConfigParser::getLockAfterTime(void)
+{
+    return m_displaySettings.lockAfter;
+}
+
+void NodoEmbeddedUIConfigParser::setLockAfterTime(int newTime)
+{
+    if(m_displayObj.isEmpty())
+    {
+        return;
+    }
+
+    m_displayObj.insert(m_displayKeyList[DISPLAY_KEY_LOCK_AFTER], newTime);
+    writeJson();
 }
 

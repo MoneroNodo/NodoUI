@@ -14,7 +14,9 @@ typedef enum {
     CONNECTION_TO_NODONM_DBUS_FAILED,
     GATHERING_IP_FAILED,
     NO_NETWORK_DEVICE,
-    CABLE_DISCONNECTED
+    CABLE_DISCONNECTED,
+    SOMETHING_IS_WRONG,
+    NEW_PIN_IS_SET
 
 } m_messageIDs;
 
@@ -37,7 +39,9 @@ private:
                                 tr("Connection to Nodonm service failed!"),
                                 tr("IP couldn't be read!"),
                                 tr("No network device found!"),
-                                tr("Cable disconnected!")
+                                tr("Cable disconnected!"),
+                                tr("Something is wrong!"),
+                                tr("New PIN is set successfully!")
     };
 };
 

@@ -35,7 +35,8 @@ Item {
         CableDisconnected,
         Address,
         Port,
-        Loading
+        Loading,
+        PINCodesAreDifferent
     }
 
     property var messages:[
@@ -73,6 +74,7 @@ Item {
         qsTr("Address"),
         qsTr("Port"),
         qsTr("<loading>"),
+        qsTr("PIN codes are different."),
     ]
 }
 

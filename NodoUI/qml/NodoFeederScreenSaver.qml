@@ -9,6 +9,8 @@ Item {
     id: feederScreenSaver
     width: parent.width
     height: parent.height
+    signal pinCodeCorrect()
+
     NewsMainScreen{
         x: 0
         y: 0

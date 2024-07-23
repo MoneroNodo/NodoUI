@@ -7,7 +7,8 @@ import NodoCanvas 1.0
 
 Item {
     id: clock
-    anchors.fill: parent
+    width: 1920
+    height: 1080
 
     property real hours: 10
     property real minutes: 10
@@ -30,6 +31,8 @@ Item {
 
     property real second_center_x_position: 12// image width/2
     property real second_center_y_position: 476 // rotational center of the handle
+
+    signal pinCodeCorrect()
 
     function timeChanged() {
         var date = nodoControl.getChangedDateTime();

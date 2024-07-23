@@ -15,6 +15,8 @@ Item {
     property real hours: 10
     property real minutes: 10
 
+    signal pinCodeCorrect()
+
     function timeChanged() {
         var date = nodoControl.getChangedDateTime();
 
