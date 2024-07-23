@@ -139,7 +139,7 @@ Item {
             id: pinControlNewPinField
             anchors.left: pinControlRect.left
             anchors.top: pinControlLockAfterField.bottom
-            anchors.topMargin: NodoSystem.nodoTopMargin
+            anchors.topMargin: 30
             width: inputFieldWidth
             height: NodoSystem.inputFieldLabelHeight
             itemSize: labelSize

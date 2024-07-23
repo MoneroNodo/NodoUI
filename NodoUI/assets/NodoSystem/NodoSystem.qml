@@ -20,7 +20,7 @@ Item
     property int inputFieldLabelHeight: 64
     property int topMenuTextTopPadding: 21
 
-    property color defaultColorNightModeOff: "#CFCFCF"
+    property color defaultColorNightModeOff: "#FCFCFC"
     property color highlightedColorNightModeOff: "#FA5501"
 
     property color defaultColorNightModeOn: "#AE0000"
@@ -71,4 +71,17 @@ Item
     property color comboBoxHighligtedItemBGColorNightModeOn: "#F50000"
 
     property color comboBoxTextColor: "#FCFCFC"
+
+    property color lockIndicatorBorderColor: "#FA5501"
+    property color lockIndicatorFilledColor: "#FA5501"
+    property color lockIndicatorEmptyColor: "#000000"
+    property color lockButtonColor: "#141414"
+    property color lockButtonTextColor: "#FCFCFC"
+    property int lockButtonTextSize: 32
+    property int lockButtonWidth: 116
+    property int lockButtonHeight: 116
+    property int lockPinDiameter: 32
+
+    property color popupBackgroundColor: "#141414"
+
 }

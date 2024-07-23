@@ -280,7 +280,7 @@ ApplicationWindow {
                 width: systemPopup.width
                 height: systemPopup.height
 
-                color: "#141414"
+                color: NodoSystem.popupBackgroundColor
 
                 Text {
                     id: popupMessage

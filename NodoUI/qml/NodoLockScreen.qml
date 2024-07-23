@@ -8,29 +8,24 @@ import NodoCanvas 1.0
 
 Item {
     id: lockScreen
-    property int pinWidth: 32
-    property int pinLeftRightPadding: pinWidth*1.5
-    property int pinMiddlePaddings: pinWidth/2
-    property color borderColor: "white"
-    property color pinFilledColor: "orange"
-    property color pinEmptyColor: "grey"
-    property int buttonWidth: 116
-    property int buttonHeight: 116
+    property int pinLeftRightPadding: NodoSystem.lockPinDiameter*1.5
+    property int pinMiddlePaddings: NodoSystem.lockPinDiameter/2
 
-    property int leftAndRightSpaces: buttonWidth/3
-    property int topAndBottomSpaces: buttonHeight/3
-    property int horizontalSpaceBetweenButtons: buttonWidth/2
-    property int verticalSpaceBetweenButtons: buttonHeight/2
+    property int leftAndRightSpaces: NodoSystem.lockButtonWidth/3
+    property int topAndBottomSpaces: NodoSystem.lockButtonHeight/3
+    property int horizontalSpaceBetweenButtons: NodoSystem.lockButtonWidth/2
+    property int verticalSpaceBetweenButtons: NodoSystem.lockButtonHeight/2
 
-    property int buttonPadHeight: (buttonHeight*4) + (topAndBottomSpaces*2) +  (verticalSpaceBetweenButtons*3)
-    property int buttonPadWidth: (buttonWidth*3) + (leftAndRightSpaces*2) +  (horizontalSpaceBetweenButtons*2)
+    property int buttonPadHeight: (NodoSystem.lockButtonHeight*4) + (topAndBottomSpaces*2) + (verticalSpaceBetweenButtons*3)
+    property int buttonPadWidth: (NodoSystem.lockButtonWidth*3) + (leftAndRightSpaces*2) + (horizontalSpaceBetweenButtons*2)
 
-    property double buttonImageMargins: 0.25
+    property int buttonImageMargins: NodoSystem.lockButtonHeight/4
 
     property int pinIndex: 0
     property string pinCode: ""
 
     property bool buttonsActive: true
+
 
     signal pinCodeCorrect()
 
@@ -62,7 +57,7 @@ Item {
                 pinCode = ""
                 buttonsActive = true
                 pinIndex = 0;
-                enterPINText.text = qsTr("Wrong PIN")
+                enterPINText.text = qsTr("Incorrect PIN")
             }
             else
             {
@@ -91,7 +86,7 @@ Item {
         anchors.leftMargin: (lockScreenMainRect.width - enterPINTextRect.width)/2
         width: enterPINText.paintedWidth
         height:enterPINText.paintedHeight
-        color: "blue"
+        color: "#000000"
 
         Text {
             id: enterPINText
@@ -99,103 +94,103 @@ Item {
             font.pixelSize: 32
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignHCenter
-            color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
+            color: "#FCFCFC"
             font.family: NodoSystem.fontUrbanist.name
         }
     }
 
     Rectangle {
         id: pinIndicatorFieldRect
-        width: (pinLeftRightPadding*2) + (pinMiddlePaddings*5) + (pinWidth*6)
-        height: pinWidth*2
+        width: (pinLeftRightPadding*2) + (pinMiddlePaddings*5) + (NodoSystem.lockPinDiameter*6)
+        height: NodoSystem.lockPinDiameter*2
         anchors.top: enterPINTextRect.bottom
         anchors.left: lockScreenMainRect.left
         anchors.topMargin: 8
         anchors.leftMargin: (lockScreenMainRect.width - width)/2
-        color: "black"
+        color: "#000000"
 
         NodoCanvas {
             id: pinIndicatorField
             width: pinIndicatorFieldRect.width
             height: pinIndicatorFieldRect.height
-            color: "green"
+            color: "#000000"
 
             Rectangle{
                 id: pin0
-                width: pinWidth
-                height: pinWidth
-                radius: pinWidth/2
+                width: NodoSystem.lockPinDiameter
+                height: NodoSystem.lockPinDiameter
+                radius: NodoSystem.lockPinDiameter/2
                 anchors.right: pinIndicatorField.right
                 anchors.top: pinIndicatorField.top
-                anchors.topMargin: pinWidth/2
+                anchors.topMargin: NodoSystem.lockPinDiameter/2
                 anchors.rightMargin: pinLeftRightPadding
-                border.color: borderColor
-                color: pinIndex > 0 ? pinFilledColor : pinEmptyColor
+                border.color: NodoSystem.lockIndicatorBorderColor
+                color: pinIndex > 5 ? NodoSystem.lockIndicatorFilledColor : NodoSystem.lockIndicatorEmptyColor
             }
 
             Rectangle{
                 id: pin1
-                width: pinWidth
-                height: pinWidth
-                radius: pinWidth/2
+                width: NodoSystem.lockPinDiameter
+                height: NodoSystem.lockPinDiameter
+                radius: NodoSystem.lockPinDiameter/2
                 anchors.right: pin0.left
                 anchors.top: pinIndicatorField.top
-                anchors.topMargin: pinWidth/2
+                anchors.topMargin: NodoSystem.lockPinDiameter/2
                 anchors.rightMargin: pinMiddlePaddings
-                border.color: borderColor
-                color: pinIndex > 1 ? pinFilledColor : pinEmptyColor
+                border.color: NodoSystem.lockIndicatorBorderColor
+                color: pinIndex > 4 ? NodoSystem.lockIndicatorFilledColor : NodoSystem.lockIndicatorEmptyColor
             }
 
             Rectangle{
                 id: pin2
-                width: pinWidth
-                height: pinWidth
-                radius: pinWidth/2
+                width: NodoSystem.lockPinDiameter
+                height: NodoSystem.lockPinDiameter
+                radius: NodoSystem.lockPinDiameter/2
                 anchors.right: pin1.left
                 anchors.top: pinIndicatorField.top
-                anchors.topMargin: pinWidth/2
+                anchors.topMargin: NodoSystem.lockPinDiameter/2
                 anchors.rightMargin: pinMiddlePaddings
-                border.color: borderColor
-                color: pinIndex > 2 ? pinFilledColor : pinEmptyColor
+                border.color: NodoSystem.lockIndicatorBorderColor
+                color: pinIndex > 3 ? NodoSystem.lockIndicatorFilledColor : NodoSystem.lockIndicatorEmptyColor
             }
 
             Rectangle{
                 id: pin3
-                width: pinWidth
-                height: pinWidth
-                radius: pinWidth/2
+                width: NodoSystem.lockPinDiameter
+                height: NodoSystem.lockPinDiameter
+                radius: NodoSystem.lockPinDiameter/2
                 anchors.right: pin2.left
                 anchors.top: pinIndicatorField.top
-                anchors.topMargin: pinWidth/2
+                anchors.topMargin: NodoSystem.lockPinDiameter/2
                 anchors.rightMargin: pinMiddlePaddings
-                border.color: borderColor
-                color: pinIndex > 3 ? pinFilledColor : pinEmptyColor
+                border.color: NodoSystem.lockIndicatorBorderColor
+                color: pinIndex > 2 ? NodoSystem.lockIndicatorFilledColor : NodoSystem.lockIndicatorEmptyColor
             }
 
             Rectangle{
                 id: pin4
-                width: pinWidth
-                height: pinWidth
-                radius: pinWidth/2
+                width: NodoSystem.lockPinDiameter
+                height: NodoSystem.lockPinDiameter
+                radius: NodoSystem.lockPinDiameter/2
                 anchors.right: pin3.left
                 anchors.top: pinIndicatorField.top
-                anchors.topMargin: pinWidth/2
+                anchors.topMargin: NodoSystem.lockPinDiameter/2
                 anchors.rightMargin: pinMiddlePaddings
-                border.color: borderColor
-                color: pinIndex > 4 ? pinFilledColor : pinEmptyColor
+                border.color: NodoSystem.lockIndicatorBorderColor
+                color: pinIndex > 1 ? NodoSystem.lockIndicatorFilledColor : NodoSystem.lockIndicatorEmptyColor
             }
 
             Rectangle{
                 id: pin5
-                width: pinWidth
-                height: pinWidth
-                radius: pinWidth/2
+                width: NodoSystem.lockPinDiameter
+                height: NodoSystem.lockPinDiameter
+                radius: NodoSystem.lockPinDiameter/2
                 anchors.right: pin4.left
                 anchors.top: pinIndicatorField.top
-                anchors.topMargin: pinWidth/2
+                anchors.topMargin: NodoSystem.lockPinDiameter/2
                 anchors.rightMargin: pinMiddlePaddings
-                border.color: borderColor
-                color: pinIndex > 5 ? pinFilledColor : pinEmptyColor
+                border.color: NodoSystem.lockIndicatorBorderColor
+                color: pinIndex > 0 ? NodoSystem.lockIndicatorFilledColor : NodoSystem.lockIndicatorEmptyColor
             }
         }
     }
@@ -208,27 +203,27 @@ Item {
         anchors.leftMargin: (lockScreenMainRect.width - width)/2
         width: lockScreen.buttonPadWidth
         height: lockScreen.buttonPadHeight
-
-        color: "lightblue"
+        color: "#000000"
 
         NodoButton {
             id: button1
-            buttonWidth: lockScreen.buttonWidth
+            buttonWidth: NodoSystem.lockButtonWidth
             fitMinimal: true
-            height: lockScreen.buttonHeight
+            height: NodoSystem.lockButtonHeight
             anchors.top: buttonPadRect.top
             anchors.left: buttonPadRect.left
             anchors.topMargin: topAndBottomSpaces
             anchors.leftMargin: leftAndRightSpaces
             isActive: buttonsActive
+            backgroundColor: NodoSystem.lockButtonColor
 
             Text {
                 anchors.fill: parent
                 text: "1"
-                font.pixelSize: 32
+                font.pixelSize: NodoSystem.lockButtonTextSize
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
-                color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
+                color: NodoSystem.lockButtonTextColor
                 font.family: NodoSystem.fontUrbanist.name
             }
 
@@ -239,21 +234,22 @@ Item {
 
         NodoButton {
             id: button2
-            buttonWidth: lockScreen.buttonWidth
+            buttonWidth: NodoSystem.lockButtonWidth
             fitMinimal: true
-            height: lockScreen.buttonHeight
+            height: NodoSystem.lockButtonHeight
             anchors.top: button1.top
             anchors.left: button1.right
             anchors.leftMargin: horizontalSpaceBetweenButtons
             isActive: buttonsActive
+            backgroundColor: NodoSystem.lockButtonColor
 
             Text {
                 anchors.fill: parent
                 text: "2"
-                font.pixelSize: 32
+                font.pixelSize: NodoSystem.lockButtonTextSize
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
-                color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
+                color: NodoSystem.lockButtonTextColor
                 font.family: NodoSystem.fontUrbanist.name
             }
 
@@ -264,21 +260,22 @@ Item {
 
         NodoButton {
             id: button3
-            buttonWidth: lockScreen.buttonWidth
+            buttonWidth: NodoSystem.lockButtonWidth
             fitMinimal: true
-            height: lockScreen.buttonHeight
+            height: NodoSystem.lockButtonHeight
             anchors.top: button1.top
             anchors.left: button2.right
             anchors.leftMargin: horizontalSpaceBetweenButtons
             isActive: buttonsActive
+            backgroundColor: NodoSystem.lockButtonColor
 
             Text {
                 anchors.fill: parent
                 text: "3"
-                font.pixelSize: 32
+                font.pixelSize: NodoSystem.lockButtonTextSize
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
-                color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
+                color: NodoSystem.lockButtonTextColor
                 font.family: NodoSystem.fontUrbanist.name
             }
 
@@ -289,22 +286,23 @@ Item {
 
         NodoButton {
             id: button4
-            buttonWidth: lockScreen.buttonWidth
+            buttonWidth: NodoSystem.lockButtonWidth
             fitMinimal: true
-            height: lockScreen.buttonHeight
+            height: NodoSystem.lockButtonHeight
             anchors.top: button1.bottom
             anchors.left: buttonPadRect.left
             anchors.topMargin: verticalSpaceBetweenButtons
             anchors.leftMargin: leftAndRightSpaces
             isActive: buttonsActive
+            backgroundColor: NodoSystem.lockButtonColor
 
             Text {
                 anchors.fill: parent
                 text: "4"
-                font.pixelSize: 32
+                font.pixelSize: NodoSystem.lockButtonTextSize
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
-                color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
+                color: NodoSystem.lockButtonTextColor
                 font.family: NodoSystem.fontUrbanist.name
             }
 
@@ -315,21 +313,22 @@ Item {
 
         NodoButton {
             id: button5
-            buttonWidth: lockScreen.buttonWidth
+            buttonWidth: NodoSystem.lockButtonWidth
             fitMinimal: true
-            height: lockScreen.buttonHeight
+            height: NodoSystem.lockButtonHeight
             anchors.top: button4.top
             anchors.left: button4.right
             anchors.leftMargin: horizontalSpaceBetweenButtons
             isActive: buttonsActive
+            backgroundColor: NodoSystem.lockButtonColor
 
             Text {
                 anchors.fill: parent
                 text: "5"
-                font.pixelSize: 32
+                font.pixelSize: NodoSystem.lockButtonTextSize
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
-                color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
+                color: NodoSystem.lockButtonTextColor
                 font.family: NodoSystem.fontUrbanist.name
             }
 
@@ -340,21 +339,22 @@ Item {
 
         NodoButton {
             id: button6
-            buttonWidth: lockScreen.buttonWidth
+            buttonWidth: NodoSystem.lockButtonWidth
             fitMinimal: true
-            height: lockScreen.buttonHeight
+            height: NodoSystem.lockButtonHeight
             anchors.top: button4.top
             anchors.left: button5.right
             anchors.leftMargin: horizontalSpaceBetweenButtons
             isActive: buttonsActive
+            backgroundColor: NodoSystem.lockButtonColor
 
             Text {
                 anchors.fill: parent
                 text: "6"
-                font.pixelSize: 32
+                font.pixelSize: NodoSystem.lockButtonTextSize
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
-                color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
+                color: NodoSystem.lockButtonTextColor
                 font.family: NodoSystem.fontUrbanist.name
             }
 
@@ -365,22 +365,23 @@ Item {
 
         NodoButton {
             id: button7
-            buttonWidth: lockScreen.buttonWidth
+            buttonWidth: NodoSystem.lockButtonWidth
             fitMinimal: true
-            height: lockScreen.buttonHeight
+            height: NodoSystem.lockButtonHeight
             anchors.top: button4.bottom
             anchors.left: buttonPadRect.left
             anchors.topMargin: verticalSpaceBetweenButtons
             anchors.leftMargin: leftAndRightSpaces
             isActive: buttonsActive
+            backgroundColor: NodoSystem.lockButtonColor
 
             Text {
                 anchors.fill: parent
                 text: "7"
-                font.pixelSize: 32
+                font.pixelSize: NodoSystem.lockButtonTextSize
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
-                color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
+                color: NodoSystem.lockButtonTextColor
                 font.family: NodoSystem.fontUrbanist.name
             }
 
@@ -391,21 +392,22 @@ Item {
 
         NodoButton {
             id: button8
-            buttonWidth: lockScreen.buttonWidth
+            buttonWidth: NodoSystem.lockButtonWidth
             fitMinimal: true
-            height: lockScreen.buttonHeight
+            height: NodoSystem.lockButtonHeight
             anchors.top: button7.top
             anchors.left: button7.right
             anchors.leftMargin: horizontalSpaceBetweenButtons
             isActive: buttonsActive
+            backgroundColor: NodoSystem.lockButtonColor
 
             Text {
                 anchors.fill: parent
                 text: "8"
-                font.pixelSize: 32
+                font.pixelSize: NodoSystem.lockButtonTextSize
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
-                color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
+                color: NodoSystem.lockButtonTextColor
                 font.family: NodoSystem.fontUrbanist.name
             }
 
@@ -416,21 +418,22 @@ Item {
 
         NodoButton {
             id: button9
-            buttonWidth: lockScreen.buttonWidth
+            buttonWidth: NodoSystem.lockButtonWidth
             fitMinimal: true
-            height: lockScreen.buttonHeight
+            height: NodoSystem.lockButtonHeight
             anchors.top: button7.top
             anchors.left: button8.right
             anchors.leftMargin: horizontalSpaceBetweenButtons
             isActive: buttonsActive
+            backgroundColor: NodoSystem.lockButtonColor
 
             Text {
                 anchors.fill: parent
                 text: "9"
-                font.pixelSize: 32
+                font.pixelSize: NodoSystem.lockButtonTextSize
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
-                color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
+                color: NodoSystem.lockButtonTextColor
                 font.family: NodoSystem.fontUrbanist.name
             }
 
@@ -440,53 +443,54 @@ Item {
         }
 
         NodoButton {
-            id: buttonDelete
-            buttonWidth: lockScreen.buttonHeight
-            fitMinimal: true
-            height: lockScreen.buttonHeight
-            anchors.top: button7.bottom
-            anchors.left: buttonPadRect.left
-            anchors.topMargin: verticalSpaceBetweenButtons
-            anchors.leftMargin: leftAndRightSpaces
-            isActive: buttonsActive
-
-            Image {
-
-                anchors.fill: parent
-                anchors.topMargin: lockScreen.buttonHeight*buttonImageMargins
-                anchors.leftMargin: lockScreen.buttonHeight*buttonImageMargins
-                anchors.bottomMargin: lockScreen.buttonHeight*buttonImageMargins
-                anchors.rightMargin: lockScreen.buttonHeight*buttonImageMargins
-                source: "qrc:/Images/DeleteButton.png"
-            }
-
-            onClicked: {
-                setPINValue(-1)
-            }
-        }
-
-        NodoButton {
             id: button0
-            buttonWidth: lockScreen.buttonWidth
+            buttonWidth: NodoSystem.lockButtonWidth
             fitMinimal: true
-            height: lockScreen.buttonHeight
+            height: NodoSystem.lockButtonHeight
             anchors.top: buttonDelete.top
-            anchors.left: buttonDelete.right
-            anchors.leftMargin: horizontalSpaceBetweenButtons
+            anchors.left: button8.left
             isActive: buttonsActive
+            backgroundColor: NodoSystem.lockButtonColor
 
             Text {
                 anchors.fill: parent
                 text: "0"
-                font.pixelSize: 32
+                font.pixelSize: NodoSystem.lockButtonTextSize
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
-                color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
+                color: NodoSystem.lockButtonTextColor
                 font.family: NodoSystem.fontUrbanist.name
             }
 
             onClicked: {
                 setPINValue(0)
+            }
+        }
+
+        NodoButton {
+            id: buttonDelete
+            buttonWidth: NodoSystem.lockButtonWidth
+            fitMinimal: true
+            height: NodoSystem.lockButtonHeight
+            anchors.top: button9.bottom
+            anchors.left: button0.right
+            anchors.topMargin: verticalSpaceBetweenButtons
+            anchors.leftMargin: horizontalSpaceBetweenButtons
+            isActive: buttonsActive
+            backgroundColor: NodoSystem.lockButtonColor
+
+            Image {
+
+                anchors.fill: parent
+                anchors.topMargin: buttonImageMargins
+                anchors.leftMargin: buttonImageMargins
+                anchors.bottomMargin: buttonImageMargins
+                anchors.rightMargin: buttonImageMargins
+                source: "qrc:/Images/delete.png"
+            }
+
+            onClicked: {
+                setPINValue(-1)
             }
         }
     }

@@ -77,8 +77,8 @@
         <file>qml/NodoEthernetNetworkConnectedProfile.qml</file>
         <file>qml/DevicePinScreen.qml</file>
         <file>qml/NodoLockScreen.qml</file>
-        <file>Images/DeleteButton.png</file>
         <file>qml/NodoPinControlScreen.qml</file>
+        <file>Images/delete.png</file>
     </qresource>
     <qresource prefix="/NodoSystem">
         <file alias="qmldir">assets/NodoSystem/qmldir</file>
