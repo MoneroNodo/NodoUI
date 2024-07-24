@@ -1,14 +1,5 @@
 {
-    "display": {
-        "display_orientation": -90,
-        "screensaver_item_change_timeout_in_sec": 10,
-        "screensaver_timeout_in_sec": 60,
-        "screensaver_type": 2
-    },
     "feeds": {
-        "feed_0": {
-            "selected": true
-        },
         "feed_1": {
             "description_tag": "content",
             "image_attr": "url",
@@ -20,7 +11,7 @@
             "uri": "https://www.getmonero.org/feed.xml",
             "visible": true
         },
-        "feed_10": {
+        "feed_0": {
             "description_tag": "",
             "image_attr": "",
             "imgage_tag": "",

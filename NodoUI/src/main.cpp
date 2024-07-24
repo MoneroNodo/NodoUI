@@ -22,13 +22,13 @@ int main(int argc, char *argv[]) {
 
     NodoNetworkManager *networkManager = new NodoNetworkManager();
     NodoEmbeddedUIConfigParser *embeddedConfigParser = new NodoEmbeddedUIConfigParser();
+    NodoFeedParser *feedParser = new NodoFeedParser();
+
     NodoConfigParser *configParser = new NodoConfigParser();
     MoneroLWS *moneroLWS = new MoneroLWS(configParser);
     NodoSystemStatusParser *systemStatusParser = new NodoSystemStatusParser(configParser);
-    NodoSystemControl *systemControl = new NodoSystemControl(embeddedConfigParser, configParser);
-    NodoFeedParser *feedParser = new NodoFeedParser(embeddedConfigParser);
+    NodoSystemControl *systemControl = new NodoSystemControl(embeddedConfigParser, configParser, feedParser);
     NodoSyncInfo *syncInfo = new NodoSyncInfo();
-
     Translator *translator = new Translator(configParser, &engine);
     NodoPriceTicker *priceTicker = new NodoPriceTicker(configParser, networkManager);
 

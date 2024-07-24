@@ -2,7 +2,6 @@
 #define NODO_FEED_PARSER_H
 #include <QObject>
 #include <QVector>
-#include "NodoEmbeddedUIConfigParser.h"
 #include <QFile>
 #include <QFileInfo>
 #include <QList>
@@ -17,6 +16,35 @@
 #include <QTimer>
 #include <QDebug>
 #include <QSslError>
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QJsonObject>
+
+#define MAX_FEED_COUNT 10
+
+typedef enum {
+    KEY_NAME,
+    KEY_URI,
+    KEY_SELECTED,
+    KEY_VISIBLE,
+    KEY_NUM_OF_FEEDS_TO_SHOW,
+    KEY_DESCRIPTION_TAG,
+    KEY_IMAGE_TAG,
+    KEY_IMAGE_ATTR,
+    KEY_PUB_DATE_TAG,
+}feed_keys_t;
+
+typedef struct {
+    QString nameItem;
+    QString uriItem;
+    bool selectedItem;
+    bool visibleItem;
+    int numOfFeedsToShowItem;
+    QString description_tag;
+    QString image_tag;
+    QString image_attr_tag;
+    QString pub_date_tag;
+}feeds_t;
 
 struct post_t{
     Q_GADGET
@@ -36,7 +64,7 @@ class NodoFeedParser : public QObject
 {
     Q_OBJECT
 public:
-    explicit NodoFeedParser(NodoEmbeddedUIConfigParser *embeddedUIConfigParser = Q_NULLPTR);
+    explicit NodoFeedParser(QObject *parent = Q_NULLPTR);
 
     Q_INVOKABLE int getItemCount(void);
     Q_INVOKABLE QString getItemTitle(const int index);
@@ -48,6 +76,9 @@ public:
     Q_INVOKABLE QString getItemImage(const int index);
     Q_INVOKABLE void updateRequested(void);
     Q_INVOKABLE void setTextColor(QString textColor);
+
+    QVector<feeds_t> readFeedKeys(void);
+    void writeFeedKeys(feed_keys_t key, int index, bool state);
 
 signals:
     void postListReady(void);
@@ -64,17 +95,26 @@ private:
     QNetworkAccessManager m_manager;
     QList<QNetworkReply *> m_currentDownloads;
 
+    QString m_textColor;
+    int m_feedCount = 0;
+    QJsonDocument m_document;
+    QJsonObject m_rootObj;
+    QJsonObject m_feedsObj;
+    const QStringList m_feedKeyList = {"name", "uri", "selected", "visible", "num_of_feeds_to_show", "description_tag", "image_tag", "image_attr", "pub_date_tag"};
+    const QString feedObjName = "feeds";
+    const QString m_feedNames = "feed_";
+    const QString m_json_file_name = "/home/nodo/variables/nodoUI.feeds.json";
+
     void doDownload(const QUrl &url);
     int getIndexFromUri(const QUrl &url);
     bool isFeedValid(int index);
-    NodoEmbeddedUIConfigParser *m_embeddedUIConfigParser;
-    QString m_textColor;
+    void writeJson(void);
+    int getFeedCount(void);
 
 private slots:
     void downloadFinished(QNetworkReply *reply);
     void sslErrors(const QList<QSslError> &errors);
     void updateFeedList(void);
-
 
 public slots:
     void request(void);

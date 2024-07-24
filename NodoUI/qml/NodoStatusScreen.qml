@@ -400,7 +400,7 @@ Rectangle {
         width: componentWidth + 2 + (2*componentLeftMargin)
         height: tXPerSecondField.y + tXPerSecondField.height + componentBottomMargin
         color: cardBackgroundColor
-        visible: true
+        visible: false
 
         Label {
             id: moneroStatusTabName

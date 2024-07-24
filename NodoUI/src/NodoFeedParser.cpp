@@ -17,14 +17,31 @@ const QString html_part_2 = "; text-decoration: none; } </style> </head> <body>"
 const QString html_end = "</body> </html>";
 
 
-NodoFeedParser::NodoFeedParser(NodoEmbeddedUIConfigParser *embeddedUIConfigParser) : QObject(embeddedUIConfigParser)
+NodoFeedParser::NodoFeedParser(QObject *parent) : QObject(parent)
 {
     m_RSSPostCount = 0;
     m_RSSCount = 0;
     m_receivedRSSCount = 0;
     m_textColor = "yellow";
 
-    m_embeddedUIConfigParser = embeddedUIConfigParser;
+
+    QString val;
+    QFile file;
+    file.setFileName(m_json_file_name);
+    if(file.open(QIODevice::ReadOnly | QIODevice::Text))
+    {
+        val = file.readAll();
+        file.close();
+
+        m_document = QJsonDocument::fromJson(val.toUtf8());
+        m_rootObj = m_document.object();
+        m_feedsObj = m_rootObj[feedObjName].toObject();
+    }
+    else
+    {
+        qDebug() << "couldn't open config file " + m_json_file_name;
+    }
+
     connect(&m_manager, SIGNAL(finished(QNetworkReply*)), this, SLOT(downloadFinished(QNetworkReply*)));
     connect(this, SIGNAL(feedReceived()), this, SLOT(updateFeedList()));
 }
@@ -49,7 +66,7 @@ void NodoFeedParser::request(void)
     m_all_posts.clear();
 
     m_feeds_str.clear();
-    m_feeds_str = m_embeddedUIConfigParser->readFeedKeys();
+    m_feeds_str = readFeedKeys();
 
     for(int i = 0; i < MAX_FEED_COUNT; i++)
     {
@@ -238,4 +255,103 @@ void NodoFeedParser::updateRequested(void)
 void NodoFeedParser::setTextColor(QString textColor)
 {
     m_textColor = textColor;
+}
+
+QVector<feeds_t> NodoFeedParser::readFeedKeys(void)
+{
+    m_feeds_str.clear();
+
+    if(m_feedsObj.isEmpty())
+    {
+        qDebug() << "couldn't find feed keys";
+        m_feedCount = MAX_FEED_COUNT;
+
+        for(int i = 0; i < m_feedCount; i++)
+        {
+            feeds_t tmp_feeds;
+            tmp_feeds.nameItem = "";
+            tmp_feeds.uriItem = "";
+            tmp_feeds.selectedItem = false;
+            tmp_feeds.visibleItem = false;
+            tmp_feeds.numOfFeedsToShowItem = 0;
+            tmp_feeds.description_tag = "";
+            tmp_feeds.image_tag = "";
+            tmp_feeds.image_attr_tag = "";
+            tmp_feeds.pub_date_tag = "";
+
+            m_feeds_str.push_back(tmp_feeds);
+        }
+        return m_feeds_str;
+    }
+
+    m_feedCount = m_feedsObj.size();
+    if(m_feedCount > MAX_FEED_COUNT)
+    {
+        m_feedCount = MAX_FEED_COUNT;
+    }
+
+    for(int i = 0; i < m_feedCount; i++)
+    {
+        feeds_t tmp_feeds;
+        QJsonObject feeds_obj = m_feedsObj[m_feedNames + QString::number(i, 10)].toObject();
+        QJsonValue jsonValue = feeds_obj.value(m_feedKeyList[KEY_NAME]);
+        tmp_feeds.nameItem = jsonValue.toString();
+
+        jsonValue = feeds_obj.value(m_feedKeyList[KEY_URI]);
+        tmp_feeds.uriItem = jsonValue.toString();
+
+        jsonValue = feeds_obj.value(m_feedKeyList[KEY_SELECTED]);
+        tmp_feeds.selectedItem = jsonValue.toBool();
+
+        jsonValue = feeds_obj.value(m_feedKeyList[KEY_VISIBLE]);
+        tmp_feeds.visibleItem = jsonValue.toBool();
+
+        jsonValue = feeds_obj.value(m_feedKeyList[KEY_NUM_OF_FEEDS_TO_SHOW]);
+        tmp_feeds.numOfFeedsToShowItem = jsonValue.toInt();
+
+        jsonValue = feeds_obj.value(m_feedKeyList[KEY_DESCRIPTION_TAG]);
+        tmp_feeds.description_tag = jsonValue.toString();
+
+        jsonValue = feeds_obj.value(m_feedKeyList[KEY_IMAGE_TAG]);
+        tmp_feeds.image_tag = jsonValue.toString();
+
+        jsonValue = feeds_obj.value(m_feedKeyList[KEY_IMAGE_ATTR]);
+        tmp_feeds.image_attr_tag = jsonValue.toString();
+
+        jsonValue = feeds_obj.value(m_feedKeyList[KEY_PUB_DATE_TAG]);
+        tmp_feeds.pub_date_tag = jsonValue.toString();
+
+        m_feeds_str.push_back(tmp_feeds);
+    }
+    return m_feeds_str;
+}
+
+void NodoFeedParser::writeFeedKeys(feed_keys_t key, int index, bool state)
+{
+    if(m_feedsObj.isEmpty())
+    {
+        return;
+    }
+
+    QJsonObject feeds = m_feedsObj[m_feedNames + QString::number(index, 10)].toObject();
+    feeds.insert(m_feedKeyList[key], state);
+    m_feedsObj.insert(m_feedNames + QString::number(index, 10), feeds);
+    writeJson();
+}
+
+int NodoFeedParser::getFeedCount(void)
+{
+    return m_feedCount;
+}
+
+void NodoFeedParser::writeJson(void)
+{
+    QFile file;
+
+    m_rootObj.insert(feedObjName, m_feedsObj);
+    m_document.setObject(m_rootObj);
+    file.setFileName(m_json_file_name);
+    file.open(QFile::WriteOnly | QFile::Text | QFile::Truncate);
+    file.write(m_document.toJson());
+    file.close();
 }

@@ -7,7 +7,7 @@
 #include <QTimeZone>
 #include <QTimer>
 #include "NodoNotificationMessages.h"
-#include "NodoSystemStatusParser.h"
+#include "NodoFeedParser.h"
 
 // #define ENABLE_TEST_CODE
 
@@ -17,7 +17,7 @@ class NodoSystemControl : public QObject
     Q_PROPERTY(bool appTheme READ getAppTheme WRITE setAppTheme NOTIFY appThemeChanged)
 
 public:
-    NodoSystemControl(NodoEmbeddedUIConfigParser *embeddedUIConfigParser = Q_NULLPTR, NodoConfigParser *configParser = Q_NULLPTR);
+    NodoSystemControl(NodoEmbeddedUIConfigParser *embeddedUIConfigParser = Q_NULLPTR, NodoConfigParser *configParser = Q_NULLPTR, NodoFeedParser *feedParser = Q_NULLPTR);
 
     bool getAppTheme(void);
     void setAppTheme(bool appTheme);
@@ -127,6 +127,7 @@ private:
     display_settings_t m_displaySettings;
     NodoEmbeddedUIConfigParser *m_embeddedUIConfigParser;
     NodoConfigParser *m_configParser;
+    NodoFeedParser *m_feedParser;
     NodoDBusController *m_dbusController;
 
     NodoNotifier m_notifier;

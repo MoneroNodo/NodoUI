@@ -35,7 +35,7 @@ fi
 #copy files
 sudo cp $NODO_UI_PROJECT_PATH/build/NodoUI $NODO_APP_PATH
 sudo cp $NODO_UI_PROJECT_PATH/config/nodoUI.sh $NODO_APP_PATH
-sudo cp $NODO_UI_PROJECT_PATH/config/nodoUI.config.json $NODO_CONFIG_PATH
+sudo cp $NODO_UI_PROJECT_PATH/config/nodoUI.feeds.json $NODO_CONFIG_PATH
 sudo cp $NODO_UI_PROJECT_PATH/config/nodoUI.service /usr/lib/systemd/system/
 
 sudo cp $NODO_DAEMON_PROJECT_PATH/build/NodoDaemon $NODO_APP_PATH
@@ -55,7 +55,7 @@ sudo chmod a+x $NODO_APP_PATH/nodoUI.sh
 sudo cp -a $NODO_UI_PROJECT_PATH/build/NodoCanvas /opt/nodo
 sudo cp -a $NODO_UI_PROJECT_PATH/build/QtQuick2QREncode /opt/nodo
 
-sudo chown nodo:nodo $NODO_CONFIG_PATH/nodoUI.config.json
+sudo chown nodo:nodo $NODO_CONFIG_PATH/nodoUI.feeds.json
 
 sudo usermod -aG video nodo
 sudo usermod -aG input nodo

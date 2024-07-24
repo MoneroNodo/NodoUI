@@ -7,7 +7,6 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QTimer>
-
 #include "NodoConfigParser.h"
 
 class NodoSystemStatusParser : public QObject

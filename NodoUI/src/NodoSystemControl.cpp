@@ -1,13 +1,14 @@
 #include "NodoSystemControl.h"
 
 
-NodoSystemControl::NodoSystemControl(NodoEmbeddedUIConfigParser *embeddedUIConfigParser, NodoConfigParser *configParser) : QObject(embeddedUIConfigParser)
+NodoSystemControl::NodoSystemControl(NodoEmbeddedUIConfigParser *embeddedUIConfigParser, NodoConfigParser *configParser, NodoFeedParser *feedParser)
 {
     m_embeddedUIConfigParser = embeddedUIConfigParser;
     m_configParser = configParser;
+    m_feedParser = feedParser;
     m_dbusController = new NodoDBusController(this);
 
-    m_feeds_str = embeddedUIConfigParser->readFeedKeys();
+    m_feeds_str = m_feedParser->readFeedKeys();
     m_displaySettings = embeddedUIConfigParser->readDisplaySettings();
     m_timezone = m_configParser->getTimezone();
     m_tz_id = m_tzList.indexOf(m_timezone);
@@ -59,9 +60,9 @@ void NodoSystemControl::setAppTheme(bool appTheme)
 
 void NodoSystemControl::setVisibleState(int index, bool state)
 {
-    m_embeddedUIConfigParser->writeFeedKeys(KEY_VISIBLE, index, state);
+    m_feedParser->writeFeedKeys(KEY_VISIBLE, index, state);
     m_feeds_str.clear();
-    m_feeds_str = m_embeddedUIConfigParser->readFeedKeys();
+    m_feeds_str = m_feedParser->readFeedKeys();
 }
 
 
@@ -73,9 +74,9 @@ bool NodoSystemControl::getVisibleState(int index)
 
 void NodoSystemControl::setSelectedState(int index, bool state)
 {
-    m_embeddedUIConfigParser->writeFeedKeys(KEY_SELECTED, index, state);
+    m_feedParser->writeFeedKeys(KEY_SELECTED, index, state);
     m_feeds_str.clear();
-    m_feeds_str = m_embeddedUIConfigParser->readFeedKeys();
+    m_feeds_str = m_feedParser->readFeedKeys();
 }
 
 
