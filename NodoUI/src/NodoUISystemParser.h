@@ -1,5 +1,5 @@
-#ifndef NODO_EMBEDDED_CONFIG_PARSER_H
-#define NODO_EMBEDDED_CONFIG_PARSER_H
+#ifndef NODO_UI_SYSTEM_PARSER_H
+#define NODO_UI_SYSTEM_PARSER_H
 
 #include <QObject>
 #include <QFile>
@@ -30,11 +30,11 @@ typedef struct {
 }display_settings_t;
 
 
-class NodoEmbeddedUIConfigParser : public QObject
+class NodoUISystemParser : public QObject
 {
     Q_OBJECT
 public:
-    explicit NodoEmbeddedUIConfigParser(QObject *parent = Q_NULLPTR);
+    explicit NodoUISystemParser(QObject *parent = Q_NULLPTR);
 
     display_settings_t readDisplaySettings(void);
 
@@ -72,6 +72,6 @@ private:
     void writeJson(void);
 };
 
-#endif // NODO_EMBEDDED_CONFIG_PARSER_H
+#endif // NODO_UI_SYSTEM_PARSER_H
 
 

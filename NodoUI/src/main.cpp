@@ -3,7 +3,7 @@
 #include <QQmlContext>
 #include <Qt>
 
-#include "NodoEmbeddedUIConfigParser.h"
+#include "NodoUISystemParser.h"
 #include "NodoConfigParser.h"
 #include "NodoFeedParser.h"
 #include "NodoSystemControl.h"
@@ -21,13 +21,13 @@ int main(int argc, char *argv[]) {
     QQmlApplicationEngine engine;
 
     NodoNetworkManager *networkManager = new NodoNetworkManager();
-    NodoEmbeddedUIConfigParser *embeddedConfigParser = new NodoEmbeddedUIConfigParser();
+    NodoUISystemParser *uiSystemParser = new NodoUISystemParser();
     NodoFeedParser *feedParser = new NodoFeedParser();
 
     NodoConfigParser *configParser = new NodoConfigParser();
     MoneroLWS *moneroLWS = new MoneroLWS(configParser);
     NodoSystemStatusParser *systemStatusParser = new NodoSystemStatusParser(configParser);
-    NodoSystemControl *systemControl = new NodoSystemControl(embeddedConfigParser, configParser, feedParser);
+    NodoSystemControl *systemControl = new NodoSystemControl(uiSystemParser, configParser, feedParser);
     NodoSyncInfo *syncInfo = new NodoSyncInfo();
     Translator *translator = new Translator(configParser, &engine);
     NodoPriceTicker *priceTicker = new NodoPriceTicker(configParser, networkManager);

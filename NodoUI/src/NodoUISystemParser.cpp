@@ -1,6 +1,6 @@
-#include "NodoEmbeddedUIConfigParser.h"
+#include "NodoUISystemParser.h"
 
-NodoEmbeddedUIConfigParser::NodoEmbeddedUIConfigParser(QObject *parent) : QObject(parent)
+NodoUISystemParser::NodoUISystemParser(QObject *parent) : QObject(parent)
 {
     QString val;
     QFile file;
@@ -36,7 +36,7 @@ NodoEmbeddedUIConfigParser::NodoEmbeddedUIConfigParser(QObject *parent) : QObjec
     }
 }
 
-display_settings_t NodoEmbeddedUIConfigParser::readDisplaySettings(void)
+display_settings_t NodoUISystemParser::readDisplaySettings(void)
 {
     if(m_systemObj.isEmpty())
     {
@@ -72,7 +72,7 @@ display_settings_t NodoEmbeddedUIConfigParser::readDisplaySettings(void)
     return m_displaySettings;
 }
 
-void NodoEmbeddedUIConfigParser::writeJson(void)
+void NodoUISystemParser::writeJson(void)
 {
     QFile file;
 
@@ -84,7 +84,7 @@ void NodoEmbeddedUIConfigParser::writeJson(void)
     file.close();
 }
 
-void NodoEmbeddedUIConfigParser::writeScreenSaverTimeout(int timeout)
+void NodoUISystemParser::writeScreenSaverTimeout(int timeout)
 {
     if(m_systemObj.isEmpty())
     {
@@ -95,12 +95,12 @@ void NodoEmbeddedUIConfigParser::writeScreenSaverTimeout(int timeout)
     writeJson();
 }
 
-int NodoEmbeddedUIConfigParser::readScreenSaverTimeout(void)
+int NodoUISystemParser::readScreenSaverTimeout(void)
 {
     return m_displaySettings.screenSaverTimeoutInSec;
 }
 
-void NodoEmbeddedUIConfigParser::writeScreenSaverItemChangeTimeout(int timeout)
+void NodoUISystemParser::writeScreenSaverItemChangeTimeout(int timeout)
 {
     if(m_systemObj.isEmpty())
     {
@@ -111,13 +111,13 @@ void NodoEmbeddedUIConfigParser::writeScreenSaverItemChangeTimeout(int timeout)
     writeJson();
 }
 
-int NodoEmbeddedUIConfigParser::readScreenSaverItemChangeTimeout(void)
+int NodoUISystemParser::readScreenSaverItemChangeTimeout(void)
 {
     return m_displaySettings.screenSaverItemChangeTimeoutInSec;
 }
 
 
-void NodoEmbeddedUIConfigParser::writeScreenSaverType(int state)
+void NodoUISystemParser::writeScreenSaverType(int state)
 {
     if(m_systemObj.isEmpty())
     {
@@ -128,13 +128,13 @@ void NodoEmbeddedUIConfigParser::writeScreenSaverType(int state)
     writeJson();
 }
 
-int NodoEmbeddedUIConfigParser::readScreenSaverType(void)
+int NodoUISystemParser::readScreenSaverType(void)
 {
     return m_displaySettings.screenSaverType;
 }
 
 
-void NodoEmbeddedUIConfigParser::writeDisplayOrientation(int orientation)
+void NodoUISystemParser::writeDisplayOrientation(int orientation)
 {
     if(m_systemObj.isEmpty())
     {
@@ -145,17 +145,17 @@ void NodoEmbeddedUIConfigParser::writeDisplayOrientation(int orientation)
     writeJson();
 }
 
-int NodoEmbeddedUIConfigParser::readDisplayOrientation(void)
+int NodoUISystemParser::readDisplayOrientation(void)
 {
     return m_displaySettings.displayOrientation;
 }
 
-bool NodoEmbeddedUIConfigParser::readPinEnabledStatus(void)
+bool NodoUISystemParser::readPinEnabledStatus(void)
 {
     return !m_displaySettings.pinHash.isEmpty();
 }
 
-bool NodoEmbeddedUIConfigParser::comparePinHash(QString pin)
+bool NodoUISystemParser::comparePinHash(QString pin)
 {
     QByteArrayView pinHash = QCryptographicHash::hash(pin.toUtf8(), QCryptographicHash::Sha256);
     QByteArray hashText = QByteArray(pinHash.toByteArray(), pinHash.size()).toHex().constData();
@@ -167,7 +167,7 @@ bool NodoEmbeddedUIConfigParser::comparePinHash(QString pin)
     return false;
 }
 
-bool NodoEmbeddedUIConfigParser::setNewPin(QString newPin)
+bool NodoUISystemParser::setNewPin(QString newPin)
 {
     if(m_systemObj.isEmpty())
     {
@@ -184,7 +184,7 @@ bool NodoEmbeddedUIConfigParser::setNewPin(QString newPin)
     return true;
 }
 
-void NodoEmbeddedUIConfigParser::disablePin(void)
+void NodoUISystemParser::disablePin(void)
 {
     if(m_systemObj.isEmpty())
     {
@@ -196,12 +196,12 @@ void NodoEmbeddedUIConfigParser::disablePin(void)
     writeJson();
 }
 
-int NodoEmbeddedUIConfigParser::getLockAfterTime(void)
+int NodoUISystemParser::getLockAfterTime(void)
 {
     return m_displaySettings.lockAfter;
 }
 
-void NodoEmbeddedUIConfigParser::setLockAfterTime(int newTime)
+void NodoUISystemParser::setLockAfterTime(int newTime)
 {
     if(m_systemObj.isEmpty())
     {

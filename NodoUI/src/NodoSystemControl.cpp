@@ -1,15 +1,15 @@
 #include "NodoSystemControl.h"
 
 
-NodoSystemControl::NodoSystemControl(NodoEmbeddedUIConfigParser *embeddedUIConfigParser, NodoConfigParser *configParser, NodoFeedParser *feedParser)
+NodoSystemControl::NodoSystemControl(NodoUISystemParser *uiSystemParser, NodoConfigParser *configParser, NodoFeedParser *feedParser)
 {
-    m_embeddedUIConfigParser = embeddedUIConfigParser;
+    m_uiSystemParser = uiSystemParser;
     m_configParser = configParser;
     m_feedParser = feedParser;
     m_dbusController = new NodoDBusController(this);
 
     m_feeds_str = m_feedParser->readFeedKeys();
-    m_displaySettings = embeddedUIConfigParser->readDisplaySettings();
+    m_displaySettings = m_uiSystemParser->readDisplaySettings();
     m_timezone = m_configParser->getTimezone();
     m_tz_id = m_tzList.indexOf(m_timezone);
 
@@ -94,8 +94,8 @@ bool NodoSystemControl::getSelectedState(int index)
 
 void NodoSystemControl::setScreenSaverType(int state)
 {
-    m_embeddedUIConfigParser->writeScreenSaverType(state);
-    m_displaySettings = m_embeddedUIConfigParser->readDisplaySettings();
+    m_uiSystemParser->writeScreenSaverType(state);
+    m_displaySettings = m_uiSystemParser->readDisplaySettings();
 }
 
 
@@ -107,8 +107,8 @@ int NodoSystemControl::getScreenSaverType(void)
 
 void NodoSystemControl::setScreenSaverTimeout(int timeout)
 {
-    m_embeddedUIConfigParser->writeScreenSaverTimeout(timeout);
-    m_displaySettings = m_embeddedUIConfigParser->readDisplaySettings();
+    m_uiSystemParser->writeScreenSaverTimeout(timeout);
+    m_displaySettings = m_uiSystemParser->readDisplaySettings();
 }
 
 
@@ -120,8 +120,8 @@ int NodoSystemControl::getScreenSaverTimeout(void)
 
 void NodoSystemControl::setScreenSaverItemChangeTimeout(int timeout)
 {
-    m_embeddedUIConfigParser->writeScreenSaverItemChangeTimeout(timeout);
-    m_displaySettings = m_embeddedUIConfigParser->readDisplaySettings();
+    m_uiSystemParser->writeScreenSaverItemChangeTimeout(timeout);
+    m_displaySettings = m_uiSystemParser->readDisplaySettings();
 }
 
 
@@ -225,8 +225,8 @@ int NodoSystemControl::getPasswordMode(void)
 
 void NodoSystemControl::setOrientation(int orientation)
 {
-    m_embeddedUIConfigParser->writeDisplayOrientation(orientation);
-    m_displaySettings = m_embeddedUIConfigParser->readDisplaySettings();
+    m_uiSystemParser->writeDisplayOrientation(orientation);
+    m_displaySettings = m_uiSystemParser->readDisplaySettings();
     emit orientationChanged();
 }
 
@@ -500,21 +500,19 @@ void NodoSystemControl::processNotification(QString message)
 
 bool NodoSystemControl::isPinEnabled(void)
 {
-    return m_embeddedUIConfigParser->readPinEnabledStatus();
+    return m_uiSystemParser->readPinEnabledStatus();
 }
 
 bool NodoSystemControl::verifyPinCode(QString pin)
 {
-    bool retval = m_embeddedUIConfigParser->comparePinHash(pin);
-
-    return retval;
+    return m_uiSystemParser->comparePinHash(pin);
 }
 
 void NodoSystemControl::setPin(QString newPin)
 {
     enableComponent(true);
 
-    if (false == m_embeddedUIConfigParser->setNewPin(newPin))
+    if (false == m_uiSystemParser->setNewPin(newPin))
     {
         m_errorCode = SOMETHING_IS_WRONG;
     }
@@ -524,25 +522,25 @@ void NodoSystemControl::setPin(QString newPin)
         m_errorCode = NEW_PIN_IS_SET;
     }
 
-    m_displaySettings = m_embeddedUIConfigParser->readDisplaySettings();
+    m_displaySettings = m_uiSystemParser->readDisplaySettings();
     emit errorDetected();
 }
 
 void NodoSystemControl::disablePin(void)
 {
-    m_embeddedUIConfigParser->disablePin();
-    m_displaySettings = m_embeddedUIConfigParser->readDisplaySettings();
+    m_uiSystemParser->disablePin();
+    m_displaySettings = m_uiSystemParser->readDisplaySettings();
 }
 
 int NodoSystemControl::getLockAfterTime(void)
 {
-    return m_embeddedUIConfigParser->getLockAfterTime();
+    return m_uiSystemParser->getLockAfterTime();
 }
 
 void NodoSystemControl::setLockAfterTime(QString newTime)
 {
-    m_embeddedUIConfigParser->setLockAfterTime(newTime.toInt());
-    m_displaySettings = m_embeddedUIConfigParser->readDisplaySettings();
+    m_uiSystemParser->setLockAfterTime(newTime.toInt());
+    m_displaySettings = m_uiSystemParser->readDisplaySettings();
     restartLockScreenTimer();
 }
 

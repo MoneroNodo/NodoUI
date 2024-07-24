@@ -26,14 +26,14 @@ DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs depr
 
 SOURCES += \
         src/MoneroLWS.cpp \
-    src/NetworkManagerCommon.cpp \
-        src/NodoEmbeddedUIConfigParser.cpp \
+        src/NetworkManagerCommon.cpp \
         src/NodoConfigParser.cpp \
         src/NodoNetworkManager.cpp \
-    src/NodoSyncInfo.cpp \
+        src/NodoSyncInfo.cpp \
         src/NodoSystemStatusParser.cpp \
-    src/NodoWiredController.cpp \
-    src/NodoWirelessController.cpp \
+        src/NodoUISystemParser.cpp \
+        src/NodoWiredController.cpp \
+        src/NodoWirelessController.cpp \
         src/main.cpp \
         src/NodoFeedParser.cpp \
         src/NodoSystemControl.cpp \
@@ -45,17 +45,17 @@ SOURCES += \
 
 HEADERS += \
         src/MoneroLWS.h \
-    src/NetworkManagerCommon.h \
-        src/NodoEmbeddedUIConfigParser.h \
+        src/NetworkManagerCommon.h \
         src/NodoConfigParser.h \
         src/NodoNetworkManager.h \
-    src/NodoNotificationMessages.h \
-    src/NodoSyncInfo.h \
+        src/NodoNotificationMessages.h \
+        src/NodoSyncInfo.h \
         src/NodoSystemStatusParser.h \
         src/NodoFeedParser.h \
         src/NodoSystemControl.h \
-    src/NodoWiredController.h \
-    src/NodoWirelessController.h \
+        src/NodoUISystemParser.h \
+        src/NodoWiredController.h \
+        src/NodoWirelessController.h \
         src/pugixml.hpp \
         src/pugiconfig.hpp \
         src/NodoTranslator.h \
