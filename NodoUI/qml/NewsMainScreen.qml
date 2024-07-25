@@ -9,131 +9,113 @@ Item {
     id: newsMainScreen
     anchors.fill: parent
     property bool isScreenSaver: false
-    property int curIndexWitouthZero: 0
-    Component
-    {
-        id: newsPage
-        Rectangle {
-            id: app
-            height: newsMainScreen.height
-            width: newsMainScreen.width
-            color: "black"
-            signal reloadComponent()
-            property bool is_increment: true
+    Rectangle {
+        id: app
+        height: newsMainScreen.height
+        width: newsMainScreen.width
+        color: "black"
+        property bool is_increment: true
 
-            Connections {
-                target: feedParser
-                function onPostListReady() {
-                    for (var i = 0; i < feedParser.getItemCount(); i++)  {
-                        viewSwipe.addPage(viewSwipe.createPage(feedParser.getItemTitle(i),
-                                                               feedParser.getItemDescription(i),
-                                                               feedParser.getItemChannel(i),
-                                                               feedParser.getItemTag(i),
-                                                               feedParser.getItemAuth(i),
-                                                               feedParser.getItemTimestamp(i),
-                                                               feedParser.getItemImage(i)
-                                                               ))
+        Connections {
+            target: feedParser
+            function onPostListReady() {
+                for (var i = 0; i < feedParser.getItemCount(); i++)  {
+                    viewSwipe.addPage(viewSwipe.createPage(feedParser.getItemTitle(i),
+                                                           feedParser.getItemDescription(i),
+                                                           feedParser.getItemChannel(i),
+                                                           feedParser.getItemTag(i),
+                                                           feedParser.getItemAuth(i),
+                                                           feedParser.getItemTimestamp(i),
+                                                           feedParser.getItemImage(i)
+                                                           ))
 
-                    }
-                    busyIndicator.running = false
                 }
+                busyIndicator.running = false
+            }
+        }
+
+        SwipeView {
+            id: viewSwipe
+            width: parent.width
+            height: parent.height
+
+            currentIndex: 0
+            Component.onCompleted: {
+                feedParser.updateRequested()
+                busyIndicator.running = true
             }
 
-            SwipeView {
-                id: viewSwipe
-                width: parent.width
-                height: parent.height
-
-                currentIndex: 0
-                Component.onCompleted: {
-                    feedParser.updateRequested()
-                    busyIndicator.running = true
-                }
-
-                function addPage(page) {
-                    addItem(page)
-                    page.visible = true
-                }
-                function createPage(title, description, channel, tag, auth, timestamp, img_path){
-                    var component = Qt.createComponent("NewsContentScreen.qml");
-                    var page = component.incubateObject(viewSwipe,
-                                                      {
-                                                          headerTextStr: title,
-                                                          dataTextStr: description,
-                                                          channelStr: channel,
-                                                          dataTagStr: tag,
-                                                          headerAuthStr: auth,
-                                                          dataTimestampStr: timestamp,
-                                                          imagePath: img_path
-                                                      }
-                                                      );
-                    return page
-                }
+            function addPage(page) {
+                addItem(page)
+                page.visible = true
             }
-
-            Loader {
-                id: loader
-                sourceComponent: app.viewSwipe
-                active: SwipeView.isCurrentItem || SwipeView.isNextItem || SwipeView.isPreviousItem
-                asynchronous: true
+            function createPage(title, description, channel, tag, auth, timestamp, img_path){
+                var component = Qt.createComponent("NewsContentScreen.qml");
+                var page = component.incubateObject(viewSwipe,
+                                                    {
+                                                        headerTextStr: title,
+                                                        dataTextStr: description,
+                                                        channelStr: channel,
+                                                        dataTagStr: tag,
+                                                        headerAuthStr: auth,
+                                                        dataTimestampStr: timestamp,
+                                                        imagePath: img_path
+                                                    }
+                                                    );
+                return page
             }
+        }
 
-            NodoBusyIndicator {
-                id: busyIndicator
-                x: parent.width/2 - busyIndicator.width/2
-                y: parent.height/2 - busyIndicator.height/2
-                running: true
-                indicatorColor: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
-            }
+        Loader {
+            id: loader
+            sourceComponent: app.viewSwipe
+            active: SwipeView.isCurrentItem || SwipeView.isNextItem || SwipeView.isPreviousItem
+            asynchronous: true
+        }
 
-            Component.onCompleted:{
-                feedParser.setTextColor(nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff)
-            }
+        NodoBusyIndicator {
+            id: busyIndicator
+            x: parent.width/2 - busyIndicator.width/2
+            y: parent.height/2 - busyIndicator.height/2
+            running: true
+            indicatorColor: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
+        }
 
-            function changeFeed()
+        Component.onCompleted:{
+            feedParser.setTextColor(nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff)
+        }
+
+        function changeFeed()
+        {
+            if(true == is_increment)
             {
-                if(true == is_increment)
+                if(viewSwipe.currentIndex+1 < viewSwipe.count)
                 {
-                    if(viewSwipe.currentIndex+1 < viewSwipe.count)
-                    {
-                        viewSwipe.incrementCurrentIndex()
-                    }
-                    else
-                    {
-                        is_increment = false
-                        viewSwipe.decrementCurrentIndex()
-                    }
+                    viewSwipe.incrementCurrentIndex()
                 }
                 else
                 {
-                    if(0 !== viewSwipe.currentIndex)
-                    {
-                        viewSwipe.decrementCurrentIndex()
-                    }
-                    else {
-                        is_increment = true
-                        viewSwipe.incrementCurrentIndex()
-                    }
+                    is_increment = false
+                    viewSwipe.decrementCurrentIndex()
                 }
             }
-
-            Timer {
-                id: newsMainScreenTimer
-                interval: nodoControl.getScreenSaverItemChangeTimeout(); running: isScreenSaver; repeat: true
-                onTriggered: changeFeed()
+            else
+            {
+                if(0 !== viewSwipe.currentIndex)
+                {
+                    viewSwipe.decrementCurrentIndex()
+                }
+                else {
+                    is_increment = true
+                    viewSwipe.incrementCurrentIndex()
+                }
             }
         }
-    }
 
-    Loader{
-        id:ldr
-        sourceComponent: newsPage
-        Connections{
-            target:ldr.item
-            function onReloadComponent() {
-                ldr.sourceComponent = undefined
-                ldr.sourceComponent = newsPage
-            }
+        Timer {
+            id: newsMainScreenTimer
+            interval: nodoControl.getScreenSaverItemChangeTimeout(); running: isScreenSaver; repeat: true
+            onTriggered: changeFeed()
         }
     }
 }
