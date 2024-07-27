@@ -52,7 +52,7 @@
             "num_of_feeds_to_show": 5,
             "pub_date_tag": "updated",
             "selected": true,
-            "uri": "https://www.revuo-xmr.com/atom.xml",
+            "uri": "https://www.revuo-xmr.com/index.xml",
             "visible": true
         },
         "feed_5": {
