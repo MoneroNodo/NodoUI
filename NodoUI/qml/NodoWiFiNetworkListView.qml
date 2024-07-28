@@ -89,7 +89,7 @@ NodoCanvas {
                 id: availableNetworksCanvas
                 anchors.left: wifiNetworkList.left
                 anchors.top: isConnectedWifiAvailable ? currentNetworkCanvas.bottom : wifiNetworkList.top
-                // anchors.topMargin: isConnectedWifiAvailable ? 3 : 0
+                anchors.topMargin: isConnectedWifiAvailable ? NodoSystem.nodoTopMargin : 0
                 anchors.right: wifiNetworkList.right
                 color: "black"
                 height: ssidList.contentHeight + 16
@@ -111,7 +111,7 @@ NodoCanvas {
                         width: ssidList.width
                     }
 
-                    spacing: 0
+                    spacing: NodoSystem.nodoTopMargin
                 }
             }
         }

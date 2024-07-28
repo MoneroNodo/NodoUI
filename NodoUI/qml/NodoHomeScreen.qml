@@ -35,11 +35,13 @@ Item {
             target: priceTicker
             function onCurrencyIndexChanged() {
                 exchangeNameText.text =  "XMR-" + nodoCurrencies.currencyCodes[priceTicker.getCurrentCurrencyIndex()] + ":"
-                exchangeRateText.text = nodoCurrencies.currencySymbols[priceTicker.getCurrentCurrencyIndex()] + "---.--"
+                exchangeSymbolText.text = nodoCurrencies.currencySymbols[priceTicker.getCurrentCurrencyIndex()]
+                exchangeRateText.text = "---.--"
             }
 
             function onCurrencyReceived() {
-                exchangeRateText.text = nodoCurrencies.currencySymbols[priceTicker.getCurrentCurrencyIndex()] + priceTicker.getCurrency()
+                exchangeSymbolText.text = nodoCurrencies.currencySymbols[priceTicker.getCurrentCurrencyIndex()]
+                exchangeRateText.text = priceTicker.getCurrency()
             }
         }
 
@@ -206,7 +208,7 @@ Item {
                 id: exchangeNameText
                 anchors.top: priceTickerRect.top
                 anchors.bottom: priceTickerRect.bottom
-                anchors.right: exchangeRateText.left
+                anchors.right: exchangeSymbolText.left
                 anchors.rightMargin: 2
                 color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
                 text: "XMR-" + nodoCurrencies.currencyCodes[priceTicker.getCurrentCurrencyIndex()] + ":"
@@ -218,13 +220,30 @@ Item {
             }
 
             Text {
+                id: exchangeSymbolText
+                anchors.top: priceTickerRect.top
+                anchors.bottom: priceTickerRect.bottom
+                anchors.right: exchangeRateText.left
+                anchors.rightMargin: 6
+                color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
+                text: nodoCurrencies.currencySymbols[priceTicker.getCurrentCurrencyIndex()]
+                topPadding: NodoSystem.topMenuTextTopPadding
+                font.family: NodoSystem.fontUrbanist.name
+                verticalAlignment: Text.AlignVCenter
+                horizontalAlignment: Text.AlignRight
+                font.pixelSize: NodoSystem.topMenuButtonFontSize
+            }
+
+
+
+            Text {
                 id: exchangeRateText
                 anchors.top: priceTickerRect.top
                 anchors.bottom: priceTickerRect.bottom
                 anchors.right: priceTickerRect.right
                 anchors.rightMargin: 10
                 color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
-                text: nodoCurrencies.currencySymbols[priceTicker.getCurrentCurrencyIndex()] + "---.--"
+                text: "---.--"
                 topPadding: NodoSystem.topMenuTextTopPadding
                 font.family: NodoSystem.fontUrbanist.name
                 verticalAlignment: Text.AlignVCenter

@@ -85,7 +85,7 @@ NodoCanvas {
                 id: availableNetworksCanvas
                 anchors.left: ethProfileList.left
                 anchors.top: isConnectedEthProfileAvailable ? currentNetworkCanvas.bottom : ethProfileList.top
-                // anchors.topMargin: isConnectedEthProfileAvailable ? 5 : 0
+                anchors.topMargin: isConnectedEthProfileAvailable ? NodoSystem.nodoTopMargin : 0
                 anchors.right: ethProfileList.right
                 color: "black"
                 height: ethConnList.contentHeight
@@ -107,7 +107,7 @@ NodoCanvas {
                         width: ethConnList.width
                     }
 
-                    // spacing: 3
+                    spacing: NodoSystem.nodoTopMargin
                 }
             }
         }
