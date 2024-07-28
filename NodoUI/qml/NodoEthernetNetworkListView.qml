@@ -52,7 +52,7 @@ NodoCanvas {
     ScrollView {
         id: scrollMain
         anchors.fill: parent
-        anchors.bottomMargin: 8
+        anchors.bottomMargin: 95
 
         ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
         ScrollBar.vertical.policy: ScrollBar.AlwaysOff

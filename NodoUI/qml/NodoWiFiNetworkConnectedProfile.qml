@@ -79,7 +79,7 @@ NodoCanvas {
         id: ssidNameLabel
         anchors.top: mainRect.top
         anchors.left: mainRect.left
-        anchors.topMargin: 4
+        anchors.topMargin: (mainRect.height - ssidNameLabel.paintedHeight)/2
         anchors.leftMargin: 20
         font.pixelSize: NodoSystem.infoFieldItemFontSize
         font.family: NodoSystem.fontUrbanist.name
@@ -141,6 +141,7 @@ NodoCanvas {
         Image {
             id: ssidSignalStrengthImage
             anchors.fill: parent
+            mipmap: true
             source:
             {
                 if(ssidSignalStrength < 20)
