@@ -5,7 +5,7 @@
 
 #include "NodoUISystemParser.h"
 #include "NodoConfigParser.h"
-#include "NodoFeedParser.h"
+#include "NodoFeedsControl.h"
 #include "NodoSystemControl.h"
 #include "NodoSystemStatusParser.h"
 #include "NodoTranslator.h"
@@ -22,12 +22,12 @@ int main(int argc, char *argv[]) {
 
     NodoNetworkManager *networkManager = new NodoNetworkManager();
     NodoUISystemParser *uiSystemParser = new NodoUISystemParser();
-    NodoFeedParser *feedParser = new NodoFeedParser();
+    NodoFeedsControl *feedsControl = new NodoFeedsControl(networkManager);
 
     NodoConfigParser *configParser = new NodoConfigParser();
     MoneroLWS *moneroLWS = new MoneroLWS(configParser);
     NodoSystemStatusParser *systemStatusParser = new NodoSystemStatusParser(configParser);
-    NodoSystemControl *systemControl = new NodoSystemControl(uiSystemParser, configParser, feedParser);
+    NodoSystemControl *systemControl = new NodoSystemControl(uiSystemParser, configParser);
     NodoSyncInfo *syncInfo = new NodoSyncInfo();
     Translator *translator = new Translator(configParser, &engine);
     NodoPriceTicker *priceTicker = new NodoPriceTicker(configParser, networkManager);
@@ -38,7 +38,7 @@ int main(int argc, char *argv[]) {
     engine.rootContext()->setContextProperty("translator", translator);
     engine.rootContext()->setContextProperty("nodoConfig", configParser);
     engine.rootContext()->setContextProperty("nodoControl", systemControl);
-    engine.rootContext()->setContextProperty("feedParser", feedParser);
+    engine.rootContext()->setContextProperty("feedsControl", feedsControl);
     engine.rootContext()->setContextProperty("nodoSystemStatus", systemStatusParser);
     engine.rootContext()->setContextProperty("networkManager", networkManager);
     engine.rootContext()->setContextProperty("syncInfo", syncInfo);

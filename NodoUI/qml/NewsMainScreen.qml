@@ -16,24 +16,6 @@ Item {
         color: "black"
         property bool is_increment: true
 
-        Connections {
-            target: feedParser
-            function onPostListReady() {
-                for (var i = 0; i < feedParser.getItemCount(); i++)  {
-                    viewSwipe.addPage(viewSwipe.createPage(feedParser.getItemTitle(i),
-                                                           feedParser.getItemDescription(i),
-                                                           feedParser.getItemChannel(i),
-                                                           feedParser.getItemTag(i),
-                                                           feedParser.getItemAuth(i),
-                                                           feedParser.getItemTimestamp(i),
-                                                           feedParser.getItemImage(i)
-                                                           ))
-
-                }
-                busyIndicator.running = false
-            }
-        }
-
         SwipeView {
             id: viewSwipe
             width: parent.width
@@ -41,8 +23,28 @@ Item {
 
             currentIndex: 0
             Component.onCompleted: {
-                feedParser.updateRequested()
                 busyIndicator.running = true
+                viewSwipe.createPages()
+                busyIndicator.running = false
+            }
+
+            function createPages() {
+                var sourceCount = feedsControl.getNumOfRSSSource()
+                for (var i = 0; i < sourceCount; i++)  {
+                    if(feedsControl.isRSSSourceSelected(i)) {
+                        var itemCount = feedsControl.getDisplayedItemCount(i)
+                        for (var j = 0; j < itemCount; j++)  {
+                            viewSwipe.addPage(viewSwipe.createPage(feedsControl.getItemTitle(i, j),
+                                                                   feedsControl.getItemDescription(i, j),
+                                                                   feedsControl.getItemChannel(i, j),
+                                                                   feedsControl.getItemTag(i, j),
+                                                                   feedsControl.getItemAuth(i, j),
+                                                                   feedsControl.getItemTimestamp(i, j),
+                                                                   feedsControl.getItemImage(i, j)
+                                                                   ))
+                        }
+                    }
+                }
             }
 
             function addPage(page) {
@@ -77,12 +79,12 @@ Item {
             id: busyIndicator
             x: parent.width/2 - busyIndicator.width/2
             y: parent.height/2 - busyIndicator.height/2
-            running: true
+            running: false//true
             indicatorColor: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
         }
 
         Component.onCompleted:{
-            feedParser.setTextColor(nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff)
+            feedsControl.setTextColor(nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff)
         }
 
         function changeFeed()

@@ -10,17 +10,21 @@ Rectangle {
 
     id: feedRect
     height: visible ? 60 : 0
-    visible: nodoControl.getVisibleState(index)
+    visible: feedsControl.getVisibleState(index)
 
     property int labelItemSize: 0
     property int labelRectRoundSize: feedSwitchText.labelRectRoundSize
+
+    Component.onCompleted: {
+        feedSwitch.checked = feedsControl.isRSSSourceSelected(index)
+    }
 
 
     NodoLabel{
         id: feedSwitchText
         height: NodoSystem.nodoItemHeight
         itemSize: labelItemSize
-        text: nodoControl.getFeederNameState(index)
+        text: feedsControl.getRSSName(index)
     }
 
     NodoSwitch {
@@ -30,10 +34,9 @@ Rectangle {
         height: NodoSystem.nodoItemHeight
         width: 2*height
         display: AbstractButton.IconOnly
-        checked: nodoControl.getSelectedState(index)
 
         onCheckedChanged: {
-            nodoControl.setSelectedState(index, checked)
+            feedsControl.setRSSSelectionState(index, checked)
         }
     }
 }

@@ -129,7 +129,6 @@ Item {
                     pageLoader.anchors.topMargin = 60
                 }
             }
-
         }
 
         Rectangle {

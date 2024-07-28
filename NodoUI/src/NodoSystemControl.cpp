@@ -1,14 +1,12 @@
 #include "NodoSystemControl.h"
 
 
-NodoSystemControl::NodoSystemControl(NodoUISystemParser *uiSystemParser, NodoConfigParser *configParser, NodoFeedParser *feedParser)
+NodoSystemControl::NodoSystemControl(NodoUISystemParser *uiSystemParser, NodoConfigParser *configParser)
 {
     m_uiSystemParser = uiSystemParser;
     m_configParser = configParser;
-    m_feedParser = feedParser;
     m_dbusController = new NodoDBusController(this);
 
-    m_feeds_str = m_feedParser->readFeedKeys();
     m_displaySettings = m_uiSystemParser->readDisplaySettings();
     m_timezone = m_configParser->getTimezone();
     m_tz_id = m_tzList.indexOf(m_timezone);
@@ -56,41 +54,6 @@ void NodoSystemControl::setAppTheme(bool appTheme)
     m_configParser->setTheme(m_appTheme);
     emit appThemeChanged(m_appTheme);
 }
-
-
-void NodoSystemControl::setVisibleState(int index, bool state)
-{
-    m_feedParser->writeFeedKeys(KEY_VISIBLE, index, state);
-    m_feeds_str.clear();
-    m_feeds_str = m_feedParser->readFeedKeys();
-}
-
-
-bool NodoSystemControl::getVisibleState(int index)
-{
-    return m_feeds_str[index].visibleItem;
-}
-
-
-void NodoSystemControl::setSelectedState(int index, bool state)
-{
-    m_feedParser->writeFeedKeys(KEY_SELECTED, index, state);
-    m_feeds_str.clear();
-    m_feeds_str = m_feedParser->readFeedKeys();
-}
-
-
-QString NodoSystemControl::getFeederNameState(int index)
-{
-    return m_feeds_str[index].nameItem;
-}
-
-
-bool NodoSystemControl::getSelectedState(int index)
-{
-    return m_feeds_str[index].selectedItem;
-}
-
 
 void NodoSystemControl::setScreenSaverType(int state)
 {
@@ -166,7 +129,7 @@ void NodoSystemControl::systemRecovery(int recoverFS, int rsyncBlockchain)
     m_dbusController->startRecovery(recoverFS, rsyncBlockchain);
 }
 
- void NodoSystemControl::setTimeZoneIndex(int tz_id)
+void NodoSystemControl::setTimeZoneIndex(int tz_id)
 {
     m_tz_id = tz_id;
     m_timezone.clear();

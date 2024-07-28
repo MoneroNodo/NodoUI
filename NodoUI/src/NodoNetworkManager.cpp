@@ -6,11 +6,11 @@ NodoNetworkManager::NodoNetworkManager(QObject *parent)
     m_wired = new NodoWiredController();
     m_wireless = new NodoWirelessController();
 
-    connect(m_wired, SIGNAL(deviceStatusChangedNotification(unsigned)), this, SLOT(processWiredDeviceStatus(unsigned)));
+    connect(m_wired, SIGNAL(deviceStatusChangedNotification(uint)), this, SLOT(processWiredDeviceStatus(uint)));
     connect(m_wired, SIGNAL(scanCompletedNotification(QString)), this, SLOT(parseWiredNetworkList(QString)));
     connect(m_wired, SIGNAL(connectionProfileCreated()), this, SIGNAL(wiredConnectionProfileCreated()));
 
-    connect(m_wireless, SIGNAL(deviceStatusChangedNotification(unsigned)), this, SLOT(processWirelessDeviceStatus(unsigned)));
+    connect(m_wireless, SIGNAL(deviceStatusChangedNotification(uint)), this, SLOT(processWirelessDeviceStatus(uint)));
     connect(m_wireless, SIGNAL(scanCompletedNotification(QString)), this, SLOT(parseWirelessNetworkList(QString)));
     connect(m_wireless, SIGNAL(apScanStatus()), this, SIGNAL(aPScanStatusReceived()));
 

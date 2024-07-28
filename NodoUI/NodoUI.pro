@@ -28,6 +28,7 @@ SOURCES += \
         src/MoneroLWS.cpp \
         src/NetworkManagerCommon.cpp \
         src/NodoConfigParser.cpp \
+        src/NodoFeedsControl.cpp \
         src/NodoNetworkManager.cpp \
         src/NodoSyncInfo.cpp \
         src/NodoSystemStatusParser.cpp \
@@ -47,6 +48,7 @@ HEADERS += \
         src/MoneroLWS.h \
         src/NetworkManagerCommon.h \
         src/NodoConfigParser.h \
+        src/NodoFeedsControl.h \
         src/NodoNetworkManager.h \
         src/NodoNotificationMessages.h \
         src/NodoSyncInfo.h \
