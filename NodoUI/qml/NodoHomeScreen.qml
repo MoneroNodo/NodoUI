@@ -62,7 +62,7 @@ Item {
                 y: (mainMenuBar.height - nodoLogoButton.height)/2
                 text: " "
                 width: 288
-                imagePath: (nodoControl.appTheme ? "qrc:/Images/nodologo_large_resized_red.png" : "qrc:/Images/nodologo_large_resized.png")
+                imagePath: (nodoControl.appTheme ? "qrc:/Images/nodologo_title_red.png" : "qrc:/Images/nodologo_title_white.png")
                 onClicked: { pageLoader.source = "NodoStatusScreen.qml" }
             }
             NodoTabButton {
