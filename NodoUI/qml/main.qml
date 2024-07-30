@@ -40,6 +40,9 @@ ApplicationWindow {
 
     Component.onCompleted:
     {
+        VirtualKeyboardSettings.locale = "en_US"
+        VirtualKeyboardSettings.styleName = "nodo"
+
         nodoControl.restartScreenSaverTimer();
 
         if(nodoControl.isPinEnabled())

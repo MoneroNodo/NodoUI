@@ -28,7 +28,7 @@ NodoCanvas {
         readOnly: true
         focus: false
         echoMode: nodoControl.getEchoMode()
-        color: "white"
+        color: "#FCFCFC"
     }
 
     MouseArea {

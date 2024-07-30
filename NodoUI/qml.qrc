@@ -85,4 +85,25 @@
         <file alias="NodoSystem.qml">assets/NodoSystem/NodoSystem.qml</file>
         <file alias="InterRegular.ttf">assets/NodoSystem/InterRegular.ttf</file>
     </qresource>
+    <qresource prefix="/layout">
+        <file>assets/NodoKeyboard/QtQuick/VirtualKeyboard/layouts/en_US/dialpad.fallback</file>
+        <file>assets/NodoKeyboard/QtQuick/VirtualKeyboard/layouts/en_US/digits.fallback</file>
+        <file>assets/NodoKeyboard/QtQuick/VirtualKeyboard/layouts/en_US/main.fallback</file>
+        <file>assets/NodoKeyboard/QtQuick/VirtualKeyboard/layouts/en_US/numbers.fallback</file>
+        <file>assets/NodoKeyboard/QtQuick/VirtualKeyboard/layouts/en_US/symbols.fallback</file>
+        <file>assets/NodoKeyboard/QtQuick/VirtualKeyboard/layouts/fallback/dialpad.qml</file>
+        <file>assets/NodoKeyboard/QtQuick/VirtualKeyboard/layouts/fallback/digits.qml</file>
+        <file>assets/NodoKeyboard/QtQuick/VirtualKeyboard/layouts/fallback/main.qml</file>
+        <file>assets/NodoKeyboard/QtQuick/VirtualKeyboard/layouts/fallback/numbers.qml</file>
+        <file>assets/NodoKeyboard/QtQuick/VirtualKeyboard/layouts/fallback/symbols.qml</file>
+    </qresource>
+    <qresource prefix="/style">
+        <file>assets/NodoKeyboard/QtQuick/VirtualKeyboard/Styles/nodo/style.qml</file>
+        <file>assets/NodoKeyboard/QtQuick/VirtualKeyboard/Styles/nodo/images/backspace-fcfcfc.svg</file>
+        <file>assets/NodoKeyboard/QtQuick/VirtualKeyboard/Styles/nodo/images/enter-fcfcfc.svg</file>
+        <file>assets/NodoKeyboard/QtQuick/VirtualKeyboard/Styles/nodo/images/hidekeyboard-fcfcfc.svg</file>
+        <file>assets/NodoKeyboard/QtQuick/VirtualKeyboard/Styles/nodo/images/shift-f50000.svg</file>
+        <file>assets/NodoKeyboard/QtQuick/VirtualKeyboard/Styles/nodo/images/shift-fa5501.svg</file>
+        <file>assets/NodoKeyboard/QtQuick/VirtualKeyboard/Styles/nodo/images/shift-fcfcfc.svg</file>
+    </qresource>
 </RCC>

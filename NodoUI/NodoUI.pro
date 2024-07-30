@@ -66,9 +66,13 @@ HEADERS += \
 
 RESOURCES += qml.qrc
 
-disable-xcb {
-     CONFIG += disable-desktop
-}
+# disable-xcb {
+#      CONFIG += disable-desktop
+# }
+CONFIG += disable-desktop
+CONFIG += disable-hunspell
+CONFIG += disable-layouts
+
 
 TRANSLATIONS += \
     i18n/NodoUI_af_ZA.ts \

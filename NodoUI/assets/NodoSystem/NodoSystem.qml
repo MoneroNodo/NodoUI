@@ -82,6 +82,15 @@ Item
     property int lockButtonHeight: 116
     property int lockPinDiameter: 32
 
-    property color popupBackgroundColor: "#141414"
+
+    property color keyboardButtonUnpressed: "#181818"
+    property color keyboardButtonPressed: "#1F1F1F"
+    property color keyboardBackgroundColor: "#000000"//"#111111"
+    property color textColorOnUnpressedButton: "#FCFCFC"
+    property color capsLockOnColor: "#FA5501"
+
+
+
+    property color popupBackgroundColor: "#111111"
 
 }

@@ -20,6 +20,12 @@ int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
     QQmlApplicationEngine engine;
 
+    qputenv("QML2_IMPORT_PATH", "qrc:/style/assets/NodoKeyboard");
+    engine.addImportPath( ":/" );
+    engine.addImportPath("qrc:/style/assets/NodoKeyboard");
+    qputenv("QT_VIRTUALKEYBOARD_LAYOUT_PATH", QByteArray("qrc:layout/assets/NodoKeyboard/QtQuick/VirtualKeyboard/layouts"));
+
+
     NodoNetworkManager *networkManager = new NodoNetworkManager();
     NodoUISystemParser *uiSystemParser = new NodoUISystemParser();
     NodoFeedsControl *feedsControl = new NodoFeedsControl(networkManager);
@@ -32,7 +38,6 @@ int main(int argc, char *argv[]) {
     Translator *translator = new Translator(configParser, &engine);
     NodoPriceTicker *priceTicker = new NodoPriceTicker(configParser, networkManager);
 
-
     engine.rootContext()->setContextProperty("moneroLWS", moneroLWS);
     engine.rootContext()->setContextProperty("priceTicker", priceTicker);
     engine.rootContext()->setContextProperty("translator", translator);
@@ -43,10 +48,7 @@ int main(int argc, char *argv[]) {
     engine.rootContext()->setContextProperty("networkManager", networkManager);
     engine.rootContext()->setContextProperty("syncInfo", syncInfo);
 
-    engine.addImportPath( ":/" );
-    engine.addImportPath( "qrc:/modules" );
     engine.load(QUrl(QStringLiteral("qrc:/qml/main.qml")));
-
     if (engine.rootObjects().isEmpty())
         return -1;
     return app.exec();
