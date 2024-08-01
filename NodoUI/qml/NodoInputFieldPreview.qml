@@ -8,7 +8,7 @@ import NodoCanvas 1.0
 NodoCanvas {
     id: inputPreview
     property string text: ""
-    color: "#FA5501"
+    color: NodoSystem.inputPreviewBackgroundColor
     property int textLeftPadding: NodoSystem.textPadding
     property int textRightPadding: NodoSystem.textPadding
 
@@ -28,7 +28,7 @@ NodoCanvas {
         readOnly: true
         focus: false
         echoMode: nodoControl.getEchoMode()
-        color: "#FCFCFC"
+        color: NodoSystem.inputPreviewTextColor
     }
 
     MouseArea {

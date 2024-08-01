@@ -89,7 +89,8 @@ Item
     property color textColorOnUnpressedButton: "#FCFCFC"
     property color capsLockOnColor: "#FA5501"
 
-
+    property color inputPreviewBackgroundColor: "#FA5501"
+    property color inputPreviewTextColor: "#FCFCFC"
 
     property color popupBackgroundColor: "#111111"
 
