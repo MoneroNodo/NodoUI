@@ -79,7 +79,7 @@ NodoCanvas {
         id: ssidNameLabel
         anchors.top: mainRect.top
         anchors.left: mainRect.left
-        anchors.topMargin: (mainRect.height - ssidNameLabel.paintedHeight)/2
+        anchors.topMargin: connectButton.y + (ssidNameLabel.paintedHeight)/2
         anchors.leftMargin: 20
         font.pixelSize: NodoSystem.infoFieldItemFontSize
         font.family: NodoSystem.fontUrbanist.name
@@ -208,7 +208,7 @@ NodoCanvas {
             id: ipField
             anchors.left: showDetailsRect.left
             anchors.top: showDetailsRect.top
-            anchors.topMargin: mainRect.spacing
+            anchors.topMargin: 10//mainRect.spacing
             width: showDetailsRect.width
             itemSize: labelSize
             height: networkDelegateItemHeight

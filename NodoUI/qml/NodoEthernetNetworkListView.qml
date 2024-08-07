@@ -52,7 +52,6 @@ NodoCanvas {
     ScrollView {
         id: scrollMain
         anchors.fill: parent
-        anchors.bottomMargin: 95
 
         ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
         ScrollBar.vertical.policy: ScrollBar.AlwaysOff
@@ -61,54 +60,37 @@ NodoCanvas {
         Item {
             id: ethProfileList
             width: parent.width
-            height: currentNetworkCanvas.height + availableNetworksCanvas.height
+            height: currentEthDelegate.height + ethConnList.contentHeight
             implicitHeight: height
 
-            NodoCanvas {
-                id: currentNetworkCanvas
+
+            NodoEthernetNetworkConnectedProfile {
+                id: currentEthDelegate
                 anchors.left: ethProfileList.left
                 anchors.top: ethProfileList.top
                 anchors.right: ethProfileList.right
-                color: "black"
                 visible: isConnectedEthProfileAvailable
-                height: currentEthDelegate.y + currentEthDelegate.height
-
-                NodoEthernetNetworkConnectedProfile {
-                    id: currentEthDelegate
-                    anchors.left: currentNetworkCanvas.left
-                    anchors.top: currentNetworkCanvas.top
-                    anchors.right: currentNetworkCanvas.right
-                }
             }
 
-            NodoCanvas {
-                id: availableNetworksCanvas
+            ListView {
+                id: ethConnList
                 anchors.left: ethProfileList.left
-                anchors.top: isConnectedEthProfileAvailable ? currentNetworkCanvas.bottom : ethProfileList.top
+                anchors.top: isConnectedEthProfileAvailable ? currentEthDelegate.bottom : ethProfileList.top
                 anchors.topMargin: isConnectedEthProfileAvailable ? NodoSystem.nodoTopMargin : 0
                 anchors.right: ethProfileList.right
-                color: "black"
-                height: ethConnList.contentHeight
+                anchors.bottom: ethProfileList.bottom
 
-                ListView {
-                    id: ethConnList
-                    anchors.left: availableNetworksCanvas.left
-                    anchors.top: availableNetworksCanvas.top
-                    anchors.right: availableNetworksCanvas.right
-                    anchors.bottom: availableNetworksCanvas.bottom
+                model: ethernetListModel
+                visible: isScanComplete
+                interactive: false
 
-                    model: ethernetListModel
-                    visible: isScanComplete
-                    interactive: false
-
-                    delegate: NodoEthernetNetworkListDelegate {
-                        id: networkDelegate
-                        ethConnIndex: model.ethConnIndex
-                        width: ethConnList.width
-                    }
-
-                    spacing: NodoSystem.nodoTopMargin
+                delegate: NodoEthernetNetworkListDelegate {
+                    id: networkDelegate
+                    ethConnIndex: model.ethConnIndex
+                    width: ethConnList.width
                 }
+
+                spacing: NodoSystem.nodoTopMargin
             }
         }
     }

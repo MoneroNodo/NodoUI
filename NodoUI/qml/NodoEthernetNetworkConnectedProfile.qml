@@ -69,7 +69,7 @@ NodoCanvas {
         id: profileNameLabel
         anchors.top: mainRect.top
         anchors.left: mainRect.left
-        anchors.topMargin: (mainRect.height - profileNameLabel.paintedHeight)/2
+        anchors.topMargin: connectButton.y + (profileNameLabel.paintedHeight)/2
         anchors.leftMargin: 20
         font.pixelSize: NodoSystem.infoFieldItemFontSize
         font.family: NodoSystem.fontUrbanist.name

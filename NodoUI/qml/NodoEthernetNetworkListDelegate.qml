@@ -28,7 +28,7 @@ NodoCanvas {
         id: ethConnLabel
         anchors.top: mainRect.top
         anchors.left: mainRect.left
-        anchors.topMargin: (mainRect.height - ethConnLabel.paintedHeight)/2
+        anchors.topMargin: connectButton.y + (ethConnLabel.paintedHeight)/2
         anchors.leftMargin: 20
         font.pixelSize: NodoSystem.infoFieldItemFontSize
         font.family: NodoSystem.fontUrbanist.name
