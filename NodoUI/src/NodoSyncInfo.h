@@ -21,6 +21,7 @@ private:
     QNetworkAccessManager *manager;
     int m_height = 0;
     int m_targetHeight = 0;
+    bool isUpdateRequested = false;
 
     void ReplyFinished(QNetworkReply *reply);
 

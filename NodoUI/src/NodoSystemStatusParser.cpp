@@ -7,7 +7,8 @@
  * https://stackoverflow.com/questions/46943134/how-do-i-write-a-qt-http-get-request
 */
 
-NodoSystemStatusParser::NodoSystemStatusParser(NodoConfigParser *configParser) : QObject(configParser) {
+NodoSystemStatusParser::NodoSystemStatusParser(NodoConfigParser *configParser) {
+
     m_manager = new QNetworkAccessManager(this);
     connect(m_manager, &QNetworkAccessManager::finished, this, &NodoSystemStatusParser::replyFinished);
     m_manager->get(QNetworkRequest(QUrl(m_system_url)));

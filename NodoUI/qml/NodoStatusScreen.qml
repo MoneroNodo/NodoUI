@@ -21,6 +21,7 @@ Rectangle {
     property int cardMargin: 13
     property color cardBackgroundColor: "#111111"
     property bool isConnected
+    property bool isSynchronized
 
     Component.onCompleted: {
         statusScreen.isConnected = networkManager.isConnected()
@@ -125,6 +126,16 @@ Rectangle {
         Connections {
             target: nodoSystemStatus
             function onSystemStatusReady() {
+                isSynchronized = nodoSystemStatus.getBoolValueFromKey("synchronized")
+                if(isSynchronized)
+                {
+                    syncStatusField.valueText = qsTr("Synchronized (100%)")
+                }
+                else
+                {
+                    syncStatusField.valueText = qsTr("Not Synchronizing")
+                }
+
                 timestampField.valueText = nodoSystemStatus.getIntValueFromKey("start_time")
                 currentBlockHeightField.valueText = nodoSystemStatus.getIntValueFromKey("height")
                 moneroVersionField.valueText = nodoSystemStatus.getStringValueFromKey("version")
@@ -139,14 +150,21 @@ Rectangle {
         Connections {
             target: syncInfo
             function onSyncStatusReady() {
-                var syncPercentage = syncInfo.getSyncPercentage()
-                if(statusScreen.isConnected){
-                    syncStatusField.valueText = (syncPercentage === -1) ? qsTr("Not Synchronizing") : ((syncPercentage === 100) ? qsTr("Synchronized (100%)") : qsTr("Synchronizing") + " (" + syncPercentage + "%)")
+                if(false === isSynchronized)
+                {
+                    var syncPercentage = syncInfo.getSyncPercentage()
+                    if(statusScreen.isConnected)
+                    {
+                        if(syncPercentage > -1)
+                        {
+                            syncStatusField.valueText = qsTr("Synchronizing (") + syncPercentage + "%)"
+                        }
+                    }
+                    else
+                    {
+                        syncStatusField.valueText = qsTr("Not Connected")
+                    }
                 }
-                else{
-                    syncStatusField.valueText = qsTr("Not Connected")
-                }
-
             }
         }
 
