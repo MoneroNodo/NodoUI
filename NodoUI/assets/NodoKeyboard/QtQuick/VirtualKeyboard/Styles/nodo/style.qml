@@ -137,7 +137,7 @@ KeyboardStyle {
                 readonly property size enterKeyIconSize: {
                     return Qt.size(211, 80)
                 }
-                sourceSize.height: enterKeyIconSize.height * keyIconScale
+                sourceSize.height: enterKeyIconSize.height * 0.4
                 smooth: false
                 source: {
                     return resourcePrefix + "images/enter-fcfcfc.svg"

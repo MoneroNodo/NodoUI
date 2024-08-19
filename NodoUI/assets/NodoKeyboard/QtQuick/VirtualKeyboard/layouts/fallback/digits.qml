@@ -29,7 +29,7 @@ KeyboardLayout {
                 key: Qt.Key_9
                 text: "9"
             }
-            BackspaceKey {}
+            FillerKey {}
         }
         KeyboardRow {
             Key {
@@ -44,14 +44,15 @@ KeyboardLayout {
                 key: Qt.Key_6
                 text: "6"
             }
-            Key {
-                text: " "
-                displayText: "\u2015\u2015" //"\u2423"
-                repeat: true
-                showPreview: false
-                key: Qt.Key_Space
-                highlighted: true
-            }
+            FillerKey {}
+            // Key {
+            //     text: " "
+            //     displayText: "\u2015\u2015" //"\u2423"
+            //     repeat: true
+            //     showPreview: false
+            //     key: Qt.Key_Space
+            //     highlighted: true
+            // }
         }
         KeyboardRow {
             Key {
@@ -72,15 +73,18 @@ KeyboardLayout {
         }
         KeyboardRow {
             Key {
-                key: Qt.Key_0
-                text: "0"
-            }
-            Key {
                 // The decimal key, if it is not "," then we fallback to
                 // "." in case it is an unhandled different result
                 key: Qt.locale().decimalPoint === "," ? Qt.Key_Comma : Qt.Key_Period
                 text: Qt.locale().decimalPoint === "," ? "," : "."
             }
+            Key {
+                key: Qt.Key_0
+                text: "0"
+            }
+
+            BackspaceKey {}
+
             EnterKey {}
         }
     }
