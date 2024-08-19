@@ -124,3 +124,8 @@ void NodoPriceTicker::sslErrors(const QList<QSslError> &sslErrors)
     Q_UNUSED(sslErrors);
 #endif
 }
+
+void NodoPriceTicker::updateRequest(void)
+{
+    updatePriceTicker();
+}

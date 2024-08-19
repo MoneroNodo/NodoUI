@@ -25,6 +25,7 @@ public:
     Q_INVOKABLE QString getCurrentCurrencyCode(void);
     Q_INVOKABLE void setCurrentCurrencyCode(QString code);
     Q_INVOKABLE double getCurrency(void);
+    Q_INVOKABLE void updateRequest(void);
 
 
 signals:

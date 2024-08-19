@@ -44,6 +44,10 @@ public:
     void setrpcEnabledStatus(bool status);
     void setrpcPort(QString port);
 
+    void setMoneroPayParameters(QString address, QString viewKey);
+    QString getMoneroPayAddress(void);
+    QString getMoneroPayViewKey(void);
+
 signals:
     void configParserReady(void);
 
@@ -57,12 +61,15 @@ private:
     QJsonObject m_ethernetObj;
     QJsonObject m_wifiObj;
     QJsonObject m_versionsObj;
+    QJsonObject m_moneropayObj;
 
     const QString configObjName = "config";
     const QString miningObjName = "mining";
     const QString ethernetObjName = "ethernet";
     const QString wifiObjName = "wifi";
     const QString versionsObjName = "versions";
+    const QString moneropayObjName = "moneropay";
+
     QTimer *m_timer;
     QMutex m_mutex;
 

@@ -38,6 +38,7 @@ void NodoConfigParser::readFile(void)
         m_ethernetObj = m_configObj[ethernetObjName].toObject();
         m_wifiObj = m_configObj[wifiObjName].toObject();
         m_versionsObj = m_configObj[versionsObjName].toObject();
+        m_moneropayObj = m_configObj[moneropayObjName].toObject();
 
         emit configParserReady();
     }
@@ -73,6 +74,10 @@ QString NodoConfigParser::getStringValueFromKey(QString object, QString key)
     {
         jsonValue = m_configObj.value(key);
     }
+    else if("moneropay" == object)
+    {
+        jsonValue = m_moneropayObj.value(key);
+    }
 
     return jsonValue.toString();
 }
@@ -99,6 +104,10 @@ int NodoConfigParser::getIntValueFromKey(QString object, QString key)
     else if("config" == object)
     {
         jsonValue = m_configObj.value(key);
+    }
+    else if("moneropay" == object)
+    {
+        jsonValue = m_moneropayObj.value(key);
     }
 
     return jsonValue.toInt();
@@ -151,6 +160,7 @@ void NodoConfigParser::writeJson(void)
     m_configObj.insert(ethernetObjName, m_ethernetObj);
     m_configObj.insert(wifiObjName, m_wifiObj);
     m_configObj.insert(versionsObjName, m_versionsObj);
+    m_configObj.insert(moneropayObjName, m_moneropayObj);
 
     m_rootObj.insert(configObjName, m_configObj);
 
@@ -303,3 +313,31 @@ void NodoConfigParser::setNodeBandwidthParameters(QString in_peers, QString out_
     writeJson();
 }
 
+void NodoConfigParser::setMoneroPayParameters(QString address, QString viewKey)
+{
+    m_moneropayObj.insert("address", address);
+    m_moneropayObj.insert("viewkey", viewKey);
+    writeJson();
+}
+
+QString NodoConfigParser::getMoneroPayAddress(void)
+{
+    QJsonValue jsonValue;
+    jsonValue = m_moneropayObj.value("address");
+    if("" == jsonValue.toString())
+    {
+        return "";
+    }
+    return jsonValue.toString();
+}
+
+QString NodoConfigParser::getMoneroPayViewKey(void)
+{
+    QJsonValue jsonValue;
+    jsonValue = m_moneropayObj.value("viewkey");
+    if("" == jsonValue.toString())
+    {
+        return "";
+    }
+    return jsonValue.toString();
+}
