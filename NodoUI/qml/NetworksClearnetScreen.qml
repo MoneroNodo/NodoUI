@@ -75,20 +75,20 @@ Item {
                 clearnetAddressField.valueText = "nan";
             }
 
-            systemPopup.popupMessageText = networkManager.getErrorMessage()
-            systemPopup.commandID = -1;
-            systemPopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Close]
-            systemPopup.open();
+            networksClearnetPopup.popupMessageText = networkManager.getErrorMessage()
+            networksClearnetPopup.commandID = -1;
+            networksClearnetPopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Close]
+            networksClearnetPopup.open();
         }
     }
 
     Connections {
         target: nodoControl
         function onErrorDetected() {
-            systemPopup.popupMessageText = nodoControl.getErrorMessage()
-            systemPopup.commandID = -1;
-            systemPopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Close]
-            systemPopup.open();
+            networksClearnetPopup.popupMessageText = nodoControl.getErrorMessage()
+            networksClearnetPopup.commandID = -1;
+            networksClearnetPopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Close]
+            networksClearnetPopup.open();
         }
 
         function onComponentEnabledStatusChanged() {
@@ -174,6 +174,13 @@ Item {
             qrMargin: 8
             qrMode: QtQuick2QREncode.MODE_8    //encode model
             qrLevel: QtQuick2QREncode.LEVEL_Q // encode level
+        }
+    }
+
+    NodoPopup {
+        id: networksClearnetPopup
+        onApplyClicked: {
+            close()
         }
     }
 }

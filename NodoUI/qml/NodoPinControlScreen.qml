@@ -193,10 +193,10 @@ Item {
                 }
                 else
                 {
-                    systemPopup.commandID = -1;
-                    systemPopup.popupMessageText = systemMessages.messages[NodoMessages.Message.PINCodesAreDifferent]
-                    systemPopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Close]
-                    systemPopup.open();
+                    nodoPinControlPopup.commandID = -1;
+                    nodoPinControlPopup.popupMessageText = systemMessages.messages[NodoMessages.Message.PINCodesAreDifferent]
+                    nodoPinControlPopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Close]
+                    nodoPinControlPopup.open();
                 }
 
 
@@ -204,6 +204,13 @@ Item {
                 pinControlReEnterNewPinField.valueText = ""
                 pinFieldReadOnly = false
             }
+        }
+    }
+
+    NodoPopup {
+        id: nodoPinControlPopup
+        onApplyClicked: {
+            close()
         }
     }
 }

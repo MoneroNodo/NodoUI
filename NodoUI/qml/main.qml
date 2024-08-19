@@ -172,7 +172,7 @@ ApplicationWindow {
                 nodoControl.stopScreenSaverTimer();
 
                 mainAppWindow.screenSaverActive = true
-                systemPopup.close()
+                nodoControl.closePopup()
                 mainAppStackView.pop()
                 var screenSaverType = nodoControl.getScreenSaverType()
 
@@ -198,7 +198,7 @@ ApplicationWindow {
                 mainAppWindow.screenLocked = true
                 if(mainAppWindow.screenSaverActive === false)
                 {
-                    systemPopup.close()
+                    nodoControl.closePopup()
                     mainAppStackView.pop()
                     mainAppStackView.push("NodoLockScreen.qml")
                 }
@@ -250,96 +250,6 @@ ApplicationWindow {
                         properties: "y"
                         duration: 250
                         easing.type: Easing.InOutQuad
-                    }
-                }
-            }
-        }
-
-        Popup {
-            id: systemPopup
-            x: (mainAppWindowMainRect.width - width)/2
-            y: (mainAppWindowMainRect.height - height)/2
-            width: 655
-            height: 200
-            modal: true
-            property string applyButtonText: ""
-            property int commandID: -1
-            property string popupMessageText: qsTr("Are you sure?")
-            parent: mainAppWindowMainRect
-
-            Overlay.modal: Item {
-                Rectangle{
-                    color: 'black'
-                    opacity: 0.3
-                    width: mainAppWindowMainRect.width
-                    height: mainAppWindowMainRect.height
-                }
-            }
-
-            background: null
-            contentItem: NodoCanvas {
-                id: popupContent
-
-                width: systemPopup.width
-                height: systemPopup.height
-
-                color: NodoSystem.popupBackgroundColor
-
-                Text {
-                    id: popupMessage
-                    anchors.top: popupContent.top
-                    anchors.topMargin: 20
-                    x: (popupContent.width - popupMessage.paintedWidth)/2
-
-                    text: systemPopup.popupMessageText
-                    font.pixelSize: NodoSystem.infoFieldItemFontSize
-                    font.family: NodoSystem.fontUrbanist.name
-                    color: nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn  : NodoSystem.dataFieldTextColorNightModeOff
-                }
-
-                NodoButton {
-                    id: applyButton
-                    text: systemPopup.applyButtonText
-                    anchors.top: popupMessage.bottom
-                    anchors.left: popupContent.left
-                    anchors.topMargin: 30
-                    anchors.leftMargin: systemPopup.commandID > -1 ? 12 : (systemPopup.width - applyButton.width)/2
-                    height: NodoSystem.nodoItemHeight
-                    font.family: NodoSystem.fontUrbanist.name
-                    font.pixelSize: NodoSystem.buttonTextFontSize
-
-                    onClicked: {
-                        if(-1 == systemPopup.commandID)
-                        {
-                            systemPopup.close()
-                        }
-                        else if(0 == systemPopup.commandID)
-                        {
-                            nodoControl.restartDevice();
-                        }
-                        else if(1 == systemPopup.commandID)
-                        {
-                            nodoControl.shutdownDevice();
-                        }
-                        else if(2 == systemPopup.commandID)
-                        {
-                            nodoControl.systemRecovery(deviceSystemRecoveryRecoverFS.checked, deviceSystemRecoveryResyncBlockchain.checked);
-                        }
-                    }
-                }
-
-                NodoButton {
-                    id: cancelButton
-                    text: systemMessages.messages[NodoMessages.Message.Cancel]
-                    anchors.top: applyButton.top
-                    anchors.left: applyButton.right
-                    anchors.leftMargin: 16
-                    height: NodoSystem.nodoItemHeight
-                    font.family: NodoSystem.fontUrbanist.name
-                    font.pixelSize: NodoSystem.buttonTextFontSize
-                    visible: systemPopup.commandID === -1 ? false : true
-                    onClicked: {
-                        systemPopup.close()
                     }
                 }
             }

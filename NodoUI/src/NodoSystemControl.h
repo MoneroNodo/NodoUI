@@ -97,6 +97,7 @@ public:
 
     Q_INVOKABLE void restartLockScreenTimer(void);
     Q_INVOKABLE void stopLockScreenTimer(void);
+    Q_INVOKABLE void closePopup(void);
 
 
 signals:
@@ -111,6 +112,7 @@ signals:
     void lockScreenTimedout(void);
     void errorDetected(void);
     void componentEnabledStatusChanged(void);
+    void closePopupRequested(void);
 
 private:
     bool m_appTheme;

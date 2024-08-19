@@ -42,18 +42,18 @@ Item {
         if(deviceStatus === 10)
         {
             ethernetNetworkScreen.isEthernetEnabled = false
-            systemPopup.popupMessageText = systemMessages.messages[NodoMessages.Message.NoNetworkDevice]
-            systemPopup.commandID = -1;
-            systemPopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Close]
-            systemPopup.open();
+            nodoEthernetNetworkPopup.popupMessageText = systemMessages.messages[NodoMessages.Message.NoNetworkDevice]
+            nodoEthernetNetworkPopup.commandID = -1;
+            nodoEthernetNetworkPopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Close]
+            nodoEthernetNetworkPopup.open();
         }
         else if(deviceStatus === 20)
         {
             ethernetNetworkScreen.isEthernetEnabled = false
-            systemPopup.popupMessageText = systemMessages.messages[NodoMessages.Message.CableDisconnected]
-            systemPopup.commandID = -1;
-            systemPopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Close]
-            systemPopup.open();
+            nodoEthernetNetworkPopup.popupMessageText = systemMessages.messages[NodoMessages.Message.CableDisconnected]
+            nodoEthernetNetworkPopup.commandID = -1;
+            nodoEthernetNetworkPopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Close]
+            nodoEthernetNetworkPopup.open();
         }
 
         if((deviceStatus === 30) || (deviceStatus === 100))
@@ -332,5 +332,12 @@ Item {
 
     transitions: Transition {
         NumberAnimation { target: createNewConnectionCanvas; properties: "height"; easing.type: Easing.OutExpo; duration: 150 }
+    }
+
+    NodoPopup {
+        id: nodoEthernetNetworkPopup
+        onApplyClicked: {
+            close()
+        }
     }
 }

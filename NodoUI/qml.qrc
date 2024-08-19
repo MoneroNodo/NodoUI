@@ -79,6 +79,7 @@
         <file>Images/delete.png</file>
         <file>Images/nodologo_title_red.png</file>
         <file>Images/nodologo_title_white.png</file>
+       <file>qml/NodoPopup.qml</file>
     </qresource>
     <qresource prefix="/NodoSystem">
         <file alias="qmldir">assets/NodoSystem/qmldir</file>

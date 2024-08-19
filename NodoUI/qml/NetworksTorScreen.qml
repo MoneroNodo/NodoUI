@@ -50,10 +50,10 @@ Item {
             var errorCode = nodoControl.getErrorCode();
             if(0 !== errorCode)
             {
-                systemPopup.popupMessageText = nodoControl.getErrorMessage()
-                systemPopup.commandID = -1;
-                systemPopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Close]
-                systemPopup.open();
+                networksTorPopup.popupMessageText = nodoControl.getErrorMessage()
+                networksTorPopup.commandID = -1;
+                networksTorPopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Close]
+                networksTorPopup.open();
             }
         }
 
@@ -187,6 +187,13 @@ Item {
             qrMargin: 8
             qrMode: QtQuick2QREncode.MODE_8    //encode model
             qrLevel: QtQuick2QREncode.LEVEL_Q // encode level
+        }
+    }
+
+    NodoPopup {
+        id: networksTorPopup
+        onApplyClicked: {
+            close()
         }
     }
 }

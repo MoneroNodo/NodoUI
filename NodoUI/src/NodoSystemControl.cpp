@@ -507,6 +507,11 @@ void NodoSystemControl::setLockAfterTime(QString newTime)
     restartLockScreenTimer();
 }
 
+void NodoSystemControl::closePopup(void)
+{
+    emit closePopupRequested();
+}
+
 
 #ifdef ENABLE_TEST_CODE
 

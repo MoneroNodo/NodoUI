@@ -20,10 +20,10 @@ Item {
         {
             wifiNetworkScreen.isWirelessEnabled = false
             wifiEnabledSwitch.enabled = false
-            systemPopup.popupMessageText = systemMessages.messages[NodoMessages.Message.NoNetworkDevice]
-            systemPopup.commandID = -1;
-            systemPopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Close]
-            systemPopup.open();
+            nodoWifiNetworkPopup.popupMessageText = systemMessages.messages[NodoMessages.Message.NoNetworkDevice]
+            nodoWifiNetworkPopup.commandID = -1;
+            nodoWifiNetworkPopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Close]
+            nodoWifiNetworkPopup.open();
         }
         else if(deviceStatus === 20)
         {
@@ -105,4 +105,10 @@ Item {
         }
     }
 
+    NodoPopup {
+        id: nodoWifiNetworkPopup
+        onApplyClicked: {
+            close()
+        }
+    }
 }

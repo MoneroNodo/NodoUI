@@ -26,9 +26,9 @@ Rectangle {
             font.family: NodoSystem.fontUrbanist.name
             font.pixelSize: NodoSystem.buttonTextFontSize
             onClicked: {
-                systemPopup.commandID = 0;
-                systemPopup.applyButtonText = systemResetButton.text
-                systemPopup.open();
+                deviceSystemPopup.commandID = 0;
+                deviceSystemPopup.applyButtonText = systemResetButton.text
+                deviceSystemPopup.open();
             }
         }
 
@@ -42,9 +42,9 @@ Rectangle {
             font.family: NodoSystem.fontUrbanist.name
             font.pixelSize: NodoSystem.buttonTextFontSize
             onClicked: {
-                systemPopup.commandID = 1;
-                systemPopup.applyButtonText = systemShutdownButton.text
-                systemPopup.open();
+                deviceSystemPopup.commandID = 1;
+                deviceSystemPopup.applyButtonText = systemShutdownButton.text
+                deviceSystemPopup.open();
             }
         }
 
@@ -153,9 +153,9 @@ Rectangle {
                 font.family: NodoSystem.fontUrbanist.name
                 font.pixelSize: NodoSystem.buttonTextFontSize
                 onClicked: {
-                    systemPopup.commandID = 2;
-                    systemPopup.applyButtonText = qsTr("Recover")
-                    systemPopup.open();
+                    deviceSystemPopup.commandID = 2;
+                    deviceSystemPopup.applyButtonText = qsTr("Recover")
+                    deviceSystemPopup.open();
                 }
             }
 
@@ -173,6 +173,24 @@ Rectangle {
                     deviceSystemRecoveryMainScreen.visible = false
                 }
             }
+        }
+    }
+    NodoPopup {
+        id: deviceSystemPopup
+        onApplyClicked: {
+            if(commandID === 0)
+            {
+                nodoControl.restartDevice();
+            }
+            else if(commandID === 1)
+            {
+                nodoControl.shutdownDevice();
+            }
+            else if(commandID === 2)
+            {
+                nodoControl.systemRecovery(deviceSystemRecoveryRecoverFS.checked, deviceSystemRecoveryResyncBlockchain.checked);
+            }
+            close()
         }
     }
 }

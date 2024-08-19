@@ -41,10 +41,10 @@ Item {
     Connections {
         target: nodoControl
         function onErrorDetected() {
-            systemPopup.popupMessageText = nodoControl.getErrorMessage()
-            systemPopup.commandID = -1;
-            systemPopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Close]
-            systemPopup.open();
+            nodeBandwithPopup.popupMessageText = nodoControl.getErrorMessage()
+            nodeBandwithPopup.commandID = -1;
+            nodeBandwithPopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Close]
+            nodeBandwithPopup.open();
         }
 
         function onComponentEnabledStatusChanged() {
@@ -224,6 +224,13 @@ Item {
         {
             isActive = false
             nodoControl.setNodeBandwidthParameters(incomingPeersLimitField.valueText, outgoingPeersLimitField.valueText, nodeBandwidthScreen.rateLimitUpEdited, nodeBandwidthScreen.rateLimitDownEdited)
+        }
+    }
+
+    NodoPopup {
+        id: nodeBandwithPopup
+        onApplyClicked: {
+            close()
         }
     }
 }

@@ -44,10 +44,10 @@ Item {
             var errorCode = nodoControl.getErrorCode();
             if(0 !== errorCode)
             {
-                systemPopup.popupMessageText = nodoControl.getErrorMessage()
-                systemPopup.commandID = -1;
-                systemPopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Close]
-                systemPopup.open();
+                nodePrivateNodePopup.popupMessageText = nodoControl.getErrorMessage()
+                nodePrivateNodePopup.commandID = -1;
+                nodePrivateNodePopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Close]
+                nodePrivateNodePopup.open();
             }
         }
 
@@ -158,6 +158,13 @@ Item {
         anchors.top: privateNodeApplyButton.bottom
         visible: false
         readOnlyFlag: true
+    }
+
+    NodoPopup {
+        id: nodePrivateNodePopup
+        onApplyClicked: {
+            close()
+        }
     }
 }
 
