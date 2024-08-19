@@ -74,6 +74,7 @@ Item {
             activeFocusOnPress: true
             inputMethodHints: Qt.ImhNoPredictiveText | Qt.ImhNoTextHandles | Qt.ImhNoAutoUppercase | textFlag
             readOnly: readOnlyFlag
+            selectionColor: "transparent"
 
             onFocusChanged:{
                 if(focus)
