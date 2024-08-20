@@ -47,12 +47,7 @@ KeyboardStyle {
                 color: keyTextColor
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: control.displayText.length > 0 ? Text.AlignVCenter : Text.AlignBottom
-                // verticalAlignment: Text.AlignVCenter
                 anchors.fill: parent
-                // anchors.leftMargin: keyContentMargin
-                // anchors.topMargin: keyContentMargin
-                // anchors.rightMargin: keyContentMargin
-                // anchors.bottomMargin: keyContentMargin
                 font {
                     family: fontFamily
                     weight: Font.Normal

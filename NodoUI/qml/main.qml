@@ -230,7 +230,6 @@ ApplicationWindow {
             x: 0
             y: mainAppWindowMainRect.height + previewPanel.height
             width: mainAppWindowMainRect.width
-            // height: mainAppWindowMainRect.height*0.7
 
             states: State {
                 name: "visible"
