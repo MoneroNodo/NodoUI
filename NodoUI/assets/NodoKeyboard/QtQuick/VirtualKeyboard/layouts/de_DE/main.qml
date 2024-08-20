@@ -10,7 +10,7 @@ KeyboardLayout {
     inputMode: InputEngine.InputMode.Latin
     keyWeight: 160
     readonly property real normalKeyWidth: normalKey.width
-    readonly property real functionKeyWidth: mapFromItem(normalKey, normalKey.width, 0).x
+    readonly property real functionKeyWidth: mapFromItem(normalKey, normalKey.width / 2, 0).x
     KeyboardRow {
         Key {
             key: Qt.Key_Q
@@ -55,9 +55,17 @@ KeyboardLayout {
         }
     }
     KeyboardRow {
-        Key {
-            key: Qt.Key_A
-            text: "a"
+        KeyboardRow {
+            Layout.preferredWidth: functionKeyWidth
+            Layout.fillWidth: false
+            FillerKey {
+            }
+            Key {
+                key: Qt.Key_A
+                text: "a"
+                weight: normalKeyWidth
+                Layout.fillWidth: false
+            }
         }
         Key {
             key: Qt.Key_S
@@ -87,21 +95,33 @@ KeyboardLayout {
             key: Qt.Key_K
             text: "k"
         }
-        Key {
-            key: Qt.Key_L
-            text: "l"
-        }
-    }
-    KeyboardRow {
         KeyboardRow {
             Layout.preferredWidth: functionKeyWidth
             Layout.fillWidth: false
-            ShiftKey {
-                weight: 240
+            Key {
+                key: Qt.Key_L
+                text: "l"
+                weight: normalKeyWidth
+                Layout.fillWidth: false
             }
             FillerKey {
-                weight: 80
             }
+        }
+    }
+    KeyboardRow {
+        // KeyboardRow {
+            // Layout.preferredWidth: functionKeyWidth
+            // Layout.fillWidth: false
+        //     ShiftKey {
+        //         weight: 120
+        //     }
+        //     // FillerKey {
+        //     //     weight: 80
+        //     // }
+        // }
+        ShiftKey {
+            weight: functionKeyWidth
+            Layout.fillWidth: false
         }
         Key {
             key: Qt.Key_Y
@@ -131,16 +151,20 @@ KeyboardLayout {
             key: Qt.Key_M
             text: "m"
         }
-        KeyboardRow {
-            Layout.preferredWidth: functionKeyWidth
+        BackspaceKey {
+            weight: functionKeyWidth
             Layout.fillWidth: false
-            FillerKey {
-                weight: 80
-            }
-            BackspaceKey {
-                weight: 240
-            }
         }
+        // KeyboardRow {
+        //     Layout.preferredWidth: functionKeyWidth
+        //     Layout.fillWidth: false
+        //     // FillerKey {
+        //     //     weight: 80
+        //     // }
+        //     BackspaceKey {
+        //         weight: 120
+        //     }
+        // }
     }
     KeyboardRow {
         SymbolModeKey {
