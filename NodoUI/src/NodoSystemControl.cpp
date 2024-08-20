@@ -514,7 +514,7 @@ void NodoSystemControl::closePopup(void)
 
 int NodoSystemControl::getKeyboardLayoutType(void)
 {
-    m_uiSystemParser->readKeyboardLayoutType();
+    return m_uiSystemParser->readKeyboardLayoutType();
 }
 
 void NodoSystemControl::setKeyboardLayoutType(int kbLayout)

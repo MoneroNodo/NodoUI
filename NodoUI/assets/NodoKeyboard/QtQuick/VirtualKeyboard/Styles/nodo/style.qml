@@ -24,7 +24,7 @@ KeyboardStyle {
     property color keySmallTextColor: NodoSystem.textColorOnUnpressedButton
 
     keyboardDesignWidth: 2560
-    keyboardDesignHeight: 800
+    keyboardDesignHeight: 860
     keyboardRelativeLeftMargin: 6 / keyboardDesignWidth
     keyboardRelativeRightMargin: 6 / keyboardDesignWidth
     keyboardRelativeTopMargin: 6 / keyboardDesignHeight
@@ -46,12 +46,13 @@ KeyboardStyle {
                 text: control.displayText
                 color: keyTextColor
                 horizontalAlignment: Text.AlignHCenter
-                verticalAlignment: control.displayText.length > 1 ? Text.AlignVCenter : Text.AlignBottom
+                verticalAlignment: control.displayText.length > 0 ? Text.AlignVCenter : Text.AlignBottom
+                // verticalAlignment: Text.AlignVCenter
                 anchors.fill: parent
-                anchors.leftMargin: keyContentMargin
-                anchors.topMargin: keyContentMargin
-                anchors.rightMargin: keyContentMargin
-                anchors.bottomMargin: keyContentMargin
+                // anchors.leftMargin: keyContentMargin
+                // anchors.topMargin: keyContentMargin
+                // anchors.rightMargin: keyContentMargin
+                // anchors.bottomMargin: keyContentMargin
                 font {
                     family: fontFamily
                     weight: Font.Normal

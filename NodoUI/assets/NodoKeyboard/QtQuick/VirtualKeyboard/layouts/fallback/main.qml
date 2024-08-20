@@ -12,6 +12,53 @@ KeyboardLayout {
     keyWeight: 160
     readonly property real normalKeyWidth: normalKey.width
     readonly property real functionKeyWidth: mapFromItem(normalKey, normalKey.width / 2, 0).x
+    KeyboardColumn {
+        Layout.preferredHeight: 90
+        Layout.fillHeight: false
+        KeyboardRow {
+            Key {
+                key: Qt.Key_1
+                text: "1"
+            }
+            Key {
+                key: Qt.Key_2
+                text: "2"
+            }
+            Key {
+                key: Qt.Key_3
+                text: "3"
+            }
+            Key {
+                key: Qt.Key_4
+                text: "4"
+            }
+            Key {
+                key: Qt.Key_5
+                text: "5"
+            }
+            Key {
+                key: Qt.Key_6
+                text: "6"
+            }
+            Key {
+                key: Qt.Key_7
+                text: "7"
+            }
+            Key {
+                key: Qt.Key_8
+                text: "8"
+            }
+            Key {
+                key: Qt.Key_9
+                text: "9"
+            }
+            Key {
+                key: Qt.Key_0
+                text: "0"
+            }
+        }
+    }
+
     KeyboardRow {
         Key {
             key: Qt.Key_Q
