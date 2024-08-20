@@ -12,15 +12,15 @@
             "visible": true
         },
         "feed_0": {
-            "description_tag": "",
+            "description_tag": "description",
             "image_attr": "",
-            "imgage_tag": "",
-            "name": "",
-            "num_of_feeds_to_show": 0,
-            "pub_date_tag": "",
-            "selected": false,
-            "uri": "",
-            "visible": false
+            "image_tag": "",
+            "name": "Monerica",
+            "num_of_feeds_to_show": 10,
+            "pub_date_tag": "pubDate",
+            "selected": true,
+            "uri": "https://monerica.com/rss/feed.xml",
+            "visible": true
         },
         "feed_2": {
             "description_tag": "content:encoded",
