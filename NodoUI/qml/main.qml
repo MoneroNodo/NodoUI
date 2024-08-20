@@ -40,7 +40,10 @@ ApplicationWindow {
 
     Component.onCompleted:
     {
-        VirtualKeyboardSettings.locale = "en_US"
+        // VirtualKeyboardSettings.locale = "en_US"
+        // VirtualKeyboardSettings.locale = "de_DE"
+        // VirtualKeyboardSettings.locale = "fr_FR"
+        VirtualKeyboardSettings.locale = nodoControl.getKeyboardLayoutLocale()
         VirtualKeyboardSettings.styleName = "nodo"
 
         nodoControl.restartScreenSaverTimer();

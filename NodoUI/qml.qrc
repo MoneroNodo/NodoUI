@@ -79,7 +79,7 @@
         <file>Images/delete.png</file>
         <file>Images/nodologo_title_red.png</file>
         <file>Images/nodologo_title_white.png</file>
-       <file>qml/NodoPopup.qml</file>
+        <file>qml/NodoPopup.qml</file>
     </qresource>
     <qresource prefix="/NodoSystem">
         <file alias="qmldir">assets/NodoSystem/qmldir</file>
@@ -97,6 +97,18 @@
         <file>assets/NodoKeyboard/QtQuick/VirtualKeyboard/layouts/fallback/main.qml</file>
         <file>assets/NodoKeyboard/QtQuick/VirtualKeyboard/layouts/fallback/numbers.qml</file>
         <file>assets/NodoKeyboard/QtQuick/VirtualKeyboard/layouts/fallback/symbols.qml</file>
+        <file>assets/NodoKeyboard/QtQuick/VirtualKeyboard/layouts/de_DE/dialpad.fallback</file>
+        <file>assets/NodoKeyboard/QtQuick/VirtualKeyboard/layouts/de_DE/digits.fallback</file>
+        <file>assets/NodoKeyboard/QtQuick/VirtualKeyboard/layouts/de_DE/handwriting.fallback</file>
+        <file>assets/NodoKeyboard/QtQuick/VirtualKeyboard/layouts/de_DE/main.qml</file>
+        <file>assets/NodoKeyboard/QtQuick/VirtualKeyboard/layouts/de_DE/numbers.fallback</file>
+        <file>assets/NodoKeyboard/QtQuick/VirtualKeyboard/layouts/de_DE/symbols.fallback</file>
+        <file>assets/NodoKeyboard/QtQuick/VirtualKeyboard/layouts/fr_FR/dialpad.fallback</file>
+        <file>assets/NodoKeyboard/QtQuick/VirtualKeyboard/layouts/fr_FR/digits.fallback</file>
+        <file>assets/NodoKeyboard/QtQuick/VirtualKeyboard/layouts/fr_FR/handwriting.fallback</file>
+        <file>assets/NodoKeyboard/QtQuick/VirtualKeyboard/layouts/fr_FR/main.qml</file>
+        <file>assets/NodoKeyboard/QtQuick/VirtualKeyboard/layouts/fr_FR/numbers.fallback</file>
+        <file>assets/NodoKeyboard/QtQuick/VirtualKeyboard/layouts/fr_FR/symbols.fallback</file>
     </qresource>
     <qresource prefix="/style">
         <file>assets/NodoKeyboard/QtQuick/VirtualKeyboard/Styles/nodo/style.qml</file>

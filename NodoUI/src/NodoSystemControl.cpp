@@ -512,6 +512,41 @@ void NodoSystemControl::closePopup(void)
     emit closePopupRequested();
 }
 
+int NodoSystemControl::getKeyboardLayoutType(void)
+{
+    m_uiSystemParser->readKeyboardLayoutType();
+}
+
+void NodoSystemControl::setKeyboardLayoutType(int kbLayout)
+{
+    m_uiSystemParser->writeKeyboardLayoutType(kbLayout);
+    m_displaySettings = m_uiSystemParser->readDisplaySettings();
+}
+
+QString NodoSystemControl::getKeyboardLayoutLocale(void)
+{
+    QString s;
+    switch(m_displaySettings.keyboardLayout)
+    {
+    case 0:
+        s = "en_US";
+        break;
+
+    case 1:
+        s = "de_DE";
+        break;
+
+    case 2:
+        s = "fr_FR";
+        break;
+
+    default:
+        s = "en_US";
+
+    }
+
+    return s;
+}
 
 #ifdef ENABLE_TEST_CODE
 

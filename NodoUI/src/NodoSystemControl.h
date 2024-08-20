@@ -100,6 +100,11 @@ public:
     Q_INVOKABLE void closePopup(void);
 
 
+    Q_INVOKABLE int getKeyboardLayoutType(void);
+    Q_INVOKABLE void setKeyboardLayoutType(int kbLayout);
+    Q_INVOKABLE QString getKeyboardLayoutLocale(void);
+
+
 signals:
     void appThemeChanged(bool);
     void inputFieldTextChanged(void);

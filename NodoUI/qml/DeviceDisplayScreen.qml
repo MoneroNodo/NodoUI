@@ -2,6 +2,7 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 import QtQuick.VirtualKeyboard
+import QtQuick.VirtualKeyboard.Settings
 import NodoSystem 1.1
 import NodoCanvas 1.0
 
@@ -284,6 +285,38 @@ Item {
                 return {
                     name: nodoCurrencies.currencyNames[index] + " (" + nodoCurrencies.currencySymbols[index] + ")"
                 };
+            }
+        }
+    }
+
+    Rectangle {
+        id: keyboardLayoutRect
+        anchors.left: deviceDisplayScreen.left
+        anchors.top: currencyRect.bottom
+        anchors.topMargin: NodoSystem.nodoTopMargin
+        height: NodoSystem.nodoItemHeight
+
+        NodoLabel {
+            id: keyboardLayoutLabel
+            height: keyboardLayoutRect.height
+            anchors.top: keyboardLayoutRect.top
+            anchors.left: keyboardLayoutRect.left
+            text: qsTr("Keyboard Layout")
+        }
+
+        NodoComboBox
+        {
+            id: keyboardLayoutComboBox
+            anchors.left: keyboardLayoutLabel.right
+            anchors.leftMargin: NodoSystem.padding
+            anchors.top: keyboardLayoutRect.top
+            width: dropdownLength
+            height: keyboardLayoutRect.height
+            currentIndex: nodoControl.getKeyboardLayoutType()
+            model: [qsTr("QWERTY"), qsTr("QWERTZ"), qsTr("AZERTY")]
+            onCurrentIndexChanged: {
+                nodoControl.setKeyboardLayoutType(currentIndex)
+                VirtualKeyboardSettings.locale = nodoControl.getKeyboardLayoutLocale()
             }
         }
     }

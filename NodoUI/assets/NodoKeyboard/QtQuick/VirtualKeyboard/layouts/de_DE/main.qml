@@ -6,12 +6,11 @@ import QtQuick.VirtualKeyboard
 import QtQuick.VirtualKeyboard.Components
 import QtQuick.Layouts
 
-
 KeyboardLayout {
     inputMode: InputEngine.InputMode.Latin
     keyWeight: 160
     readonly property real normalKeyWidth: normalKey.width
-    readonly property real functionKeyWidth: mapFromItem(normalKey, normalKey.width / 2, 0).x
+    readonly property real functionKeyWidth: mapFromItem(normalKey, normalKey.width, 0).x
     KeyboardRow {
         Key {
             key: Qt.Key_Q
@@ -35,8 +34,8 @@ KeyboardLayout {
             text: "t"
         }
         Key {
-            key: Qt.Key_Y
-            text: "y"
+            key: Qt.Key_Z
+            text: "z"
         }
         Key {
             key: Qt.Key_U
@@ -56,17 +55,9 @@ KeyboardLayout {
         }
     }
     KeyboardRow {
-        KeyboardRow {
-            Layout.preferredWidth: functionKeyWidth
-            Layout.fillWidth: false
-            FillerKey {
-            }
-            Key {
-                key: Qt.Key_A
-                text: "a"
-                weight: normalKeyWidth
-                Layout.fillWidth: false
-            }
+        Key {
+            key: Qt.Key_A
+            text: "a"
         }
         Key {
             key: Qt.Key_S
@@ -96,27 +87,25 @@ KeyboardLayout {
             key: Qt.Key_K
             text: "k"
         }
-        KeyboardRow {
-            Layout.preferredWidth: functionKeyWidth
-            Layout.fillWidth: false
-            Key {
-                key: Qt.Key_L
-                text: "l"
-                weight: normalKeyWidth
-                Layout.fillWidth: false
-            }
-            FillerKey {
-            }
+        Key {
+            key: Qt.Key_L
+            text: "l"
         }
     }
     KeyboardRow {
-        ShiftKey {
-            weight: functionKeyWidth
+        KeyboardRow {
+            Layout.preferredWidth: functionKeyWidth
             Layout.fillWidth: false
+            ShiftKey {
+                weight: 240
+            }
+            FillerKey {
+                weight: 80
+            }
         }
         Key {
-            key: Qt.Key_Z
-            text: "z"
+            key: Qt.Key_Y
+            text: "y"
         }
         Key {
             key: Qt.Key_X
@@ -142,9 +131,15 @@ KeyboardLayout {
             key: Qt.Key_M
             text: "m"
         }
-        BackspaceKey {
-            weight: functionKeyWidth
+        KeyboardRow {
+            Layout.preferredWidth: functionKeyWidth
             Layout.fillWidth: false
+            FillerKey {
+                weight: 80
+            }
+            BackspaceKey {
+                weight: 240
+            }
         }
     }
     KeyboardRow {

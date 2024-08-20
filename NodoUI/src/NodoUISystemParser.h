@@ -10,6 +10,15 @@
 #include <QJsonObject>
 #include <QCryptographicHash>
 
+#define DEFAULT_SCREENSAVER_TIMEOUT 90
+#define DEFAULT_SCREENSAVER_ITEM_CHANGE_TIMEOUT 10
+#define DEFAULT_SCREENSAVER_TYPE 2
+#define DEFAULT_DISPLAY_ORIENTATION -90
+#define DEFAULT_PIN_HASH ""
+#define DEFAULT_LOCK_AFTER 3
+#define DEFAULT_KEYBOARD_LAYOUT_LOCALE 0
+
+
 typedef enum {
     DISPLAY_KEY_SS_TIMEOUT,
     DISPLAY_KEY_SS_ITEM_CHANGE_TIMEOUT,
@@ -17,6 +26,7 @@ typedef enum {
     DISPLAY_KEY_CHANGE_ORIENTATION,
     DISPLAY_KEY_PIN_HASH,
     DISPLAY_KEY_LOCK_AFTER,
+    DISPLAY_KEY_KEYBOARD_LAYOUT
 }display_keys_t;
 
 
@@ -27,6 +37,7 @@ typedef struct {
     int displayOrientation;
     QString pinHash;
     int lockAfter;
+    int keyboardLayout;
 }display_settings_t;
 
 
@@ -57,6 +68,9 @@ public:
     int getLockAfterTime(void);
     void setLockAfterTime(int newTime);
 
+    int readKeyboardLayoutType(void);
+    void writeKeyboardLayoutType(int kbLayout);
+
 private:
     int m_feedCount = 0;
     QJsonDocument m_document;
@@ -65,7 +79,7 @@ private:
 
     display_settings_t m_displaySettings;
 
-    const QStringList m_displayKeyList = {"screensaver_timeout_in_sec", "screensaver_item_change_timeout_in_sec", "screensaver_type", "display_orientation", "pin_hash", "lock_after_in_min"};
+    const QStringList m_displayKeyList = {"screensaver_timeout_in_sec", "screensaver_item_change_timeout_in_sec", "screensaver_type", "display_orientation", "pin_hash", "lock_after_in_min", "keyboard_layout"};
     const QString systemObjName = "system";
     const QString m_json_file_name = "/home/nodo/variables/nodoUI.system.json";
 
