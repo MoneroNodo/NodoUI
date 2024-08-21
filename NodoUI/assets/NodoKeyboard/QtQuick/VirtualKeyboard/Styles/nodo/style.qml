@@ -24,7 +24,7 @@ KeyboardStyle {
     property color keySmallTextColor: NodoSystem.textColorOnUnpressedButton
 
     keyboardDesignWidth: 2560
-    keyboardDesignHeight: 860
+    keyboardDesignHeight: 900
     keyboardRelativeLeftMargin: 6 / keyboardDesignWidth
     keyboardRelativeRightMargin: 6 / keyboardDesignWidth
     keyboardRelativeTopMargin: 6 / keyboardDesignHeight

@@ -13,7 +13,7 @@ KeyboardLayout {
     readonly property real normalKeyWidth: normalKey.width
     readonly property real functionKeyWidth: mapFromItem(normalKey, normalKey.width / 2, 0).x
     KeyboardColumn {
-        Layout.preferredHeight: 90
+        Layout.preferredHeight: normalKeyWidth*0.6
         Layout.fillHeight: false
         KeyboardRow {
             Key {
