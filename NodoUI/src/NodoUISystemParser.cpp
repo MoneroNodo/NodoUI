@@ -5,6 +5,7 @@ NodoUISystemParser::NodoUISystemParser(QObject *parent) : QObject(parent)
     QString val;
     QFile file;
     file.setFileName(m_json_file_name);
+
     if(file.open(QIODevice::ReadOnly | QIODevice::Text))
     {
         val = file.readAll();
@@ -22,17 +23,20 @@ NodoUISystemParser::NodoUISystemParser(QObject *parent) : QObject(parent)
         m_displaySettings.screenSaverItemChangeTimeoutInSec = DEFAULT_SCREENSAVER_ITEM_CHANGE_TIMEOUT;
         m_displaySettings.screenSaverType = DEFAULT_SCREENSAVER_TYPE;
         m_displaySettings.displayOrientation = DEFAULT_DISPLAY_ORIENTATION;
-        m_displaySettings.pinHash =DEFAULT_PIN_HASH;
+        m_displaySettings.lockPinHash = DEFAULT_LOCK_PIN_HASH;
         m_displaySettings.lockAfter = DEFAULT_LOCK_AFTER;
         m_displaySettings.keyboardLayout = DEFAULT_KEYBOARD_LAYOUT_LOCALE; //"en_us"
+        m_displaySettings.addressPinHash = DEFAULT_ADDRESS_PIN_HASH;
+
 
         m_systemObj.insert(m_displayKeyList[DISPLAY_KEY_SS_TIMEOUT], m_displaySettings.screenSaverTimeoutInSec);
         m_systemObj.insert(m_displayKeyList[DISPLAY_KEY_SS_ITEM_CHANGE_TIMEOUT], m_displaySettings.screenSaverItemChangeTimeoutInSec);
         m_systemObj.insert(m_displayKeyList[DISPLAY_KEY_SCREEN_SAVER_TYPE], m_displaySettings.screenSaverType);
         m_systemObj.insert(m_displayKeyList[DISPLAY_KEY_CHANGE_ORIENTATION], m_displaySettings.displayOrientation);
-        m_systemObj.insert(m_displayKeyList[DISPLAY_KEY_PIN_HASH], m_displaySettings.pinHash);
+        m_systemObj.insert(m_displayKeyList[DISPLAY_KEY_LOCK_PIN_HASH], m_displaySettings.lockPinHash);
         m_systemObj.insert(m_displayKeyList[DISPLAY_KEY_LOCK_AFTER], m_displaySettings.lockAfter);
         m_systemObj.insert(m_displayKeyList[DISPLAY_KEY_KEYBOARD_LAYOUT], m_displaySettings.keyboardLayout);
+        m_systemObj.insert(m_displayKeyList[DISPLAY_KEY_ADDRESS_PIN_HASH], m_displaySettings.addressPinHash);
 
         writeJson();
     }
@@ -66,10 +70,10 @@ NodoUISystemParser::NodoUISystemParser(QObject *parent) : QObject(parent)
         updateFile = true;
     }
 
-    jsonValue = m_systemObj.value(m_displayKeyList[DISPLAY_KEY_PIN_HASH]);
+    jsonValue = m_systemObj.value(m_displayKeyList[DISPLAY_KEY_LOCK_PIN_HASH]);
     if(jsonValue.isUndefined() || jsonValue.isNull())
     {
-        m_systemObj.insert(m_displayKeyList[DISPLAY_KEY_PIN_HASH], DEFAULT_PIN_HASH);
+        m_systemObj.insert(m_displayKeyList[DISPLAY_KEY_LOCK_PIN_HASH], DEFAULT_LOCK_PIN_HASH);
         updateFile = true;
     }
 
@@ -87,6 +91,13 @@ NodoUISystemParser::NodoUISystemParser(QObject *parent) : QObject(parent)
         updateFile = true;
     }
 
+    jsonValue = m_systemObj.value(m_displayKeyList[DISPLAY_KEY_ADDRESS_PIN_HASH]);
+    if(jsonValue.isUndefined() || jsonValue.isNull())
+    {
+        m_systemObj.insert(m_displayKeyList[DISPLAY_KEY_ADDRESS_PIN_HASH], DEFAULT_ADDRESS_PIN_HASH);
+        updateFile = true;
+    }
+
     if(updateFile)
     {
         writeJson();
@@ -97,20 +108,6 @@ NodoUISystemParser::NodoUISystemParser(QObject *parent) : QObject(parent)
 
 display_settings_t NodoUISystemParser::readDisplaySettings(void)
 {
-    // if(m_systemObj.isEmpty())
-    // {
-    //     qDebug() << "couldn't find display settings";
-    //     m_displaySettings.screenSaverTimeoutInSec = DEFAULT_SCREENSAVER_TIMEOUT;
-    //     m_displaySettings.screenSaverItemChangeTimeoutInSec = DEFAULT_SCREENSAVER_ITEM_CHANGE_TIMEOUT;
-    //     m_displaySettings.screenSaverType = DEFAULT_SCREENSAVER_TYPE;
-    //     m_displaySettings.displayOrientation = DEFAULT_DISPLAY_ORIENTATION;
-    //     m_displaySettings.pinHash =DEFAULT_PIN_HASH;
-    //     m_displaySettings.lockAfter = DEFAULT_LOCK_AFTER;
-    //     m_displaySettings.keyboardLayout = DEFAULT_KEYBOARD_LAYOUT_LOCALE; //"en_us"
-
-    //     return m_displaySettings;
-    // }
-
     QJsonValue jsonValue = m_systemObj.value(m_displayKeyList[DISPLAY_KEY_SS_TIMEOUT]);
     m_displaySettings.screenSaverTimeoutInSec = jsonValue.toInt();
 
@@ -123,11 +120,14 @@ display_settings_t NodoUISystemParser::readDisplaySettings(void)
     jsonValue = m_systemObj.value(m_displayKeyList[DISPLAY_KEY_CHANGE_ORIENTATION]);
     m_displaySettings.displayOrientation = jsonValue.toInt();
 
-    jsonValue = m_systemObj.value(m_displayKeyList[DISPLAY_KEY_PIN_HASH]);
-    m_displaySettings.pinHash = jsonValue.toString();
+    jsonValue = m_systemObj.value(m_displayKeyList[DISPLAY_KEY_LOCK_PIN_HASH]);
+    m_displaySettings.lockPinHash = jsonValue.toString();
 
     jsonValue = m_systemObj.value(m_displayKeyList[DISPLAY_KEY_LOCK_AFTER]);
     m_displaySettings.lockAfter = jsonValue.toInt();
+
+    jsonValue = m_systemObj.value(m_displayKeyList[DISPLAY_KEY_ADDRESS_PIN_HASH]);
+    m_displaySettings.addressPinHash = jsonValue.toString();
 
     jsonValue = m_systemObj.value(m_displayKeyList[DISPLAY_KEY_KEYBOARD_LAYOUT]);
 
@@ -226,14 +226,14 @@ int NodoUISystemParser::readDisplayOrientation(void)
 
 bool NodoUISystemParser::readPinEnabledStatus(void)
 {
-    return !m_displaySettings.pinHash.isEmpty();
+    return !m_displaySettings.lockPinHash.isEmpty();
 }
 
-bool NodoUISystemParser::comparePinHash(QString pin)
+bool NodoUISystemParser::compareLockPinHash(QString pin)
 {
     QByteArrayView pinHash = QCryptographicHash::hash(pin.toUtf8(), QCryptographicHash::Sha256);
     QByteArray hashText = QByteArray(pinHash.toByteArray(), pinHash.size()).toHex().constData();
-    if(hashText == m_displaySettings.pinHash.toUtf8())
+    if(hashText == m_displaySettings.lockPinHash.toUtf8())
     {
         return true;
     }
@@ -241,7 +241,7 @@ bool NodoUISystemParser::comparePinHash(QString pin)
     return false;
 }
 
-bool NodoUISystemParser::setNewPin(QString newPin)
+bool NodoUISystemParser::setNewLockPin(QString newPin)
 {
     if(m_systemObj.isEmpty())
     {
@@ -251,21 +251,21 @@ bool NodoUISystemParser::setNewPin(QString newPin)
     QByteArrayView pinHash = QCryptographicHash::hash(newPin.toUtf8(), QCryptographicHash::Sha256);
     QByteArray hashText = QByteArray(pinHash.toByteArray(), pinHash.size()).toHex().constData();
 
-    m_systemObj.insert(m_displayKeyList[DISPLAY_KEY_PIN_HASH], QString(hashText));
+    m_systemObj.insert(m_displayKeyList[DISPLAY_KEY_LOCK_PIN_HASH], QString(hashText));
 
     writeJson();
 
     return true;
 }
 
-void NodoUISystemParser::disablePin(void)
+void NodoUISystemParser::disableLockPin(void)
 {
     if(m_systemObj.isEmpty())
     {
         return;
     }
 
-    m_systemObj.insert(m_displayKeyList[DISPLAY_KEY_PIN_HASH], QString(""));
+    m_systemObj.insert(m_displayKeyList[DISPLAY_KEY_LOCK_PIN_HASH], QString(""));
 
     writeJson();
 }
@@ -301,3 +301,33 @@ void NodoUISystemParser::writeKeyboardLayoutType(int kbLayout)
     m_systemObj.insert(m_displayKeyList[DISPLAY_KEY_KEYBOARD_LAYOUT], kbLayout);
     writeJson();
 }
+
+bool NodoUISystemParser::compareAddressPinHash(QString pin)
+{
+    QByteArrayView pinHash = QCryptographicHash::hash(pin.toUtf8(), QCryptographicHash::Sha384);
+    QByteArray hashText = QByteArray(pinHash.toByteArray(), pinHash.size()).toHex().constData();
+    if(hashText == m_displaySettings.addressPinHash.toUtf8())
+    {
+        return true;
+    }
+
+    return false;
+}
+
+bool NodoUISystemParser::setNewAddressPin(QString newPin)
+{
+    if(m_systemObj.isEmpty())
+    {
+        return false;
+    }
+
+    QByteArrayView pinHash = QCryptographicHash::hash(newPin.toUtf8(), QCryptographicHash::Sha384);
+    QByteArray hashText = QByteArray(pinHash.toByteArray(), pinHash.size()).toHex().constData();
+
+    m_systemObj.insert(m_displayKeyList[DISPLAY_KEY_ADDRESS_PIN_HASH], QString(hashText));
+
+    writeJson();
+
+    return true;
+}
+

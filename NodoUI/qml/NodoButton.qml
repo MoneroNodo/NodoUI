@@ -23,9 +23,10 @@ Button {
 
     contentItem: Text {
         id: buttonText
-        y: (root.implicitHeight - buttonText.paintedHeight)/2
-        x: (root.width - buttonText.paintedWidth)/2
-        width: buttonText.paintedWidth
+        // y: (root.implicitHeight - buttonText.paintedHeight)/2
+        // x: (root.width - buttonText.paintedWidth)/2
+        // width: buttonText.paintedWidth
+        width: root.width
         height: root.height
         text: root.text
         textFormat: Text.PlainText

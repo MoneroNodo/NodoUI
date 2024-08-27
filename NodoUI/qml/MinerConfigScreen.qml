@@ -7,78 +7,10 @@ import NodoCanvas 1.0
 
 Item {
     id: minerMainScreen
-    anchors.fill: parent
-    property int labelSize: 0
-    property int inputFieldWidth: 600
-    property int defaultHeight: 64
-    property bool pinFieldReadOnly: false
-    property bool isLockPinEnabled: false
-
-    Component.onCompleted: {
-        minerMainStackView.push("NodoLockScreen.qml", {parentID: 1})
-    }
-
-    Connections{
-        target: minerMainStackView.currentItem
-        function onDeleteMe(screenID) {
-            minerMainStackView.pop()
-            minerMainStackView.push("MinerConfigScreen.qml")
-        }
-    }
-
-    Connections{
-        target: nodoControl
-        function onErrorDetected() {
-            var errorCode = nodoControl.getErrorCode();
-            if(errorCode === 9)
-            {
-                devicePinScreenStackView.pop()
-                devicePinScreenStackView.push("NodoLockScreen.qml")
-            }
-        }
-    }
-    StackView {
-        id: minerMainStackView
-        anchors.fill: minerMainScreen
-
-        pushEnter: Transition {
-            PropertyAnimation {
-                property: "opacity"
-                from: 0
-                to:1
-                duration: 0
-            }
-        }
-        pushExit: Transition {
-            PropertyAnimation {
-                property: "opacity"
-                from: 1
-                to:0
-                duration: 0
-            }
-        }
-        popEnter: Transition {
-            PropertyAnimation {
-                property: "opacity"
-                from: 0
-                to:1
-                duration: 0
-            }
-        }
-        popExit: Transition {
-            PropertyAnimation {
-                property: "opacity"
-                from: 1
-                to:0
-                duration: 0
-            }
-        }
-    }
-
-    /*
     property int labelSize: 0
     property int inputFieldWidth: 600
     anchors.leftMargin: NodoSystem.subMenuLeftMargin
+    signal deleteMe(int screenID)
 
     Rectangle {
         id: minerSwitchRect
@@ -162,7 +94,6 @@ Item {
         color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
         font.family: NodoSystem.fontUrbanist.name
     }
-    */
 }
 
 

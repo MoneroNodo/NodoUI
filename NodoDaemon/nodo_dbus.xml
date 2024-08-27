@@ -104,5 +104,9 @@
                 <arg name="message" type="s" direction="out"/>
         </signal>
 
+        <signal name="passwordChangeStatus">
+                <arg name="status" type="i" direction="out"/>
+        </signal>
+
     </interface>
 </node>

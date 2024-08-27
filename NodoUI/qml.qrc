@@ -75,11 +75,19 @@
         <file>qml/NodoEthernetNetworkConnectedProfile.qml</file>
         <file>qml/DevicePinScreen.qml</file>
         <file>qml/NodoLockScreen.qml</file>
-        <file>qml/NodoPinControlScreen.qml</file>
+        <file>qml/NodoLockPinControlScreen.qml</file>
         <file>Images/delete.png</file>
         <file>Images/nodologo_title_red.png</file>
         <file>Images/nodologo_title_white.png</file>
         <file>qml/NodoPopup.qml</file>
+        <file>qml/NodoFirstTimeSetupScreen.qml</file>
+        <file>qml/NodoFirstTimeAdminPasswordScreen.qml</file>
+        <file>qml/NodoFirstTimeAddressPinScreen.qml</file>
+        <file>qml/NodoFirstTimeLockPinScreen.qml</file>
+        <file>qml/MinerConfigScreen.qml</file>
+        <file>qml/DeviceLockPinScreen.qml</file>
+        <file>qml/DeviceAddressPinScreen.qml</file>
+        <file>qml/NodoAddressPinControlScreen.qml</file>
     </qresource>
     <qresource prefix="/NodoSystem">
         <file alias="qmldir">assets/NodoSystem/qmldir</file>

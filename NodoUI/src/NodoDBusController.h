@@ -52,6 +52,7 @@ signals:
     void dbusConnectionStatusChanged(void);
     void serviceStatusReceived(QString statusMessage);
     void serviceManagerNotificationReceived(QString message);
+    void passwordChangeStatus(int status);
 };
 
 #endif // NODODBUSCONTROLLER_H

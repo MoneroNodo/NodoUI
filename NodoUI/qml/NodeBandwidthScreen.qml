@@ -117,7 +117,7 @@ Item {
         itemSize: labelSize
         itemText: qsTr("Bandwidth Up")
         valueText: nodeBandwidthScreen.rateLimitUp !== -1 ? nodeBandwidthScreen.rateLimitUp : nodeBandwidthScreen.unlimitedbw
-        textFlag: Qt.ImhPreferNumbers
+        textFlag: Qt.ImhDigitsOnly
         readOnlyFlag: nodeBandwidthScreen.inputFieldReadOnly
         validator: IntValidator{bottom: -1;}
         onTextEditFinished: {
@@ -168,7 +168,7 @@ Item {
         itemSize: labelSize
         itemText: qsTr("Bandwidth Down")
         valueText: nodeBandwidthScreen.rateLimitDown !== -1 ? nodeBandwidthScreen.rateLimitDown : nodeBandwidthScreen.unlimitedbw
-        textFlag: Qt.ImhPreferNumbers
+        textFlag: Qt.ImhDigitsOnly //Qt.ImhPreferNumbers
         readOnlyFlag: nodeBandwidthScreen.inputFieldReadOnly
         validator: IntValidator{bottom: -1;}
         onTextEditFinished: {

@@ -485,8 +485,9 @@ void Daemon::setPassword(QString pw)
     QString tmp = QString("echo \"nodo:").append(pw).append("\"  | chpasswd");
     sh.start( "sh", { "-c", tmp});
     sh.waitForFinished( -1 );
+    // qDebug() << "setPassword exit code: " << sh.exitCode();
+    emit passwordChangeStatus(sh.exitCode());
 }
-
 
 double Daemon::getGPUUsage(void)
 {

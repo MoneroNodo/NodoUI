@@ -22,6 +22,15 @@ NodoSystemControl::NodoSystemControl(NodoUISystemParser *uiSystemParser, NodoCon
         qDebug() << "Couldn't connect to the dbus daemon";
     }
 
+    if(QFileInfo::exists(m_firstTimeControlFileName))
+    {
+        m_firstTimeControlDone = true;
+    }
+    else
+    {
+        m_firstTimeControlDone = false;
+    }
+
     m_appTheme = m_configParser->getTheme();
 
     m_screenSaverTimer = new QTimer(this);
@@ -32,6 +41,8 @@ NodoSystemControl::NodoSystemControl(NodoUISystemParser *uiSystemParser, NodoCon
     connect(m_dbusController, SIGNAL(dbusConnectionStatusChanged()), this, SLOT(updateDbusConnectionStatus()));
     connect(m_dbusController, SIGNAL(serviceStatusReceived(QString)), this, SLOT(updateServiceStatus(QString)));
     connect(m_dbusController, SIGNAL(serviceManagerNotificationReceived(QString)), this, SLOT(processNotification(QString)));
+    connect(m_dbusController, SIGNAL(passwordChangeStatus(int)), this, SLOT(passwordChangeStatusReceived(int)));
+
 
     if(m_configParser->getStringValueFromKey("mining", "enabled") == "TRUE")
     {
@@ -297,6 +308,7 @@ QString NodoSystemControl::getGPUUsage(void)
 
 void NodoSystemControl::setPassword(QString pw)
 {
+    enableComponent(false);
     m_dbusController->setPassword(pw);
 }
 
@@ -321,7 +333,6 @@ void NodoSystemControl::sstimedout(void)
     emit screenSaverTimedout();
 }
 
-
 void NodoSystemControl::restartLockScreenTimer(void)
 {
     stopLockScreenTimer();
@@ -337,7 +348,6 @@ void NodoSystemControl::lstimedout(void)
 {
     emit lockScreenTimedout();
 }
-
 
 int NodoSystemControl::getErrorCode(void)
 {
@@ -461,21 +471,19 @@ void NodoSystemControl::processNotification(QString message)
 }
 
 
-bool NodoSystemControl::isPinEnabled(void)
+bool NodoSystemControl::isLockPinEnabled(void)
 {
     return m_uiSystemParser->readPinEnabledStatus();
 }
 
-bool NodoSystemControl::verifyPinCode(QString pin)
+bool NodoSystemControl::verifyLockPinCode(QString pin)
 {
-    return m_uiSystemParser->comparePinHash(pin);
+    return m_uiSystemParser->compareLockPinHash(pin);
 }
 
-void NodoSystemControl::setPin(QString newPin)
+void NodoSystemControl::setLockPin(QString newPin)
 {
-    enableComponent(true);
-
-    if (false == m_uiSystemParser->setNewPin(newPin))
+    if (false == m_uiSystemParser->setNewLockPin(newPin))
     {
         m_errorCode = SOMETHING_IS_WRONG;
     }
@@ -489,9 +497,9 @@ void NodoSystemControl::setPin(QString newPin)
     emit errorDetected();
 }
 
-void NodoSystemControl::disablePin(void)
+void NodoSystemControl::disableLockPin(void)
 {
-    m_uiSystemParser->disablePin();
+    m_uiSystemParser->disableLockPin();
     m_displaySettings = m_uiSystemParser->readDisplaySettings();
 }
 
@@ -548,7 +556,51 @@ QString NodoSystemControl::getKeyboardLayoutLocale(void)
     return s;
 }
 
+bool NodoSystemControl::isFirstBootConfigDone(void)
+{
+    return m_firstTimeControlDone;
+}
+
+void NodoSystemControl::setAddressPin(QString newPIN)
+{
+    if (false == m_uiSystemParser->setNewAddressPin(newPIN))
+    {
+        m_errorCode = SOMETHING_IS_WRONG;
+    }
+    else
+    {
+        m_errorCode = NEW_PIN_IS_SET;
+    }
+
+    m_displaySettings = m_uiSystemParser->readDisplaySettings();
+    emit errorDetected();
+}
+
+bool NodoSystemControl::verifyAddressPinCode(QString pin)
+{
+    return m_uiSystemParser->compareAddressPinHash(pin);
+}
+
+void NodoSystemControl::setFirstBootConfigDone(void)
+{
+    QFile file(m_firstTimeControlFileName);
+    file.open(QIODevice::ReadWrite | QIODevice::Text);
+    file.close();
+    m_firstTimeControlDone = true;
+}
+
+void NodoSystemControl::passwordChangeStatusReceived(int status)
+{
+    enableComponent(true);
+    emit passwordChangeStatus(status);
+}
+
 #ifdef ENABLE_TEST_CODE
+void NodoSystemControl::testSlotFunction(void)
+{
+    enableComponent(true);
+    emit passwordChangeStatus(0);
+}
 
 //QTimer::singleShot(4000, this, SLOT(processNotificationTest()));
 

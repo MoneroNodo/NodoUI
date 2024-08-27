@@ -44,15 +44,10 @@ KeyboardLayout {
                 key: Qt.Key_6
                 text: "6"
             }
-            FillerKey {}
-            // Key {
-            //     text: " "
-            //     displayText: "\u2015\u2015" //"\u2423"
-            //     repeat: true
-            //     showPreview: false
-            //     key: Qt.Key_Space
-            //     highlighted: true
-            // }
+            Key {
+                text: "-"
+                displayText: "-"
+            }
         }
         KeyboardRow {
             Key {

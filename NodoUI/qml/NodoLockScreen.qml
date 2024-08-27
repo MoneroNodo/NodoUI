@@ -25,9 +25,10 @@ Item {
     property string pinCode: ""
 
     property bool buttonsActive: true
+    property int parentID
 
 
-    signal pinCodeCorrect()
+    signal deleteMe(int screenID)
 
     function setPINValue(buttonID)
     {
@@ -52,7 +53,18 @@ Item {
         {
             buttonsActive = false
 
-            if(false === nodoControl.verifyPinCode(pinCode))
+            var retval
+
+            if(0 === parentID)
+            {
+                retval = nodoControl.verifyLockPinCode(pinCode)
+            }
+            else if(1 === parentID)
+            {
+                retval = nodoControl.verifyAddressPinCode(pinCode)
+            }
+
+            if(false === retval)
             {
                 pinCode = ""
                 buttonsActive = true
@@ -61,7 +73,7 @@ Item {
             }
             else
             {
-                lockScreen.pinCodeCorrect()
+                lockScreen.deleteMe(-1)
             }
         }
     }

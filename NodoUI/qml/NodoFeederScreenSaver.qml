@@ -9,7 +9,7 @@ Item {
     id: feederScreenSaver
     width: parent.width
     height: parent.height
-    signal pinCodeCorrect()
+    signal deleteMe(int screenID)
 
     NewsMainScreen{
         x: 0

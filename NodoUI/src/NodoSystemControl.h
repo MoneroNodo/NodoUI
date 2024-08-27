@@ -88,10 +88,10 @@ public:
     Q_INVOKABLE QString getrpcUser(void);
     Q_INVOKABLE QString getrpcPassword(void);
 
-    Q_INVOKABLE bool isPinEnabled(void);
-    Q_INVOKABLE bool verifyPinCode(QString pin);
-    Q_INVOKABLE void setPin(QString newPin);
-    Q_INVOKABLE void disablePin(void);
+    Q_INVOKABLE bool isLockPinEnabled(void);
+    Q_INVOKABLE bool verifyLockPinCode(QString pin);
+    Q_INVOKABLE void setLockPin(QString newPin);
+    Q_INVOKABLE void disableLockPin(void);
     Q_INVOKABLE int getLockAfterTime(void);
     Q_INVOKABLE void setLockAfterTime(QString newTime);
 
@@ -104,6 +104,10 @@ public:
     Q_INVOKABLE void setKeyboardLayoutType(int kbLayout);
     Q_INVOKABLE QString getKeyboardLayoutLocale(void);
 
+    Q_INVOKABLE bool isFirstBootConfigDone(void);
+    Q_INVOKABLE void setFirstBootConfigDone(void);
+    Q_INVOKABLE void setAddressPin(QString newPIN);
+    Q_INVOKABLE bool verifyAddressPinCode(QString pin);
 
 signals:
     void appThemeChanged(bool);
@@ -118,6 +122,7 @@ signals:
     void errorDetected(void);
     void componentEnabledStatusChanged(void);
     void closePopupRequested(void);
+    void passwordChangeStatus(int status);
 
 private:
     bool m_appTheme;
@@ -138,6 +143,8 @@ private:
     int m_passwordMode = -1;
     QString m_serviceStatusMessage;
     int m_errorCode;
+    bool m_firstTimeControlDone = false;
+    QString m_firstTimeControlFileName = "/home/nodo/variables/firsttime";
 
 
     QString m_CPUUsage;
@@ -200,8 +207,11 @@ private slots:
     void sstimedout(void);
     void lstimedout(void);
     void processNotification(QString message);
+    void passwordChangeStatusReceived(int status);
+
 
 #ifdef ENABLE_TEST_CODE
+    void testSlotFunction(void);
     void processNotificationTest(void);
 #endif
 };

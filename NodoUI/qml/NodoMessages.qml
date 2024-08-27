@@ -36,7 +36,9 @@ Item {
         Address,
         Port,
         Loading,
-        PINCodesAreDifferent
+        PINCodesAreDifferent,
+        FailedToChangePassword,
+        PasswordChangedSuccessfully
     }
 
     property var messages:[
@@ -75,6 +77,8 @@ Item {
         qsTr("Port"),
         qsTr("<loading>"),
         qsTr("PIN codes are different."),
+        qsTr("Failed to change password."),
+        qsTr("Password changed successfully.")
     ]
 }
 

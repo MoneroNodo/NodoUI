@@ -43,6 +43,7 @@ signals:
     void restartNotification(const QString &message);
     void shutdownNotification(const QString &message);
     void serviceStatusReadyNotification(const QString &message);
+    void passwordChangeStatus(int status);
 
 private:
     int m_prevIdleTime = 0;

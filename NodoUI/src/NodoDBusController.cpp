@@ -6,6 +6,7 @@ NodoDBusController::NodoDBusController(QObject *parent) : QObject{parent}
     nodo = new com::moneronodo::embeddedInterface("com.monero.nodo", "/com/monero/nodo", QDBusConnection::systemBus(), this);
     connect(nodo, SIGNAL(serviceManagerNotification(QString)), this, SIGNAL(serviceManagerNotificationReceived(QString)));
     connect(nodo, SIGNAL(serviceStatusReadyNotification(QString)), this, SLOT(updateServiceStatus(QString)));
+    connect(nodo, SIGNAL(passwordChangeStatus(int)), this, SIGNAL(passwordChangeStatus(int)));
 
     startTimer(1000);
 }

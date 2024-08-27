@@ -14,9 +14,10 @@
 #define DEFAULT_SCREENSAVER_ITEM_CHANGE_TIMEOUT 10
 #define DEFAULT_SCREENSAVER_TYPE 2
 #define DEFAULT_DISPLAY_ORIENTATION -90
-#define DEFAULT_PIN_HASH ""
+#define DEFAULT_LOCK_PIN_HASH ""
 #define DEFAULT_LOCK_AFTER 3
 #define DEFAULT_KEYBOARD_LAYOUT_LOCALE 0
+#define DEFAULT_ADDRESS_PIN_HASH ""
 
 
 typedef enum {
@@ -24,9 +25,10 @@ typedef enum {
     DISPLAY_KEY_SS_ITEM_CHANGE_TIMEOUT,
     DISPLAY_KEY_SCREEN_SAVER_TYPE,
     DISPLAY_KEY_CHANGE_ORIENTATION,
-    DISPLAY_KEY_PIN_HASH,
+    DISPLAY_KEY_LOCK_PIN_HASH,
     DISPLAY_KEY_LOCK_AFTER,
-    DISPLAY_KEY_KEYBOARD_LAYOUT
+    DISPLAY_KEY_KEYBOARD_LAYOUT,
+    DISPLAY_KEY_ADDRESS_PIN_HASH,
 }display_keys_t;
 
 
@@ -35,7 +37,8 @@ typedef struct {
     int screenSaverItemChangeTimeoutInSec;
     int screenSaverType;
     int displayOrientation;
-    QString pinHash;
+    QString lockPinHash;
+    QString addressPinHash;
     int lockAfter;
     int keyboardLayout;
 }display_settings_t;
@@ -62,14 +65,17 @@ public:
     int readDisplayOrientation(void);
 
     bool readPinEnabledStatus(void);
-    bool comparePinHash(QString pin);
-    bool setNewPin(QString newPin);
-    void disablePin(void);
+    bool compareLockPinHash(QString pin);
+    bool setNewLockPin(QString newPin);
+    void disableLockPin(void);
     int getLockAfterTime(void);
     void setLockAfterTime(int newTime);
 
     int readKeyboardLayoutType(void);
     void writeKeyboardLayoutType(int kbLayout);
+
+    bool compareAddressPinHash(QString pin);
+    bool setNewAddressPin(QString newPin);
 
 private:
     int m_feedCount = 0;
@@ -79,7 +85,7 @@ private:
 
     display_settings_t m_displaySettings;
 
-    const QStringList m_displayKeyList = {"screensaver_timeout_in_sec", "screensaver_item_change_timeout_in_sec", "screensaver_type", "display_orientation", "pin_hash", "lock_after_in_min", "keyboard_layout"};
+    const QStringList m_displayKeyList = {"screensaver_timeout_in_sec", "screensaver_item_change_timeout_in_sec", "screensaver_type", "display_orientation", "lock_pin_hash", "lock_after_in_min", "keyboard_layout", "address_pin_hash"};
     const QString systemObjName = "system";
     const QString m_json_file_name = "/home/nodo/variables/nodoUI.system.json";
 

@@ -40,15 +40,12 @@ ApplicationWindow {
 
     Component.onCompleted:
     {
-        // VirtualKeyboardSettings.locale = "en_US"
-        // VirtualKeyboardSettings.locale = "de_DE"
-        // VirtualKeyboardSettings.locale = "fr_FR"
         VirtualKeyboardSettings.locale = nodoControl.getKeyboardLayoutLocale()
         VirtualKeyboardSettings.styleName = "nodo"
 
         nodoControl.restartScreenSaverTimer();
 
-        if(nodoControl.isPinEnabled())
+        if(nodoControl.isLockPinEnabled())
         {
             nodoControl.restartLockScreenTimer();
         }
@@ -81,7 +78,7 @@ ApplicationWindow {
 
             function onLockScreenTimedout()
             {
-                if(nodoControl.isPinEnabled())
+                if(nodoControl.isLockPinEnabled())
                 {
                     mainAppWindowMainRect.lockScreen();
                 }
@@ -90,8 +87,12 @@ ApplicationWindow {
 
         Connections{
             target: mainAppStackView.currentItem
-            function onPinCodeCorrect() {
+            function onDeleteMe(screenID) {
                 mainAppStackView.pop()
+                if(0 === screenID)
+                {
+                    mainAppStackView.push("NodoHomeScreen.qml")
+                }
             }
         }
 
@@ -100,8 +101,7 @@ ApplicationWindow {
         StackView {
             id: mainAppStackView
             anchors.fill: parent
-            initialItem: "NodoHomeScreen.qml"
-
+            initialItem: nodoControl.isFirstBootConfigDone() === true ? "NodoHomeScreen.qml" : "NodoFirstTimeSetupScreen.qml"
             pushEnter: Transition {
                 PropertyAnimation {
                     property: "opacity"
@@ -144,7 +144,7 @@ ApplicationWindow {
             onPressed: (mouse)=> {
                            mouse.accepted = false;
                            nodoControl.restartScreenSaverTimer();
-                           if(nodoControl.isPinEnabled())
+                           if(nodoControl.isLockPinEnabled())
                            {
                                nodoControl.restartLockScreenTimer();
                            }
@@ -176,7 +176,6 @@ ApplicationWindow {
 
                 mainAppWindow.screenSaverActive = true
                 nodoControl.closePopup()
-                mainAppStackView.pop()
                 var screenSaverType = nodoControl.getScreenSaverType()
 
                 if(0 === screenSaverType) {
@@ -202,7 +201,6 @@ ApplicationWindow {
                 if(mainAppWindow.screenSaverActive === false)
                 {
                     nodoControl.closePopup()
-                    mainAppStackView.pop()
                     mainAppStackView.push("NodoLockScreen.qml")
                 }
             }

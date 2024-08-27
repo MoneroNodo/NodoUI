@@ -198,6 +198,7 @@ KeyboardLayout {
         SymbolModeKey {
             weight: functionKeyWidth
             Layout.fillWidth: false
+            displayText: "#+="
         }
         Key {
             text: " "

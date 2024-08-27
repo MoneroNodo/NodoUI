@@ -32,7 +32,7 @@ Item {
     property real second_center_x_position: 12// image width/2
     property real second_center_y_position: 476 // rotational center of the handle
 
-    signal pinCodeCorrect()
+    signal deleteMe(int screenID)
 
     function timeChanged() {
         var date = nodoControl.getChangedDateTime();

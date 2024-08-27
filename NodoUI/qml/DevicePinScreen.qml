@@ -9,18 +9,73 @@ import NodoCanvas 1.0
 Item {
     id: devicePinScreen
     anchors.fill: parent
+
+    property int labelSize: 0
+    property int buttonTopMargin: 32
+
+    Component.onCompleted: {
+        onCalculateMaximumTextLabelLength()
+    }
+
+    function onCalculateMaximumTextLabelLength() {
+        if(deviceLockPinSettingsButton.buttonWidth > labelSize)
+            labelSize = deviceLockPinSettingsButton.buttonWidth
+
+        if(systemShutdownButton.buttonWidth > labelSize)
+            labelSize = systemShutdownButton.buttonWidth
+    }
+
+    NodoButton {
+        id: deviceLockPinSettingsButton
+        anchors.left: devicePinScreen.left
+        anchors.top: devicePinScreen.top
+        text: qsTr("Change Lock PIN Settings")
+        height: NodoSystem.nodoItemHeight
+        font.family: NodoSystem.fontUrbanist.name
+        font.pixelSize: NodoSystem.buttonTextFontSize
+        width: labelSize
+        onClicked: {
+            onClicked: { pageLoader.source = "DeviceLockPinScreen.qml" }
+        }
+    }
+
+    NodoButton {
+        id: systemShutdownButton
+        anchors.left: devicePinScreen.left
+        anchors.top: deviceLockPinSettingsButton.bottom
+        anchors.topMargin: devicePinScreen.buttonTopMargin
+        text: qsTr("Change Address PIN Settings")
+        height: NodoSystem.nodoItemHeight
+        font.family: NodoSystem.fontUrbanist.name
+        font.pixelSize: NodoSystem.buttonTextFontSize
+        width: labelSize
+        onClicked: {
+            onClicked: { pageLoader.source = "DeviceAddressPinScreen.qml" }
+        }
+    }
+
+    Loader {
+        id: pageLoader
+        anchors.top: devicePinScreen.top
+        anchors.left: devicePinScreen.left
+        anchors.right: devicePinScreen.right
+        anchors.bottom: devicePinScreen.bottom
+        anchors.topMargin: 0
+    }
+
+    /*
     property int labelSize: 0
     property int inputFieldWidth: 600
     property int defaultHeight: 64
     property bool pinFieldReadOnly: false
-    property bool isPinEnabled: false
+    property bool isLockPinEnabled: false
 
     Component.onCompleted: {
-        isPinEnabled = nodoControl.isPinEnabled()
+        isLockPinEnabled = nodoControl.isLockPinEnabled()
 
-        if(isPinEnabled)
+        if(isLockPinEnabled)
         {
-            devicePinScreenStackView.push("NodoLockScreen.qml")
+            devicePinScreenStackView.push("NodoLockScreen.qml", {parentID: 0})
         }
         else
         {
@@ -30,10 +85,11 @@ Item {
 
     Connections{
         target: devicePinScreenStackView.currentItem
-        function onPinCodeCorrect() {
+        function onDeleteMe(screenID) {
             devicePinScreenStackView.pop()
             devicePinScreenStackView.push("NodoPinControlScreen.qml")
         }
+
     }
 
     Connections{
@@ -43,7 +99,7 @@ Item {
             if(errorCode === 9)
             {
                 devicePinScreenStackView.pop()
-                devicePinScreenStackView.push("NodoLockScreen.qml")
+                devicePinScreenStackView.push("NodoLockScreen.qml", {parentID: 0})
             }
         }
     }
@@ -86,5 +142,6 @@ Item {
             }
         }
     }
+    */
 }
 
