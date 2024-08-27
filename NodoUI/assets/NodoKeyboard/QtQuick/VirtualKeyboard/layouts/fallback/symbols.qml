@@ -18,6 +18,7 @@ KeyboardLayoutLoader {
             readonly property real functionKeyWidth: mapFromItem(normalKey, normalKey.width / 2, 0).x
             KeyboardRow {
                 Key {
+
                     key: Qt.Key_AsciiTilde
                     text: "~"
                 }
@@ -115,8 +116,8 @@ KeyboardLayoutLoader {
                     text: ">"
                 }
                 Key {
-                    key: Qt.Key_Apostrophe
-                    text: "'"
+                    key: Qt.Key_Comma
+                    text: ","
                 }
                 Key {
                     key: Qt.Key_Colon
@@ -144,13 +145,6 @@ KeyboardLayoutLoader {
                     weight: functionKeyWidth
                     Layout.fillWidth: false
                     displayText: "ABC"
-                }
-                Key {
-                    key: Qt.Key_Comma
-                    weight: normalKeyWidth
-                    Layout.fillWidth: false
-                    text: ","
-                    highlighted: true
                 }
                 Key {
                     text: " "
