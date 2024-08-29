@@ -112,6 +112,11 @@ Item {
         readOnlyFlag: networksI2PScreen.i2pPortFieldReadOnly
         validator: IntValidator{bottom: 0; top: 65535}
         onTextEditFinished: {
+            if("" === i2pPortField.valueText)
+            {
+                clearnetPortField.valueText = networksI2PScreen.i2pPort.toString()
+            }
+
             if(i2pPortField.valueText !== networksI2PScreen.i2pPort.toString())
             {
                 i2pApplyPortButton.isActive = true

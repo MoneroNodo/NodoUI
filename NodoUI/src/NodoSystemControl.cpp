@@ -438,6 +438,8 @@ QString NodoSystemControl::getrpcPassword(void)
 void NodoSystemControl::setNodeBandwidthParameters(QString in_peers, QString out_peers, QString limit_rate_up, QString limit_rate_down)
 {
     enableComponent(false);
+    // qDebug() << "in_peers: " << in_peers << "out_peers: " << out_peers << "limit_rate_up: " << limit_rate_up << "limit_rate_down: " << limit_rate_down;
+    // QTimer::singleShot(2000, this, SLOT(processNotificationTest()));
     m_configParser->setNodeBandwidthParameters(in_peers, out_peers, limit_rate_up, limit_rate_down);
     m_dbusController->serviceManager("restart", "monerod");
 }
@@ -606,7 +608,7 @@ void NodoSystemControl::testSlotFunction(void)
 
 void NodoSystemControl::processNotificationTest(void)
 {
-    QString message = "monerod:restart:0";
+    QString message = "monerod:restart:1";
     QStringList serviceStat = message.split(":");
 
     m_componentEnabled = true;

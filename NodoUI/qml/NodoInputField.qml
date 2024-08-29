@@ -111,6 +111,12 @@ Item {
                 Qt.inputMethod.hide();
                 root.textEditFinished()
             }
+
+            TapHandler {
+                onTapped: {
+                    nodoControl.setInputFieldText(valueText)
+                }
+            }
         }
 
         NodoPasswordButton {

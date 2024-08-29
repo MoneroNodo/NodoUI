@@ -10,31 +10,70 @@ Item {
     property int labelSize: 0
     property int inputFieldWidth: 600
     property bool inputFieldReadOnly: false
+    property bool switchCheckable: true
     property int incomingPeersLimit
     property int outgoingPeersLimit
     property int rateLimitUp
-    property string rateLimitUpEdited
-    property string rateLimitDownEdited
     property int rateLimitDown
     property string bwUnit: qsTr("kB/s")
     property string unlimitedbw: "∞"
+    property int defaultBW: 1024
+    property bool configReceived: false
+    property bool processConfig: true
+    property string rateLimitUpStr
+    property string rateLimitDownStr
 
     Component.onCompleted: {
         nodoConfig.updateRequested()
         onCalculateMaximumTextLabelLength()
-        nodeBandwidthScreen.inputFieldReadOnly = !nodoControl.isComponentEnabled();
     }
 
     Connections {
         target: nodoConfig
         function onConfigParserReady() {
-            nodeBandwidthScreen.incomingPeersLimit = nodoConfig.getIntValueFromKey("config", "in_peers")
-            nodeBandwidthScreen.outgoingPeersLimit = nodoConfig.getIntValueFromKey("config", "out_peers")
-            nodeBandwidthScreen.rateLimitUp = nodoConfig.getIntValueFromKey("config", "limit_rate_up")
-            nodeBandwidthScreen.rateLimitDown = nodoConfig.getIntValueFromKey("config", "limit_rate_down")
+            if(false === processConfig)
+            {
+                return
+            }
 
-            nodeBandwidthScreen.rateLimitUpEdited = nodeBandwidthScreen.rateLimitUp
-            nodeBandwidthScreen.rateLimitDownEdited = nodeBandwidthScreen.rateLimitDown
+            incomingPeersLimit = nodoConfig.getIntValueFromKey("config", "in_peers")
+            outgoingPeersLimit = nodoConfig.getIntValueFromKey("config", "out_peers")
+            rateLimitUp = nodoConfig.getIntValueFromKey("config", "limit_rate_up")
+            rateLimitDown = nodoConfig.getIntValueFromKey("config", "limit_rate_down")
+
+            rateLimitUpStr = rateLimitUp
+            rateLimitDownStr = rateLimitDown
+
+            if(-1 === rateLimitUp)
+            {
+                rateLimitUpField.valueText = unlimitedbw
+                rateLimitUpField.readOnlyFlag = true
+                rateLimitUpUnlimitedSwitch.checked = true
+            }
+            else
+            {
+                rateLimitUpField.valueText = rateLimitUp
+                rateLimitUpField.readOnlyFlag = false
+                rateLimitUpUnlimitedSwitch.checked = false
+            }
+
+            if(-1 === rateLimitDown)
+            {
+                rateLimitDownField.valueText = unlimitedbw
+                rateLimitDownField.readOnlyFlag = true
+                rateLimitDownUnlimitedSwitch.checked = true
+            }
+            else
+            {
+                rateLimitDownField.valueText = rateLimitUp
+                rateLimitDownField.readOnlyFlag = false
+                rateLimitDownUnlimitedSwitch.checked = false
+            }
+
+            if(false == configReceived)
+            {
+                configReceived = true
+            }
         }
     }
 
@@ -48,7 +87,35 @@ Item {
         }
 
         function onComponentEnabledStatusChanged() {
-            nodeBandwidthScreen.inputFieldReadOnly = !nodoControl.isComponentEnabled();
+            var status = nodoControl.isComponentEnabled()
+            inputFieldReadOnly = !status
+            switchCheckable = status
+
+            if(false === status)
+            {
+                rateLimitUpField.readOnlyFlag = !status
+                rateLimitDownField.readOnlyFlag = !status
+            }
+            else
+            {
+                if(unlimitedbw === rateLimitUpField.valueText)
+                {
+                    rateLimitUpField.readOnlyFlag = true
+                }
+                else
+                {
+                    rateLimitUpField.readOnlyFlag = false
+                }
+
+                if(unlimitedbw === rateLimitDownField.valueText)
+                {
+                    rateLimitDownField.readOnlyFlag = true
+                }
+                else
+                {
+                    rateLimitDownField.readOnlyFlag = false
+                }
+            }
         }
     }
 
@@ -74,13 +141,19 @@ Item {
         height: NodoSystem.infoFieldLabelHeight
         itemSize: labelSize
         itemText: qsTr("Incoming peers limit")
-        valueText: nodeBandwidthScreen.incomingPeersLimit
+        valueText: incomingPeersLimit
         textFlag: Qt.ImhDigitsOnly
-        readOnlyFlag: nodeBandwidthScreen.inputFieldReadOnly
+        readOnlyFlag: inputFieldReadOnly
         validator: IntValidator{bottom: 0; top: 65535}
         onTextEditFinished: {
-            if(incomingPeersLimitField.valueText !== nodeBandwidthScreen.incomingPeersLimit.toString())
+            if("" === incomingPeersLimitField.valueText)
             {
+                incomingPeersLimitField.valueText = incomingPeersLimit.toString()
+            }
+
+            if(incomingPeersLimitField.valueText !== incomingPeersLimit.toString())
+            {
+                processConfig = false
                 nodeBandwidthApplyButton.isActive = true
             }
         }
@@ -95,125 +168,211 @@ Item {
         height: NodoSystem.infoFieldLabelHeight
         itemSize: labelSize
         itemText: qsTr("Outgoing peers limit")
-        valueText: nodeBandwidthScreen.outgoingPeersLimit
+        valueText: outgoingPeersLimit
         textFlag: Qt.ImhDigitsOnly
-        readOnlyFlag: nodeBandwidthScreen.inputFieldReadOnly
+        readOnlyFlag: inputFieldReadOnly
         validator: IntValidator{bottom: 0; top: 65535}
         onTextEditFinished: {
-            if(outgoingPeersLimitField.valueText !== nodeBandwidthScreen.outgoingPeersLimit.toString())
+            if("" === outgoingPeersLimitField.valueText)
             {
-                nodeBandwidthApplyButton.isActive = true
-            }
-        }
-    }
-
-    NodoInputField {
-        id: rateLimitUpField
-        anchors.left: nodeBandwidthScreen.left
-        anchors.top: outgoingPeersLimitField.bottom
-        anchors.topMargin: NodoSystem.nodoTopMargin
-        width: inputFieldWidth
-        height: NodoSystem.infoFieldLabelHeight
-        itemSize: labelSize
-        itemText: qsTr("Bandwidth Up")
-        valueText: nodeBandwidthScreen.rateLimitUp !== -1 ? nodeBandwidthScreen.rateLimitUp : nodeBandwidthScreen.unlimitedbw
-        textFlag: Qt.ImhDigitsOnly
-        readOnlyFlag: nodeBandwidthScreen.inputFieldReadOnly
-        validator: IntValidator{bottom: -1;}
-        onTextEditFinished: {
-            nodeBandwidthScreen.rateLimitUpEdited = rateLimitUpField.valueText;
-            if(nodeBandwidthScreen.rateLimitUpEdited === nodeBandwidthScreen.unlimitedbw)
-            {
-                nodeBandwidthScreen.rateLimitUpEdited = "-1";
+                outgoingPeersLimitField.valueText = outgoingPeersLimit.toString()
             }
 
-            if(rateLimitUpField.valueText === "-1")
+            if(outgoingPeersLimitField.valueText !== outgoingPeersLimit.toString())
             {
-                rateLimitUpField.valueText = nodeBandwidthScreen.unlimitedbw
-            }
-
-            if(nodeBandwidthScreen.rateLimitUpEdited !== nodeBandwidthScreen.rateLimitUp.toString())
-            {
+                processConfig = false
                 nodeBandwidthApplyButton.isActive = true
             }
         }
     }
 
     Rectangle {
-        id: rateLimitUpUnitRect
-        anchors.left: rateLimitUpField.right
-        anchors.top: rateLimitUpField.top
-        anchors.leftMargin: 8
-        color: "transparent"
+        id: rateLimitUpFieldRect
+        anchors.left: nodeBandwidthScreen.left
+        anchors.top: outgoingPeersLimitField.bottom
+        anchors.topMargin: NodoSystem.nodoTopMargin
+        height: NodoSystem.infoFieldLabelHeight
+
+        NodoInputField {
+            id: rateLimitUpField
+            width: inputFieldWidth
+            height: NodoSystem.infoFieldLabelHeight
+            itemSize: labelSize
+            itemText: qsTr("Bandwidth Up")
+            textFlag: Qt.ImhDigitsOnly
+            validator: IntValidator{bottom: 0}
+            onTextEditFinished: {
+                if("" === rateLimitUpField.valueText)
+                {
+                    rateLimitUpField.valueText = defaultBW.toString()
+                    rateLimitUpStr = "-1"
+                }
+                else
+                {
+                    rateLimitUpStr = rateLimitUpField.valueText
+                }
+                nodeBandwidthApplyButton.isActive = true
+            }
+        }
 
         Text {
             id: rateLimitUpUnit
             text: bwUnit
-            anchors.left: rateLimitUpUnitRect.right
+            anchors.left: rateLimitUpField.right
+            anchors.top: rateLimitUpFieldRect.top
+            anchors.leftMargin: 8
+
             height: NodoSystem.infoFieldLabelHeight
             verticalAlignment: Text.AlignVCenter
             font.family: NodoSystem.fontUrbanist.name
             font.pixelSize: NodoSystem.inputFieldValueFontSize
             color: (nodeBandwidthScreen.inputFieldReadOnly === true) ? NodoSystem.buttonDisabledColor : nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn : NodoSystem.dataFieldTextColorNightModeOff
         }
-    }
 
-    NodoInputField {
-        id: rateLimitDownField
-        anchors.left: nodeBandwidthScreen.left
-        anchors.top: rateLimitUpField.bottom
-        anchors.topMargin: NodoSystem.nodoTopMargin
-        width: inputFieldWidth
-        height: NodoSystem.infoFieldLabelHeight
-        itemSize: labelSize
-        itemText: qsTr("Bandwidth Down")
-        valueText: nodeBandwidthScreen.rateLimitDown !== -1 ? nodeBandwidthScreen.rateLimitDown : nodeBandwidthScreen.unlimitedbw
-        textFlag: Qt.ImhDigitsOnly //Qt.ImhPreferNumbers
-        readOnlyFlag: nodeBandwidthScreen.inputFieldReadOnly
-        validator: IntValidator{bottom: -1;}
-        onTextEditFinished: {
-            nodeBandwidthScreen.rateLimitDownEdited = rateLimitDownField.valueText;
-            if(nodeBandwidthScreen.rateLimitDownEdited === nodeBandwidthScreen.unlimitedbw)
-            {
-                nodeBandwidthScreen.rateLimitDownEdited = "-1";
+        Rectangle {
+            id: rateLimitUpUnlimitedSwitchRect
+            anchors.left: rateLimitUpUnit.right
+            anchors.top: rateLimitUpFieldRect.top
+            height: NodoSystem.nodoItemHeight
+            anchors.leftMargin: 10
+
+            NodoLabel{
+                id: rateLimitUpUnlimitedSwitchText
+                height: rateLimitUpUnlimitedSwitchRect.height
+                anchors.left: rateLimitUpUnlimitedSwitchRect.left
+                anchors.top: rateLimitUpUnlimitedSwitchRect.top
+                text: qsTr("Unlimited")
             }
 
-            if(rateLimitDownField.valueText === "-1")
-            {
-                rateLimitDownField.valueText = nodeBandwidthScreen.unlimitedbw
-            }
+            NodoSwitch {
+                id: rateLimitUpUnlimitedSwitch
+                anchors.left: rateLimitUpUnlimitedSwitchText.right
+                anchors.leftMargin: NodoSystem.padding
+                height: rateLimitUpUnlimitedSwitchRect.height
+                width: 2*rateLimitUpUnlimitedSwitchRect.height
+                display: AbstractButton.IconOnly
+                checkable: switchCheckable
+                onCheckedChanged: {
+                    if(checked)
+                    {
+                        rateLimitUpField.valueText = unlimitedbw
+                        rateLimitUpField.readOnlyFlag = true
+                        rateLimitUpStr = "-1"
+                    }
+                    else
+                    {
+                        rateLimitUpField.valueText = defaultBW
+                        rateLimitUpField.readOnlyFlag = false
+                        rateLimitUpStr = defaultBW
+                    }
 
-            if(nodeBandwidthScreen.rateLimitDownEdited !== nodeBandwidthScreen.rateLimitDown.toString())
-            {
-                nodeBandwidthApplyButton.isActive = true
+                    if(true === configReceived)
+                    {
+                        processConfig = false
+                        nodeBandwidthApplyButton.isActive = true
+                    }
+                }
             }
         }
     }
 
-
     Rectangle {
-        id: rateLimitDownUnitRect
-        anchors.left: rateLimitDownField.right
-        anchors.top: rateLimitDownField.top
-        anchors.leftMargin: 8
-        color: "transparent"
+        id: rateLimitDownFieldRect
+        anchors.left: nodeBandwidthScreen.left
+        anchors.top: rateLimitUpFieldRect.bottom
+        anchors.topMargin: NodoSystem.nodoTopMargin
+        height: NodoSystem.infoFieldLabelHeight
+
+        NodoInputField {
+            id: rateLimitDownField
+            anchors.left: rateLimitDownFieldRect.left
+            anchors.top: rateLimitDownFieldRect.top
+            width: inputFieldWidth
+            height: NodoSystem.infoFieldLabelHeight
+            itemSize: labelSize
+            itemText: qsTr("Bandwidth Down")
+            textFlag: Qt.ImhDigitsOnly
+            validator: IntValidator{bottom: 0}
+            onTextEditFinished: {
+                if("" === rateLimitDownField.valueText)
+                {
+                    rateLimitDownField.valueText = defaultBW.toString()
+                    rateLimitDownStr = "-1"
+                }
+                else
+                {
+                    rateLimitDownStr = rateLimitDownField.valueText
+                }
+                nodeBandwidthApplyButton.isActive = true
+            }
+        }
 
         Text {
             id: rateLimitDownUnit
             text: bwUnit
-            anchors.left: rateLimitDownUnitRect.right
+            anchors.left: rateLimitDownField.right
+            anchors.top: rateLimitDownField.top
+            anchors.leftMargin: 8
+
             height: NodoSystem.infoFieldLabelHeight
             verticalAlignment: Text.AlignVCenter
             font.family: NodoSystem.fontUrbanist.name
             font.pixelSize: NodoSystem.inputFieldValueFontSize
-            color: (nodeBandwidthScreen.inputFieldReadOnly === true) ? NodoSystem.buttonDisabledColor : nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn : NodoSystem.dataFieldTextColorNightModeOff
+            color: (inputFieldReadOnly === true) ? NodoSystem.buttonDisabledColor : nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn : NodoSystem.dataFieldTextColorNightModeOff
+        }
+
+        Rectangle {
+            id: rateLimitDownUnlimitedSwitchRect
+            anchors.left: rateLimitDownUnit.right
+            anchors.top: rateLimitDownFieldRect.top
+            height: NodoSystem.nodoItemHeight
+            anchors.leftMargin: 10
+
+            NodoLabel{
+                id: rateLimitDownUnlimitedSwitchText
+                height: rateLimitDownUnlimitedSwitchRect.height
+                anchors.left: rateLimitDownUnlimitedSwitchRect.left
+                anchors.top: rateLimitDownUnlimitedSwitchRect.top
+                text: qsTr("Unlimited")
+            }
+
+            NodoSwitch {
+                id: rateLimitDownUnlimitedSwitch
+                anchors.left: rateLimitDownUnlimitedSwitchText.right
+                anchors.leftMargin: NodoSystem.padding
+                height: rateLimitDownUnlimitedSwitchRect.height
+                width: 2*rateLimitDownUnlimitedSwitchRect.height
+                display: AbstractButton.IconOnly
+                checkable: switchCheckable
+                onCheckedChanged: {
+                    if(checked)
+                    {
+                        rateLimitDownField.valueText = unlimitedbw
+                        rateLimitDownField.readOnlyFlag = true
+                        rateLimitDownStr = "-1"
+                    }
+                    else
+                    {
+                        rateLimitDownField.valueText = defaultBW
+                        rateLimitDownField.readOnlyFlag = false
+                        rateLimitDownStr = defaultBW
+                    }
+
+                    if(true === configReceived)
+                    {
+                        processConfig = false
+                        nodeBandwidthApplyButton.isActive = true
+                    }
+                }
+            }
         }
     }
+
 
     NodoButton {
         id: nodeBandwidthApplyButton
         anchors.left: nodeBandwidthScreen.left
-        anchors.top: rateLimitDownField.bottom
+        anchors.top: rateLimitDownFieldRect.bottom
         anchors.topMargin: 20
         text: systemMessages.messages[NodoMessages.Message.Apply]
         height: 60
@@ -223,7 +382,7 @@ Item {
         onClicked:
         {
             isActive = false
-            nodoControl.setNodeBandwidthParameters(incomingPeersLimitField.valueText, outgoingPeersLimitField.valueText, nodeBandwidthScreen.rateLimitUpEdited, nodeBandwidthScreen.rateLimitDownEdited)
+            nodoControl.setNodeBandwidthParameters(incomingPeersLimitField.valueText, outgoingPeersLimitField.valueText, rateLimitUpStr, rateLimitDownStr)
         }
     }
 

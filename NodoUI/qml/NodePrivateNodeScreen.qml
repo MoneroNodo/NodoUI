@@ -105,6 +105,11 @@ Item {
         textFlag: Qt.ImhDigitsOnly
         validator: IntValidator{bottom: 0; top: 65535}
         onTextEditFinished: {
+            if("" === privateNodePortField.valueText)
+            {
+                privateNodePortField.valueText = nodePrivateNodeScreen.rpcPort.toString()
+            }
+
             if(privateNodePortField.valueText !== nodePrivateNodeScreen.rpcPort.toString())
             {
                 hiddenInputField.focus = true

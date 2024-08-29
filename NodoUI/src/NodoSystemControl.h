@@ -8,7 +8,7 @@
 #include <QTimer>
 #include "NodoNotificationMessages.h"
 
-// #define ENABLE_TEST_CODE
+#define ENABLE_TEST_CODE
 
 class NodoSystemControl : public QObject
 {

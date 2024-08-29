@@ -129,6 +129,11 @@ Item {
         readOnlyFlag: networksClearnetScreen.inputFieldReadOnly
         validator: IntValidator{bottom: 0; top: 65535}
         onTextEditFinished: {
+            if("" === clearnetPortField.valueText)
+            {
+                clearnetPortField.valueText = networksClearnetScreen.clearnetPort.toString()
+            }
+
             if(clearnetPortField.valueText !== networksClearnetScreen.clearnetPort.toString())
             {
                 clearnetApplyPortButton.isActive = true

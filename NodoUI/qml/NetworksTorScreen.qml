@@ -142,6 +142,11 @@ Item {
         readOnlyFlag: networksTorScreen.torPortFieldReadOnly
         validator: IntValidator{bottom: 0; top: 65535}
         onTextEditFinished: {
+            if("" === torPortField.valueText)
+            {
+                torPortField.valueText = networksTorScreen.torPort.toString()
+            }
+
             if(torPortField.valueText !== networksTorScreen.torPort.toString())
             {
                 torApplyPortButton.isActive = true
