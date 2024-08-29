@@ -470,6 +470,20 @@ void NodoSystemControl::processNotification(QString message)
             return;
         }
     }
+
+    if(("block-explorer" == serviceStat[0]))
+    {
+        if("1" == serviceStat[2])
+        {
+            m_errorCode = NO_ERROR;
+        }
+        else
+        {
+            m_errorCode = RESTARTING_BLOCK_EXPLORER_FAILED;
+            emit errorDetected();
+            return;
+        }
+    }
 }
 
 
@@ -595,6 +609,19 @@ void NodoSystemControl::passwordChangeStatusReceived(int status)
 {
     enableComponent(true);
     emit passwordChangeStatus(status);
+}
+
+void NodoSystemControl::enableBlockExplorerStatus(bool status)
+{
+    enableComponent(false);
+    if(status)
+    {
+        m_dbusController->serviceManager("start", "block-explorer");
+    }
+    else
+    {
+        m_dbusController->serviceManager("stop", "block-explorer");
+    }
 }
 
 #ifdef ENABLE_TEST_CODE

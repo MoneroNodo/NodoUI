@@ -38,6 +38,15 @@ Item {
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: { pageLoader.source = "NodeBandwidthScreen.qml" }
         }
+        NodoTabButton {
+            id: blockExplorerButton
+            y: (nodoMenuBar.height - bandwidthButton.height)/2
+            anchors.left: bandwidthButton.right
+            text: qsTr("BLOCK EXPLORER")
+            font.family: NodoSystem.fontUrbanist.name
+            font.pixelSize: NodoSystem.topMenuButtonFontSize
+            onClicked: { pageLoader.source = "NodeBlockExplorer.qml" }
+        }
     }
 
     Loader {

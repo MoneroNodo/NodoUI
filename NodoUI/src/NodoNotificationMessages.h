@@ -16,7 +16,8 @@ typedef enum {
     NO_NETWORK_DEVICE,
     CABLE_DISCONNECTED,
     SOMETHING_IS_WRONG,
-    NEW_PIN_IS_SET
+    NEW_PIN_IS_SET,
+    RESTARTING_BLOCK_EXPLORER_FAILED,
 
 } m_messageIDs;
 
@@ -41,7 +42,8 @@ private:
                                 tr("No network device found!"),
                                 tr("Cable disconnected!"),
                                 tr("Something is wrong!"),
-                                tr("New PIN is set successfully!")
+                                tr("New PIN is set successfully!"),
+                                tr("Failed to change Block Explorer Service!")
     };
 };
 

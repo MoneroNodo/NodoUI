@@ -8,7 +8,7 @@
 #include <QTimer>
 #include "NodoNotificationMessages.h"
 
-#define ENABLE_TEST_CODE
+// #define ENABLE_TEST_CODE
 
 class NodoSystemControl : public QObject
 {
@@ -108,6 +108,8 @@ public:
     Q_INVOKABLE void setFirstBootConfigDone(void);
     Q_INVOKABLE void setAddressPin(QString newPIN);
     Q_INVOKABLE bool verifyAddressPinCode(QString pin);
+
+    Q_INVOKABLE void enableBlockExplorerStatus(bool status);
 
 signals:
     void appThemeChanged(bool);
