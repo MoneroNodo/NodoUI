@@ -17,7 +17,7 @@ Item {
     property int rateLimitDown
     property string bwUnit: qsTr("kB/s")
     property string unlimitedbw: "∞"
-    property int defaultBW: 1024
+    property int defaultBW: 4096
     property bool configReceived: false
     property bool processConfig: true
     property string rateLimitUpStr
