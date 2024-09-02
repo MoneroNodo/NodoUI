@@ -145,9 +145,11 @@ Item {
             itemSize: labelSize
             itemText: qsTr("New PIN")
             textFlag: Qt.ImhDigitsOnly
-            validator: IntValidator{top: 999999}
             valueText: ""
             readOnlyFlag: pinFieldReadOnly
+            validator: RegularExpressionValidator {
+                regularExpression: /(\d{6})?$/
+            }
             onTextEditFinished: {
                 setButtonStatus()
             }
@@ -163,9 +165,11 @@ Item {
             itemSize: labelSize
             itemText: qsTr("Re-enter New PIN")
             textFlag: Qt.ImhDigitsOnly
-            validator: IntValidator{top: 999999}
             valueText: ""
             readOnlyFlag: pinFieldReadOnly
+            validator: RegularExpressionValidator {
+                regularExpression: /(\d{6})?$/
+            }
             onTextEditFinished: {
                 setButtonStatus()
             }

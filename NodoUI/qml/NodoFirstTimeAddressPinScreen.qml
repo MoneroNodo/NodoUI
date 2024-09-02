@@ -86,6 +86,9 @@ Item {
             passwordInput: true
             readOnlyFlag: addressPinScreen.inputFieldReadOnly
             textFlag: Qt.ImhDigitsOnly
+            validator: RegularExpressionValidator {
+                regularExpression: /(\d{6})?$/
+            }
         }
 
         NodoInputField {
@@ -101,6 +104,9 @@ Item {
             passwordInput: true
             readOnlyFlag: addressPinScreen.inputFieldReadOnly
             textFlag: Qt.ImhDigitsOnly
+            validator: RegularExpressionValidator {
+                regularExpression: /(\d{6})?$/
+            }
         }
 
 
