@@ -110,9 +110,21 @@ Item {
             itemSize: labelSize
             itemText: qsTr("Lock after")
             textFlag: Qt.ImhDigitsOnly
-            validator: IntValidator{bottom: 1}
+            validator: RegularExpressionValidator {
+                regularExpression: /^([1-9][0-9]+|[1-9])$/
+            }
             onTextEditFinished: {
+                if("" !== lockPinControlLockAfterField.valueText)
+                {
                 nodoControl.setLockAfterTime(lockPinControlLockAfterField.valueText)
+                }
+                else
+                {
+                    nodoLockPinControlPopup.commandID = -1;
+                    nodoLockPinControlPopup.popupMessageText = systemMessages.messages[NodoMessages.Message.InputFieldCantBeEmpty]
+                    nodoLockPinControlPopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Close]
+                    nodoLockPinControlPopup.open();
+                }
             }
         }
 

@@ -38,7 +38,8 @@ Item {
         Loading,
         PINCodesAreDifferent,
         FailedToChangePassword,
-        PasswordChangedSuccessfully
+        PasswordChangedSuccessfully,
+        InputFieldCantBeEmpty
     }
 
     property var messages:[
@@ -78,7 +79,8 @@ Item {
         qsTr("<loading>"),
         qsTr("PIN codes are different."),
         qsTr("Failed to change password."),
-        qsTr("Password changed successfully.")
+        qsTr("Password changed successfully."),
+        qsTr("Input field can't be Empty!")
     ]
 }
 

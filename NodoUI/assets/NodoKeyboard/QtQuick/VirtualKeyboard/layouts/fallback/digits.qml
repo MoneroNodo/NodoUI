@@ -44,10 +44,7 @@ KeyboardLayout {
                 key: Qt.Key_6
                 text: "6"
             }
-            Key {
-                text: "-"
-                displayText: "-"
-            }
+            FillerKey {}
         }
         KeyboardRow {
             Key {

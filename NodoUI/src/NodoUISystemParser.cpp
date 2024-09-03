@@ -108,17 +108,43 @@ NodoUISystemParser::NodoUISystemParser(QObject *parent) : QObject(parent)
 
 display_settings_t NodoUISystemParser::readDisplaySettings(void)
 {
+    bool updateFile = false;
+
     QJsonValue jsonValue = m_systemObj.value(m_displayKeyList[DISPLAY_KEY_SS_TIMEOUT]);
     m_displaySettings.screenSaverTimeoutInSec = jsonValue.toInt();
+
+    if(m_displaySettings.screenSaverTimeoutInSec < MINIMUM_SCREENSAVER_TIMEOUT)
+    {
+        m_displaySettings.screenSaverTimeoutInSec = DEFAULT_SCREENSAVER_TIMEOUT;
+        updateFile = true;
+    }
 
     jsonValue = m_systemObj.value(m_displayKeyList[DISPLAY_KEY_SS_ITEM_CHANGE_TIMEOUT]);
     m_displaySettings.screenSaverItemChangeTimeoutInSec = jsonValue.toInt();
 
+    if(m_displaySettings.screenSaverItemChangeTimeoutInSec < MINIMUM_SCREENSAVER_ITEM_CHANGE_TIMEOUT)
+    {
+        m_displaySettings.screenSaverItemChangeTimeoutInSec = DEFAULT_SCREENSAVER_ITEM_CHANGE_TIMEOUT;
+        updateFile = true;
+    }
+
     jsonValue = m_systemObj.value(m_displayKeyList[DISPLAY_KEY_SCREEN_SAVER_TYPE]);
     m_displaySettings.screenSaverType = jsonValue.toInt();
 
+    if((m_displaySettings.screenSaverType < MINIMUM_SCREENSAVER_TYPE) || (m_displaySettings.screenSaverType > MAXIMUM_SCREENSAVER_TYPE))
+    {
+        m_displaySettings.screenSaverType = DEFAULT_SCREENSAVER_TYPE;
+        updateFile = true;
+    }
+
     jsonValue = m_systemObj.value(m_displayKeyList[DISPLAY_KEY_CHANGE_ORIENTATION]);
     m_displaySettings.displayOrientation = jsonValue.toInt();
+
+    if(m_displaySettings.displayOrientation%90 != 0)
+    {
+        m_displaySettings.displayOrientation = DEFAULT_DISPLAY_ORIENTATION;
+        updateFile = true;
+    }
 
     jsonValue = m_systemObj.value(m_displayKeyList[DISPLAY_KEY_LOCK_PIN_HASH]);
     m_displaySettings.lockPinHash = jsonValue.toString();
@@ -126,22 +152,38 @@ display_settings_t NodoUISystemParser::readDisplaySettings(void)
     jsonValue = m_systemObj.value(m_displayKeyList[DISPLAY_KEY_LOCK_AFTER]);
     m_displaySettings.lockAfter = jsonValue.toInt();
 
+    if(m_displaySettings.lockAfter < MINIMUM_LOCK_AFTER)
+    {
+        m_displaySettings.lockAfter = DEFAULT_LOCK_AFTER;
+        updateFile = true;
+    }
+
     jsonValue = m_systemObj.value(m_displayKeyList[DISPLAY_KEY_ADDRESS_PIN_HASH]);
     m_displaySettings.addressPinHash = jsonValue.toString();
 
     jsonValue = m_systemObj.value(m_displayKeyList[DISPLAY_KEY_KEYBOARD_LAYOUT]);
 
-    if(jsonValue.isUndefined())
+    if(jsonValue.isUndefined() || jsonValue.isNull())
     {
         qDebug() << "undefined";
+        m_displaySettings.keyboardLayout = DEFAULT_KEYBOARD_LAYOUT_LOCALE;
+        updateFile = true;
     }
-
-    if(jsonValue.isNull())
+    else
     {
-        qDebug() << "undefined";
+        m_displaySettings.keyboardLayout = jsonValue.toInt();
+
+        if((m_displaySettings.keyboardLayout < 0) || (m_displaySettings.keyboardLayout > KEYBOARD_LAYOUT_COUNT))
+        {
+            m_displaySettings.keyboardLayout = DEFAULT_KEYBOARD_LAYOUT_LOCALE;
+            updateFile = true;
+        }
     }
 
-    m_displaySettings.keyboardLayout = jsonValue.toInt();
+    if(updateFile)
+    {
+        writeJson();
+    }
 
     return m_displaySettings;
 }
