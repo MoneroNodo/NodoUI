@@ -5,119 +5,107 @@ import QtQuick.VirtualKeyboard
 import NodoSystem 1.1
 import NodoCanvas 1.0
 
-Item {
+
+Page {
     id: newsMainScreen
     anchors.fill: parent
     property bool isScreenSaver: false
-    Rectangle {
-        id: app
-        height: newsMainScreen.height
-        width: newsMainScreen.width
-        color: "black"
-        property bool is_increment: true
+    property bool is_increment: true
 
-        SwipeView {
-            id: viewSwipe
-            width: parent.width
-            height: parent.height
+    Component.onCompleted: {
+        busyIndicator.running = true
+        feedsControl.setTextColor(nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff)
+        getNewsPageList()
+        busyIndicator.running = false
+    }
 
-            currentIndex: 0
-            Component.onCompleted: {
-                busyIndicator.running = true
-                viewSwipe.createPages()
-                busyIndicator.running = false
-            }
-
-            function createPages() {
-                var sourceCount = feedsControl.getNumOfRSSSource()
-                for (var i = 0; i < sourceCount; i++)  {
-                    if(feedsControl.isRSSSourceSelected(i)) {
-                        var itemCount = feedsControl.getDisplayedItemCount(i)
-                        for (var j = 0; j < itemCount; j++)  {
-                            viewSwipe.addPage(viewSwipe.createPage(feedsControl.getItemTitle(i, j),
-                                                                   feedsControl.getItemDescription(i, j),
-                                                                   feedsControl.getItemChannel(i, j),
-                                                                   feedsControl.getItemTag(i, j),
-                                                                   feedsControl.getItemAuth(i, j),
-                                                                   feedsControl.getItemTimestamp(i, j),
-                                                                   feedsControl.getItemImage(i, j)
-                                                                   ))
-                        }
-                    }
+    function getNewsPageList() {
+        newsListModel.clear()
+        var sourceCount = feedsControl.getNumOfRSSSource()
+        for (var i = 0; i < sourceCount; i++)  {
+            if(feedsControl.isRSSSourceSelected(i)) {
+                var itemCount = feedsControl.getDisplayedItemCount(i)
+                for (var j = 0; j < itemCount; j++)  {
+                    var newsPage = {"headerTextStr": feedsControl.getItemTitle(i, j),
+                                    "dataTextStr": feedsControl.getItemDescription(i, j),
+                                    "channelStr": feedsControl.getItemChannel(i, j),
+                                    "dataTagStr": feedsControl.getItemTag(i, j),
+                                    "headerAuthStr": feedsControl.getItemAuth(i, j),
+                                    "dataTimestampStr": feedsControl.getItemTimestamp(i, j),
+                                    "imagePath": feedsControl.getItemImage(i, j)}
+                    newsListModel.append(newsPage)
                 }
             }
+        }
+    }
 
-            function addPage(page) {
-                addItem(page)
-                page.visible = true
+    SwipeView {
+        id: newsView
+        currentIndex: 0
+        anchors.fill: parent
+        anchors.top: parent.top
+
+        Repeater {
+            model: newsListModel
+            Loader {
+                active: SwipeView.isCurrentItem || SwipeView.isNextItem || SwipeView.isPreviousItem
+                sourceComponent: NewsContentScreen {
+                    headerTextStr: model.headerTextStr
+                    dataTextStr: model.dataTextStr
+                    channelStr: model.channelStr
+                    dataTagStr: model.dataTagStr
+                    headerAuthStr: model.headerAuthStr
+                    dataTimestampStr: model.dataTimestampStr
+                    imagePath: model.imagePath
+                }
             }
-            function createPage(title, description, channel, tag, auth, timestamp, img_path){
-                var component = Qt.createComponent("NewsContentScreen.qml");
-                var page = component.incubateObject(viewSwipe,
-                                                    {
-                                                        headerTextStr: title,
-                                                        dataTextStr: description,
-                                                        channelStr: channel,
-                                                        dataTagStr: tag,
-                                                        headerAuthStr: auth,
-                                                        dataTimestampStr: timestamp,
-                                                        imagePath: img_path
-                                                    }
-                                                    );
-                return page
-            }
         }
+    }
 
-        Loader {
-            id: loader
-            sourceComponent: app.viewSwipe
-            active: SwipeView.isCurrentItem || SwipeView.isNextItem || SwipeView.isPreviousItem
-            asynchronous: true
-        }
+    NodoBusyIndicator {
+        id: busyIndicator
+        x: parent.width/2 - busyIndicator.width/2
+        y: parent.height/2 - busyIndicator.height/2
+        running: false
+        indicatorColor: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
+    }
 
-        NodoBusyIndicator {
-            id: busyIndicator
-            x: parent.width/2 - busyIndicator.width/2
-            y: parent.height/2 - busyIndicator.height/2
-            running: false//true
-            indicatorColor: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
-        }
-
-        Component.onCompleted:{
-            feedsControl.setTextColor(nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff)
-        }
-
-        function changeFeed()
+    function changeFeed()
+    {
+        if(true == is_increment)
         {
-            if(true == is_increment)
+            if(newsView.currentIndex+1 < newsView.count)
             {
-                if(viewSwipe.currentIndex+1 < viewSwipe.count)
-                {
-                    viewSwipe.incrementCurrentIndex()
-                }
-                else
-                {
-                    is_increment = false
-                    viewSwipe.decrementCurrentIndex()
-                }
+                newsView.incrementCurrentIndex()
             }
             else
             {
-                if(0 !== viewSwipe.currentIndex)
-                {
-                    viewSwipe.decrementCurrentIndex()
-                }
-                else {
-                    is_increment = true
-                    viewSwipe.incrementCurrentIndex()
-                }
+                is_increment = false
+                newsView.decrementCurrentIndex()
             }
         }
-
-        Timer {
-            id: newsMainScreenTimer
-            interval: nodoControl.getScreenSaverItemChangeTimeout(); running: isScreenSaver; repeat: true
-            onTriggered: changeFeed()
+        else
+        {
+            if(0 !== newsView.currentIndex)
+            {
+                newsView.decrementCurrentIndex()
+            }
+            else {
+                is_increment = true
+                newsView.incrementCurrentIndex()
+            }
         }
     }
+
+    Timer {
+        id: newsMainScreenTimer
+        interval: nodoControl.getScreenSaverItemChangeTimeout(); running: isScreenSaver; repeat: true
+        onTriggered: changeFeed()
+    }
+
+    ListModel {
+        id: newsListModel
+    }
 }
+
+

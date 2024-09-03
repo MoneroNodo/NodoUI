@@ -7,8 +7,6 @@ import NodoCanvas 1.0
 
 Item {
     id: feederScreenSaver
-    width: parent.width
-    height: parent.height
     signal deleteMe(int screenID)
 
     NewsMainScreen{

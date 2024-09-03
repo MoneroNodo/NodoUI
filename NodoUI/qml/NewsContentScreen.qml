@@ -23,6 +23,10 @@ Rectangle {
         anchors.fill: parent
         ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
         ScrollBar.vertical.policy: ScrollBar.AlwaysOff
+
+        ScrollBar.horizontal.interactive: true
+        ScrollBar.vertical.interactive: true
+
         clip: true
 
         Item {
@@ -97,6 +101,7 @@ Rectangle {
                 wrapMode: Text.WordWrap
                 textFormat: Text.RichText
                 readOnly: true
+                selectByMouse: false
             }
         }
     }
