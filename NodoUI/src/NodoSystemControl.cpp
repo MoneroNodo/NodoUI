@@ -309,8 +309,8 @@ QString NodoSystemControl::getGPUUsage(void)
 void NodoSystemControl::setPassword(QString pw)
 {
     enableComponent(false);
-    QTimer::singleShot(4000, this, SLOT(testSlotFunction()));
-    // m_dbusController->setPassword(pw);
+    // QTimer::singleShot(4000, this, SLOT(testSlotFunction()));
+    m_dbusController->setPassword(pw);
 }
 
 void NodoSystemControl::serviceManager(QString operation, QString service)
