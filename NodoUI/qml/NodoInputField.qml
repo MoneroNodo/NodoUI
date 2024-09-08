@@ -109,6 +109,11 @@ Item {
 
             Keys.onReturnPressed: {
                 Qt.inputMethod.hide();
+                if(passwordButton.hidePassword === false)
+                {
+                    passwordButton.hidePassword = true
+                    valueLabel.echoMode = TextInput.Password
+                }
                 root.textEditFinished()
             }
 

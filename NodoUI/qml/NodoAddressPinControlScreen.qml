@@ -50,6 +50,7 @@ Item {
         textFlag: Qt.ImhDigitsOnly
         valueText: ""
         readOnlyFlag: pinFieldReadOnly
+        passwordInput: true
         validator: RegularExpressionValidator {
             regularExpression: /(\d{6})?$/
         }
@@ -70,6 +71,7 @@ Item {
         textFlag: Qt.ImhDigitsOnly
         valueText: ""
         readOnlyFlag: pinFieldReadOnly
+        passwordInput: true
         validator: RegularExpressionValidator {
             regularExpression: /(\d{6})?$/
         }
