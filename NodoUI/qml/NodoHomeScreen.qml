@@ -37,6 +37,12 @@ Item {
                 exchangeNameText.text =  "XMR-" + nodoCurrencies.currencyCodes[priceTicker.getCurrentCurrencyIndex()] + ":"
                 exchangeSymbolText.text = nodoCurrencies.currencySymbols[priceTicker.getCurrentCurrencyIndex()]
                 exchangeRateText.text = "---.--"
+
+                if(true === priceTicker.isCurrencyReceived())
+                {
+                    exchangeSymbolText.text = nodoCurrencies.currencySymbols[priceTicker.getCurrentCurrencyIndex()]
+                    exchangeRateText.text = priceTicker.getCurrency()
+                }
             }
 
             function onCurrencyReceived() {

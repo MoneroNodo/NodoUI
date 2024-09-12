@@ -145,8 +145,8 @@ private:
     int m_passwordMode = -1;
     QString m_serviceStatusMessage;
     int m_errorCode;
-    bool m_firstTimeControlDone = false;
-    QString m_firstTimeControlFileName = "/home/nodo/variables/firsttime";
+    bool m_firstBootDone = false;
+    QString m_firstBootFileName = "/home/nodo/variables/firstboot";
 
 
     QString m_CPUUsage;

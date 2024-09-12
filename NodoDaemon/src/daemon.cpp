@@ -423,7 +423,6 @@ void Daemon::readSystemStorageUsage(void)
     for(int i = 0; i < status.size(); i++)
     {
         if(-1 != status.at(i).indexOf("overlay"))
-        // if(-1 != status.at(i).indexOf("/dev/nvme0n1p2"))
         {
             bool ok;
             QStringList status2 = status.at(i).split(" ", Qt::SkipEmptyParts);

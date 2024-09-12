@@ -78,11 +78,16 @@ void NodoPriceTicker::downloadFinished(QNetworkReply *reply)
         QJsonValue jsonValue = m_currencyObj.value(m_currentCurrencyCode.toLower());
 
         m_currency = jsonValue.toDouble();
+        currencyReceivedStatus = true;
         emit currencyReceived();
     }
     reply->deleteLater();
 }
 
+bool NodoPriceTicker::isCurrencyReceived(void)
+{
+    return currencyReceivedStatus;
+}
 
 void NodoPriceTicker::doDownload(const QString currencyCode)
 {

@@ -26,6 +26,7 @@ public:
     Q_INVOKABLE void setCurrentCurrencyCode(QString code);
     Q_INVOKABLE double getCurrency(void);
     Q_INVOKABLE void updateRequest(void);
+    Q_INVOKABLE bool isCurrencyReceived(void);
 
 
 signals:
@@ -41,6 +42,8 @@ private:
 
     QNetworkAccessManager m_manager;
     QTimer *m_timer;
+
+    bool currencyReceivedStatus = false;
 
 
     void doDownload(const QString currencyCode);

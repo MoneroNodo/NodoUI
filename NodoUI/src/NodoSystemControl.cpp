@@ -22,13 +22,13 @@ NodoSystemControl::NodoSystemControl(NodoUISystemParser *uiSystemParser, NodoCon
         qDebug() << "Couldn't connect to the dbus daemon";
     }
 
-    if(QFileInfo::exists(m_firstTimeControlFileName))
+    if(QFileInfo::exists(m_firstBootFileName))
     {
-        m_firstTimeControlDone = true;
+        m_firstBootDone = true;
     }
     else
     {
-        m_firstTimeControlDone = false;
+        m_firstBootDone = false;
     }
 
     m_appTheme = m_configParser->getTheme();
@@ -309,7 +309,7 @@ QString NodoSystemControl::getGPUUsage(void)
 void NodoSystemControl::setPassword(QString pw)
 {
     enableComponent(false);
-    // QTimer::singleShot(4000, this, SLOT(testSlotFunction()));
+    // QTimer::singleShot(1000, this, SLOT(testSlotFunction()));
     m_dbusController->setPassword(pw);
 }
 
@@ -575,7 +575,7 @@ QString NodoSystemControl::getKeyboardLayoutLocale(void)
 
 bool NodoSystemControl::isFirstBootConfigDone(void)
 {
-    return m_firstTimeControlDone;
+    return m_firstBootDone;
 }
 
 void NodoSystemControl::setAddressPin(QString newPIN)
@@ -600,10 +600,10 @@ bool NodoSystemControl::verifyAddressPinCode(QString pin)
 
 void NodoSystemControl::setFirstBootConfigDone(void)
 {
-    QFile file(m_firstTimeControlFileName);
+    QFile file(m_firstBootFileName);
     file.open(QIODevice::ReadWrite | QIODevice::Text);
     file.close();
-    m_firstTimeControlDone = true;
+    m_firstBootDone = true;
 }
 
 void NodoSystemControl::passwordChangeStatusReceived(int status)
