@@ -127,16 +127,6 @@ Rectangle {
         Connections {
             target: nodoSystemStatus
             function onSystemStatusReady() {
-                // isSynchronized = nodoSystemStatus.getBoolValueFromKey("synchronized")
-                // if(isSynchronized)
-                // {
-                //     syncStatusField.valueText = qsTr("Synchronized (100%)")
-                // }
-                // else
-                // {
-                //     // syncStatusField.valueText = qsTr("Not Synchronizing")
-                // }
-
                 timestampField.valueText = nodoSystemStatus.getIntValueFromKey("start_time")
                 currentBlockHeightField.valueText = nodoSystemStatus.getIntValueFromKey("height")
                 moneroVersionField.valueText = nodoSystemStatus.getStringValueFromKey("version")

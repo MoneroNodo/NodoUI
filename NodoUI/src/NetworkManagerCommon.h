@@ -12,6 +12,7 @@
 
 #define NM_DBUS_SERVICE                        "org.freedesktop.NetworkManager"
 #define NM_DBUS_INTERFACE_SETTINGS             "org.freedesktop.NetworkManager.Settings"
+#define NM_DBUS_INTERFACE_SETTINGS_CONNECTION  "org.freedesktop.NetworkManager.Settings.Connection"
 #define NM_DBUS_PATH_SETTINGS                  "/org/freedesktop/NetworkManager/Settings"
 #define NM_DBUS_PROPERTIES                     "org.freedesktop.DBus.Properties"
 

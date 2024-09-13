@@ -37,6 +37,7 @@ signals:
 private:
     NetworkManagerCommon *m_nmCommon;
     QDBusInterface *m_interface;
+    QDBusInterface *m_settingsInterface;
     m_device_config m_device;
     QTimer *m_scanTimer;
     bool m_APScanStarted = false;
@@ -50,6 +51,7 @@ private slots:
     void updateNetworkConfig(unsigned int new_state, unsigned int old_state, unsigned int reason);
     void scanConnectionThread(void);
     void tmpThread(void);
+    void newConnectionCreated(QDBusObjectPath path);
 };
 
 

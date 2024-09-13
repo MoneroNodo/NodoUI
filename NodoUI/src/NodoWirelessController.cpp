@@ -12,6 +12,9 @@ NodoWirelessController::NodoWirelessController(QObject *parent)
     m_interface = new QDBusInterface(NM_DBUS_SERVICE, m_device.devicePath, NM_DBUS_INTERFACE_DEVICE, QDBusConnection::systemBus());
     connect(m_interface, SIGNAL(StateChanged(unsigned, unsigned, unsigned)), this, SLOT(updateNetworkConfig(unsigned, unsigned, unsigned)));
 
+    m_settingsInterface = new QDBusInterface(NM_DBUS_SERVICE, NM_DBUS_PATH_SETTINGS, NM_DBUS_INTERFACE_SETTINGS, QDBusConnection::systemBus());
+    connect(m_settingsInterface, SIGNAL(NewConnection(QDBusObjectPath)), this, SLOT(newConnectionCreated(QDBusObjectPath)));
+
     getDeviceSpeed(&m_device);
     m_nmCommon->getDeviceState(&m_device);
 
@@ -25,6 +28,18 @@ NodoWirelessController::NodoWirelessController(QObject *parent)
 }
 
 /************private functions*******************/
+void NodoWirelessController::newConnectionCreated(QDBusObjectPath path)
+{
+    qDebug() << "new connection detected: " << path.path();
+    QDBusInterface nm(NM_DBUS_SERVICE, path.path(), NM_DBUS_INTERFACE_SETTINGS_CONNECTION, QDBusConnection::systemBus());
+    QDBusReply<Connection> result = nm.call("GetSettings");
+
+    if(result.value().contains("802-11-wireless"))
+    {
+        m_scanTimer->start(100);
+    }
+}
+
 void NodoWirelessController::updateNetworkConfig(unsigned new_state, unsigned old_state, unsigned reason)
 {
     Q_UNUSED(old_state);
@@ -47,7 +62,6 @@ void NodoWirelessController::scanConnectionThread(void)
 
     m_APScanStarted = true;
     emit apScanStatus();
-    // qDebug() << "scanConnectionThread started";
     m_scanTimer->stop();
     getActiveConnection();
     m_nmCommon->scanSavedConnections(&m_device);
@@ -186,7 +200,6 @@ void NodoWirelessController::tmpThread(void)
     emit scanCompletedNotification(AllAccessPoints);
     m_APScanStarted = false;
     emit apScanStatus();
-    // qDebug() << "scanConnectionThread ended";
     m_scanTimer->start(10000);
 }
 
@@ -194,6 +207,7 @@ void NodoWirelessController::tmpThread(void)
 void NodoWirelessController::forgetConnection(QString path)
 {
     m_nmCommon->forgetConnection(path);
+    m_scanTimer->start(500);
 }
 
 void NodoWirelessController::addConnection(QString profileName, QString password, bool isDHCP, QString IP, QString netmask, QString gateway, QString DNS, QString security)
@@ -246,8 +260,7 @@ void NodoWirelessController::addConnection(QString profileName, QString password
     }
 
     // Call AddConnection
-    QDBusInterface settings(NM_DBUS_SERVICE, NM_DBUS_PATH_SETTINGS, NM_DBUS_INTERFACE_SETTINGS, QDBusConnection::systemBus());
-    QDBusReply<QDBusObjectPath> result = settings.call("AddConnection", QVariant::fromValue(connection));
+    QDBusReply<QDBusObjectPath> result = m_settingsInterface->call("AddConnection", QVariant::fromValue(connection));
 }
 
 void NodoWirelessController::activateConnection(QString connectionPath)
