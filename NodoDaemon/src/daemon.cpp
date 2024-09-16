@@ -317,8 +317,23 @@ void Daemon::readRAMUsage(void)
         {
             bool ok;
             QStringList status2 = status.at(i).split(" ", Qt::SkipEmptyParts);
-            m_TotalRAM = status2.at(1).chopped(1).toFloat(&ok);
-            m_RAMUsage = status2.at(2).chopped(1).toFloat(&ok);
+            if(status2.at(1).endsWith("M"))
+            {
+                m_TotalRAM = status2.at(1).chopped(1).toFloat(&ok);
+            }
+            else
+            {
+                m_TotalRAM = status2.at(1).chopped(1).toFloat(&ok)*1024;
+            }
+
+            if(status2.at(2).endsWith("M"))
+            {
+                m_RAMUsage = status2.at(2).chopped(1).toFloat(&ok);
+            }
+            else
+            {
+                m_RAMUsage = status2.at(2).chopped(1).toFloat(&ok)*1024;
+            }
         }
     }
 }
@@ -401,8 +416,25 @@ void Daemon::readBlockchainStorageUsage(void)
         {
             bool ok;
             QStringList status2 = status.at(i).split(" ", Qt::SkipEmptyParts);
-            m_blockChainStorageTotal = status2.at(1).chopped(1).toFloat(&ok);
-            m_blockChainStorageUsed = status2.at(2).chopped(1).toFloat(&ok);
+            // m_blockChainStorageTotal = status2.at(1).chopped(1).toFloat(&ok);
+            // m_blockChainStorageUsed = status2.at(2).chopped(1).toFloat(&ok);
+            if(status2.at(1).endsWith("M"))
+            {
+                m_blockChainStorageTotal = status2.at(1).chopped(1).toFloat(&ok);
+            }
+            else
+            {
+                m_blockChainStorageTotal = status2.at(1).chopped(1).toFloat(&ok)*1024;
+            }
+
+            if(status2.at(2).endsWith("M"))
+            {
+                m_blockChainStorageUsed = status2.at(2).chopped(1).toFloat(&ok);
+            }
+            else
+            {
+                m_blockChainStorageUsed = status2.at(2).chopped(1).toFloat(&ok)*1024;
+            }
         }
     }
 }
@@ -426,8 +458,25 @@ void Daemon::readSystemStorageUsage(void)
         {
             bool ok;
             QStringList status2 = status.at(i).split(" ", Qt::SkipEmptyParts);
-            m_systemStorageTotal = status2.at(1).chopped(1).toFloat(&ok);
-            m_systemStorageUsed = status2.at(2).chopped(1).toFloat(&ok);
+            // m_systemStorageTotal = status2.at(1).chopped(1).toFloat(&ok);
+            // m_systemStorageUsed = status2.at(2).chopped(1).toFloat(&ok);
+            if(status2.at(1).endsWith("M"))
+            {
+                m_systemStorageTotal = status2.at(1).chopped(1).toFloat(&ok);
+            }
+            else
+            {
+                m_systemStorageTotal = status2.at(1).chopped(1).toFloat(&ok)*1024;
+            }
+
+            if(status2.at(2).endsWith("M"))
+            {
+                m_systemStorageUsed = status2.at(2).chopped(1).toFloat(&ok);
+            }
+            else
+            {
+                m_systemStorageUsed = status2.at(2).chopped(1).toFloat(&ok)*1024;
+            }
         }
     }
 }
