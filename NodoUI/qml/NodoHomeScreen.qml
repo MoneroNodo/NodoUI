@@ -125,9 +125,20 @@ Item {
             }
 
             NodoTabButton {
-                id: newsButton
+                id: mPayButton
                 anchors.top: nodoLogoButton.top
                 anchors.left: moneroLWSButton.right
+                implicitHeight: NodoSystem.topMenuButtonHeight
+                text: qsTr("MPAY")
+                font.family: NodoSystem.fontUrbanist.name
+                font.pixelSize: NodoSystem.topMenuButtonFontSize
+                onClicked: { pageLoader.source = "MoneroPayMainScreen.qml" }
+            }
+
+            NodoTabButton {
+                id: newsButton
+                anchors.top: nodoLogoButton.top
+                anchors.left: mPayButton.right
                 implicitHeight: NodoSystem.topMenuButtonHeight
                 text: qsTr("NEWS")
                 font.family: NodoSystem.fontUrbanist.name

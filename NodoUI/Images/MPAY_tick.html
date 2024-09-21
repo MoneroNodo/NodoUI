@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Octagon with Thicker Checkmark</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #000000;
+        }
+
+        .checkmark {
+            width: 400px;
+            height: 400px;
+            display: block;
+            stroke-width: 20;
+            stroke: #fcfcfc;
+            stroke-miterlimit: 10;
+            animation: scale 0.2s cubic-bezier(0.25, 0.1, 0.25, 1) 0.65s both;
+            will-change: transform;
+        }
+
+        .checkmark__octagon {
+            stroke-dasharray: 1800;
+            stroke-dashoffset: 1800;
+            stroke-width: 20;
+            stroke: #48b400;
+            fill: none;
+            animation:
+                stroke 0.4s cubic-bezier(0.6, 0, 0.4, 1) forwards,
+                fill 0.12s ease-out 0.6s forwards;
+            will-change: stroke-dashoffset, fill;
+        }
+
+        .checkmark__check {
+            transform-origin: 50% 50%;
+            stroke-dasharray: 360;
+            stroke-dashoffset: 360;
+            stroke-width: 25;
+            animation: stroke 0.225s cubic-bezier(0.6, 0, 0.4, 1) 0.55s forwards;
+            will-change: stroke-dashoffset;
+        }
+
+        @keyframes stroke {
+            100% {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        @keyframes scale {
+            0%, 100% {
+                transform: none;
+            }
+            50% {
+                transform: scale3d(1.05, 1.05, 1);
+            }
+        }
+
+        @keyframes fill {
+            0% {
+                fill: rgba(72, 180, 0, 0);
+            }
+            100% {
+                fill: rgba(72, 180, 0, 1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 450">
+        <path class="checkmark__octagon" d="M61 10 H389 L440 61 V389 L389 440 H61 L10 389 V61 L61 10" fill="none" stroke-linejoin="round" stroke-linecap="round" />
+        <path class="checkmark__check" fill="none" d="M120 225 L210 315 L345 135" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+</body>
+</html>

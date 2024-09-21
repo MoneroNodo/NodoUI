@@ -6,18 +6,19 @@ import NodoSystem 1.1
 import NodoCanvas 1.0
 
 Item {
-    id: minerMainScreen
+    id: moneroPaySettingsMainScreen
     anchors.fill: parent
+    signal pageChangeRequested()
 
     Component.onCompleted: {
-        minerMainStackView.push("NodoLockScreen.qml", {parentID: 1})
+        moneroPaySettingsMainStackView.push("NodoLockScreen.qml", {parentID: 1})
     }
 
     Connections{
-        target: minerMainStackView.currentItem
+        target: moneroPaySettingsMainStackView.currentItem
         function onDeleteMe(screenID) {
-            minerMainStackView.pop()
-            minerMainStackView.push("MinerConfigScreen.qml")
+            moneroPaySettingsMainStackView.pop()
+            moneroPaySettingsMainStackView.push("MoneroPaySettingsConfigScreen.qml")
         }
     }
 
@@ -33,8 +34,8 @@ Item {
         }
     }
     StackView {
-        id: minerMainStackView
-        anchors.fill: minerMainScreen
+        id: moneroPaySettingsMainStackView
+        anchors.fill: moneroPaySettingsMainScreen
 
         pushEnter: Transition {
             PropertyAnimation {
@@ -70,5 +71,3 @@ Item {
         }
     }
 }
-
-

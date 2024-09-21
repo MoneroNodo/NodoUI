@@ -1,6 +1,8 @@
 QT += qml quick core widgets gui dbus
 QT += virtualkeyboard
 QT += network
+QT += sql
+
 TEMPLATE = app
 CONFIG += c++17
 
@@ -42,6 +44,9 @@ SOURCES += \
         src/NodoTranslator.cpp \
         src/NodoDBusController.cpp \
         src/NodoPriceTicker.cpp \
+        src/MoneroPay.cpp \
+        src/MoneroPayConnection.cpp \
+        src/MoneroPayDbManager.cpp \
 
 
 HEADERS += \
@@ -63,6 +68,9 @@ HEADERS += \
         src/NodoTranslator.h \
         src/NodoDBusController.h \
         src/NodoPriceTicker.h \
+        src/MoneroPay.h \
+        src/MoneroPayConnection.h \
+        src/MoneroPayDbManager.h \
 
 RESOURCES += qml.qrc
 

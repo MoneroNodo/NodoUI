@@ -2,7 +2,6 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include <Qt>
-
 #include "NodoUISystemParser.h"
 #include "NodoConfigParser.h"
 #include "NodoFeedsControl.h"
@@ -13,10 +12,13 @@
 #include "MoneroLWS.h"
 #include "NodoNetworkManager.h"
 #include "NodoSyncInfo.h"
+#include "MoneroPay.h"
 
 int main(int argc, char *argv[]) {
     qputenv("QT_IM_MODULE", QByteArray("qtvirtualkeyboard"));
+    qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--disable-logging");
 
+    QCoreApplication::setAttribute(Qt::AA_ShareOpenGLContexts);
     QApplication app(argc, argv);
     QQmlApplicationEngine engine;
 
@@ -24,7 +26,6 @@ int main(int argc, char *argv[]) {
     engine.addImportPath( ":/" );
     engine.addImportPath("qrc:/style/assets/NodoKeyboard");
     qputenv("QT_VIRTUALKEYBOARD_LAYOUT_PATH", QByteArray("qrc:layout/assets/NodoKeyboard/QtQuick/VirtualKeyboard/layouts"));
-
 
     NodoNetworkManager *networkManager = new NodoNetworkManager();
     NodoUISystemParser *uiSystemParser = new NodoUISystemParser();
@@ -36,6 +37,7 @@ int main(int argc, char *argv[]) {
     NodoSystemControl *systemControl = new NodoSystemControl(uiSystemParser, configParser);
     NodoSyncInfo *syncInfo = new NodoSyncInfo();
     Translator *translator = new Translator(configParser, &engine);
+    MoneroPay *moneroPay = new MoneroPay(configParser);
     NodoPriceTicker *priceTicker = new NodoPriceTicker(configParser, networkManager);
 
     engine.rootContext()->setContextProperty("moneroLWS", moneroLWS);
@@ -46,6 +48,7 @@ int main(int argc, char *argv[]) {
     engine.rootContext()->setContextProperty("feedsControl", feedsControl);
     engine.rootContext()->setContextProperty("nodoSystemStatus", systemStatusParser);
     engine.rootContext()->setContextProperty("networkManager", networkManager);
+    engine.rootContext()->setContextProperty("moneroPay", moneroPay);
     engine.rootContext()->setContextProperty("syncInfo", syncInfo);
 
     engine.load(QUrl(QStringLiteral("qrc:/qml/main.qml")));

@@ -90,6 +90,13 @@
         <file>qml/NodoAddressPinControlScreen.qml</file>
         <file>qml/NodeBlockExplorer.qml</file>
         <file>qml/FactoryResetScreen.qml</file>
+        <file>Images/MPAY_tick.html</file>
+        <file>qml/MoneroPaySettingsConfigScreen.qml</file>
+        <file>qml/MoneroPayReceiveScreen.qml</file>
+        <file>qml/MoneroPayPaymentsScreenDelegate.qml</file>
+        <file>qml/MoneroPayPaymentsScreen.qml</file>
+        <file>qml/MoneroPayMainScreen.qml</file>
+        <file>qml/MoneroPaySettingsMainScreen.qml</file>
     </qresource>
     <qresource prefix="/NodoSystem">
         <file alias="qmldir">assets/NodoSystem/qmldir</file>
