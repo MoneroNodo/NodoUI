@@ -111,6 +111,9 @@ public:
 
     Q_INVOKABLE void enableBlockExplorerStatus(bool status);
 
+    Q_INVOKABLE void factoryResetApproved(void);
+    Q_INVOKABLE int getBlockchainStorageStatus(void);
+
 signals:
     void appThemeChanged(bool);
     void inputFieldTextChanged(void);
@@ -125,6 +128,12 @@ signals:
     void componentEnabledStatusChanged(void);
     void closePopupRequested(void);
     void passwordChangeStatus(int status);
+
+    void factoryResetStarted(void);
+    void factoryResetRequested(void);
+    void factoryResetCompleted(void);
+    void powerButtonPressDetected(void);
+    void powerButtonReleaseDetected(void);
 
 private:
     bool m_appTheme;

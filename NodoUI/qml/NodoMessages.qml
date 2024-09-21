@@ -39,7 +39,14 @@ Item {
         PINCodesAreDifferent,
         FailedToChangePassword,
         PasswordChangedSuccessfully,
-        InputFieldCantBeEmpty
+        InputFieldCantBeEmpty,
+        FactoryResetApprove,
+        Accept,
+        FactoryResetStarted,
+        FactoryResetCompleted,
+        NoStorageFound,
+        NewBlockChainStorageFound
+
     }
 
     property var messages:[
@@ -80,7 +87,14 @@ Item {
         qsTr("PIN codes are different."),
         qsTr("Failed to change password."),
         qsTr("Password changed successfully."),
-        qsTr("Input field can't be Empty!")
+        qsTr("Input field can't be Empty!"),
+        qsTr("This process will reset Nodo to factory defaults. All settings and user info will be lost. Begin factory reset?"),
+        qsTr("Accept"),
+        qsTr("Processing/Restorying Nodo to factory defaults..."),
+        qsTr("Completed factory reset, now rebooting..."),
+        qsTr("Blockchain storage not found!"),
+        qsTr("New blockchain storage found!")
+
     ]
 }
 

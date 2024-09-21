@@ -36,6 +36,9 @@ public:
     double getMaxGPUSpeed(void);
     double getCurrentGPUSpeed(void);
 
+    void factoryResetApproved(void);
+    int getBlockchainStorageStatus(void);
+
 
 protected:
     void timerEvent(QTimerEvent *event);
@@ -53,6 +56,12 @@ signals:
     void serviceStatusReceived(QString statusMessage);
     void serviceManagerNotificationReceived(QString message);
     void passwordChangeStatus(int status);
+
+    void factoryResetStarted(void);
+    void factoryResetRequested(void);
+    void factoryResetCompleted(void);
+    void powerButtonPressDetected(void);
+    void powerButtonReleaseDetected(void);
 };
 
 #endif // NODODBUSCONTROLLER_H

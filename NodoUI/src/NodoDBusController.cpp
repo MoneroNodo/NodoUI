@@ -7,6 +7,11 @@ NodoDBusController::NodoDBusController(QObject *parent) : QObject{parent}
     connect(nodo, SIGNAL(serviceManagerNotification(QString)), this, SIGNAL(serviceManagerNotificationReceived(QString)));
     connect(nodo, SIGNAL(serviceStatusReadyNotification(QString)), this, SLOT(updateServiceStatus(QString)));
     connect(nodo, SIGNAL(passwordChangeStatus(int)), this, SIGNAL(passwordChangeStatus(int)));
+    connect(nodo, SIGNAL(factoryResetStarted()), this, SIGNAL(factoryResetStarted()));
+    connect(nodo, SIGNAL(factoryResetCompleted()), this, SIGNAL(factoryResetCompleted()));
+    connect(nodo, SIGNAL(factoryResetRequested()), this, SIGNAL(factoryResetRequested()));
+    connect(nodo, SIGNAL(powerButtonPressDetected()), this, SIGNAL(powerButtonPressDetected()));
+    connect(nodo, SIGNAL(powerButtonReleaseDetected()), this, SIGNAL(powerButtonReleaseDetected()));
 
     startTimer(1000);
 }
@@ -143,4 +148,14 @@ double NodoDBusController::getMaxGPUSpeed(void)
 double NodoDBusController::getCurrentGPUSpeed(void)
 {
     return nodo->getCurrentGPUSpeed();
+}
+
+void NodoDBusController::factoryResetApproved(void)
+{
+    nodo->factoryResetApproved();
+}
+
+int NodoDBusController::getBlockchainStorageStatus(void)
+{
+    return nodo->getBlockchainStorageStatus();
 }

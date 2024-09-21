@@ -89,6 +89,7 @@
         <file>qml/DeviceAddressPinScreen.qml</file>
         <file>qml/NodoAddressPinControlScreen.qml</file>
         <file>qml/NodeBlockExplorer.qml</file>
+        <file>qml/FactoryResetScreen.qml</file>
     </qresource>
     <qresource prefix="/NodoSystem">
         <file alias="qmldir">assets/NodoSystem/qmldir</file>

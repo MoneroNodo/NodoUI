@@ -25,6 +25,18 @@ Daemon::Daemon()
     connect(m_timer, SIGNAL(timeout()), this, SLOT(updateParams()));
     m_timer->start(1000);
 
+    powerKeyThread = new PowerKeyThread();
+    connect(powerKeyThread, SIGNAL(poweroffRequested()), this, SLOT(shutdown()));
+    connect(powerKeyThread, SIGNAL(buttonPressDetected()), this, SIGNAL(powerButtonPressDetected()));
+    connect(powerKeyThread, SIGNAL(buttonReleaseDetected()), this, SIGNAL(powerButtonReleaseDetected()));
+    powerKeyThread->startListening();
+
+
+    recoveryKeyThread = new RecoveryKeyThread();    
+    connect(recoveryKeyThread, SIGNAL(factoryResetRequested()), this, SIGNAL(factoryResetRequested()));
+    connect(recoveryKeyThread, SIGNAL(factoryResetStarted()), this, SIGNAL(factoryResetStarted()));
+    connect(recoveryKeyThread, SIGNAL(factoryResetCompleted()), this, SIGNAL(factoryResetCompleted()));
+    recoveryKeyThread->startListening();
 }
 
 void Daemon::startRecovery(int recoverFS, int rsyncBlockchain)
@@ -550,4 +562,14 @@ double Daemon::getMaxGPUSpeed(void)
 double Daemon::getCurrentGPUSpeed(void)
 {
     return m_currentGPUFreq;
+}
+
+int Daemon::getBlockchainStorageStatus(void)
+{
+    return recoveryKeyThread->getBlockchainStorageStatus();
+}
+
+void Daemon::factoryResetApproved(void)
+{
+    recoveryKeyThread->recover();
 }

@@ -103,5 +103,22 @@
                 <arg name="status" type="i" direction="out"/>
         </signal>
 
+
+
+
+
+        <method name="getBlockchainStorageStatus">
+            <arg name="status" type="i" direction="out"/>
+        </method>
+
+        <method name="factoryResetApproved"/>
+
+
+
+        <signal name="factoryResetStarted"/>
+        <signal name="factoryResetCompleted"/>
+        <signal name="factoryResetRequested"/>
+        <signal name="powerButtonPressDetected"/>
+        <signal name="powerButtonReleaseDetected"/>
     </interface>
 </node>

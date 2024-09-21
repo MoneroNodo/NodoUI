@@ -4,7 +4,7 @@ source set_nodo_install_var.sh
 
 sudo apt-get update
 
-sudo apt-get install -y libglu1-mesa-dev qt6-base-dev libqt6qml6 libqt6qmlcompiler6 libqt6qmlcore6 libqt6quick6 libqt6quickcontrols2-6 qt6-declarative-dev qml6-module-qtquick-virtualkeyboard libqt6virtualkeyboard6 qt6-virtualkeyboard-dev qt6-virtualkeyboard-plugin libcurlpp-dev libcurl4-gnutls-dev qt6-l10n-tools qt6-tools-dev-tools qml6-module-qtquick-controls qml6-module-qtquick qml6-module-qtquick-dialogs qml6-module-qtquick-layouts qml6-module-qtquick-shapes qml6-module-qtquick-window qml6-module-qtqml-workerscript qml6-module-qtquick-templates qml6-module-qtwebengine qml6-module-qt-labs-folderlistmodel qt6-svg-dev- policykit-1 pkexec libpolkit-agent-1-0
+sudo apt-get install -y libglu1-mesa-dev qt6-base-dev libqt6qml6 libqt6qmlcompiler6 libqt6qmlcore6 libqt6quick6 libqt6quickcontrols2-6 qt6-declarative-dev qml6-module-qtquick-virtualkeyboard libqt6virtualkeyboard6 qt6-virtualkeyboard-dev qt6-virtualkeyboard-plugin libcurlpp-dev libcurl4-gnutls-dev qt6-l10n-tools qt6-tools-dev-tools qml6-module-qtquick-controls qml6-module-qtquick qml6-module-qtquick-dialogs qml6-module-qtquick-layouts qml6-module-qtquick-shapes qml6-module-qtquick-window qml6-module-qtqml-workerscript qml6-module-qtquick-templates qml6-module-qtwebengine qml6-module-qt-labs-folderlistmodel qt6-svg-dev- policykit-1 pkexec libpolkit-agent-1-0 xfsprogs
 
 #create folders if they don't exist
 if [ ! -d $NODO_APP_PATH ]; then
@@ -32,6 +32,7 @@ if systemctl is-active --quiet nodonm-dbus; then
     sudo systemctl stop nodonm-dbus
 fi
 
+
 #copy files
 sudo cp $NODO_UI_PROJECT_PATH/build/NodoUI $NODO_APP_PATH
 sudo cp $NODO_UI_PROJECT_PATH/config/nodoUI.sh $NODO_APP_PATH
@@ -43,6 +44,7 @@ sudo cp $NODO_DAEMON_PROJECT_PATH/build/NodoDaemon $NODO_APP_PATH
 sudo cp $NODO_DAEMON_PROJECT_PATH/config/com.monero.nodo.conf /usr/share/dbus-1/system.d/
 sudo cp $NODO_DAEMON_PROJECT_PATH/config/com.monero.nodo.service /usr/share/dbus-1/system-services/
 sudo cp $NODO_DAEMON_PROJECT_PATH/config/nodo-dbus.service /usr/lib/systemd/system/
+sudo cp $NODO_DAEMON_PROJECT_PATH/config/logind.conf /etc/systemd/
 
 /usr/lib/qt6/bin/lupdate $NODO_UI_PROJECT_PATH/NodoUI.pro
 /usr/lib/qt6/bin/lrelease $NODO_UI_PROJECT_PATH/NodoUI.pro

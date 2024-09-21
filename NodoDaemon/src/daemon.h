@@ -6,6 +6,8 @@
 #include <QTimer>
 #include <QHostAddress>
 #include <QNetworkInterface>
+#include "PowerKeyThread.h"
+#include "RecoveryKeyThread.h"
 #include "nodo_dbus_adaptor.h"
 
 class Daemon : public QObject
@@ -37,6 +39,9 @@ public slots:
     double getMaxGPUSpeed(void);
     double getCurrentGPUSpeed(void);
 
+    int getBlockchainStorageStatus(void);
+    void factoryResetApproved(void);
+
 signals:
     void startRecoveryNotification(const QString &message);
     void serviceManagerNotification(const QString &message);
@@ -44,6 +49,12 @@ signals:
     void shutdownNotification(const QString &message);
     void serviceStatusReadyNotification(const QString &message);
     void passwordChangeStatus(int status);
+
+    void factoryResetStarted(void);
+    void factoryResetRequested(void);
+    void factoryResetCompleted(void);
+    void powerButtonPressDetected(void);
+    void powerButtonReleaseDetected(void);
 
 private:
     int m_prevIdleTime = 0;
@@ -63,6 +74,9 @@ private:
 
     QTimer *m_timer;
 
+    PowerKeyThread *powerKeyThread;
+    RecoveryKeyThread *recoveryKeyThread;
+
     void readCPUUsage(void);
     void readAverageCPUFreq(void);
     void readRAMUsage(void);
@@ -72,8 +86,6 @@ private:
     void readCurrentGPUSpeed(void);
     void readBlockchainStorageUsage(void);
     void readSystemStorageUsage(void);
-
-
 
 private slots:
     void updateParams(void);

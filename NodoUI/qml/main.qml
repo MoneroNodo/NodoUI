@@ -49,6 +49,20 @@ ApplicationWindow {
         {
             nodoControl.restartLockScreenTimer();
         }
+
+        var bcDiskStatus = nodoControl.getBlockchainStorageStatus()
+        if(1 === bcDiskStatus)
+        {
+            mainScreenPopup.commandID = -1;
+            mainScreenPopup.popupMessageText = systemMessages.messages[NodoMessages.Message.NoStorageFound]
+            mainScreenPopup.open();
+        }
+        else if(2 === bcDiskStatus)
+        {
+            mainScreenPopup.commandID = -1;
+            mainScreenPopup.popupMessageText = systemMessages.messages[NodoMessages.Message.NewBlockChainStorageFound]
+            mainScreenPopup.open();
+        }
     }
 
     Rectangle {
@@ -82,6 +96,31 @@ ApplicationWindow {
                 {
                     mainAppWindowMainRect.lockScreen();
                 }
+            }
+
+            function onFactoryResetRequested()
+            {
+                console.log("FactoryResetRequested")
+                mainScreenPopup.commandID = 0;
+                mainScreenPopup.popupMessageText = systemMessages.messages[NodoMessages.Message.FactoryResetApprove]
+                mainScreenPopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Accept]
+                mainScreenPopup.open();
+            }
+
+            function onPowerButtonPressDetected()
+            {
+                console.log("onPowerButtonPressDetected")
+                mainScreenPopup.notificationOnly = true
+                mainScreenPopup.commandID = -1;
+                mainScreenPopup.popupMessageText = qsTr("The device will shutdown in 3 seconds. Release the power button to cancel.")
+                mainScreenPopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Accept]
+                mainScreenPopup.open();
+            }
+
+            function onPowerButtonReleaseDetected()
+            {
+                console.log("onPowerButtonReleaseDetected")
+                mainScreenPopup.close();
             }
         }
 
@@ -253,6 +292,18 @@ ApplicationWindow {
                         easing.type: Easing.InOutQuad
                     }
                 }
+            }
+        }
+
+        NodoPopup {
+            id: mainScreenPopup
+            onApplyClicked: {
+                if(commandID === 0)
+                {
+                    nodoControl.factoryResetApproved();
+                    mainAppStackView.push("FactoryResetScreen.qml")
+                }
+                close()
             }
         }
     }
