@@ -20,13 +20,19 @@ Item {
 
     function updateParams()
     {
-        networksClearnetScreen.isRPCEnabled = nodoControl.getrpcEnabledStatus()
-        if(networksClearnetScreen.isRPCEnabled)
+        var rpcStat = nodoControl.getrpcEnabledStatus()
+        var rpcu = nodoControl.getrpcUser()
+        var rpcp = nodoControl.getrpcPassword()
+        networksClearnetScreen.rpcPort = nodoControl.getrpcPort()
+
+        if((rpcu === "") || (rpcp === ""))
         {
-            networksClearnetScreen.rpcPort = nodoControl.getrpcPort()
-            networksClearnetScreen.rpcUser = nodoControl.getrpcUser()
-            networksClearnetScreen.rpcPassword = nodoControl.getrpcPassword()
+            rpcStat = false
         }
+
+        networksClearnetScreen.isRPCEnabled = rpcStat
+        networksClearnetScreen.rpcUser = rpcu
+        networksClearnetScreen.rpcPassword = rpcp
     }
 
     function onCalculateMaximumTextLabelLength() {
@@ -39,7 +45,7 @@ Item {
 
     function createAddress()
     {
-        var address = "xmrrpc://:"
+        var address = "xmrrpc://"
         if(networksClearnetScreen.isRPCEnabled) //Clearnet (private)
         {
             address = address + networksClearnetScreen.rpcUser + ":" + networksClearnetScreen.rpcPassword + "@" + clearnetAddressField.valueText + ":" + networksClearnetScreen.rpcPort.toString() + "?label=Nodo"
@@ -47,7 +53,7 @@ Item {
         }
         else //Clearnet (public)
         {
-            address = address + "@" + clearnetAddressField.valueText + ":" + clearnetPortField.valueText + "?label=Nodo"
+            address = address + clearnetAddressField.valueText + ":" + clearnetPortField.valueText + "?label=Nodo"
         }
         return address
     }

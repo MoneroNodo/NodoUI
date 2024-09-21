@@ -16,6 +16,45 @@ Item {
     property bool torRouteSwitchStatus
     property bool torPortFieldReadOnly: false
 
+    property bool isRPCEnabled
+    property int rpcPort
+    property string rpcUser
+    property string rpcPassword
+
+    function updateParams()
+    {
+        var rpcStat = nodoControl.getrpcEnabledStatus()
+        var rpcu = nodoControl.getrpcUser()
+        var rpcp = nodoControl.getrpcPassword()
+        networksTorScreen.rpcPort = nodoControl.getrpcPort()
+
+        if((rpcu === "") || (rpcp === ""))
+        {
+            rpcStat = false
+        }
+
+        networksTorScreen.isRPCEnabled = rpcStat
+        networksTorScreen.rpcUser = rpcu
+        networksTorScreen.rpcPassword = rpcp
+    }
+
+    function createAddress()
+    {
+        //"xmrrpc://:@" + torOnionAddressField.valueText + ":" + torPortField.valueText + "?label=Nodo Tor Node"
+
+        var address = "xmrrpc://"
+        if(networksTorScreen.isRPCEnabled) //(private)
+        {
+            address = address + networksTorScreen.rpcUser + ":" + networksTorScreen.rpcPassword + "@" + torOnionAddressField.valueText + ":" + networksTorScreen.rpcPort + "?label=Nodo Tor Node"
+
+        }
+        else //(public)
+        {
+            address = address + torOnionAddressField.valueText + ":" + torPortField.valueText + "?label=Nodo Tor Node"
+        }
+        return address
+    }
+
     Component.onCompleted: {
         nodoConfig.updateRequested()
         onCalculateMaximumTextLabelLength()
@@ -41,6 +80,8 @@ Item {
             networksTorScreen.torRouteSwitchStatus = nodoConfig.getStringValueFromKey("config", "tor_global_enabled") === "TRUE" ? true : false
             networksTorScreen.torOnionAddress = nodoConfig.getStringValueFromKey("config", "tor_address")
             networksTorScreen.torPort = nodoConfig.getIntValueFromKey("config", "tor_port")
+
+            updateParams()
         }
     }
 
@@ -186,7 +227,7 @@ Item {
             width: qrCodeRect.width
             height: qrCodeRect.height
             qrSize: Qt.size(width,width)
-            qrData: "xmrrpc://:@" + torOnionAddressField.valueText + ":" + torPortField.valueText + "?label=Nodo Tor Node"
+            qrData: createAddress()
             qrForeground: "black"
             qrBackground: "white"
             qrMargin: 8

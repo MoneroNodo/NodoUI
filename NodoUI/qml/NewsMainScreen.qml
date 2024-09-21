@@ -14,7 +14,6 @@ Page {
 
     Component.onCompleted: {
         busyIndicator.running = true
-        feedsControl.setTextColor(nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff)
         getNewsPageList()
         busyIndicator.running = false
     }

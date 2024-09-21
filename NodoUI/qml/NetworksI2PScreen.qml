@@ -16,6 +16,45 @@ Item {
     property bool i2pSwitchStatus
     property bool i2pPortFieldReadOnly: false
 
+    property bool isRPCEnabled
+    property int rpcPort
+    property string rpcUser
+    property string rpcPassword
+
+    function updateParams()
+    {
+        var rpcStat = nodoControl.getrpcEnabledStatus()
+        var rpcu = nodoControl.getrpcUser()
+        var rpcp = nodoControl.getrpcPassword()
+        networksI2PScreen.rpcPort = nodoControl.getrpcPort()
+
+        if((rpcu === "") || (rpcp === ""))
+        {
+            rpcStat = false
+        }
+
+        networksI2PScreen.isRPCEnabled = rpcStat
+        networksI2PScreen.rpcUser = rpcu
+        networksI2PScreen.rpcPassword = rpcp
+    }
+
+    function createAddress()
+    {
+        //"xmrrpc://:@" + i2pAddressField.valueText + ":" + i2pPortField.valueText + "?label=Nodo I2P Node"
+
+        var address = "xmrrpc://"
+        if(networksI2PScreen.isRPCEnabled) //(private)
+        {
+            address = address + networksI2PScreen.rpcUser + ":" + networksI2PScreen.rpcPassword + "@" + i2pAddressField.valueText + ":" + networksI2PScreen.rpcPort.toString() + "?label=Nodo I2P Node"
+
+        }
+        else //(public)
+        {
+            address = address + i2pAddressField.valueText + ":" + i2pPortField.valueText + "?label=Nodo I2P Node"
+        }
+        return address
+    }
+
     Component.onCompleted: {
         nodoConfig.updateRequested()
         onCalculateMaximumTextLabelLength()
@@ -38,6 +77,7 @@ Item {
             networksI2PScreen.i2pSwitchStatus = nodoConfig.getStringValueFromKey("config", "i2p_enabled") === "TRUE" ? true : false
             networksI2PScreen.i2pAddress = nodoConfig.getStringValueFromKey("config", "i2p_address")
             networksI2PScreen.i2pPort = nodoConfig.getIntValueFromKey("config", "i2p_port")
+            updateParams()
         }
     }
 
@@ -156,7 +196,7 @@ Item {
             width: qrCodeRect.width
             height: qrCodeRect.height
             qrSize: Qt.size(width,width)
-            qrData: "xmrrpc://:@" + i2pAddressField.valueText + ":" + i2pPortField.valueText + "?label=Nodo I2P Node"
+            qrData: createAddress()
             qrForeground: "black"
             qrBackground: "white"
             qrMargin: 8
