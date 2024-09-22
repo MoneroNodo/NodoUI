@@ -54,7 +54,7 @@ public:
 
 
 private:
-    QString program = "/home/nodo/monero-lws/build/src/monero-lws-admin";
+    QString program = "/home/nodo/bin/monero-lws-admin";
     QString dbPathDirArg;
     NodoConfigParser *m_configParser;
     QVector< account_parameters_t > m_activeAccountList;
