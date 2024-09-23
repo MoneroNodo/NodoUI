@@ -84,12 +84,12 @@ Item
 
 
     property color keyboardButtonUnpressed: "#181818"
-    property color keyboardButtonPressed: "#1F1F1F"
+    property color keyboardButtonPressed: "#303030"
     property color keyboardBackgroundColor: "#000000"//"#111111"
     property color textColorOnUnpressedButton: "#FCFCFC"
     property color capsLockOnColor: "#FA5501"
 
-    property color inputPreviewBackgroundColor: "#FA5501"
+    property color inputPreviewBackgroundColor: "#181818"
     property color inputPreviewTextColor: "#FCFCFC"
 
     property color popupBackgroundColor: "#111111"
