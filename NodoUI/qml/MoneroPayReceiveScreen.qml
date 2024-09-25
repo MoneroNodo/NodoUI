@@ -51,7 +51,7 @@ Item {
             timestampField.valueText = dateTime.toUpperCase()
             moneroPayDepositAddressField.valueText = subaddress
 
-            qrCodeData = "monero:" + subaddress + "?tx_amount=" + (xmrAmount*1000000000000)
+            qrCodeData = "monero:" + subaddress + "?tx_amount=" + (xmrAmount)
 
             var encodedDescription = moneroPay.getReceivedDescriptionHTMLEncoded()
             if(encodedDescription !== "")
