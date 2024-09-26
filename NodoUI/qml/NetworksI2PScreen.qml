@@ -17,7 +17,7 @@ Item {
     property bool i2pPortFieldReadOnly: false
 
     property bool isRPCEnabled
-    property int rpcPort
+    property int port
     property string rpcUser
     property string rpcPassword
 
@@ -26,7 +26,7 @@ Item {
         var rpcStat = nodoControl.getrpcEnabledStatus()
         var rpcu = nodoControl.getrpcUser()
         var rpcp = nodoControl.getrpcPassword()
-        networksI2PScreen.rpcPort = nodoControl.getrpcPort()
+        networksI2PScreen.port = nodoControl.geti2pPort()
 
         if((rpcu === "") || (rpcp === ""))
         {
@@ -45,7 +45,7 @@ Item {
         var address = "xmrrpc://"
         if(networksI2PScreen.isRPCEnabled) //(private)
         {
-            address = address + networksI2PScreen.rpcUser + ":" + networksI2PScreen.rpcPassword + "@" + i2pAddressField.valueText + ":" + networksI2PScreen.rpcPort.toString() + "?label=Nodo I2P Node"
+            address = address + networksI2PScreen.rpcUser + ":" + networksI2PScreen.rpcPassword + "@" + i2pAddressField.valueText + ":" + networksI2PScreen.port.toString() + "?label=Nodo I2P Node"
 
         }
         else //(public)

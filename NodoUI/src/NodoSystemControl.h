@@ -83,6 +83,9 @@ public:
 
     Q_INVOKABLE bool getrpcEnabledStatus(void);
     Q_INVOKABLE void setrpcEnabledStatus(bool status);
+    Q_INVOKABLE int getclearnetPort(void);
+    Q_INVOKABLE int gettorPort(void);
+    Q_INVOKABLE int geti2pPort(void);
     Q_INVOKABLE int getrpcPort(void);
     Q_INVOKABLE void setrpcPort(QString port);
     Q_INVOKABLE QString getrpcUser(void);

@@ -500,6 +500,21 @@ void NodoSystemControl::setrpcEnabledStatus(bool status)
     m_dbusController->serviceManager("restart", "monerod");
 }
 
+int NodoSystemControl::gettorPort(void)
+{
+    return m_configParser->getIntValueFromKey("config", "tor_port");
+}
+
+int NodoSystemControl::geti2pPort(void)
+{
+    return m_configParser->getIntValueFromKey("config", "i2p_port");
+}
+
+int NodoSystemControl::getclearnetPort(void)
+{
+    return m_configParser->getIntValueFromKey("config", "monero_public_port");
+}
+
 int NodoSystemControl::getrpcPort(void)
 {
     return m_configParser->getIntValueFromKey("config", "monero_rpc_port");

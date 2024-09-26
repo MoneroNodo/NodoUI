@@ -17,7 +17,7 @@ Item {
     property bool torPortFieldReadOnly: false
 
     property bool isRPCEnabled
-    property int rpcPort
+    property int port
     property string rpcUser
     property string rpcPassword
 
@@ -26,7 +26,7 @@ Item {
         var rpcStat = nodoControl.getrpcEnabledStatus()
         var rpcu = nodoControl.getrpcUser()
         var rpcp = nodoControl.getrpcPassword()
-        networksTorScreen.rpcPort = nodoControl.getrpcPort()
+        networksTorScreen.port = nodoControl.gettorPort()
 
         if((rpcu === "") || (rpcp === ""))
         {
@@ -45,7 +45,7 @@ Item {
         var address = "xmrrpc://"
         if(networksTorScreen.isRPCEnabled) //(private)
         {
-            address = address + networksTorScreen.rpcUser + ":" + networksTorScreen.rpcPassword + "@" + torOnionAddressField.valueText + ":" + networksTorScreen.rpcPort + "?label=Nodo Tor Node"
+            address = address + networksTorScreen.rpcUser + ":" + networksTorScreen.rpcPassword + "@" + torOnionAddressField.valueText + ":" + networksTorScreen.port.toString() + "?label=Nodo Tor Node"
 
         }
         else //(public)
