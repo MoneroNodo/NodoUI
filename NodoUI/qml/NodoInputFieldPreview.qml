@@ -23,7 +23,7 @@ NodoCanvas {
         rightPadding: textRightPadding
         verticalAlignment: Text.AlignVCenter
         font.family: NodoSystem.fontUrbanist.name
-        font.pixelSize: NodoSystem.inputFieldValueFontSize
+        font.pixelSize: NodoSystem.inputFieldValueFontSize * 1.5
         clip: true
         readOnly: true
         focus: false

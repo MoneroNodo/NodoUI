@@ -12,7 +12,7 @@ Item {
     property int clearnetPort
     property bool inputFieldReadOnly: false
     property bool isRPCEnabled
-    property int rpcPort
+    property int port
     property string rpcUser
     property string rpcPassword
     property string qrCodeAddress
@@ -23,7 +23,7 @@ Item {
         var rpcStat = nodoControl.getrpcEnabledStatus()
         var rpcu = nodoControl.getrpcUser()
         var rpcp = nodoControl.getrpcPassword()
-        networksClearnetScreen.rpcPort = nodoControl.getrpcPort()
+        networksClearnetScreen.port = nodoControl.getclearnetPort()
 
         if((rpcu === "") || (rpcp === ""))
         {
@@ -48,7 +48,7 @@ Item {
         var address = "xmrrpc://"
         if(networksClearnetScreen.isRPCEnabled) //Clearnet (private)
         {
-            address = address + networksClearnetScreen.rpcUser + ":" + networksClearnetScreen.rpcPassword + "@" + clearnetAddressField.valueText + ":" + networksClearnetScreen.rpcPort.toString() + "?label=Nodo"
+            address = address + networksClearnetScreen.rpcUser + ":" + networksClearnetScreen.rpcPassword + "@" + clearnetAddressField.valueText + ":" + networksClearnetScreen.port.toString() + "?label=Nodo"
 
         }
         else //Clearnet (public)
