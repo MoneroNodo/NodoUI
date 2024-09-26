@@ -101,6 +101,7 @@ Item {
         isActive: (setButtonActive === true) && (moneroPaySettingsAddressInput.valueText.length === 95) && (moneroPaySettingsViewkeyLabel.valueText.length === 64)
         onClicked: {
             moneroPay.setDepositAddress(moneroPaySettingsAddressInput.valueText, moneroPaySettingsViewkeyLabel.valueText)
+            nodoControl.serviceManager("restart", "moneropay");
             inputFieldReadOnly = true;
             clearButtonActive = true
             setButtonActive = false
@@ -118,9 +119,21 @@ Item {
         font.pixelSize: NodoSystem.buttonTextFontSize
         isActive: clearButtonActive
         onClicked: {
-            systemPopup.commandID = 4;
-            systemPopup.applyButtonText = qsTr("Clear")
-            systemPopup.open();
+            moneroPaySettingsScreenPopup.commandID = 0;
+            moneroPaySettingsScreenPopup.applyButtonText = qsTr("Clear")
+            moneroPaySettingsScreenPopup.open();
+        }
+    }
+
+    NodoPopup {
+        id: moneroPaySettingsScreenPopup
+        onApplyClicked: {
+            if(commandID === 0)
+            {
+                moneroPay.setDepositAddress("", "")
+                nodoControl.serviceManager("restart", "moneropay");
+            }
+            close()
         }
     }
 }

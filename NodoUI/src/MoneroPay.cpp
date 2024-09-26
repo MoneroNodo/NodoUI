@@ -111,6 +111,9 @@ void MoneroPay::enableComponent(bool enabled)
 
 void MoneroPay::setDepositAddress(QString address, QString viewKey)
 {
+    QFile::remove(m_mpayFile);
+    QFile::remove(m_mpayKeyFile);
+
     m_configParser->setMoneroPayParameters(address, viewKey);
 }
 

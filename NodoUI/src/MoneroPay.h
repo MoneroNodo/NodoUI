@@ -52,6 +52,8 @@ public:
 
 
 private:
+    const QString m_mpayFile = "/home/nodo/mpay";
+    const QString m_mpayKeyFile = "/home/nodo/mpay.keys";
     bool m_componentEnabled = true;
     bool isUpdateRequested = false;
     int m_paymentID = 0;

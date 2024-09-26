@@ -63,7 +63,7 @@ void Daemon::startRecovery(int recoverFS, int rsyncBlockchain)
 }
 
 const static QString operations[] = {"start", "stop", "restart", "enable", "disable"};
-const static QString services[] = {"block-explorer", "monerod", "monero-lws", "xmrig", "sshd" , "p2pool", "webui"};
+const static QString services[] = {"block-explorer", "monerod", "monero-lws", "xmrig", "sshd" , "p2pool", "webui", "moneropay"};
 
 void Daemon::serviceManager(QString operation, QString service)
 {
