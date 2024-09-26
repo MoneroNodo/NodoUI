@@ -40,19 +40,11 @@ Item {
 
     function createAddress()
     {
-        //"xmrrpc://:@" + torOnionAddressField.valueText + ":" + torPortField.valueText + "?label=Nodo Tor Node"
-
-        var address = "xmrrpc://"
-        if(networksTorScreen.isRPCEnabled) //(private)
-        {
-            address = address + networksTorScreen.rpcUser + ":" + networksTorScreen.rpcPassword + "@" + torOnionAddressField.valueText + ":" + networksTorScreen.port.toString() + "?label=Nodo Tor Node"
-
-        }
-        else //(public)
-        {
-            address = address + torOnionAddressField.valueText + ":" + torPortField.valueText + "?label=Nodo Tor Node"
-        }
-        return address
+        var uri = "xmrrpc://%1:%2@%3:%4?label=Nodo Tor Node"
+        return uri.arg(networksTorScreen.rpcUser,
+            networksTorScreen.rpcPassword,
+            torOnionAddressField.valueText,
+            networksTorScreen.port.toString())
     }
 
     Component.onCompleted: {

@@ -40,19 +40,11 @@ Item {
 
     function createAddress()
     {
-        //"xmrrpc://:@" + i2pAddressField.valueText + ":" + i2pPortField.valueText + "?label=Nodo I2P Node"
-
-        var address = "xmrrpc://"
-        if(networksI2PScreen.isRPCEnabled) //(private)
-        {
-            address = address + networksI2PScreen.rpcUser + ":" + networksI2PScreen.rpcPassword + "@" + i2pAddressField.valueText + ":" + networksI2PScreen.port.toString() + "?label=Nodo I2P Node"
-
-        }
-        else //(public)
-        {
-            address = address + i2pAddressField.valueText + ":" + i2pPortField.valueText + "?label=Nodo I2P Node"
-        }
-        return address
+        var uri = "xmrrpc://%1:%2@%3:%4?label=Nodo I2P Node"
+        return uri.arg(networksI2PScreen.rpcUser,
+            networksI2PScreen.rpcPassword,
+            i2pAddressField.valueText,
+            networksI2PScreen.port.toString())
     }
 
     Component.onCompleted: {
