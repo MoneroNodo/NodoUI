@@ -45,17 +45,11 @@ Item {
 
     function createAddress()
     {
-        var address = "xmrrpc://"
-        if(networksClearnetScreen.isRPCEnabled) //Clearnet (private)
-        {
-            address = address + networksClearnetScreen.rpcUser + ":" + networksClearnetScreen.rpcPassword + "@" + clearnetAddressField.valueText + ":" + networksClearnetScreen.port.toString() + "?label=Nodo"
-
-        }
-        else //Clearnet (public)
-        {
-            address = address + clearnetAddressField.valueText + ":" + clearnetPortField.valueText + "?label=Nodo"
-        }
-        return address
+        var uri = "xmrrpc://%1:%2@%3:%4?label=Nodo"
+        return uri.arg(networksClearnetScreen.rpcUser,
+            networksClearnetScreen.rpcPassword,
+            clearnetAddressField.valueText,
+            networksClearnetScreen.port.toString())
     }
 
 
