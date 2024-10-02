@@ -189,6 +189,7 @@ Item {
                 anchors.left: blockConfirmationsField.right
                 anchors.top: blockConfirmationsField.top
                 height: blockConfirmationsRect.height
+                anchors.leftMargin: 25
 
                 NodoLabel{
                     id: zeroConfirmationSwitchText
@@ -358,7 +359,6 @@ Item {
             width: newPaymentButton.x + newPaymentButton.width
             height: newPaymentButton.height
             color: "black"
-
 
             NodoButton {
                 id: cancelPaymentButton
