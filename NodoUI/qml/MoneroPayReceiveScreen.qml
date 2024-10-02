@@ -87,25 +87,27 @@ Item {
             id: requestCurrenciesRect
             anchors.top: requestAmountRect.top
             anchors.left: requestAmountRect.left
-            width: fiatRequestfield.x + fiatRequestfield.width
-            height: fiatRequestfield.height
+            width: 1900
+            height: 95
             color: "black"
 
             NodoInputField {
                 id: xmrRequestfield
                 anchors.top: requestCurrenciesRect.top
                 anchors.left: requestCurrenciesRect.left
-                itemSize: 90
-                width: 390
-                height: NodoSystem.nodoItemHeight
+                itemSize: 210
+                width: 1000
+                height: 95
                 itemText: qsTr("XMR")
-                valueText: "0.00"
+                valueText: "0.000000000000"
                 textFlag: Qt.ImhDigitsOnly
+                itemFontSize: 80
+                valueFontSize: 80
 
                 onTextEditFinished: {
                     if(valueText === "")
                     {
-                        valueText = 0.0
+                        valueText = "0.000000000000"
                     }
 
                     xmrAmount = parseFloat(xmrRequestfield.valueText)
@@ -127,17 +129,19 @@ Item {
                 anchors.top: requestCurrenciesRect.top
                 anchors.left: xmrRequestfield.right
                 anchors.leftMargin: 25
-                itemSize: 90
-                width: 390
-                height: NodoSystem.nodoItemHeight
+                itemSize: 210
+                width: 700
+                height: 95
                 itemText: moneroPayReceiveScreen.exchangeName
                 valueText: "0.00"
                 textFlag: Qt.ImhDigitsOnly
+                itemFontSize: 80
+                valueFontSize: 80
 
                 onTextEditFinished: {
                     if(valueText === "")
                     {
-                        valueText = 0.0
+                        valueText = "0.00"
                     }
 
                     xmrAmount = (parseFloat(fiatRequestfield.valueText)/exchangeRate)
@@ -219,7 +223,7 @@ Item {
             width: addressFieldWidth
             height: NodoSystem.nodoItemHeight
             itemSize: labelSize
-            itemText: qsTr("Note (optional)")
+            itemText: qsTr("Note (Optional)")
             valueText: ""
         }
 
