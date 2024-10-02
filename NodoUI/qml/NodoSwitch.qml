@@ -41,6 +41,7 @@ Switch {
             width: parent.height*0.8
             height: parent.height*0.8
             color: "white"
+            borderColor: "white"
         }
     }
 

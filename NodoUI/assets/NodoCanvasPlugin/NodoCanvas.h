@@ -9,6 +9,7 @@ class NodoCanvas : public QQuickPaintedItem
 {
     Q_OBJECT
     Q_PROPERTY(QColor color READ color WRITE setColor NOTIFY colorChanged)
+    Q_PROPERTY(QColor borderColor READ borderColor WRITE setBorderColor NOTIFY borderColorChanged)
     QML_ELEMENT
 
 public:
@@ -16,11 +17,13 @@ public:
     void paint(QPainter *painter);
 
     QColor color() const;
+    QColor borderColor() const;
     void setColor(const QColor &color);
-
+    void setBorderColor(const QColor &borderColor);
 
 private:
     QColor m_color;
+    QColor m_borderColor;
     const double m_rectHeight = 8.0;
     const double m_rectWidth = 11.0;
     const int m_cwidth = 300;
@@ -36,6 +39,7 @@ private:
 
 signals:
     void colorChanged();
+    void borderColorChanged();
 };
 
 #endif

@@ -6,12 +6,7 @@ import NodoSystem 1.1
 import NodoCanvas 1.0
 import QtQuick2QREncode 1.0
 import QtWebView
-/*
 
-qml6-module-qtwebview
-qt6-webview-plugins
-
-*/
 Item {
     id: moneroPayReceiveScreen
     anchors.fill: parent

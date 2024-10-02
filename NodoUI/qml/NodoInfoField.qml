@@ -25,7 +25,6 @@ Item {
         width: itemSize > 0 ? itemSize : labelRectRoundSize
         height: root.height
         color: nodoControl.appTheme ? NodoSystem.dataFieldTitleBGColorNightModeOn : NodoSystem.dataFieldTitleBGColorNightModeOff
-
         Text{
             id: namelabel
             width: namelabel.paintedWidth

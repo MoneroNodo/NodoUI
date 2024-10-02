@@ -5,6 +5,7 @@ NodoCanvas::NodoCanvas(QQuickItem *parent)
     : QQuickPaintedItem(parent)
 {
     m_color = Qt::gray;
+    m_borderColor = "#141414";
 
     QSizeF itemSize(m_cwidth, m_cheight);
     this->setSize(itemSize);
@@ -12,9 +13,12 @@ NodoCanvas::NodoCanvas(QQuickItem *parent)
 
 void NodoCanvas::paint(QPainter *painter)
 {
+    QPen pen;
+    pen.setWidth(2);
+    pen.setColor(m_borderColor);
+    painter->setPen(pen);
     QBrush brush((QColor(m_color)));
     painter->setBrush(brush);
-    painter->setPen(Qt::NoPen);
     painter->setRenderHint(QPainter::Antialiasing);
     QSizeF itemSize = this->size();
 
@@ -47,10 +51,20 @@ void NodoCanvas::paint(QPainter *painter)
     painter->drawConvexPolygon(points, 8);
 }
 
-
 QColor NodoCanvas::color() const
 {
-    return m_color;
+    return m_color;    
+}
+
+QColor NodoCanvas::borderColor() const
+{
+    return m_borderColor;
+}
+
+void NodoCanvas::setBorderColor(const QColor &borderColor)
+{
+    m_borderColor = borderColor;
+    update();
 }
 
 void NodoCanvas::setColor(const QColor &color)
