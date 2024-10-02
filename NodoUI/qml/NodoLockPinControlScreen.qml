@@ -10,7 +10,6 @@ Item {
     id: lockPinScreen
     property int labelSize: 0
     property int inputFieldWidth: 600
-    property int defaultHeight: 64
     property bool pinFieldReadOnly: false
     property bool isLockPinEnabled: false
 
@@ -106,7 +105,7 @@ Item {
             anchors.left: lockPinControlRect.left
             anchors.top: lockPinControlRect.top
             width: inputFieldWidth
-            height: NodoSystem.inputFieldLabelHeight
+            height: NodoSystem.nodoItemHeight
             itemSize: labelSize
             itemText: qsTr("Lock after")
             textFlag: Qt.ImhDigitsOnly
@@ -139,7 +138,7 @@ Item {
                 id: lockPinControlLockAfterTimeUnit
                 text: qsTr("minutes")
                 anchors.left: lockPinControlLockAfterTimeRect.right
-                height: NodoSystem.infoFieldLabelHeight
+                height: NodoSystem.nodoItemHeight
                 verticalAlignment: Text.AlignVCenter
                 font.family: NodoSystem.fontUrbanist.name
                 font.pixelSize: NodoSystem.inputFieldValueFontSize
@@ -153,7 +152,7 @@ Item {
             anchors.top: lockPinControlLockAfterField.bottom
             anchors.topMargin: 30
             width: inputFieldWidth
-            height: NodoSystem.inputFieldLabelHeight
+            height: NodoSystem.nodoItemHeight
             itemSize: labelSize
             itemText: qsTr("New PIN")
             textFlag: Qt.ImhDigitsOnly
@@ -174,7 +173,7 @@ Item {
             anchors.top: lockPinControlNewPinField.bottom
             anchors.topMargin: NodoSystem.nodoTopMargin
             width: inputFieldWidth
-            height: NodoSystem.inputFieldLabelHeight
+            height: NodoSystem.nodoItemHeight
             itemSize: labelSize
             itemText: qsTr("Re-enter New PIN")
             textFlag: Qt.ImhDigitsOnly

@@ -92,7 +92,7 @@ Item {
         id: addEthernetConnectionButton
         anchors.left: ethernetNetworkScreen.left
         anchors.top: ethernetNetworkScreen.top
-        height: 60
+        height: NodoSystem.nodoItemHeight
         font.pixelSize: NodoSystem.infoFieldItemFontSize
         text: systemMessages.messages[NodoMessages.Message.AddNewConnection]
         visible: true
@@ -128,7 +128,7 @@ Item {
             anchors.topMargin: 10
             anchors.leftMargin: 11
             width: createNewConnectionCanvas.width - 22
-            height: createNewConnectionCanvas.height - 31 - createEthernetConnectionRect.height
+            height: createNewConnectionCanvas.height - createEthernetConnectionRect.height - 18
             visible: ethernetNetworkScreen.state === "" ? false : true
             color: "#181818"
 
@@ -154,7 +154,7 @@ Item {
                 anchors.left: ethConnectionNameField.left
                 anchors.top: ethConnectionNameField.bottom
                 anchors.topMargin: ethernetNetworkScreen.spacing
-                height: networkDelegateItemHeight
+                height: NodoSystem.nodoItemHeight
 
                 NodoLabel{
                     id: dhcpSwitchText
@@ -272,7 +272,7 @@ Item {
             anchors.top: createNewConnectionRect.bottom
             anchors.left: createNewConnectionRect.left
             anchors.topMargin: 8
-            height: 60
+            height: NodoSystem.nodoItemHeight
             visible: ethernetNetworkScreen.state === "" ? false : true
 
             NodoButton {
@@ -318,7 +318,7 @@ Item {
     states: [
         State {
             name: "createNewConnectionRect";
-            PropertyChanges { target: createNewConnectionCanvas; height: 220 }
+            PropertyChanges { target: createNewConnectionCanvas; height: 164 + NodoSystem.nodoItemHeight }
         },
         State {
             name: ""
@@ -326,7 +326,7 @@ Item {
         },
         State {
             name: "showAdvancedConfigRect"
-            PropertyChanges { target: createNewConnectionCanvas; height: 482 }
+            PropertyChanges { target: createNewConnectionCanvas; height: 438 + NodoSystem.nodoItemHeight }
         }
     ]
 

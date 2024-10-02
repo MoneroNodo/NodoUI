@@ -35,7 +35,7 @@ NodoCanvas {
         anchors.leftMargin: 10
         anchors.rightMargin: 10
         itemSize: 0
-        height: NodoSystem.infoFieldLabelHeight
+        height: NodoSystem.nodoItemHeight
         itemText: systemMessages.messages[NodoMessages.Message.Address]
         valueText: inactiveAddress
     }
@@ -47,7 +47,7 @@ NodoCanvas {
         anchors.top: moneroLWSinactiveAddressField.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         width: labelSize + 300
-        height: NodoSystem.infoFieldLabelHeight
+        height: NodoSystem.nodoItemHeight
         itemSize: labelSize
         itemText: qsTr("Height")
         valueText: scanHeight
@@ -59,7 +59,7 @@ NodoCanvas {
         anchors.top: moneroLWSinactiveHeightField.top
         anchors.leftMargin: 20
         text: qsTr("Reactivate")
-        height: NodoSystem.infoFieldLabelHeight
+        height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         onClicked: {
@@ -73,7 +73,7 @@ NodoCanvas {
         anchors.top: moneroLWSinactiveHeightField.top
         anchors.leftMargin: 16
         text: qsTr("Delete")
-        height: NodoSystem.infoFieldLabelHeight
+        height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         onClicked: {

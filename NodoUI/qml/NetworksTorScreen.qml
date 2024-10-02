@@ -155,7 +155,7 @@ Item {
         anchors.top: torRouteSwitchRect.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         width: infoFieldWidth
-        height: NodoSystem.infoFieldLabelHeight
+        height: NodoSystem.nodoItemHeight
         itemSize: labelSize
         itemText: qsTr("Onion Address")
         valueText: networksTorScreen.torOnionAddress
@@ -167,7 +167,7 @@ Item {
         anchors.top: torOnionAddressField.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         width: infoFieldWidth
-        height: NodoSystem.infoFieldLabelHeight
+        height: NodoSystem.nodoItemHeight
         itemSize: labelSize
         itemText: systemMessages.messages[NodoMessages.Message.Port]
         valueText: networksTorScreen.torPort
@@ -193,7 +193,7 @@ Item {
         anchors.top: torPortField.bottom
         anchors.topMargin: 20
         text: systemMessages.messages[NodoMessages.Message.ApplyPort]
-        height: 60
+        height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         isActive: false

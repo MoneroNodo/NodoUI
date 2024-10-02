@@ -254,7 +254,7 @@ ApplicationWindow {
             x: 0
             y: mainAppWindowMainRect.height
             width: mainAppWindowMainRect.width
-            height: NodoSystem.infoFieldLabelHeight
+            height: NodoSystem.nodoItemHeight
 
             Connections {
                 target: nodoControl

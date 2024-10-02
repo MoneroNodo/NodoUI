@@ -10,9 +10,7 @@ Item {
     id: addressPinControlScreen
     property int labelSize: 0
     property int inputFieldWidth: 600
-    property int defaultHeight: 64
     property bool pinFieldReadOnly: false
-    property bool isLockPinEnabled: false
 
     signal deleteMe(int screenID)
 
@@ -44,7 +42,7 @@ Item {
         anchors.left: addressPinControlScreen.left
         anchors.top: addressPinControlScreen.top
         width: inputFieldWidth
-        height: NodoSystem.inputFieldLabelHeight
+        height: NodoSystem.nodoItemHeight
         itemSize: labelSize
         itemText: qsTr("New Address PIN")
         textFlag: Qt.ImhDigitsOnly
@@ -65,7 +63,7 @@ Item {
         anchors.top: addressPinControlNewPinField.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         width: inputFieldWidth
-        height: NodoSystem.inputFieldLabelHeight
+        height: NodoSystem.nodoItemHeight
         itemSize: labelSize
         itemText: qsTr("Re-enter New Address PIN")
         textFlag: Qt.ImhDigitsOnly

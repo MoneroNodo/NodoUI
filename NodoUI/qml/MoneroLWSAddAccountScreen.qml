@@ -31,7 +31,7 @@ Item {
         itemSize: labelSize
         itemText: systemMessages.messages[NodoMessages.Message.Address]
         valueText: ""
-        height: NodoSystem.infoFieldLabelHeight
+        height: NodoSystem.nodoItemHeight
     }
 
     NodoInputField {
@@ -43,7 +43,7 @@ Item {
         itemSize: labelSize
         itemText: qsTr("Private Viewkey")
         valueText: ""
-        height: NodoSystem.infoFieldLabelHeight
+        height: NodoSystem.nodoItemHeight
     }
 
     NodoButton {
@@ -52,7 +52,7 @@ Item {
         anchors.top: moneroLWSPrivateViewkeyLabel.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         text: qsTr("Add Account")
-        height: NodoSystem.infoFieldLabelHeight
+        height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         isActive: moneroLWSMainAddressInput.valueText.length === 95 ? moneroLWSPrivateViewkeyLabel.valueText.length === 64 ? true : false : false

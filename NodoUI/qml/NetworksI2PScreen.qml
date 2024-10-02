@@ -124,7 +124,7 @@ Item {
         anchors.top: i2pSwitchRect.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         width: infoFieldWidth
-        height: NodoSystem.infoFieldLabelHeight
+        height: NodoSystem.nodoItemHeight
         itemSize: labelSize
         itemText: qsTr("I2P b32 Address")
         valueText: networksI2PScreen.i2pAddress
@@ -136,7 +136,7 @@ Item {
         anchors.top: i2pAddressField.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         width: infoFieldWidth
-        height: NodoSystem.infoFieldLabelHeight
+        height: NodoSystem.nodoItemHeight
         itemSize: labelSize
         itemText: systemMessages.messages[NodoMessages.Message.Port]
         valueText: networksI2PScreen.i2pPort
@@ -162,7 +162,7 @@ Item {
         anchors.top: i2pPortField.bottom
         anchors.topMargin: 20
         text: systemMessages.messages[NodoMessages.Message.ApplyPort]
-        height: 60
+        height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         isActive: false

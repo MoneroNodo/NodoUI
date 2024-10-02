@@ -9,7 +9,7 @@ Rectangle {
     property int index: 0
 
     id: feedRect
-    height: visible ? 60 : 0
+    height: visible ? NodoSystem.nodoItemHeight : 0
     visible: feedsControl.getVisibleState(index)
 
     property int labelItemSize: 0

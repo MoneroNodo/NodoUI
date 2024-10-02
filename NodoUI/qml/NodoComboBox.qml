@@ -12,6 +12,7 @@ ComboBox {
 
     delegate: ItemDelegate {
         width: control.width
+        height: control.height
         contentItem: Text {
             text: modelData
             color: NodoSystem.comboBoxTextColor
@@ -54,6 +55,7 @@ ComboBox {
     contentItem: Text {
         leftPadding: 10
         rightPadding: control.indicator.width + control.spacing
+        height: control.height
 
         text: control.displayText
         font: control.font
@@ -64,7 +66,8 @@ ComboBox {
 
     background: NodoCanvas {
         implicitWidth: 120
-        implicitHeight: 40
+        // implicitHeight: control.height
+        height: control.height
         width: control.width
         color: nodoControl.appTheme ? NodoSystem.dataFieldTextBGColorNightModeOn : NodoSystem.dataFieldTextBGColorNightModeOff
     }

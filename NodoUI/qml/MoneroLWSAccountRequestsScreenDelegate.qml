@@ -35,7 +35,7 @@ NodoCanvas {
         anchors.leftMargin: 10
         anchors.rightMargin: 10
         itemSize: 0
-        height: NodoSystem.infoFieldLabelHeight
+        height: NodoSystem.nodoItemHeight
         itemText: systemMessages.messages[NodoMessages.Message.Address]
         valueText: requestAddress
     }
@@ -46,7 +46,7 @@ NodoCanvas {
         anchors.top: moneroLWSAccountRequestsAddressField.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         width: labelSize+300
-        height: NodoSystem.infoFieldLabelHeight
+        height: NodoSystem.nodoItemHeight
         itemSize: labelSize
         itemText: qsTr("Height")
         valueText: scanHeight
@@ -58,7 +58,7 @@ NodoCanvas {
         anchors.top: moneroLWSAccountRequestsHeightField.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         text: qsTr("Accept")
-        height: NodoSystem.infoFieldLabelHeight
+        height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         onClicked: {
@@ -72,7 +72,7 @@ NodoCanvas {
         anchors.top: moneroLWSAccountRequestsAcceptButton.top
         anchors.leftMargin: 16
         text: qsTr("Reject")
-        height: NodoSystem.infoFieldLabelHeight
+        height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         onClicked: {

@@ -78,7 +78,7 @@ Item {
             anchors.left: lockPinRect.left
             anchors.top: banner.bottom
             width: inputFieldWidth
-            height: NodoSystem.inputFieldLabelHeight
+            height: NodoSystem.nodoItemHeight
             itemSize: labelSize
             itemText: qsTr("New Lock PIN")
             valueText: ""
@@ -96,7 +96,7 @@ Item {
             anchors.top: lockPINField.bottom
             anchors.topMargin: NodoSystem.nodoTopMargin
             width: inputFieldWidth
-            height: NodoSystem.inputFieldLabelHeight
+            height: NodoSystem.nodoItemHeight
             itemSize: labelSize
             itemText: qsTr("Re-enter Lock PIN")
             valueText: ""

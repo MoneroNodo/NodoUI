@@ -9,10 +9,6 @@ import NodoCanvas 1.0
 Rectangle {
     id: devicePinScreen
     anchors.fill: parent
-    property int labelSize: 0
-    property int inputFieldWidth: 600
-    property int defaultHeight: 64
-    property bool pinFieldReadOnly: false
     property bool isLockPinEnabled: false
     color: "black"
 

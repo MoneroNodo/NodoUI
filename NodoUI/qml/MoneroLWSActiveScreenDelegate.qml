@@ -35,7 +35,7 @@ NodoCanvas {
         anchors.leftMargin: 10
         anchors.rightMargin: 10
         itemSize: 0
-        height: NodoSystem.infoFieldLabelHeight
+        height: NodoSystem.nodoItemHeight
         itemText: systemMessages.messages[NodoMessages.Message.Address] //qsTr("Address")
         valueText: activeAddress
     }
@@ -47,7 +47,7 @@ NodoCanvas {
         anchors.top: moneroLWSActiveAddressField.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         width: labelSize+300
-        height: NodoSystem.infoFieldLabelHeight
+        height: NodoSystem.nodoItemHeight
         itemSize: labelSize
         itemText: qsTr("Height")
         valueText: scanHeight
@@ -59,7 +59,7 @@ NodoCanvas {
         anchors.top: moneroLWSActiveHeightField.top
         anchors.leftMargin: 20
         text: qsTr("Deactivate")
-        height: NodoSystem.infoFieldLabelHeight
+        height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         onClicked: {
@@ -73,7 +73,7 @@ NodoCanvas {
         anchors.top: moneroLWSActiveHeightField.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         width: 600
-        height: NodoSystem.inputFieldLabelHeight
+        height: NodoSystem.nodoItemHeight
         itemText: qsTr("Rescan Height")
         valueText: ""
         textFlag: Qt.ImhDigitsOnly
@@ -85,7 +85,7 @@ NodoCanvas {
         anchors.top: moneroLWSRescanHeightInput.top
         anchors.leftMargin: 20
         text: qsTr("Rescan")
-        height: NodoSystem.infoFieldLabelHeight
+        height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         isActive: moneroLWSRescanHeightInput.valueText.length > 0 ? true : false

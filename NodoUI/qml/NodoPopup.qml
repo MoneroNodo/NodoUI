@@ -10,7 +10,7 @@ Popup {
     x: (parent.width - width)/2
     y: (parent.height - height)/2
     implicitWidth: 655
-    height: 140 + popupMessage.paintedHeight
+    height: 80 + NodoSystem.nodoItemHeight + popupMessage.paintedHeight
     modal: true
     property string applyButtonText: ""
     property int commandID: -1

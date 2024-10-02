@@ -109,7 +109,7 @@ Item {
         anchors.left: networksClearnetScreen.left
         anchors.top: networksClearnetScreen.top
         width: 924
-        height: 60
+        height: NodoSystem.nodoItemHeight
         itemSize: labelSize
         itemText: systemMessages.messages[NodoMessages.Message.Address]
         valueText: ""
@@ -121,7 +121,7 @@ Item {
         anchors.top: clearnetAddressField.bottom
         anchors.topMargin: 16
         width: 924
-        height: 60
+        height: NodoSystem.nodoItemHeight
         itemSize: labelSize
         itemText: systemMessages.messages[NodoMessages.Message.Port]
         valueText: networksClearnetScreen.clearnetPort
@@ -147,7 +147,7 @@ Item {
         anchors.top: clearnetPortField.bottom
         anchors.topMargin: 20
         text: systemMessages.messages[NodoMessages.Message.ApplyPort]
-        height: 60
+        height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         isActive: false

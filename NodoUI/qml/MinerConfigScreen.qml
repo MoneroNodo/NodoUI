@@ -72,7 +72,7 @@ Item {
 		anchors.left: minerMainScreen.left
         anchors.topMargin: NodoSystem.nodoTopMargin
         width: 1840
-        height: NodoSystem.infoFieldLabelHeight
+        height: NodoSystem.nodoItemHeight
         itemSize: 300
         itemText: qsTr("Deposit Address")
         valueText: nodoConfig.getStringValueFromKey("mining", "address")

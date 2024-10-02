@@ -74,7 +74,7 @@ Item {
         itemSize: labelSize
         itemText: qsTr("Deposit Address")
         readOnlyFlag: inputFieldReadOnly
-        height: NodoSystem.infoFieldLabelHeight
+        height: NodoSystem.nodoItemHeight
     }
 
     NodoInputField {
@@ -86,7 +86,7 @@ Item {
         itemSize: labelSize
         itemText: qsTr("Private Viewkey")
         readOnlyFlag: inputFieldReadOnly
-        height: NodoSystem.infoFieldLabelHeight
+        height: NodoSystem.nodoItemHeight
     }
 
     NodoButton {
@@ -95,7 +95,7 @@ Item {
         anchors.top: moneroPaySettingsViewkeyLabel.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         text: qsTr("Set Deposit Address")
-        height: NodoSystem.infoFieldLabelHeight
+        height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         isActive: (setButtonActive === true) && (moneroPaySettingsAddressInput.valueText.length === 95) && (moneroPaySettingsViewkeyLabel.valueText.length === 64)
@@ -114,7 +114,7 @@ Item {
         anchors.top: moneroPaySettingsSetDepositAddressButton.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         text: qsTr("Clear Deposit Address")
-        height: NodoSystem.infoFieldLabelHeight
+        height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         isActive: clearButtonActive

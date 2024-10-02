@@ -4,6 +4,9 @@ import QtQuick 2.15
 Item
 {
     readonly property FontLoader fontUrbanist: FontLoader { source: "qrc:/NodoSystem/InterRegular.ttf" }
+
+    property int nodoItemHeight: 70
+
     property int topMenuYposition: 32
     property int topMenuButtonHeight: 100
     property int topMenuButtonFontSize: 40
@@ -16,8 +19,6 @@ Item
     property int buttonTextFontSize: 32
     property int subMenuLeftMargin: 32
 
-    property int infoFieldLabelHeight: 64
-    property int inputFieldLabelHeight: 64
     property int topMenuTextTopPadding: 21
 
     property color defaultColorNightModeOff: "#FCFCFC"
@@ -60,9 +61,8 @@ Item
 
     property int padding: 0
     property int textPadding: 20
-    property int nodoItemHeight: 64
+
     property int nodoItemWidth: 300
-    property int nodoComboboxHeight: 64
     property int nodoTopMargin: 16
 
     property int comboboxFontSize: 25
@@ -93,5 +93,4 @@ Item
     property color inputPreviewTextColor: "#FCFCFC"
 
     property color popupBackgroundColor: "#111111"
-
 }

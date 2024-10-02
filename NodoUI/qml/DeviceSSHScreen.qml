@@ -96,7 +96,7 @@ Item {
         anchors.topMargin: NodoSystem.nodoTopMargin
         width: inputFieldWidth
         itemSize: labelSize
-        height: NodoSystem.infoFieldLabelHeight
+        height: NodoSystem.nodoItemHeight
         itemText: qsTr("Username")
         valueText: "nodo"
     }
@@ -107,7 +107,7 @@ Item {
         anchors.top: deviceSSHUserNameField.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         width: inputFieldWidth
-        height: NodoSystem.inputFieldLabelHeight
+        height: NodoSystem.nodoItemHeight
         itemSize: labelSize
         itemText: qsTr("Password")
         valueText: ""
@@ -121,7 +121,7 @@ Item {
         anchors.top: deviceSSHPasswordField.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         width: inputFieldWidth
-        height: NodoSystem.inputFieldLabelHeight
+        height: NodoSystem.nodoItemHeight
         itemSize: labelSize
         itemText: qsTr("Re-enter Password")
         valueText: ""

@@ -138,7 +138,7 @@ Item {
         anchors.left: nodeBandwidthScreen.left
         anchors.top: nodeBandwidthScreen.top
         width: inputFieldWidth
-        height: NodoSystem.infoFieldLabelHeight
+        height: NodoSystem.nodoItemHeight
         itemSize: labelSize
         itemText: qsTr("Incoming peers limit")
         valueText: incomingPeersLimit
@@ -165,7 +165,7 @@ Item {
         anchors.top: incomingPeersLimitField.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         width: inputFieldWidth
-        height: NodoSystem.infoFieldLabelHeight
+        height: NodoSystem.nodoItemHeight
         itemSize: labelSize
         itemText: qsTr("Outgoing peers limit")
         valueText: outgoingPeersLimit
@@ -191,12 +191,12 @@ Item {
         anchors.left: nodeBandwidthScreen.left
         anchors.top: outgoingPeersLimitField.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
-        height: NodoSystem.infoFieldLabelHeight
+        height: NodoSystem.nodoItemHeight
 
         NodoInputField {
             id: rateLimitUpField
             width: inputFieldWidth
-            height: NodoSystem.infoFieldLabelHeight
+            height: NodoSystem.nodoItemHeight
             itemSize: labelSize
             itemText: qsTr("Bandwidth Up")
             textFlag: Qt.ImhDigitsOnly
@@ -222,7 +222,7 @@ Item {
             anchors.top: rateLimitUpFieldRect.top
             anchors.leftMargin: 8
 
-            height: NodoSystem.infoFieldLabelHeight
+            height: NodoSystem.nodoItemHeight
             verticalAlignment: Text.AlignVCenter
             font.family: NodoSystem.fontUrbanist.name
             font.pixelSize: NodoSystem.inputFieldValueFontSize
@@ -281,14 +281,14 @@ Item {
         anchors.left: nodeBandwidthScreen.left
         anchors.top: rateLimitUpFieldRect.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
-        height: NodoSystem.infoFieldLabelHeight
+        height: NodoSystem.nodoItemHeight
 
         NodoInputField {
             id: rateLimitDownField
             anchors.left: rateLimitDownFieldRect.left
             anchors.top: rateLimitDownFieldRect.top
             width: inputFieldWidth
-            height: NodoSystem.infoFieldLabelHeight
+            height: NodoSystem.nodoItemHeight
             itemSize: labelSize
             itemText: qsTr("Bandwidth Down")
             textFlag: Qt.ImhDigitsOnly
@@ -314,7 +314,7 @@ Item {
             anchors.top: rateLimitDownField.top
             anchors.leftMargin: 8
 
-            height: NodoSystem.infoFieldLabelHeight
+            height: NodoSystem.nodoItemHeight
             verticalAlignment: Text.AlignVCenter
             font.family: NodoSystem.fontUrbanist.name
             font.pixelSize: NodoSystem.inputFieldValueFontSize
@@ -375,7 +375,7 @@ Item {
         anchors.top: rateLimitDownFieldRect.bottom
         anchors.topMargin: 20
         text: systemMessages.messages[NodoMessages.Message.Apply]
-        height: 60
+        height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         isActive: false

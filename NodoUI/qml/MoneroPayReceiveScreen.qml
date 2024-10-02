@@ -97,7 +97,7 @@ Item {
                 anchors.left: requestCurrenciesRect.left
                 itemSize: 90
                 width: 390
-                height: NodoSystem.infoFieldLabelHeight
+                height: NodoSystem.nodoItemHeight
                 itemText: qsTr("XMR")
                 valueText: "0.00"
                 textFlag: Qt.ImhDigitsOnly
@@ -129,7 +129,7 @@ Item {
                 anchors.leftMargin: 25
                 itemSize: 90
                 width: 390
-                height: NodoSystem.infoFieldLabelHeight
+                height: NodoSystem.nodoItemHeight
                 itemText: moneroPayReceiveScreen.exchangeName
                 valueText: "0.00"
                 textFlag: Qt.ImhDigitsOnly
@@ -217,7 +217,7 @@ Item {
             anchors.left: requestAmountRect.left
             anchors.topMargin: NodoSystem.nodoTopMargin
             width: addressFieldWidth
-            height: NodoSystem.infoFieldLabelHeight
+            height: NodoSystem.nodoItemHeight
             itemSize: labelSize
             itemText: qsTr("Note (optional)")
             valueText: ""
@@ -294,7 +294,7 @@ Item {
                 anchors.leftMargin: 15
                 itemSize: 90
                 width: 390
-                height: NodoSystem.infoFieldLabelHeight
+                height: NodoSystem.nodoItemHeight
                 itemText: qsTr("XMR")
                 valueText: xmrRequestfield.valueText
             }
@@ -306,7 +306,7 @@ Item {
                 anchors.leftMargin: 15
                 itemSize: 90
                 width: 390
-                height: NodoSystem.infoFieldLabelHeight
+                height: NodoSystem.nodoItemHeight
                 itemText: moneroPayReceiveScreen.exchangeName
                 valueText: fiatRequestfield.valueText
             }
@@ -316,7 +316,7 @@ Item {
                 anchors.top: currenciesRect.top
                 anchors.left: fiatPreviewfield.right
                 anchors.leftMargin: 15
-                height: NodoSystem.infoFieldLabelHeight
+                height: NodoSystem.nodoItemHeight
                 itemSize: 0
                 width: 725
                 visible: true
@@ -333,7 +333,7 @@ Item {
             width: addressFieldWidth
             itemSize: labelSize
             itemText: qsTr("Deposit Address")
-            height: NodoSystem.infoFieldLabelHeight
+            height: NodoSystem.nodoItemHeight
         }
 
         NodoInfoField {
@@ -342,7 +342,7 @@ Item {
             anchors.topMargin: visible === true ? NodoSystem.nodoTopMargin : 0
             anchors.left: paymentPreviewRect.left
             width: addressFieldWidth
-            height: visible === true ? NodoSystem.infoFieldLabelHeight : 0
+            height: visible === true ? NodoSystem.nodoItemHeight : 0
             itemSize: labelSize
             itemText: qsTr("Description")
             visible: descriptionInputfield.valueText === "" ? false : true
@@ -443,7 +443,7 @@ Item {
                 anchors.leftMargin: 15
                 itemSize: 90
                 width: 390
-                height: NodoSystem.infoFieldLabelHeight
+                height: NodoSystem.nodoItemHeight
                 itemText: qsTr("XMR")
                 valueText: ""
             }
@@ -455,7 +455,7 @@ Item {
                 anchors.leftMargin: 15
                 itemSize: 90
                 width: 390
-                height: NodoSystem.infoFieldLabelHeight
+                height: NodoSystem.nodoItemHeight
                 itemText: moneroPayReceiveScreen.exchangeName
                 valueText: ""
             }
@@ -466,7 +466,7 @@ Item {
                 anchors.top: currenciesTransferredRect.top
                 anchors.left: fiatTransferredfield.right
                 anchors.leftMargin: 15
-                height: NodoSystem.infoFieldLabelHeight
+                height: NodoSystem.nodoItemHeight
                 itemSize: 0
                 width: 725
                 visible: true
@@ -479,7 +479,7 @@ Item {
             id: receivedDepositAddressField
             anchors.top: currenciesTransferredRect.bottom
             anchors.topMargin: NodoSystem.nodoTopMargin
-            height: NodoSystem.infoFieldLabelHeight
+            height: NodoSystem.nodoItemHeight
             itemSize: labelSize
             width: 1850
             itemText: qsTr("Deposit Address")
@@ -490,7 +490,7 @@ Item {
             id: transactionIDTransferredField
             anchors.top: receivedDepositAddressField.bottom
             anchors.topMargin: NodoSystem.nodoTopMargin
-            height: NodoSystem.infoFieldLabelHeight
+            height: NodoSystem.nodoItemHeight
             width: 1850
             itemSize: labelSize
             itemText: qsTr("Transaction ID")
@@ -502,7 +502,7 @@ Item {
             anchors.top: transactionIDTransferredField.bottom
             anchors.topMargin: NodoSystem.nodoTopMargin
             width: addressFieldWidth
-            height: NodoSystem.infoFieldLabelHeight
+            height: NodoSystem.nodoItemHeight
             itemSize: labelSize
             itemText: qsTr("Description")
             valueText: "sample desc"

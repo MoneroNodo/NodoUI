@@ -84,7 +84,7 @@ Item {
             anchors.left: adminPasswordRect.left
             anchors.top: banner.bottom
             width: inputFieldWidth
-            height: NodoSystem.inputFieldLabelHeight
+            height: NodoSystem.nodoItemHeight
             itemSize: labelSize
             itemText: qsTr("New Admin Password")
             valueText: ""
@@ -98,7 +98,7 @@ Item {
             anchors.top: adminPasswordField.bottom
             anchors.topMargin: NodoSystem.nodoTopMargin
             width: inputFieldWidth
-            height: NodoSystem.inputFieldLabelHeight
+            height: NodoSystem.nodoItemHeight
             itemSize: labelSize
             itemText: qsTr("Re-enter Admin Password")
             valueText: ""

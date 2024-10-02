@@ -337,7 +337,7 @@ NodoCanvas {
                 anchors.left: advancedSettingsRect.left
                 anchors.top: advancedSettingsRect.top
                 anchors.topMargin: mainRect.spacing
-                height: networkDelegateItemHeight
+                height: NodoSystem.nodoItemHeight
 
                 NodoLabel{
                     id: dhcpSwitchText
@@ -467,18 +467,18 @@ NodoCanvas {
         },
         State {
             name: "showPasswordField"
-            PropertyChanges { target: mainRect; height: 72 + connectToANetworkRect.height + advancedSettingsRect.height}
-            PropertyChanges { target: advancedSettingsRect; height: 65 }
+            PropertyChanges { target: mainRect; height: 82 + connectToANetworkRect.height + advancedSettingsRect.height}
+            PropertyChanges { target: advancedSettingsRect; height: 75 }
         },
         State {
             name: "showAdvancedConfigField"
-            PropertyChanges { target: mainRect; height: 147 + connectToANetworkRect.height + advancedSettingsRect.height}
-            PropertyChanges { target: advancedSettingsRect; height: 65 }
+            PropertyChanges { target: mainRect; height: 157 + connectToANetworkRect.height + advancedSettingsRect.height}
+            PropertyChanges { target: advancedSettingsRect; height: 75 }
         },
         State {
             name: "showStaticConfigField"
-            PropertyChanges { target: mainRect; height: 590 }
-            PropertyChanges { target: advancedSettingsRect; height: 335 }
+            PropertyChanges { target: mainRect; height: 640 }
+            PropertyChanges { target: advancedSettingsRect; height: 365 }
         }
     ]
 
