@@ -168,50 +168,45 @@ Item {
             height: NodoSystem.nodoItemHeight
             color: "black"
 
-            NodoLabel{
-                id: blockConfirmationsSliderLabel
+            NodoInputField{
+                id: blockConfirmationsField
                 anchors.left: blockConfirmationsRect.left
                 anchors.top: blockConfirmationsRect.top
                 height: blockConfirmationsRect.height
-                text: qsTr("Block Confirmations")
-            }
-
-            NodoLabel{
-                id: blockConfirmationsSliderValueLabel
-                anchors.left: blockConfirmationsSliderLabel.right
-                anchors.top: blockConfirmationsRect.top
-                height: blockConfirmationsRect.height
-                text: blockConfirmationsSlider.value
-                width: 64
-                backgroundColor: nodoControl.appTheme ? NodoSystem.dataFieldTextBGColorNightModeOn : NodoSystem.dataFieldTextBGColorNightModeOff
-            }
-
-            NodoSlider {
-                id: blockConfirmationsSlider
-                anchors.left: blockConfirmationsSliderValueLabel.right
-                anchors.top: blockConfirmationsRect.top
-                anchors.leftMargin: NodoSystem.padding
-                width: 836
-                height: blockConfirmationsRect.height
-                snapMode: Slider.SnapAlways
-                stepSize: 1
-                from: 0
-                value: moneroPay.getDefaultBlockConfirmations()
-                to: 10
-                handleHight: height*0.8
-                handleWidth: handleHight
-                onValueChanged: {
+                itemSize: labelSize
+                width: labelSize + 70
+                itemText:  qsTr("Block Confirmations")
+                valueText: "10"
+                textFlag: Qt.ImhDigitsOnly
+                validator: RegularExpressionValidator {
+                    regularExpression: /^[1-9]$|^1[0-9]$|^20$/
                 }
+                readOnlyFlag: zeroConfirmationSwitch.checked
             }
 
-            NodoLabel{
-                id: blockConfirmationsDescriptionLabel
-                anchors.left: blockConfirmationsSlider.right
-                anchors.right: blockConfirmationsRect.right
-                anchors.top: blockConfirmationsRect.top
-                anchors.leftMargin: 15
+            Rectangle {
+                id: zeroConfirmationSwitchRect
+                anchors.left: blockConfirmationsField.right
+                anchors.top: blockConfirmationsField.top
                 height: blockConfirmationsRect.height
-                text: qsTr("Set to 0 for instant confirmations, default is 10")
+
+                NodoLabel{
+                    id: zeroConfirmationSwitchText
+                    height: zeroConfirmationSwitchRect.height
+                    anchors.left: zeroConfirmationSwitchRect.left
+                    anchors.top: zeroConfirmationSwitchRect.top
+                    text: qsTr("0 Confirmations")
+                }
+
+                NodoSwitch {
+                    id: zeroConfirmationSwitch
+                    anchors.left: zeroConfirmationSwitchText.right
+                    anchors.leftMargin: NodoSystem.padding
+                    height: zeroConfirmationSwitchRect.height
+                    width: 2*zeroConfirmationSwitch.height
+                    display: AbstractButton.IconOnly
+                    checked: true
+                }
             }
         }
 
@@ -238,7 +233,9 @@ Item {
             font.pixelSize: NodoSystem.buttonTextFontSize
             isActive: xmrAmount === 0 ? false : true
             onClicked: {
-                moneroPay.xmrRequestPayment(xmrRequestfield.valueText, fiatRequestfield.valueText, priceTicker.getCurrentCurrencyIndex(), descriptionInputfield.valueText, blockConfirmationsSlider.value)
+                var confirmationValue = zeroConfirmationSwitch.checked ? 0 :  parseInt(blockConfirmationsField.valueText)
+
+                moneroPay.xmrRequestPayment(xmrRequestfield.valueText, fiatRequestfield.valueText, priceTicker.getCurrentCurrencyIndex(), descriptionInputfield.valueText, confirmationValue)
                 requestAmountRect.visible = false
                 paymentPreviewRect.visible = true
             }
