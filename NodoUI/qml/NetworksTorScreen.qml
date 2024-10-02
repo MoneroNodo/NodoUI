@@ -40,11 +40,15 @@ Item {
 
     function createAddress()
     {
+        var uri = "xmrrpc://" + networksTorScreen.rpcUser + ":" + networksTorScreen.rpcPassword + "@" + torOnionAddressField.valueText + ":" + networksTorScreen.port.toString() + "?label=Nodo Tor Node"
+        return uri
+/*
         var uri = "xmrrpc://%1:%2@%3:%4?label=Nodo Tor Node"
         return uri.arg(networksTorScreen.rpcUser,
             networksTorScreen.rpcPassword,
             torOnionAddressField.valueText,
             networksTorScreen.port.toString())
+            */
     }
 
     Component.onCompleted: {

@@ -45,11 +45,15 @@ Item {
 
     function createAddress()
     {
+        var uri = "xmrrpc://" + networksClearnetScreen.rpcUser + ":" + networksClearnetScreen.rpcPassword + "@" + clearnetAddressField.valueText + ":" + networksClearnetScreen.port.toString() + "?label=Nodo"
+        return uri
+        /*
         var uri = "xmrrpc://%1:%2@%3:%4?label=Nodo"
         return uri.arg(networksClearnetScreen.rpcUser,
             networksClearnetScreen.rpcPassword,
             clearnetAddressField.valueText,
             networksClearnetScreen.port.toString())
+            */
     }
 
 
