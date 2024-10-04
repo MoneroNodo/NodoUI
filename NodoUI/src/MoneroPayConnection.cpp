@@ -1,8 +1,8 @@
 #include "MoneroPayConnection.h"
 #include <algorithm>
 
-#define RECEIVE_URL "http://localhost:5000/receive"
-#define HEALTH_URL "http://localhost:5000/health"
+#define RECEIVE_URL "http://localhost:34512/receive"
+#define HEALTH_URL "http://localhost:34512/health"
 
 typedef struct {
     QString transactionID;
