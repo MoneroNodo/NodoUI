@@ -47,6 +47,16 @@ Item {
         Component.onCompleted: {
             findCurrencyIndex()
             dateTimer.start()
+            if (100 === syncInfo.getSyncPercentage())
+            {
+                minerButton.visible = true
+                mPayButton.visible = true
+            }
+            else
+            {
+                minerButton.visible = false
+                mPayButton.visible = false
+            }
         }
 
         Connections {
@@ -66,6 +76,14 @@ Item {
             function onCurrencyReceived() {
                 exchangeSymbolText.text = nodoCurrencies.currencySymbols[priceTicker.getCurrentCurrencyIndex()]
                 exchangeRateText.text = priceTicker.getCurrency()
+            }
+        }
+
+        Connections {
+            target: syncInfo
+            function onSyncDone() {
+                minerButton.visible = true
+                mPayButton.visible = true
             }
         }
 
@@ -130,11 +148,12 @@ Item {
                 font.family: NodoSystem.fontUrbanist.name
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
                 onClicked: { pageLoader.source = "MinerMainScreen.qml" }
+                visible: false
             }
             NodoTabButton {
                 id: moneroLWSButton
                 anchors.top: nodoLogoButton.top
-                anchors.left: minerButton.right
+                anchors.left: minerButton.visible === true ? minerButton.right : nodeButton.right
                 implicitHeight: NodoSystem.topMenuButtonHeight
                 text: qsTr("LWS")
                 font.family: NodoSystem.fontUrbanist.name
@@ -151,12 +170,13 @@ Item {
                 font.family: NodoSystem.fontUrbanist.name
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
                 onClicked: { pageLoader.source = "MoneroPayMainScreen.qml" }
+                visible: false
             }
 
             NodoTabButton {
                 id: newsButton
                 anchors.top: nodoLogoButton.top
-                anchors.left: mPayButton.right
+                anchors.left: mPayButton.visible === true ? mPayButton.right : moneroLWSButton.right
                 implicitHeight: NodoSystem.topMenuButtonHeight
                 text: qsTr("NEWS")
                 font.family: NodoSystem.fontUrbanist.name
