@@ -11,11 +11,29 @@ Item {
     anchors.leftMargin: 20
 
     property int labelSize: 0
-    property int inputFieldWidth: 700
+    property int inputFieldWidth: 900
     property bool inputFieldReadOnly: false
+    property bool isPasswordValid: false
 
     signal openNextScreen(int screenID)
 
+    function showPasswordCheckError(password1, password2)
+    {
+        passwordWarningText.text = ""
+        passwordWarningRect.visible = false
+
+        var errorString = nodoControl.checkPasswordValidity(password1, password2)
+
+        if(errorString !== "")
+        {
+            passwordWarningText.text = errorString
+            passwordWarningRect.visible = true
+        }
+        else
+        {
+            adminPasswordScreen.isPasswordValid = true;
+        }
+    }
 
     Component.onCompleted: {
         onCalculateMaximumTextLabelLength()
@@ -69,7 +87,7 @@ Item {
             height: 180
             color: "black"
             Text {
-                text: qsTr("Please set your Admin password. The admin password must be at least 8 characters long. A good password contains uppercase and lowercase letters as well as digits and non alpha-numeric characters.\nThe Admin password is used to connect device over SSH. It can be changed later on DEVICE->SSH")
+                text: qsTr("Please set your Admin Password. The Admin Password should be at least 8 characters, with uppercase and lowercase letters, number and special character.\nThe Admin Password is used to connect to Nodo remotely via SSH. It can be changed later on DEVICE -> SSH.")
                 font.family: NodoSystem.fontUrbanist.name
                 font.pixelSize: NodoSystem.textFontSize
                 verticalAlignment: Text.AlignVCenter
@@ -90,6 +108,30 @@ Item {
             valueText: ""
             passwordInput: true
             readOnlyFlag: adminPasswordScreen.inputFieldReadOnly
+            onTextEditFinished: {
+                showPasswordCheckError(adminPasswordField.valueText, adminPasswordReenterField.valueText)
+            }
+        }
+
+        Rectangle {
+            id: passwordWarningRect
+            anchors.top: adminPasswordField.top
+            anchors.left: adminPasswordField.right
+            anchors.right: adminPasswordRect.right
+            anchors.leftMargin: 25
+
+            height: NodoSystem.nodoItemHeight
+            color: "black"
+            visible: false
+            Text {
+                id: passwordWarningText
+                anchors.fill: passwordWarningRect
+                font.family: NodoSystem.fontUrbanist.name
+                font.pixelSize: NodoSystem.textFontSize
+                verticalAlignment: Text.AlignVCenter
+                wrapMode: Text.WordWrap
+                color: nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn  : NodoSystem.dataFieldTextColorNightModeOff
+            }
         }
 
         NodoInputField {
@@ -104,8 +146,10 @@ Item {
             valueText: ""
             passwordInput: true
             readOnlyFlag: adminPasswordScreen.inputFieldReadOnly
+            onTextEditFinished: {
+                showPasswordCheckError(adminPasswordReenterField.valueText, adminPasswordField.valueText)
+            }
         }
-
 
         NodoButton {
             id: passwordApplyButton
@@ -116,7 +160,7 @@ Item {
             height: NodoSystem.nodoItemHeight
             font.family: NodoSystem.fontUrbanist.name
             font.pixelSize: NodoSystem.buttonTextFontSize
-            isActive: (adminPasswordField.valueText.length >= 8) && (adminPasswordField.valueText === adminPasswordReenterField.valueText) ? true : false
+            isActive: (adminPasswordScreen.isPasswordValid) && (adminPasswordField.valueText.length >= 8) && (adminPasswordField.valueText === adminPasswordReenterField.valueText) ? true : false
             onClicked: {
                 isActive = false
                 adminPasswordScreen.inputFieldReadOnly = true

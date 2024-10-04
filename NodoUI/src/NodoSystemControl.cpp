@@ -395,8 +395,8 @@ QString NodoSystemControl::getGPUUsage(void)
 void NodoSystemControl::setPassword(QString pw)
 {
     enableComponent(false);
-    // QTimer::singleShot(1000, this, SLOT(testSlotFunction()));
-    m_dbusController->setPassword(pw);
+    QTimer::singleShot(1000, this, SLOT(testSlotFunction()));
+    // m_dbusController->setPassword(pw);
 }
 
 void NodoSystemControl::serviceManager(QString operation, QString service)
@@ -734,6 +734,33 @@ void NodoSystemControl::factoryResetApproved(void)
 int NodoSystemControl::getBlockchainStorageStatus(void)
 {
     return m_dbusController->getBlockchainStorageStatus();
+}
+
+bool NodoSystemControl::isPasswordValid(QString password)
+{
+    QRegularExpression re("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\\W)(?!.* ).{8,}$");
+    QRegularExpressionMatch match = re.match(password);
+    return match.hasMatch();
+}
+
+QString NodoSystemControl::checkPasswordValidity(QString password1, QString password2)
+{
+    QString errorMessage = "";
+    if(false == isPasswordValid(password1))
+    {
+        errorMessage = m_notifier.getMessageText(PASSWORD_DOESNT_MEET_REQUIREMENTS);
+    }
+
+    if((!password2.isEmpty()) && (password1 != password2))
+    {
+        if(!errorMessage.isEmpty())
+        {
+            errorMessage.append("\n");
+        }
+        errorMessage.append(m_notifier.getMessageText(PASSWORDS_DONT_MATCH));
+    }
+
+    return errorMessage;
 }
 
 #ifdef ENABLE_TEST_CODE

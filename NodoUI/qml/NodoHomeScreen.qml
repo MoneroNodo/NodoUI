@@ -27,8 +27,26 @@ Item {
             }
         }
 
+        Timer {
+            id: dateTimer
+            interval: 1000
+            running: false
+            repeat: true
+            triggeredOnStart: true
+            onTriggered: {
+                var dateTime = nodoControl.getChangedDateTime()
+                var m_daystr = Qt.formatDateTime(dateTime, "ddd")
+                var m_day = Qt.formatDateTime(dateTime, "d")
+                var m_month = Qt.formatDateTime(dateTime, "MMM")
+
+                dateText.text = m_daystr.toUpperCase() + " " +m_day + " "  + m_month.toUpperCase()
+                timeText.text = Qt.formatDateTime(nodoControl.getChangedDateTime(), "h:mm AP")
+            }
+        }
+
         Component.onCompleted: {
             findCurrencyIndex()
+            dateTimer.start()
         }
 
         Connections {
@@ -172,20 +190,21 @@ Item {
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
 
 
-                Timer {
-                    id: dateTimer
-                    interval: 1000
-                    running: true
-                    repeat: true
-                    triggeredOnStart: true
-                    onTriggered: {
-                        var m_daystr = Qt.formatDateTime(nodoControl.getChangedDateTime(), "ddd")
-                        var m_day = Qt.formatDateTime(nodoControl.getChangedDateTime(), "d")
-                        var m_month = Qt.formatDateTime(nodoControl.getChangedDateTime(), "MMM")
+                // Timer {
+                //     id: dateTimer
+                //     interval: 1000
+                //     running: true
+                //     repeat: true
+                //     triggeredOnStart: true
+                //     onTriggered: {
+                //         var dateTime = nodoControl.getChangedDateTime()
+                //         var m_daystr = Qt.formatDateTime(dateTime, "ddd")
+                //         var m_day = Qt.formatDateTime(dateTime, "d")
+                //         var m_month = Qt.formatDateTime(dateTime, "MMM")
 
-                        dateText.text = m_daystr.toUpperCase() + " " +m_day + " "  + m_month.toUpperCase()
-                    }
-                }
+                //         dateText.text = m_daystr.toUpperCase() + " " +m_day + " "  + m_month.toUpperCase()
+                //     }
+                // }
             }
 
             Text {
@@ -201,16 +220,16 @@ Item {
                 font.family: NodoSystem.fontUrbanist.name
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
 
-                Timer {
-                    id: hourTimer
-                    interval: 1000
-                    running: true
-                    repeat: true
-                    triggeredOnStart: true
-                    onTriggered: {
-                        timeText.text = Qt.formatDateTime(nodoControl.getChangedDateTime(), "h:mm AP")
-                    }
-                }
+                // Timer {
+                //     id: hourTimer
+                //     interval: 1000
+                //     running: true
+                //     repeat: true
+                //     triggeredOnStart: true
+                //     onTriggered: {
+                //         timeText.text = Qt.formatDateTime(nodoControl.getChangedDateTime(), "h:mm AP")
+                //     }
+                // }
             }
         }
 

@@ -193,6 +193,7 @@ KeyboardStyle {
                 source: resourcePrefix + "images/hidekeyboard-fcfcfc.svg"
             }
         }
+
         states: [
             State {
                 name: "pressed"
@@ -209,6 +210,7 @@ KeyboardStyle {
                     target: hideKeyBackground
                     color: NodoSystem.keyboardButtonUnpressed
                 }
+
             }
         ]
     }

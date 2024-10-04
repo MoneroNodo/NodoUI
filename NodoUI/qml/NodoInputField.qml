@@ -24,8 +24,17 @@ Item {
     property bool passwordInput: false
     property alias inputMask: valueLabel.inputMask
     property alias validator: valueLabel.validator
-
     signal textEditFinished()
+
+    function returnPressedAction()
+    {
+        if(passwordButton.hidePassword === false)
+        {
+            passwordButton.hidePassword = true
+            valueLabel.echoMode = TextInput.Password
+        }
+        root.textEditFinished()
+    }
 
     NodoCanvas {
         id: labelCanvas
@@ -55,6 +64,7 @@ Item {
         height: root.height
         color: nodoControl.appTheme ? NodoSystem.dataFieldTextBGColorNightModeOn : NodoSystem.dataFieldTextBGColorNightModeOff
         property int defaultEchoMode: passwordInput == true ? TextInput.Password: TextInput.Normal
+
 
         TextInput {
             id: valueLabel
@@ -109,12 +119,18 @@ Item {
 
             Keys.onReturnPressed: {
                 Qt.inputMethod.hide();
-                if(passwordButton.hidePassword === false)
-                {
-                    passwordButton.hidePassword = true
-                    valueLabel.echoMode = TextInput.Password
+                returnPressedAction()
+            }
+
+            Connections{
+                target: Qt.inputMethod
+                function onVisibleChanged(){
+                    if(!Qt.inputMethod.visible){
+                        if(valueLabel.focus){
+                        returnPressedAction()
+                        }
+                    }
                 }
-                root.textEditFinished()
             }
 
             TapHandler {
@@ -123,6 +139,8 @@ Item {
                 }
             }
         }
+
+
 
         NodoPasswordButton {
             id: passwordButton

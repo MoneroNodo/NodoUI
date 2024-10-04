@@ -8,7 +8,7 @@
 #include <QTimer>
 #include "NodoNotificationMessages.h"
 
-// #define ENABLE_TEST_CODE
+#define ENABLE_TEST_CODE
 
 class NodoSystemControl : public QObject
 {
@@ -116,6 +116,10 @@ public:
 
     Q_INVOKABLE void factoryResetApproved(void);
     Q_INVOKABLE int getBlockchainStorageStatus(void);
+
+    Q_INVOKABLE bool isPasswordValid(QString password);
+    Q_INVOKABLE QString checkPasswordValidity(QString password1, QString password2);
+
 
 signals:
     void appThemeChanged(bool);

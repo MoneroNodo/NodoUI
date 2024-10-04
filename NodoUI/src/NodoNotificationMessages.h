@@ -18,6 +18,8 @@ typedef enum {
     SOMETHING_IS_WRONG,
     NEW_PIN_IS_SET,
     RESTARTING_BLOCK_EXPLORER_FAILED,
+    PASSWORD_DOESNT_MEET_REQUIREMENTS,
+    PASSWORDS_DONT_MATCH,
 
 } m_messageIDs;
 
@@ -43,7 +45,9 @@ private:
                                 tr("Cable disconnected!"),
                                 tr("Something is wrong!"),
                                 tr("New PIN is set successfully!"),
-                                tr("Failed to change Block Explorer Service!")
+                                tr("Failed to change Block Explorer Service!"),
+                                tr("Password doesn't meet requirements."),
+                                tr("Passwords do not match.")
     };
 };
 

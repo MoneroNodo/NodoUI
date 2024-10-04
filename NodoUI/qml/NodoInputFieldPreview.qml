@@ -40,10 +40,11 @@ NodoCanvas {
         visible: nodoControl.getPasswordMode()
         anchors.right: inputPreview.right
         anchors.top: inputPreview.top
-        anchors.topMargin: 4
+        anchors.topMargin: 15
         anchors.rightMargin: 11
-        width: inputPreview.height - 8
-        height: inputPreview.height - 8
+        width: inputPreview.height - 30
+        height: inputPreview.height - 30
+
         hidePassword: nodoControl.getEchoMode()
 
         onHideStatusChanged: {

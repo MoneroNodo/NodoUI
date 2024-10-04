@@ -11,9 +11,28 @@ Item {
     property int labelSize: 0
     property int inputFieldWidth: 600
     property bool inputFieldReadOnly: false
+    property bool isPasswordValid: false
 
     Component.onCompleted: {
         onCalculateMaximumTextLabelLength()
+    }
+
+    function showPasswordCheckError(password1, password2)
+    {
+        passwordWarningText.text = ""
+        passwordWarningRect.visible = false
+
+        var errorString = nodoControl.checkPasswordValidity(password1, password2)
+
+        if(errorString !== "")
+        {
+            passwordWarningText.text = errorString
+            passwordWarningRect.visible = true
+        }
+        else
+        {
+            deviceSSHScreen.isPasswordValid = true;
+        }
     }
 
     function onCalculateMaximumTextLabelLength() {
@@ -113,6 +132,30 @@ Item {
         valueText: ""
         readOnlyFlag: deviceSSHScreen.inputFieldReadOnly
         passwordInput: true
+        onTextEditFinished: {
+            showPasswordCheckError(deviceSSHPasswordField.valueText, deviceSSHReenterPasswordField.valueText)
+        }
+    }
+
+    Rectangle {
+        id: passwordWarningRect
+        anchors.top: deviceSSHPasswordField.top
+        anchors.left: deviceSSHPasswordField.right
+        anchors.right: deviceSSHScreen.right
+        anchors.leftMargin: 25
+
+        height: NodoSystem.nodoItemHeight
+        color: "black"
+        visible: false
+        Text {
+            id: passwordWarningText
+            anchors.fill: passwordWarningRect
+            font.family: NodoSystem.fontUrbanist.name
+            font.pixelSize: NodoSystem.textFontSize
+            verticalAlignment: Text.AlignVCenter
+            wrapMode: Text.WordWrap
+            color: nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn  : NodoSystem.dataFieldTextColorNightModeOff
+        }
     }
 
     NodoInputField {
@@ -127,6 +170,9 @@ Item {
         valueText: ""
         readOnlyFlag: deviceSSHScreen.inputFieldReadOnly
         passwordInput: true
+        onTextEditFinished: {
+            showPasswordCheckError(deviceSSHReenterPasswordField.valueText, deviceSSHPasswordField.valueText)
+        }
     }
 
 
@@ -139,7 +185,7 @@ Item {
         height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize
-        isActive: (deviceSSHPasswordField.valueText.length >= 8) && (deviceSSHReenterPasswordField.valueText === deviceSSHPasswordField.valueText) ? true : false
+        isActive: (deviceSSHScreen.isPasswordValid) && (deviceSSHPasswordField.valueText.length >= 8) && (deviceSSHReenterPasswordField.valueText === deviceSSHPasswordField.valueText) ? true : false
         onClicked: {
             deviceSSHScreen.inputFieldReadOnly = true
             isActive = false

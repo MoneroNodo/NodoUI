@@ -94,7 +94,6 @@ Item {
         qsTr("Completed factory reset, now rebooting..."),
         qsTr("Blockchain storage not found!"),
         qsTr("New blockchain storage found!")
-
     ]
 }
 

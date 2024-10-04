@@ -11,7 +11,7 @@ Item {
     anchors.leftMargin: 20
 
     property int labelSize: 0
-    property int inputFieldWidth: 700
+    property int inputFieldWidth: 900
     property bool inputFieldReadOnly: false
     signal openNextScreen(int screenID)
 
