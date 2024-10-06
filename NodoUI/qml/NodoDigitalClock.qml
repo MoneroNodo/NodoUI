@@ -12,6 +12,8 @@ Item {
     property int clockTopMargin: -50
     property int seperatorTopMargin: -150
 
+    property int seperatorTimerCounter: 0
+
     property real hours: 10
     property real minutes: 10
 
@@ -39,6 +41,31 @@ Item {
         onTriggered:
         {
             onTriggered: digitalClock.timeChanged()
+        }
+    }
+
+    Timer {
+        id: seperatorTimer
+        interval: 250
+        repeat: true
+        running: true
+        onTriggered:
+        {
+            seperatorTimerCounter++
+
+            switch(seperatorTimerCounter)
+            {
+            case 2:
+                digitalClockSeperator.visible = false
+                break;
+
+            case 5:
+                digitalClockSeperator.visible = true
+                seperatorTimerCounter = 0
+                break;
+            }
+
+
         }
     }
 
@@ -83,26 +110,6 @@ Item {
                 verticalAlignment: Text.AlignTop
                 color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
                 font.family: NodoSystem.fontUrbanist.name
-
-                SequentialAnimation {
-                    running: true
-                    loops: Animation.Infinite
-                    PropertyAnimation {
-                        target: digitalClockSeperator;
-                        properties: "visible";
-                        from: 1;
-                        to: 0;
-                        duration: 300
-                    }
-
-                    PropertyAnimation {
-                        target: digitalClockSeperator;
-                        properties: "visible";
-                        to: 1;
-                        from: 0;
-                        duration: 700
-                    }
-                }
             }
 
             Text {
