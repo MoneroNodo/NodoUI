@@ -47,6 +47,14 @@ Item {
         Component.onCompleted: {
             findCurrencyIndex()
             dateTimer.start()
+            if (100 === syncInfo.getSyncPercentage())
+            {
+                minerButton.enabled = true
+            }
+            else
+            {
+                minerButton.enabled = false
+            }
         }
 
         Connections {
@@ -66,6 +74,13 @@ Item {
             function onCurrencyReceived() {
                 exchangeSymbolText.text = nodoCurrencies.currencySymbols[priceTicker.getCurrentCurrencyIndex()]
                 exchangeRateText.text = priceTicker.getCurrency()
+            }
+        }
+
+        Connections {
+            target: syncInfo
+            function onSyncDone() {
+                minerButton.enabled = true
             }
         }
 
@@ -130,6 +145,8 @@ Item {
                 font.family: NodoSystem.fontUrbanist.name
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
                 onClicked: { pageLoader.source = "MinerMainScreen.qml" }
+                enabled: false
+
             }
             NodoTabButton {
                 id: moneroLWSButton

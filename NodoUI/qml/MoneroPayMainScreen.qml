@@ -10,6 +10,20 @@ Item {
     anchors.fill: parent
     anchors.leftMargin: NodoSystem.subMenuLeftMargin
 
+    Component.onCompleted: {
+        if (100 === syncInfo.getSyncPercentage())
+        {
+            receiveButton.enabled = true
+            receiveButton.checked = true
+            receiveButton.clicked()
+        }
+        else
+        {
+            receiveButton.enabled = false
+            paymentsButton.checked = true
+            paymentsButton.clicked()
+        }
+    }
 
     Connections{
         target: moneroPayPageLoader.item
@@ -19,6 +33,12 @@ Item {
         }
     }
 
+    Connections {
+        target: syncInfo
+        function onSyncDone() {
+            addAccountButton.enabled = true
+        }
+    }
 
     TabBar {
         id: moneroPayMainMenuBar
@@ -38,6 +58,7 @@ Item {
             font.family: NodoSystem.fontUrbanist.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: { moneroPayPageLoader.source = "MoneroPayReceiveScreen.qml" }
+            enabled: false
         }
         NodoTabButton {
             id: paymentsButton

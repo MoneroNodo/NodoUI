@@ -22,10 +22,12 @@ private:
     int m_height = 0;
     int m_targetHeight = 0;
     bool isUpdateRequested = false;
+    int m_syncPercentage = 0;
 
     void ReplyFinished(QNetworkReply *reply);
 
 signals:
     void syncStatusReady(void);
+    emit void syncDone(void);
 };
 #endif // NODOSYNCINFO_H
