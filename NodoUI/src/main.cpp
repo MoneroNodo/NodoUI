@@ -35,7 +35,7 @@ int main(int argc, char *argv[]) {
     MoneroLWS *moneroLWS = new MoneroLWS(configParser);
     NodoSystemStatusParser *systemStatusParser = new NodoSystemStatusParser(configParser);
     NodoSystemControl *systemControl = new NodoSystemControl(uiSystemParser, configParser);
-    NodoSyncInfo *syncInfo = new NodoSyncInfo();
+    NodoSyncInfo *syncInfo = new NodoSyncInfo(systemStatusParser);
     Translator *translator = new Translator(configParser, &engine);
     MoneroPay *moneroPay = new MoneroPay(configParser);
     NodoPriceTicker *priceTicker = new NodoPriceTicker(configParser, networkManager);
@@ -56,12 +56,3 @@ int main(int argc, char *argv[]) {
         return -1;
     return app.exec();
 }
-
-
-
-
-
-
-
-
-

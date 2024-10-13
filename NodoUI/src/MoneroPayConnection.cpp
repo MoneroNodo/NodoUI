@@ -100,6 +100,7 @@ void MoneroPayConnection::parseReceiveAddress(QByteArray replyMessage)
         else
         {
             m_payment.paymentStatus = PAYMENT_SATUS_PENDING;
+            m_requestTimer->start(SCAN_TIMEOUT_IN_MS);
         }
     }
     else if(m_payment.blockConfirmation == 10)
@@ -212,6 +213,7 @@ void MoneroPayConnection::requestPayment(void)
 
 void MoneroPayConnection::replyFinished(QNetworkReply *reply) {
     QByteArray answer = reply->readAll();
+    qDebug() << "reply: " << answer;
 
     if(reply->url().toString().contains(RECEIVE_URL))
     {

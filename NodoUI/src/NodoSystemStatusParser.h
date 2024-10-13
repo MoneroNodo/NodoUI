@@ -17,7 +17,6 @@ public:
     Q_INVOKABLE QString getStringValueFromKey(QString key);
     Q_INVOKABLE int getIntValueFromKey(QString key);
     Q_INVOKABLE bool getBoolValueFromKey(QString key);
-    Q_INVOKABLE void updateRequested(void);
 
 
 signals:

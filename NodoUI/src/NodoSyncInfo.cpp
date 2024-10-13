@@ -1,49 +1,31 @@
 #include "NodoSyncInfo.h"
 
-NodoSyncInfo::NodoSyncInfo(QObject *parent) : QObject{parent} {
-    manager = new QNetworkAccessManager();
-    connect(manager, &QNetworkAccessManager::finished, this, &NodoSyncInfo::ReplyFinished);
+NodoSyncInfo::NodoSyncInfo(NodoSystemStatusParser *systemStatusParser) {
+    m_statusParser = systemStatusParser;
+    connect(m_statusParser, SIGNAL(systemStatusReady()), this, SLOT(updateStatus()));
 }
 
-void NodoSyncInfo::updateRequested()
+void NodoSyncInfo::updateStatus(void)
 {
-    if(isUpdateRequested)
-    {
-        return;
-    }
 
-    const QUrl url(QStringLiteral("http://127.0.0.1:18081/json_rpc"));
-    QNetworkRequest request(url);
-    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+    m_height = m_statusParser->getIntValueFromKey("height");
+    m_targetHeight = m_statusParser->getIntValueFromKey("target_height");
+    bool synced = m_statusParser->getBoolValueFromKey("synchronized");
 
-    QJsonObject obj;
-    obj["jsonrpc"] = "2.0";
-    obj["id"] = "0";
-    obj["method"] = "sync_info";
-    QJsonDocument doc(obj);
-    QByteArray data = doc.toJson();
-    manager->post(request, data);
+    qDebug() << "m_height " << m_height << "m_targetHeight " << m_targetHeight << "synced " << synced;
 
-    isUpdateRequested = true;
-}
-
-void NodoSyncInfo::ReplyFinished(QNetworkReply *reply) {
-    QJsonDocument document;
-    QJsonObject rootObj;
-    QJsonObject resultObj;
-
-    QString answer = reply->readAll();
-
-    document = QJsonDocument::fromJson(answer.toUtf8());
-    rootObj = document.object();
-    resultObj = rootObj["result"].toObject();
-    m_height = resultObj.value("height").toInt();
-    m_targetHeight = resultObj.value("target_height").toInt();
-
-    isUpdateRequested = false;
     if(m_targetHeight > 0)
     {
         m_syncPercentage = (int)(((double)m_height/(double)m_targetHeight)*100);
+    }
+    else
+    {
+        m_syncPercentage = -1;
+    }
+
+    if(synced)
+    {
+        m_syncPercentage = 100;
     }
 
     if(100 == m_syncPercentage)
@@ -63,10 +45,3 @@ int NodoSyncInfo::getSyncPercentage(void)
 
     return m_syncPercentage;
 }
-
-
-void NodoSyncInfo::startSyncStatusUpdate(void)
-{
-    updateRequested();
-}
-

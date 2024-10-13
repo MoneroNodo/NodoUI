@@ -7,27 +7,28 @@
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
+#include <QTimer>
+#include "NodoSystemStatusParser.h"
 
 class NodoSyncInfo : public QObject
 {
     Q_OBJECT
 public:
-    explicit NodoSyncInfo(QObject *parent = nullptr);
-    Q_INVOKABLE void updateRequested(void);
+    explicit NodoSyncInfo(NodoSystemStatusParser *systemStatusParser = Q_NULLPTR);
     Q_INVOKABLE int getSyncPercentage(void);
-    Q_INVOKABLE void startSyncStatusUpdate(void);
 
 private:
-    QNetworkAccessManager *manager;
+    QNetworkAccessManager *m_manager;
     int m_height = 0;
     int m_targetHeight = 0;
-    bool isUpdateRequested = false;
     int m_syncPercentage = 0;
-
-    void ReplyFinished(QNetworkReply *reply);
+    NodoSystemStatusParser *m_statusParser;
 
 signals:
     void syncStatusReady(void);
     emit void syncDone(void);
+
+private slots:
+    void updateStatus(void);
 };
 #endif // NODOSYNCINFO_H

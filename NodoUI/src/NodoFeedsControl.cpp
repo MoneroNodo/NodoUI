@@ -93,55 +93,55 @@ void NodoFeedsControl::downloadFinished(QNetworkReply *reply)
 
     if (reply->error()) {
         qDebug() << "Download of " << url.toEncoded().constData() << " failed: " << qPrintable(reply->errorString());
+        reply->deleteLater();
+        return;
     }
-    else {
-        pugi::xml_document doc;
-        int index = m_feedParser->getIndexFromUri(url);
+    int index = m_feedParser->getIndexFromUri(url);
 
-        if(-1 == index)
+    if(-1 == index)
+    {
+        qDebug() << "something went wrong. the URL: " << url;
+        reply->deleteLater();
+        return;
+    }
+    pugi::xml_document doc;
+    doc.load_string(reply->readAll());
+
+    int counter = 0;
+    for (pugi::xpath_node xn : doc.select_nodes(".//*[self::entry or self::item]")) {
+        feed_fields_t parser;
+        if (counter++ >= m_feeds_str.at(index).numOfFeedsToShowItem)
         {
-            qDebug() << "something went wrong. the URL: " << url;
-            reply->deleteLater();
-            return;
+            break;
         }
 
-        doc.load_string(reply->readAll());
+        parser.channelName = m_feeds_str.at(index).nameItem;
+        parser.author = QString::fromStdString(xn.node().child("auth").text().get());
+        parser.timeStamp = QString::fromStdString(xn.node().child(m_feeds_str.at(index).pub_date_tag.toStdString().c_str()).text().get());
+        parser.title = QString::fromStdString(xn.node().child("title").text().get());
+        parser.description.append(html_start)
+            .append(m_textColor)
+            .append(html_part_1)
+            .append(m_textColor)
+            .append(html_part_2)
+            .append(QString::fromStdString(xn.node().child(m_feeds_str.at(index).description_tag.toStdString().c_str()).text().get())).append(html_end);
 
-        int counter = 0;
-        for (pugi::xpath_node xn : doc.select_nodes(".//*[self::entry or self::item]")) {
-            feed_fields_t parser;
-            if (counter++ >= m_feeds_str.at(index).numOfFeedsToShowItem)
+        //search for image
+        for (pugi::xml_node n : xn.node().children())
+        {
+            std::string name = n.name();
+            if(name == m_feeds_str.at(index).image_tag.toStdString().c_str())
             {
-                break;
+                parser.imgPath = QString::fromStdString(n.attribute(m_feeds_str.at(index).image_attr_tag.toStdString().c_str()).value());
             }
-
-            parser.channelName = m_feeds_str.at(index).nameItem;
-            parser.author = QString::fromStdString(xn.node().child("auth").text().get());
-            parser.timeStamp = QString::fromStdString(xn.node().child(m_feeds_str.at(index).pub_date_tag.toStdString().c_str()).text().get());
-            parser.title = QString::fromStdString(xn.node().child("title").text().get());
-            parser.description.append(html_start)
-                .append(m_textColor)
-                .append(html_part_1)
-                .append(m_textColor)
-                .append(html_part_2)
-                .append(QString::fromStdString(xn.node().child(m_feeds_str.at(index).description_tag.toStdString().c_str()).text().get())).append(html_end);
-
-            //search for image
-            for (pugi::xml_node n : xn.node().children())
-            {
-                std::string name = n.name();
-                if(name == m_feeds_str.at(index).image_tag.toStdString().c_str())
-                {
-                    parser.imgPath = QString::fromStdString(n.attribute(m_feeds_str.at(index).image_attr_tag.toStdString().c_str()).value());
-                }
-            }
-
-            m_rss_sources[index].m_feeds.push_back(parser);
         }
 
-        m_rss_sources[index].downloadStatus = FEED_STATUS_DOWNLOADED;
-        m_rss_sources[index].reply->deleteLater();
+        m_rss_sources[index].m_feeds.push_back(parser);
     }
+
+    m_rss_sources[index].downloadStatus = FEED_STATUS_DOWNLOADED;
+    m_rss_sources[index].reply->deleteLater();
+    reply->deleteLater();
 }
 
 void NodoFeedsControl::setRSSSelectionState(int index, bool state)

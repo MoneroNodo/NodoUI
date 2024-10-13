@@ -10,12 +10,18 @@ NodoConfigParser::NodoConfigParser(QObject *parent) : QObject(parent)
 
 void NodoConfigParser::readFile(void)
 {
-    m_mutex.lock();
+    QMutexLocker locker(&m_mutex);
     QFile lockfile(m_json_lock_file_name);
+    int counter = 0;
 
     while(true == lockfile.exists())
     {
         QThread::msleep(100);
+        counter++;
+        if(counter > 10)
+        {
+            break;
+        }
     }
 
     lockfile.open(QFile::WriteOnly | QFile::Text);
@@ -48,7 +54,6 @@ void NodoConfigParser::readFile(void)
     }
 
     lockfile.remove();
-    m_mutex.unlock();
 }
 
 QString NodoConfigParser::getStringValueFromKey(QString object, QString key)
@@ -143,13 +148,19 @@ void NodoConfigParser::setCurrencyName(QString currency)
 
 void NodoConfigParser::writeJson(void)
 {
-    m_mutex.lock();
+    QMutexLocker locker(&m_mutex);
     QFile file;
     QFile lockfile(m_json_lock_file_name);
+    int counter = 0;
 
     while(true == lockfile.exists())
     {
         QThread::msleep(100);
+        counter++;
+        if(counter > 10)
+        {
+            break;
+        }
     }
 
     lockfile.open(QFile::WriteOnly | QFile::Text);
@@ -172,7 +183,6 @@ void NodoConfigParser::writeJson(void)
 
 
     lockfile.remove();
-    m_mutex.unlock();
 
     m_timer->start(0);
 }

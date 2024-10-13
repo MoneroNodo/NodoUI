@@ -21,21 +21,64 @@ Rectangle {
     property int cardMargin: 13
     property color cardBackgroundColor: "#111111"
     property bool isConnected
-    property bool isSynchronized
 
     property int statusScreenInfoFieldHeight: NodoSystem.nodoItemHeight
 
     Component.onCompleted: {
         statusScreen.isConnected = networkManager.isConnected()
-        nodoSystemStatus.updateRequested()
-        syncInfo.updateRequested()
-        nodoControl.startServiceStatusUpdate()
         onCalculateMaximumTextLabelLength()
-        nodoControl.startSystemStatusUpdate()
+        updateServiceStatus()
+        updateHardwareStatus()
+        updateSystemStatus()
     }
 
-    Component.onDestruction: {
-        serviceStatusTimer.stop()
+    function updateServiceStatus() {
+        moneroNodeField.valueText = nodoControl.getServiceStatus("monerod")
+        minerServiceField.valueText = nodoControl.getServiceStatus("xmrig")
+        torServiceField.valueText = nodoControl.getServiceStatus("tor")
+        i2pServiceField.valueText = nodoControl.getServiceStatus("i2pd")
+        moneroLWSField.valueText = nodoControl.getServiceStatus("monero-lws")
+        blockExplorerField.valueText = nodoControl.getServiceStatus("block-explorer")
+    }
+
+    function updateHardwareStatus() {
+        cpuField.valueText = nodoControl.getCPUUsage()
+        cpuTemperatureField.valueText = nodoControl.getTemperature()
+        ramField.valueText = nodoControl.getRAMUsage()
+        blockchainStorageField.valueText = nodoControl.getBlockChainStorageUsage()
+        systemStorageField.valueText = nodoControl.getSystemStorageUsage()
+        gpuField.valueText = nodoControl.getGPUUsage()
+    }
+
+    function updateSystemStatus() {
+        updateSyncPercentage()
+        timestampField.valueText = nodoSystemStatus.getIntValueFromKey("start_time")
+        currentBlockHeightField.valueText = nodoSystemStatus.getIntValueFromKey("height")
+        moneroVersionField.valueText = nodoSystemStatus.getStringValueFromKey("version")
+        outgoingConnectionsField.valueText = nodoSystemStatus.getIntValueFromKey("outgoing_connections_count")
+        incomingConnectionsField.valueText = nodoSystemStatus.getIntValueFromKey("incoming_connections_count")
+        whitePeerlistSizeField.valueText = nodoSystemStatus.getIntValueFromKey("white_peerlist_size")
+        greyPeerlistSizeField.valueText = nodoSystemStatus.getIntValueFromKey("grey_peerlist_size")
+        updateAvailableField.valueText = (true === nodoSystemStatus.getBoolValueFromKey("update_available")) ? qsTr("Update available") : qsTr("Up to date")
+    }
+
+    function updateSyncPercentage() {
+        var syncPercentage = syncInfo.getSyncPercentage()
+        if(statusScreen.isConnected)
+        {
+            if(syncPercentage === 100 || syncPercentage === -1)
+            {
+                syncStatusField.valueText = qsTr("Synchronized (100%)")
+            }
+            else
+            {
+                syncStatusField.valueText = qsTr("Synchronizing (") + syncPercentage + "%)"
+            }
+        }
+        else
+        {
+            syncStatusField.valueText = qsTr("Not Connected")
+        }
     }
 
     function onCalculateMaximumTextLabelLength() {
@@ -129,43 +172,14 @@ Rectangle {
         Connections {
             target: nodoSystemStatus
             function onSystemStatusReady() {
-                timestampField.valueText = nodoSystemStatus.getIntValueFromKey("start_time")
-                currentBlockHeightField.valueText = nodoSystemStatus.getIntValueFromKey("height")
-                moneroVersionField.valueText = nodoSystemStatus.getStringValueFromKey("version")
-                outgoingConnectionsField.valueText = nodoSystemStatus.getIntValueFromKey("outgoing_connections_count")
-                incomingConnectionsField.valueText = nodoSystemStatus.getIntValueFromKey("incoming_connections_count")
-                whitePeerlistSizeField.valueText = nodoSystemStatus.getIntValueFromKey("white_peerlist_size")
-                greyPeerlistSizeField.valueText = nodoSystemStatus.getIntValueFromKey("grey_peerlist_size")
-                updateAvailableField.valueText = (true === nodoSystemStatus.getBoolValueFromKey("update_available")) ? qsTr("Update available") : qsTr("Up to date")
+            updateSystemStatus()
             }
         }
 
         Connections {
             target: syncInfo
             function onSyncStatusReady() {
-                if(false === isSynchronized)
-                {
-                    var syncPercentage = syncInfo.getSyncPercentage()
-                    if(statusScreen.isConnected)
-                    {
-                        if(syncPercentage === 100 || syncPercentage == -1)
-                        {
-                            syncStatusField.valueText = qsTr("Synchronized (100%)")
-                        }
-                        else
-                        {
-                            syncStatusField.valueText = qsTr("Synchronizing (") + syncPercentage + "%)"
-                        }
-                    }
-                    else
-                    {
-                        syncStatusField.valueText = qsTr("Not Connected")
-                    }
-                }
-                else
-                {
-                    syncStatusField.valueText = qsTr("Not Synchronizing")
-                }
+                updateSyncPercentage()
             }
         }
 
@@ -313,12 +327,7 @@ Rectangle {
         Connections {
             target: nodoControl
             function onServiceStatusReady() {
-                moneroNodeField.valueText = nodoControl.getServiceStatus("monerod")
-                minerServiceField.valueText = nodoControl.getServiceStatus("xmrig")
-                torServiceField.valueText = nodoControl.getServiceStatus("tor")
-                i2pServiceField.valueText = nodoControl.getServiceStatus("i2pd")
-                moneroLWSField.valueText = nodoControl.getServiceStatus("monero-lws")
-                blockExplorerField.valueText = nodoControl.getServiceStatus("block-explorer")
+                updateServiceStatus()
             }
         }
 
@@ -511,12 +520,7 @@ Rectangle {
         Connections {
             target: nodoControl
             function onSystemStatusReady() {
-                cpuField.valueText = nodoControl.getCPUUsage()
-                cpuTemperatureField.valueText = nodoControl.getTemperature()
-                ramField.valueText = nodoControl.getRAMUsage()
-                blockchainStorageField.valueText = nodoControl.getBlockChainStorageUsage()
-                systemStorageField.valueText = nodoControl.getSystemStorageUsage()
-                gpuField.valueText = nodoControl.getGPUUsage()
+                updateHardwareStatus();
             }
         }
 
@@ -606,19 +610,6 @@ Rectangle {
             itemSize: labelSize
             itemText: qsTr("System Storage")
             valueText: systemMessages.messages[NodoMessages.Message.Loading]
-        }
-    }
-
-    Timer {
-        id: serviceStatusTimer
-        interval: 5000;
-        running: true;
-        repeat: true;
-        onTriggered:
-        {
-            nodoControl.startServiceStatusUpdate()
-            nodoControl.startSystemStatusUpdate()
-            syncInfo.startSyncStatusUpdate()
         }
     }
 }

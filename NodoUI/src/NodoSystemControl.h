@@ -53,10 +53,8 @@ public:
     Q_INVOKABLE void setBacklightLevel(int backlightLevel);
     Q_INVOKABLE int getBacklightLevel(void);
 
-    Q_INVOKABLE void startServiceStatusUpdate(void);
     Q_INVOKABLE QString getServiceStatus(QString serviceName);
 
-    Q_INVOKABLE void startSystemStatusUpdate(void);
     Q_INVOKABLE QString getCPUUsage(void);
     Q_INVOKABLE QString getTemperature(void);
     Q_INVOKABLE QString getRAMUsage(void);
@@ -226,6 +224,7 @@ private slots:
     void lstimedout(void);
     void processNotification(QString message);
     void passwordChangeStatusReceived(int status);
+    void updateHardwareStatus(QString message);
 
 
 #ifdef ENABLE_TEST_CODE

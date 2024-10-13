@@ -49,13 +49,11 @@ Item {
             dateTimer.start()
             if (100 === syncInfo.getSyncPercentage())
             {
-                minerButton.visible = true
-                mPayButton.visible = true
+                minerButton.enabled = true
             }
             else
             {
-                minerButton.visible = false
-                mPayButton.visible = false
+                minerButton.enabled = false
             }
         }
 
@@ -82,8 +80,7 @@ Item {
         Connections {
             target: syncInfo
             function onSyncDone() {
-                minerButton.visible = true
-                mPayButton.visible = true
+                minerButton.enabled = true
             }
         }
 
@@ -148,12 +145,13 @@ Item {
                 font.family: NodoSystem.fontUrbanist.name
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
                 onClicked: { pageLoader.source = "MinerMainScreen.qml" }
-                visible: false
+                enabled: false
+
             }
             NodoTabButton {
                 id: moneroLWSButton
                 anchors.top: nodoLogoButton.top
-                anchors.left: minerButton.visible === true ? minerButton.right : nodeButton.right
+                anchors.left: minerButton.right
                 implicitHeight: NodoSystem.topMenuButtonHeight
                 text: qsTr("LWS")
                 font.family: NodoSystem.fontUrbanist.name
@@ -170,13 +168,12 @@ Item {
                 font.family: NodoSystem.fontUrbanist.name
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
                 onClicked: { pageLoader.source = "MoneroPayMainScreen.qml" }
-                visible: false
             }
 
             NodoTabButton {
                 id: newsButton
                 anchors.top: nodoLogoButton.top
-                anchors.left: mPayButton.visible === true ? mPayButton.right : moneroLWSButton.right
+                anchors.left: mPayButton.right
                 implicitHeight: NodoSystem.topMenuButtonHeight
                 text: qsTr("NEWS")
                 font.family: NodoSystem.fontUrbanist.name

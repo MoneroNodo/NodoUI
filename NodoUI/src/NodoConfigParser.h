@@ -11,6 +11,7 @@
 #include <QTimer>
 #include <QMutex>
 #include <QThread>
+#include <QMutexLocker>
 
 class NodoConfigParser : public QObject
 {

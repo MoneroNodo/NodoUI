@@ -8,6 +8,7 @@
 #include <QNetworkInterface>
 #include "PowerKeyThread.h"
 #include "RecoveryKeyThread.h"
+#include "ServiceManagerThread.h"
 #include "nodo_dbus_adaptor.h"
 
 class Daemon : public QObject
@@ -18,35 +19,19 @@ public:
 
 public slots:
     void startRecovery(int recoverFS, int rsyncBlockchain);
-    void serviceManager(QString operation, QString service);
+    void changeServiceStatus(QString operation, QString service);
     void restart(void);
     void shutdown(void);
     void setBacklightLevel(int backlightLevel);
     int getBacklightLevel(void);
-    void getServiceStatus(void);
 
-    double getCPUUsage(void);
-    double getAverageCPUFreq(void);
-    double getRAMUsage(void);
-    double getTotalRAM(void);
-    double getCPUTemperature(void);
-    double getBlockchainStorageUsage(void);
-    double getTotalBlockchainStorage(void);
-    double getSystemStorageUsage(void);
-    double getTotalSystemStorage(void);
     void setPassword(QString pw);
-    double getGPUUsage(void);
-    double getMaxGPUSpeed(void);
-    double getCurrentGPUSpeed(void);
-
     int getBlockchainStorageStatus(void);
     void factoryResetApproved(void);
 
 signals:
     void startRecoveryNotification(const QString &message);
     void serviceManagerNotification(const QString &message);
-    void restartNotification(const QString &message);
-    void shutdownNotification(const QString &message);
     void serviceStatusReadyNotification(const QString &message);
     void passwordChangeStatus(int status);
 
@@ -55,6 +40,7 @@ signals:
     void factoryResetCompleted(void);
     void powerButtonPressDetected(void);
     void powerButtonReleaseDetected(void);
+    void hardwareStatusReadyNotification(const QString &message);
 
 private:
     int m_prevIdleTime = 0;
@@ -72,10 +58,15 @@ private:
     double m_maxGPUFreq = 0;
     double m_currentGPUFreq = 0;
 
-    QTimer *m_timer;
+    QString m_hardwareStatus;
+
+    QTimer *m_hardwareStatusTimer;
+    QTimer *m_serviceStatusTimer;
 
     PowerKeyThread *powerKeyThread;
     RecoveryKeyThread *recoveryKeyThread;
+
+
 
     void readCPUUsage(void);
     void readAverageCPUFreq(void);
@@ -88,7 +79,9 @@ private:
     void readSystemStorageUsage(void);
 
 private slots:
-    void updateParams(void);
+    void updateHardwareStatus(void);
+    void updateServiceStatus(void);
+    void serviceStatusReceived(const QString &message);
 };
 
 #endif // DAEMON_H

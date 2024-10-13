@@ -40,6 +40,7 @@ NodoSystemControl::NodoSystemControl(NodoUISystemParser *uiSystemParser, NodoCon
 
     connect(m_dbusController, SIGNAL(dbusConnectionStatusChanged()), this, SLOT(updateDbusConnectionStatus()));
     connect(m_dbusController, SIGNAL(serviceStatusReceived(QString)), this, SLOT(updateServiceStatus(QString)));
+    connect(m_dbusController, SIGNAL(hardwareStatusReadyNotification(QString)), this, SLOT(updateHardwareStatus(QString)));
     connect(m_dbusController, SIGNAL(serviceManagerNotificationReceived(QString)), this, SLOT(processNotification(QString)));
     connect(m_dbusController, SIGNAL(passwordChangeStatus(int)), this, SLOT(passwordChangeStatusReceived(int)));
 
@@ -224,11 +225,6 @@ int NodoSystemControl::getBacklightLevel(void)
     return m_dbusController->getBacklightLevel();
 }
 
-void NodoSystemControl::startServiceStatusUpdate(void)
-{
-    m_dbusController->getServiceStatus();
-}
-
 void NodoSystemControl::updateServiceStatus(QString statusMessage)
 {
     m_serviceStatusMessage.clear();
@@ -257,20 +253,21 @@ QString NodoSystemControl::getServiceStatus(QString serviceName)
     return "N/A";
 }
 
-void NodoSystemControl::startSystemStatusUpdate(void)
+void NodoSystemControl::updateHardwareStatus(QString message)
 {
-    double CPUUsage = m_dbusController->getCPUUsage();
-    double averageCPUFreq = m_dbusController->getAverageCPUFreq();
-    double RAMUsed = m_dbusController->getRAMUsage();
-    double RAMTotal = m_dbusController->getTotalRAM();
-    double CPUTemperature = m_dbusController->getCPUTemperature();
-    double blockChainStorageUsed = m_dbusController->getBlockchainStorageUsage();
-    double blockChainStorageTotal = m_dbusController->getTotalBlockchainStorage();
-    double systemStorageUsed = m_dbusController->getSystemStorageUsage();
-    double systemStorageTotal = m_dbusController->getTotalSystemStorage();
-    double GPUUsage = m_dbusController->getGPUUsage();
-    double currentCPUFreq = m_dbusController->getCurrentGPUSpeed();
-    // double maxCPUFreq = m_dbusController->getMaxGPUSpeed();
+    QStringList statusList = message.split("\n", Qt::SkipEmptyParts);
+
+    double CPUUsage               = statusList[0].toDouble();
+    double averageCPUFreq         = statusList[1].toDouble();
+    double RAMUsed                = statusList[2].toDouble();
+    double RAMTotal               = statusList[3].toDouble();
+    double CPUTemperature         = statusList[4].toDouble();
+    double blockChainStorageUsed  = statusList[5].toDouble();
+    double blockChainStorageTotal = statusList[6].toDouble();
+    double systemStorageUsed      = statusList[7].toDouble();
+    double systemStorageTotal     = statusList[8].toDouble();
+    double GPUUsage               = statusList[9].toDouble();
+    double currentCPUFreq         = statusList[10].toDouble();
 
     QString RAMUsedStr, RAMTotalStr, blockChainStorageUsedStr, blockChainStorageTotalStr, systemStorageUsedStr, systemStorageTotalStr;
 
@@ -284,7 +281,7 @@ void NodoSystemControl::startSystemStatusUpdate(void)
     }
     else
     {
-        RAMUsedStr = QString::number(RAMUsed);
+        RAMUsedStr = QString::number(RAMUsed / 1024, 'f', 3);
     }
 
     if(RAMTotal >= 1024)
@@ -297,7 +294,7 @@ void NodoSystemControl::startSystemStatusUpdate(void)
     }
     else
     {
-        RAMTotalStr = QString::number(RAMTotal);
+        RAMTotalStr = QString::number(RAMTotal / 1024, 'f', 3);
     }
 
     if(blockChainStorageUsed >= 1024)
@@ -310,7 +307,7 @@ void NodoSystemControl::startSystemStatusUpdate(void)
     }
     else
     {
-        blockChainStorageUsedStr = QString::number(blockChainStorageUsed);
+        blockChainStorageUsedStr = QString::number(blockChainStorageUsed / 1024, 'f', 3);
     }
 
     if(blockChainStorageTotal >= 1024)
@@ -323,7 +320,7 @@ void NodoSystemControl::startSystemStatusUpdate(void)
     }
     else
     {
-        blockChainStorageTotalStr = QString::number(blockChainStorageTotal);
+        blockChainStorageTotalStr = QString::number(blockChainStorageTotal / 1024, 'f', 3);
     }
 
     if(systemStorageUsed >= 1024)
@@ -336,7 +333,7 @@ void NodoSystemControl::startSystemStatusUpdate(void)
     }
     else
     {
-        systemStorageUsedStr = QString::number(systemStorageUsed);
+        systemStorageUsedStr = QString::number(systemStorageUsed / 1024, 'f', 3);
     }
 
     if(systemStorageTotal >= 1024)
@@ -349,7 +346,7 @@ void NodoSystemControl::startSystemStatusUpdate(void)
     }
     else
     {
-        systemStorageTotalStr = QString::number(systemStorageTotal);
+        systemStorageTotalStr = QString::number(systemStorageTotal / 1024, 'f', 3);
     }
 
     m_RAMUsage = RAMUsedStr + "/" + RAMTotalStr + "GB (" + QString("%1").arg((RAMUsed/RAMTotal)*100, 0, 'f', 1).append("%)");

@@ -10,7 +10,7 @@
 #include <QDate>
 #include <QTimer>
 
-#define SCAN_TIMEOUT_IN_MS 10000
+#define SCAN_TIMEOUT_IN_MS 1000
 
 typedef enum {
     PAYMENT_SATUS_NONE,

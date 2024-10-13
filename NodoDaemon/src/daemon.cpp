@@ -18,12 +18,25 @@ Daemon::Daemon()
 {
     new EmbeddedInterfaceAdaptor(this);
     QDBusConnection connection = QDBusConnection::systemBus();
-    connection.registerObject("/com/monero/nodo", this);
-    connection.registerService("com.monero.nodo");
+    if(connection.registerObject("/com/monero/nodo", this))
+    {
+        if(!connection.registerService("com.monero.nodo"))
+        {
+            qDebug() << "failed to register service" << "com.monero.nodo";
+        }
+    }
+    else
+    {
+        qDebug() << "failed to register object" << "/com/monero/nodo";
+    }
 
-    m_timer = new QTimer(this);
-    connect(m_timer, SIGNAL(timeout()), this, SLOT(updateParams()));
-    m_timer->start(1000);
+    m_hardwareStatusTimer = new QTimer(this);
+    connect(m_hardwareStatusTimer, SIGNAL(timeout()), this, SLOT(updateHardwareStatus()));
+    m_hardwareStatusTimer->start(1000);
+
+    m_serviceStatusTimer = new QTimer(this);
+    connect(m_serviceStatusTimer, SIGNAL(timeout()), this, SLOT(updateServiceStatus()));
+    m_serviceStatusTimer->start(1000);
 
     powerKeyThread = new PowerKeyThread();
     connect(powerKeyThread, SIGNAL(poweroffRequested()), this, SLOT(shutdown()));
@@ -32,7 +45,7 @@ Daemon::Daemon()
     powerKeyThread->startListening();
 
 
-    recoveryKeyThread = new RecoveryKeyThread();    
+    recoveryKeyThread = new RecoveryKeyThread();
     connect(recoveryKeyThread, SIGNAL(factoryResetRequested()), this, SIGNAL(factoryResetRequested()));
     connect(recoveryKeyThread, SIGNAL(factoryResetStarted()), this, SIGNAL(factoryResetStarted()));
     connect(recoveryKeyThread, SIGNAL(factoryResetCompleted()), this, SIGNAL(factoryResetCompleted()));
@@ -40,7 +53,7 @@ Daemon::Daemon()
 }
 
 void Daemon::startRecovery(int recoverFS, int rsyncBlockchain)
-{
+{   
     qDebug() << QString("received recovery request").append("recoverFS: ").append(QString::number(recoverFS).append(" rsyncBlockchain: ").append(QString::number(rsyncBlockchain)));
 
     QString program = "/usr/bin/recovery.sh";
@@ -62,76 +75,25 @@ void Daemon::startRecovery(int recoverFS, int rsyncBlockchain)
     emit startRecoveryNotification("startRecovery initiated");
 }
 
-const static QString operations[] = {"start", "stop", "restart", "enable", "disable"};
-const static QString services[] = {"block-explorer", "monerod", "monero-lws", "xmrig", "sshd" , "p2pool", "webui", "moneropay"};
-
-void Daemon::serviceManager(QString operation, QString service)
+void Daemon::changeServiceStatus(QString operation, QString service)
 {
     qDebug() << QString("serviceManager ").append(operation).append(" initiated");
 
-    QString program = "/usr/bin/systemctl";
+    ServiceManagerThread *sManager = new ServiceManagerThread();
+    sManager->setAutoDelete(true);
+    sManager->setServiceAndOperation(service, operation);
 
-    bool valid = false;
-    for (uint i = 0; i < 5; i++)
-    {
-      if (operation == operations[i])
-      {
-        valid = true;
-        break;
-      }
-    }
-    if (!valid)
-    {
-        qDebug() << "illegal operation: " << operation;
-        emit serviceManagerNotification(service.append(":").append(operation).append(":").append("0"));
-        return;
-    }
+    connect(sManager, SIGNAL(serviceStatusReady(QString)), this, SLOT(serviceStatusReceived(QString)), Qt::QueuedConnection);
+    QThreadPool::globalInstance()->start(sManager);
+}
 
 
-    QStringList service_list = service.split(' ');
-    for (QString s : service_list)
-    {
-      valid = false;
-      for (int i = 0; i < 5; i++)
-      {
-        if (s == services[i] || s == services[i] + ".service")
-        {
-          valid = true;
-          break;
-        }
-      }
-      if (!valid)
-      {
-          qDebug() << "illegal service: " << s;
-          emit serviceManagerNotification("illegal service.");
-          return;
-      }
-    }
-
-    QStringList arguments;
-
-    arguments << operation << service_list;
-
-    QProcess process;
-    process.start(program, arguments);
-    if(!process.waitForStarted())
-    {
-        qDebug() << QString("failed to ").append(operation).append(" service").append(". Exiting...");
-        emit serviceManagerNotification(service.append(":").append(operation).append(":").append("0"));
-
-        return;
-    }
-
-    if(!process.waitForFinished())
-    {
-        qDebug() << QString("failed to ").append(operation).append(" service ").append(". Exiting...");
-        emit serviceManagerNotification(service.append(":").append(operation).append(":").append("0"));
-
-        return;
-    }
-
-    qDebug() << "success";
-    emit serviceManagerNotification(service.append(":").append(operation).append(":").append("1"));
+void Daemon::serviceStatusReceived(const QString &message)
+{
+    ServiceManagerThread* sManager = qobject_cast<ServiceManagerThread*>(sender());
+    if(!sManager) return;
+    qDebug() << message;
+    emit serviceManagerNotification(message);
 }
 
 void Daemon::restart(void)
@@ -147,8 +109,6 @@ void Daemon::restart(void)
 
     process.start(program, arguments);
     process.waitForFinished(-1);
-
-    emit restartNotification("received restart request");
 }
 
 void Daemon::shutdown(void)
@@ -164,7 +124,6 @@ void Daemon::shutdown(void)
 
     process.start(program, arguments);
     process.waitForFinished(-1);
-    emit shutdownNotification("received shutdown request");
 }
 
 void Daemon::setBacklightLevel(int backlightLevel)
@@ -220,10 +179,10 @@ int Daemon::getBacklightLevel(void)
     return retVal;
 }
 
-void Daemon::getServiceStatus(void)
+void Daemon::updateServiceStatus(void)
 {
-    qDebug() << "received service status request";
-
+    m_serviceStatusTimer->stop();
+    qDebug() << "updateServiceStatus";
     QString program = "/usr/bin/systemctl";
     QString serviceList[] = {"monerod", "xmrig", "tor", "i2pd", "monero-lws", "block-explorer", "sshd"};
 
@@ -245,11 +204,13 @@ void Daemon::getServiceStatus(void)
 
     qDebug() << statusMessage;
     emit serviceStatusReadyNotification(statusMessage);
+    m_serviceStatusTimer->start(5000);
 }
 
-void Daemon::updateParams(void)
+
+void Daemon::updateHardwareStatus(void)
 {
-    m_timer->stop();
+    m_hardwareStatusTimer->stop();
     readCPUUsage();
     readAverageCPUFreq();
     readCPUTemperature();
@@ -261,8 +222,23 @@ void Daemon::updateParams(void)
     readBlockchainStorageUsage();
     readSystemStorageUsage();
 
-    m_timer->start(1000);
+    m_hardwareStatus.clear();
+    m_hardwareStatus.append(QString::number(m_CPUUsage , 'g', 2)).append("\n")
+        .append(QString::number(m_AverageCPUFreq)).append("\n")
+        .append(QString::number(m_RAMUsage)).append("\n")
+        .append(QString::number(m_TotalRAM)).append("\n")
+        .append(QString::number(m_CPUTemperature)).append("\n")
+        .append(QString::number(m_blockChainStorageUsed)).append("\n")
+        .append(QString::number(m_blockChainStorageTotal)).append("\n")
+        .append(QString::number(m_systemStorageUsed)).append("\n")
+        .append(QString::number(m_systemStorageTotal)).append("\n")
+        .append(QString::number(m_GPUUsage)).append("\n")
+        .append(QString::number(m_currentGPUFreq)).append("\n");
+
+    emit hardwareStatusReadyNotification(m_hardwareStatus);
+    m_hardwareStatusTimer->start(5000);
 }
+
 
 void Daemon::readCPUUsage(void)
 {
@@ -292,7 +268,6 @@ void Daemon::readAverageCPUFreq(void)
         QStringList arguments;
         QString path("/sys/devices/system/cpu/cpu");
         path.append(QString::number(i)).append("/cpufreq/cpuinfo_cur_freq");
-        // path.append(QString::number(i)).append("/cpufreq/scaling_cur_freq");
         arguments << path;
 
         process.start(program, arguments);
@@ -428,8 +403,6 @@ void Daemon::readBlockchainStorageUsage(void)
         {
             bool ok;
             QStringList status2 = status.at(i).split(" ", Qt::SkipEmptyParts);
-            // m_blockChainStorageTotal = status2.at(1).chopped(1).toFloat(&ok);
-            // m_blockChainStorageUsed = status2.at(2).chopped(1).toFloat(&ok);
             if(status2.at(1).endsWith("M"))
             {
                 m_blockChainStorageTotal = status2.at(1).chopped(1).toFloat(&ok);
@@ -470,8 +443,6 @@ void Daemon::readSystemStorageUsage(void)
         {
             bool ok;
             QStringList status2 = status.at(i).split(" ", Qt::SkipEmptyParts);
-            // m_systemStorageTotal = status2.at(1).chopped(1).toFloat(&ok);
-            // m_systemStorageUsed = status2.at(2).chopped(1).toFloat(&ok);
             if(status2.at(1).endsWith("M"))
             {
                 m_systemStorageTotal = status2.at(1).chopped(1).toFloat(&ok);
@@ -493,83 +464,22 @@ void Daemon::readSystemStorageUsage(void)
     }
 }
 
-
-double Daemon::getCPUUsage(void)
-{
-    return m_CPUUsage;
-}
-
-double Daemon::getAverageCPUFreq(void)
-{
-    return m_AverageCPUFreq;
-}
-
-double Daemon::getRAMUsage(void)
-{
-    return m_RAMUsage;
-}
-
-double Daemon::getTotalRAM(void)
-{
-    return m_TotalRAM;
-}
-
-double Daemon::getCPUTemperature(void)
-{
-    return m_CPUTemperature;
-}
-
-double Daemon::getBlockchainStorageUsage(void)
-{
-    return m_blockChainStorageUsed;
-}
-
-double Daemon::getTotalBlockchainStorage(void)
-{
-    return m_blockChainStorageTotal;
-}
-
-double Daemon::getSystemStorageUsage(void)
-{
-    return m_systemStorageUsed;
-}
-
-double Daemon::getTotalSystemStorage(void)
-{
-    return m_systemStorageTotal;
-}
-
 void Daemon::setPassword(QString pw)
 {
     QProcess sh;
     QString tmp = QString("echo \"nodo:").append(pw).append("\"  | chpasswd");
     sh.start( "sh", { "-c", tmp});
     sh.waitForFinished( -1 );
-    // qDebug() << "setPassword exit code: " << sh.exitCode();
+    qDebug() << "setPassword exit code: " << sh.exitCode();
     emit passwordChangeStatus(sh.exitCode());
-}
-
-double Daemon::getGPUUsage(void)
-{
-    return m_GPUUsage;
-}
-
-double Daemon::getMaxGPUSpeed(void)
-{
-    return m_maxGPUFreq;
-}
-
-double Daemon::getCurrentGPUSpeed(void)
-{
-    return m_currentGPUFreq;
 }
 
 int Daemon::getBlockchainStorageStatus(void)
 {
-    return recoveryKeyThread->getBlockchainStorageStatus();
+    return 0;//recoveryKeyThread->getBlockchainStorageStatus();
 }
 
 void Daemon::factoryResetApproved(void)
 {
-    recoveryKeyThread->recover();
+    // recoveryKeyThread->recover();
 }

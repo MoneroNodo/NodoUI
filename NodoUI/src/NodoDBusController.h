@@ -19,33 +19,13 @@ public:
     void shutdown(void);
     void setBacklightLevel(int backlightLevel);
     int getBacklightLevel(void);
-    void getServiceStatus(void);
-
-
-    double getCPUUsage(void);
-    double getAverageCPUFreq(void);
-    double getRAMUsage(void);
-    double getTotalRAM(void);
-    double getCPUTemperature(void);
-    double getBlockchainStorageUsage(void);
-    double getTotalBlockchainStorage(void);
-    double getSystemStorageUsage(void);
-    double getTotalSystemStorage(void);
     void setPassword(QString pw);
-    double getGPUUsage(void);
-    double getMaxGPUSpeed(void);
-    double getCurrentGPUSpeed(void);
-
     void factoryResetApproved(void);
     int getBlockchainStorageStatus(void);
 
 
 protected:
     void timerEvent(QTimerEvent *event);
-
-private slots:
-    void updateTextEdit(QString message);
-    void updateServiceStatus(QString message);
 
 private:
     com::moneronodo::embeddedInterface *nodo;
@@ -55,6 +35,7 @@ signals:
     void dbusConnectionStatusChanged(void);
     void serviceStatusReceived(QString statusMessage);
     void serviceManagerNotificationReceived(QString message);
+    void hardwareStatusReadyNotification(const QString &message);
     void passwordChangeStatus(int status);
 
     void factoryResetStarted(void);

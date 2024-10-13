@@ -17,7 +17,6 @@ NodoSystemStatusParser::NodoSystemStatusParser(NodoConfigParser *configParser) {
 
     m_timer = new QTimer(this);
     connect(m_timer, SIGNAL(timeout()), this, SLOT(updateStatus()));
-
     connect(m_configParser, SIGNAL(configParserReady()), this, SLOT(updateConfigParameters()));
 }
 
@@ -33,7 +32,9 @@ void NodoSystemStatusParser::replyFinished(QNetworkReply *reply) {
         m_document = QJsonDocument();
         m_rootObj = QJsonObject();
     }
+    reply->deleteLater();
     emit systemStatusReady();
+    m_timer->start(5000);
 }
 
 QString NodoSystemStatusParser::getStringValueFromKey(QString key)
@@ -68,19 +69,15 @@ bool NodoSystemStatusParser::getBoolValueFromKey(QString key)
 
 void NodoSystemStatusParser::updateStatus(void)
 {
-    m_manager->get(QNetworkRequest(QUrl(m_system_url)));
-}
-
-void NodoSystemStatusParser::updateRequested(void)
-{
     m_timer->stop();
-    updateStatus();
-    m_timer->start(5000);
+    m_manager->get(QNetworkRequest(QUrl(m_system_url)));
 }
 
 void NodoSystemStatusParser::updateConfigParameters(void)
 {
+    m_timer->stop();
     int port = m_configParser->getIntValueFromKey("config", "monero_public_port");
     m_system_url.clear();
     m_system_url = "http://127.0.0.1:" + QString::number(port) + "/get_info";
+    m_timer->start(500);
 }

@@ -188,6 +188,12 @@ void RecoveryKeyThread::recover(void)
     mountBlockchainPartition();
     changePermissions();
     createSwap();
+
+    QString filename  = QString(BLOCKCHAIN_MOUNT_POINT).append("nodo-dbus");
+    QFile file(filename);
+    file.open(QIODevice::ReadWrite | QIODevice::Text);
+    file.close();
+
     emit factoryResetCompleted();
     QTimer::singleShot(2000, this, SLOT(finaliseRevocery()));
 }
