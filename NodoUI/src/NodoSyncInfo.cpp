@@ -10,9 +10,9 @@ void NodoSyncInfo::updateStatus(void)
 
     m_height = m_statusParser->getIntValueFromKey("height");
     m_targetHeight = m_statusParser->getIntValueFromKey("target_height");
-    bool synced = m_statusParser->getBoolValueFromKey("synchronized");
+    m_synced = m_statusParser->getBoolValueFromKey("synchronized");
 
-    qDebug() << "m_height " << m_height << "m_targetHeight " << m_targetHeight << "synced " << synced;
+    qDebug() << "m_height " << m_height << "m_targetHeight " << m_targetHeight << "synced " << m_synced;
 
     if(m_targetHeight > 0)
     {
@@ -23,7 +23,7 @@ void NodoSyncInfo::updateStatus(void)
         m_syncPercentage = -1;
     }
 
-    if(synced)
+    if(m_synced)
     {
         m_syncPercentage = 100;
     }
@@ -38,9 +38,12 @@ void NodoSyncInfo::updateStatus(void)
 
 int NodoSyncInfo::getSyncPercentage(void)
 {
-    if(m_targetHeight == 0)
+    if(!m_synced)
     {
-        return -1;
+        if(m_targetHeight == 0)
+        {
+            return -1;
+        }
     }
 
     return m_syncPercentage;

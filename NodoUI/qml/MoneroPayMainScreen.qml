@@ -36,7 +36,7 @@ Item {
     Connections {
         target: syncInfo
         function onSyncDone() {
-            addAccountButton.enabled = true
+            receiveButton.enabled = true
         }
     }
 

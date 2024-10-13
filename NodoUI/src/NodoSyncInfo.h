@@ -22,6 +22,7 @@ private:
     int m_height = 0;
     int m_targetHeight = 0;
     int m_syncPercentage = 0;
+    bool m_synced = false;
     NodoSystemStatusParser *m_statusParser;
 
 signals:
