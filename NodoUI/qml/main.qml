@@ -215,19 +215,15 @@ ApplicationWindow {
         function displayScreenSaver()
         {
             if(mainAppWindow.screenSaverActive === false){
-                var screenSaverType = nodoControl.getScreenSaverType()
+                var screenSaverType = nodoControl.getScreenSaverComponent(nodoControl.getScreenSaverType())
 
-                if(0 === screenSaverType) {
-                    mainAppStackView.push("NodoFeederScreenSaver.qml")
+                if(!screenSaverType) {
+                    nodoControl.stopScreenSaverTimer();
+                    return;
+                } else {
+                    mainAppStackView.push(screenSaverType);
                 }
-                else if(1 === screenSaverType)
-                {
-                    mainAppStackView.push("NodoScreenSaver.qml")
-                }
-                else if(2 === screenSaverType)
-                {
-                    mainAppStackView.push("NodoDigitalClock.qml")
-                }
+
                 nodoControl.closePopup()
                 nodoControl.stopScreenSaverTimer();
                 mainAppWindow.screenSaverActive = true

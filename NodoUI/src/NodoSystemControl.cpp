@@ -84,6 +84,18 @@ int NodoSystemControl::getScreenSaverType(void)
     return m_displaySettings.screenSaverType;
 }
 
+QVariant NodoSystemControl::getScreenSaverTitle(int id) {
+    return (id >= 0 && id < screenSaverTypes.titles.size()) ? screenSaverTypes.titles[id] : QVariant{};
+}
+
+QVariant NodoSystemControl::getScreenSaverName(int id) {
+    return (id >= 0 && id < screenSaverTypes.names.size()) ? screenSaverTypes.names[id] : QVariant{};
+}
+
+QVariant NodoSystemControl::getScreenSaverComponent(int id) {
+    return (id >= 0 && id < screenSaverTypes.components.size()) ? screenSaverTypes.components[id] : QVariant{};
+}
+
 
 void NodoSystemControl::setScreenSaverTimeout(int timeout)
 {

@@ -35,6 +35,7 @@
         <file>qml/NodoBusyIndicator.qml</file>
         <file>qml/NodoFeedsSwitch.qml</file>
         <file>qml/NodoFeederScreenSaver.qml</file>
+        <file>qml/TxStreetScreenSaver.qml</file>
         <file>qml/NodoHomeScreen.qml</file>
         <file>qml/NodoScreenSaver.qml</file>
         <file>qml/NodoTabButton.qml</file>

@@ -23,6 +23,9 @@ public:
 
     Q_INVOKABLE void setScreenSaverType(int state);
     Q_INVOKABLE int getScreenSaverType(void);
+    Q_INVOKABLE QVariant getScreenSaverTitle(int id);
+    Q_INVOKABLE QVariant getScreenSaverName(int id);
+    Q_INVOKABLE QVariant getScreenSaverComponent(int id);
 
     Q_INVOKABLE void setScreenSaverTimeout(int timeout);
     Q_INVOKABLE int getScreenSaverTimeout(void);
