@@ -476,10 +476,10 @@ void Daemon::setPassword(QString pw)
 
 int Daemon::getBlockchainStorageStatus(void)
 {
-    return 0;//recoveryKeyThread->getBlockchainStorageStatus();
+    return recoveryKeyThread->getBlockchainStorageStatus();
 }
 
 void Daemon::factoryResetApproved(void)
 {
-    // recoveryKeyThread->recover();
+    recoveryKeyThread->recover();
 }
