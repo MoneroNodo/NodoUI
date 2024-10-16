@@ -404,7 +404,10 @@ void NodoSystemControl::serviceManager(QString operation, QString service)
 void NodoSystemControl::restartScreenSaverTimer(void)
 {
     stopScreenSaverTimer();
-    m_screenSaverTimer->start(getScreenSaverTimeout());
+    if(m_displaySettings.screenSaverType < MAXIMUM_SCREENSAVER_TYPE)
+    {
+        m_screenSaverTimer->start(getScreenSaverTimeout());
+    }
 }
 
 void NodoSystemControl::stopScreenSaverTimer(void)
