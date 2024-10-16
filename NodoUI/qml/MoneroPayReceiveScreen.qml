@@ -252,10 +252,11 @@ Item {
         Rectangle{
             id: qrCodeRect
             anchors.top: paymentPreviewRect.top
+            anchors.topMargin: 10
             anchors.horizontalCenter: paymentPreviewRect.horizontalCenter
             color: "black"
-            width: 450
-            height: 450
+            width: 380
+            height: 380
 
             QtQuick2QREncode {
                 id: qr
@@ -274,7 +275,7 @@ Item {
         Rectangle {
             id: currenciesRect
             anchors.top: qrCodeRect.bottom
-            anchors.topMargin: 2*(NodoSystem.nodoTopMargin)
+            anchors.topMargin: 2*(NodoSystem.nodoTopMargin) + 10
             anchors.left: paymentPreviewRect.left
             width: timestampField.x + timestampField.width
             height: timestampField.height
@@ -407,8 +408,8 @@ Item {
             id: paymentSuccess
             anchors.top: paymentResultRect.top
             anchors.horizontalCenter: paymentResultRect.horizontalCenter
-            width: 450
-            height: 450
+            width: 400
+            height: 400
             color: "black"
 
             WebView {
@@ -553,17 +554,6 @@ Item {
         }
     }
 
-    // Timer {
-    //     id: dateTimer
-    //     interval: 10000
-    //     running: true
-    //     repeat: true
-    //     triggeredOnStart: true
-    //     onTriggered: {
-    //         priceTicker.updateRequest()
-    //     }
-    // }
-
     NodoPopup {
         id: paymentsPopup
         onApplyClicked: {
@@ -581,10 +571,10 @@ Item {
             requestAmountRect.visible = true
             paymentPreviewRect.visible = false
             paymentResultRect.visible = false
-            xmrRequestfield.valueText = ""
-            fiatRequestfield.valueText = ""
+            xmrRequestfield.valueText = "0.000000000000"
+            fiatRequestfield.valueText = "0.00"
             xmrAmount = 0
-            blockConfirmationsSlider.value = 10
+            blockConfirmationsField.valueText = "10"
             descriptionInputfield.valueText = ""
 
             close()

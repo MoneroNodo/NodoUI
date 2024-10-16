@@ -172,7 +172,10 @@ void MoneroPayConnection::parseReceiveAddress(QByteArray replyMessage)
             txList.append(tmp_tr);
         }
 
-        std::sort(txList.begin(), txList.end(), compareByDate);
+        if(txList.size() > 0)
+        {
+            std::sort(txList.begin(), txList.end(), compareByDate);
+        }
 
         for(int i = 0; i < transactionsArray.size(); i++)
         {

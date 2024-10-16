@@ -41,8 +41,10 @@ int MoneroPay::getPaymentCount(void)
     {
         m_displayResults.append(m_paymentResults.at(i));
     }
-    std::sort(m_displayResults.begin(), m_displayResults.end(), compareByDate);
-
+    if(m_displayResults.size() > 0)
+    {
+        std::sort(m_displayResults.begin(), m_displayResults.end(), compareByDate);
+    }
     return m_displayResults.size();
 }
 
@@ -58,36 +60,75 @@ void MoneroPay::updateRequested()
 
 qint64 MoneroPay::getPaymentAmount(int index)
 {
+    if(m_displayResults.size() <= index)
+    {
+        return -1;
+    }
     return m_displayResults.at(index).xmrAmountInPico;
 }
 
 double MoneroPay::getFiatAmount(int index)
 {
+    if(m_displayResults.size() <= index)
+    {
+        return -1;
+    }
+
     return m_displayResults.at(index).fiatAmount;
 }
 
 int MoneroPay::getPaymentStatus(int index)
 {
+    if(m_displayResults.size() <= index)
+    {
+        return PAYMENT_SATUS_NONE;
+    }
+
     return (int)m_displayResults.at(index).paymentStatus;
 }
 
 QDateTime MoneroPay::getPaymentTimestamp(int index)
 {
+    if(m_displayResults.size() <= index)
+    {
+        QDateTime date;
+        QString s = "1970-01-01T00:00:00";
+        date = QDateTime::fromString(s,"yyyy-MM-ddThh:mm:ss");
+        return date;
+    }
     return m_displayResults.at(index).dateTime;
 }
 
 QString MoneroPay::getPaymentDepositAddress(int index)
 {
+    if(m_displayResults.size() <= index)
+    {
+        return "n/a";
+    }
     return m_displayResults.at(index).depositAddress;
 }
 
 QString MoneroPay::getPaymentTransactionID(int p_index, int t_index)
 {
+    if(m_displayResults.size() <= p_index)
+    {
+        return "n/a";
+    }
+    if(m_displayResults.at(p_index).transactionIDList.size() <= t_index)
+    {
+        return "n/a";
+    }
+
     return m_displayResults.at(p_index).transactionIDList.at(t_index);
 }
 
 QString MoneroPay::getPaymentDescription(int index)
 {
+    if(m_displayResults.size() <= index)
+    {
+        return "n/a";
+    }
+
     return m_displayResults.at(index).description;
 }
 

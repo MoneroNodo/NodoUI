@@ -7,12 +7,11 @@ NodoSyncInfo::NodoSyncInfo(NodoSystemStatusParser *systemStatusParser) {
 
 void NodoSyncInfo::updateStatus(void)
 {
-
     m_height = m_statusParser->getIntValueFromKey("height");
     m_targetHeight = m_statusParser->getIntValueFromKey("target_height");
     m_synced = m_statusParser->getBoolValueFromKey("synchronized");
 
-    qDebug() << "m_height " << m_height << "m_targetHeight " << m_targetHeight << "synced " << m_synced;
+    // qDebug() << "m_height " << m_height << "m_targetHeight " << m_targetHeight << "synced " << m_synced;
 
     if(m_targetHeight > 0)
     {
