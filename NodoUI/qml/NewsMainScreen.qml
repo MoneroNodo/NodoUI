@@ -21,20 +21,39 @@ Page {
     function getNewsPageList() {
         newsListModel.clear()
         var sourceCount = feedsControl.getNumOfRSSSource()
+        var tmpcnt = 0;
+
         for (var i = 0; i < sourceCount; i++)  {
             if(feedsControl.isRSSSourceSelected(i)) {
                 var itemCount = feedsControl.getDisplayedItemCount(i)
+                if(itemCount === 0)
+                {
+                    tmpcnt++;
+                }
+
                 for (var j = 0; j < itemCount; j++)  {
                     var newsPage = {"headerTextStr": feedsControl.getItemTitle(i, j),
-                                    "dataTextStr": feedsControl.getItemDescription(i, j),
-                                    "channelStr": feedsControl.getItemChannel(i, j),
-                                    "dataTagStr": feedsControl.getItemTag(i, j),
-                                    "headerAuthStr": feedsControl.getItemAuth(i, j),
-                                    "dataTimestampStr": feedsControl.getItemTimestamp(i, j),
-                                    "imagePath": feedsControl.getItemImage(i, j)}
+                        "dataTextStr": feedsControl.getItemDescription(i, j),
+                        "channelStr": feedsControl.getItemChannel(i, j),
+                        "dataTagStr": feedsControl.getItemTag(i, j),
+                        "headerAuthStr": feedsControl.getItemAuth(i, j),
+                        "dataTimestampStr": feedsControl.getItemTimestamp(i, j),
+                        "imagePath": feedsControl.getItemImage(i, j)}
                     newsListModel.append(newsPage)
                 }
             }
+        }
+
+        if(tmpcnt === 0)
+        {
+            var emptyNewsPage = {"headerTextStr": qsTr("No Feeds available"),
+                "dataTextStr": "",
+                "channelStr": "",
+                "dataTagStr": "",
+                "headerAuthStr": "",
+                "dataTimestampStr": "",
+                "imagePath": ""}
+            newsListModel.append(emptyNewsPage)
         }
     }
 
