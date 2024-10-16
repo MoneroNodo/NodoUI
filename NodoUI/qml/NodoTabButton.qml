@@ -3,10 +3,12 @@ import QtQuick.Controls
 import QtQuick.Layouts
 import QtQuick.VirtualKeyboard
 import NodoSystem 1.1
-
+import NodoCanvas 1.0
 TabButton {
     id: control
     width: buttonText.paintedWidth + buttonText.leftPadding + buttonText.rightPadding
+    implicitHeight: NodoSystem.nodoItemHeight
+    property color buttonBorderColor: "#303030" //"yellow"
 
     property string imagePath: ""
     property int textLeftPadding: 15
@@ -20,9 +22,14 @@ TabButton {
         anchors.fill: control
         fillMode: Image.PreserveAspectFit
     }
-    background: Rectangle {
+
+    background: NodoCanvas {
+        width: control.width
+        height: control.height
         color: "black"
+        borderColor: buttonBorderColor
     }
+
     contentItem: Text {
         id: buttonText
         text: control.text
@@ -30,7 +37,7 @@ TabButton {
         color: enabled ? (control.checked ? (nodoControl.appTheme ? NodoSystem.highlightedColorNightModeOn : NodoSystem.highlightedColorNightModeOff) :
                                  (nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff)) : NodoSystem.buttonDisabledColor
 
-        topPadding: NodoSystem.topMenuTextTopPadding
+        // topPadding: NodoSystem.topMenuTextTopPadding
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
         leftPadding: control.textLeftPadding

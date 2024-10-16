@@ -13,13 +13,13 @@ Item
     property int topMenuGapBetweenButtons: 16
     property int dateTimeFontSize: 56
 
-    property int subMenuButtonHeight: 60
+    property int subMenuButtonHeight: nodoItemHeight
     property int subMenuButtonFontSize: 40
     property int textFontSize: 32
     property int buttonTextFontSize: 32
     property int subMenuLeftMargin: 32
 
-    property int topMenuTextTopPadding: 21
+    property int topMenuTextTopPadding: 0
 
     property color defaultColorNightModeOff: "#FCFCFC"
     property color highlightedColorNightModeOff: "#FA5501"

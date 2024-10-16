@@ -46,7 +46,7 @@ Page {
 
         if(tmpcnt === 0)
         {
-            var emptyNewsPage = {"headerTextStr": qsTr("No Feeds available"),
+            var emptyNewsPage = {"headerTextStr": qsTr("No feeds available"),
                 "dataTextStr": "",
                 "channelStr": "",
                 "dataTagStr": "",

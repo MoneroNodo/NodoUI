@@ -98,83 +98,107 @@ Item {
 
             NodoTabButton {
                 id: nodoLogoButton
+                x: 0
                 y: (mainMenuBar.height - nodoLogoButton.height)/2
                 text: " "
                 width: 288
+                implicitHeight: NodoSystem.topMenuButtonHeight
+                buttonBorderColor: "black"
                 imagePath: (nodoControl.appTheme ? "qrc:/Images/nodologo_title_red.png" : "qrc:/Images/nodologo_title_white.png")
-                onClicked: { pageLoader.source = "NodoStatusScreen.qml" }
+                onClicked: {
+                    pageLoader.source = "NodoStatusScreen.qml"
+                    pageLoader.anchors.topMargin = 0
+                }
             }
             NodoTabButton {
                 id: deviceButton
                 anchors.top: nodoLogoButton.top
+                anchors.topMargin: (NodoSystem.topMenuButtonHeight - NodoSystem.nodoItemHeight)/2
                 anchors.left: nodoLogoButton.right
-                anchors.leftMargin: 10
-                implicitHeight: NodoSystem.topMenuButtonHeight
+                height: NodoSystem.nodoItemHeight
                 text: qsTr("DEVICE")
                 font.family: NodoSystem.fontUrbanist.name
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
-                onClicked: { pageLoader.source = "DeviceMainScreen.qml" }
+                onClicked: {
+                    pageLoader.source = "DeviceMainScreen.qml"
+                    pageLoader.anchors.topMargin = 0
+                }
             }
             NodoTabButton {
                 id: networksButton
-                anchors.top: nodoLogoButton.top
+                anchors.top: deviceButton.top
                 anchors.left: deviceButton.right
-                implicitHeight: NodoSystem.topMenuButtonHeight
+                height: NodoSystem.nodoItemHeight
                 text: qsTr("NETWORKS")
                 font.family: NodoSystem.fontUrbanist.name
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
-                onClicked: { pageLoader.source = "NetworksMainScreen.qml" }
+                onClicked: {
+                    pageLoader.source = "NetworksMainScreen.qml"
+                    pageLoader.anchors.topMargin = 0
+                }
             }
 
             NodoTabButton {
                 id: nodeButton
-                anchors.top: nodoLogoButton.top
+                anchors.top: deviceButton.top
                 anchors.left: networksButton.right
-                implicitHeight: NodoSystem.topMenuButtonHeight
+                height: NodoSystem.nodoItemHeight
                 text: qsTr("NODE")
                 font.family: NodoSystem.fontUrbanist.name
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
-                onClicked: { pageLoader.source = "NodeMainScreen.qml" }
+                onClicked: {
+                    pageLoader.source = "NodeMainScreen.qml"
+                    pageLoader.anchors.topMargin = 0
+                }
             }
             NodoTabButton {
                 id: minerButton
-                anchors.top: nodoLogoButton.top
+                anchors.top: deviceButton.top
                 anchors.left: nodeButton.right
-                implicitHeight: NodoSystem.topMenuButtonHeight
+                height: NodoSystem.nodoItemHeight
                 text: qsTr("MINER")
                 font.family: NodoSystem.fontUrbanist.name
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
-                onClicked: { pageLoader.source = "MinerMainScreen.qml" }
+                onClicked: {
+                    pageLoader.source = "MinerMainScreen.qml"
+                    pageLoader.anchors.topMargin = 0
+                }
                 enabled: false
 
             }
             NodoTabButton {
                 id: moneroLWSButton
-                anchors.top: nodoLogoButton.top
+                anchors.top: deviceButton.top
                 anchors.left: minerButton.right
-                implicitHeight: NodoSystem.topMenuButtonHeight
+                height: NodoSystem.nodoItemHeight
                 text: qsTr("LWS")
                 font.family: NodoSystem.fontUrbanist.name
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
-                onClicked: { pageLoader.source = "MoneroLWSMainScreen.qml" }
+                onClicked: {
+                    pageLoader.source = "MoneroLWSMainScreen.qml"
+                    pageLoader.anchors.topMargin = 0
+                }
             }
 
             NodoTabButton {
                 id: mPayButton
-                anchors.top: nodoLogoButton.top
+                anchors.top: deviceButton.top
                 anchors.left: moneroLWSButton.right
-                implicitHeight: NodoSystem.topMenuButtonHeight
+                height: NodoSystem.nodoItemHeight
                 text: qsTr("MPAY")
                 font.family: NodoSystem.fontUrbanist.name
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
-                onClicked: { pageLoader.source = "MoneroPayMainScreen.qml" }
+                onClicked: {
+                    pageLoader.source = "MoneroPayMainScreen.qml"
+                    pageLoader.anchors.topMargin = 0
+                }
             }
 
             NodoTabButton {
                 id: newsButton
-                anchors.top: nodoLogoButton.top
+                anchors.top: deviceButton.top
                 anchors.left: mPayButton.right
-                implicitHeight: NodoSystem.topMenuButtonHeight
+                height: NodoSystem.nodoItemHeight
                 text: qsTr("NEWS")
                 font.family: NodoSystem.fontUrbanist.name
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
@@ -205,23 +229,6 @@ Item {
                 verticalAlignment: Text.AlignVCenter
                 font.family: NodoSystem.fontUrbanist.name
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
-
-
-                // Timer {
-                //     id: dateTimer
-                //     interval: 1000
-                //     running: true
-                //     repeat: true
-                //     triggeredOnStart: true
-                //     onTriggered: {
-                //         var dateTime = nodoControl.getChangedDateTime()
-                //         var m_daystr = Qt.formatDateTime(dateTime, "ddd")
-                //         var m_day = Qt.formatDateTime(dateTime, "d")
-                //         var m_month = Qt.formatDateTime(dateTime, "MMM")
-
-                //         dateText.text = m_daystr.toUpperCase() + " " +m_day + " "  + m_month.toUpperCase()
-                //     }
-                // }
             }
 
             Text {
@@ -236,17 +243,6 @@ Item {
                 verticalAlignment: Text.AlignVCenter
                 font.family: NodoSystem.fontUrbanist.name
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
-
-                // Timer {
-                //     id: hourTimer
-                //     interval: 1000
-                //     running: true
-                //     repeat: true
-                //     triggeredOnStart: true
-                //     onTriggered: {
-                //         timeText.text = Qt.formatDateTime(nodoControl.getChangedDateTime(), "h:mm AP")
-                //     }
-                // }
             }
         }
 
@@ -254,7 +250,7 @@ Item {
             id: priceTickerRect
             anchors.right: mainAppWindowRectangle.right
             anchors.top: rightMenu.bottom
-            anchors.topMargin: 30
+            anchors.topMargin: 35
             color: "black"
 
             Text {
