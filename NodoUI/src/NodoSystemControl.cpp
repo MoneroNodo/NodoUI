@@ -76,6 +76,7 @@ void NodoSystemControl::setScreenSaverType(int state)
 {
     m_uiSystemParser->writeScreenSaverType(state);
     m_displaySettings = m_uiSystemParser->readDisplaySettings();
+    restartScreenSaverTimer();
 }
 
 
