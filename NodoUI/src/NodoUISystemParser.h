@@ -12,7 +12,6 @@
 
 #define DEFAULT_SCREENSAVER_TIMEOUT 90
 #define DEFAULT_SCREENSAVER_ITEM_CHANGE_TIMEOUT 10
-#define DEFAULT_SCREENSAVER_TYPE 2
 #define DEFAULT_DISPLAY_ORIENTATION -90
 #define DEFAULT_LOCK_PIN_HASH ""
 #define DEFAULT_LOCK_AFTER 3
@@ -22,10 +21,18 @@
 
 #define MINIMUM_SCREENSAVER_TIMEOUT 10
 #define MINIMUM_SCREENSAVER_ITEM_CHANGE_TIMEOUT 5
-#define MINIMUM_SCREENSAVER_TYPE 0
-#define MAXIMUM_SCREENSAVER_TYPE 3
 #define KEYBOARD_LAYOUT_COUNT 3
 #define MINIMUM_LOCK_AFTER 1
+
+struct screenSaverTypes_t {
+    QMap<QString, int> ids;
+    QStringList names;
+    QStringList titles;
+    QStringList components;
+    int defaultType;
+};
+
+extern const screenSaverTypes_t screenSaverTypes;
 
 typedef enum {
     DISPLAY_KEY_SS_TIMEOUT,

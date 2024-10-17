@@ -5,6 +5,6 @@ export NODO_UI_PROJECT_PATH=$PWD/NodoUI
 export NODO_DAEMON_PROJECT_PATH=$PWD/NodoDaemon
 export NODO_CONFIG_PATH=/home/nodo/variables
 
-export PARALLEL_BUILD=-j6
+export PARALLEL_BUILD=-j"$(nproc)"
 
 

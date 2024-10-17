@@ -4,7 +4,7 @@ source set_nodo_install_var.sh
 
 sudo apt-get update
 
-sudo apt-get install -y libglu1-mesa-dev qt6-base-dev libqt6qml6 libqt6qmlcompiler6 libqt6qmlcore6 libqt6quick6 libqt6quickcontrols2-6 qt6-declarative-dev qml6-module-qtquick-virtualkeyboard libqt6virtualkeyboard6 qt6-virtualkeyboard-dev qt6-virtualkeyboard-plugin libcurlpp-dev libcurl4-gnutls-dev qt6-l10n-tools qt6-tools-dev-tools qml6-module-qtquick-controls qml6-module-qtquick qml6-module-qtquick-dialogs qml6-module-qtquick-layouts qml6-module-qtquick-shapes qml6-module-qtquick-window qml6-module-qtqml-workerscript qml6-module-qtquick-templates qml6-module-qtwebengine qml6-module-qt-labs-folderlistmodel qt6-svg-dev- policykit-1 pkexec libpolkit-agent-1-0 xfsprogs qml6-module-qtwebview qt6-webview-plugins
+sudo apt-get install -y libglu1-mesa-dev qt6-base-dev libqt6qml6 libqt6qmlcompiler6 libqt6qmlcore6 libqt6quick6 libqt6quickcontrols2-6 qt6-declarative-dev qml6-module-qtquick-virtualkeyboard libqt6virtualkeyboard6 qt6-virtualkeyboard-dev qt6-virtualkeyboard-plugin libcurlpp-dev libcurl4-gnutls-dev qt6-l10n-tools qt6-tools-dev-tools qml6-module-qtquick-controls qml6-module-qtquick qml6-module-qtquick-dialogs qml6-module-qtquick-layouts qml6-module-qtquick-shapes qml6-module-qtquick-window qml6-module-qtqml-workerscript qml6-module-qtquick-templates qml6-module-qtwebengine qml6-module-qt-labs-folderlistmodel qt6-svg-dev- policykit-1 pkexec libpolkit-agent-1-0 xfsprogs qml6-module-qtwebview qt6-webview-plugins qt6-webview-dev
 
 
 #create folders if they don't exist
