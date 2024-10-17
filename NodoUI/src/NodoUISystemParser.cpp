@@ -13,11 +13,11 @@ const screenSaverTypes_t screenSaverTypes = ([](){
         data.components.push_back(component);
     };
 
-    regType("newsCarousel", "News Carousel", "NodoFeederScreenSaver.qml");
-    regType("analogClock", "Analog Clock", "NodoScreenSaver.qml");
-    regType("digitalClock", "Digital Clock", "NodoDigitalClock.qml");
-    //regType("txstreet", "TxStreet", "TxStreetScreenSaver.qml");
-    regType("off", "Off", nullptr);
+    regType("newsCarousel", QT_TR_NOOP("News Carousel"), "NodoFeederScreenSaver.qml");
+    regType("analogClock", QT_TR_NOOP("Analog Clock"), "NodoScreenSaver.qml");
+    regType("digitalClock", QT_TR_NOOP("Digital Clock"), "NodoDigitalClock.qml");
+    //regType("txstreet", QT_TR_NOOP("TxStreet"), "TxStreetScreenSaver.qml");
+    regType("off", QT_TR_NOOP("Off"), nullptr);
 
     data.defaultType = data.ids["digitalClock"];
 
