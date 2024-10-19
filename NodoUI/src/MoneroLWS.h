@@ -69,6 +69,7 @@ signals:
     void listAccountsCompleted(void);
     void listRequestsCompleted(void);
     void dbusConnectionStatusChanged(bool status);
+    void accountAdded(void);
 
 
 private slots:

@@ -7,6 +7,7 @@ MoneroLWS::MoneroLWS(NodoDBusController *dbusController)
     connect(m_dbusController, SIGNAL(dbusConnectionStatusChanged()), this, SLOT(updateDbusConnectionStatus()));
     connect(m_dbusController, SIGNAL(moneroLWSListAccountsCompleted()), this, SLOT(parseAccounts()));
     connect(m_dbusController, SIGNAL(moneroLWSListRequestsCompleted()), this, SLOT(parseRequests()));
+    connect(m_dbusController, SIGNAL(moneroLWSAccountAdded()), this, SIGNAL(accountAdded()));
 }
 
 void MoneroLWS::updateDbusConnectionStatus(void)

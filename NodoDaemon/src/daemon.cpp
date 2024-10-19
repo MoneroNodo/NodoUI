@@ -54,6 +54,8 @@ Daemon::Daemon()
     moneroLWS = new MoneroLWS();
     connect(moneroLWS, SIGNAL(listAccountsCompleted()), this, SIGNAL(moneroLWSListAccountsCompleted()));
     connect(moneroLWS, SIGNAL(listRequestsCompleted()), this, SIGNAL(moneroLWSListRequestsCompleted()));
+    connect(moneroLWS, SIGNAL(accountAdded()), this, SIGNAL(moneroLWSAccountAdded()));
+
 }
 
 void Daemon::startRecovery(int recoverFS, int rsyncBlockchain)

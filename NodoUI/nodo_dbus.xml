@@ -119,5 +119,7 @@
         <signal name="moneroLWSListAccountsCompleted"/>
 
         <signal name="moneroLWSListRequestsCompleted"/>
+
+        <signal name="moneroLWSAccountAdded"/>
     </interface>
 </node>

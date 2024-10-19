@@ -42,6 +42,7 @@ private:
 signals:
     void listAccountsCompleted();
     void listRequestsCompleted();
+    void accountAdded();
 
 };
 

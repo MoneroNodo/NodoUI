@@ -23,6 +23,14 @@ Item {
         labelSize = moneroLWSPrivateViewkeyLabel.labelRectRoundSize
     }
 
+    Connections {
+        target: moneroLWS
+        function onAccountAdded() {
+            moneroLWSMainAddressInput.valueText = ""
+            moneroLWSPrivateViewkeyLabel.valueText = ""
+        }
+    }
+
     NodoInputField {
         id: moneroLWSMainAddressInput
 		anchors.left: moneroLWSAddAccountScreen.left

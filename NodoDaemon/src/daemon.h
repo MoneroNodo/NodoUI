@@ -62,6 +62,7 @@ signals:
 
     void moneroLWSListAccountsCompleted();
     void moneroLWSListRequestsCompleted();
+    void moneroLWSAccountAdded();
 
 private:
     int m_prevIdleTime = 0;

@@ -40,6 +40,7 @@ void MoneroLWS::addAccount(QString address, QString privateKey)
     arguments << dbPathDirArg << "add_account" << address << privateKey;
     callCommand(arguments);
     listAccounts();
+    emit accountAdded();
 }
 
 void MoneroLWS::deleteAccount(QString address)

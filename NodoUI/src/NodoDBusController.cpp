@@ -16,6 +16,7 @@ NodoDBusController::NodoDBusController(QObject *parent) : QObject{parent}
 
     connect(nodo, SIGNAL(moneroLWSListAccountsCompleted()), this, SIGNAL(moneroLWSListAccountsCompleted()));
     connect(nodo, SIGNAL(moneroLWSListRequestsCompleted()), this, SIGNAL(moneroLWSListRequestsCompleted()));
+    connect(nodo, SIGNAL(moneroLWSAccountAdded()), this, SIGNAL(moneroLWSAccountAdded()));
 
     startTimer(1000);
 }

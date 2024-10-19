@@ -46,6 +46,11 @@ Item {
                 moneroLWS.listRequests()
             }
         }
+
+        function onAccountAdded() {
+            activeButton.checked = true
+            activeButton.clicked()
+        }
     }
 
     TabBar {

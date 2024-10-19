@@ -59,8 +59,9 @@ signals:
     void powerButtonPressDetected(void);
     void powerButtonReleaseDetected(void);
 
-    void moneroLWSListAccountsCompleted();
-    void moneroLWSListRequestsCompleted();
+    void moneroLWSListAccountsCompleted(void);
+    void moneroLWSListRequestsCompleted(void);
+    void moneroLWSAccountAdded(void);
 };
 
 #endif // NODODBUSCONTROLLER_H
