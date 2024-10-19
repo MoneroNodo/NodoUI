@@ -1,6 +1,6 @@
 #include "NodoFeedParser.h"
 
-NodoFeedParser::NodoFeedParser(QObject *parent)
+NodoFeedParser::NodoFeedParser(QObject *parent) : QObject(parent)
 {
     QString val;
     QFile file;

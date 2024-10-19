@@ -16,7 +16,7 @@ MoneroPayConnection::MoneroPayConnection(T_payment payment)
     initialise();
 }
 
-MoneroPayConnection::MoneroPayConnection(QObject *parent)
+MoneroPayConnection::MoneroPayConnection(QObject *parent) : QObject(parent)
 {
     initialise();
 }

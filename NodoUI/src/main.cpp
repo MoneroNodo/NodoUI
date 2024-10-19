@@ -13,6 +13,8 @@
 #include "NodoNetworkManager.h"
 #include "NodoSyncInfo.h"
 #include "MoneroPay.h"
+#include "NodoDBusController.h"
+
 
 int main(int argc, char *argv[]) {
     qputenv("QT_IM_MODULE", QByteArray("qtvirtualkeyboard"));
@@ -30,11 +32,12 @@ int main(int argc, char *argv[]) {
     NodoNetworkManager *networkManager = new NodoNetworkManager();
     NodoUISystemParser *uiSystemParser = new NodoUISystemParser();
     NodoFeedsControl *feedsControl = new NodoFeedsControl(networkManager);
+    NodoDBusController *dbusController = new NodoDBusController();
 
     NodoConfigParser *configParser = new NodoConfigParser();
-    MoneroLWS *moneroLWS = new MoneroLWS(configParser);
+    MoneroLWS *moneroLWS = new MoneroLWS(dbusController);
     NodoSystemStatusParser *systemStatusParser = new NodoSystemStatusParser(configParser);
-    NodoSystemControl *systemControl = new NodoSystemControl(uiSystemParser, configParser);
+    NodoSystemControl *systemControl = new NodoSystemControl(uiSystemParser, configParser, dbusController);
     NodoSyncInfo *syncInfo = new NodoSyncInfo(systemStatusParser);
     Translator *translator = new Translator(configParser, &engine);
     MoneroPay *moneroPay = new MoneroPay(configParser);

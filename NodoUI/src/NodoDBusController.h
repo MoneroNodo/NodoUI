@@ -23,13 +23,28 @@ public:
     void factoryResetApproved(void);
     int getBlockchainStorageStatus(void);
 
+    void moneroLWSAddAccount(QString address, QString privateKey);
+    void moneroLWSDeleteAccount(QString address);
+    void moneroLWSReactivateAccount(QString address);
+    void moneroLWSDeactivateAccount(QString address);
+
+    void moneroLWSRescan(QString address, QString height);
+    void moneroLWSAcceptAllRequests(QString requests);
+    void moneroLWSAcceptRequest(QString address);
+    void moneroLWSRejectRequest(QString address);
+
+    QString moneroLWSGetAccountList(void);
+    QString moneroLWSGetRequestList(void);
+
+    void moneroLWSListAccounts(void);
+    void moneroLWSListRequests(void);
 
 protected:
     void timerEvent(QTimerEvent *event);
 
 private:
     com::moneronodo::embeddedInterface *nodo;
-    bool m_dbusAdapterConnectionStatus;
+    bool m_dbusAdapterConnectionStatus = false;
 
 signals:
     void dbusConnectionStatusChanged(void);
@@ -43,6 +58,9 @@ signals:
     void factoryResetCompleted(void);
     void powerButtonPressDetected(void);
     void powerButtonReleaseDetected(void);
+
+    void moneroLWSListAccountsCompleted();
+    void moneroLWSListRequestsCompleted();
 };
 
 #endif // NODODBUSCONTROLLER_H

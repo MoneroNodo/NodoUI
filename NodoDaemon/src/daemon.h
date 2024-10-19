@@ -9,7 +9,9 @@
 #include "PowerKeyThread.h"
 #include "RecoveryKeyThread.h"
 #include "ServiceManagerThread.h"
+#include "MoneroLWSND.h"
 #include "nodo_dbus_adaptor.h"
+
 
 class Daemon : public QObject
 {
@@ -29,6 +31,22 @@ public slots:
     int getBlockchainStorageStatus(void);
     void factoryResetApproved(void);
 
+    void moneroLWSAddAccount(QString address, QString privateKey);
+    void moneroLWSDeleteAccount(QString address);
+    void moneroLWSReactivateAccount(QString address);
+    void moneroLWSDeactivateAccount(QString address);
+
+    void moneroLWSRescan(QString address, QString height);
+    void moneroLWSAcceptAllRequests(QString requests);
+    void moneroLWSAcceptRequest(QString address);
+    void moneroLWSRejectRequest(QString address);
+
+    QString moneroLWSGetAccountList(void);
+    QString moneroLWSGetRequestList(void);
+
+    void moneroLWSListAccounts(void);
+    void moneroLWSListRequests(void);
+
 signals:
     void startRecoveryNotification(const QString &message);
     void serviceManagerNotification(const QString &message);
@@ -41,6 +59,9 @@ signals:
     void powerButtonPressDetected(void);
     void powerButtonReleaseDetected(void);
     void hardwareStatusReadyNotification(const QString &message);
+
+    void moneroLWSListAccountsCompleted();
+    void moneroLWSListRequestsCompleted();
 
 private:
     int m_prevIdleTime = 0;
@@ -65,6 +86,7 @@ private:
 
     PowerKeyThread *powerKeyThread;
     RecoveryKeyThread *recoveryKeyThread;
+    MoneroLWS *moneroLWS;
 
 
 

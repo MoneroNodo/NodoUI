@@ -14,6 +14,9 @@ NodoDBusController::NodoDBusController(QObject *parent) : QObject{parent}
     connect(nodo, SIGNAL(powerButtonPressDetected()), this, SIGNAL(powerButtonPressDetected()));
     connect(nodo, SIGNAL(powerButtonReleaseDetected()), this, SIGNAL(powerButtonReleaseDetected()));
 
+    connect(nodo, SIGNAL(moneroLWSListAccountsCompleted()), this, SIGNAL(moneroLWSListAccountsCompleted()));
+    connect(nodo, SIGNAL(moneroLWSListRequestsCompleted()), this, SIGNAL(moneroLWSListRequestsCompleted()));
+
     startTimer(1000);
 }
 
@@ -121,4 +124,112 @@ int NodoDBusController::getBlockchainStorageStatus(void)
         return 0;
     }
     return nodo->getBlockchainStorageStatus();
+}
+
+void NodoDBusController::moneroLWSAddAccount(QString address, QString privateKey)
+{
+    if(false == m_dbusAdapterConnectionStatus)
+    {
+        return;
+    }
+    nodo->moneroLWSAddAccount(address, privateKey);
+}
+
+void NodoDBusController::moneroLWSDeleteAccount(QString address)
+{
+    if(false == m_dbusAdapterConnectionStatus)
+    {
+        return;
+    }
+    nodo->moneroLWSDeleteAccount(address);
+}
+
+void NodoDBusController::moneroLWSReactivateAccount(QString address)
+{
+    if(false == m_dbusAdapterConnectionStatus)
+    {
+        return;
+    }
+    nodo->moneroLWSReactivateAccount(address);
+}
+
+void NodoDBusController::moneroLWSDeactivateAccount(QString address)
+{
+    if(false == m_dbusAdapterConnectionStatus)
+    {
+        return;
+    }
+    nodo->moneroLWSDeactivateAccount(address);
+}
+
+void NodoDBusController::moneroLWSRescan(QString address, QString height)
+{
+    if(false == m_dbusAdapterConnectionStatus)
+    {
+        return;
+    }
+    nodo->moneroLWSRescan(address, height);
+}
+
+void NodoDBusController::moneroLWSAcceptAllRequests(QString requests)
+{
+    if(false == m_dbusAdapterConnectionStatus)
+    {
+        return;
+    }
+    nodo->moneroLWSAcceptAllRequests(requests);
+}
+
+void NodoDBusController::moneroLWSAcceptRequest(QString address)
+{
+    if(false == m_dbusAdapterConnectionStatus)
+    {
+        return;
+    }
+    nodo->moneroLWSAcceptRequest(address);
+}
+
+void NodoDBusController::moneroLWSRejectRequest(QString address)
+{
+    if(false == m_dbusAdapterConnectionStatus)
+    {
+        return;
+    }
+    nodo->moneroLWSRejectRequest(address);
+}
+
+QString NodoDBusController::moneroLWSGetAccountList(void)
+{
+    if(false == m_dbusAdapterConnectionStatus)
+    {
+        return "";
+    }
+    return nodo->moneroLWSGetAccountList();
+}
+
+QString NodoDBusController::moneroLWSGetRequestList(void)
+{
+    if(false == m_dbusAdapterConnectionStatus)
+    {
+        return "";
+    }
+    return nodo->moneroLWSGetRequestList();
+}
+
+void NodoDBusController::moneroLWSListAccounts(void)
+{
+    if(false == m_dbusAdapterConnectionStatus)
+    {
+        return;
+    }
+    nodo->moneroLWSListAccounts();
+}
+
+void NodoDBusController::moneroLWSListRequests(void)
+{
+    if(false == m_dbusAdapterConnectionStatus)
+    {
+        return;
+    }
+    nodo->moneroLWSListRequests();
 }

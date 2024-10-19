@@ -13,6 +13,7 @@ TARGET = NodoDaemon
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    src/MoneroLWSND.cpp \
     src/ServiceManagerThread.cpp \
         src/main.cpp \
         src/daemon.cpp \
@@ -20,6 +21,7 @@ SOURCES += \
         src/RecoveryKeyThread.cpp \
 
 HEADERS += \
+    src/MoneroLWSND.h \
     src/ServiceManagerThread.h \
     src/daemon.h \
     src/PowerKeyThread.h \

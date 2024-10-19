@@ -3,10 +3,10 @@
 
 #include <QObject>
 #include <QProcess>
-#include "NodoConfigParser.h"
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
+#include "NodoDBusController.h"
 
 typedef struct
 {
@@ -21,7 +21,7 @@ class MoneroLWS : public QObject
     Q_OBJECT
 
 public:
-    explicit MoneroLWS(NodoConfigParser *configParser = Q_NULLPTR);
+    explicit MoneroLWS(NodoDBusController *dbusController = Q_NULLPTR);
     Q_INVOKABLE void listAccounts(void);
     Q_INVOKABLE bool isListAccountsCompleted(void);
     Q_INVOKABLE int getActiveAccountSize(void);
@@ -50,13 +50,11 @@ public:
     Q_INVOKABLE void acceptAllRequests(void);
     Q_INVOKABLE void acceptRequest(QString address);
     Q_INVOKABLE void rejectRequest(QString address);
-
-
+    Q_INVOKABLE bool getDbusConnectionStatus(void);
 
 private:
-    QString program = "/home/nodo/bin/monero-lws-admin";
-    QString dbPathDirArg;
-    NodoConfigParser *m_configParser;
+    NodoDBusController *m_dbusController;
+
     QVector< account_parameters_t > m_activeAccountList;
     QVector< account_parameters_t > m_inactiveAccountList;
     QVector< account_parameters_t > m_requestAccountList;
@@ -64,14 +62,19 @@ private:
     bool m_listAccountsStatus = false;
     bool m_listRequestsStatus = false;
 
-    QString callCommand(QStringList arguments);
-    void parseAccounts(QString accountsJSON);
-    void parseRequests(QString requestsJSON);
+    bool m_dbusConnectionStatus = false;
+
 
 signals:
     void listAccountsCompleted(void);
     void listRequestsCompleted(void);
+    void dbusConnectionStatusChanged(bool status);
 
+
+private slots:
+    void parseAccounts(void);
+    void parseRequests(void);
+    void updateDbusConnectionStatus(void);
 };
 
 #endif // MONEROLWS_H

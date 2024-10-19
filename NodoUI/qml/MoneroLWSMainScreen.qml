@@ -11,8 +11,13 @@ Item {
     anchors.leftMargin: NodoSystem.subMenuLeftMargin
 
     Component.onCompleted: {
-        moneroLWS.listAccounts()
-        moneroLWS.listRequests()
+        var dbusConnStat = moneroLWS.getDbusConnectionStatus()
+        moneroLWSMenuBar.enabled = dbusConnStat
+        if(true === dbusConnStat)
+        {
+            moneroLWS.listAccounts()
+            moneroLWS.listRequests()
+        }
         if (100 === syncInfo.getSyncPercentage())
         {
             addAccountButton.enabled = true
@@ -27,6 +32,19 @@ Item {
         target: syncInfo
         function onSyncDone() {
             addAccountButton.enabled = true
+        }
+    }
+
+    Connections {
+        target: moneroLWS
+        function onDbusConnectionStatusChanged(status) {
+            moneroLWSMenuBar.enabled = status;
+
+            if(true === status)
+            {
+                moneroLWS.listAccounts()
+                moneroLWS.listRequests()
+            }
         }
     }
 

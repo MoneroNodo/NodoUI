@@ -16,7 +16,7 @@ class NodoSystemControl : public QObject
     Q_PROPERTY(bool appTheme READ getAppTheme WRITE setAppTheme NOTIFY appThemeChanged)
 
 public:
-    NodoSystemControl(NodoUISystemParser *uiSystemParser = Q_NULLPTR, NodoConfigParser *configParser = Q_NULLPTR);
+    NodoSystemControl(NodoUISystemParser *uiSystemParser = Q_NULLPTR, NodoConfigParser *configParser = Q_NULLPTR, NodoDBusController *dbusController = Q_NULLPTR);
 
     bool getAppTheme(void);
     void setAppTheme(bool appTheme);

@@ -1,90 +1,65 @@
 #include "MoneroLWS.h"
 
-// #define ENABLE_TEST_CODE
-
-MoneroLWS::MoneroLWS(NodoConfigParser *configParser)
+MoneroLWS::MoneroLWS(NodoDBusController *dbusController)
 {
-    m_configParser = configParser;
-    dbPathDirArg.append("--db-path=").append(m_configParser->getDBPathDir()).append("/light_wallet_server");
+    m_dbusController = dbusController;
 
-#ifdef ENABLE_TEST_CODE
-    // some test values
-    QString accountResult = "{\"active\":[{\"address\":\"address_1\",\"scan_height\":10001,\"access_time\":10002},{\"address\":\"address_2\",\"scan_height\":20001,\"access_time\":20002},{\"address\":\"address_3\",\"scan_height\":30001,\"access_time\":30002},{\"address\":\"address_9\",\"scan_height\":90001,\"access_time\":90002}],\"inactive\":[{\"address\":\"address_4\",\"scan_height\":40001,\"access_time\":40002},{\"address\":\"address_5\",\"scan_height\":50001,\"access_time\":50002},{\"address\":\"address_6\",\"scan_height\":60001,\"access_time\":60002}]}";
-    QString requestResult = "{\"active\":[{\"address\":\"address_51\",\"scan_height\":510001},{\"address\":\"address_52\",\"scan_height\":520001},{\"address\":\"address_53\",\"scan_height\":530001}]}";
-
-    parseAccounts(accountResult);
-    parseRequests(requestResult);
-#endif
+    connect(m_dbusController, SIGNAL(dbusConnectionStatusChanged()), this, SLOT(updateDbusConnectionStatus()));
+    connect(m_dbusController, SIGNAL(moneroLWSListAccountsCompleted()), this, SLOT(parseAccounts()));
+    connect(m_dbusController, SIGNAL(moneroLWSListRequestsCompleted()), this, SLOT(parseRequests()));
 }
 
-QString MoneroLWS::callCommand(QStringList arguments)
+void MoneroLWS::updateDbusConnectionStatus(void)
 {
-    QProcess process;
-    process.start(program, arguments);
-    process.waitForFinished(10000);
-    return QString(process.readAll());
+    bool isConnected = m_dbusController->isConnected();
+    if(m_dbusConnectionStatus == isConnected)
+    {
+        return;
+    }
+
+    m_dbusConnectionStatus = isConnected;
+
+    emit dbusConnectionStatusChanged(m_dbusConnectionStatus);
+}
+
+bool MoneroLWS::getDbusConnectionStatus(void)
+{
+    return m_dbusConnectionStatus;
 }
 
 void MoneroLWS::addAccount(QString address, QString privateKey)
 {
-#ifndef ENABLE_TEST_CODE
-    QStringList arguments;
-    arguments << dbPathDirArg << "add_account" << address << privateKey;
-    callCommand(arguments);
-    listAccounts();
-#endif
+    m_dbusController->moneroLWSAddAccount(address, privateKey);
 }
 
 void MoneroLWS::listAccounts(void)
 {
-#ifndef ENABLE_TEST_CODE
-    QStringList arguments;
-    arguments << dbPathDirArg << "list_accounts";
-    QString result = callCommand(arguments);
-    parseAccounts(result);
-#endif
+    m_dbusController->moneroLWSListAccounts();
 }
 
 void MoneroLWS::listRequests(void)
 {
-#ifndef ENABLE_TEST_CODE
-    QStringList arguments;
-    arguments << dbPathDirArg << "list_requests";
-    QString result = callCommand(arguments);
-    parseRequests(result);
-#endif
+    m_dbusController->moneroLWSListRequests();
 }
 
 void MoneroLWS::deactivateAccount(QString address)
 {
-    QStringList arguments;
-    arguments << dbPathDirArg << "modify_account_status" << "inactive" << address;
-    callCommand(arguments);
-    listAccounts();
+    m_dbusController->moneroLWSDeactivateAccount(address);
 }
 
 void MoneroLWS::rescan(QString address, QString height)
 {
-    QStringList arguments;
-    arguments << dbPathDirArg << "rescan" << height << address;
-    callCommand(arguments);
-    listAccounts();
+    m_dbusController->moneroLWSRescan(address, height);
 }
 
 void MoneroLWS::reactivateAccount(QString address)
 {
-    QStringList arguments;
-    arguments << dbPathDirArg << "modify_account_status" << "active" << address;
-    callCommand(arguments);
-    listAccounts();
+    m_dbusController->moneroLWSReactivateAccount(address);
 }
 
 void MoneroLWS::deleteAccount(QString address)
 {
-    QStringList arguments;
-    arguments << dbPathDirArg << "modify_account_status" << "hidden" << address;
-    callCommand(arguments);
-    listAccounts();
+    m_dbusController->moneroLWSDeleteAccount(address);
 }
 
 bool MoneroLWS::isListAccountsCompleted(void)
@@ -114,34 +89,34 @@ int MoneroLWS::getRequestAccountScanHeight(int index)
 
 void MoneroLWS::acceptAllRequests(void)
 {
-    QStringList arguments;
-    arguments << dbPathDirArg << "accept_requests" << "create";
-
+    QString requests;
     for(int i = 0; m_requestAccountList.size(); i++)
     {
-        arguments << m_requestAccountList.at(i).address;
+        requests.append(m_requestAccountList.at(i).address).append(" ");
     }
-    callCommand(arguments);
+
+    m_dbusController->moneroLWSAcceptAllRequests(requests);
 }
 
 void MoneroLWS::acceptRequest(QString address)
 {
-    QStringList arguments;
-    arguments << dbPathDirArg << "accept_requests" << "create" << address;
-    callCommand(arguments);
-    listRequests();
+    m_dbusController->moneroLWSAcceptRequest(address);
 }
 
 void MoneroLWS::rejectRequest(QString address)
 {
-    QStringList arguments;
-    arguments << dbPathDirArg << "reject_requests" << "create" << address;
-    callCommand(arguments);
-    listRequests();
+    m_dbusController->moneroLWSRejectRequest(address);
 }
 
-void MoneroLWS::parseAccounts(QString accountsJSON)
+void MoneroLWS::parseAccounts(void)
 {
+    QString accounts = m_dbusController->moneroLWSGetAccountList();
+
+    if(accounts.isEmpty())
+    {
+        return;
+    }
+
     m_activeAccountList.clear();
     m_inactiveAccountList.clear();
     QJsonDocument m_document;
@@ -149,7 +124,7 @@ void MoneroLWS::parseAccounts(QString accountsJSON)
     QJsonArray m_activeArray;
     QJsonArray m_inactiveArray;
 
-    m_document = QJsonDocument::fromJson(accountsJSON.toUtf8());
+    m_document = QJsonDocument::fromJson(accounts.toUtf8());
     m_rootObj = m_document.object();
     m_activeArray = m_rootObj["active"].toArray();
     m_inactiveArray = m_rootObj["inactive"].toArray();
@@ -178,15 +153,22 @@ void MoneroLWS::parseAccounts(QString accountsJSON)
     emit listAccountsCompleted();
 }
 
-void MoneroLWS::parseRequests(QString requestsJSON)
+void MoneroLWS::parseRequests(void)
 {
+    QString requests = m_dbusController->moneroLWSGetAccountList();
+
+    if(requests.isEmpty())
+    {
+        return;
+    }
+
     m_requestAccountList.clear();
 
     QJsonDocument m_document;
     QJsonObject m_rootObj;
     QJsonArray m_activeArray;
 
-    m_document = QJsonDocument::fromJson(requestsJSON.toUtf8());
+    m_document = QJsonDocument::fromJson(requests.toUtf8());
     m_rootObj = m_document.object();
     m_activeArray = m_rootObj["active"].toArray();
 

@@ -50,6 +50,10 @@ Daemon::Daemon()
     connect(recoveryKeyThread, SIGNAL(factoryResetStarted()), this, SIGNAL(factoryResetStarted()));
     connect(recoveryKeyThread, SIGNAL(factoryResetCompleted()), this, SIGNAL(factoryResetCompleted()));
     recoveryKeyThread->startListening();
+
+    moneroLWS = new MoneroLWS();
+    connect(moneroLWS, SIGNAL(listAccountsCompleted()), this, SIGNAL(moneroLWSListAccountsCompleted()));
+    connect(moneroLWS, SIGNAL(listRequestsCompleted()), this, SIGNAL(moneroLWSListRequestsCompleted()));
 }
 
 void Daemon::startRecovery(int recoverFS, int rsyncBlockchain)
@@ -482,4 +486,64 @@ int Daemon::getBlockchainStorageStatus(void)
 void Daemon::factoryResetApproved(void)
 {
     recoveryKeyThread->recover();
+}
+
+void Daemon::moneroLWSAddAccount(QString address, QString privateKey)
+{
+    moneroLWS->addAccount(address, privateKey);
+}
+
+void Daemon::moneroLWSDeleteAccount(QString address)
+{
+    moneroLWS->deleteAccount(address);
+}
+
+void Daemon::moneroLWSReactivateAccount(QString address)
+{
+    moneroLWS->reactivateAccount(address);
+}
+
+void Daemon::moneroLWSDeactivateAccount(QString address)
+{
+    moneroLWS->deactivateAccount(address);
+}
+
+void Daemon::moneroLWSRescan(QString address, QString height)
+{
+    moneroLWS->rescan(address, height);
+}
+
+void Daemon::moneroLWSAcceptAllRequests(QString requests)
+{
+    moneroLWS->acceptAllRequests(requests);
+}
+
+void Daemon::moneroLWSAcceptRequest(QString address)
+{
+    moneroLWS->acceptRequest(address);
+}
+
+void Daemon::moneroLWSRejectRequest(QString address)
+{
+    moneroLWS->rejectRequest(address);
+}
+
+QString Daemon::moneroLWSGetAccountList(void)
+{
+    return moneroLWS->getAccountList();
+}
+
+QString Daemon::moneroLWSGetRequestList(void)
+{
+    return moneroLWS->getRequestList();
+}
+
+void Daemon::moneroLWSListAccounts(void)
+{
+    moneroLWS->listAccounts();
+}
+
+void Daemon::moneroLWSListRequests(void)
+{
+    moneroLWS->listRequests();
 }

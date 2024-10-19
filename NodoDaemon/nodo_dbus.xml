@@ -64,5 +64,58 @@
         <signal name="powerButtonPressDetected"/>
 
         <signal name="powerButtonReleaseDetected"/>
+
+
+
+        <method name="moneroLWSAddAccount">
+                <arg name="address" type="s" direction="in"/>
+                <arg name="privateKey" type="s" direction="in"/>
+        </method>
+
+        <method name="moneroLWSDeleteAccount">
+                <arg name="address" type="s" direction="in"/>
+        </method>
+
+        <method name="moneroLWSReactivateAccount">
+                <arg name="address" type="s" direction="in"/>
+        </method>
+
+        <method name="moneroLWSDeactivateAccount">
+                <arg name="address" type="s" direction="in"/>
+        </method>
+
+
+        <method name="moneroLWSRescan">
+                <arg name="address" type="s" direction="in"/>
+                <arg name="height" type="s" direction="in"/>
+        </method>
+
+        <method name="moneroLWSAcceptAllRequests">
+                <arg name="requests" type="s" direction="in"/>
+        </method>
+
+        <method name="moneroLWSAcceptRequest">
+                <arg name="address" type="s" direction="in"/>
+        </method>
+
+        <method name="moneroLWSRejectRequest">
+                <arg name="address" type="s" direction="in"/>
+        </method>
+
+        <method name="moneroLWSGetAccountList">
+                <arg name="accountList" type="s" direction="out"/>
+        </method>
+
+        <method name="moneroLWSGetRequestList">
+                <arg name="requestList" type="s" direction="out"/>
+        </method>
+
+        <method name="moneroLWSListAccounts"/>
+
+        <method name="moneroLWSListRequests"/>
+
+        <signal name="moneroLWSListAccountsCompleted"/>
+
+        <signal name="moneroLWSListRequestsCompleted"/>
     </interface>
 </node>

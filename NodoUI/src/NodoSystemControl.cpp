@@ -1,11 +1,11 @@
 #include "NodoSystemControl.h"
 
 
-NodoSystemControl::NodoSystemControl(NodoUISystemParser *uiSystemParser, NodoConfigParser *configParser)
+NodoSystemControl::NodoSystemControl(NodoUISystemParser *uiSystemParser, NodoConfigParser *configParser, NodoDBusController *dbusController)
 {
     m_uiSystemParser = uiSystemParser;
     m_configParser = configParser;
-    m_dbusController = new NodoDBusController(this);
+    m_dbusController = dbusController;
 
     m_displaySettings = m_uiSystemParser->readDisplaySettings();
     m_timezone = m_configParser->getTimezone();
@@ -257,6 +257,15 @@ QString NodoSystemControl::getServiceStatus(QString serviceName)
 void NodoSystemControl::updateHardwareStatus(QString message)
 {
     QStringList statusList = message.split("\n", Qt::SkipEmptyParts);
+
+    if(statusList.isEmpty())
+    {
+        return;
+    }
+    if(statusList.size() != 11)
+    {
+        return;
+    }
 
     double CPUUsage               = statusList[0].toDouble();
     double averageCPUFreq         = statusList[1].toDouble();
