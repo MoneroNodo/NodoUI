@@ -10,29 +10,27 @@ Item {
     anchors.fill: parent
     anchors.leftMargin: NodoSystem.subMenuLeftMargin
 
-    // Component.onCompleted: {
-    //     if (100 === syncInfo.getSyncPercentage())
-    //     {
-    //         receiveButton.enabled = true
-    //         receiveButton.checked = true
-    //         receiveButton.clicked()
-    //     }
-    //     else
-    //     {
-    //         receiveButton.enabled = false
-    //         paymentsButton.checked = true
-    //         paymentsButton.clicked()
-    //     }
-    // }
+    Component.onCompleted: {
+        if (100 === syncInfo.getSyncPercentage())
+        {
+            receiveButton.enabled = true
+            receiveButton.checked = true
+            receiveButton.clicked()
+        }
+        else
+        {
+            receiveButton.enabled = false
+            paymentsButton.checked = true
+            paymentsButton.clicked()
+        }
+    }
 
-    // Connections {
-    //     target: syncInfo
-    //     function onSyncDone() {
-    //         receiveButton.enabled = true
-    //     }
-    // }
-
-
+    Connections {
+        target: syncInfo
+        function onSyncDone() {
+            receiveButton.enabled = true
+        }
+    }
 
     Connections{
         target: moneroPay
@@ -61,7 +59,7 @@ Item {
             font.family: NodoSystem.fontUrbanist.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: { moneroPayPageLoader.source = "MoneroPayReceiveMainScreen.qml" }
-            // enabled: false
+            enabled: false
         }
         NodoTabButton {
             id: paymentsButton
