@@ -17,6 +17,7 @@ typedef enum {
     PAYMENT_SATUS_RECEIVED,
     PAYMENT_SATUS_PENDING,
     PAYMENT_SATUS_CANCELLED,
+    PAYMENT_SATUS_NOT_RECEIVED
 } PAYMENT_SATUS;
 
 typedef struct {
@@ -30,9 +31,8 @@ typedef struct {
     QString description;
     int id;
     int blockConfirmation;
-    bool signalDisabled;
     bool isfromdb;
-} T_payment;
+} payment_t;
 
 typedef struct {
     QString address;
@@ -41,31 +41,29 @@ typedef struct {
     QDateTime created_at;
 }response_msg_t;
 
-Q_DECLARE_METATYPE(T_payment)
+Q_DECLARE_METATYPE(payment_t)
 
 class MoneroPayConnection : public QObject
 {
     Q_OBJECT
 public:
-    explicit MoneroPayConnection(T_payment payment);
+    explicit MoneroPayConnection(payment_t payment);
     explicit MoneroPayConnection(QObject *parent = Q_NULLPTR);
     ~MoneroPayConnection();
 
     void requestPayment(void);
     void requestPreviousPayment(void);
-    T_payment getPayment(void);
-    void setSignalDisabled(bool newStat);
+    payment_t getPayment(void);
     int getID(void);
     void checkHealth(void);
 
-
 signals:
-    void paymentStatusChanged(int id);
-    void depositAddressReceived(int id);
+    void paymentStatusChanged(void);
+    void depositAddressReceived(void);
     void healthResultReady(bool result);
 
 private:
-    T_payment m_payment;
+    payment_t m_payment;
     QNetworkAccessManager *m_networkAccessManager;
     QTimer *m_requestTimer;
 

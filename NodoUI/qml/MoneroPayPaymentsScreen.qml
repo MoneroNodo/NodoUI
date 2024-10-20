@@ -9,7 +9,6 @@ Item {
     id: moneroPayPaymentsScreen
     anchors.fill: parent
     property int labelSize: 0
-    signal pageChangeRequested()
 
     function createListModels() {
         paymentsListModel.clear()

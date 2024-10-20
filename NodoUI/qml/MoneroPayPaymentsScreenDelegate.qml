@@ -17,13 +17,14 @@ NodoCanvas {
     property string transactionID
     property string timestamp
     property string description
+    property string descriptionHTMLEncoded
     property double xmrAmount
     property double exchangeRate
     property int exchangeIndex
     property string exchangeName
     property string depositAddress
     property double fiatValue
-    height: moneroPayReceivedClearPaymentField.height + moneroPayReceivedClearPaymentField.y + 15
+    height: moneroPayReceivedRemovePaymentButton.height + moneroPayReceivedRemovePaymentButton.y + 15
 
     Connections {
         target: moneroPay
@@ -44,6 +45,7 @@ NodoCanvas {
         timestamp = dateTime.toUpperCase()
         depositAddress = moneroPay.getPaymentDepositAddress(paymentIndex)
         description = moneroPay.getPaymentDescription(paymentIndex)
+        descriptionHTMLEncoded = moneroPay.getDescriptionHTMLEncoded(paymentIndex)
         exchangeName = nodoCurrencies.currencyCodes[exchangeIndex]
         fiatValue = moneroPay.getFiatAmount(paymentIndex)
         createListModels()
@@ -66,7 +68,7 @@ NodoCanvas {
         anchors.leftMargin: 15
         height: NodoSystem.nodoItemHeight
         itemSize: labelSize
-        width: 455
+        width: 495
         itemText: qsTr("Status")
         valueText: {
             if(paymentStatus === 1)
@@ -80,6 +82,10 @@ NodoCanvas {
             else if(paymentStatus === 3)
             {
                 qsTr("Cancelled")
+            }
+            else if (paymentStatus === 4)
+            {
+                qsTr("Not Received")
             }
             else {
                 qsTr("Unknown")
@@ -117,8 +123,8 @@ NodoCanvas {
         anchors.top: moneroPayReceivedPaymentStatusField.top
         anchors.leftMargin: 5
         height: NodoSystem.nodoItemHeight
-        itemSize: 220
-        width: 600
+        itemSize: 180
+        width: 560
         itemText: qsTr("Timestamp")
         valueText: timestamp
     }
@@ -169,7 +175,6 @@ NodoCanvas {
         }
     }
 
-
     NodoInfoField {
         id: moneroPayReceivedDescriptionField
         anchors.left: moneroPayReceivedPaymentStatusField.left
@@ -184,37 +189,46 @@ NodoCanvas {
     }
 
     NodoButton {
-        id: moneroPayReceivedCancelPaymentField
+        id: moneroPayReceivedRemovePaymentButton
         anchors.left: moneroPayReceivedPaymentStatusField.left
         anchors.top: moneroPayReceivedDescriptionField.bottom
-        anchors.topMargin: visible === true ? fieldTopMargin : 0
-        text: qsTr("Cancel Payment")
-        height: NodoSystem.nodoItemHeight
-        font.family: NodoSystem.fontUrbanist.name
-        font.pixelSize: NodoSystem.buttonTextFontSize
-        visible: paymentStatus === 2 ? true : false
-        onClicked: {
-            moneroPay.cancelPayment(depositAddress)
-            isActive = false
-        }
-    }
-
-    NodoButton {
-        id: moneroPayReceivedClearPaymentField
-        anchors.left: moneroPayReceivedCancelPaymentField.visible ? moneroPayReceivedCancelPaymentField.right : moneroPayReceivedPaymentStatusField.left
-        anchors.top: moneroPayReceivedDescriptionField.bottom
         anchors.topMargin: fieldTopMargin
-        anchors.leftMargin: moneroPayReceivedCancelPaymentField.visible ? 15 : 0
         text: qsTr("Clear Payment")
         height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         onClicked: {
-            moneroPay.deletePayment(paymentIndex)
+            moneroPay.deletePayment(depositAddress)
+        }
+    }
+
+    NodoButton {
+        id: moneroPayReceivedQRCodeButton
+        anchors.left: moneroPayReceivedRemovePaymentButton.right
+        anchors.top: moneroPayReceivedRemovePaymentButton.top
+        anchors.leftMargin: 16
+        text: qsTr("View QR")
+        height: NodoSystem.nodoItemHeight
+        font.family: NodoSystem.fontUrbanist.name
+        font.pixelSize: NodoSystem.buttonTextFontSize
+        onClicked: {
+            mainRectPopup.qrCodeData = "monero:" + depositAddress + "?tx_amount=" + (xmrAmount)
+
+            if(descriptionHTMLEncoded !== "")
+            {
+                mainRectPopup.qrCodeData = mainRectPopup.qrCodeData + "&tx_description=" + descriptionHTMLEncoded
+            }
+
+            mainRectPopup.closeButtonText = qsTr("Dismiss")
+            mainRectPopup.open();
         }
     }
 
     ListModel {
         id: transactionIDListModel
+    }
+
+    NodoQRCodePopup {
+        id: mainRectPopup
     }
 }

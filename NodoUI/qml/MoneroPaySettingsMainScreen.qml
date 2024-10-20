@@ -8,7 +8,6 @@ import NodoCanvas 1.0
 Item {
     id: moneroPaySettingsMainScreen
     anchors.fill: parent
-    signal pageChangeRequested()
 
     Component.onCompleted: {
         moneroPaySettingsMainStackView.push("NodoLockScreen.qml", {parentID: 1})

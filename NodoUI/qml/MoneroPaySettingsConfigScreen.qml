@@ -14,7 +14,6 @@ Item {
     property bool inputFieldReadOnly: false
     property bool clearButtonActive: false
     property bool setButtonActive: true
-    signal pageChangeRequested()
     signal deleteMe(int screenID)
 
 

@@ -16,9 +16,10 @@ class MoneroPayDbManager : public QObject
 public:
     explicit MoneroPayDbManager(QObject *parent = Q_NULLPTR);
     int getDbEntrySize(void);
-    T_payment getEntry(int index);
+    payment_t getEntry(int index);
     void deleteEntry(QString address);
-    void setNewEntry(T_payment p);
+    void deleteAllEntries(void);
+    void setNewEntry(payment_t p);
     void deleteList(void);
 
 
@@ -27,7 +28,7 @@ private:
     QSqlDatabase m_db;
     QTimer *m_timer;
 
-    QList < T_payment > m_dbEntries;
+    QList < payment_t > m_dbEntries;
 
 
 private slots:

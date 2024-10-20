@@ -20,7 +20,6 @@ public:
     Q_INVOKABLE void clearAllPayments(void);
 
     Q_INVOKABLE int getPaymentCount(void);
-    Q_INVOKABLE void updateRequested(void);
     Q_INVOKABLE int getDefaultBlockConfirmations(void);
 
     Q_INVOKABLE qint64 getPaymentAmount(int index);
@@ -30,32 +29,34 @@ public:
     Q_INVOKABLE QString getPaymentDepositAddress(int index);
     Q_INVOKABLE QString getPaymentTransactionID(int p_index, int t_index);
     Q_INVOKABLE QString getPaymentDescription(int index);
-    Q_INVOKABLE void deletePayment(int index);
+    Q_INVOKABLE void deletePayment(QString address);
     Q_INVOKABLE int transactionIDSize(int index);
-    Q_INVOKABLE void cancelPayment(int index);
-    Q_INVOKABLE void cancelPayment(QString address);
 
     Q_INVOKABLE QString getMoneroPayAddress(void);
     Q_INVOKABLE QString getMoneroPayViewKey(void);
     Q_INVOKABLE void clearDepositAddress(void);
     Q_INVOKABLE void setDepositAddress(QString address, QString viewKey);
     Q_INVOKABLE void xmrRequestPayment(QString xmrAmount, QString fiatAmount, int fiatIndex, QString description, int blockConfirmation);
-    Q_INVOKABLE double getReceivedAmount(void);
-    Q_INVOKABLE QDateTime getReceivedTimestamp(void);
-    Q_INVOKABLE QString getReceivedDepositAddress(void);
-    Q_INVOKABLE QString getReceivedTransactionID(void);
-    Q_INVOKABLE QString getReceivedDescription(void);
-    Q_INVOKABLE QString getReceivedDescriptionHTMLEncoded(void);
-    Q_INVOKABLE QDateTime getTime(void);
 
-    Q_INVOKABLE int getLastPaymentID(void);
+    Q_INVOKABLE double getLastXMRAmount(void);
+    Q_INVOKABLE double getLastFiatAmount(void);
+    Q_INVOKABLE QString getLastDescription(void);
+    Q_INVOKABLE QString getLastDepositAddress(void);
+    Q_INVOKABLE QDateTime getLastTimestamp(void);
+    Q_INVOKABLE QString getLastDescriptionHTMLEncoded(void);
+    Q_INVOKABLE QString getLastTransactionID(void);
+
+    Q_INVOKABLE void newPaymentRequest(void);
+    Q_INVOKABLE void openViewPaymentsScreenRequest(void);
+
+    Q_INVOKABLE QString getDescriptionHTMLEncoded(int index);
+
 
 
 private:
     const QString m_mpayFile = "/home/nodo/mpay";
     const QString m_mpayKeyFile = "/home/nodo/mpay.keys";
     bool m_componentEnabled = true;
-    bool isUpdateRequested = false;
     int m_paymentID = 0;
     const int m_defaultBlockConfirmations = 10;
     QString m_htmlDecodedDesctiption;
@@ -63,31 +64,36 @@ private:
     NodoConfigParser *m_configParser;
     MoneroPayDbManager *m_dbManager;
 
-    T_payment m_lastPayment;
-    QList < T_payment > m_paymentResults;
-    QList < T_payment > m_displayResults;
-    QList <MoneroPayConnection*> m_paymentRequests;
+    payment_t m_lastPayment;
+    QList < payment_t > m_displayResults;
+    QList < payment_t > m_payments;
+    QList <MoneroPayConnection*> m_mpayRequests;
     QList <int> paymentIDList;
+
+    bool m_isClearAllPaymentsRequested = false;
 
     MoneroPayConnection *m_mpayConnection;
 
-    int getActivePaymentIndex(int id);
+    int getPaymentIndexbyID(int id);
+    int getRequestIndexbyID(int id);
     void enableComponent(bool enabled);
     int getPaymentIndexbyAddress(QString address);
+    int getRequestIndexbyPaymentID(int ID);
 
 signals:
     void paymentListReady(void);
     void componentEnabledStatusChanged(void);
     void depositAdressCleared(void);
     void paymentReceived(void);
-    void paymentUpdated(void);
     void depositAddressReceived(void);
 
+    void newPaymentRequested(void);
+    void openViewPaymentsScreenRequested(void);
+
 private slots:
-    void paymentStatusReceived(int id);
-    void updateDepositAddress(int id);
+    void paymentStatusReceived(void);
+    void updateDepositAddress(void);
     void getPreviousPaymentResults(void);
-    void healthResultReceived(bool result);
 };
 
 

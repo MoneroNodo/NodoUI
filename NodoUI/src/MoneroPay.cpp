@@ -7,39 +7,156 @@ MoneroPay::MoneroPay(NodoConfigParser *configParser)
     m_dbManager = new MoneroPayDbManager();
     m_mpayConnection = new MoneroPayConnection();
     connect(m_dbManager, SIGNAL(dbEntriesReady()), this, SLOT(getPreviousPaymentResults()));
-    connect(m_mpayConnection, SIGNAL(healthResultReady(bool)), this, SLOT(healthResultReceived(bool)));
 
-    // m_mpayConnection->checkHealth();
+    m_lastPayment.paymentStatus = PAYMENT_SATUS_NONE;
+    m_lastPayment.blockConfirmation = 10;
+    m_lastPayment.depositAddress = "n/a";
+    m_lastPayment.description = "n/a";
+    m_lastPayment.fiatAmount = 0;
+    m_lastPayment.xmrAmountInPico = 0;
+
+    QDateTime date;
+    QString s = "1970-01-01T00:00:00";
+    date = QDateTime::fromString(s,"yyyy-MM-ddThh:mm:ss");
+    m_lastPayment.dateTime = date;
 }
 
-bool MoneroPay::isComponentEnabled(void)
-{
-    return m_componentEnabled;
-}
-
-void MoneroPay::clearAllPayments(void)
-{
-    for(int i = 0; i < m_paymentResults.size(); i++)
-    {
-        m_dbManager->deleteEntry(m_paymentResults.at(i).depositAddress);
-    }
-
-    m_paymentResults.clear();
-    m_paymentID = 0;
-    emit paymentListReady();
-}
-
-bool compareByDate(T_payment left, T_payment right)
+bool compareByDate(payment_t left, payment_t right)
 {
     return right.dateTime < left.dateTime;
+}
+
+int MoneroPay::getPaymentIndexbyID(int id)
+{
+    for(int i = 0; i < m_payments.size(); i++)
+    {
+        if(id == m_payments[i].id)
+            return i;
+    }
+
+    return -1;
+}
+
+int MoneroPay::getRequestIndexbyID(int id)
+{
+    for(int i = 0; i < paymentIDList.size(); i++)
+    {
+        if(id == paymentIDList[i])
+            return i;
+    }
+
+    return -1;
+}
+
+void MoneroPay::paymentStatusReceived(void)
+{
+    MoneroPayConnection *tmpc = qobject_cast<MoneroPayConnection*>(sender());
+    int index = 0;
+    int id = tmpc->getID();
+    index = getPaymentIndexbyID(id);
+
+    if(-1 == index)
+    {
+        return;
+    }
+    m_lastPayment = tmpc->getPayment();
+    m_payments[index] = m_lastPayment;
+    if(PAYMENT_SATUS_RECEIVED == m_lastPayment.paymentStatus)
+    {
+        int tmp = getRequestIndexbyID(id);
+        delete m_mpayRequests[tmp];
+        m_mpayRequests.removeAt(tmp);
+        paymentIDList.removeAt(tmp);
+
+        if(!m_lastPayment.isfromdb)
+        {
+            getPaymentCount();
+            emit paymentReceived();
+        }
+        else
+        {
+            emit paymentListReady();
+        }
+    }
+}
+
+void MoneroPay::updateDepositAddress(void)
+{
+    int index = 0;
+    MoneroPayConnection *tmpc = qobject_cast<MoneroPayConnection*>(sender());
+    index = getPaymentIndexbyID(tmpc->getID());
+
+    if(-1 == index)
+    {
+        return;
+    }
+    m_lastPayment = tmpc->getPayment();
+    m_payments[index] = m_lastPayment;
+    m_dbManager->setNewEntry(m_lastPayment);
+
+    emit depositAddressReceived();
+}
+
+void MoneroPay::xmrRequestPayment(QString xmrAmount, QString fiatAmount, int fiatIndex, QString description, int blockConfirmation)
+{
+    bool ok;
+    double xmr = xmrAmount.toDouble(&ok);
+    if(!ok)
+    {
+        return;
+    }
+
+    payment_t p;
+    p.xmrAmountInPico = (qint64)(xmr*1000000000000);
+    p.fiatAmount = fiatAmount.toDouble(&ok);
+    p.description = description;
+    p.blockConfirmation = blockConfirmation;
+    p.fiatIndex = fiatIndex;
+    p.id = m_paymentID;
+    p.isfromdb = false;
+
+    MoneroPayConnection *tmpc = new MoneroPayConnection(p);
+    m_htmlDecodedDesctiption = description;
+
+    m_payments.append(p);
+    m_mpayRequests.append(tmpc);
+    paymentIDList.append(m_paymentID);
+
+    connect(tmpc, SIGNAL(paymentStatusChanged()), this, SLOT(paymentStatusReceived()));
+    connect(tmpc, SIGNAL(depositAddressReceived()), this, SLOT(updateDepositAddress()));
+
+    m_paymentID++;
+
+    tmpc->requestPayment();
+}
+
+void MoneroPay::getPreviousPaymentResults(void)
+{
+    int size = m_dbManager->getDbEntrySize();
+
+    for(int i = 0; i < size; i++)
+    {
+        payment_t p = m_dbManager->getEntry(i);
+        p.id = m_paymentID;
+        p.xmrAmountInPico = 0;
+
+        MoneroPayConnection *tmp = new MoneroPayConnection(p);
+        m_payments.append(p);
+        m_mpayRequests.append(tmp);
+        paymentIDList.append(m_paymentID);
+
+        connect(tmp, SIGNAL(paymentStatusChanged()), this, SLOT(paymentStatusReceived()));
+        m_mpayRequests.at(m_paymentID)->requestPreviousPayment();
+        m_paymentID++;
+    }
 }
 
 int MoneroPay::getPaymentCount(void)
 {
     m_displayResults.clear();
-    for(int i = 0; i < m_paymentResults.size(); i++)
+    for(int i = 0; i < m_payments.size(); i++)
     {
-        m_displayResults.append(m_paymentResults.at(i));
+        m_displayResults.append(m_payments.at(i));
     }
     if(m_displayResults.size() > 0)
     {
@@ -48,14 +165,76 @@ int MoneroPay::getPaymentCount(void)
     return m_displayResults.size();
 }
 
-void MoneroPay::updateRequested()
+void MoneroPay::clearAllPayments(void)
 {
-    if(isUpdateRequested)
+    int size = m_mpayRequests.size();
+    for(int i = 0; i < size; i++)
+    {
+        delete m_mpayRequests[i];
+    }
+
+    m_mpayRequests.clear();
+    paymentIDList.clear();
+    m_payments.clear();
+    m_displayResults.clear();
+
+    m_dbManager->deleteAllEntries();
+
+    emit paymentListReady();
+}
+
+void MoneroPay::deletePayment(QString address)
+{
+    int index = getPaymentIndexbyAddress(address);
+    if(index == -1)
     {
         return;
     }
 
-    isUpdateRequested = true;
+    int tmpid = m_payments[index].id;
+    int index2 = getRequestIndexbyPaymentID(tmpid);
+    if(index2 != -1)
+    {
+        delete m_mpayRequests[index2];
+        m_mpayRequests.removeAt(index2);
+        paymentIDList.removeAt(index2);
+    }
+
+    m_payments.removeAt(index);
+    m_dbManager->deleteEntry(address);
+    emit paymentListReady();
+}
+
+int MoneroPay::getRequestIndexbyPaymentID(int ID)
+{
+    int size = paymentIDList.size();
+    for(int i = 0; i < size; i++)
+    {
+        if(paymentIDList.at(i) == ID)
+        {
+            return i;
+        }
+    }
+    return -1;
+}
+
+int MoneroPay::getPaymentIndexbyAddress(QString address)
+{
+    int size = m_payments.size();
+    for(int i = 0; i < size; i++)
+    {
+        if(m_payments.at(i).depositAddress.contains(address))
+        {
+            return i;
+        }
+    }
+
+    return -1;
+}
+
+bool MoneroPay::isComponentEnabled(void)
+{
+    return m_componentEnabled;
 }
 
 qint64 MoneroPay::getPaymentAmount(int index)
@@ -84,8 +263,7 @@ int MoneroPay::getPaymentStatus(int index)
         return PAYMENT_SATUS_NONE;
     }
 
-    return (int)m_displayResults.at(index).paymentStatus;
-}
+    return (int)m_displayResults.at(index).paymentStatus;}
 
 QDateTime MoneroPay::getPaymentTimestamp(int index)
 {
@@ -132,13 +310,6 @@ QString MoneroPay::getPaymentDescription(int index)
     return m_displayResults.at(index).description;
 }
 
-void MoneroPay::deletePayment(int index)
-{
-    m_dbManager->deleteEntry(m_displayResults.at(index).depositAddress);
-    m_paymentResults.removeAt(m_displayResults.at(index).id);
-    emit paymentListReady();
-}
-
 int MoneroPay::transactionIDSize(int index)
 {
     return m_displayResults.at(index).transactionIDList.size();
@@ -176,155 +347,46 @@ void MoneroPay::clearDepositAddress(void)
     emit depositAdressCleared();
 }
 
-int MoneroPay::getActivePaymentIndex(int id)
-{
-    return paymentIDList.indexOf(id);
-}
-
-int MoneroPay::getPaymentIndexbyAddress(QString address)
-{
-    int retval = -1;
-    int size = m_paymentResults.size();
-    for(int i = 0; i < size; i++)
-    {
-        retval = m_paymentResults.at(i).depositAddress.indexOf(address);
-        if(-1 != retval)
-        {
-            return i;
-        }
-    }
-
-    return retval;
-}
-
-void MoneroPay::paymentStatusReceived(int id)
-{
-    int index = getActivePaymentIndex(id);
-    m_lastPayment = m_paymentRequests[index]->getPayment();
-    m_lastPayment.signalDisabled = m_paymentResults[m_lastPayment.id].signalDisabled; //first, update signal disabled status of the last request
-
-    m_paymentResults[m_lastPayment.id] = m_lastPayment;
-
-    if(PAYMENT_SATUS_RECEIVED == m_lastPayment.paymentStatus)
-    {
-        delete m_paymentRequests[index];
-        m_paymentRequests.removeAt(index);
-        paymentIDList.removeAt(index);
-        if(!m_lastPayment.isfromdb)
-        {
-            m_dbManager->setNewEntry(m_lastPayment);
-            emit paymentUpdated();
-        }
-
-        if((!m_lastPayment.signalDisabled) && (!m_lastPayment.isfromdb))
-        {
-            getPaymentCount();
-            emit paymentReceived();
-        }
-    }
-    else if(PAYMENT_SATUS_PENDING == m_lastPayment.paymentStatus)
-    {
-
-    }
-}
-
-void MoneroPay::getPreviousPaymentResults(void)
-{
-    int size = m_dbManager->getDbEntrySize();
-
-    for(int i = 0; i < size; i++)
-    {
-        T_payment p = m_dbManager->getEntry(i);
-        p.id = m_paymentID;
-        p.xmrAmountInPico = 0;
-
-        MoneroPayConnection *tmp = new MoneroPayConnection(p);
-        m_paymentResults.append(p);
-        m_paymentRequests.append(tmp);
-        paymentIDList.append(m_paymentID);
-
-        connect(tmp, SIGNAL(paymentStatusChanged(int)), this, SLOT(paymentStatusReceived(int)));
-        m_paymentRequests.at(m_paymentID)->requestPreviousPayment();
-        m_paymentID++;
-    }
-}
-
-void MoneroPay::xmrRequestPayment(QString xmrAmount, QString fiatAmount, int fiatIndex, QString description, int blockConfirmation)
-{
-    bool ok;
-    double xmr = xmrAmount.toDouble(&ok);
-    if(!ok)
-    {
-        return;
-    }
-
-    T_payment p;
-    p.xmrAmountInPico = (qint64)(xmr*1000000000000);
-    p.fiatAmount = fiatAmount.toDouble(&ok);
-    p.description = description;
-    p.blockConfirmation = blockConfirmation;
-    p.fiatIndex = fiatIndex;
-    p.id = m_paymentID;
-    p.signalDisabled = false;
-    p.isfromdb = false;
-
-    MoneroPayConnection *tmp = new MoneroPayConnection(p);
-    m_htmlDecodedDesctiption = description;
-
-    m_paymentResults.append(p);
-    m_paymentRequests.append(tmp);
-    paymentIDList.append(m_paymentID);
-
-    connect(tmp, SIGNAL(paymentStatusChanged(int)), this, SLOT(paymentStatusReceived(int)));
-    connect(tmp, SIGNAL(depositAddressReceived(int)), this, SLOT(updateDepositAddress(int)));
-
-    m_paymentID++;
-
-    tmp->requestPayment();
-}
-
-double MoneroPay::getReceivedAmount(void)
+double MoneroPay::getLastXMRAmount(void)
 {
     return m_lastPayment.xmrAmountInPico/1000000000000;
 }
 
-QDateTime MoneroPay::getReceivedTimestamp(void)
+double MoneroPay::getLastFiatAmount(void)
 {
+    return m_lastPayment.fiatAmount;
+}
+
+QDateTime MoneroPay::getLastTimestamp(void)
+{   
     return m_lastPayment.dateTime;
 }
 
-QString MoneroPay::getReceivedDepositAddress(void)
+QString MoneroPay::getLastDepositAddress(void)
 {
+    if(m_lastPayment.depositAddress.isEmpty())
+    {
+        return "n/a";
+    }
     return m_lastPayment.depositAddress;
 }
 
-QString MoneroPay::getReceivedTransactionID(void)
+QString MoneroPay::getLastTransactionID(void)
 {
+    if(m_lastPayment.transactionIDList.isEmpty())
+    {
+        return "n/a";
+    }
+
     return m_lastPayment.transactionIDList.at(0);
 }
 
-QString MoneroPay::getReceivedDescription(void)
+QString MoneroPay::getLastDescription(void)
 {
     return m_lastPayment.description;
 }
 
-void MoneroPay::updateDepositAddress(int id)
-{
-    int index = getActivePaymentIndex(id);
-
-    if(-1 == index)
-    {
-        return;
-    }
-    m_lastPayment = m_paymentRequests[index]->getPayment();
-    m_paymentResults[id].depositAddress = m_lastPayment.depositAddress;
-    m_paymentResults[id].paymentStatus = m_lastPayment.paymentStatus;
-    m_paymentResults[id].dateTime = m_lastPayment.dateTime;
-
-    emit depositAddressReceived();
-}
-
-QString MoneroPay::getReceivedDescriptionHTMLEncoded(void)
+QString MoneroPay::getLastDescriptionHTMLEncoded(void)
 {
     if(m_htmlDecodedDesctiption.isEmpty())
     {
@@ -336,42 +398,21 @@ QString MoneroPay::getReceivedDescriptionHTMLEncoded(void)
     return tmp;
 }
 
-QDateTime MoneroPay::getTime(void)
+QString MoneroPay::getDescriptionHTMLEncoded(int index)
 {
-    return QDateTime::currentDateTimeUtc();
-}
-
-void MoneroPay::cancelPayment(int paymentID)
-{
-    // if(-1 == paymentID)
-    // {
-    //     return;
-    // }
-
-    // int index = getActivePaymentIndex(paymentID);
-
-    // if(-1 == index)
-    // {
-    //     return;
-    // }
-    // m_paymentRequests[index]->setSignalDisabled(true);
-    m_paymentResults[paymentID].signalDisabled = true;
-}
-
-void MoneroPay::cancelPayment(QString address)
-{
-    int index = getPaymentIndexbyAddress(address);
-    if(-1 == index)
+    if(m_displayResults.size() <= index)
     {
-        return;
+        return "";
     }
 
-    m_paymentResults[index].signalDisabled = true;
-}
+    if(m_displayResults.at(index).description.isEmpty())
+    {
+        return "";
+    }
 
-int MoneroPay::getLastPaymentID(void)
-{
-    return m_paymentID -1;
+    QByteArray desc_url = QUrl::toPercentEncoding(m_displayResults.at(index).description);
+    QString tmp = QString(desc_url);
+    return tmp;
 }
 
 int MoneroPay::getDefaultBlockConfirmations(void)
@@ -379,7 +420,12 @@ int MoneroPay::getDefaultBlockConfirmations(void)
     return m_defaultBlockConfirmations;
 }
 
-void MoneroPay::healthResultReceived(bool result)
+void MoneroPay::newPaymentRequest(void)
 {
-    qDebug() << "moneropay health result: " << result;
+    emit newPaymentRequested();
+}
+
+void MoneroPay::openViewPaymentsScreenRequest(void)
+{
+    emit openViewPaymentsScreenRequested();
 }

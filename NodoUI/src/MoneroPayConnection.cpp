@@ -10,13 +10,13 @@ typedef struct {
 }tx_hash_t;
 
 
-MoneroPayConnection::MoneroPayConnection(T_payment payment)
+MoneroPayConnection::MoneroPayConnection(payment_t payment)
 {
     m_payment = payment;
     initialise();
 }
 
-MoneroPayConnection::MoneroPayConnection(QObject *parent) : QObject(parent)
+MoneroPayConnection::MoneroPayConnection(QObject *parent)
 {
     initialise();
 }
@@ -91,6 +91,15 @@ void MoneroPayConnection::parseReceiveAddress(QByteArray replyMessage)
     tmp = amountCoveredObj.value("unlocked");
     long int amountCoveredUnlocked = (long int)tmp.toInteger();
 
+    if(transactionsArray.size() > 0)
+    {
+        m_payment.paymentStatus = PAYMENT_SATUS_NOT_RECEIVED;
+    }
+    else
+    {
+        m_payment.paymentStatus = PAYMENT_SATUS_PENDING;
+    }
+
     if(m_payment.blockConfirmation == 0)
     {
         if(amountExpected == amountCoveredTotal)
@@ -99,7 +108,6 @@ void MoneroPayConnection::parseReceiveAddress(QByteArray replyMessage)
         }
         else
         {
-            m_payment.paymentStatus = PAYMENT_SATUS_PENDING;
             m_requestTimer->start(SCAN_TIMEOUT_IN_MS);
         }
     }
@@ -111,7 +119,6 @@ void MoneroPayConnection::parseReceiveAddress(QByteArray replyMessage)
         }
         else
         {
-            m_payment.paymentStatus = PAYMENT_SATUS_PENDING;
             m_requestTimer->start(SCAN_TIMEOUT_IN_MS);
         }
     }
@@ -144,7 +151,6 @@ void MoneroPayConnection::parseReceiveAddress(QByteArray replyMessage)
         }
         else
         {
-            m_payment.paymentStatus = PAYMENT_SATUS_PENDING;
             m_requestTimer->start(SCAN_TIMEOUT_IN_MS);
         }
     }
@@ -183,7 +189,7 @@ void MoneroPayConnection::parseReceiveAddress(QByteArray replyMessage)
         }
     }
 
-    emit paymentStatusChanged(m_payment.id);
+    emit paymentStatusChanged();
 }
 
 void MoneroPayConnection::requestPaymentStatus(QString address)
@@ -216,7 +222,7 @@ void MoneroPayConnection::requestPayment(void)
 
 void MoneroPayConnection::replyFinished(QNetworkReply *reply) {
     QByteArray answer = reply->readAll();
-    qDebug() << "reply: " << answer;
+    // qDebug() << "reply: " << answer;
 
     if(reply->url().toString().contains(RECEIVE_URL))
     {
@@ -234,15 +240,12 @@ void MoneroPayConnection::replyFinished(QNetworkReply *reply) {
             m_payment.dateTime = r.created_at;
             m_payment.description = r.description;
             m_payment.xmrAmountInPico = r.amount;
-            m_payment.paymentStatus = PAYMENT_SATUS_PENDING;
-            emit depositAddressReceived(m_payment.id);
+            m_payment.paymentStatus = PAYMENT_SATUS_NOT_RECEIVED;
+            emit depositAddressReceived();
             m_requestTimer->start(SCAN_TIMEOUT_IN_MS);
         }
         else if(reply->operation() == QNetworkAccessManager::GetOperation)
         {
-            // QString url = reply->url().toString();
-            // QString addr = url.right(url.size() - sizeof(RECEIVE_URL));
-
             parseReceiveAddress(answer);
         }
     }
@@ -278,14 +281,9 @@ void MoneroPayConnection::sendRequest(void)
     requestPaymentStatus(m_payment.depositAddress);
 }
 
-T_payment MoneroPayConnection::getPayment(void)
+payment_t MoneroPayConnection::getPayment(void)
 {
     return m_payment;
-}
-
-void MoneroPayConnection::setSignalDisabled(bool newStat)
-{
-    m_payment.signalDisabled = newStat;
 }
 
 void MoneroPayConnection::checkHealth(void)
@@ -294,3 +292,4 @@ void MoneroPayConnection::checkHealth(void)
     QNetworkRequest request(url);
     m_networkAccessManager->get(request);
 }
+

@@ -38,13 +38,12 @@ void MoneroPayDbManager::updateSubaddresses(void)
 
     while (query.next())
     {
-        T_payment p;
+        payment_t p;
         p.depositAddress = query.value(addressIndex).toString();
         p.blockConfirmation = query.value(confIndex).toInt();
         p.fiatAmount = query.value(fiatAmountIndex).toDouble();
         p.fiatIndex = query.value(fiatIndexIndex).toDouble();
         p.paymentStatus = PAYMENT_SATUS_NONE;
-        p.signalDisabled = false;
         p.id = -1;
         p.isfromdb = true;
 
@@ -59,7 +58,7 @@ int MoneroPayDbManager::getDbEntrySize(void)
     return m_dbEntries.size();
 }
 
-T_payment MoneroPayDbManager::getEntry(int index)
+payment_t MoneroPayDbManager::getEntry(int index)
 {
     return m_dbEntries.at(index);
 }
@@ -75,7 +74,13 @@ void MoneroPayDbManager::deleteEntry(QString address)
     query.exec("delete from payments where subaddress = '" + address + "'");
 }
 
-void MoneroPayDbManager::setNewEntry(T_payment p)
+void MoneroPayDbManager::deleteAllEntries(void)
+{
+    QSqlQuery query;
+    query.exec("delete from payments");
+}
+
+void MoneroPayDbManager::setNewEntry(payment_t p)
 {
     QString q_str = "insert into payments (subaddress, confirmations, fiat_value, fiat_index) VALUES ('";
     q_str.append(p.depositAddress).append("','").append(QString::number(p.blockConfirmation)).append("','").append(QString::number(p.fiatAmount)).append("','").append(QString::number(p.fiatIndex)).append("')");

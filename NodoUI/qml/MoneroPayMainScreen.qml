@@ -10,33 +10,36 @@ Item {
     anchors.fill: parent
     anchors.leftMargin: NodoSystem.subMenuLeftMargin
 
-    Component.onCompleted: {
-        if (100 === syncInfo.getSyncPercentage())
-        {
-            receiveButton.enabled = true
-            receiveButton.checked = true
-            receiveButton.clicked()
-        }
-        else
-        {
-            receiveButton.enabled = false
-            paymentsButton.checked = true
-            paymentsButton.clicked()
-        }
-    }
+    // Component.onCompleted: {
+    //     if (100 === syncInfo.getSyncPercentage())
+    //     {
+    //         receiveButton.enabled = true
+    //         receiveButton.checked = true
+    //         receiveButton.clicked()
+    //     }
+    //     else
+    //     {
+    //         receiveButton.enabled = false
+    //         paymentsButton.checked = true
+    //         paymentsButton.clicked()
+    //     }
+    // }
+
+    // Connections {
+    //     target: syncInfo
+    //     function onSyncDone() {
+    //         receiveButton.enabled = true
+    //     }
+    // }
+
+
 
     Connections{
-        target: moneroPayPageLoader.item
-        function onPageChangeRequested() {
+        target: moneroPay
+        function onOpenViewPaymentsScreenRequested()
+        {
             paymentsButton.checked = true
             paymentsButton.clicked()
-        }
-    }
-
-    Connections {
-        target: syncInfo
-        function onSyncDone() {
-            receiveButton.enabled = true
         }
     }
 
@@ -57,8 +60,8 @@ Item {
             text: qsTr("RECEIVE")
             font.family: NodoSystem.fontUrbanist.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
-            onClicked: { moneroPayPageLoader.source = "MoneroPayReceiveScreen.qml" }
-            enabled: false
+            onClicked: { moneroPayPageLoader.source = "MoneroPayReceiveMainScreen.qml" }
+            // enabled: false
         }
         NodoTabButton {
             id: paymentsButton
@@ -87,7 +90,7 @@ Item {
         anchors.right: moneroPayMainScreen.right
         anchors.bottom: moneroPayMainScreen.bottom
         anchors.topMargin: 40
-        source: "MoneroPayReceiveScreen.qml"
+        source: "MoneroPayReceiveMainScreen.qml"
     }
 }
 
