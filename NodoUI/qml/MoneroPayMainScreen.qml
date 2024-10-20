@@ -13,6 +13,8 @@ Item {
     Component.onCompleted: {
         if (100 === syncInfo.getSyncPercentage())
         {
+            paymentsButton.checked = false
+            settingsButton.checked = false
             receiveButton.enabled = true
             receiveButton.checked = true
             receiveButton.clicked()

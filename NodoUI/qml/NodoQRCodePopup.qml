@@ -10,13 +10,14 @@ Popup {
     id: qrCodePopup
     x: (parent.width - width)/2
     y: (parent.height - height)/2
-    implicitWidth: 420
-    height: 520
+    implicitWidth: 800
+    height: implicitWidth + 100
     modal: true
     parent: mainAppWindowMainRect
     property int displayRotation: nodoControl.getOrientation()
     property string qrCodeData
     property string closeButtonText
+    property int qrCodeLeftMargin: 20
 
     Connections {
         target: nodoControl
@@ -45,9 +46,10 @@ Popup {
 
         Rectangle{
             id: qrCodeRect
-            width: 380
-            height: 380
+            width: qrCodePopup.implicitWidth - (2*qrCodeLeftMargin)
+            height: width
             y: 10
+            anchors.leftMargin: qrCodeLeftMargin
             anchors.horizontalCenter: popupContent.horizontalCenter
             QtQuick2QREncode {
                 id: qr
