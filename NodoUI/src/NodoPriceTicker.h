@@ -12,6 +12,8 @@
 #include "NodoConfigParser.h"
 #include "NodoNetworkManager.h"
 
+#define FETCH_PERIOD 60*1000
+
 class NodoPriceTicker : public QObject
 {
     Q_OBJECT
@@ -37,6 +39,7 @@ private:
     int m_currentCurrencyIndex = 0;
     QString m_currentCurrencyName = "";
     QString m_currentCurrencyCode = "";
+    QString m_newCurrencyCode = "";
     NodoConfigParser *m_configParser;
     NodoNetworkManager *m_networkManager;
 

@@ -22,12 +22,29 @@ Item {
         function onCurrencyReceived() {
             exchangeName = nodoCurrencies.currencyCodes[priceTicker.getCurrentCurrencyIndex()]
             exchangeRate = priceTicker.getCurrency()
+            if(-1 === exchangeRate)
+            {
+                fiatRequestfield.readOnlyFlag = true
+            }
+            else
+            {
+                fiatRequestfield.readOnlyFlag = false
+            }
         }
     }
 
     Component.onCompleted: {
         exchangeName = nodoCurrencies.currencyCodes[priceTicker.getCurrentCurrencyIndex()]
         exchangeRate = priceTicker.getCurrency()
+
+        if(-1 === exchangeRate)
+        {
+            fiatRequestfield.readOnlyFlag = true
+        }
+        else
+        {
+            fiatRequestfield.readOnlyFlag = false
+        }
     }
 
     Rectangle {
@@ -66,7 +83,10 @@ Item {
                     paymentsPopup.applyButtonText = qsTr("Value out of range")
                     paymentsPopup.open()
                 }
-                fiatRequestfield.valueText = (xmrAmount*exchangeRate).toFixed(2)
+                if(-1 !== exchangeRate)
+                {
+                    fiatRequestfield.valueText = (xmrAmount*exchangeRate).toFixed(2)
+                }
             }
         }
 

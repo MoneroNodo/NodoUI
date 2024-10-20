@@ -351,3 +351,27 @@ QString NodoConfigParser::getMoneroPayViewKey(void)
     }
     return jsonValue.toString();
 }
+
+double NodoConfigParser::getExchangeRate(void)
+{
+    QJsonValue jsonValue;
+    jsonValue = m_configObj.value("exchange_rate");
+
+    if(jsonValue.isNull())
+    {
+        return -1;
+    }
+
+    if(!jsonValue.isDouble())
+    {
+        return -1;
+    }
+
+    return jsonValue.toDouble();
+}
+
+void NodoConfigParser::setExchangeRate(double rate)
+{
+    m_configObj.insert("exchange_rate", rate);
+    writeJson();
+}

@@ -27,6 +27,9 @@ public:
     QString getSelectedCurrencyName(void);
     void setCurrencyName(QString currency);
 
+    double getExchangeRate(void);
+    void setExchangeRate(double rate);
+
     QString getTimezone(void);
     void setTimezone(QString tz);
 
@@ -48,6 +51,7 @@ public:
     void setMoneroPayParameters(QString address, QString viewKey);
     QString getMoneroPayAddress(void);
     QString getMoneroPayViewKey(void);
+
 
 signals:
     void configParserReady(void);

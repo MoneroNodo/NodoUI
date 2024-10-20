@@ -3,10 +3,13 @@
 
 NodoPriceTicker::NodoPriceTicker(NodoConfigParser *configParser, NodoNetworkManager *networkManager) : QObject(configParser)
 {
+    m_currency = -1;
     m_currentCurrencyIndex = 0;
     m_configParser = configParser;
     m_networkManager = networkManager;
     m_currentCurrencyCode = m_configParser->getSelectedCurrencyName();
+    m_newCurrencyCode = m_currentCurrencyCode;
+
     m_timer = new QTimer(this);
 
     connect(m_networkManager, SIGNAL(networkStatusChanged()), this, SLOT(checkConnectionStatus()));
@@ -59,29 +62,78 @@ QString NodoPriceTicker::getCurrentCurrencyCode(void)
 
 void NodoPriceTicker::setCurrentCurrencyCode(QString code)
 {
-    m_currentCurrencyCode = code;
-    m_configParser->setCurrencyName(code);
-    doDownload(m_currentCurrencyCode);
+    m_newCurrencyCode = code;
+    doDownload(code);
 }
 
 void NodoPriceTicker::downloadFinished(QNetworkReply *reply)
 {
+    int status = 0;
+    QJsonObject m_currencyObj;
+
     QUrl url = reply->url();
 
     if (reply->error()) {
+        status = 1;
         qDebug() << "Download of " << url.toEncoded().constData() << " failed: " << qPrintable(reply->errorString());
     }
     else {
         QJsonDocument m_document = QJsonDocument::fromJson(reply->readAll());
         QJsonObject m_moneroObj = m_document.object();
-        QJsonObject m_currencyObj = m_moneroObj["monero"].toObject();
-        QJsonValue jsonValue = m_currencyObj.value(m_currentCurrencyCode.toLower());
-
-        m_currency = jsonValue.toDouble();
-        currencyReceivedStatus = true;
-        emit currencyReceived();
+        m_currencyObj = m_moneroObj["monero"].toObject();
+        if(!m_currencyObj.isEmpty())
+        {
+            status = 2;
+        }
+        else
+        {
+            status = 3;
+        }
     }
+
+    if(2 == status) // we have a valid response from the server
+    {
+        QJsonValue jsonValue;
+        if(m_newCurrencyCode == m_currentCurrencyCode)
+        {
+            jsonValue = m_currencyObj.value(m_currentCurrencyCode.toLower());
+        }
+        else
+        {
+            jsonValue = m_currencyObj.value(m_newCurrencyCode.toLower());
+            m_configParser->setCurrencyName(m_newCurrencyCode);
+            m_currentCurrencyCode = m_newCurrencyCode;
+        }
+
+        double tmp = jsonValue.toDouble();
+        if(tmp != m_currency)
+        {
+            m_configParser->setExchangeRate(tmp);
+        }
+
+        m_currency = tmp;
+    }
+    else //no valid response
+    {
+        if(m_newCurrencyCode == m_currentCurrencyCode)
+        {
+            m_currency = m_configParser->getExchangeRate();
+        }
+        else // as the currency has changed and the response from the server isn't valid, we don't know it's value
+        {
+            m_currency = -1;
+            m_configParser->setCurrencyName(m_newCurrencyCode);
+            m_configParser->setExchangeRate(m_currency);
+            m_currentCurrencyCode = m_newCurrencyCode;
+        }
+    }
+
+    currencyReceivedStatus = true;
+    emit currencyReceived();
+
     reply->deleteLater();
+
+    m_timer->start(FETCH_PERIOD);
 }
 
 bool NodoPriceTicker::isCurrencyReceived(void)
@@ -99,9 +151,7 @@ void NodoPriceTicker::doDownload(const QString currencyCode)
 
 #ifndef QT_NO_SSL
     connect(reply, SIGNAL(sslErrors(QList<QSslError>)), SLOT(sslErrors(QList<QSslError>)));
-#endif
-
-    m_timer->start(10*60*1000);
+#endif 
 }
 
 double NodoPriceTicker::getCurrency(void)
