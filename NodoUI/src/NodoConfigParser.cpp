@@ -359,6 +359,8 @@ double NodoConfigParser::getExchangeRate(void)
 
     if(jsonValue.isNull())
     {
+        m_configObj.insert("exchange_rate", -1);
+        writeJson();
         return -1;
     }
 
