@@ -349,7 +349,7 @@ void MoneroPay::clearDepositAddress(void)
 
 double MoneroPay::getLastXMRAmount(void)
 {
-    return m_lastPayment.xmrAmountInPico/1000000000000;
+    return m_lastPayment.xmrAmountInPico/1000000000000.0;
 }
 
 double MoneroPay::getLastFiatAmount(void)
