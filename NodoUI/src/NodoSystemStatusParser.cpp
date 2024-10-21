@@ -81,3 +81,13 @@ void NodoSystemStatusParser::updateConfigParameters(void)
     m_system_url = "http://127.0.0.1:" + QString::number(port) + "/get_info";
     m_timer->start(500);
 }
+
+bool NodoSystemStatusParser::isResponseValid(void)
+{
+    if(m_rootObj.isEmpty())
+    {
+        return false;
+    }
+
+    return true;
+}

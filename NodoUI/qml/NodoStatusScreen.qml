@@ -64,20 +64,21 @@ Rectangle {
 
     function updateSyncPercentage() {
         var syncPercentage = syncInfo.getSyncPercentage()
-        if(statusScreen.isConnected)
+        if(syncPercentage === 100)
         {
-            if(syncPercentage === 100 || syncPercentage === -1)
-            {
-                syncStatusField.valueText = qsTr("Synchronized (100%)")
-            }
-            else
-            {
-                syncStatusField.valueText = qsTr("Synchronizing (") + syncPercentage + "%)"
-            }
+            syncStatusField.valueText = qsTr("Synchronized (100%)")
+        }
+        else if(syncPercentage >= 0)
+        {
+            syncStatusField.valueText = qsTr("Synchronizing (") + syncPercentage + "%)"
+        }
+        else if(syncPercentage === -1)
+        {
+            syncStatusField.valueText = qsTr("Not Synchronizing")
         }
         else
         {
-            syncStatusField.valueText = qsTr("Not Connected")
+            syncStatusField.valueText = qsTr("Waiting")
         }
     }
 
