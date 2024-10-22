@@ -170,9 +170,29 @@ Item {
             width: dropdownLength
             height: screenSaverRect.height
             currentIndex: nodoControl.getScreenSaverType()
-            model: [qsTr("News Carousel"), qsTr("Analog Clock"), qsTr("Digital Clock"), qsTr("Off")]
+            model: ((t, title) => {
+                t = [];
+                for(let i = 0; title = nodoControl.getScreenSaverTitle(i); i++) {
+                    t.push(qsTr(title));
+                }
+                return t;
+            })()
             onCurrentIndexChanged: {
                 nodoControl.setScreenSaverType(currentIndex)
+            }
+        }
+
+        NodoButton {
+            id: screenSaverDemoButton
+            anchors.left: screenSaverComboBox.right
+            anchors.leftMargin: NodoSystem.padding
+            anchors.top: screenSaverRect.top
+            text: qsTr("Demo")
+            height: NodoSystem.nodoItemHeight
+            font.family: NodoSystem.fontUrbanist.name
+            font.pixelSize: NodoSystem.buttonTextFontSize
+            onClicked: {
+                mainAppWindowMainRect.displayScreenSaver();
             }
         }
     }

@@ -35,6 +35,16 @@
         <file>qml/NodoBusyIndicator.qml</file>
         <file>qml/NodoFeedsSwitch.qml</file>
         <file>qml/NodoFeederScreenSaver.qml</file>
+        <file>qml/TxStreetScreenSaver.qml</file>
+        <file>Images/txstreet/isabella-left-2.png</file>
+        <file>Images/txstreet/isabella-up-1.png</file>
+        <file>Images/txstreet/isabella-left-0.png</file>
+        <file>Images/txstreet/isabella-down-2.png</file>
+        <file>Images/txstreet/isabella-up-2.png</file>
+        <file>Images/txstreet/isabella-up-0.png</file>
+        <file>Images/txstreet/isabella-down-1.png</file>
+        <file>Images/txstreet/isabella-down-0.png</file>
+        <file>Images/txstreet/isabella-left-1.png</file>
         <file>qml/NodoHomeScreen.qml</file>
         <file>qml/NodoScreenSaver.qml</file>
         <file>qml/NodoTabButton.qml</file>

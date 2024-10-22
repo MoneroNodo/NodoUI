@@ -1,5 +1,29 @@
 #include "NodoUISystemParser.h"
 
+const screenSaverTypes_t screenSaverTypes = ([](){
+    screenSaverTypes_t data;
+    int id = 0;
+    auto regType = [&](const char *name_s, const char *title_s, const char *component_s) {
+        QString name(name_s);
+        QString title(title_s);
+        QString component(component_s);
+        data.ids[name] = id++;
+        data.names.push_back(name);
+        data.titles.push_back(title);
+        data.components.push_back(component);
+    };
+
+    regType("newsCarousel", QT_TRANSLATE_NOOP("NodoUISystemParser","News Carousel"), "NodoFeederScreenSaver.qml");
+    regType("analogClock", QT_TRANSLATE_NOOP("NodoUISystemParser","Analog Clock"), "NodoScreenSaver.qml");
+    regType("digitalClock", QT_TRANSLATE_NOOP("NodoUISystemParser","Digital Clock"), "NodoDigitalClock.qml");
+    regType("txstreet", QT_TRANSLATE_NOOP("NodoUISystemParser","TxStreet"), "TxStreetScreenSaver.qml");
+    regType("off", QT_TRANSLATE_NOOP("NodoUISystemParser","Off"), nullptr);
+
+    data.defaultType = data.ids["digitalClock"];
+
+    return data;
+})();
+
 NodoUISystemParser::NodoUISystemParser(QObject *parent) : QObject(parent)
 {
     QString val;
@@ -21,7 +45,7 @@ NodoUISystemParser::NodoUISystemParser(QObject *parent) : QObject(parent)
 
         m_displaySettings.screenSaverTimeoutInSec = DEFAULT_SCREENSAVER_TIMEOUT;
         m_displaySettings.screenSaverItemChangeTimeoutInSec = DEFAULT_SCREENSAVER_ITEM_CHANGE_TIMEOUT;
-        m_displaySettings.screenSaverType = DEFAULT_SCREENSAVER_TYPE;
+        m_displaySettings.screenSaverType = screenSaverTypes.defaultType;
         m_displaySettings.displayOrientation = DEFAULT_DISPLAY_ORIENTATION;
         m_displaySettings.lockPinHash = DEFAULT_LOCK_PIN_HASH;
         m_displaySettings.lockAfter = DEFAULT_LOCK_AFTER;
@@ -31,7 +55,7 @@ NodoUISystemParser::NodoUISystemParser(QObject *parent) : QObject(parent)
 
         m_systemObj.insert(m_displayKeyList[DISPLAY_KEY_SS_TIMEOUT], m_displaySettings.screenSaverTimeoutInSec);
         m_systemObj.insert(m_displayKeyList[DISPLAY_KEY_SS_ITEM_CHANGE_TIMEOUT], m_displaySettings.screenSaverItemChangeTimeoutInSec);
-        m_systemObj.insert(m_displayKeyList[DISPLAY_KEY_SCREEN_SAVER_TYPE], m_displaySettings.screenSaverType);
+        m_systemObj.insert(m_displayKeyList[DISPLAY_KEY_SCREEN_SAVER_TYPE], screenSaverTypes.names[m_displaySettings.screenSaverType]);
         m_systemObj.insert(m_displayKeyList[DISPLAY_KEY_CHANGE_ORIENTATION], m_displaySettings.displayOrientation);
         m_systemObj.insert(m_displayKeyList[DISPLAY_KEY_LOCK_PIN_HASH], m_displaySettings.lockPinHash);
         m_systemObj.insert(m_displayKeyList[DISPLAY_KEY_LOCK_AFTER], m_displaySettings.lockAfter);
@@ -59,7 +83,7 @@ NodoUISystemParser::NodoUISystemParser(QObject *parent) : QObject(parent)
     jsonValue = m_systemObj.value(m_displayKeyList[DISPLAY_KEY_SCREEN_SAVER_TYPE]);
     if(jsonValue.isUndefined() || jsonValue.isNull())
     {
-        m_systemObj.insert(m_displayKeyList[DISPLAY_KEY_SCREEN_SAVER_TYPE], DEFAULT_SCREENSAVER_TYPE);
+        m_systemObj.insert(m_displayKeyList[DISPLAY_KEY_SCREEN_SAVER_TYPE], screenSaverTypes.names[screenSaverTypes.defaultType]);
         updateFile = true;
     }
 
@@ -129,12 +153,14 @@ display_settings_t NodoUISystemParser::readDisplaySettings(void)
     }
 
     jsonValue = m_systemObj.value(m_displayKeyList[DISPLAY_KEY_SCREEN_SAVER_TYPE]);
-    m_displaySettings.screenSaverType = jsonValue.toInt();
+    QString screenSaverId = jsonValue.toString();
 
-    if((m_displaySettings.screenSaverType < MINIMUM_SCREENSAVER_TYPE) || (m_displaySettings.screenSaverType > MAXIMUM_SCREENSAVER_TYPE))
+    if(!screenSaverTypes.ids.contains(screenSaverId))
     {
-        m_displaySettings.screenSaverType = DEFAULT_SCREENSAVER_TYPE;
+        m_displaySettings.screenSaverType = screenSaverTypes.defaultType;
         updateFile = true;
+    } else {
+        m_displaySettings.screenSaverType = screenSaverTypes.ids[screenSaverId];
     }
 
     jsonValue = m_systemObj.value(m_displayKeyList[DISPLAY_KEY_CHANGE_ORIENTATION]);
@@ -240,7 +266,7 @@ void NodoUISystemParser::writeScreenSaverType(int state)
         return;
     }
 
-    m_systemObj.insert(m_displayKeyList[DISPLAY_KEY_SCREEN_SAVER_TYPE], state);
+    m_systemObj.insert(m_displayKeyList[DISPLAY_KEY_SCREEN_SAVER_TYPE], screenSaverTypes.names[state]);
     writeJson();
 }
 
