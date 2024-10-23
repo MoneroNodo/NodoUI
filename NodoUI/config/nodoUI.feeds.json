@@ -1,6 +1,6 @@
 {
     "feeds": {
-        "feed_1": {
+        "feed_0": {
             "description_tag": "content",
             "image_attr": "url",
             "image_tag": "media:content",
@@ -11,18 +11,29 @@
             "uri": "https://www.getmonero.org/feed.xml",
             "visible": true
         },
-        "feed_0": {
+        "feed_1": {
             "description_tag": "description",
             "image_attr": "",
             "image_tag": "",
             "name": "Monerica",
-            "num_of_feeds_to_show": 10,
+            "num_of_feeds_to_show": 3,
             "pub_date_tag": "pubDate",
             "selected": true,
             "uri": "https://monerica.com/rss/feed.xml",
             "visible": true
         },
         "feed_2": {
+            "description_tag": "description",
+            "image_attr": "",
+            "image_tag": "",
+            "name": "XMRBazaar",
+            "num_of_feeds_to_show": 3,
+            "pub_date_tag": "pubDate",
+            "selected": true,
+            "uri": "https://xmrbazaar.com/rss",
+            "visible": true
+        },
+        "feed_3": {
             "description_tag": "content:encoded",
             "image_attr": "href",
             "image_tag": "itunes:image",
@@ -31,17 +42,6 @@
             "pub_date_tag": "pubDate",
             "selected": true,
             "uri": "https://feeds.fireside.fm/monerotalk/rss",
-            "visible": true
-        },
-        "feed_3": {
-            "description_tag": "description",
-            "image_attr": "",
-            "image_tag": "",
-            "name": "Monero Observer",
-            "num_of_feeds_to_show": 2,
-            "pub_date_tag": "pubDate",
-            "selected": true,
-            "uri": "https://monero.observer/feed.xml",
             "visible": true
         },
         "feed_4": {
@@ -67,15 +67,15 @@
             "visible": true
         },
         "feed_6": {
-            "description_tag": "",
+            "description_tag": "description",
             "image_attr": "",
             "image_tag": "",
-            "name": "",
-            "num_of_feeds_to_show": 0,
-            "pub_date_tag": "",
-            "selected": false,
-            "uri": "",
-            "visible": false
+            "name": "Monero Observer",
+            "num_of_feeds_to_show": 2,
+            "pub_date_tag": "pubDate",
+            "selected": true,
+            "uri": "https://monero.observer/feed.xml",
+            "visible": true
         },
         "feed_7": {
             "description_tag": "",
