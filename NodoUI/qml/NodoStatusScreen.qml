@@ -20,17 +20,29 @@ Rectangle {
     property int componentTopMargin: 34
     property int cardMargin: 13
     property color cardBackgroundColor: "#111111"
-    property bool isConnected
 
     property int statusScreenInfoFieldHeight: NodoSystem.nodoItemHeight
 
     Component.onCompleted: {
-        statusScreen.isConnected = networkManager.isConnected()
         onCalculateMaximumTextLabelLength()
         updateServiceStatus()
         updateHardwareStatus()
         updateSystemStatus()
+        checkNetworkConnection()
     }
+
+    Connections {
+        target: networkManager
+        function onConnectionStatusChanged() {
+            checkNetworkConnection()
+        }
+    }
+
+    function checkNetworkConnection()
+    {
+        networkConnectionField.valueText = networkManager.getNetworkConnectionStatus()
+    }
+
 
     function updateServiceStatus() {
         moneroNodeField.valueText = nodoControl.getServiceStatus("monerod")
@@ -110,6 +122,9 @@ Rectangle {
         if(updateAvailableField.labelRectRoundSize > labelSize)
             labelSize = updateAvailableField.labelRectRoundSize
 
+        if(networkConnectionField.labelRectRoundSize > labelSize)
+            labelSize = networkConnectionField.labelRectRoundSize
+
         if(moneroNodeField.labelRectRoundSize > labelSize)
             labelSize = moneroNodeField.labelRectRoundSize
 
@@ -167,7 +182,7 @@ Rectangle {
         anchors.topMargin: 10
         anchors.leftMargin: cardMargin
         width: componentWidth + 2 + (2*componentLeftMargin)
-        height: updateAvailableField.y + updateAvailableField.height + componentBottomMargin//683
+        height: networkConnectionField.y + networkConnectionField.height + componentBottomMargin//683
         color: cardBackgroundColor
 
         Connections {
@@ -181,13 +196,6 @@ Rectangle {
             target: syncInfo
             function onSyncStatusReady() {
                 updateSyncPercentage()
-            }
-        }
-
-        Connections {
-            target: networkManager
-            function onNetworkStatusChanged() {
-                statusScreen.isConnected = networkManager.isConnected()
             }
         }
 
@@ -313,6 +321,17 @@ Rectangle {
             itemSize: labelSize
             itemText: qsTr("Update")
             valueText: (true === nodoSystemStatus.getBoolValueFromKey("update_available")) ? qsTr("Update available") : qsTr("Up to date")
+        }
+
+        NodoInfoField {
+            id: networkConnectionField
+            anchors.left: syncStatusField.left
+            anchors.top: updateAvailableField.bottom
+            anchors.topMargin: fieldTopMargin
+            width: componentWidth
+            height: statusScreenInfoFieldHeight
+            itemSize: labelSize
+            itemText: qsTr("Network")
         }
     }
 

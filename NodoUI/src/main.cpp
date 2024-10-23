@@ -29,12 +29,12 @@ int main(int argc, char *argv[]) {
     engine.addImportPath("qrc:/style/assets/NodoKeyboard");
     qputenv("QT_VIRTUALKEYBOARD_LAYOUT_PATH", QByteArray("qrc:layout/assets/NodoKeyboard/QtQuick/VirtualKeyboard/layouts"));
 
-    NodoNetworkManager *networkManager = new NodoNetworkManager();
     NodoUISystemParser *uiSystemParser = new NodoUISystemParser();
-    NodoFeedsControl *feedsControl = new NodoFeedsControl(networkManager);
     NodoDBusController *dbusController = new NodoDBusController();
-
     NodoConfigParser *configParser = new NodoConfigParser();
+
+    NodoNetworkManager *networkManager = new NodoNetworkManager(dbusController);
+    NodoFeedsControl *feedsControl = new NodoFeedsControl(networkManager);
     MoneroLWS *moneroLWS = new MoneroLWS(dbusController);
     NodoSystemStatusParser *systemStatusParser = new NodoSystemStatusParser(configParser);
     NodoSystemControl *systemControl = new NodoSystemControl(uiSystemParser, configParser, dbusController);

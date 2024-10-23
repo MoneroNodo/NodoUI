@@ -1,8 +1,8 @@
 #include "NodoNetworkManager.h"
 
-NodoNetworkManager::NodoNetworkManager(QObject *parent)
+NodoNetworkManager::NodoNetworkManager(NodoDBusController *dbusController)
 {
-    Q_UNUSED(parent);
+    m_dbusController = dbusController;
     m_wired = new NodoWiredController();
     m_wireless = new NodoWirelessController();
 
@@ -13,6 +13,8 @@ NodoNetworkManager::NodoNetworkManager(QObject *parent)
     connect(m_wireless, SIGNAL(deviceStatusChangedNotification(uint)), this, SLOT(processWirelessDeviceStatus(uint)));
     connect(m_wireless, SIGNAL(scanCompletedNotification(QString)), this, SLOT(parseWirelessNetworkList(QString)));
     connect(m_wireless, SIGNAL(apScanStatus()), this, SIGNAL(aPScanStatusReceived()));
+
+    connect(m_dbusController, SIGNAL(networkConnectionStatusChanged()), this, SLOT(updateNetworkConnectionStatus()));
 
     m_wirelessActiveConnection.connected = false;
     m_wiredActiveConnection.connected = false;
@@ -35,6 +37,8 @@ NodoNetworkManager::NodoNetworkManager(QObject *parent)
     {
         m_wireless->scanAccessPoints();
     }
+
+    m_connStat = NM_STATUS_WAITING;
 }
 
 void NodoNetworkManager::processWirelessDeviceStatus(unsigned wifiDeviceStatus)
@@ -421,4 +425,23 @@ QString NodoNetworkManager::getSSIDConnectionPath(int index)
 bool NodoNetworkManager::getAPScanStatus(void)
 {
     return m_wireless->getAPScanStatus();
+}
+
+void NodoNetworkManager::updateNetworkConnectionStatus(void)
+{
+    m_connStat = (network_status_t)m_dbusController->getNetworkConnectionStatus();
+    if(m_connStat > NM_STATUS_DISCONNECTED)
+    {
+        m_connStat = NM_STATUS_WAITING;
+    }
+    emit connectionStatusChanged();
+}
+
+QString NodoNetworkManager::getNetworkConnectionStatus(void)
+{
+    if(m_connStat > NM_STATUS_DISCONNECTED)
+    {
+        m_connStat = NM_STATUS_WAITING;
+    }
+    return statusMessageList[m_connStat];
 }

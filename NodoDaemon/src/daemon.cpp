@@ -56,6 +56,10 @@ Daemon::Daemon()
     connect(moneroLWS, SIGNAL(listRequestsCompleted()), this, SIGNAL(moneroLWSListRequestsCompleted()));
     connect(moneroLWS, SIGNAL(accountAdded()), this, SIGNAL(moneroLWSAccountAdded()));
 
+    m_connStat = NM_STATUS_DISCONNECTED;
+    m_pingTimer = new QTimer(this);
+    connect(m_pingTimer, SIGNAL(timeout()), this, SLOT(ping()));
+    m_pingTimer->start(100);
 }
 
 void Daemon::startRecovery(int recoverFS, int rsyncBlockchain)
@@ -548,4 +552,68 @@ void Daemon::moneroLWSListAccounts(void)
 void Daemon::moneroLWSListRequests(void)
 {
     moneroLWS->listRequests();
+}
+
+int Daemon::getConnectionStatus(void)
+{
+    return m_connStat;
+}
+
+void Daemon::ping(void)
+{
+    m_pingTimer->stop();
+    QProcess process;
+    QStringList arguments;
+    arguments << "1.1.1.1" << "-W" << "2" << "-c" << "2";
+
+    process.start("/usr/bin/ping", arguments);
+    process.waitForFinished(-1);
+
+    QString p_stdout = process.readAllStandardOutput();
+    QString p_stderr = process.readAllStandardError();
+
+    if(!p_stderr.isEmpty())
+    {
+        if(p_stderr.contains("Network is unreachable"))
+        {
+            // qDebug() << "no network connection";
+            m_connStat = NM_STATUS_DISCONNECTED;
+            emit connectionStatusChanged();
+            m_pingTimer->start(PING_PERIOD);
+            return;
+        }
+    }
+
+
+    QStringList tmpList = p_stdout.split("\n", Qt::SkipEmptyParts);
+
+
+    for(int i = 0; i < tmpList.size(); i++)
+    {
+        if(tmpList.at(i).contains("--- 1.1.1.1 ping statistics ---", Qt::CaseInsensitive))
+        {
+            QStringList statList = tmpList.at(i+1).split(",", Qt::SkipEmptyParts);
+            for(int j = 0; j < statList.size(); j++)
+            {
+                if(statList.at(j).contains("100% packet loss", Qt::CaseInsensitive))
+                {
+                    // qDebug() << "no internet";
+                    m_connStat = NM_STATUS_NO_INTERNET;
+                    emit connectionStatusChanged();
+                    m_pingTimer->start(PING_PERIOD);
+                    return;
+                }
+                else if(statList.at(j).contains("0% packet loss", Qt::CaseInsensitive))
+                {
+                    // qDebug() << "connected";
+                    m_connStat = NM_STATUS_CONNECTED;
+                    emit connectionStatusChanged();
+                    m_pingTimer->start(PING_PERIOD);
+                    return;
+                }
+            }
+        }
+    }
+
+    m_pingTimer->start(PING_PERIOD);
 }

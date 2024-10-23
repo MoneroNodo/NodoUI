@@ -6,14 +6,23 @@
 #include "NodoNotificationMessages.h"
 #include "NodoWiredController.h"
 #include "NodoWirelessController.h"
+#include "NodoDBusController.h"
 
+#define PING_PERIOD 7*1000
+
+typedef enum {
+    NM_STATUS_WAITING,
+    NM_STATUS_CONNECTED,
+    NM_STATUS_NO_INTERNET,
+    NM_STATUS_DISCONNECTED,
+} network_status_t;
 
 class NodoNetworkManager : public QObject
 {
     Q_OBJECT
 
 public:
-    explicit NodoNetworkManager(QObject *parent = Q_NULLPTR);
+    explicit NodoNetworkManager(NodoDBusController *dbusController = Q_NULLPTR);
     Q_INVOKABLE void checkNetworkStatusAndIP(void);
     Q_INVOKABLE QString getNetworkIP(void);
     Q_INVOKABLE bool isConnected(void);
@@ -67,21 +76,24 @@ public:
 
     Q_INVOKABLE QString getEthernetConnectionPath(int index);
 
+    Q_INVOKABLE QString getNetworkConnectionStatus(void);
+
 signals:
     void iPReady(void);
     void networkStatusChanged(void);
     void networkConnStatusReceived(bool netConnStat);
 
     void wifiScanCopleted(void);
-    void wifiDeviceStatusChanged();
-    void connectedSSIDParamsUpdated();
+    void wifiDeviceStatusChanged(void);
+    void connectedSSIDParamsUpdated(void);
     void aPScanStatusReceived(void);
 
     void ethernetScanCopleted(void);
-    void ethernetDeviceStatusChanged();
-    void connectedEthernetParamsUpdated();
+    void ethernetDeviceStatusChanged(void);
+    void connectedEthernetParamsUpdated(void);
     void errorDetected(void);
-    void wiredConnectionProfileCreated();
+    void wiredConnectionProfileCreated(void);
+    void connectionStatusChanged(void);
 
 
 private:
@@ -101,7 +113,11 @@ private:
     network_parameters_t m_wiredActiveConnection;
     QVector< network_parameters_t > m_wiredScanList;
 
+    network_status_t m_nmstat = NM_STATUS_DISCONNECTED;
+    NodoDBusController *m_dbusController;
 
+    network_status_t m_connStat;
+    QStringList statusMessageList = { tr("Waiting"), tr("Connected"), tr("No Internet"), tr("Disconnected")};
 
 private slots:
 
@@ -110,6 +126,7 @@ private slots:
 
     void parseWiredNetworkList(QString networkList);
     void processWiredDeviceStatus(unsigned ethDeviceStatus);
+    void updateNetworkConnectionStatus(void);
 };
 
 #endif // NODONETWORKMANAGER_H

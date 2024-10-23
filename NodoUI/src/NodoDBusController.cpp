@@ -18,6 +18,8 @@ NodoDBusController::NodoDBusController(QObject *parent) : QObject{parent}
     connect(nodo, SIGNAL(moneroLWSListRequestsCompleted()), this, SIGNAL(moneroLWSListRequestsCompleted()));
     connect(nodo, SIGNAL(moneroLWSAccountAdded()), this, SIGNAL(moneroLWSAccountAdded()));
 
+    connect(nodo, SIGNAL(connectionStatusChanged()), this, SIGNAL(networkConnectionStatusChanged()));
+
     startTimer(1000);
 }
 
@@ -233,4 +235,13 @@ void NodoDBusController::moneroLWSListRequests(void)
         return;
     }
     nodo->moneroLWSListRequests();
+}
+
+int NodoDBusController::getNetworkConnectionStatus(void)
+{
+    if(false == m_dbusAdapterConnectionStatus)
+    {
+        return 0;
+    }
+    return nodo->getConnectionStatus();
 }

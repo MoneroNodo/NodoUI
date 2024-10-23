@@ -120,5 +120,13 @@
 
         <signal name="moneroLWSAccountAdded"/>
 
+
+        <method name="getConnectionStatus">
+                <arg name="connectionStatus" type="i" direction="out"/>
+        </method>
+
+        <signal name="connectionStatusChanged"/>
+
+
     </interface>
 </node>

@@ -39,6 +39,8 @@ public:
     void moneroLWSListAccounts(void);
     void moneroLWSListRequests(void);
 
+    int getNetworkConnectionStatus(void);
+
 protected:
     void timerEvent(QTimerEvent *event);
 
@@ -62,6 +64,8 @@ signals:
     void moneroLWSListAccountsCompleted(void);
     void moneroLWSListRequestsCompleted(void);
     void moneroLWSAccountAdded(void);
+
+    void networkConnectionStatusChanged(void);
 };
 
 #endif // NODODBUSCONTROLLER_H

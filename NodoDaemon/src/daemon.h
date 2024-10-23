@@ -12,6 +12,14 @@
 #include "MoneroLWSND.h"
 #include "nodo_dbus_adaptor.h"
 
+#define PING_PERIOD 7*1000
+
+typedef enum {
+    NM_STATUS_WAITING,
+    NM_STATUS_CONNECTED,
+    NM_STATUS_NO_INTERNET,
+    NM_STATUS_DISCONNECTED,
+} network_status_t;
 
 class Daemon : public QObject
 {
@@ -47,6 +55,8 @@ public slots:
     void moneroLWSListAccounts(void);
     void moneroLWSListRequests(void);
 
+    int getConnectionStatus(void);
+
 signals:
     void startRecoveryNotification(const QString &message);
     void serviceManagerNotification(const QString &message);
@@ -63,6 +73,8 @@ signals:
     void moneroLWSListAccountsCompleted();
     void moneroLWSListRequestsCompleted();
     void moneroLWSAccountAdded();
+
+    void connectionStatusChanged(void);
 
 private:
     int m_prevIdleTime = 0;
@@ -89,7 +101,8 @@ private:
     RecoveryKeyThread *recoveryKeyThread;
     MoneroLWS *moneroLWS;
 
-
+    QTimer *m_pingTimer;
+    network_status_t m_connStat;
 
     void readCPUUsage(void);
     void readAverageCPUFreq(void);
@@ -105,6 +118,7 @@ private slots:
     void updateHardwareStatus(void);
     void updateServiceStatus(void);
     void serviceStatusReceived(const QString &message);
+    void ping(void);
 };
 
 #endif // DAEMON_H
