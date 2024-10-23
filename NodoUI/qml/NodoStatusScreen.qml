@@ -51,6 +51,7 @@ Rectangle {
         i2pServiceField.valueText = nodoControl.getServiceStatus("i2pd")
         moneroLWSField.valueText = nodoControl.getServiceStatus("monero-lws")
         blockExplorerField.valueText = nodoControl.getServiceStatus("block-explorer")
+        moneroPayField.valueText = nodoControl.getServiceStatus("moneropay")
     }
 
     function updateHardwareStatus() {
@@ -142,6 +143,9 @@ Rectangle {
 
         if(blockExplorerField.labelRectRoundSize > labelSize)
             labelSize = blockExplorerField.labelRectRoundSize
+
+        if(moneroPayField.labelRectRoundSize > labelSize)
+            labelSize = moneroPayField.labelRectRoundSize
 
         if(cpuField.labelRectRoundSize > labelSize)
             labelSize = cpuField.labelRectRoundSize
@@ -341,7 +345,7 @@ Rectangle {
         anchors.top: statusScreen.top
         anchors.topMargin: 10
         width: componentWidth + 2 + (2*componentLeftMargin)
-        height: blockExplorerField.y + blockExplorerField.height + componentBottomMargin
+        height: moneroPayField.y + moneroPayField.height + componentBottomMargin
         color: cardBackgroundColor
 
         Connections {
@@ -438,6 +442,19 @@ Rectangle {
             itemText: qsTr("Block Explorer")
             valueText: ""
         }
+
+        NodoInfoField {
+            id: moneroPayField
+            anchors.left: moneroNodeField.left
+            anchors.top: blockExplorerField.bottom
+            anchors.topMargin: fieldTopMargin
+            width: componentWidth
+            height: statusScreenInfoFieldHeight
+            itemSize: labelSize
+            itemText: qsTr("MoneroPay")
+            valueText: ""
+        }
+
     }
 
     NodoCanvas {
