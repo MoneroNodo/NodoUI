@@ -101,6 +101,7 @@
         <file>qml/MoneroPayReceivePaymentResultScreen.qml</file>
         <file>qml/MoneroPayReceiveRequestScreen.qml</file>
         <file>qml/NodoQRCodePopup.qml</file>
+        <file>qml/DeviceUpdatesScreen.qml</file>
     </qresource>
     <qresource prefix="/NodoSystem">
         <file alias="qmldir">assets/NodoSystem/qmldir</file>

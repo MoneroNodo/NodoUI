@@ -47,10 +47,22 @@ Item {
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: { pageLoader.source = "DeviceSystemScreen.qml" }
         }
+
+        NodoTabButton {
+            id: updatesButton
+            anchors.top: wifiButton.top
+            anchors.left: systemButton.right
+            text: qsTr("UPDATES")
+            font.family: NodoSystem.fontUrbanist.name
+            font.pixelSize: NodoSystem.topMenuButtonFontSize
+            onClicked: { pageLoader.source = "DeviceUpdatesScreen.qml" }
+        }
+
+
         NodoTabButton {
             id: displayButton
             anchors.top: wifiButton.top
-            anchors.left: systemButton.right
+            anchors.left: updatesButton.right
             text: qsTr("DISPLAY")
             font.family: NodoSystem.fontUrbanist.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize

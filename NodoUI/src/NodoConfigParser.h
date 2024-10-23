@@ -52,6 +52,9 @@ public:
     QString getMoneroPayAddress(void);
     QString getMoneroPayViewKey(void);
 
+    Q_INVOKABLE bool getUpdateStatus(QString moduleName);
+    Q_INVOKABLE void setUpdateStatus(QString moduleName, bool newStatus);
+
 
 signals:
     void configParserReady(void);
@@ -67,6 +70,7 @@ private:
     QJsonObject m_wifiObj;
     QJsonObject m_versionsObj;
     QJsonObject m_moneropayObj;
+    QJsonObject m_autoupdateObj;
 
     const QString configObjName = "config";
     const QString miningObjName = "mining";
@@ -74,6 +78,7 @@ private:
     const QString wifiObjName = "wifi";
     const QString versionsObjName = "versions";
     const QString moneropayObjName = "moneropay";
+    const QString autoupdateObjName = "autoupdate";
 
     QTimer *m_timer;
     QMutex m_mutex;

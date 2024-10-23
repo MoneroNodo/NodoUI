@@ -45,6 +45,7 @@ void NodoConfigParser::readFile(void)
         m_wifiObj = m_configObj[wifiObjName].toObject();
         m_versionsObj = m_configObj[versionsObjName].toObject();
         m_moneropayObj = m_configObj[moneropayObjName].toObject();
+        m_autoupdateObj = m_configObj[autoupdateObjName].toObject();
 
         emit configParserReady();
     }
@@ -59,29 +60,33 @@ void NodoConfigParser::readFile(void)
 QString NodoConfigParser::getStringValueFromKey(QString object, QString key)
 {
     QJsonValue jsonValue;
-    if("mining" == object)
+    if(miningObjName == object)
     {
         jsonValue = m_miningObj.value(key);
     }
-    else if("ethernet" == object)
+    else if(ethernetObjName == object)
     {
         jsonValue = m_ethernetObj.value(key);
     }
-    else if("wifi" == object)
+    else if(wifiObjName == object)
     {
         jsonValue = m_wifiObj.value(key);
     }
-    else if("versions" == object)
+    else if(versionsObjName == object)
     {
         jsonValue = m_versionsObj.value(key);
     }
-    else if("config" == object)
+    else if(configObjName == object)
     {
         jsonValue = m_configObj.value(key);
     }
-    else if("moneropay" == object)
+    else if(moneropayObjName == object)
     {
         jsonValue = m_moneropayObj.value(key);
+    }
+    else if(autoupdateObjName == object)
+    {
+        jsonValue = m_autoupdateObj.value(key);
     }
 
     return jsonValue.toString();
@@ -90,29 +95,33 @@ QString NodoConfigParser::getStringValueFromKey(QString object, QString key)
 int NodoConfigParser::getIntValueFromKey(QString object, QString key)
 {
     QJsonValue jsonValue;
-    if("mining" == object)
+    if(miningObjName == object)
     {
         jsonValue = m_miningObj.value(key);
     }
-    else if("ethernet" == object)
+    else if(ethernetObjName == object)
     {
         jsonValue = m_ethernetObj.value(key);
     }
-    else if("wifi" == object)
+    else if(wifiObjName == object)
     {
         jsonValue = m_wifiObj.value(key);
     }
-    else if("versions" == object)
+    else if(versionsObjName == object)
     {
         jsonValue = m_versionsObj.value(key);
     }
-    else if("config" == object)
+    else if(configObjName == object)
     {
         jsonValue = m_configObj.value(key);
     }
-    else if("moneropay" == object)
+    else if(moneropayObjName == object)
     {
         jsonValue = m_moneropayObj.value(key);
+    }
+    else if(autoupdateObjName == object)
+    {
+        jsonValue = m_autoupdateObj.value(key);
     }
 
     return jsonValue.toInt();
@@ -172,6 +181,7 @@ void NodoConfigParser::writeJson(void)
     m_configObj.insert(wifiObjName, m_wifiObj);
     m_configObj.insert(versionsObjName, m_versionsObj);
     m_configObj.insert(moneropayObjName, m_moneropayObj);
+    m_configObj.insert(autoupdateObjName, m_autoupdateObj);
 
     m_rootObj.insert(configObjName, m_configObj);
 
@@ -375,5 +385,41 @@ double NodoConfigParser::getExchangeRate(void)
 void NodoConfigParser::setExchangeRate(double rate)
 {
     m_configObj.insert("exchange_rate", rate);
+    writeJson();
+}
+
+bool NodoConfigParser::getUpdateStatus(QString moduleName)
+{
+    QJsonValue jsonValue;
+    jsonValue = m_autoupdateObj.value(moduleName);
+
+    if(jsonValue.isNull())
+    {
+        m_autoupdateObj.insert(moduleName, "FALSE");
+        writeJson();
+        return false;
+    }
+
+    if("TRUE" == jsonValue.toString())
+    {
+        return true;
+    }
+
+    return false;
+}
+
+void NodoConfigParser::setUpdateStatus(QString moduleName, bool newStatus)
+{
+    QString stat;
+    if(newStatus)
+    {
+        stat = "TRUE";
+    }
+    else
+    {
+        stat = "FALSE";
+    }
+
+    m_autoupdateObj.insert(moduleName, stat);
     writeJson();
 }
