@@ -104,12 +104,12 @@ private:
     NodoNotifier m_notifier;
 
     NodoWirelessController *m_wireless;
-    unsigned m_wirelessDeviceConnectionStatus = false;
+    unsigned m_wirelessDeviceConnectionStatus = 0;
     network_parameters_t m_wirelessActiveConnection;
     QVector< network_parameters_t > m_wirelessScanList;
 
     NodoWiredController *m_wired;
-    unsigned m_wiredDeviceConnectionStatus;
+    unsigned m_wiredDeviceConnectionStatus = 0;
     network_parameters_t m_wiredActiveConnection;
     QVector< network_parameters_t > m_wiredScanList;
 

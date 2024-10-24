@@ -35,6 +35,7 @@ private:
     NetworkManagerCommon *m_nmCommon;
     QDBusInterface *m_interface;
     m_device_config m_device;
+    QTimer *m_timer;
 
     void getActiveConnection(void);
     QString packageConnections(void);
@@ -46,6 +47,7 @@ private slots:
     void updateNetworkConfig(unsigned int new_state, unsigned int old_state, unsigned int reason);
     void scanConnectionsThread(void);
     void updateThread(void);
+    void initiate(void);
 
 };
 

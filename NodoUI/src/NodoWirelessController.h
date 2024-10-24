@@ -41,6 +41,7 @@ private:
     m_device_config m_device;
     QTimer *m_scanTimer;
     bool m_APScanStarted = false;
+    QTimer *m_timer;
 
     void getActiveConnection(void);
     void getDeviceSpeed(m_device_config *dev);
@@ -52,6 +53,7 @@ private slots:
     void scanConnectionThread(void);
     void tmpThread(void);
     void newConnectionCreated(QDBusObjectPath path);
+    void initiate(void);
 };
 
 

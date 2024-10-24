@@ -7,10 +7,22 @@ NodoWiredController::NodoWiredController(QObject *parent)
     m_device.deviceConnType = "802-3-ethernet";
     m_device.deviceType = 1;
 
+    m_timer = new QTimer(this);
+    connect(m_timer, SIGNAL(timeout()), this, SLOT(initiate()));
+    m_timer->start(100);
+}
+
+/************private functions*******************/
+void NodoWiredController::initiate(void)
+{
+    m_timer->stop();
+
     m_nmCommon->findDevices(&m_device);
     if(m_device.devicePath.isEmpty())
     {
         m_device.currentConnectionState = 10;
+        m_timer->start(500);
+        return;
     }
 
     m_interface = new QDBusInterface(NM_DBUS_SERVICE, m_device.devicePath, NM_DBUS_INTERFACE_DEVICE, QDBusConnection::systemBus());
@@ -23,9 +35,10 @@ NodoWiredController::NodoWiredController(QObject *parent)
     {
         m_nmCommon->getIP4Params(&m_device);
     }
+
+    emit deviceStatusChangedNotification(m_device.currentConnectionState);
 }
 
-/************private functions*******************/
 void NodoWiredController::updateNetworkConfig(unsigned new_state, unsigned old_state, unsigned reason)
 {
     Q_UNUSED(old_state);
