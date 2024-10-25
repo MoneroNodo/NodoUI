@@ -60,6 +60,10 @@ Daemon::Daemon()
     m_pingTimer = new QTimer(this);
     connect(m_pingTimer, SIGNAL(timeout()), this, SLOT(ping()));
     m_pingTimer->start(100);
+
+    m_setupDomainsTimer = new QTimer(this);
+    connect(m_setupDomainsTimer, SIGNAL(timeout()), this, SLOT(setupDomains()));
+    m_setupDomainsTimer->start(100);
 }
 
 void Daemon::startRecovery(int recoverFS, int rsyncBlockchain)
@@ -616,4 +620,54 @@ void Daemon::ping(void)
     }
 
     m_pingTimer->start(PING_PERIOD);
+}
+
+void Daemon::setupDomains(void)
+{
+    qDebug() << "setupDomains";
+    m_setupDomainsTimer->stop();
+    if(QFileInfo::exists(m_firstBootFileName))
+    {
+        return;
+    }
+
+    QString program = "/usr/bin/systemctl";
+    QString serviceList[] = {"tor", "i2pd"};
+
+    QStringList arguments;
+    arguments << "is-active" << serviceList[0] << serviceList[1];
+
+    QProcess process;
+
+    process.start(program, arguments);
+    process.waitForFinished(-1);
+    QString retVal = process.readAll();
+    QStringList status = retVal.split("\n", Qt::SkipEmptyParts);
+
+
+    if(2 != status.size())
+    {
+        m_setupDomainsTimer->start(3000);
+        return;
+    }
+
+    if(("active" == status.at(0)) && ("active" == status.at(1)))
+    {
+        program.clear();
+        arguments.clear();
+        program = "/usr/bin/bash";
+        arguments << "/home/nodo/setup-domains.sh";
+        process.start(program, arguments);
+        process.waitForFinished(-1);
+
+        qDebug() << process.readAll();
+
+        QFile file(m_firstBootFileName);
+        file.open(QIODevice::ReadWrite | QIODevice::Text);
+        file.close();
+
+        return;
+    }
+
+    m_setupDomainsTimer->start(3000);
 }

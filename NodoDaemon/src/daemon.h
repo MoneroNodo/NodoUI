@@ -103,6 +103,9 @@ private:
 
     QTimer *m_pingTimer;
     network_status_t m_connStat;
+    QTimer *m_setupDomainsTimer;
+
+    QString m_firstBootFileName = "/root/nododaemonfirstboot";
 
     void readCPUUsage(void);
     void readAverageCPUFreq(void);
@@ -119,6 +122,7 @@ private slots:
     void updateServiceStatus(void);
     void serviceStatusReceived(const QString &message);
     void ping(void);
+    void setupDomains(void);
 };
 
 #endif // DAEMON_H
