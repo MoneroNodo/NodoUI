@@ -116,6 +116,7 @@ Item {
                 anchors.top: nodoLogoButton.top
                 anchors.topMargin: (NodoSystem.topMenuButtonHeight - NodoSystem.nodoItemHeight)/2
                 anchors.left: nodoLogoButton.right
+                anchors.leftMargin: 20
                 height: NodoSystem.nodoItemHeight
                 text: qsTr("DEVICE")
                 font.family: NodoSystem.fontUrbanist.name
