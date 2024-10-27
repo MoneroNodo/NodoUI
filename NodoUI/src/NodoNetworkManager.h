@@ -119,6 +119,8 @@ private:
     network_status_t m_connStat;
     QStringList statusMessageList = { tr("Waiting"), tr("Connected"), tr("No Internet"), tr("Disconnected")};
 
+    void updateNetworking(void);
+
 private slots:
 
     void parseWirelessNetworkList(QString networkList);

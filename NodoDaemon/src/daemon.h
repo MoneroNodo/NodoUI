@@ -12,7 +12,9 @@
 #include "MoneroLWSND.h"
 #include "nodo_dbus_adaptor.h"
 
-#define PING_PERIOD 7*1000
+#define PING_PERIOD_NOT_CONNECTED 3*1000
+#define PING_PERIOD_CONNECTED 7*1000
+
 
 typedef enum {
     NM_STATUS_WAITING,

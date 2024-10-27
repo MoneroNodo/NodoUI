@@ -2,26 +2,32 @@
 
 NodoNetworkManager::NodoNetworkManager(NodoDBusController *dbusController)
 {
-    m_dbusController = dbusController;
-    m_wired = new NodoWiredController();
     m_wireless = new NodoWirelessController();
-
-    connect(m_wired, SIGNAL(deviceStatusChangedNotification(uint)), this, SLOT(processWiredDeviceStatus(uint)));
-    connect(m_wired, SIGNAL(scanCompletedNotification(QString)), this, SLOT(parseWiredNetworkList(QString)));
-    connect(m_wired, SIGNAL(connectionProfileCreated()), this, SIGNAL(wiredConnectionProfileCreated()));
-
     connect(m_wireless, SIGNAL(deviceStatusChangedNotification(uint)), this, SLOT(processWirelessDeviceStatus(uint)));
     connect(m_wireless, SIGNAL(scanCompletedNotification(QString)), this, SLOT(parseWirelessNetworkList(QString)));
     connect(m_wireless, SIGNAL(apScanStatus()), this, SIGNAL(aPScanStatusReceived()));
 
+    m_wired = new NodoWiredController();
+    connect(m_wired, SIGNAL(deviceStatusChangedNotification(uint)), this, SLOT(processWiredDeviceStatus(uint)));
+    connect(m_wired, SIGNAL(scanCompletedNotification(QString)), this, SLOT(parseWiredNetworkList(QString)));
+    connect(m_wired, SIGNAL(connectionProfileCreated()), this, SIGNAL(wiredConnectionProfileCreated()));
+
+    updateNetworking();
+
+    m_dbusController = dbusController;
     connect(m_dbusController, SIGNAL(networkConnectionStatusChanged()), this, SLOT(updateNetworkConnectionStatus()));
 
     m_wirelessActiveConnection.connected = false;
     m_wiredActiveConnection.connected = false;
 
+
+    m_connStat = NM_STATUS_WAITING;
+}
+
+void NodoNetworkManager::updateNetworking(void)
+{
     getEthernetDeviceStatus();
     getWifiDeviceStatus();
-
 
     if((m_wiredDeviceConnectionStatus == 100) || (m_wirelessDeviceConnectionStatus == 100))
     {
@@ -30,19 +36,30 @@ NodoNetworkManager::NodoNetworkManager(NodoDBusController *dbusController)
 
     if((m_wiredDeviceConnectionStatus == 30) || (m_wiredDeviceConnectionStatus == 100))
     {
-        m_wired->scanConnections();
+        if(nullptr != m_wired)
+        {
+            m_wired->scanConnections();
+        }
     }
 
     if((m_wirelessDeviceConnectionStatus == 30) || (m_wirelessDeviceConnectionStatus == 100))
     {
-        m_wireless->scanAccessPoints();
+        if(nullptr != m_wireless)
+        {
+            m_wireless->scanAccessPoints();
+        }
     }
-
-    m_connStat = NM_STATUS_WAITING;
 }
 
 void NodoNetworkManager::processWirelessDeviceStatus(unsigned wifiDeviceStatus)
 {
+    if(nullptr == m_wireless)
+    {
+        return;
+    }
+
+    // qDebug() << "processWirelessDeviceStatus" << wifiDeviceStatus;
+
     m_wirelessDeviceConnectionStatus = wifiDeviceStatus;
 
     if(m_wirelessDeviceConnectionStatus > 20)
@@ -56,12 +73,25 @@ void NodoNetworkManager::processWirelessDeviceStatus(unsigned wifiDeviceStatus)
 
 int NodoNetworkManager::getWifiDeviceStatus(void)
 {
+    if(nullptr == m_wireless)
+    {
+        return 10;
+    }
+
     m_wirelessDeviceConnectionStatus = m_wireless->getDeviceConnectionStatus();
+
+    // qDebug() << "getWifiDeviceStatus" << m_wirelessDeviceConnectionStatus;
+
     return m_wirelessDeviceConnectionStatus;
 }
 
 void NodoNetworkManager::setWifiDeviceStatus(bool wifiDeviceStatus)
 {
+    if(nullptr == m_wireless)
+    {
+        return;
+    }
+
     m_wireless->enableWireless(wifiDeviceStatus);
 }
 
@@ -69,6 +99,16 @@ void NodoNetworkManager::checkNetworkStatusAndIP(void)
 {
     m_networkIP.clear();
     bool tmpConnState = true;
+
+    if(nullptr == m_wireless)
+    {
+        return;
+    }
+
+    if(nullptr == m_wired)
+    {
+        return;
+    }
 
     QString wirelessIP = m_wireless->getIP();
     QString wiredIP = m_wired->getIP();
@@ -90,8 +130,10 @@ void NodoNetworkManager::checkNetworkStatusAndIP(void)
 
     emit iPReady();
 
+    // qDebug() << "checkNetworkStatusAndIP" << "old state:" << isConnectedNetworkAvailable << "new state:" << tmpConnState;
     if(tmpConnState != isConnectedNetworkAvailable)
     {
+        // qDebug() << "checkNetworkStatusAndIP" << "emit networkStatusChanged";
         isConnectedNetworkAvailable = tmpConnState;
         emit networkStatusChanged();
     }
@@ -189,6 +231,11 @@ QString NodoNetworkManager::getSSIDEncryptionType(int index)
 
 void NodoNetworkManager::disconnectFromWiFi()
 {
+    if(nullptr == m_wireless)
+    {
+        return;
+    }
+
     m_wireless->deactivateConnection();
 }
 
@@ -199,31 +246,61 @@ bool NodoNetworkManager::isWiFiConnectedBefore(int index)
 
 void NodoNetworkManager::activateWiFi(QString path)
 {
+    if(nullptr == m_wireless)
+    {
+        return;
+    }
+
     m_wireless->activateConnection(path);
 }
 
 void NodoNetworkManager::connectToWiFi(QString ssidName, QString password, bool DHCP, QString IP, QString netmask, QString gateway, QString DNS, QString security)
 {
+    if(nullptr == m_wireless)
+    {
+        return;
+    }
+
     m_wireless->addConnection(ssidName, password, DHCP, IP, netmask, gateway, DNS, security);
 }
 
 void NodoNetworkManager::startWifiScan(void)
 {
+    if(nullptr == m_wireless)
+    {
+        return;
+    }
+
     m_wireless->startScan();
 }
 
 void NodoNetworkManager::stopWifiScan(void)
 {
+    if(nullptr == m_wireless)
+    {
+        return;
+    }
+
     m_wireless->stopScan();
 }
 
 void NodoNetworkManager::forgetWiredNetwork(QString connectionPath)
 {
+    if(nullptr == m_wired)
+    {
+        return;
+    }
+
     m_wired->forgetConnection(connectionPath);
 }
 
 void NodoNetworkManager::forgetWirelessNetwork(QString connectionPath)
 {
+    if(nullptr == m_wireless)
+    {
+        return;
+    }
+
     m_wireless->forgetConnection(connectionPath);
 }
 
@@ -266,6 +343,11 @@ double NodoNetworkManager::getConnectedSSIDFrequency(void)
 
 void NodoNetworkManager::startEthScan(void)
 {
+    if(nullptr == m_wired)
+    {
+        return;
+    }
+
     m_wired->scanConnections();
 }
 
@@ -275,7 +357,15 @@ void NodoNetworkManager::stopEthScan(void)
 
 int NodoNetworkManager::getEthernetDeviceStatus(void)
 {
+    if(nullptr == m_wired)
+    {
+        return 10;
+    }
+
     m_wiredDeviceConnectionStatus = m_wired->getDeviceConnectionStatus();
+
+    // qDebug() << "getEthernetDeviceStatus" << m_wiredDeviceConnectionStatus;
+
     return m_wiredDeviceConnectionStatus;
 }
 
@@ -296,6 +386,11 @@ QString NodoNetworkManager::getEthernetConnectionName(int index)
 
 void NodoNetworkManager::disconnectFromEthernet(void)
 {
+    if(nullptr == m_wired)
+    {
+        return;
+    }
+
     m_wired->deactivateConnection();
 }
 
@@ -306,11 +401,21 @@ bool NodoNetworkManager::isEthernetConnectedBefore(int index)
 
 void NodoNetworkManager::activateEthernetConnection(int index)
 {
+    if(nullptr == m_wired)
+    {
+        return;
+    }
+
     m_wired->activateConnection(index);
 }
 
 void NodoNetworkManager::connectToEthernet(QString connectionName, bool DHCP, QString IP, QString netmask, QString gateway, QString DNS)
 {
+    if(nullptr == m_wired)
+    {
+        return;
+    }
+
     m_wired->addConnection(connectionName, DHCP, IP, netmask, gateway, DNS);
 }
 
@@ -346,6 +451,11 @@ QString NodoNetworkManager::getErrorMessage(void)
 
 QString NodoNetworkManager::ethernetConnectionSpeed(void)
 {
+    if(nullptr == m_wired)
+    {
+        return "";
+    }
+
     return QString::number(m_wired->getDeviceSpeed()).append(" MBit/s");
 }
 
@@ -397,6 +507,7 @@ void NodoNetworkManager::parseWiredNetworkList(QString networkList)
 
 void NodoNetworkManager::processWiredDeviceStatus(unsigned ethDeviceStatus)
 {
+    // qDebug() << "processWiredDeviceStatus" << ethDeviceStatus;
     m_wiredDeviceConnectionStatus = ethDeviceStatus;
     checkNetworkStatusAndIP();
     emit ethernetDeviceStatusChanged();
@@ -424,6 +535,11 @@ QString NodoNetworkManager::getSSIDConnectionPath(int index)
 
 bool NodoNetworkManager::getAPScanStatus(void)
 {
+    if(nullptr == m_wireless)
+    {
+        return false;
+    }
+
     return m_wireless->getAPScanStatus();
 }
 
@@ -434,6 +550,18 @@ void NodoNetworkManager::updateNetworkConnectionStatus(void)
     {
         m_connStat = NM_STATUS_WAITING;
     }
+
+    if(nullptr != m_wireless)
+    {
+        m_wireless->requestConnectionStateUpdate();
+    }
+
+    if(nullptr != m_wired)
+    {
+        m_wired->requestConnectionStateUpdate();
+    }
+
+    updateNetworking();
     emit connectionStatusChanged();
 }
 
@@ -445,3 +573,4 @@ QString NodoNetworkManager::getNetworkConnectionStatus(void)
     }
     return statusMessageList[m_connStat];
 }
+

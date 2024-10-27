@@ -583,7 +583,7 @@ void Daemon::ping(void)
             // qDebug() << "no network connection";
             m_connStat = NM_STATUS_DISCONNECTED;
             emit connectionStatusChanged();
-            m_pingTimer->start(PING_PERIOD);
+            m_pingTimer->start(PING_PERIOD_NOT_CONNECTED);
             return;
         }
     }
@@ -604,7 +604,7 @@ void Daemon::ping(void)
                     // qDebug() << "no internet";
                     m_connStat = NM_STATUS_NO_INTERNET;
                     emit connectionStatusChanged();
-                    m_pingTimer->start(PING_PERIOD);
+                    m_pingTimer->start(PING_PERIOD_NOT_CONNECTED);
                     return;
                 }
                 else if(statList.at(j).contains("0% packet loss", Qt::CaseInsensitive))
@@ -612,14 +612,14 @@ void Daemon::ping(void)
                     // qDebug() << "connected";
                     m_connStat = NM_STATUS_CONNECTED;
                     emit connectionStatusChanged();
-                    m_pingTimer->start(PING_PERIOD);
+                    m_pingTimer->start(PING_PERIOD_CONNECTED);
                     return;
                 }
             }
         }
     }
 
-    m_pingTimer->start(PING_PERIOD);
+    m_pingTimer->start(PING_PERIOD_NOT_CONNECTED);
 }
 
 void Daemon::setupDomains(void)
@@ -658,9 +658,6 @@ void Daemon::setupDomains(void)
         program = "/usr/bin/bash";
         arguments << "/home/nodo/setup-domains.sh";
         process.start(program, arguments);
-        process.waitForFinished(-1);
-
-        qDebug() << process.readAll();
 
         QFile file(m_firstBootFileName);
         file.open(QIODevice::ReadWrite | QIODevice::Text);

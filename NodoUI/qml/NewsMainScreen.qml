@@ -26,7 +26,7 @@ Page {
         for (var i = 0; i < sourceCount; i++)  {
             if(feedsControl.isRSSSourceSelected(i)) {
                 var itemCount = feedsControl.getDisplayedItemCount(i)
-                if(itemCount === 0)
+                if(itemCount !== 0)
                 {
                     tmpcnt++;
                 }

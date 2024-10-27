@@ -8,14 +8,7 @@ NodoWirelessController::NodoWirelessController(QObject *parent)
     m_device.deviceType = 2;
     m_device.devicePath = "";
 
-#if 0
     m_nmCommon->findDevices(&m_device);
-    if(m_device.devicePath.isEmpty())
-    {
-        m_device.currentConnectionState = 10;
-        // m_timer->start(500);
-        return;
-    }
 
     m_interface = new QDBusInterface(NM_DBUS_SERVICE, m_device.devicePath, NM_DBUS_INTERFACE_DEVICE, QDBusConnection::systemBus());
     connect(m_interface, SIGNAL(StateChanged(unsigned, unsigned, unsigned)), this, SLOT(updateNetworkConfig(unsigned, unsigned, unsigned)));
@@ -33,49 +26,12 @@ NodoWirelessController::NodoWirelessController(QObject *parent)
     {
         m_nmCommon->getIP4Params(&m_device);
     }
-#else
-    m_timer = new QTimer(this);
-    connect(m_timer, SIGNAL(timeout()), this, SLOT(initiate()));
-    m_timer->start(0);
-#endif
 }
 
 /************private functions*******************/
-void NodoWirelessController::initiate(void)
-{
-    m_timer->stop();
-
-    m_nmCommon->findDevices(&m_device);
-    if(m_device.devicePath.isEmpty())
-    {
-        m_device.currentConnectionState = 10;
-        m_timer->start(500);
-        return;
-    }
-
-    m_interface = new QDBusInterface(NM_DBUS_SERVICE, m_device.devicePath, NM_DBUS_INTERFACE_DEVICE, QDBusConnection::systemBus());
-    connect(m_interface, SIGNAL(StateChanged(unsigned, unsigned, unsigned)), this, SLOT(updateNetworkConfig(unsigned, unsigned, unsigned)));
-
-    m_settingsInterface = new QDBusInterface(NM_DBUS_SERVICE, NM_DBUS_PATH_SETTINGS, NM_DBUS_INTERFACE_SETTINGS, QDBusConnection::systemBus());
-    connect(m_settingsInterface, SIGNAL(NewConnection(QDBusObjectPath)), this, SLOT(newConnectionCreated(QDBusObjectPath)));
-
-    getDeviceSpeed(&m_device);
-    m_nmCommon->getDeviceState(&m_device);
-
-    m_scanTimer = new QTimer(this);
-    connect(m_scanTimer, SIGNAL(timeout()), this, SLOT(scanConnectionThread()));
-
-    if(m_device.currentConnectionState == 100)
-    {
-        m_nmCommon->getIP4Params(&m_device);
-    }
-
-    emit deviceStatusChangedNotification(m_device.currentConnectionState);
-}
-
 void NodoWirelessController::newConnectionCreated(QDBusObjectPath path)
 {
-    qDebug() << "new connection detected: " << path.path();
+    // qDebug() << "new connection detected: " << path.path();
     QDBusInterface nm(NM_DBUS_SERVICE, path.path(), NM_DBUS_INTERFACE_SETTINGS_CONNECTION, QDBusConnection::systemBus());
     QDBusReply<Connection> result = nm.call("GetSettings");
 
@@ -357,4 +313,9 @@ void NodoWirelessController::stopScan(void)
 void NodoWirelessController::startScan(void)
 {
     m_scanTimer->start(0);
+}
+
+void NodoWirelessController::requestConnectionStateUpdate(void)
+{
+    m_nmCommon->getDeviceState(&m_device);
 }

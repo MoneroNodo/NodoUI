@@ -4,8 +4,6 @@ NetworkManagerCommon::NetworkManagerCommon(QObject *parent)
     : QObject{parent}
 {
 
-
-
 }
 
 const QDBusArgument &operator>>(const QDBusArgument &argument, QList<QVariantMap> &varMapList)
@@ -74,6 +72,8 @@ void NetworkManagerCommon::getIP4Params(m_device_config *dev)
         dev->IP = list.first()["address"].toString();
         dev->netmask = calculateNetmask(list.first()["prefix"].toInt());
     }
+
+    // qDebug() << "getIP4Params" << dev->devicePath << dev->IP;
 }
 
 void NetworkManagerCommon::findDevices(m_device_config *dev)
@@ -90,8 +90,9 @@ void NetworkManagerCommon::findDevices(m_device_config *dev)
         QDBusObjectPath ip4Path = qdbus_cast<QDBusObjectPath >(device.property("Ip4Config"));
         int devState = device.property("State").toInt();
 
-        if (device.property("DeviceType").toInt() == dev->deviceType)
+        if ((device.property("DeviceType").toInt() == dev->deviceType) && (devState > 0))
         {
+            // qDebug() << dev->deviceConnType << p.path() << devState;
             dev->devicePath = p.path();
             dev->IP4ConfigPath = ip4Path.path();
             updateNetworkConfig(dev, devState);
@@ -119,6 +120,7 @@ void NetworkManagerCommon::getDeviceState(m_device_config *dev)
     bool ok;
     QDBusInterface nm(NM_DBUS_SERVICE, dev->devicePath, "org.freedesktop.NetworkManager.Device", QDBusConnection::systemBus());
     dev->currentConnectionState = nm.property("State").toInt(&ok);
+    // qDebug() << "getDeviceState" << dev->devicePath << dev->currentConnectionState;
 }
 
 void NetworkManagerCommon::scanSavedConnections(m_device_config *dev)

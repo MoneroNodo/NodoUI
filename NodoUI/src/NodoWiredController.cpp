@@ -6,25 +6,9 @@ NodoWiredController::NodoWiredController(QObject *parent)
     m_nmCommon = new NetworkManagerCommon();
     m_device.deviceConnType = "802-3-ethernet";
     m_device.deviceType = 1;
-
-    m_timer = new QTimer(this);
-    connect(m_timer, SIGNAL(timeout()), this, SLOT(initiate()));
-    m_timer->start(100);
-}
-
-/************private functions*******************/
-void NodoWiredController::initiate(void)
-{
-    m_timer->stop();
+    m_device.devicePath = "";
 
     m_nmCommon->findDevices(&m_device);
-    if(m_device.devicePath.isEmpty())
-    {
-        m_device.currentConnectionState = 10;
-        m_timer->start(500);
-        return;
-    }
-
     m_interface = new QDBusInterface(NM_DBUS_SERVICE, m_device.devicePath, NM_DBUS_INTERFACE_DEVICE, QDBusConnection::systemBus());
     connect(m_interface, SIGNAL(StateChanged(unsigned, unsigned, unsigned)), this, SLOT(updateNetworkConfig(unsigned, unsigned, unsigned)));
 
@@ -35,10 +19,9 @@ void NodoWiredController::initiate(void)
     {
         m_nmCommon->getIP4Params(&m_device);
     }
-
-    emit deviceStatusChangedNotification(m_device.currentConnectionState);
 }
 
+/************private functions*******************/
 void NodoWiredController::updateNetworkConfig(unsigned new_state, unsigned old_state, unsigned reason)
 {
     Q_UNUSED(old_state);
@@ -46,12 +29,14 @@ void NodoWiredController::updateNetworkConfig(unsigned new_state, unsigned old_s
 
     m_nmCommon->updateNetworkConfig(&m_device, new_state);
 
-    if((new_state == 30) || new_state == 100)
+    // qDebug() << "updateNetworkConfig" << m_device.devicePath << "new state:" << new_state;
+
+    if((new_state == 30) || (new_state == 100))
     {
         QTimer::singleShot(100, this, SLOT(scanConnectionsThread()));
     }
 
-    if((new_state == 10) || (new_state == 20) || (new_state == 30) || new_state == 100)
+    if((new_state == 10) || (new_state == 20) || (new_state == 30) || (new_state == 100))
     {
         emit deviceStatusChangedNotification(new_state);
     }
@@ -132,6 +117,8 @@ void NodoWiredController::getDeviceSpeed(m_device_config *dev)
     bool ok;
     QDBusInterface nm(NM_DBUS_SERVICE, dev->devicePath, "org.freedesktop.NetworkManager.Device.Wired", QDBusConnection::systemBus());
     dev->deviceSpeed = nm.property("Speed").toInt(&ok);
+
+    // qDebug() << "getDeviceSpeed" << dev->devicePath << dev->deviceSpeed;
 }
 
 /************public functions*******************/
@@ -212,4 +199,9 @@ int NodoWiredController::getDeviceSpeed(void)
 QString NodoWiredController::getIP(void)
 {
     return m_device.IP;
+}
+
+void NodoWiredController::requestConnectionStateUpdate(void)
+{
+    m_nmCommon->getDeviceState(&m_device);
 }
