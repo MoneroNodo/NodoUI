@@ -59,7 +59,7 @@ Item {
         anchors.topMargin: NodoSystem.nodoTopMargin
         width: 100
         height: 38
-        text: qsTr("Mining is done with P2Pool and XMRig")
+        text: qsTr("Mining is done with XMRig")
         font.pixelSize: NodoSystem.infoFieldItemFontSize
         verticalAlignment: Text.AlignVCenter
         color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
