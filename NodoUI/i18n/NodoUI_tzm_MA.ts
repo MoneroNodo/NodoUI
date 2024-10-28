@@ -126,39 +126,39 @@
     <name>DevicePinScreen</name>
     <message>
         <location filename="../qml/DevicePinScreen.qml" line="32"/>
-        <source>Change Lock PIN Settings</source>
+        <source>Change Lock PIN</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/DevicePinScreen.qml" line="47"/>
-        <source>Change Address PIN Settings</source>
+        <source>Change Address PIN</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>DeviceSSHScreen</name>
     <message>
-        <location filename="../qml/DeviceSSHScreen.qml" line="96"/>
+        <location filename="../qml/DeviceSSHScreen.qml" line="97"/>
         <source>SSH</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/DeviceSSHScreen.qml" line="129"/>
+        <location filename="../qml/DeviceSSHScreen.qml" line="130"/>
         <source>Username</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/DeviceSSHScreen.qml" line="141"/>
+        <location filename="../qml/DeviceSSHScreen.qml" line="142"/>
         <source>Old Password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/DeviceSSHScreen.qml" line="159"/>
+        <location filename="../qml/DeviceSSHScreen.qml" line="160"/>
         <source>New Password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/DeviceSSHScreen.qml" line="197"/>
+        <location filename="../qml/DeviceSSHScreen.qml" line="198"/>
         <source>Re-enter New Password</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1592,7 +1592,7 @@ It can be changed later on DEVICE-&gt;PIN</source>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="94"/>
-        <source>Processing/Restorying Nodo to factory defaults...</source>
+        <source>Restoring Nodo to factory defaults...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

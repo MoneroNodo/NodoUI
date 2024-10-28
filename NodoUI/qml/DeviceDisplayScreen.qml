@@ -183,6 +183,7 @@ Item {
         anchors.top: screenSaverRect.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         height: NodoSystem.nodoItemHeight
+        visible: false
 
         NodoLabel {
             id: deviceDisplayLanguageLabel
@@ -212,7 +213,8 @@ Item {
     Rectangle {
         id: timezoneRect
         anchors.left: deviceDisplayScreen.left
-        anchors.top: languageRect.bottom
+        // anchors.top: languageRect.bottom
+        anchors.top: screenSaverRect.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         height: NodoSystem.nodoItemHeight
 

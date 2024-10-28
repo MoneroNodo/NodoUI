@@ -29,7 +29,7 @@ Item {
         id: deviceLockPinSettingsButton
         anchors.left: devicePinScreen.left
         anchors.top: devicePinScreen.top
-        text: qsTr("Change Lock PIN Settings")
+        text: qsTr("Change Lock PIN")
         height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize
@@ -44,7 +44,7 @@ Item {
         anchors.left: devicePinScreen.left
         anchors.top: deviceLockPinSettingsButton.bottom
         anchors.topMargin: devicePinScreen.buttonTopMargin
-        text: qsTr("Change Address PIN Settings")
+        text: qsTr("Change Address PIN")
         height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize

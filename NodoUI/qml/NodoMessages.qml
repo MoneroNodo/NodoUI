@@ -91,7 +91,7 @@ Item {
         qsTr("Input field can't be Empty!"),
         qsTr("This process will reset Nodo to factory defaults. All settings and user info will be lost. Begin factory reset?"),
         qsTr("Accept"),
-        qsTr("Processing/Restorying Nodo to factory defaults..."),
+        qsTr("Restoring Nodo to factory defaults..."),
         qsTr("Completed factory reset, now rebooting..."),
         qsTr("Blockchain storage not found!"),
         qsTr("New blockchain storage found!"),

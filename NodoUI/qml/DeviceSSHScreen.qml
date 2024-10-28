@@ -14,9 +14,9 @@ Item {
     property bool isPasswordValid: false
     property string oldPassword
 
-    Component.onCompleted: {
-        onCalculateMaximumTextLabelLength()
-    }
+    // Component.onCompleted: {
+    //     onCalculateMaximumTextLabelLength()
+    // }
 
     function showPasswordCheckError(password1, password2)
     {
@@ -35,7 +35,7 @@ Item {
             deviceSSHScreen.isPasswordValid = true;
         }
     }
-
+/*
     function onCalculateMaximumTextLabelLength() {
         if(deviceSSHOldPasswordField.labelRectRoundSize > labelSize)
             labelSize = deviceSSHOldPasswordField.labelRectRoundSize
@@ -52,7 +52,7 @@ Item {
         if(deviceSSHReenterPasswordField.labelRectRoundSize > labelSize)
             labelSize = deviceSSHReenterPasswordField.labelRectRoundSize
     }
-
+*/
     Connections {
         target: nodoControl
 
@@ -93,6 +93,7 @@ Item {
             height: deviceSSHSwitchRect.height
             anchors.left: deviceSSHSwitchRect.left
             anchors.top: deviceSSHSwitchRect.top
+            // itemSize: labelSize
             text: qsTr("SSH")
         }
 
