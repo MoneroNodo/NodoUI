@@ -668,3 +668,18 @@ void Daemon::setupDomains(void)
 
     m_setupDomainsTimer->start(3000);
 }
+
+void Daemon::changePassword(QString oldPassword, QString newPassword)
+{
+    UserAuthentication *auth = new UserAuthentication();
+    auth->setAutoDelete(true);
+    auth->setUsernamePassword(oldPassword, newPassword);
+    connect(auth, SIGNAL(authenticationStatusReady(int)), this, SLOT(passwordChangeStatusReceived(int)), Qt::QueuedConnection);
+    QThreadPool::globalInstance()->start(auth);
+}
+
+void Daemon::passwordChangeStatusReceived(int status)
+{
+    emit passwordChangeStatus(status);
+}
+

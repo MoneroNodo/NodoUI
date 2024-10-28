@@ -136,7 +136,7 @@ Item {
         width: addressFieldWidth
         height: NodoSystem.nodoItemHeight
         itemSize: labelSize
-        itemText: qsTr("Description")
+        itemText: qsTr("Note")
         valueText: "sample desc"
     }
 

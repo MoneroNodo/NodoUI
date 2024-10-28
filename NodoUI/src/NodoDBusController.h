@@ -20,6 +20,7 @@ public:
     void setBacklightLevel(int backlightLevel);
     int getBacklightLevel(void);
     void setPassword(QString pw);
+    void changePassword(QString oldPassword, QString newPassword);
     void factoryResetApproved(void);
     int getBlockchainStorageStatus(void);
 

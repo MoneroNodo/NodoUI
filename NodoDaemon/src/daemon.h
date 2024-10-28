@@ -10,6 +10,7 @@
 #include "RecoveryKeyThread.h"
 #include "ServiceManagerThread.h"
 #include "MoneroLWSND.h"
+#include "UserAuthentication.h"
 #include "nodo_dbus_adaptor.h"
 
 #define PING_PERIOD_NOT_CONNECTED 3*1000
@@ -38,6 +39,7 @@ public slots:
     int getBacklightLevel(void);
 
     void setPassword(QString pw);
+    void changePassword(QString oldPassword, QString newPassword);
     int getBlockchainStorageStatus(void);
     void factoryResetApproved(void);
 
@@ -72,9 +74,9 @@ signals:
     void powerButtonReleaseDetected(void);
     void hardwareStatusReadyNotification(const QString &message);
 
-    void moneroLWSListAccountsCompleted();
-    void moneroLWSListRequestsCompleted();
-    void moneroLWSAccountAdded();
+    void moneroLWSListAccountsCompleted(void);
+    void moneroLWSListRequestsCompleted(void);
+    void moneroLWSAccountAdded(void);
 
     void connectionStatusChanged(void);
 
@@ -109,6 +111,7 @@ private:
 
     QString m_firstBootFileName = "/root/nododaemonfirstboot";
 
+
     void readCPUUsage(void);
     void readAverageCPUFreq(void);
     void readRAMUsage(void);
@@ -125,6 +128,7 @@ private slots:
     void serviceStatusReceived(const QString &message);
     void ping(void);
     void setupDomains(void);
+    void passwordChangeStatusReceived(int status);
 };
 
 #endif // DAEMON_H

@@ -75,20 +75,9 @@ NodoCanvas {
             {
                 qsTr("Received")
             }
-            else if(paymentStatus === 2)
-            {
-                qsTr("Pending")
-            }
-            else if(paymentStatus === 3)
-            {
-                qsTr("Cancelled")
-            }
             else if (paymentStatus === 4)
             {
                 qsTr("Not Received")
-            }
-            else {
-                qsTr("Unknown")
             }
         }
     }
@@ -184,7 +173,7 @@ NodoCanvas {
         itemSize: labelSize
         width: 1850
         visible: description.length > 0 ? true : false
-        itemText: qsTr("Description")
+        itemText: qsTr("Note")
         valueText: description
     }
 

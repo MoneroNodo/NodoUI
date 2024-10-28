@@ -111,6 +111,15 @@ void NodoDBusController::setPassword(QString pw)
     nodo->setPassword(pw);
 }
 
+void NodoDBusController::changePassword(QString oldPassword, QString newPassword)
+{
+    if(false == m_dbusAdapterConnectionStatus)
+    {
+        return;
+    }
+    nodo->changePassword(oldPassword, newPassword);
+}
+
 void NodoDBusController::factoryResetApproved(void)
 {
     if(false == m_dbusAdapterConnectionStatus)

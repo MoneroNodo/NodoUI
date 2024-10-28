@@ -9,9 +9,10 @@ Item {
     id: deviceSSHScreen
     anchors.fill: parent
     property int labelSize: 0
-    property int inputFieldWidth: 600
+    property int inputFieldWidth: 900
     property bool inputFieldReadOnly: false
     property bool isPasswordValid: false
+    property string oldPassword
 
     Component.onCompleted: {
         onCalculateMaximumTextLabelLength()
@@ -36,6 +37,9 @@ Item {
     }
 
     function onCalculateMaximumTextLabelLength() {
+        if(deviceSSHOldPasswordField.labelRectRoundSize > labelSize)
+            labelSize = deviceSSHOldPasswordField.labelRectRoundSize
+
         if(deviceSSHSwitchText.labelRectRoundSize > labelSize)
             labelSize = deviceSSHSwitchText.labelRectRoundSize
 
@@ -47,27 +51,33 @@ Item {
 
         if(deviceSSHReenterPasswordField.labelRectRoundSize > labelSize)
             labelSize = deviceSSHReenterPasswordField.labelRectRoundSize
-
     }
 
     Connections {
         target: nodoControl
 
         function onPasswordChangeStatus(status) {
+            deviceSSHOldPasswordField.valueText = ""
             deviceSSHPasswordField.valueText = ""
             deviceSSHReenterPasswordField.valueText = ""
             if(0 === status)
             {
                 deviceSSHScreenPopup.popupMessageText = systemMessages.messages[NodoMessages.Message.PasswordChangedSuccessfully]
             }
-            else
+            else if(-1 === status)
             {
                 deviceSSHScreenPopup.popupMessageText = systemMessages.messages[NodoMessages.Message.FailedToChangePassword]
             }
+            else if(-2 === status)
+            {
+                deviceSSHScreenPopup.popupMessageText = systemMessages.messages[NodoMessages.Message.OldPasswordIsWrong]
+            }
+
             deviceSSHScreenPopup.commandID = -1;
             deviceSSHScreenPopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Close]
             deviceSSHScreenPopup.open();
 
+            deviceSSHScreen.isPasswordValid = false;
             deviceSSHScreen.inputFieldReadOnly = !nodoControl.isComponentEnabled();
         }
     }
@@ -121,14 +131,32 @@ Item {
     }
 
     NodoInputField {
-        id: deviceSSHPasswordField
+        id: deviceSSHOldPasswordField
         anchors.left: deviceSSHScreen.left
         anchors.top: deviceSSHUserNameField.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         width: inputFieldWidth
         height: NodoSystem.nodoItemHeight
         itemSize: labelSize
-        itemText: qsTr("Password")
+        itemText: qsTr("Old Password")
+        valueText: ""
+        readOnlyFlag: deviceSSHScreen.inputFieldReadOnly
+        passwordInput: true
+        onTextEditFinished: {
+            oldPassword = valueText
+        }
+    }
+
+
+    NodoInputField {
+        id: deviceSSHPasswordField
+        anchors.left: deviceSSHScreen.left
+        anchors.top: deviceSSHOldPasswordField.bottom
+        anchors.topMargin: NodoSystem.nodoTopMargin
+        width: inputFieldWidth
+        height: NodoSystem.nodoItemHeight
+        itemSize: labelSize
+        itemText: qsTr("New Password")
         valueText: ""
         readOnlyFlag: deviceSSHScreen.inputFieldReadOnly
         passwordInput: true
@@ -166,7 +194,7 @@ Item {
         width: inputFieldWidth
         height: NodoSystem.nodoItemHeight
         itemSize: labelSize
-        itemText: qsTr("Re-enter Password")
+        itemText: qsTr("Re-enter New Password")
         valueText: ""
         readOnlyFlag: deviceSSHScreen.inputFieldReadOnly
         passwordInput: true
@@ -185,11 +213,11 @@ Item {
         height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize
-        isActive: (deviceSSHScreen.isPasswordValid) && (deviceSSHPasswordField.valueText.length >= 8) && (deviceSSHReenterPasswordField.valueText === deviceSSHPasswordField.valueText) ? true : false
+        isActive: (deviceSSHOldPasswordField.valueText !== "") && (deviceSSHScreen.isPasswordValid) && (deviceSSHPasswordField.valueText.length >= 8) && (deviceSSHReenterPasswordField.valueText === deviceSSHPasswordField.valueText) ? true : false
         onClicked: {
             deviceSSHScreen.inputFieldReadOnly = true
-            isActive = false
-            nodoControl.setPassword(deviceSSHPasswordField.valueText);
+            deviceSSHScreen.isPasswordValid = false
+            nodoControl.changePassword(deviceSSHOldPasswordField.valueText, deviceSSHPasswordField.valueText)
         }
     }
 

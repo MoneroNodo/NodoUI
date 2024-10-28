@@ -137,7 +137,7 @@ Item {
         width: addressFieldWidth
         height: visible === true ? NodoSystem.nodoItemHeight : 0
         itemSize: labelSize
-        itemText: qsTr("Description")
+        itemText: qsTr("Note")
         visible: description === "" ? false : true
         valueText: description
     }

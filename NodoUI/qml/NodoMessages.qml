@@ -45,7 +45,8 @@ Item {
         FactoryResetStarted,
         FactoryResetCompleted,
         NoStorageFound,
-        NewBlockChainStorageFound
+        NewBlockChainStorageFound,
+        OldPasswordIsWrong
 
     }
 
@@ -93,7 +94,8 @@ Item {
         qsTr("Processing/Restorying Nodo to factory defaults..."),
         qsTr("Completed factory reset, now rebooting..."),
         qsTr("Blockchain storage not found!"),
-        qsTr("New blockchain storage found!")
+        qsTr("New blockchain storage found!"),
+        qsTr("Old password is wrong!")
     ]
 }
 

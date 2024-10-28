@@ -128,5 +128,10 @@
         <signal name="connectionStatusChanged"/>
 
 
+        <method name="changePassword">
+            <arg name="oldPassword" type="s" direction="in"/>
+            <arg name="newPassword" type="s" direction="in"/>
+        </method>
+
     </interface>
 </node>

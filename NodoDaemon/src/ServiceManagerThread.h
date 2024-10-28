@@ -2,7 +2,6 @@
 #define SERVICEMANAGERTHREAD_H
 
 #include <QObject>
-#include <QObject>
 #include <QDebug>
 #include <QRunnable>
 #include <QThread>

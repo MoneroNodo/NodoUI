@@ -15,14 +15,16 @@ TARGET = NodoDaemon
 SOURCES += \
     src/MoneroLWSND.cpp \
     src/ServiceManagerThread.cpp \
-        src/main.cpp \
-        src/daemon.cpp \
-        src/PowerKeyThread.cpp \
-        src/RecoveryKeyThread.cpp \
+    src/UserAuthentication.cpp \
+    src/main.cpp \
+    src/daemon.cpp \
+    src/PowerKeyThread.cpp \
+    src/RecoveryKeyThread.cpp \
 
 HEADERS += \
     src/MoneroLWSND.h \
     src/ServiceManagerThread.h \
+    src/UserAuthentication.h \
     src/daemon.h \
     src/PowerKeyThread.h \
     src/RecoveryKeyThread.h
@@ -34,6 +36,8 @@ CONFIG(debug, debug|release) {
 CONFIG(release, debug|release) {
     DESTDIR = build
 }
+
+LIBS += -L/usr/include/security -lpam
 
 OBJECTS_DIR = $$DESTDIR/obj
 MOC_DIR = $$DESTDIR/moc

@@ -396,56 +396,41 @@ Warning: The deposit address will be publicly viewable. For privacy, use a diffe
     </message>
     <message>
         <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="80"/>
-        <source>Pending</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="84"/>
-        <source>Cancelled</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="88"/>
         <source>Not Received</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="91"/>
-        <source>Unknown</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="128"/>
+        <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="117"/>
         <source>Timestamp</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="140"/>
+        <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="129"/>
         <source>Deposit Address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="168"/>
+        <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="157"/>
         <source>Transaction ID</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="187"/>
-        <source>Description</source>
+        <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="176"/>
+        <source>Note</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="196"/>
+        <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="185"/>
         <source>Clear Payment</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="210"/>
+        <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="199"/>
         <source>View QR</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="222"/>
+        <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="211"/>
         <source>Dismiss</source>
         <translation type="unfinished"></translation>
     </message>
@@ -474,7 +459,7 @@ Warning: The deposit address will be publicly viewable. For privacy, use a diffe
     </message>
     <message>
         <location filename="../qml/MoneroPayReceivePaymentPreviewScreen.qml" line="140"/>
-        <source>Description</source>
+        <source>Note</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -512,7 +497,7 @@ Warning: The deposit address will be publicly viewable. For privacy, use a diffe
     </message>
     <message>
         <location filename="../qml/MoneroPayReceivePaymentResultScreen.qml" line="139"/>
-        <source>Description</source>
+        <source>Note</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1321,37 +1306,37 @@ It can be changed later on DEVICE-&gt;PIN</source>
 <context>
     <name>NodoHomeScreen</name>
     <message>
-        <location filename="../qml/NodoHomeScreen.qml" line="133"/>
+        <location filename="../qml/NodoHomeScreen.qml" line="134"/>
         <source>NETWORKS</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoHomeScreen.qml" line="120"/>
+        <location filename="../qml/NodoHomeScreen.qml" line="121"/>
         <source>DEVICE</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoHomeScreen.qml" line="147"/>
+        <location filename="../qml/NodoHomeScreen.qml" line="148"/>
         <source>NODE</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoHomeScreen.qml" line="160"/>
+        <location filename="../qml/NodoHomeScreen.qml" line="161"/>
         <source>MINER</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoHomeScreen.qml" line="175"/>
+        <location filename="../qml/NodoHomeScreen.qml" line="176"/>
         <source>LWS</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoHomeScreen.qml" line="189"/>
+        <location filename="../qml/NodoHomeScreen.qml" line="190"/>
         <source>MPAY</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoHomeScreen.qml" line="203"/>
+        <location filename="../qml/NodoHomeScreen.qml" line="204"/>
         <source>NEWS</source>
         <translation type="unfinished"></translation>
     </message>
