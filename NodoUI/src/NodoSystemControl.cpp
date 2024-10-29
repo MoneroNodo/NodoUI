@@ -723,19 +723,6 @@ void NodoSystemControl::passwordChangeStatusReceived(int status)
     emit passwordChangeStatus(status);
 }
 
-void NodoSystemControl::enableBlockExplorerStatus(bool status)
-{
-    enableComponent(false);
-    if(status)
-    {
-        m_dbusController->serviceManager("start", "block-explorer");
-    }
-    else
-    {
-        m_dbusController->serviceManager("stop", "block-explorer");
-    }
-}
-
 void NodoSystemControl::factoryResetApproved(void)
 {
     m_dbusController->factoryResetApproved();

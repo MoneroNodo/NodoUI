@@ -19,7 +19,6 @@ Item {
         deviceUpdatesXmrigSwitch.checked = nodoConfig.getUpdateStatus("xmrig")
         deviceUpdatesMoneroLWSSwitch.checked = nodoConfig.getUpdateStatus("lws")
         deviceUpdatesMoneroPaySwitch.checked = nodoConfig.getUpdateStatus("pay")
-        deviceUpdatesBlockExplorerSwitch.checked = nodoConfig.getUpdateStatus("exp")
     }
 
     function onCalculateMaximumTextLabelLength() {
@@ -37,9 +36,6 @@ Item {
 
         if(deviceUpdatesMoneroPaySwitchText.labelRectRoundSize > labelSize)
             labelSize = deviceUpdatesMoneroPaySwitchText.labelRectRoundSize
-
-        if(deviceUpdatesBlockExplorerSwitchText.labelRectRoundSize > labelSize)
-            labelSize = deviceUpdatesBlockExplorerSwitchText.labelRectRoundSize
     }
 
     Rectangle {
@@ -176,34 +172,6 @@ Item {
             display: AbstractButton.IconOnly
             onCheckedChanged: {
                 nodoConfig.setUpdateStatus("pay", checked)
-            }
-        }
-    }
-
-    Rectangle {
-        id: deviceUpdatesBlockExplorerSwitchRect
-        anchors.left: deviceUpdatesScreen.left
-        anchors.top: deviceUpdatesMoneroPaySwitchRect.bottom
-        anchors.topMargin: NodoSystem.nodoTopMargin
-        height: NodoSystem.nodoItemHeight
-
-        NodoLabel{
-            id: deviceUpdatesBlockExplorerSwitchText
-            height: deviceUpdatesBlockExplorerSwitchRect.height
-            anchors.left: deviceUpdatesBlockExplorerSwitchRect.left
-            anchors.top: deviceUpdatesBlockExplorerSwitchRect.top
-            text: qsTr("Block Explorer")
-        }
-
-        NodoSwitch {
-            id: deviceUpdatesBlockExplorerSwitch
-            anchors.left: deviceUpdatesBlockExplorerSwitchText.right
-            anchors.leftMargin: NodoSystem.padding
-            height: deviceUpdatesBlockExplorerSwitchRect.height
-            width: 2*deviceUpdatesBlockExplorerSwitchRect.height
-            display: AbstractButton.IconOnly
-            onCheckedChanged: {
-                nodoConfig.setUpdateStatus("exp", checked)
             }
         }
     }

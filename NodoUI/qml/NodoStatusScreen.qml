@@ -69,7 +69,6 @@ Rectangle {
         torServiceField.valueText = getServiceStatusText(nodoControl.getServiceStatus("tor"))
         i2pServiceField.valueText = getServiceStatusText(nodoControl.getServiceStatus("i2pd"))
         moneroLWSField.valueText = getServiceStatusText(nodoControl.getServiceStatus("monero-lws"))
-        blockExplorerField.valueText = getServiceStatusText(nodoControl.getServiceStatus("block-explorer"))
         moneroPayField.valueText = getServiceStatusText(nodoControl.getServiceStatus("moneropay"))
     }
 
@@ -159,9 +158,6 @@ Rectangle {
 
         if(moneroLWSField.labelRectRoundSize > labelSize)
             labelSize = moneroLWSField.labelRectRoundSize
-
-        if(blockExplorerField.labelRectRoundSize > labelSize)
-            labelSize = blockExplorerField.labelRectRoundSize
 
         if(moneroPayField.labelRectRoundSize > labelSize)
             labelSize = moneroPayField.labelRectRoundSize
@@ -436,21 +432,9 @@ Rectangle {
         }
 
         NodoInfoField {
-            id: blockExplorerField
-            anchors.left: moneroNodeField.left
-            anchors.top: moneroLWSField.bottom
-            anchors.topMargin: fieldTopMargin
-            width: componentWidth
-            height: statusScreenInfoFieldHeight
-            itemSize: labelSize
-            itemText: qsTr("Block Explorer")
-            valueText: ""
-        }
-
-        NodoInfoField {
             id: moneroPayField
             anchors.left: moneroNodeField.left
-            anchors.top: blockExplorerField.bottom
+            anchors.top: moneroLWSField.bottom
             anchors.topMargin: fieldTopMargin
             width: componentWidth
             height: statusScreenInfoFieldHeight

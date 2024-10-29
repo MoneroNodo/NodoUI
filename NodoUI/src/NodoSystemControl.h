@@ -111,8 +111,6 @@ public:
     Q_INVOKABLE void setAddressPin(QString newPIN);
     Q_INVOKABLE bool verifyAddressPinCode(QString pin);
 
-    Q_INVOKABLE void enableBlockExplorerStatus(bool status);
-
     Q_INVOKABLE void factoryResetApproved(void);
     Q_INVOKABLE int getBlockchainStorageStatus(void);
 
