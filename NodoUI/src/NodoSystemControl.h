@@ -74,7 +74,7 @@ public:
     Q_INVOKABLE void setI2pPort(QString port);
 
     Q_INVOKABLE int getErrorCode(void);
-    Q_INVOKABLE QString getErrorMessage(void);
+    // Q_INVOKABLE QString getErrorMessage(void);
 
     Q_INVOKABLE void setNodeBandwidthParameters(QString in_peers, QString out_peers, QString limit_rate_up, QString limit_rate_down);
 
@@ -117,7 +117,6 @@ public:
     Q_INVOKABLE int getBlockchainStorageStatus(void);
 
     Q_INVOKABLE bool isPasswordValid(QString password);
-    Q_INVOKABLE QString checkPasswordValidity(QString password1, QString password2);
 
 
 signals:

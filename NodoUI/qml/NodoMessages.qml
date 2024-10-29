@@ -47,7 +47,6 @@ Item {
         NoStorageFound,
         NewBlockChainStorageFound,
         OldPasswordIsWrong
-
     }
 
     property var messages:[
@@ -96,6 +95,65 @@ Item {
         qsTr("Blockchain storage not found!"),
         qsTr("New blockchain storage found!"),
         qsTr("Old password is wrong!")
+    ]
+
+
+    enum BackendMessages {
+        NoError,
+        RestartingTorFailed,
+        RestartingMoneroFailed,
+        ConnectionToNodoDbusFailed,
+        ConnectionToNodoNMDbusFailed,
+        GatheringIPFailed,
+        NoNetworkDeviceFound,
+        CableDisconnected,
+        SomethingIsWrong,
+        NewPinIsSet,
+        RestartingBlockExplorerFailed,
+        PasswordDoesntMeetRequirements,
+        PasswordsDontMatch
+    }
+
+    property var backendMessages: [
+        qsTr("No Error"),
+        qsTr("Restarting tor service failed!"),
+        qsTr("Restarting monerod service failed!"),
+        qsTr("Connection to Network Manager service failed!"),
+        qsTr("Connection to Nodonm service failed!"),
+        qsTr("IP couldn't be read!"),
+        qsTr("No network device found!"),
+        qsTr("Cable disconnected!"),
+        qsTr("Something is wrong!"),
+        qsTr("New PIN is set successfully!"),
+        qsTr("Failed to change Block Explorer Service!"),
+        qsTr("Password doesn't meet requirements."),
+        qsTr("Passwords do not match.")
+    ]
+
+    enum NetworkStatusMessages {
+        Waiting,
+        Connected,
+        NoInternet,
+        Disconnected
+    }
+
+    property var networkStatusMessages: [
+        qsTr("Waiting"),
+        qsTr("Connected"),
+        qsTr("No Internet"),
+        qsTr("Disconnected")
+    ]
+
+    enum ServiceStatusMessages {
+        Active,
+        Inactive,
+        Activating
+    }
+
+    property var serviceStatusMessages: [
+        qsTr("Active"),
+        qsTr("Inactive"),
+        qsTr("Activating"),
     ]
 }
 

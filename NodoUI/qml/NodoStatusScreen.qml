@@ -40,18 +40,37 @@ Rectangle {
 
     function checkNetworkConnection()
     {
-        networkConnectionField.valueText = networkManager.getNetworkConnectionStatus()
+        var statusCode = networkManager.getNetworkConnectionStatusCode()
+        networkConnectionField.valueText = systemMessages.networkStatusMessages[statusCode]
     }
 
+    function getServiceStatusText(message)
+    {
+        if(message === "inactive")
+        {
+            return systemMessages.serviceStatusMessages[NodoMessages.ServiceStatusMessages.Inactive]
+        }
+        else if(message === "active")
+        {
+            return systemMessages.serviceStatusMessages[NodoMessages.ServiceStatusMessages.Active]
+        }
+        else if(message === "activating")
+        {
+            return systemMessages.serviceStatusMessages[NodoMessages.ServiceStatusMessages.Activating]
+        }
+        else {
+            return message
+        }
+    }
 
     function updateServiceStatus() {
-        moneroNodeField.valueText = nodoControl.getServiceStatus("monerod")
-        minerServiceField.valueText = nodoControl.getServiceStatus("xmrig")
-        torServiceField.valueText = nodoControl.getServiceStatus("tor")
-        i2pServiceField.valueText = nodoControl.getServiceStatus("i2pd")
-        moneroLWSField.valueText = nodoControl.getServiceStatus("monero-lws")
-        blockExplorerField.valueText = nodoControl.getServiceStatus("block-explorer")
-        moneroPayField.valueText = nodoControl.getServiceStatus("moneropay")
+        moneroNodeField.valueText = getServiceStatusText(nodoControl.getServiceStatus("monerod"))
+        minerServiceField.valueText = getServiceStatusText(nodoControl.getServiceStatus("xmrig"))
+        torServiceField.valueText = getServiceStatusText(nodoControl.getServiceStatus("tor"))
+        i2pServiceField.valueText = getServiceStatusText(nodoControl.getServiceStatus("i2pd"))
+        moneroLWSField.valueText = getServiceStatusText(nodoControl.getServiceStatus("monero-lws"))
+        blockExplorerField.valueText = getServiceStatusText(nodoControl.getServiceStatus("block-explorer"))
+        moneroPayField.valueText = getServiceStatusText(nodoControl.getServiceStatus("moneropay"))
     }
 
     function updateHardwareStatus() {
@@ -161,21 +180,6 @@ Rectangle {
 
         if(systemStorageField.labelRectRoundSize > labelSize)
             labelSize = systemStorageField.labelRectRoundSize
-
-        if(hashRateField.labelRectRoundSize > labelSize)
-            labelSize = hashRateField.labelRectRoundSize
-
-        if(dailyTXAvgField.labelRectRoundSize > labelSize)
-            labelSize = dailyTXAvgField.labelRectRoundSize
-
-        if(mempoolSizeField.labelRectRoundSize > labelSize)
-            labelSize = mempoolSizeField.labelRectRoundSize
-
-        if(avgTXFeeField.labelRectRoundSize > labelSize)
-            labelSize = avgTXFeeField.labelRectRoundSize
-
-        if(tXPerSecondField.labelRectRoundSize > labelSize)
-            labelSize = tXPerSecondField.labelRectRoundSize
     }
 
 
@@ -455,93 +459,6 @@ Rectangle {
             valueText: ""
         }
 
-    }
-
-    NodoCanvas {
-        id: moneroStatus
-        anchors.horizontalCenter: statusScreen.horizontalCenter
-        anchors.top: systemStatus.bottom
-        anchors.topMargin: 15
-        width: componentWidth + 2 + (2*componentLeftMargin)
-        height: tXPerSecondField.y + tXPerSecondField.height + componentBottomMargin
-        color: cardBackgroundColor
-        visible: false
-
-        Label {
-            id: moneroStatusTabName
-            anchors.left: moneroStatus.left
-            anchors.top: moneroStatus.top
-            anchors.topMargin: componentTopMargin
-            anchors.leftMargin: componentLeftMargin
-            width: moneroStatusTabName.paintedWidth
-            height: 16
-            text: qsTr("Monero")
-            verticalAlignment: Text.AlignBottom
-            horizontalAlignment: Text.AlignHCenter
-            font.pixelSize: NodoSystem.topMenuButtonFontSize
-            color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
-            font.family: NodoSystem.fontUrbanist.name
-        }
-
-        NodoInfoField {
-            id: hashRateField
-            anchors.left: moneroStatusTabName.left
-            anchors.top: moneroStatusTabName.bottom
-            anchors.topMargin: fieldTopMargin
-            width: componentWidth
-            height: statusScreenInfoFieldHeight
-            itemSize: labelSize
-            itemText: qsTr("Hash Rate")
-            valueText: ""
-        }
-
-        NodoInfoField {
-            id: dailyTXAvgField
-            anchors.left: moneroStatusTabName.left
-            anchors.top: hashRateField.bottom
-            anchors.topMargin: fieldTopMargin
-            width: componentWidth
-            height: statusScreenInfoFieldHeight
-            itemSize: labelSize
-            itemText: qsTr("Daily TX Avg (24h)")
-            valueText: ""
-        }
-
-        NodoInfoField {
-            id: mempoolSizeField
-            anchors.left: moneroStatusTabName.left
-            anchors.top: dailyTXAvgField.bottom
-            anchors.topMargin: fieldTopMargin
-            width: componentWidth
-            height: statusScreenInfoFieldHeight
-            itemSize: labelSize
-            itemText: qsTr("Mempool Size")
-            valueText: ""
-        }
-
-        NodoInfoField {
-            id: avgTXFeeField
-            anchors.left: moneroStatusTabName.left
-            anchors.top: mempoolSizeField.bottom
-            anchors.topMargin: fieldTopMargin
-            width: componentWidth
-            height: statusScreenInfoFieldHeight
-            itemSize: labelSize
-            itemText: qsTr("Avg TX fee (24h)")
-            valueText: ""
-        }
-
-        NodoInfoField {
-            id: tXPerSecondField
-            anchors.left: moneroStatusTabName.left
-            anchors.top: avgTXFeeField.bottom
-            anchors.topMargin: fieldTopMargin
-            width: componentWidth
-            height: statusScreenInfoFieldHeight
-            itemSize: labelSize
-            itemText: qsTr("TX per second")
-            valueText: ""
-        }
     }
 
     NodoCanvas {

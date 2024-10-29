@@ -44,37 +44,37 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/DeviceDisplayScreen.qml" line="193"/>
+        <location filename="../qml/DeviceDisplayScreen.qml" line="195"/>
         <source>Language</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/DeviceDisplayScreen.qml" line="225"/>
+        <location filename="../qml/DeviceDisplayScreen.qml" line="228"/>
         <source>Time Zone</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/DeviceDisplayScreen.qml" line="257"/>
+        <location filename="../qml/DeviceDisplayScreen.qml" line="260"/>
         <source>Currency</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/DeviceDisplayScreen.qml" line="304"/>
+        <location filename="../qml/DeviceDisplayScreen.qml" line="307"/>
         <source>Keyboard Layout</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/DeviceDisplayScreen.qml" line="316"/>
+        <location filename="../qml/DeviceDisplayScreen.qml" line="319"/>
         <source>QWERTY</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/DeviceDisplayScreen.qml" line="316"/>
+        <location filename="../qml/DeviceDisplayScreen.qml" line="319"/>
         <source>QWERTZ</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/DeviceDisplayScreen.qml" line="316"/>
+        <location filename="../qml/DeviceDisplayScreen.qml" line="319"/>
         <source>AZERTY</source>
         <translation type="unfinished"></translation>
     </message>
@@ -138,27 +138,27 @@
 <context>
     <name>DeviceSSHScreen</name>
     <message>
-        <location filename="../qml/DeviceSSHScreen.qml" line="97"/>
+        <location filename="../qml/DeviceSSHScreen.qml" line="118"/>
         <source>SSH</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/DeviceSSHScreen.qml" line="130"/>
+        <location filename="../qml/DeviceSSHScreen.qml" line="151"/>
         <source>Username</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/DeviceSSHScreen.qml" line="142"/>
+        <location filename="../qml/DeviceSSHScreen.qml" line="163"/>
         <source>Old Password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/DeviceSSHScreen.qml" line="160"/>
+        <location filename="../qml/DeviceSSHScreen.qml" line="181"/>
         <source>New Password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/DeviceSSHScreen.qml" line="198"/>
+        <location filename="../qml/DeviceSSHScreen.qml" line="219"/>
         <source>Re-enter New Password</source>
         <translation type="unfinished"></translation>
     </message>
@@ -405,37 +405,37 @@ Warning: The deposit address will be publicly viewable. For privacy, use a diffe
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="117"/>
+        <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="120"/>
         <source>Timestamp</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="129"/>
+        <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="132"/>
         <source>Deposit Address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="157"/>
+        <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="160"/>
         <source>Transaction ID</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="176"/>
+        <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="179"/>
         <source>Note</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="185"/>
+        <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="188"/>
         <source>Clear Payment</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="199"/>
+        <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="202"/>
         <source>View QR</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="211"/>
+        <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="214"/>
         <source>Dismiss</source>
         <translation type="unfinished"></translation>
     </message>
@@ -581,12 +581,12 @@ Warning: The deposit address will be publicly viewable. For privacy, use a diffe
 <context>
     <name>NetworksI2PScreen</name>
     <message>
-        <location filename="../qml/NetworksI2PScreen.qml" line="111"/>
+        <location filename="../qml/NetworksI2PScreen.qml" line="112"/>
         <source>I2P</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NetworksI2PScreen.qml" line="133"/>
+        <location filename="../qml/NetworksI2PScreen.qml" line="134"/>
         <source>I2P b32 Address</source>
         <translation type="unfinished"></translation>
     </message>
@@ -612,17 +612,17 @@ Warning: The deposit address will be publicly viewable. For privacy, use a diffe
 <context>
     <name>NetworksTorScreen</name>
     <message>
-        <location filename="../qml/NetworksTorScreen.qml" line="116"/>
+        <location filename="../qml/NetworksTorScreen.qml" line="117"/>
         <source>Tor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NetworksTorScreen.qml" line="142"/>
+        <location filename="../qml/NetworksTorScreen.qml" line="143"/>
         <source>Route all connections through Tor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NetworksTorScreen.qml" line="164"/>
+        <location filename="../qml/NetworksTorScreen.qml" line="165"/>
         <source>Onion Address</source>
         <translation type="unfinished"></translation>
     </message>
@@ -643,28 +643,28 @@ Warning: The deposit address will be publicly viewable. For privacy, use a diffe
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodeBandwidthScreen.qml" line="143"/>
+        <location filename="../qml/NodeBandwidthScreen.qml" line="145"/>
         <source>Incoming peers limit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodeBandwidthScreen.qml" line="170"/>
+        <location filename="../qml/NodeBandwidthScreen.qml" line="172"/>
         <source>Outgoing peers limit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodeBandwidthScreen.qml" line="201"/>
+        <location filename="../qml/NodeBandwidthScreen.qml" line="203"/>
         <source>Bandwidth Up</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodeBandwidthScreen.qml" line="244"/>
-        <location filename="../qml/NodeBandwidthScreen.qml" line="336"/>
+        <location filename="../qml/NodeBandwidthScreen.qml" line="246"/>
+        <location filename="../qml/NodeBandwidthScreen.qml" line="338"/>
         <source>Unlimited</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodeBandwidthScreen.qml" line="293"/>
+        <location filename="../qml/NodeBandwidthScreen.qml" line="295"/>
         <source>Bandwidth Down</source>
         <translation type="unfinished"></translation>
     </message>
@@ -672,12 +672,12 @@ Warning: The deposit address will be publicly viewable. For privacy, use a diffe
 <context>
     <name>NodeBlockExplorer</name>
     <message>
-        <location filename="../qml/NodeBlockExplorer.qml" line="38"/>
+        <location filename="../qml/NodeBlockExplorer.qml" line="40"/>
         <source>Block Explorer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodeBlockExplorer.qml" line="63"/>
+        <location filename="../qml/NodeBlockExplorer.qml" line="65"/>
         <source>Enables the Onion Monero Block Explorer service, accessible from WebUI</source>
         <translation type="unfinished"></translation>
     </message>
@@ -703,17 +703,17 @@ Warning: The deposit address will be publicly viewable. For privacy, use a diffe
 <context>
     <name>NodePrivateNodeScreen</name>
     <message>
-        <location filename="../qml/NodePrivateNodeScreen.qml" line="73"/>
+        <location filename="../qml/NodePrivateNodeScreen.qml" line="74"/>
         <source>Private Node</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodePrivateNodeScreen.qml" line="129"/>
+        <location filename="../qml/NodePrivateNodeScreen.qml" line="130"/>
         <source>Username</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodePrivateNodeScreen.qml" line="141"/>
+        <location filename="../qml/NodePrivateNodeScreen.qml" line="142"/>
         <source>Password</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1272,18 +1272,18 @@ It can be changed later on DEVICE-&gt;PIN</source>
 <context>
     <name>NodoFirstTimeAdminPasswordScreen</name>
     <message>
-        <location filename="../qml/NodoFirstTimeAdminPasswordScreen.qml" line="90"/>
+        <location filename="../qml/NodoFirstTimeAdminPasswordScreen.qml" line="110"/>
         <source>Please set your Admin Password. The Admin Password should be at least 8 characters, with uppercase and lowercase letters, number and special character.
-The Admin Password is used to connect to Nodo remotely via SSH. It can be changed later on DEVICE -&gt; SSH.</source>
+The Admin Password is used to connect to Nodo remotely via SSH. It can be changed later on DEVICE-&gt;SSH.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoFirstTimeAdminPasswordScreen.qml" line="107"/>
+        <location filename="../qml/NodoFirstTimeAdminPasswordScreen.qml" line="127"/>
         <source>New Admin Password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoFirstTimeAdminPasswordScreen.qml" line="145"/>
+        <location filename="../qml/NodoFirstTimeAdminPasswordScreen.qml" line="165"/>
         <source>Re-enter Admin Password</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1395,315 +1395,316 @@ It can be changed later on DEVICE-&gt;PIN</source>
 <context>
     <name>NodoMessages</name>
     <message>
-        <location filename="../qml/NodoMessages.qml" line="54"/>
+        <location filename="../qml/NodoMessages.qml" line="53"/>
         <source>Close</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoMessages.qml" line="55"/>
+        <location filename="../qml/NodoMessages.qml" line="54"/>
         <source>Cancel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoMessages.qml" line="56"/>
+        <location filename="../qml/NodoMessages.qml" line="55"/>
         <source>Add new connection</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoMessages.qml" line="57"/>
+        <location filename="../qml/NodoMessages.qml" line="56"/>
         <source>Add</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoMessages.qml" line="58"/>
+        <location filename="../qml/NodoMessages.qml" line="57"/>
         <source>Adding</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoMessages.qml" line="59"/>
+        <location filename="../qml/NodoMessages.qml" line="58"/>
         <source>Apply</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoMessages.qml" line="60"/>
+        <location filename="../qml/NodoMessages.qml" line="59"/>
         <source>Apply Port</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoMessages.qml" line="61"/>
+        <location filename="../qml/NodoMessages.qml" line="60"/>
         <source>Forget</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoMessages.qml" line="62"/>
+        <location filename="../qml/NodoMessages.qml" line="61"/>
         <source>Connect</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoMessages.qml" line="63"/>
+        <location filename="../qml/NodoMessages.qml" line="62"/>
         <source>Connecting</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoMessages.qml" line="64"/>
+        <location filename="../qml/NodoMessages.qml" line="63"/>
         <source>Disconnect</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoMessages.qml" line="65"/>
+        <location filename="../qml/NodoMessages.qml" line="64"/>
         <source>Disconnecting</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoMessages.qml" line="66"/>
+        <location filename="../qml/NodoMessages.qml" line="65"/>
         <source>Ethernet</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoMessages.qml" line="67"/>
+        <location filename="../qml/NodoMessages.qml" line="66"/>
         <source>Wi-Fi</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoMessages.qml" line="68"/>
+        <location filename="../qml/NodoMessages.qml" line="67"/>
         <source>Connection name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoMessages.qml" line="69"/>
+        <location filename="../qml/NodoMessages.qml" line="68"/>
         <source>SSID</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoMessages.qml" line="70"/>
+        <location filename="../qml/NodoMessages.qml" line="69"/>
         <source>DHCP</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoMessages.qml" line="71"/>
-        <location filename="../qml/NodoMessages.qml" line="85"/>
+        <location filename="../qml/NodoMessages.qml" line="70"/>
+        <location filename="../qml/NodoMessages.qml" line="84"/>
         <source>Address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoMessages.qml" line="72"/>
+        <location filename="../qml/NodoMessages.qml" line="71"/>
         <source>Subnet Mask</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoMessages.qml" line="73"/>
+        <location filename="../qml/NodoMessages.qml" line="72"/>
         <source>Router</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoMessages.qml" line="74"/>
+        <location filename="../qml/NodoMessages.qml" line="73"/>
         <source>DNS</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoMessages.qml" line="75"/>
+        <location filename="../qml/NodoMessages.qml" line="74"/>
         <source>Device Speed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoMessages.qml" line="76"/>
+        <location filename="../qml/NodoMessages.qml" line="75"/>
         <source>Signal Strength</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoMessages.qml" line="77"/>
+        <location filename="../qml/NodoMessages.qml" line="76"/>
         <source>Security Type</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoMessages.qml" line="78"/>
+        <location filename="../qml/NodoMessages.qml" line="77"/>
         <source>Frequency</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoMessages.qml" line="79"/>
+        <location filename="../qml/NodoMessages.qml" line="78"/>
         <source>Password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoMessages.qml" line="80"/>
+        <location filename="../qml/NodoMessages.qml" line="79"/>
         <source>Current network</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoMessages.qml" line="81"/>
+        <location filename="../qml/NodoMessages.qml" line="80"/>
         <source>Available networks</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoMessages.qml" line="82"/>
+        <location filename="../qml/NodoMessages.qml" line="81"/>
         <source>Advanced</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoMessages.qml" line="83"/>
+        <location filename="../qml/NodoMessages.qml" line="82"/>
+        <location filename="../qml/NodoMessages.qml" line="124"/>
         <source>No network device found!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoMessages.qml" line="84"/>
+        <location filename="../qml/NodoMessages.qml" line="83"/>
+        <location filename="../qml/NodoMessages.qml" line="125"/>
         <source>Cable disconnected!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoMessages.qml" line="86"/>
+        <location filename="../qml/NodoMessages.qml" line="85"/>
         <source>Port</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoMessages.qml" line="87"/>
+        <location filename="../qml/NodoMessages.qml" line="86"/>
         <source>&lt;loading&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoMessages.qml" line="88"/>
+        <location filename="../qml/NodoMessages.qml" line="87"/>
         <source>PIN codes are different.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoMessages.qml" line="89"/>
+        <location filename="../qml/NodoMessages.qml" line="88"/>
         <source>Failed to change password.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoMessages.qml" line="90"/>
+        <location filename="../qml/NodoMessages.qml" line="89"/>
         <source>Password changed successfully.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoMessages.qml" line="91"/>
+        <location filename="../qml/NodoMessages.qml" line="90"/>
         <source>Input field can&apos;t be Empty!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoMessages.qml" line="92"/>
+        <location filename="../qml/NodoMessages.qml" line="91"/>
         <source>This process will reset Nodo to factory defaults. All settings and user info will be lost. Begin factory reset?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoMessages.qml" line="93"/>
+        <location filename="../qml/NodoMessages.qml" line="92"/>
         <source>Accept</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoMessages.qml" line="94"/>
+        <location filename="../qml/NodoMessages.qml" line="93"/>
         <source>Restoring Nodo to factory defaults...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoMessages.qml" line="95"/>
+        <location filename="../qml/NodoMessages.qml" line="94"/>
         <source>Completed factory reset, now rebooting...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoMessages.qml" line="96"/>
+        <location filename="../qml/NodoMessages.qml" line="95"/>
         <source>Blockchain storage not found!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoMessages.qml" line="97"/>
+        <location filename="../qml/NodoMessages.qml" line="96"/>
         <source>New blockchain storage found!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoMessages.qml" line="98"/>
+        <location filename="../qml/NodoMessages.qml" line="97"/>
         <source>Old password is wrong!</source>
         <translation type="unfinished"></translation>
     </message>
-</context>
-<context>
-    <name>NodoNetworkManager</name>
     <message>
-        <location filename="../src/NodoNetworkManager.h" line="120"/>
-        <source>Waiting</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/NodoNetworkManager.h" line="120"/>
-        <source>Connected</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/NodoNetworkManager.h" line="120"/>
-        <source>No Internet</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/NodoNetworkManager.h" line="120"/>
-        <source>Disconnected</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>NodoNotifier</name>
-    <message>
-        <location filename="../src/NodoNotificationMessages.h" line="38"/>
+        <location filename="../qml/NodoMessages.qml" line="118"/>
         <source>No Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/NodoNotificationMessages.h" line="39"/>
+        <location filename="../qml/NodoMessages.qml" line="119"/>
         <source>Restarting tor service failed!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/NodoNotificationMessages.h" line="40"/>
+        <location filename="../qml/NodoMessages.qml" line="120"/>
         <source>Restarting monerod service failed!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/NodoNotificationMessages.h" line="41"/>
+        <location filename="../qml/NodoMessages.qml" line="121"/>
         <source>Connection to Network Manager service failed!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/NodoNotificationMessages.h" line="42"/>
+        <location filename="../qml/NodoMessages.qml" line="122"/>
         <source>Connection to Nodonm service failed!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/NodoNotificationMessages.h" line="43"/>
+        <location filename="../qml/NodoMessages.qml" line="123"/>
         <source>IP couldn&apos;t be read!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/NodoNotificationMessages.h" line="44"/>
-        <source>No network device found!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/NodoNotificationMessages.h" line="45"/>
-        <source>Cable disconnected!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/NodoNotificationMessages.h" line="46"/>
+        <location filename="../qml/NodoMessages.qml" line="126"/>
         <source>Something is wrong!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/NodoNotificationMessages.h" line="47"/>
+        <location filename="../qml/NodoMessages.qml" line="127"/>
         <source>New PIN is set successfully!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/NodoNotificationMessages.h" line="48"/>
+        <location filename="../qml/NodoMessages.qml" line="128"/>
         <source>Failed to change Block Explorer Service!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/NodoNotificationMessages.h" line="49"/>
+        <location filename="../qml/NodoMessages.qml" line="129"/>
         <source>Password doesn&apos;t meet requirements.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/NodoNotificationMessages.h" line="50"/>
+        <location filename="../qml/NodoMessages.qml" line="130"/>
         <source>Passwords do not match.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/NodoMessages.qml" line="141"/>
+        <source>Waiting</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/NodoMessages.qml" line="142"/>
+        <source>Connected</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/NodoMessages.qml" line="143"/>
+        <source>No Internet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/NodoMessages.qml" line="144"/>
+        <source>Disconnected</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/NodoMessages.qml" line="154"/>
+        <source>Active</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/NodoMessages.qml" line="155"/>
+        <source>Inactive</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/NodoMessages.qml" line="156"/>
+        <source>Activating</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1718,204 +1719,174 @@ It can be changed later on DEVICE-&gt;PIN</source>
 <context>
     <name>NodoStatusScreen</name>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="231"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="236"/>
         <source>Synchronized</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="231"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="236"/>
         <source>Synchronizing</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="75"/>
-        <location filename="../qml/NodoStatusScreen.qml" line="327"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="95"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="332"/>
         <source>Update available</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="214"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="219"/>
         <source>Node</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="230"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="235"/>
         <source>Sync Status</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="242"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="247"/>
         <source>Timestamp</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="254"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="259"/>
         <source>Block Height</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="266"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="271"/>
         <source>Version</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="278"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="283"/>
         <source>Outgoing Peers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="290"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="295"/>
         <source>Incoming Peers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="302"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="307"/>
         <source>White Peerlist</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="314"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="319"/>
         <source>Grey Peerlist</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="326"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="331"/>
         <source>Update</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="75"/>
-        <location filename="../qml/NodoStatusScreen.qml" line="327"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="95"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="332"/>
         <source>Up to date</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="82"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="102"/>
         <source>Synchronized (100%)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="86"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="106"/>
         <source>Synchronizing (</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="90"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="110"/>
         <source>Not Synchronizing</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="94"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="114"/>
         <source>Waiting</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="338"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="343"/>
         <source>Network</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="366"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="371"/>
         <source>Services</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="382"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="387"/>
         <source>Monero Daemon</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="394"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="399"/>
         <source>Monero Miner</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="406"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="411"/>
         <source>Tor Service</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="418"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="423"/>
         <source>I2P Service</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="430"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="435"/>
         <source>Monero LWS</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="442"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="447"/>
         <source>Block Explorer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="454"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="459"/>
         <source>MoneroPay</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="478"/>
-        <source>Monero</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="494"/>
-        <source>Hash Rate</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="506"/>
-        <source>Daily TX Avg (24h)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="518"/>
-        <source>Mempool Size</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="530"/>
-        <source>Avg TX fee (24h)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="542"/>
-        <source>TX per second</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="572"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="490"/>
         <source>System</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="588"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="506"/>
         <source>CPU</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="600"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="518"/>
         <source>Temperature</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="612"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="530"/>
         <source>GPU</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="624"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="542"/>
         <source>RAM</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="636"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="554"/>
         <source>Blockchain Storage</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="648"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="566"/>
         <source>System Storage</source>
         <translation type="unfinished"></translation>
     </message>

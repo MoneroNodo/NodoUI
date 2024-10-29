@@ -444,11 +444,6 @@ int NodoNetworkManager::getErrorCode(void)
     return m_errorCode;
 }
 
-QString NodoNetworkManager::getErrorMessage(void)
-{
-    return m_notifier.getMessageText((m_messageIDs)m_errorCode);
-}
-
 QString NodoNetworkManager::ethernetConnectionSpeed(void)
 {
     if(nullptr == m_wired)
@@ -565,12 +560,13 @@ void NodoNetworkManager::updateNetworkConnectionStatus(void)
     emit connectionStatusChanged();
 }
 
-QString NodoNetworkManager::getNetworkConnectionStatus(void)
+int NodoNetworkManager::getNetworkConnectionStatusCode(void)
 {
     if(m_connStat > NM_STATUS_DISCONNECTED)
     {
         m_connStat = NM_STATUS_WAITING;
     }
-    return statusMessageList[m_connStat];
+
+    return m_connStat;
 }
 

@@ -79,6 +79,9 @@ NodoCanvas {
             {
                 qsTr("Not Received")
             }
+            else {
+                ""
+            }
         }
     }
 

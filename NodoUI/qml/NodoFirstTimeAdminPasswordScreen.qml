@@ -17,12 +17,32 @@ Item {
 
     signal openNextScreen(int screenID)
 
+    function checkPasswordValidity(password1, password2)
+    {
+        var errorMessage = ""
+        if(false === nodoControl.isPasswordValid(password1))
+        {
+            errorMessage = systemMessages.backendMessages[NodoMessages.BackendMessages.PasswordDoesntMeetRequirements]
+        }
+
+        if((0 !== password2.length) && (password1 !== password2))
+        {
+            if(0 !== errorMessage.length)
+            {
+                errorMessage = errorMessage + "\n"
+            }
+            errorMessage = errorMessage + systemMessages.backendMessages[NodoMessages.BackendMessages.PasswordsDontMatch]
+        }
+
+        return errorMessage
+    }
+
     function showPasswordCheckError(password1, password2)
     {
         passwordWarningText.text = ""
         passwordWarningRect.visible = false
 
-        var errorString = nodoControl.checkPasswordValidity(password1, password2)
+        var errorString = checkPasswordValidity(password1, password2) //nodoControl.checkPasswordValidity(password1, password2)
 
         if(errorString !== "")
         {
@@ -87,7 +107,7 @@ Item {
             height: 180
             color: "black"
             Text {
-                text: qsTr("Please set your Admin Password. The Admin Password should be at least 8 characters, with uppercase and lowercase letters, number and special character.\nThe Admin Password is used to connect to Nodo remotely via SSH. It can be changed later on DEVICE -> SSH.")
+                text: qsTr("Please set your Admin Password. The Admin Password should be at least 8 characters, with uppercase and lowercase letters, number and special character.\nThe Admin Password is used to connect to Nodo remotely via SSH. It can be changed later on DEVICE->SSH.")
                 font.family: NodoSystem.fontUrbanist.name
                 font.pixelSize: NodoSystem.textFontSize
                 verticalAlignment: Text.AlignVCenter

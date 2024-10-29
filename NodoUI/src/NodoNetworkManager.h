@@ -72,11 +72,10 @@ public:
     Q_INVOKABLE QString getConnectedEthernetConnectionPath(void);
 
     Q_INVOKABLE int getErrorCode(void);
-    Q_INVOKABLE QString getErrorMessage(void);
 
     Q_INVOKABLE QString getEthernetConnectionPath(int index);
 
-    Q_INVOKABLE QString getNetworkConnectionStatus(void);
+    Q_INVOKABLE int getNetworkConnectionStatusCode(void);
 
 signals:
     void iPReady(void);
@@ -117,7 +116,7 @@ private:
     NodoDBusController *m_dbusController;
 
     network_status_t m_connStat;
-    QStringList statusMessageList = { tr("Waiting"), tr("Connected"), tr("No Internet"), tr("Disconnected")};
+    // QStringList statusMessageList = { tr("Waiting"), tr("Connected"), tr("No Internet"), tr("Disconnected")};
 
     void updateNetworking(void);
 

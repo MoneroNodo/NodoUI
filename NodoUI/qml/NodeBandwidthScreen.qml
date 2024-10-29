@@ -80,7 +80,9 @@ Item {
     Connections {
         target: nodoControl
         function onErrorDetected() {
-            nodeBandwithPopup.popupMessageText = nodoControl.getErrorMessage()
+            var errorCode = nodoControl.getErrorCode();
+            nodeBandwithPopup.popupMessageText = systemMessages.backendMessages[errorCode]
+            // nodeBandwithPopup.popupMessageText = nodoControl.getErrorMessage()
             nodeBandwithPopup.commandID = -1;
             nodeBandwithPopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Close]
             nodeBandwithPopup.open();

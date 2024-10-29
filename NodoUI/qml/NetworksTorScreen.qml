@@ -87,7 +87,8 @@ Item {
             var errorCode = nodoControl.getErrorCode();
             if(0 !== errorCode)
             {
-                networksTorPopup.popupMessageText = nodoControl.getErrorMessage()
+                networksTorPopup.popupMessageText = systemMessages.backendMessages[errorCode]
+                // networksTorPopup.popupMessageText = nodoControl.getErrorMessage()
                 networksTorPopup.commandID = -1;
                 networksTorPopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Close]
                 networksTorPopup.open();

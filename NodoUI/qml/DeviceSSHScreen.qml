@@ -18,12 +18,33 @@ Item {
     //     onCalculateMaximumTextLabelLength()
     // }
 
+    function checkPasswordValidity(password1, password2)
+    {
+        var errorMessage = ""
+        if(false === nodoControl.isPasswordValid(password1))
+        {
+            errorMessage = systemMessages.backendMessages[NodoMessages.BackendMessages.PasswordDoesntMeetRequirements]
+        }
+
+        if((0 !== password2.length) && (password1 !== password2))
+        {
+            if(0 !== errorMessage.length)
+            {
+                errorMessage = errorMessage + "\n"
+            }
+            errorMessage = errorMessage + systemMessages.backendMessages[NodoMessages.BackendMessages.PasswordsDontMatch]
+        }
+
+        return errorMessage
+    }
+
+
     function showPasswordCheckError(password1, password2)
     {
         passwordWarningText.text = ""
         passwordWarningRect.visible = false
 
-        var errorString = nodoControl.checkPasswordValidity(password1, password2)
+        var errorString = checkPasswordValidity(password1, password2) //nodoControl.checkPasswordValidity(password1, password2)
 
         if(errorString !== "")
         {

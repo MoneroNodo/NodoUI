@@ -12,7 +12,9 @@ Item {
     Connections {
         target: nodoControl
         function onErrorDetected() {
-            nodeBlockExplorerPopup.popupMessageText = nodoControl.getErrorMessage()
+            var errorCode = nodoControl.getErrorCode();
+            nodeBlockExplorerPopup.popupMessageText = systemMessages.backendMessages[errorCode]
+            // nodeBlockExplorerPopup.popupMessageText = nodoControl.getErrorMessage()
             nodeBlockExplorerPopup.commandID = -1;
             nodeBlockExplorerPopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Close]
             nodeBlockExplorerPopup.open();

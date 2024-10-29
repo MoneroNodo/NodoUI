@@ -44,7 +44,8 @@ Item {
             var errorCode = nodoControl.getErrorCode();
             if(0 !== errorCode)
             {
-                nodePrivateNodePopup.popupMessageText = nodoControl.getErrorMessage()
+                nodePrivateNodePopup.popupMessageText = systemMessages.backendMessages[errorCode]
+                // nodePrivateNodePopup.popupMessageText = nodoControl.getErrorMessage()
                 nodePrivateNodePopup.commandID = -1;
                 nodePrivateNodePopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Close]
                 nodePrivateNodePopup.open();

@@ -78,8 +78,8 @@ Item {
             {
                 clearnetAddressField.valueText = "nan";
             }
-
-            networksClearnetPopup.popupMessageText = networkManager.getErrorMessage()
+            networksClearnetPopup.popupMessageText = systemMessages.backendMessages[errorCode]
+            // networksClearnetPopup.popupMessageText = networkManager.getErrorMessage()
             networksClearnetPopup.commandID = -1;
             networksClearnetPopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Close]
             networksClearnetPopup.open();
@@ -89,7 +89,9 @@ Item {
     Connections {
         target: nodoControl
         function onErrorDetected() {
-            networksClearnetPopup.popupMessageText = nodoControl.getErrorMessage()
+            var errorCode = nodoControl.getErrorCode();
+            networksClearnetPopup.popupMessageText = systemMessages.backendMessages[errorCode]
+            // networksClearnetPopup.popupMessageText = nodoControl.getErrorMessage()
             networksClearnetPopup.commandID = -1;
             networksClearnetPopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Close]
             networksClearnetPopup.open();

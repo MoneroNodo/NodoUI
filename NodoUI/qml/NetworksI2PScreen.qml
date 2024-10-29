@@ -83,7 +83,8 @@ Item {
             var errorCode = nodoControl.getErrorCode();
             if(0 !== errorCode)
             {
-                networksI2PPopup.popupMessageText = nodoControl.getErrorMessage()
+                networksI2PPopup.popupMessageText = systemMessages.backendMessages[errorCode]
+                // networksI2PPopup.popupMessageText = nodoControl.getErrorMessage()
                 networksI2PPopup.commandID = -1;
                 networksI2PPopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Close]
                 networksI2PPopup.open();
