@@ -12,28 +12,6 @@
             "visible": true
         },
         "feed_1": {
-            "description_tag": "description",
-            "image_attr": "",
-            "image_tag": "",
-            "name": "Monerica",
-            "num_of_feeds_to_show": 3,
-            "pub_date_tag": "pubDate",
-            "selected": true,
-            "uri": "https://monerica.com/rss/feed.xml",
-            "visible": true
-        },
-        "feed_2": {
-            "description_tag": "description",
-            "image_attr": "",
-            "image_tag": "",
-            "name": "XMRBazaar",
-            "num_of_feeds_to_show": 3,
-            "pub_date_tag": "pubDate",
-            "selected": true,
-            "uri": "https://xmrbazaar.com/rss",
-            "visible": true
-        },
-        "feed_3": {
             "description_tag": "content:encoded",
             "image_attr": "href",
             "image_tag": "itunes:image",
@@ -42,6 +20,28 @@
             "pub_date_tag": "pubDate",
             "selected": true,
             "uri": "https://feeds.fireside.fm/monerotalk/rss",
+            "visible": true
+        },
+        "feed_2": {
+            "description_tag": "description",
+            "image_attr": "",
+            "image_tag": "",
+            "name": "Monero Observer",
+            "num_of_feeds_to_show": 2,
+            "pub_date_tag": "pubDate",
+            "selected": true,
+            "uri": "https://monero.observer/feed.xml",
+            "visible": true
+        },
+        "feed_3": {
+            "description_tag": "content:encoded",
+            "image_attr": "url",
+            "image_tag": "enclosure",
+            "name": "The Monero Moon",
+            "num_of_feeds_to_show": 5,
+            "pub_date_tag": "pubDate",
+            "selected": false,
+            "uri": "https://www.themoneromoon.com/feed",
             "visible": true
         },
         "feed_4": {
@@ -56,25 +56,25 @@
             "visible": true
         },
         "feed_5": {
-            "description_tag": "content:encoded",
-            "image_attr": "url",
-            "image_tag": "enclosure",
-            "name": "The Monero Moon",
-            "num_of_feeds_to_show": 5,
+            "description_tag": "description",
+            "image_attr": "",
+            "image_tag": "",
+            "name": "XMRBazaar",
+            "num_of_feeds_to_show": 1,
             "pub_date_tag": "pubDate",
-            "selected": false,
-            "uri": "https://www.themoneromoon.com/feed",
+            "selected": true,
+            "uri": "https://xmrbazaar.com/rss",
             "visible": true
         },
         "feed_6": {
             "description_tag": "description",
             "image_attr": "",
             "image_tag": "",
-            "name": "Monero Observer",
-            "num_of_feeds_to_show": 2,
+            "name": "Monerica",
+            "num_of_feeds_to_show": 1,
             "pub_date_tag": "pubDate",
             "selected": true,
-            "uri": "https://monero.observer/feed.xml",
+            "uri": "https://monerica.com/rss/feed.xml",
             "visible": true
         },
         "feed_7": {
