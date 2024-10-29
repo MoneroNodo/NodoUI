@@ -42,13 +42,6 @@ Item {
     {
         var uri = "xmrrpc://" + networksTorScreen.rpcUser + ":" + networksTorScreen.rpcPassword + "@" + torOnionAddressField.valueText + ":" + networksTorScreen.port.toString() + "?label=Nodo Tor Node"
         return uri
-/*
-        var uri = "xmrrpc://%1:%2@%3:%4?label=Nodo Tor Node"
-        return uri.arg(networksTorScreen.rpcUser,
-            networksTorScreen.rpcPassword,
-            torOnionAddressField.valueText,
-            networksTorScreen.port.toString())
-            */
     }
 
     Component.onCompleted: {
@@ -88,7 +81,6 @@ Item {
             if(0 !== errorCode)
             {
                 networksTorPopup.popupMessageText = systemMessages.backendMessages[errorCode]
-                // networksTorPopup.popupMessageText = nodoControl.getErrorMessage()
                 networksTorPopup.commandID = -1;
                 networksTorPopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Close]
                 networksTorPopup.open();
@@ -166,7 +158,7 @@ Item {
         valueText: networksTorScreen.torOnionAddress
     }
 
-    NodoInputField {
+    NodoInfoField {
         id: torPortField
         anchors.left: networksTorScreen.left
         anchors.top: torOnionAddressField.bottom
@@ -176,37 +168,6 @@ Item {
         itemSize: labelSize
         itemText: systemMessages.messages[NodoMessages.Message.Port]
         valueText: networksTorScreen.torPort
-        textFlag: Qt.ImhDigitsOnly
-        readOnlyFlag: networksTorScreen.torPortFieldReadOnly
-        validator: IntValidator{bottom: 0; top: 65535}
-        onTextEditFinished: {
-            if("" === torPortField.valueText)
-            {
-                torPortField.valueText = networksTorScreen.torPort.toString()
-            }
-
-            if(torPortField.valueText !== networksTorScreen.torPort.toString())
-            {
-                torApplyPortButton.isActive = true
-            }
-        }
-    }
-
-    NodoButton {
-        id: torApplyPortButton
-        anchors.left: networksTorScreen.left
-        anchors.top: torPortField.bottom
-        anchors.topMargin: 20
-        text: systemMessages.messages[NodoMessages.Message.ApplyPort]
-        height: NodoSystem.nodoItemHeight
-        font.family: NodoSystem.fontUrbanist.name
-        font.pixelSize: NodoSystem.buttonTextFontSize
-        isActive: false
-        onClicked:
-        {
-            isActive = false
-            nodoControl.setTorPort(torPortField.valueText)
-        }
     }
 
     Rectangle{

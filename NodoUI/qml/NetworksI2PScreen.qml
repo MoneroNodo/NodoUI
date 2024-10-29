@@ -42,13 +42,6 @@ Item {
     {
         var uri = "xmrrpc://" + networksI2PScreen.rpcUser + ":" + networksI2PScreen.rpcPassword + "@" + i2pAddressField.valueText + ":" + networksI2PScreen.port.toString() + "?label=Nodo I2P Node"
         return uri
-        /*
-        var uri = "xmrrpc://%1:%2@%3:%4?label=Nodo I2P Node"
-        return uri.arg(networksI2PScreen.rpcUser,
-            networksI2PScreen.rpcPassword,
-            i2pAddressField.valueText,
-            networksI2PScreen.port.toString())
-            */
     }
 
     Component.onCompleted: {
@@ -84,7 +77,6 @@ Item {
             if(0 !== errorCode)
             {
                 networksI2PPopup.popupMessageText = systemMessages.backendMessages[errorCode]
-                // networksI2PPopup.popupMessageText = nodoControl.getErrorMessage()
                 networksI2PPopup.commandID = -1;
                 networksI2PPopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Close]
                 networksI2PPopup.open();
@@ -135,7 +127,7 @@ Item {
         valueText: networksI2PScreen.i2pAddress
     }
 
-    NodoInputField {
+    NodoInfoField {
         id: i2pPortField
         anchors.left: networksI2PScreen.left
         anchors.top: i2pAddressField.bottom
@@ -145,37 +137,7 @@ Item {
         itemSize: labelSize
         itemText: systemMessages.messages[NodoMessages.Message.Port]
         valueText: networksI2PScreen.i2pPort
-        textFlag: Qt.ImhDigitsOnly
-        readOnlyFlag: networksI2PScreen.i2pPortFieldReadOnly
-        validator: IntValidator{bottom: 0; top: 65535}
-        onTextEditFinished: {
-            if("" === i2pPortField.valueText)
-            {
-                clearnetPortField.valueText = networksI2PScreen.i2pPort.toString()
-            }
 
-            if(i2pPortField.valueText !== networksI2PScreen.i2pPort.toString())
-            {
-                i2pApplyPortButton.isActive = true
-            }
-        }
-    }
-
-    NodoButton {
-        id: i2pApplyPortButton
-        anchors.left: networksI2PScreen.left
-        anchors.top: i2pPortField.bottom
-        anchors.topMargin: 20
-        text: systemMessages.messages[NodoMessages.Message.ApplyPort]
-        height: NodoSystem.nodoItemHeight
-        font.family: NodoSystem.fontUrbanist.name
-        font.pixelSize: NodoSystem.buttonTextFontSize
-        isActive: false
-        onClicked:
-        {
-            isActive = false
-            nodoControl.setI2pPort(i2pPortField.valueText)
-        }
     }
 
     Rectangle{
