@@ -9,12 +9,12 @@ Item
 
     property int topMenuYposition: 32
     property int topMenuButtonHeight: 100
-    property int topMenuButtonFontSize: 35
+    property int topMenuButtonFontSize: 33
     property int topMenuGapBetweenButtons: 16
     property int dateTimeFontSize: 56
 
     property int subMenuButtonHeight: nodoItemHeight
-    property int subMenuButtonFontSize: 35
+    property int subMenuButtonFontSize: 33
     property int textFontSize: 32
     property int buttonTextFontSize: 32
     property int subMenuLeftMargin: 32
