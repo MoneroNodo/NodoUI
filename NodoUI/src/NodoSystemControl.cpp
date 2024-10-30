@@ -402,6 +402,7 @@ QString NodoSystemControl::getGPUUsage(void)
 void NodoSystemControl::setPassword(QString pw)
 {
     enableComponent(false);
+     // QTimer::singleShot(1000, this, SLOT(testSlotFunction()));
     m_dbusController->setPassword(pw);
 }
 
@@ -715,7 +716,6 @@ void NodoSystemControl::setFirstBootConfigDone(void)
     file.open(QIODevice::ReadWrite | QIODevice::Text);
     file.close();
     m_firstBootDone = true;
-    restartDevice();
 }
 
 void NodoSystemControl::passwordChangeStatusReceived(int status)

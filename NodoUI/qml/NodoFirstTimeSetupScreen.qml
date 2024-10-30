@@ -26,7 +26,7 @@ Item {
 
             case 3:
                 nodoControl.setFirstBootConfigDone()
-                deleteMe(0)
+                devicePinScreenStackView.push("NodoFirstTimeRebootScreen.qml")
                 break
             }
         }
