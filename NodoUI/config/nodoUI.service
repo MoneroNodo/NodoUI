@@ -1,8 +1,9 @@
 # /usr/lib/systemd/system/nodoUI.service
 [Unit]
 Description=Monero Nodo NodoUI service
-Conflicts=getty@tty1.service getty@tty7.service
-After=getty@tty1.service getty@tty7.service
+# Conflicts=getty@tty1.service getty@tty7.service
+# After=getty@tty1.service getty@tty7.service
+After=dbus.service
 #Wants=network-online.target
 #After=network.target network-online.target
 

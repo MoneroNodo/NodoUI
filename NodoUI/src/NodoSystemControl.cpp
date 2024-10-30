@@ -715,6 +715,7 @@ void NodoSystemControl::setFirstBootConfigDone(void)
     file.open(QIODevice::ReadWrite | QIODevice::Text);
     file.close();
     m_firstBootDone = true;
+    restartDevice();
 }
 
 void NodoSystemControl::passwordChangeStatusReceived(int status)

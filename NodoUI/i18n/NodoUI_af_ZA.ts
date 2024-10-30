@@ -204,34 +204,33 @@
 <context>
     <name>DeviceUpdatesScreen</name>
     <message>
-        <location filename="../qml/DeviceUpdatesScreen.qml" line="55"/>
+        <location filename="../qml/DeviceUpdatesScreen.qml" line="51"/>
         <source>Nodo</source>
         <translation>Nodo</translation>
     </message>
     <message>
-        <location filename="../qml/DeviceUpdatesScreen.qml" line="83"/>
+        <location filename="../qml/DeviceUpdatesScreen.qml" line="79"/>
         <source>Monero Daemon</source>
         <translation>Monero Daemon</translation>
     </message>
     <message>
-        <location filename="../qml/DeviceUpdatesScreen.qml" line="111"/>
+        <location filename="../qml/DeviceUpdatesScreen.qml" line="107"/>
         <source>XMRig</source>
         <translation>XMRig</translation>
     </message>
     <message>
-        <location filename="../qml/DeviceUpdatesScreen.qml" line="139"/>
+        <location filename="../qml/DeviceUpdatesScreen.qml" line="135"/>
         <source>Monero LWS</source>
         <translation>Monero LWS</translation>
     </message>
     <message>
-        <location filename="../qml/DeviceUpdatesScreen.qml" line="167"/>
+        <location filename="../qml/DeviceUpdatesScreen.qml" line="163"/>
         <source>MoneroPay</source>
         <translation>MoneroPay</translation>
     </message>
     <message>
-        <location filename="../qml/DeviceUpdatesScreen.qml" line="195"/>
         <source>Block Explorer</source>
-        <translation>Blokverkenner</translation>
+        <translation type="vanished">Blokverkenner</translation>
     </message>
 </context>
 <context>
@@ -582,12 +581,12 @@ Waarskuwing: Die deposito-adres sal openbaar sigbaar wees. Vir privaatheid, gebr
 <context>
     <name>NetworksI2PScreen</name>
     <message>
-        <location filename="../qml/NetworksI2PScreen.qml" line="112"/>
+        <location filename="../qml/NetworksI2PScreen.qml" line="104"/>
         <source>I2P</source>
         <translation>I2P</translation>
     </message>
     <message>
-        <location filename="../qml/NetworksI2PScreen.qml" line="134"/>
+        <location filename="../qml/NetworksI2PScreen.qml" line="126"/>
         <source>I2P b32 Address</source>
         <translation>I2P b32 Adres</translation>
     </message>
@@ -613,17 +612,17 @@ Waarskuwing: Die deposito-adres sal openbaar sigbaar wees. Vir privaatheid, gebr
 <context>
     <name>NetworksTorScreen</name>
     <message>
-        <location filename="../qml/NetworksTorScreen.qml" line="117"/>
+        <location filename="../qml/NetworksTorScreen.qml" line="109"/>
         <source>Tor</source>
         <translation>Tor</translation>
     </message>
     <message>
-        <location filename="../qml/NetworksTorScreen.qml" line="143"/>
+        <location filename="../qml/NetworksTorScreen.qml" line="135"/>
         <source>Route all connections through Tor</source>
         <translation>Roeteer alle konneksies deur Tor</translation>
     </message>
     <message>
-        <location filename="../qml/NetworksTorScreen.qml" line="165"/>
+        <location filename="../qml/NetworksTorScreen.qml" line="157"/>
         <source>Onion Address</source>
         <translation>Onion Adres</translation>
     </message>
@@ -673,14 +672,12 @@ Waarskuwing: Die deposito-adres sal openbaar sigbaar wees. Vir privaatheid, gebr
 <context>
     <name>NodeBlockExplorer</name>
     <message>
-        <location filename="../qml/NodeBlockExplorer.qml" line="40"/>
         <source>Block Explorer</source>
-        <translation>Blokverkenner</translation>
+        <translation type="vanished">Blokverkenner</translation>
     </message>
     <message>
-        <location filename="../qml/NodeBlockExplorer.qml" line="65"/>
         <source>Enables the Onion Monero Block Explorer service, accessible from WebUI</source>
-        <translation>Aktiveer die Onion Monero Blokverkenner diens, toeganklik vanaf WebUI</translation>
+        <translation type="vanished">Aktiveer die Onion Monero Blokverkenner diens, toeganklik vanaf WebUI</translation>
     </message>
 </context>
 <context>
@@ -696,9 +693,8 @@ Waarskuwing: Die deposito-adres sal openbaar sigbaar wees. Vir privaatheid, gebr
         <translation>BANDWYDTE</translation>
     </message>
     <message>
-        <location filename="../qml/NodeMainScreen.qml" line="45"/>
         <source>BLOCK EXPLORER</source>
-        <translation>BLOKVERKENNER</translation>
+        <translation type="vanished">BLOKVERKENNER</translation>
     </message>
 </context>
 <context>
@@ -1804,174 +1800,173 @@ Dit kan later op TOESTEL-&gt;PIN verander word</translation>
 <context>
     <name>NodoStatusScreen</name>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="236"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="231"/>
         <source>Synchronized</source>
         <translation>Gesinkroniseer</translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="236"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="231"/>
         <source>Synchronizing</source>
         <translation>Besig om te sinchroniseer</translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="95"/>
-        <location filename="../qml/NodoStatusScreen.qml" line="332"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="93"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="327"/>
         <source>Update available</source>
         <translation>Opdatering beskikbaar</translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="219"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="214"/>
         <source>Node</source>
         <translation>Nodus</translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="235"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="230"/>
         <source>Sync Status</source>
         <translation>Sink Status</translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="247"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="242"/>
         <source>Timestamp</source>
         <translation>Tydstempel</translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="259"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="254"/>
         <source>Block Height</source>
         <translation>Blokhoogte</translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="271"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="266"/>
         <source>Version</source>
         <translation>Weergawe</translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="283"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="278"/>
         <source>Outgoing Peers</source>
         <translation>Uitgaande Eweknieë</translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="295"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="290"/>
         <source>Incoming Peers</source>
         <translation>Inkomende Eweknieë</translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="307"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="302"/>
         <source>White Peerlist</source>
         <translation>Wit Eweknieëlys</translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="319"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="314"/>
         <source>Grey Peerlist</source>
         <translation>Grys Eweknieëlys</translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="331"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="326"/>
         <source>Update</source>
         <translation>Opdateer</translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="95"/>
-        <location filename="../qml/NodoStatusScreen.qml" line="332"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="93"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="327"/>
         <source>Up to date</source>
         <translation>Op datum</translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="102"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="100"/>
         <source>Synchronized (100%)</source>
         <translation>Gesinkroniseer (100%)</translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="106"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="104"/>
         <source>Synchronizing (</source>
         <translation>Besig om te sinchroniseer (</translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="110"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="108"/>
         <source>Not Synchronizing</source>
         <translation>Nie besig om te sinchroniseer nie</translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="114"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="112"/>
         <source>Waiting</source>
         <translation>Wag</translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="343"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="338"/>
         <source>Network</source>
         <translation>Netwerk</translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="371"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="366"/>
         <source>Services</source>
         <translation>Dienste</translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="387"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="382"/>
         <source>Monero Daemon</source>
         <translation>Monero Daemon</translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="399"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="394"/>
         <source>Monero Miner</source>
         <translation>Monero Mynwerker</translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="411"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="406"/>
         <source>Tor Service</source>
         <translation>Tor Diens</translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="423"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="418"/>
         <source>I2P Service</source>
         <translation>I2P Diens</translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="435"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="430"/>
         <source>Monero LWS</source>
         <translation>Monero LWS</translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="447"/>
         <source>Block Explorer</source>
-        <translation>Blokverkenner</translation>
+        <translation type="vanished">Blokverkenner</translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="459"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="442"/>
         <source>MoneroPay</source>
         <translation>MoneroPay</translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="490"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="473"/>
         <source>System</source>
         <translation>Stelsel</translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="506"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="489"/>
         <source>CPU</source>
         <translation>SVE</translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="518"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="501"/>
         <source>Temperature</source>
         <translation>Temperatuur</translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="530"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="513"/>
         <source>GPU</source>
         <translation>GPU</translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="542"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="525"/>
         <source>RAM</source>
         <translation>RAM</translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="554"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="537"/>
         <source>Blockchain Storage</source>
         <translation>Blokketting Stoorplek</translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="566"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="549"/>
         <source>System Storage</source>
         <translation>Stelsel Stoorplek</translation>
     </message>
