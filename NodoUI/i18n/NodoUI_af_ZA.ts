@@ -1316,6 +1316,14 @@ Dit kan later op TOESTEL-&gt;PIN verander word</translation>
     </message>
 </context>
 <context>
+    <name>NodoFirstTimeRebootScreen</name>
+    <message>
+        <location filename="../qml/NodoFirstTimeRebootScreen.qml" line="33"/>
+        <source>The system will now reboot.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>NodoHomeScreen</name>
     <message>
         <location filename="../qml/NodoHomeScreen.qml" line="134"/>
