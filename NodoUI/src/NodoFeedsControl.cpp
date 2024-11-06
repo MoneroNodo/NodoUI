@@ -161,10 +161,6 @@ void NodoFeedsControl::setRSSSelectionState(int index, bool state)
     }
     else
     {
-        if(m_rss_sources[index].downloadStatus == FEED_STATUS_DOWNLOADING)
-        {
-            m_rss_sources.at(index).reply->abort();
-        }
         m_rss_sources[index].downloadStatus = FEED_STATUS_DONT_DOWNLOAD;
     }
 }
