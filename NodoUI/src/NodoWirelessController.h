@@ -42,6 +42,7 @@ private:
     QDBusInterface *m_settingsInterface;
     m_device_config m_device;
     QTimer *m_scanTimer;
+    bool m_detailsOpened = false;
     bool m_APScanStarted = false;
 
     void getActiveConnection(void);

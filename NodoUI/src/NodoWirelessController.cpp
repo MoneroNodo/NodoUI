@@ -281,7 +281,8 @@ void NodoWirelessController::getActiveConnection(void)
 
 void NodoWirelessController::scanAccessPoints(void)
 {
-    m_scanTimer->start(0);
+    if (!m_detailsOpened)
+        m_scanTimer->start(0);
 }
 
 unsigned NodoWirelessController::getDeviceConnectionStatus(void)
@@ -307,11 +308,13 @@ bool NodoWirelessController::getAPScanStatus(void)
 
 void NodoWirelessController::stopScan(void)
 {
+    m_detailsOpened = true;
     m_scanTimer->stop();
 }
 
 void NodoWirelessController::startScan(void)
 {
+    m_detailsOpened = false;
     m_scanTimer->start(0);
 }
 
