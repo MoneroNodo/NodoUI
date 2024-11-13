@@ -658,6 +658,7 @@ void Daemon::setupDomains(void)
         program = "/usr/bin/bash";
         arguments << "/home/nodo/setup-domains.sh";
         process.start(program, arguments);
+				process.waitForFinished(7000);
 
         QFile file(m_firstBootFileName);
         file.open(QIODevice::ReadWrite | QIODevice::Text);
