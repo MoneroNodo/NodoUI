@@ -60,7 +60,6 @@ public:
     Q_INVOKABLE QString getRAMUsage(void);
     Q_INVOKABLE QString getBlockChainStorageUsage(void);
     Q_INVOKABLE QString getSystemStorageUsage(void);
-    Q_INVOKABLE QString getGPUUsage(void);
 
     Q_INVOKABLE void setPassword(QString pw);
     Q_INVOKABLE void changePassword(QString oldPassword, QString newPassword);
@@ -167,7 +166,6 @@ private:
     QString m_systemStorage;
     QTimer *m_screenSaverTimer;
     QTimer *m_lockScreenTimer;
-    QString m_GPUUsage;
 
     QStringList m_tzList = {
         "UTC",

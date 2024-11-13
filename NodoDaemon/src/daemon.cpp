@@ -303,7 +303,7 @@ void Daemon::readRAMUsage(void)
     QProcess process;
     QString program = "/usr/bin/free";
     QStringList arguments;
-    arguments << "-h";
+    arguments << "-h" << "--si";
 
 
     process.start(program, arguments);
@@ -428,7 +428,7 @@ void Daemon::readBlockchainStorageUsage(void)
 
             if(status2.at(2).endsWith("M"))
             {
-                m_blockChainStorageUsed = status2.at(2).chopped(1).toFloat(&ok)/1024;
+                m_blockChainStorageUsed = status2.at(2).chopped(1).toFloat(&ok);
             }
             else
             {

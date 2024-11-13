@@ -78,7 +78,6 @@ Rectangle {
         ramField.valueText = nodoControl.getRAMUsage()
         blockchainStorageField.valueText = nodoControl.getBlockChainStorageUsage()
         systemStorageField.valueText = nodoControl.getSystemStorageUsage()
-        gpuField.valueText = nodoControl.getGPUUsage()
     }
 
     function updateSystemStatus() {
@@ -503,21 +502,9 @@ Rectangle {
         }
 
         NodoInfoField {
-            id: gpuField
-            anchors.left: hardwareStatusTabName.left
-            anchors.top: cpuTemperatureField.bottom
-            anchors.topMargin: fieldTopMargin
-            width: componentWidth
-            height: statusScreenInfoFieldHeight
-            itemSize: labelSize
-            itemText: qsTr("GPU")
-            valueText: systemMessages.messages[NodoMessages.Message.Loading]
-        }
-
-        NodoInfoField {
             id: ramField
             anchors.left: hardwareStatusTabName.left
-            anchors.top: gpuField.bottom
+            anchors.top: cpuTemperatureField.bottom
             anchors.topMargin: fieldTopMargin
             width: componentWidth
             height: statusScreenInfoFieldHeight
