@@ -303,7 +303,7 @@ void Daemon::readRAMUsage(void)
     QProcess process;
     QString program = "/usr/bin/free";
     QStringList arguments;
-    arguments << "-h" << "--si";
+    arguments << "-h";
 
 
     process.start(program, arguments);
@@ -421,14 +421,14 @@ void Daemon::readBlockchainStorageUsage(void)
             {
                 m_blockChainStorageTotal = status2.at(1).chopped(1).toFloat(&ok);
             }
-            else
+			else
             {
                 m_blockChainStorageTotal = status2.at(1).chopped(1).toFloat(&ok)*1024;
             }
 
             if(status2.at(2).endsWith("M"))
             {
-                m_blockChainStorageUsed = status2.at(2).chopped(1).toFloat(&ok);
+                m_blockChainStorageUsed = status2.at(2).chopped(1).toFloat(&ok)/1024;
             }
             else
             {
@@ -658,6 +658,7 @@ void Daemon::setupDomains(void)
         program = "/usr/bin/bash";
         arguments << "/home/nodo/setup-domains.sh";
         process.start(program, arguments);
+				process.waitForFinished(7000);
 
         QFile file(m_firstBootFileName);
         file.open(QIODevice::ReadWrite | QIODevice::Text);
