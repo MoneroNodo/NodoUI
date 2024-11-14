@@ -228,9 +228,6 @@ void Daemon::updateHardwareStatus(void)
     readCPUUsage();
     readAverageCPUFreq();
     readCPUTemperature();
-    readGPUUsage();
-    readMaxGPUSpeed();
-    readCurrentGPUSpeed();
     readRAMUsage();
     readCPUTemperature();
     readBlockchainStorageUsage();
@@ -246,8 +243,6 @@ void Daemon::updateHardwareStatus(void)
         .append(QString::number(m_blockChainStorageTotal)).append("\n")
         .append(QString::number(m_systemStorageUsed)).append("\n")
         .append(QString::number(m_systemStorageTotal)).append("\n")
-        .append(QString::number(m_GPUUsage)).append("\n")
-        .append(QString::number(m_currentGPUFreq)).append("\n");
 
     emit hardwareStatusReadyNotification(m_hardwareStatus);
     m_hardwareStatusTimer->start(5000);
@@ -303,7 +298,7 @@ void Daemon::readRAMUsage(void)
     QProcess process;
     QString program = "/usr/bin/free";
     QStringList arguments;
-    arguments << "-h" << "--si";
+    arguments << "-h";
 
 
     process.start(program, arguments);
@@ -351,51 +346,6 @@ void Daemon::readCPUTemperature(void)
     QString retVal = process.readAll();
     bool ok;
     m_CPUTemperature = retVal.toFloat(&ok)/(1000.0);
-}
-
-void Daemon::readGPUUsage(void)
-{
-    QProcess process;
-    QString program = "/usr/bin/cat";
-    QStringList arguments;
-    arguments << "/sys/devices/platform/fb000000.gpu/misc/mali0/device/utilisation";
-
-    process.start(program, arguments);
-    process.waitForFinished(-1);
-    QString retVal = process.readAll();
-
-    bool ok;
-    m_GPUUsage = retVal.toFloat(&ok);
-}
-
-void Daemon::readMaxGPUSpeed(void)
-{
-    QProcess process;
-    QString program = "/usr/bin/cat";
-    QStringList arguments;
-    arguments << "/sys/devices/platform/fb000000.gpu/devfreq/fb000000.gpu/max_freq";
-
-    process.start(program, arguments);
-    process.waitForFinished(-1);
-    QString retVal = process.readAll();
-
-    bool ok;
-    m_maxGPUFreq = retVal.toFloat(&ok)/(1000000.0);
-}
-
-void Daemon::readCurrentGPUSpeed(void)
-{
-    QProcess process;
-    QString program = "/usr/bin/cat";
-    QStringList arguments;
-    arguments << "/sys/devices/platform/fb000000.gpu/devfreq/fb000000.gpu/cur_freq";
-
-    process.start(program, arguments);
-    process.waitForFinished(-1);
-    QString retVal = process.readAll();
-
-    bool ok;
-    m_currentGPUFreq = retVal.toFloat(&ok)/(1000000.0);
 }
 
 void Daemon::readBlockchainStorageUsage(void)
