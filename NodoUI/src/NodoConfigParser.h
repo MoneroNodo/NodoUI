@@ -23,6 +23,7 @@ public:
     Q_INVOKABLE int getIntValueFromKey(QString object, QString key);
     Q_INVOKABLE void updateRequested(void);
     Q_INVOKABLE void setMinerServiceStatus(bool status);
+    Q_INVOKABLE void setMinerAddress(QString address);
 
     QString getSelectedCurrencyName(void);
     void setCurrencyName(QString currency);

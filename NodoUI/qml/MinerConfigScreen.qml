@@ -9,13 +9,14 @@ Item {
     id: minerMainScreen
     property int labelSize: 0
     property int inputFieldWidth: 600
+    property bool setButtonActive: false
     anchors.leftMargin: NodoSystem.subMenuLeftMargin
     signal deleteMe(int screenID)
 
     Rectangle {
         id: minerSwitchRect
-		anchors.top: minerMainScreen.top
-		anchors.left: minerMainScreen.left
+        anchors.top: minerMainScreen.top
+        anchors.left: minerMainScreen.left
         anchors.topMargin: NodoSystem.subMenuButtonHeight + 40
         height: NodoSystem.nodoItemHeight
         color: "black"
@@ -54,8 +55,8 @@ Item {
 
     Text {
         id: minerLabel
-		anchors.top: minerSwitchRect.bottom
-		anchors.left: minerMainScreen.left
+        anchors.top: minerSwitchRect.bottom
+        anchors.left: minerMainScreen.left
         anchors.topMargin: NodoSystem.nodoTopMargin
         width: 100
         height: 38
@@ -69,7 +70,7 @@ Item {
     NodoInputField {
         id: minerDepositAddressField
         anchors.top: minerLabel.bottom
-		anchors.left: minerMainScreen.left
+        anchors.left: minerMainScreen.left
         anchors.topMargin: NodoSystem.nodoTopMargin
         width: 1840
         height: NodoSystem.nodoItemHeight
@@ -77,13 +78,30 @@ Item {
         itemText: qsTr("Deposit Address")
         valueText: nodoConfig.getStringValueFromKey("mining", "address")
         onTextEditFinished: {
+            setButtonActive = true;
+        }
+    }
+
+    NodoButton {
+        id: minerDepositAddressSetButton
+        anchors.left: minerDepositAddressField.left
+        anchors.top: minerDepositAddressField.bottom
+        anchors.topMargin: NodoSystem.nodoTopMargin
+        text: qsTr("Set Miner Address")
+        height: NodoSystem.nodoItemHeight
+        font.family: NodoSystem.fontUrbanist.name
+        font.pixelSize: NodoSystem.buttonTextFontSize
+        isActive: (setButtonActive === true) && (minerDepositAddressField.valueText.length === 95)
+        onClicked: {
+            nodoConfig.setMinerAddress(minerDepositAddressField.valueText);
+            setButtonActive = false
         }
     }
 
     Text {
         id: warningLabel
-		anchors.top: minerDepositAddressField.bottom
-		anchors.left: minerMainScreen.left
+        anchors.top: minerDepositAddressSetButton.bottom
+        anchors.left: minerMainScreen.left
         anchors.topMargin: NodoSystem.nodoTopMargin
         width: 1800
         height: 100

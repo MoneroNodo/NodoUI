@@ -155,6 +155,12 @@ void NodoConfigParser::setCurrencyName(QString currency)
     writeJson();
 }
 
+void NodoConfigParser::setMinerAddress(QString address)
+{
+    m_miningObj.insert("address", address);
+    writeJson();
+}
+
 void NodoConfigParser::writeJson(void)
 {
     QMutexLocker locker(&m_mutex);
