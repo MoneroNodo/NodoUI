@@ -93,10 +93,9 @@ void MoneroLWS::acceptAllRequests(void)
     if (m_requestAccountList.isEmpty())
         return;
     QStringList requests;
-    for(int i = 0; m_requestAccountList.size(); i++)
+    for(int i = 0; i < m_requestAccountList.size(); i++)
     {
-        if (m_requestAccountList.at(i).address != nullptr)
-        requests.append(m_requestAccountList.at(i).address);
+        requests << m_requestAccountList.at(i).address;
     }
 
     m_dbusController->moneroLWSAcceptAllRequests(requests.join(" "));
