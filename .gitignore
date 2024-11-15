@@ -1,9 +1,13 @@
 *.user
 Makefile
-EmbeddedUI/Makefile
-EmbeddedUI/nodo_embedded_interface.*
-EmbeddedUI/build
+NodoUI/Makefile
+NodoUI/nodo_embedded_interface.*
+NodoUI/build
+NodoUI/assets
 NodoDaemon/Makefile
 NodoDaemon/nodo_embedded_adaptor.*
 NodoDaemon/build
 .qmake.stash
+compile_commands.json
+log.*
+
