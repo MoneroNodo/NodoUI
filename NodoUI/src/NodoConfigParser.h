@@ -22,8 +22,6 @@ public:
     Q_INVOKABLE QString getStringValueFromKey(QString object, QString key);
     Q_INVOKABLE int getIntValueFromKey(QString object, QString key);
     Q_INVOKABLE void updateRequested(void);
-    Q_INVOKABLE void setMinerServiceStatus(bool status);
-    Q_INVOKABLE void setMinerAddress(QString address);
 
     QString getSelectedCurrencyName(void);
     void setCurrencyName(QString currency);
@@ -66,7 +64,6 @@ private:
     QJsonDocument m_document;
     QJsonObject m_rootObj;
     QJsonObject m_configObj;
-    QJsonObject m_miningObj;
     QJsonObject m_ethernetObj;
     QJsonObject m_wifiObj;
     QJsonObject m_versionsObj;
@@ -74,7 +71,6 @@ private:
     QJsonObject m_autoupdateObj;
 
     const QString configObjName = "config";
-    const QString miningObjName = "mining";
     const QString ethernetObjName = "ethernet";
     const QString wifiObjName = "wifi";
     const QString versionsObjName = "versions";

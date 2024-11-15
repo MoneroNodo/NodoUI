@@ -16,7 +16,6 @@ Item {
 
         deviceUpdatesNodoSwitchSwitch.checked = nodoConfig.getUpdateStatus("nodo")
         deviceUpdatesMoneroDaemonSwitch.checked = nodoConfig.getUpdateStatus("monero")
-        deviceUpdatesXmrigSwitch.checked = nodoConfig.getUpdateStatus("xmrig")
         deviceUpdatesMoneroLWSSwitch.checked = nodoConfig.getUpdateStatus("lws")
         deviceUpdatesMoneroPaySwitch.checked = nodoConfig.getUpdateStatus("pay")
     }
@@ -27,9 +26,6 @@ Item {
 
         if(deviceUpdatesMoneroDaemonSwitchText.labelRectRoundSize > labelSize)
             labelSize = deviceUpdatesMoneroDaemonSwitchText.labelRectRoundSize
-
-        if(deviceUpdatesXmrigSwitchText.labelRectRoundSize > labelSize)
-            labelSize = deviceUpdatesXmrigSwitchText.labelRectRoundSize
 
         if(deviceUpdatesMoneroLWSSwitchText.labelRectRoundSize > labelSize)
             labelSize = deviceUpdatesMoneroLWSSwitchText.labelRectRoundSize
@@ -93,37 +89,9 @@ Item {
     }
 
     Rectangle {
-        id: deviceUpdatesXmrigSwitchRect
-        anchors.left: deviceUpdatesScreen.left
-        anchors.top: deviceUpdatesMoneroDaemonSwitchRect.bottom
-        anchors.topMargin: NodoSystem.nodoTopMargin
-        height: NodoSystem.nodoItemHeight
-
-        NodoLabel{
-            id: deviceUpdatesXmrigSwitchText
-            height: deviceUpdatesXmrigSwitchRect.height
-            anchors.left: deviceUpdatesXmrigSwitchRect.left
-            anchors.top: deviceUpdatesXmrigSwitchRect.top
-            text: qsTr("XMRig")
-        }
-
-        NodoSwitch {
-            id: deviceUpdatesXmrigSwitch
-            anchors.left: deviceUpdatesXmrigSwitchText.right
-            anchors.leftMargin: NodoSystem.padding
-            height: deviceUpdatesXmrigSwitchRect.height
-            width: 2*deviceUpdatesXmrigSwitchRect.height
-            display: AbstractButton.IconOnly
-            onCheckedChanged: {
-                nodoConfig.setUpdateStatus("xmrig", checked)
-            }
-        }
-    }
-
-    Rectangle {
         id: deviceUpdatesMoneroLWSSwitchRect
         anchors.left: deviceUpdatesScreen.left
-        anchors.top: deviceUpdatesXmrigSwitchRect.bottom
+        anchors.top: deviceUpdatesMoneroDaemonSwitchText.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         height: NodoSystem.nodoItemHeight
 

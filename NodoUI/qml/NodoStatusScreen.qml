@@ -65,7 +65,6 @@ Rectangle {
 
     function updateServiceStatus() {
         moneroNodeField.valueText = getServiceStatusText(nodoControl.getServiceStatus("monerod"))
-        minerServiceField.valueText = getServiceStatusText(nodoControl.getServiceStatus("xmrig"))
         torServiceField.valueText = getServiceStatusText(nodoControl.getServiceStatus("tor"))
         i2pServiceField.valueText = getServiceStatusText(nodoControl.getServiceStatus("i2pd"))
         moneroLWSField.valueText = getServiceStatusText(nodoControl.getServiceStatus("monero-lws"))
@@ -145,9 +144,6 @@ Rectangle {
 
         if(moneroNodeField.labelRectRoundSize > labelSize)
             labelSize = moneroNodeField.labelRectRoundSize
-
-        if(minerServiceField.labelRectRoundSize > labelSize)
-            labelSize = minerServiceField.labelRectRoundSize
 
         if(torServiceField.labelRectRoundSize > labelSize)
             labelSize = torServiceField.labelRectRoundSize
@@ -383,21 +379,9 @@ Rectangle {
         }
 
         NodoInfoField {
-            id: minerServiceField
-            anchors.left: moneroNodeField.left
-            anchors.top: moneroNodeField.bottom
-            anchors.topMargin: fieldTopMargin
-            width: componentWidth
-            height: statusScreenInfoFieldHeight
-            itemSize: labelSize
-            itemText: qsTr("Monero Miner")
-            valueText: ""
-        }
-
-        NodoInfoField {
             id: torServiceField
             anchors.left: moneroNodeField.left
-            anchors.top: minerServiceField.bottom
+            anchors.top: moneroNodeField.bottom
             anchors.topMargin: fieldTopMargin
             width: componentWidth
             height: statusScreenInfoFieldHeight

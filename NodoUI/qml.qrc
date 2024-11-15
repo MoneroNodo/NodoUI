@@ -22,7 +22,6 @@
         <file>qml/MoneroLWSInactiveScreen.qml</file>
         <file>qml/MoneroLWSAddAccountScreen.qml</file>
         <file>qml/MoneroLWSAccountRequestsScreen.qml</file>
-        <file>qml/MinerMainScreen.qml</file>
         <file>qml/NodoButton.qml</file>
         <file>qml/DeviceNewsFeedsScreen.qml</file>
         <file>qml/NodoCheckBox.qml</file>
@@ -84,7 +83,6 @@
         <file>qml/NodoFirstTimeAdminPasswordScreen.qml</file>
         <file>qml/NodoFirstTimeAddressPinScreen.qml</file>
         <file>qml/NodoFirstTimeLockPinScreen.qml</file>
-        <file>qml/MinerConfigScreen.qml</file>
         <file>qml/DeviceLockPinScreen.qml</file>
         <file>qml/DeviceAddressPinScreen.qml</file>
         <file>qml/NodoAddressPinControlScreen.qml</file>
