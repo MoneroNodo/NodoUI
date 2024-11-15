@@ -49,15 +49,6 @@ NodoSystemControl::NodoSystemControl(NodoUISystemParser *uiSystemParser, NodoCon
     connect(m_dbusController, SIGNAL(factoryResetRequested()), this, SIGNAL(factoryResetRequested()));
     connect(m_dbusController, SIGNAL(powerButtonPressDetected()), this, SIGNAL(powerButtonPressDetected()));
     connect(m_dbusController, SIGNAL(powerButtonReleaseDetected()), this, SIGNAL(powerButtonReleaseDetected()));
-
-    if(m_configParser->getStringValueFromKey("mining", "enabled") == "TRUE")
-    {
-        serviceManager("start", "xmrig");
-    }
-    else
-    {
-        serviceManager("stop", "xmrig");
-    }
 }
 
 bool NodoSystemControl::getAppTheme(void)
@@ -510,20 +501,6 @@ void NodoSystemControl::processNotification(QString message)
         else
         {
             m_errorCode = RESTARTING_MONERO_FAILED;
-            emit errorDetected();
-            return;
-        }
-    }
-
-    if(("block-explorer" == serviceStat[0]))
-    {
-        if("1" == serviceStat[2])
-        {
-            m_errorCode = NO_ERROR;
-        }
-        else
-        {
-            m_errorCode = RESTARTING_BLOCK_EXPLORER_FAILED;
             emit errorDetected();
             return;
         }

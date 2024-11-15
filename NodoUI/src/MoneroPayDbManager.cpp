@@ -43,7 +43,7 @@ void MoneroPayDbManager::updateSubaddresses(void)
         p.blockConfirmation = query.value(confIndex).toInt();
         p.fiatAmount = query.value(fiatAmountIndex).toDouble();
         p.fiatIndex = query.value(fiatIndexIndex).toDouble();
-        p.paymentStatus = PAYMENT_SATUS_NONE;
+        p.paymentStatus = PAYMENT_STATUS_NONE;
         p.id = -1;
         p.isfromdb = true;
 

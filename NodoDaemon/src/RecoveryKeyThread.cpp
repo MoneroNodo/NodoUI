@@ -317,7 +317,7 @@ void RecoveryKeyThread::factoryReset()
 
 void RecoveryKeyThread::serviceControl(QString command)
 {
-    const static QStringList services = {"monerod", "monero-lws", "p2pool", "webui", "block-explorer"};
+    const static QStringList services = {"monerod", "monero-lws", "webui"};
 
     QString program = "/usr/bin/systemctl";
 

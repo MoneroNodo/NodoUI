@@ -8,7 +8,7 @@ MoneroPay::MoneroPay(NodoConfigParser *configParser)
     m_mpayConnection = new MoneroPayConnection();
     connect(m_dbManager, SIGNAL(dbEntriesReady()), this, SLOT(getPreviousPaymentResults()));
 
-    m_lastPayment.paymentStatus = PAYMENT_SATUS_NONE;
+    m_lastPayment.paymentStatus = PAYMENT_STATUS_NONE;
     m_lastPayment.blockConfirmation = 10;
     m_lastPayment.depositAddress = "n/a";
     m_lastPayment.description = "n/a";
@@ -61,7 +61,7 @@ void MoneroPay::paymentStatusReceived(void)
     }
     m_lastPayment = tmpc->getPayment();
     m_payments[index] = m_lastPayment;
-    if(PAYMENT_SATUS_RECEIVED == m_lastPayment.paymentStatus)
+    if(PAYMENT_STATUS_RECEIVED == m_lastPayment.paymentStatus)
     {
         int tmp = getRequestIndexbyID(id);
         delete m_mpayRequests[tmp];
@@ -260,7 +260,7 @@ int MoneroPay::getPaymentStatus(int index)
 {
     if(m_displayResults.size() <= index)
     {
-        return PAYMENT_SATUS_NONE;
+        return PAYMENT_STATUS_NONE;
     }
 
     return (int)m_displayResults.at(index).paymentStatus;}

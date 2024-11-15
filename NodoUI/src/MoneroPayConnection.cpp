@@ -93,18 +93,18 @@ void MoneroPayConnection::parseReceiveAddress(QByteArray replyMessage)
 
     if(transactionsArray.size() > 0)
     {
-        m_payment.paymentStatus = PAYMENT_SATUS_NOT_RECEIVED;
+        m_payment.paymentStatus = PAYMENT_STATUS_NOT_RECEIVED;
     }
     else
     {
-        m_payment.paymentStatus = PAYMENT_SATUS_PENDING;
+        m_payment.paymentStatus = PAYMENT_STATUS_PENDING;
     }
 
     if(m_payment.blockConfirmation == 0)
     {
         if(amountExpected == amountCoveredTotal)
         {
-            m_payment.paymentStatus = PAYMENT_SATUS_RECEIVED;
+            m_payment.paymentStatus = PAYMENT_STATUS_RECEIVED;
         }
         else
         {
@@ -115,7 +115,7 @@ void MoneroPayConnection::parseReceiveAddress(QByteArray replyMessage)
     {
         if(amountExpected == amountCoveredUnlocked)
         {
-            m_payment.paymentStatus = PAYMENT_SATUS_RECEIVED;
+            m_payment.paymentStatus = PAYMENT_STATUS_RECEIVED;
         }
         else
         {
@@ -147,7 +147,7 @@ void MoneroPayConnection::parseReceiveAddress(QByteArray replyMessage)
 
         if(totalAmount >= expectedAmountInPico)
         {
-            m_payment.paymentStatus = PAYMENT_SATUS_RECEIVED;
+            m_payment.paymentStatus = PAYMENT_STATUS_RECEIVED;
         }
         else
         {
@@ -155,7 +155,7 @@ void MoneroPayConnection::parseReceiveAddress(QByteArray replyMessage)
         }
     }
 
-    if(PAYMENT_SATUS_RECEIVED == m_payment.paymentStatus)
+    if(PAYMENT_STATUS_RECEIVED == m_payment.paymentStatus)
     {
         m_payment.xmrAmountInPico  = amountExpected;
         QString createdAt = rootObj["created_at"].toString();
@@ -240,7 +240,7 @@ void MoneroPayConnection::replyFinished(QNetworkReply *reply) {
             m_payment.dateTime = r.created_at;
             m_payment.description = r.description;
             m_payment.xmrAmountInPico = r.amount;
-            m_payment.paymentStatus = PAYMENT_SATUS_NOT_RECEIVED;
+            m_payment.paymentStatus = PAYMENT_STATUS_NOT_RECEIVED;
             emit depositAddressReceived();
             m_requestTimer->start(SCAN_TIMEOUT_IN_MS);
         }
