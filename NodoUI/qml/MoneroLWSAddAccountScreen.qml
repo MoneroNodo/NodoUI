@@ -69,19 +69,19 @@ Item {
             moneroLWS.addAccount(moneroLWSMainAddressInput.valueText, moneroLWSPrivateViewkeyLabel.valueText)
         }
     }
-		Label {
-			id: connectionStringLabel
-			anchors.left: moneroLWSAddAccountScreen.left
-			anchors.bottom: moneroLWSAddAccountScreen.bottom
-			width: feedAuth.paintedWidth
-			height: 22
-			text: "http://" + networkManager.getNetworkIP() + ":8133/basic\n"
-			    + "http://" + nodoConfig.getStringValueFromKey("config", "tor_address") + ":8133/basic\n"
-			    + "http://" + nodoConfig.getStringValueFromKey("config", "i2p_b32_addr_lws") + ":8133/basic"
-			color: nodoControl.appTheme ? NodoSystem.highlightedColorNightModeOn : "white"
-			font.family: NodoSystem.fontUrbanist.name
-			font.pixelSize: 32
-		}
+    Label {
+        id: connectionStringLabel
+        anchors.left: moneroLWSAddAccountScreen.left
+        anchors.bottom: moneroLWSAddAccountScreen.bottom
+        width: feedAuth.paintedWidth
+        height: 70
+        text: "http://" + networkManager.getNetworkIP() + ":8133/basic\n"
+            + "http://" + nodoConfig.getStringValueFromKey("config", "tor_address") + ":8133/basic\n"
+            + "http://" + nodoConfig.getStringValueFromKey("config", "i2p_b32_addr_lws") + ":8133/basic"
+        color: nodoControl.appTheme ? NodoSystem.highlightedColorNightModeOn : "white"
+        font.family: NodoSystem.fontUrbanist.name
+        font.pixelSize: 32
+    }
 }
 
 
