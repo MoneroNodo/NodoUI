@@ -40,7 +40,6 @@ void NodoConfigParser::readFile(void)
         m_rootObj = m_document.object();
         m_configObj = m_rootObj[configObjName].toObject();
 
-        m_miningObj = m_configObj[miningObjName].toObject();
         m_ethernetObj = m_configObj[ethernetObjName].toObject();
         m_wifiObj = m_configObj[wifiObjName].toObject();
         m_versionsObj = m_configObj[versionsObjName].toObject();
@@ -60,11 +59,7 @@ void NodoConfigParser::readFile(void)
 QString NodoConfigParser::getStringValueFromKey(QString object, QString key)
 {
     QJsonValue jsonValue;
-    if(miningObjName == object)
-    {
-        jsonValue = m_miningObj.value(key);
-    }
-    else if(ethernetObjName == object)
+    if(ethernetObjName == object)
     {
         jsonValue = m_ethernetObj.value(key);
     }
@@ -95,11 +90,7 @@ QString NodoConfigParser::getStringValueFromKey(QString object, QString key)
 int NodoConfigParser::getIntValueFromKey(QString object, QString key)
 {
     QJsonValue jsonValue;
-    if(miningObjName == object)
-    {
-        jsonValue = m_miningObj.value(key);
-    }
-    else if(ethernetObjName == object)
+    if(ethernetObjName == object)
     {
         jsonValue = m_ethernetObj.value(key);
     }
@@ -155,12 +146,6 @@ void NodoConfigParser::setCurrencyName(QString currency)
     writeJson();
 }
 
-void NodoConfigParser::setMinerAddress(QString address)
-{
-    m_miningObj.insert("address", address);
-    writeJson();
-}
-
 void NodoConfigParser::writeJson(void)
 {
     QMutexLocker locker(&m_mutex);
@@ -182,7 +167,6 @@ void NodoConfigParser::writeJson(void)
     lockfile.write(" ");
     lockfile.close();
 
-    m_configObj.insert(miningObjName, m_miningObj);
     m_configObj.insert(ethernetObjName, m_ethernetObj);
     m_configObj.insert(wifiObjName, m_wifiObj);
     m_configObj.insert(versionsObjName, m_versionsObj);
@@ -271,21 +255,6 @@ bool NodoConfigParser::getTheme(void)
         return false;
     }
     return jsonValue.toBool();
-}
-
-void NodoConfigParser::setMinerServiceStatus(bool status)
-{
-    QString s;
-    if(status)
-    {
-        s = "TRUE";
-    }
-    else
-    {
-        s = "FALSE";
-    }
-    m_miningObj.insert("enabled", s);
-    writeJson();
 }
 
 void NodoConfigParser::setClearnetPort(QString port)
