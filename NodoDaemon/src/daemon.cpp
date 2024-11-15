@@ -202,7 +202,7 @@ void Daemon::updateServiceStatus(void)
     m_serviceStatusTimer->stop();
     qDebug() << "updateServiceStatus";
     QString program = "/usr/bin/systemctl";
-    QString serviceList[] = {"monerod", "tor", "i2pd", "monero-lws", "block-explorer", "sshd", "moneropay"};
+    QString serviceList[] = {"monerod", "tor", "i2pd", "monero-lws", "sshd", "moneropay"};
 
     QStringList arguments;
     arguments << "is-active" << serviceList[0] << serviceList[1] << serviceList[2] << serviceList[3] << serviceList[4] << serviceList[5] << serviceList[6];

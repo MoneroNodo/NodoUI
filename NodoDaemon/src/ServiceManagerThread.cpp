@@ -18,7 +18,7 @@ void ServiceManagerThread::setServiceAndOperation(QString serviceName, QString o
 }
 
 const static QString operations[] = {"start", "stop", "restart", "enable", "disable"};
-const static QString services[] = {"block-explorer", "monerod", "monero-lws", "xmrig", "sshd" , "p2pool", "webui", "moneropay"};
+const static QString services[] = {"monerod", "monero-lws", "sshd" , "webui", "moneropay"};
 
 void ServiceManagerThread::run()
 {
