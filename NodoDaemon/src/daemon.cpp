@@ -14,6 +14,10 @@
 
 #define m_scaleFactor 2.3 // (MAX_ALLOWED_BRIGHTNESS_LEVEL - MIN_ALLOWED_BRIGHTNESS_LEVEL) / (BRIGHTNESS_RANGE_MAX - BRIGHTNESS_RANGE_MIN)
 
+#define SIZE_TB 1073741824
+#define SIZE_GB 1048576
+#define SIZE_Tb 1000000000
+#define SIZE_Gb 1000000
 Daemon::Daemon()
 {
     new EmbeddedInterfaceAdaptor(this);
@@ -303,7 +307,6 @@ void Daemon::readRAMUsage(void)
     QProcess process;
     QString program = "/usr/bin/free";
     QStringList arguments;
-    arguments << "-h" << "--si";
 
 
     process.start(program, arguments);
@@ -318,23 +321,8 @@ void Daemon::readRAMUsage(void)
         {
             bool ok;
             QStringList status2 = status.at(i).split(" ", Qt::SkipEmptyParts);
-            if(status2.at(1).endsWith("M"))
-            {
-                m_TotalRAM = status2.at(1).chopped(1).toFloat(&ok);
-            }
-            else
-            {
-                m_TotalRAM = status2.at(1).chopped(1).toFloat(&ok)*1024;
-            }
-
-            if(status2.at(2).endsWith("M"))
-            {
-                m_RAMUsage = status2.at(2).chopped(1).toFloat(&ok);
-            }
-            else
-            {
-                m_RAMUsage = status2.at(2).chopped(1).toFloat(&ok)*1024;
-            }
+            m_TotalRAM = status2.at(1).chopped(1).toFloat(&ok) / SIZE_Gb;
+            m_RAMUsage = status2.at(2).chopped(1).toFloat(&ok) / SIZE_Gb;
         }
     }
 }
@@ -403,7 +391,6 @@ void Daemon::readBlockchainStorageUsage(void)
     QProcess process;
     QString program = "/usr/bin/df";
     QStringList arguments;
-    arguments << "-h";
 
     process.start(program, arguments);
     process.waitForFinished(-1);
@@ -417,23 +404,8 @@ void Daemon::readBlockchainStorageUsage(void)
         {
             bool ok;
             QStringList status2 = status.at(i).split(" ", Qt::SkipEmptyParts);
-            if(status2.at(1).endsWith("M"))
-            {
-                m_blockChainStorageTotal = status2.at(1).chopped(1).toFloat(&ok);
-            }
-			else
-            {
-                m_blockChainStorageTotal = status2.at(1).chopped(1).toFloat(&ok)*1024;
-            }
-
-            if(status2.at(2).endsWith("M"))
-            {
-                m_blockChainStorageUsed = status2.at(2).chopped(1).toFloat(&ok);
-            }
-            else
-            {
-                m_blockChainStorageUsed = status2.at(2).chopped(1).toFloat(&ok)*1024;
-            }
+            m_blockChainStorageTotal = status2.at(1).chopped(1).toFloat(&ok) / SIZE_Gb;
+            m_blockChainStorageUsed = status2.at(2).chopped(1).toFloat(&ok) / SIZE_Gb;
         }
     }
 }
@@ -443,7 +415,6 @@ void Daemon::readSystemStorageUsage(void)
     QProcess process;
     QString program = "/usr/bin/df";
     QStringList arguments;
-    arguments << "-h";
 
     process.start(program, arguments);
     process.waitForFinished(-1);
@@ -457,23 +428,8 @@ void Daemon::readSystemStorageUsage(void)
         {
             bool ok;
             QStringList status2 = status.at(i).split(" ", Qt::SkipEmptyParts);
-            if(status2.at(1).endsWith("M"))
-            {
-                m_systemStorageTotal = status2.at(1).chopped(1).toFloat(&ok);
-            }
-            else
-            {
-                m_systemStorageTotal = status2.at(1).chopped(1).toFloat(&ok)*1024;
-            }
-
-            if(status2.at(2).endsWith("M"))
-            {
-                m_systemStorageUsed = status2.at(2).chopped(1).toFloat(&ok);
-            }
-            else
-            {
-                m_systemStorageUsed = status2.at(2).chopped(1).toFloat(&ok)*1024;
-            }
+            m_systemStorageTotal = status2.at(1).chopped(1).toFloat(&ok) / SIZE_Gb;
+            m_systemStorageUsed = status2.at(2).chopped(1).toFloat(&ok) / SIZE_Gb;
         }
     }
 }

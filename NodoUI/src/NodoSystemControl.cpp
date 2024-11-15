@@ -282,85 +282,15 @@ void NodoSystemControl::updateHardwareStatus(QString message)
 
     QString RAMUsedStr, RAMTotalStr, blockChainStorageUsedStr, blockChainStorageTotalStr, systemStorageUsedStr, systemStorageTotalStr;
 
-    if(RAMUsed >= 1024)
-    {
-        RAMUsedStr = QString::number(RAMUsed / 1024, 'f', 1);
-        if(RAMUsedStr.endsWith("0"))
-        {
-            RAMUsedStr.chop(2);
-        }
-    }
-    else
-    {
-        RAMUsedStr = QString::number(RAMUsed / 1024, 'f', 3);
-    }
+    RAMUsedStr = QString::number(RAMUsed, 'g', 1);
 
-    if(RAMTotal >= 1024)
-    {
-        RAMTotalStr = QString::number(RAMTotal / 1024 - 1, 'f', 1);
-        if(RAMTotalStr.endsWith("0"))
-        {
-            RAMTotalStr.chop(2);
-        }
-    }
-    else
-    {
-        RAMTotalStr = QString::number(RAMTotal / 1024 - 1, 'f', 3);
-    }
+    RAMTotalStr = QString::number(RAMTotal / 1024 - 1, 'g', 1);
+    blockChainStorageUsedStr = QString::number(blockChainStorageUsed / 1024, 'g', 1);
+    blockChainStorageTotalStr = QString::number(blockChainStorageTotal / 1024, 'f', 0);
+    systemStorageUsedStr = QString::number(systemStorageUsed / 1024, 'g', 1);
+    systemStorageTotalStr = QString::number(systemStorageTotal / 1024, 'g', 0);
 
-    if(blockChainStorageUsed >= 1024)
-    {
-        blockChainStorageUsedStr = QString::number(blockChainStorageUsed / 1024, 'f', 1);
-        if(blockChainStorageUsedStr.endsWith("0"))
-        {
-            blockChainStorageUsedStr.chop(2);
-        }
-    }
-    else
-    {
-        blockChainStorageUsedStr = QString::number(blockChainStorageUsed / 1024, 'f', 3);
-    }
-
-    if(blockChainStorageTotal >= 1024)
-    {
-        blockChainStorageTotalStr = QString::number(blockChainStorageTotal / 1024, 'f', 0);
-        if(blockChainStorageTotalStr.endsWith("0"))
-        {
-            blockChainStorageTotalStr.chop(2);
-        }
-    }
-    else
-    {
-        blockChainStorageTotalStr = QString::number(blockChainStorageTotal / 1024, 'f', 0);
-    }
-
-    if(systemStorageUsed >= 1024)
-    {
-        systemStorageUsedStr = QString::number(systemStorageUsed / 1024, 'f', 1);
-        if(systemStorageUsedStr.endsWith("0"))
-        {
-            systemStorageUsedStr.chop(2);
-        }
-    }
-    else
-    {
-        systemStorageUsedStr = QString::number(systemStorageUsed / 1024, 'f', 3);
-    }
-
-    if(systemStorageTotal >= 1024)
-    {
-        systemStorageTotalStr = QString::number(systemStorageTotal / 1024, 'f', 1);
-        if(systemStorageTotalStr.endsWith("0"))
-        {
-            systemStorageTotalStr.chop(2);
-        }
-    }
-    else
-    {
-        systemStorageTotalStr = QString::number(systemStorageTotal / 1024, 'f', 3);
-    }
-
-    m_RAMUsage = RAMUsedStr + "/" + RAMTotalStr + "GB (" + QString("%1").arg((RAMUsed/RAMTotal)*100, 0, 'f', 1).append("%)");
+    m_RAMUsage = RAMUsedStr + "/" + RAMTotalStr + "GB (" + QString("%1").arg((RAMUsed/RAMTotal)*100, 0, 'f', 0).append("%)");
     m_blockchainStorage = blockChainStorageUsedStr + "/" + blockChainStorageTotalStr + "GB (" + QString("%1").arg((blockChainStorageUsed/blockChainStorageTotal)*100, 0, 'f', 0).append("%)");
     m_systemStorage = systemStorageUsedStr + "/" + systemStorageTotalStr + "GB (" + QString("%1").arg((systemStorageUsed/systemStorageTotal)*100, 0, 'f', 0).append("%)");
 
