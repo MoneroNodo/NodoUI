@@ -276,9 +276,6 @@ void NodoSystemControl::updateHardwareStatus(QString message)
     double blockChainStorageTotal = statusList[6].toDouble();
     double systemStorageUsed      = statusList[7].toDouble();
     double systemStorageTotal     = statusList[8].toDouble();
-    /* double GPUUsage               = statusList[9].toDouble(); */
-    /* double currentGPUFreq         = statusList[10].toDouble(); */
-	/* double MaxGPUFreq         	  = statusList[11].toDouble(); */
 
     QString RAMUsedStr, RAMTotalStr, blockChainStorageUsedStr, blockChainStorageTotalStr, systemStorageUsedStr, systemStorageTotalStr;
 
@@ -296,7 +293,6 @@ void NodoSystemControl::updateHardwareStatus(QString message)
 
     m_CPUUsage = QString("%1").arg(averageCPUFreq, 0, 'f', 1).append(" MHz (").append(QString("%1").arg(CPUUsage, 0, 'f', 1)).append("%)");
     m_Temperature = QString("%1").arg(CPUTemperature, 0, 'f', 1).append("°C");
-    /* m_GPUUsage = QString("%1").arg(currentGPUFreq, 0, 'f', 1).append(" MHz (").append(QString("%1").arg((currentGPUFreq/MaxGPUFreq)*100, 0, 'f', 0)).append("%)"); */
     emit systemStatusReady();
 }
 
