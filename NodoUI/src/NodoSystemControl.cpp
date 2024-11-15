@@ -254,6 +254,14 @@ QString NodoSystemControl::getServiceStatus(QString serviceName)
     return "N/A";
 }
 
+QString variableFormat(qreal n) { // assumes max precision of 2
+    int i = rint(n * 100.0);
+    if (i % 100)
+        return QString::number(n, 'f', 1);
+    else
+        return QString::number(i / 100);
+}
+
 void NodoSystemControl::updateHardwareStatus(QString message)
 {
     QStringList statusList = message.split("\n", Qt::SkipEmptyParts);
@@ -262,7 +270,7 @@ void NodoSystemControl::updateHardwareStatus(QString message)
     {
         return;
     }
-    if(statusList.size() != 11)
+    if(statusList.size() != 9)
     {
         return;
     }
@@ -279,13 +287,14 @@ void NodoSystemControl::updateHardwareStatus(QString message)
 
     QString RAMUsedStr, RAMTotalStr, blockChainStorageUsedStr, blockChainStorageTotalStr, systemStorageUsedStr, systemStorageTotalStr;
 
-    RAMUsedStr = QString::number(RAMUsed, 'g', 1);
+    RAMUsedStr = variableFormat(RAMUsed);
+    RAMTotalStr = QString::number(RAMTotal, 'f', 0);
 
-    RAMTotalStr = QString::number(RAMTotal / 1024 - 1, 'g', 1);
-    blockChainStorageUsedStr = QString::number(blockChainStorageUsed / 1024, 'g', 1);
-    blockChainStorageTotalStr = QString::number(blockChainStorageTotal / 1024, 'f', 0);
-    systemStorageUsedStr = QString::number(systemStorageUsed / 1024, 'g', 1);
-    systemStorageTotalStr = QString::number(systemStorageTotal / 1024, 'g', 0);
+    blockChainStorageUsedStr = variableFormat(blockChainStorageUsed);
+    blockChainStorageTotalStr = QString::number(blockChainStorageTotal, 'f', 0);
+
+    systemStorageUsedStr = variableFormat(systemStorageUsed);
+    systemStorageTotalStr = QString::number(systemStorageTotal, 'f', 0);
 
     m_RAMUsage = RAMUsedStr + "/" + RAMTotalStr + "GB (" + QString("%1").arg((RAMUsed/RAMTotal)*100, 0, 'f', 0).append("%)");
     m_blockchainStorage = blockChainStorageUsedStr + "/" + blockChainStorageTotalStr + "GB (" + QString("%1").arg((blockChainStorageUsed/blockChainStorageTotal)*100, 0, 'f', 0).append("%)");

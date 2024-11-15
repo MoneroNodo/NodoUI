@@ -71,7 +71,7 @@ Daemon::Daemon()
 }
 
 void Daemon::startRecovery(int recoverFS, int rsyncBlockchain)
-{   
+{
     qDebug() << QString("received recovery request").append("recoverFS: ").append(QString::number(recoverFS).append(" rsyncBlockchain: ").append(QString::number(rsyncBlockchain)));
 
     QString program = "/usr/bin/recovery.sh";
@@ -246,7 +246,7 @@ void Daemon::updateHardwareStatus(void)
         .append(QString::number(m_blockChainStorageUsed)).append("\n")
         .append(QString::number(m_blockChainStorageTotal)).append("\n")
         .append(QString::number(m_systemStorageUsed)).append("\n")
-        .append(QString::number(m_systemStorageTotal)).append("\n")
+        .append(QString::number(m_systemStorageTotal)).append("\n");
 
     emit hardwareStatusReadyNotification(m_hardwareStatus);
     m_hardwareStatusTimer->start(5000);
@@ -316,8 +316,8 @@ void Daemon::readRAMUsage(void)
         {
             bool ok;
             QStringList status2 = status.at(i).split(" ", Qt::SkipEmptyParts);
-            m_TotalRAM = status2.at(1).chopped(1).toFloat(&ok) / SIZE_Gb;
-            m_RAMUsage = status2.at(2).chopped(1).toFloat(&ok) / SIZE_Gb;
+            m_TotalRAM = status2.at(1).toFloat(&ok) / (float) SIZE_GB;
+            m_RAMUsage = status2.at(2).toFloat(&ok) / (float) SIZE_GB;
         }
     }
 }
@@ -354,8 +354,8 @@ void Daemon::readBlockchainStorageUsage(void)
         {
             bool ok;
             QStringList status2 = status.at(i).split(" ", Qt::SkipEmptyParts);
-            m_blockChainStorageTotal = status2.at(1).chopped(1).toFloat(&ok) / SIZE_Gb;
-            m_blockChainStorageUsed = status2.at(2).chopped(1).toFloat(&ok) / SIZE_Gb;
+            m_blockChainStorageTotal = status2.at(1).toFloat(&ok) / (float) SIZE_GB;
+            m_blockChainStorageUsed = status2.at(2).toFloat(&ok) / (float) SIZE_GB;
         }
     }
 }
@@ -378,8 +378,8 @@ void Daemon::readSystemStorageUsage(void)
         {
             bool ok;
             QStringList status2 = status.at(i).split(" ", Qt::SkipEmptyParts);
-            m_systemStorageTotal = status2.at(1).chopped(1).toFloat(&ok) / SIZE_Gb;
-            m_systemStorageUsed = status2.at(2).chopped(1).toFloat(&ok) / SIZE_Gb;
+            m_systemStorageTotal = status2.at(1).toFloat(&ok) / (float) SIZE_GB;
+            m_systemStorageUsed = status2.at(2).toFloat(&ok) / (float) SIZE_GB;
         }
     }
 }
