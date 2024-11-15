@@ -70,13 +70,6 @@ Item {
             }
         }
 
-        Connections {
-            target: syncInfo
-            function onSyncDone() {
-                minerButton.enabled = true
-            }
-        }
-
         TabBar {
             id: mainMenuBar
             anchors.top: mainAppWindowRectangle.top
