@@ -474,7 +474,7 @@ void Daemon::ping(void)
     m_pingTimer->stop();
     QProcess process;
     QStringList arguments;
-    arguments << "198.245.51.147" << "-W" << "2" << "-c" << "2";
+    arguments << "198.245.51.147" << "-W" << "2" << "-c" << "2"; // IVPN DNS
 
     process.start("/usr/bin/ping", arguments);
     process.waitForFinished(-1);

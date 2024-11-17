@@ -106,6 +106,7 @@ Item {
             inputFieldReadOnly = true;
             clearButtonActive = true
             setButtonActive = false
+            moneroPayMainScreen.setButtonState(true)
         }
     }
 
