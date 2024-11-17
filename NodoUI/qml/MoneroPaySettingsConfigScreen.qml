@@ -23,11 +23,13 @@ Item {
         moneroPaySettingsAddressInput.valueText = moneroPay.getMoneroPayAddress()
         moneroPaySettingsViewkeyLabel.valueText = moneroPay.getMoneroPayViewKey()
 
+
         if((moneroPaySettingsAddressInput.valueText.length === 95) && (moneroPaySettingsViewkeyLabel.valueText.length === 64))
         {
             inputFieldReadOnly = true;
             setButtonActive = false
             clearButtonActive = true
+            moneroPay.depositAddressSet()
         }
     }
 

@@ -21,9 +21,12 @@ Item {
         }
         else
         {
-            receiveButton.enabled = false
-            paymentsButton.checked = true
-            paymentsButton.clicked()
+            paymentsButton.checked = false
+            paymentsButton.enabled = false
+            // receiveButton.checked = false
+            // receiveButton.enabled = false
+            settingsButton.checked = true
+            settingsButton.clicked()
         }
     }
 
@@ -40,6 +43,19 @@ Item {
         {
             paymentsButton.checked = true
             paymentsButton.clicked()
+        }
+
+        function onDepositAddressSet(address, viewkey)
+        {
+            if((address.length === 95) && (viewkey.length === 64)) {
+                receiveButton.enabled = (100 === syncInfo.getSyncPercentage())
+                if (receiveButton.enabled && moneroPayPageLoader.source === "MoneroPayReceiveMainScreen.qml")
+                {
+                    receiveButton.checked = true
+                }
+                moneroPay.setDepositAddressSet(true)
+
+            }
         }
     }
 
