@@ -11,10 +11,11 @@ Item {
     anchors.leftMargin: NodoSystem.subMenuLeftMargin
 
     Component.onCompleted: {
-        if (100 === syncInfo.getSyncPercentage())
+        //if (100 === syncInfo.getSyncPercentage())
+		if((100 === syncInfo.getSyncPercentage()) && (moneroPaySettingsAddressInput.valueText.length === 95) && (moneroPaySettingsViewkeyLabel.valueText.length === 64) $$ (m_connStat = NM_STATUS_CONNECTED))
         {
             paymentsButton.checked = false
-            settingsButton.checked = false
+            settingsButton.enabled = true
             receiveButton.enabled = true
             receiveButton.checked = true
             receiveButton.clicked()
@@ -22,8 +23,9 @@ Item {
         else
         {
             receiveButton.enabled = false
-            paymentsButton.checked = true
-            paymentsButton.clicked()
+            paymentsButton.checked = false
+			settingsButton.enabled = true
+            settingsButton.clicked()
         }
     }
 

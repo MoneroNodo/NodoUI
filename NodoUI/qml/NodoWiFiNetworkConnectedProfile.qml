@@ -23,7 +23,7 @@ NodoCanvas {
     property int spacing: 1
 
     height: defaultHeight
-    color: "#1F1F1F"
+    color: nodoControl.appTheme ? NodoSystem.dataFieldTitleBGColorNightModeOn  : NodoSystem.dataFieldTitleBGColorNightModeOff
 
     Component.onCompleted:
     {

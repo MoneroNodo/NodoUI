@@ -51,7 +51,7 @@ KeyboardStyle {
                 font {
                     family: fontFamily
                     weight: Font.Normal
-                    pixelSize: 60 * scaleHint
+                    pixelSize: 70 * scaleHint
                     capitalization: control.uppercased ? Font.AllUppercase : Font.MixedCase
                 }
             }
@@ -62,11 +62,12 @@ KeyboardStyle {
                 when: control.pressed
                 PropertyChanges {
                     target: keyBackground
-                    opacity: 0.75
+					color: NodoSystem.keyboardButtonPressed
+//                    opacity: 0.75
                 }
                 PropertyChanges {
                     target: keyText
-                    opacity: 0.5
+//                    opacity: 0.5
                 }
             },
             State {
@@ -74,11 +75,11 @@ KeyboardStyle {
                 when: !control.enabled
                 PropertyChanges {
                     target: keyBackground
-                    opacity: 0.75
+//                    opacity: 0.75
                 }
                 PropertyChanges {
                     target: keyText
-                    opacity: 0.05
+//                    opacity: 0.05
                 }
             }
         ]
@@ -151,7 +152,7 @@ KeyboardStyle {
                 font {
                     family: fontFamily
                     weight: Font.Normal
-                    pixelSize: 50 * scaleHint
+                    pixelSize: 70 * scaleHint
                     capitalization: Font.AllUppercase
                 }
                 anchors.fill: parent
@@ -254,7 +255,8 @@ KeyboardStyle {
                 when: control.pressed
                 PropertyChanges {
                     target: shiftKeyBackground
-                    opacity: 0.80
+					color: NodoSystem.keyboardButtonPressed
+//                    opacity: 0.80
                 }
             },
             State {
@@ -262,7 +264,7 @@ KeyboardStyle {
                 when: !control.enabled
                 PropertyChanges {
                     target: shiftKeyBackground
-                    opacity: 0.8
+//                    opacity: 0.8
                 }
             }
         ]
@@ -280,12 +282,12 @@ KeyboardStyle {
                 text: Qt.locale(InputContext.locale).nativeLanguageName
                 color: keyTextColor
                 // opacity: inputLocaleIndicatorOpacity
-                Behavior on opacity { PropertyAnimation { duration: 250 } }
+                //Behavior on opacity { PropertyAnimation { duration: 250 } }
                 anchors.centerIn: parent
                 font {
                     family: fontFamily
                     weight: Font.Normal
-                    pixelSize: 60 * scaleHint
+                    pixelSize: 70 * scaleHint
                 }
             }
         }
@@ -295,7 +297,8 @@ KeyboardStyle {
                 when: control.pressed
                 PropertyChanges {
                     target: spaceKeyBackground
-                    opacity: 0.80
+					color: NodoSystem.keyboardButtonPressed
+//                    opacity: 0.80
                 }
             },
             State {
@@ -303,7 +306,7 @@ KeyboardStyle {
                 when: !control.enabled
                 PropertyChanges {
                     target: spaceKeyBackground
-                    opacity: 0.8
+//                    opacity: 0.8
                 }
             }
         ]
@@ -327,7 +330,7 @@ KeyboardStyle {
                 font {
                     family: fontFamily
                     weight: Font.Normal
-                    pixelSize: 60 * scaleHint
+                    pixelSize: 70 * scaleHint
                     capitalization: Font.AllUppercase
                 }
             }
@@ -337,16 +340,17 @@ KeyboardStyle {
                 name: "pressed"
                 when: control.pressed
                 PropertyChanges {
-                    target: symbolKeyBackground
-                    opacity: 0.80
+					target: symbolKeyBackground
+					color: NodoSystem.keyboardButtonPressed
+//              	opacity: 0.80
                 }
             },
             State {
                 name: "disabled"
                 when: !control.enabled
                 PropertyChanges {
-                    target: symbolKeyBackground
-                    opacity: 0.8
+					target: symbolKeyBackground
+//              	opacity: 0.8
                 }
             }
         ]
@@ -400,7 +404,7 @@ KeyboardStyle {
                 font {
                     family: fontFamily
                     weight: Font.Normal
-                    pixelSize: 44 * scaleHint
+                    pixelSize: 70 * scaleHint
                     capitalization: {
                         if (InputContext.capsLockActive)
                             return Font.AllUppercase
@@ -478,7 +482,7 @@ KeyboardStyle {
         }
         autoDestroyDelay: 800
         onTraceChanged: if (trace === null) opacity = 0
-        Behavior on opacity { PropertyAnimation { easing.type: Easing.OutCubic; duration: 150 } }
+        Behavior on opacity { PropertyAnimation { easing.type: Easing.OutCubic; duration: 50 } }
     }
 
     fullScreenInputContainerBackground: Rectangle {
@@ -499,6 +503,6 @@ KeyboardStyle {
         visible: parent.blinkStatus
     }
 
-    fullScreenInputFont.pixelSize: 58 * scaleHint
+    fullScreenInputFont.pixelSize: 70 * scaleHint
 }
 

@@ -9,7 +9,7 @@ NodoCanvas {
     id: mainRect
     width: 1840
     height: 263
-    color: "#141414"
+    color: "#181818"
     property string requestAddress: ""
     property int scanHeight: 0
     property int labelSize: 0
@@ -70,7 +70,7 @@ NodoCanvas {
         id: moneroLWSAccountRequestsRejectButton
         anchors.left: moneroLWSAccountRequestsAcceptButton.right
         anchors.top: moneroLWSAccountRequestsAcceptButton.top
-        anchors.leftMargin: 16
+        anchors.leftMargin: 20
         text: qsTr("Reject")
         height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontUrbanist.name

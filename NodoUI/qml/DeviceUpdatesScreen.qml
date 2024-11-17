@@ -39,7 +39,7 @@ Item {
         anchors.left: deviceUpdatesScreen.left
         height: NodoSystem.nodoItemHeight
 
-        NodoLabel{
+        NodoLabel {
             id: deviceUpdatesNodoSwitchText
             height: deviceUpdatesNodoSwitchRect.height
             anchors.left: deviceUpdatesNodoSwitchRect.left
@@ -67,7 +67,7 @@ Item {
         anchors.topMargin: NodoSystem.nodoTopMargin
         height: NodoSystem.nodoItemHeight
 
-        NodoLabel{
+        NodoLabel {
             id: deviceUpdatesMoneroDaemonSwitchText
             height: deviceUpdatesMoneroDaemonSwitchRect.height
             anchors.left: deviceUpdatesMoneroDaemonSwitchRect.left
@@ -95,7 +95,7 @@ Item {
         anchors.topMargin: NodoSystem.nodoTopMargin
         height: NodoSystem.nodoItemHeight
 
-        NodoLabel{
+        NodoLabel {
             id: deviceUpdatesMoneroLWSSwitchText
             height: deviceUpdatesMoneroLWSSwitchRect.height
             anchors.left: deviceUpdatesMoneroLWSSwitchRect.left
@@ -123,7 +123,7 @@ Item {
         anchors.topMargin: NodoSystem.nodoTopMargin
         height: NodoSystem.nodoItemHeight
 
-        NodoLabel{
+        NodoLabel {
             id: deviceUpdatesMoneroPaySwitchText
             height: deviceUpdatesMoneroPaySwitchRect.height
             anchors.left: deviceUpdatesMoneroPaySwitchRect.left

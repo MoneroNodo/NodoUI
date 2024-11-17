@@ -10,10 +10,10 @@ Item {
 
     property int labelSize: 0
     property int buttonWidth: 0
-    property int infoFieldSize: 1850
+    property int infoFieldSize: 1900
     property bool inputFieldReadOnly: false
     property bool clearButtonActive: false
-    property bool setButtonActive: true
+    property bool setButtonActive: false
     signal deleteMe(int screenID)
 
 
@@ -28,6 +28,7 @@ Item {
             inputFieldReadOnly = true;
             setButtonActive = false
             clearButtonActive = true
+			receiveButton.enabled = true
         }
     }
 
@@ -56,12 +57,13 @@ Item {
             inputFieldReadOnly = !nodoControl.isComponentEnabled();
         }
 
-        function onDepositAdressCleared()
+        function onDepositAddressCleared()
         {
             moneroPaySettingsAddressInput.valueText = moneroPay.getMoneroPayAddress()
             moneroPaySettingsViewkeyLabel.valueText = moneroPay.getMoneroPayViewKey()
             clearButtonActive = false
             setButtonActive = true
+			receiveButton.enabled = false
         }
     }
 
@@ -109,9 +111,9 @@ Item {
 
     NodoButton {
         id: moneroPaySettingsClearAddressButton
-        anchors.left: moneroPaySettingsAddressInput.left
+        anchors.left: moneroPaySettingsSetDepositAddressButton.right
         anchors.top: moneroPaySettingsSetDepositAddressButton.bottom
-        anchors.topMargin: NodoSystem.nodoTopMargin
+		anchors.leftMargin: 25
         text: qsTr("Clear Deposit Address")
         height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontUrbanist.name
@@ -129,7 +131,9 @@ Item {
         onApplyClicked: {
             if(commandID === 0)
             {
-                moneroPay.setDepositAddress("", "")
+				inputFieldReadOnly = false; //test
+                moneroPay.setDepositAddress("", "");
+				clearButtonActive = false
                 nodoControl.serviceManager("restart", "moneropay");
             }
             close()

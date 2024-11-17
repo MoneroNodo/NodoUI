@@ -19,7 +19,7 @@ Rectangle {
     property int componentBottomMargin: 8
     property int componentTopMargin: 34
     property int cardMargin: 13
-    property color cardBackgroundColor: "#111111"
+    property color cardBackgroundColor: "#181818"
 
     property int statusScreenInfoFieldHeight: NodoSystem.nodoItemHeight
 
@@ -178,7 +178,7 @@ Rectangle {
         id: syncStatus
         anchors.left: statusScreen.left
         anchors.top: statusScreen.top
-        anchors.topMargin: 10
+        anchors.topMargin: 5
         anchors.leftMargin: cardMargin
         width: componentWidth + 2 + (2*componentLeftMargin)
         height: networkConnectionField.y + networkConnectionField.height + componentBottomMargin//683
@@ -205,11 +205,11 @@ Rectangle {
             anchors.topMargin: componentTopMargin
             anchors.leftMargin: componentLeftMargin
             width: syncStatusTabName.paintedWidth
-            height: 16
-            text: qsTr("Node")
+            height: 20
+            text: qsTr("Monero Daemon")
             verticalAlignment: Text.AlignBottom
             horizontalAlignment: Text.AlignHCenter
-            font.pixelSize: NodoSystem.topMenuButtonFontSize // 24
+            font.pixelSize: NodoSystem.topMenuButtonFontSize
             color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
             font.family: NodoSystem.fontUrbanist.name
         }
@@ -494,7 +494,7 @@ Rectangle {
             height: statusScreenInfoFieldHeight
             itemSize: labelSize
             itemText: qsTr("RAM")
-            valueText: "in use"
+            valueText: systemMessages.messages[NodoMessages.Message.Loading]
         }
 
         NodoInfoField {

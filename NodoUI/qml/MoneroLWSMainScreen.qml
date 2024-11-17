@@ -18,7 +18,7 @@ Item {
             moneroLWS.listAccounts()
             moneroLWS.listRequests()
         }
-        if (100 === syncInfo.getSyncPercentage())
+        if((100 === syncInfo.getSyncPercentage()) && (m_connStat = NM_STATUS_CONNECTED))
         {
             addAccountButton.enabled = true
         }

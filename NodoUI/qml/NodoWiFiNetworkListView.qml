@@ -10,7 +10,7 @@ NodoCanvas {
     width: parent.width
     height: parent.height
 
-    property int labelSize: 200
+    property int labelSize: 300
 
     property bool isScanComplete: false
     property bool isConnectedWifiAvailable: false
