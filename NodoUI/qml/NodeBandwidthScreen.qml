@@ -79,6 +79,12 @@ Item {
 
     Connections {
         target: nodoControl
+        function onServiceManagerNotificationReceived(str) {
+            if (str.startsWith("monerod:restart"))
+            {
+                nodeBandwidthApplyButton.isActive = true
+            }
+        }
         function onErrorDetected() {
             var errorCode = nodoControl.getErrorCode();
             nodeBandwithPopup.popupMessageText = systemMessages.backendMessages[errorCode]
