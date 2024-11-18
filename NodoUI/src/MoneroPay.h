@@ -51,6 +51,9 @@ public:
 
     Q_INVOKABLE QString getDescriptionHTMLEncoded(int index);
 
+    Q_INVOKABLE bool isDepositAddressSet(void);
+    Q_INVOKABLE void setDepositAddressSet(bool);
+
 
 
 private:
@@ -71,6 +74,7 @@ private:
     QList <int> paymentIDList;
 
     bool m_isClearAllPaymentsRequested = false;
+    bool m_isDepositAddressSet = false;
 
     MoneroPayConnection *m_mpayConnection;
 
@@ -86,6 +90,7 @@ signals:
     void depositAddressCleared(void);
     void paymentReceived(void);
     void depositAddressReceived(void);
+    void depositAddressSet(QString, QString);
 
     void newPaymentRequested(void);
     void openViewPaymentsScreenRequested(void);

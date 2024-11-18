@@ -327,6 +327,7 @@ void MoneroPay::setDepositAddress(QString address, QString viewKey)
     QFile::remove(m_mpayKeyFile);
 
     m_configParser->setMoneroPayParameters(address, viewKey);
+    emit depositAddressSet(address, viewKey);
 }
 
 QString MoneroPay::getMoneroPayAddress(void)
@@ -428,4 +429,14 @@ void MoneroPay::newPaymentRequest(void)
 void MoneroPay::openViewPaymentsScreenRequest(void)
 {
     emit openViewPaymentsScreenRequested();
+}
+
+bool MoneroPay::isDepositAddressSet(void)
+{
+    return m_isDepositAddressSet;
+}
+
+void MoneroPay::setDepositAddressSet(bool set)
+{
+    m_isDepositAddressSet = set;
 }
