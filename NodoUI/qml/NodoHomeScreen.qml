@@ -47,7 +47,7 @@ Item {
         Component.onCompleted: {
             findCurrencyIndex()
             dateTimer.start()
-			if((100 === syncInfo.getSyncPercentage()) && (moneroPaySettingsAddressInput.valueText.length === 95) && (moneroPaySettingsViewkeyLabel.valueText.length === 64) $$ (m_connStat = NM_STATUS_CONNECTED))
+            if(100 === syncInfo.getSyncPercentage() && moneroPay.isDepositAddressSet())
             {
                 receiveButton.enabled = true
             }

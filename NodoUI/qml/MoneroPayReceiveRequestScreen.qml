@@ -73,6 +73,7 @@ Item {
 				{
 					valueText: ""
 				}				
+            }
 						
             onTextEditFinished: {
                 if(valueText === "")
@@ -115,6 +116,7 @@ Item {
 				{
 					valueText: ""
 				}
+            }
 			
             onTextEditFinished: {
                 if(valueText === "")
@@ -158,19 +160,21 @@ Item {
             textFlag: Qt.ImhDigitsOnly
             validator: RegularExpressionValidator {
                 regularExpression: /^[1-9]$|^1[0-9]$|^20$/
-            
-			onClicked: {
-				valueText: ""
-				}
-			
-			onTextEditFinished: {
+
+            }
+
+            readOnlyFlag: zeroConfirmationSwitch.checked
+            onClicked: {
+                valueText: ""
+            }
+
+            onTextEditFinished: {
                 if(valueText === "")
                 {
                     valueText = "10"
-                }	
-            
-			readOnlyFlag: zeroConfirmationSwitch.checked
-        }						
+                }
+            }
+        }
 
         Rectangle {
             id: zeroConfirmationSwitchRect
