@@ -75,6 +75,7 @@ Item {
         anchors.bottom: moneroLWSAddAccountScreen.bottom
         width: feedAuth.paintedWidth
         height: 70
+        anchors.bottomMargin: connectionStringLabel.height
         text: "http://" + networkManager.getNetworkIP() + ":8133/basic\n"
             + "http://" + nodoConfig.getStringValueFromKey("config", "tor_address") + ":8133/basic\n"
             + "http://" + nodoConfig.getStringValueFromKey("config", "i2p_b32_addr_lws") + ":8133/basic"

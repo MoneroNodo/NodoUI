@@ -9,12 +9,13 @@ Item {
     id: moneroPayMainScreen
     anchors.fill: parent
     anchors.leftMargin: NodoSystem.subMenuLeftMargin
+    signal setButtonState(bool state)
 
     Component.onCompleted: {
-        if (100 === syncInfo.getSyncPercentage())
+		if(100 === syncInfo.getSyncPercentage() && moneroPay.isDepositAddressSet())
         {
             paymentsButton.checked = false
-            settingsButton.checked = false
+            settingsButton.enabled = true
             receiveButton.enabled = true
             receiveButton.checked = true
             receiveButton.clicked()
@@ -23,8 +24,8 @@ Item {
         {
             paymentsButton.checked = false
             paymentsButton.enabled = false
-            // receiveButton.checked = false
-            // receiveButton.enabled = false
+            receiveButton.checked = false
+            receiveButton.enabled = false
             settingsButton.checked = true
             settingsButton.clicked()
         }
@@ -33,7 +34,7 @@ Item {
     Connections {
         target: syncInfo
         function onSyncDone() {
-            receiveButton.enabled = true
+            receiveButton.syncDoneSyncDone = true
         }
     }
 
@@ -56,6 +57,8 @@ Item {
                 moneroPay.setDepositAddressSet(true)
 
             }
+            else
+                moneroPay.setDepositAddressSet(false)
         }
     }
 
@@ -71,6 +74,7 @@ Item {
         }
 
         NodoTabButton {
+            property bool syncDoneSyncDone: false
             id: receiveButton
             y: (moneroPayMainMenuBar.height - receiveButton.height)/2
             text: qsTr("RECEIVE")
@@ -78,6 +82,12 @@ Item {
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: { moneroPayPageLoader.source = "MoneroPayReceiveMainScreen.qml" }
             enabled: false
+            Connections {
+                target: receiveButton
+                function onSetButtonState(state) {
+                    receiveButton.enabled = (state && receiveButton.syncDoneSyncDone)
+                }
+            }
         }
         NodoTabButton {
             id: paymentsButton
@@ -106,7 +116,7 @@ Item {
         anchors.right: moneroPayMainScreen.right
         anchors.bottom: moneroPayMainScreen.bottom
         anchors.topMargin: 40
-        source: "MoneroPayReceiveMainScreen.qml"
+        source: "MoneroPaySettingsMainScreen.qml"
     }
 }
 

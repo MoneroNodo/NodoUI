@@ -12,7 +12,7 @@ Item {
 
     property int labelSize: 300
     property int inputFieldWidth: 600
-    property int addressFieldWidth: 1850
+    property int addressFieldWidth: 1900
     property double exchangeRate
     property string exchangeName
     property double xmrAmount
@@ -52,7 +52,7 @@ Item {
         anchors.top: moneroPayReceiveRequestScreen.top
         anchors.left: moneroPayReceiveRequestScreen.left
         width: 1900
-        height: 95
+        height: 135
         color: "black"
 
         NodoInputField {
@@ -60,18 +60,25 @@ Item {
             anchors.top: requestCurrenciesRect.top
             anchors.left: requestCurrenciesRect.left
             itemSize: 210
-            width: 1000
-            height: 95
+            width: 1200
+            height: 135
             itemText: qsTr("XMR")
-            valueText: "0.000000000000"
+            valueText: "0.0000"
             textFlag: Qt.ImhDigitsOnly
-            itemFontSize: 80
-            valueFontSize: 80
-
+            itemFontSize: 120
+            valueFontSize: 120
+			
+			onClicked: {
+				if(valueText === "0.0000")
+				{
+					valueText: ""
+				}				
+            }
+						
             onTextEditFinished: {
                 if(valueText === "")
                 {
-                    valueText = "0.000000000000"
+                    valueText = "0.0000"
                 }
 
                 xmrAmount = parseFloat(xmrRequestfield.valueText)
@@ -96,14 +103,21 @@ Item {
             anchors.left: xmrRequestfield.right
             anchors.leftMargin: 25
             itemSize: 210
-            width: 700
-            height: 95
+            width: 800
+            height: 135
             itemText: moneroPayReceiveRequestScreen.exchangeName
             valueText: "0.00"
             textFlag: Qt.ImhDigitsOnly
-            itemFontSize: 80
-            valueFontSize: 80
+            itemFontSize: 120
+            valueFontSize: 120
 
+			onClicked: {
+				if(valueText === "0.00")
+				{
+					valueText: ""
+				}
+            }
+			
             onTextEditFinished: {
                 if(valueText === "")
                 {
@@ -140,14 +154,26 @@ Item {
             anchors.top: blockConfirmationsRect.top
             height: blockConfirmationsRect.height
             itemSize: labelSize
-            width: labelSize + 70
+            width: labelSize + 100
             itemText:  qsTr("Block Confirmations")
             valueText: "10"
             textFlag: Qt.ImhDigitsOnly
             validator: RegularExpressionValidator {
                 regularExpression: /^[1-9]$|^1[0-9]$|^20$/
+
             }
+
             readOnlyFlag: zeroConfirmationSwitch.checked
+            onClicked: {
+                valueText: ""
+            }
+
+            onTextEditFinished: {
+                if(valueText === "")
+                {
+                    valueText = "10"
+                }
+            }
         }
 
         Rectangle {

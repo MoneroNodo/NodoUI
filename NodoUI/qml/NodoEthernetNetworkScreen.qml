@@ -10,7 +10,7 @@ Item {
     id: ethernetNetworkScreen
     width: parent.width
     height: parent.height
-    property int labelSize: 200
+    property int labelSize: 300
     property bool isEthernetEnabled
     property int networkDelegateItemHeight: NodoSystem.nodoItemHeight
 
@@ -119,18 +119,18 @@ Item {
         anchors.topMargin: 10
         width: ethernetNetworkScreen.width
         height: 0
-        color: "#141414"
+		color: nodoControl.appTheme ? NodoSystem.dataFieldTextBGColorNightModeOn  : NodoSystem.dataFieldTextBGColorNightModeOff
 
         Rectangle {
             id: createNewConnectionRect
             anchors.top: createNewConnectionCanvas.top
             anchors.left: createNewConnectionCanvas.left
             anchors.topMargin: 10
-            anchors.leftMargin: 11
+            anchors.leftMargin: 10
             width: createNewConnectionCanvas.width - 22
             height: createNewConnectionCanvas.height - createEthernetConnectionRect.height - 18
             visible: ethernetNetworkScreen.state === "" ? false : true
-            color: "#181818"
+            color: nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn  : NodoSystem.dataFieldTextColorNightModeOff
 
             NodoInputField {
                 id: ethConnectionNameField
@@ -271,7 +271,7 @@ Item {
             id: createEthernetConnectionRect
             anchors.top: createNewConnectionRect.bottom
             anchors.left: createNewConnectionRect.left
-            anchors.topMargin: 8
+            anchors.topMargin: 10
             height: NodoSystem.nodoItemHeight
             visible: ethernetNetworkScreen.state === "" ? false : true
 

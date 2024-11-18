@@ -47,6 +47,14 @@ Item {
         Component.onCompleted: {
             findCurrencyIndex()
             dateTimer.start()
+            if(100 === syncInfo.getSyncPercentage() && moneroPay.isDepositAddressSet())
+            {
+                receiveButton.enabled = true
+            }
+            else
+            {
+                receiveButton.enabled = false
+            }
         }
 
         Connections {
@@ -157,7 +165,7 @@ Item {
                 anchors.top: deviceButton.top
                 anchors.left: moneroLWSButton.right
                 height: NodoSystem.nodoItemHeight
-                text: qsTr("MPAY")
+                text: qsTr("MONEROPAY")
                 font.family: NodoSystem.fontUrbanist.name
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
                 onClicked: {

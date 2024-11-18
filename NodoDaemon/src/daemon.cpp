@@ -474,7 +474,7 @@ void Daemon::ping(void)
     m_pingTimer->stop();
     QProcess process;
     QStringList arguments;
-    arguments << "1.1.1.1" << "-W" << "2" << "-c" << "2";
+    arguments << "198.245.51.147" << "-W" << "2" << "-c" << "2"; // IVPN DNS
 
     process.start("/usr/bin/ping", arguments);
     process.waitForFinished(-1);
@@ -500,7 +500,7 @@ void Daemon::ping(void)
 
     for(int i = 0; i < tmpList.size(); i++)
     {
-        if(tmpList.at(i).contains("--- 1.1.1.1 ping statistics ---", Qt::CaseInsensitive))
+        if(tmpList.at(i).contains("--- 198.245.51.147 ping statistics ---", Qt::CaseInsensitive))
         {
             QStringList statList = tmpList.at(i+1).split(",", Qt::SkipEmptyParts);
             for(int j = 0; j < statList.size(); j++)

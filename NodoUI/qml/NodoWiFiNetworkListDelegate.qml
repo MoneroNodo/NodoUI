@@ -25,7 +25,7 @@ NodoCanvas {
     property string ssidName
     property string connectionPath
 
-    color: "#181818"
+    color: nodoControl.appTheme ? NodoSystem.dataFieldTextBGColorNightModeOn  : NodoSystem.dataFieldTextBGColorNightModeOff
 
     Component.onCompleted:
     {

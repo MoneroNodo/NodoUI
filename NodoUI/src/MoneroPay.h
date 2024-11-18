@@ -87,7 +87,7 @@ private:
 signals:
     void paymentListReady(void);
     void componentEnabledStatusChanged(void);
-    void depositAdressCleared(void);
+    void depositAddressCleared(void);
     void paymentReceived(void);
     void depositAddressReceived(void);
     void depositAddressSet(QString, QString);

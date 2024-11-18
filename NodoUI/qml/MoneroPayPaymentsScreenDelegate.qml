@@ -9,7 +9,7 @@ NodoCanvas {
     id: mainRect
     property int componentWidth: 600
     property int fieldTopMargin: 5
-    color: "#141414"
+    color: "#181818"
     property int paymentIndex
     property int scanHeight: 0
     property int labelSize: 0
@@ -141,7 +141,7 @@ NodoCanvas {
         height: paymentsList.contentHeight
         anchors.topMargin: fieldTopMargin
         anchors.bottomMargin: 30
-        color: "#141414"
+        color: "#181818"
         clip: true
 
         ListView {
@@ -198,7 +198,7 @@ NodoCanvas {
         id: moneroPayReceivedQRCodeButton
         anchors.left: moneroPayReceivedRemovePaymentButton.right
         anchors.top: moneroPayReceivedRemovePaymentButton.top
-        anchors.leftMargin: 16
+        anchors.leftMargin: 20
         text: qsTr("View QR")
         height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontUrbanist.name

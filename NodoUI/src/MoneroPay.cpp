@@ -345,7 +345,7 @@ void MoneroPay::clearDepositAddress(void)
     enableComponent(false);
     m_configParser->setMoneroPayParameters("", "");
     enableComponent(true);
-    emit depositAdressCleared();
+    emit depositAddressCleared();
 }
 
 double MoneroPay::getLastXMRAmount(void)
