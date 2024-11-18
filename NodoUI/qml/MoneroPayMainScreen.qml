@@ -22,12 +22,13 @@ Item {
         }
         else
         {
-            paymentsButton.checked = false
-            paymentsButton.enabled = false
+            paymentsButton.checked = true
+            paymentsButton.enabled = true
             receiveButton.checked = false
             receiveButton.enabled = false
-            settingsButton.checked = true
-            settingsButton.clicked()
+            settingsButton.enabled = true
+
+            paymentsButton.clicked()
         }
     }
 
