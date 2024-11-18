@@ -68,8 +68,8 @@ NodoCanvas {
         if(signalStrengthField.labelRectRoundSize > labelSize)
             labelSize = signalStrengthField.labelRectRoundSize
 
-        if(secutityField.labelRectRoundSize > labelSize)
-            labelSize = secutityField.labelRectRoundSize
+        if(securityField.labelRectRoundSize > labelSize)
+            labelSize = securityField.labelRectRoundSize
 
         if(frequencyField.labelRectRoundSize > labelSize)
             labelSize = frequencyField.labelRectRoundSize
@@ -132,7 +132,7 @@ NodoCanvas {
         id: ssidSignalStrengthRect
         anchors.top: forgetButton.top
         anchors.right: forgetButton.left
-        anchors.rightMargin: 16
+        anchors.rightMargin: 18
         anchors.topMargin: (connectButton.height - height)/2
         width: 48
         height: 48
@@ -229,21 +229,9 @@ NodoCanvas {
         }
 
         NodoInfoField{
-            id: sSIDField
-            anchors.left: showDetailsRect.left
-            anchors.top: gatewayField.bottom
-            anchors.topMargin: mainRect.spacing
-            width: showDetailsRect.width
-            itemSize: labelSize
-            height: networkDelegateItemHeight
-            itemText: systemMessages.messages[NodoMessages.Message.SSID]
-            valueText: mainRect.ssidName
-        }
-
-        NodoInfoField{
             id: signalStrengthField
             anchors.left: showDetailsRect.left
-            anchors.top: sSIDField.bottom
+            anchors.top: gatewayField.bottom
             anchors.topMargin: mainRect.spacing
             width: showDetailsRect.width
             itemSize: labelSize
@@ -253,7 +241,7 @@ NodoCanvas {
         }
 
         NodoInfoField{
-            id: secutityField
+            id: securityField
             anchors.left: showDetailsRect.left
             anchors.top: signalStrengthField.bottom
             anchors.topMargin: mainRect.spacing
@@ -267,7 +255,7 @@ NodoCanvas {
         NodoInfoField{
             id: frequencyField
             anchors.left: showDetailsRect.left
-            anchors.top: secutityField.bottom
+            anchors.top: securityField.bottom
             anchors.topMargin: mainRect.spacing
             width: showDetailsRect.width
             itemSize: labelSize

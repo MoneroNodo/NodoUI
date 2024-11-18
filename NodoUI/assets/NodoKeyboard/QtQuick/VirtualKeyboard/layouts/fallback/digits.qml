@@ -18,16 +18,16 @@ KeyboardLayout {
         Layout.preferredWidth: height
         KeyboardRow {
             Key {
-                key: Qt.Key_7
-                text: "7"
+                key: Qt.Key_1
+                text: "1"
             }
             Key {
-                key: Qt.Key_8
-                text: "8"
+                key: Qt.Key_2
+                text: "2"
             }
             Key {
-                key: Qt.Key_9
-                text: "9"
+                key: Qt.Key_3
+                text: "3"
             }
             FillerKey {}
         }
@@ -48,21 +48,21 @@ KeyboardLayout {
         }
         KeyboardRow {
             Key {
-                key: Qt.Key_1
-                text: "1"
+                key: Qt.Key_7
+                text: "7"
             }
             Key {
-                key: Qt.Key_2
-                text: "2"
+                key: Qt.Key_8
+                text: "8"
             }
             Key {
-                key: Qt.Key_3
-                text: "3"
+                key: Qt.Key_9
+                text: "9"
             }
-            HideKeyboardKey {
-                visible: true
-            }
+            
+			BackspaceKey {}			
         }
+		
         KeyboardRow {
             Key {
                 // The decimal key, if it is not "," then we fallback to
@@ -70,12 +70,15 @@ KeyboardLayout {
                 key: Qt.locale().decimalPoint === "," ? Qt.Key_Comma : Qt.Key_Period
                 text: Qt.locale().decimalPoint === "," ? "," : "."
             }
+			
             Key {
                 key: Qt.Key_0
                 text: "0"
             }
 
-            BackspaceKey {}
+            HideKeyboardKey {
+                visible: true
+            }
 
             EnterKey {}
         }
