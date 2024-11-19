@@ -114,6 +114,20 @@ void Daemon::serviceStatusReceived(const QString &message)
     emit serviceManagerNotification(message);
 }
 
+void Daemon::updater(void)
+{
+    qDebug() << "update request";
+
+    QString program = "/usr/bin/bash";
+
+    QStringList arguments;
+    arguments << "/home/nodo/update-all.sh";
+
+    QProcess process;
+
+    process.start(program, arguments);
+}
+
 void Daemon::restart(void)
 {
     qDebug() << "received restart request";

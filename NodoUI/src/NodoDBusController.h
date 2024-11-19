@@ -15,6 +15,7 @@ public:
     bool isConnected(void);
     void startRecovery(int recoverFS, int rsyncBlockchain);
     void serviceManager(QString operation, QString service);
+    void update(void);
     void restart(void);
     void shutdown(void);
     void setBacklightLevel(int backlightLevel);

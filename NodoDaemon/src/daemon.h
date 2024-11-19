@@ -34,6 +34,7 @@ public slots:
     void startRecovery(int recoverFS, int rsyncBlockchain);
     void changeServiceStatus(QString operation, QString service);
     void restart(void);
+    void updater(void);
     void shutdown(void);
     void setBacklightLevel(int backlightLevel);
     int getBacklightLevel(void);
@@ -67,6 +68,9 @@ signals:
     void serviceStatusReadyNotification(const QString &message);
     void passwordChangeStatus(int status);
 
+    void updateRequested(void);
+    void updateStarted(void);
+    void updateCompleted(void);
     void factoryResetStarted(void);
     void factoryResetRequested(void);
     void factoryResetCompleted(void);

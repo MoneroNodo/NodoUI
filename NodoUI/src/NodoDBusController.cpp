@@ -66,6 +66,15 @@ void NodoDBusController::serviceManager(QString operation, QString service)
     nodo->changeServiceStatus(operation, service);
 }
 
+void NodoDBusController::update()
+{
+    if(false == m_dbusAdapterConnectionStatus)
+    {
+        return;
+    }
+    nodo->update();
+}
+
 void NodoDBusController::restart()
 {
     if(false == m_dbusAdapterConnectionStatus)

@@ -12,6 +12,8 @@
                 <arg name="service" type="s" direction="in"/>
         </method>
 
+        <method name="update"/>
+
         <method name="restart"/>
 
         <method name="shutdown"/>
