@@ -115,9 +115,18 @@ void NodoFeedsControl::downloadFinished(QNetworkReply *reply)
             break;
         }
 
+        parser.timeStamp = QString::fromStdString(xn.node().child(m_feeds_str.at(index).pub_date_tag.toStdString().c_str()).text().get());
+
+        if (parser.timeStamp != nullptr) {
+            QDateTime qdt = QDateTime::fromString(parser.timeStamp);
+
+            if (qdt.isValid() &&
+                qdt.toUTC().daysTo(QDateTime::currentDateTimeUtc()) > 30) // filter articles older than ~1 month
+                continue;
+        }
+
         parser.channelName = m_feeds_str.at(index).nameItem;
         parser.author = QString::fromStdString(xn.node().child("auth").text().get());
-        parser.timeStamp = QString::fromStdString(xn.node().child(m_feeds_str.at(index).pub_date_tag.toStdString().c_str()).text().get());
         parser.title = QString::fromStdString(xn.node().child("title").text().get());
         parser.description.append(html_start)
             .append(m_textColor)
