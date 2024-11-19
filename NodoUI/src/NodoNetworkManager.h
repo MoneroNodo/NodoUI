@@ -82,12 +82,12 @@ signals:
     void networkStatusChanged(void);
     void networkConnStatusReceived(bool netConnStat);
 
-    void wifiScanCopleted(void);
+    void wifiScanCompleted(void);
     void wifiDeviceStatusChanged(void);
     void connectedSSIDParamsUpdated(void);
     void aPScanStatusReceived(void);
 
-    void ethernetScanCopleted(void);
+    void ethernetScanCompleted(void);
     void ethernetDeviceStatusChanged(void);
     void connectedEthernetParamsUpdated(void);
     void errorDetected(void);

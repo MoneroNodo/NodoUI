@@ -199,7 +199,7 @@ void NodoNetworkManager::parseWirelessNetworkList(QString networkList)
     }
 
     emit connectedSSIDParamsUpdated();
-    emit wifiScanCopleted();
+    emit wifiScanCompleted();
 }
 
 int NodoNetworkManager::getSSIDListSize(void)
@@ -497,7 +497,7 @@ void NodoNetworkManager::parseWiredNetworkList(QString networkList)
     }
 
     emit connectedEthernetParamsUpdated();
-    emit ethernetScanCopleted();
+    emit ethernetScanCompleted();
 }
 
 void NodoNetworkManager::processWiredDeviceStatus(unsigned ethDeviceStatus)
