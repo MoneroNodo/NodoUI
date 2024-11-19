@@ -294,7 +294,7 @@ void Daemon::readAverageCPUFreq(void)
         m_AverageCPUFreq += status.at(0).toDouble(&ok)/1000;
     }
 
-    m_AverageCPUFreq = m_AverageCPUFreq/8;
+    m_AverageCPUFreq = (m_AverageCPUFreq/8)/1000; //MHz Avg, then GHz	
 }
 
 void Daemon::readRAMUsage(void)
