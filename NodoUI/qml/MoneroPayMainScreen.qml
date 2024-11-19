@@ -14,8 +14,8 @@ Item {
     Component.onCompleted: {
 		if(100 === syncInfo.getSyncPercentage() && moneroPay.isDepositAddressSet())
         {
-            paymentsButton.checked = false
             settingsButton.enabled = true
+            paymentsButton.checked = false
             receiveButton.enabled = true
             receiveButton.checked = true
             receiveButton.clicked()
@@ -117,7 +117,7 @@ Item {
         anchors.right: moneroPayMainScreen.right
         anchors.bottom: moneroPayMainScreen.bottom
         anchors.topMargin: 40
-        source: "MoneroPaySettingsMainScreen.qml"
+        source: "MoneroPayPaymentsScreen.qml"
     }
 }
 
