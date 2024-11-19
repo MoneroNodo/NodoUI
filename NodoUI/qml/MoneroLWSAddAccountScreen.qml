@@ -21,6 +21,15 @@ Item {
 
         if(moneroLWSPrivateViewkeyLabel.labelRectRoundSize > labelSize)
         labelSize = moneroLWSPrivateViewkeyLabel.labelRectRoundSize
+		
+		if(moneroLWSClearnetAddressLabel.labelRectRoundSize > labelSize)
+		labelSize = moneroLWSClearnetAddressLabel.labelRectRoundSize
+		
+		if(moneroLWSTorAddressLabel.labelRectRoundSize > labelSize)
+        labelSize = moneroLWSTorAddressLabel.labelRectRoundSize
+		
+		if(moneroLWSI2PAddressLabel.labelRectRoundSize > labelSize)
+		labelSize = moneroLWSI2PAddressLabel.labelRectRoundSize
     }
 
     Connections {
@@ -37,7 +46,7 @@ Item {
         anchors.top: moneroLWSAddAccountScreen.top
         width: infoFieldSize
         itemSize: labelSize
-        itemText: systemMessages.messages[NodoMessages.Message.Address]
+        itemText: systemMessages.messages[NodoMessages.Message.Address]  //LABEL "Address"
         valueText: ""
         height: NodoSystem.nodoItemHeight
     }
@@ -69,20 +78,42 @@ Item {
             moneroLWS.addAccount(moneroLWSMainAddressInput.valueText, moneroLWSPrivateViewkeyLabel.valueText)
         }
     }
-    Label {
-        id: connectionStringLabel
+	
+    NodoInfoField {
+        id: moneroLWSClearnetAddress
         anchors.left: moneroLWSAddAccountScreen.left
-        anchors.bottom: moneroLWSAddAccountScreen.bottom
-        width: feedAuth.paintedWidth
-        height: 70
-        anchors.bottomMargin: connectionStringLabel.height
-        text: "http://" + networkManager.getNetworkIP() + ":8133/basic\n"
-            + "http://" + nodoConfig.getStringValueFromKey("config", "tor_address") + ":8133/basic\n"
-            + "http://" + nodoConfig.getStringValueFromKey("config", "i2p_b32_addr_lws") + ":8133/basic"
-        color: nodoControl.appTheme ? NodoSystem.highlightedColorNightModeOn : "white"
-        font.family: NodoSystem.fontUrbanist.name
-        font.pixelSize: 32
-    }
+		anchors.top: moneroLWSAddAccountButton.bottom
+		anchors.topMargin: 20
+        width: infoFieldSize
+        height: NodoSystem.nodoItemHeight
+		itemSize: labelSize
+		itemText: qsTr("LWS Clearnet Address")        
+        valueText: "http://" + networkManager.getNetworkIP() + ":8133/basic\n"
+	}	
+	
+	NodoInfoField {
+        id: moneroLWSTorAddress
+        anchors.left: moneroLWSAddAccountScreen.left
+		anchors.top: moneroLWSClearnetAddress.bottom
+		anchors.topMargin: NodoSystem.nodoTopMargin
+        width: infoFieldSize
+        height: NodoSystem.nodoItemHeight
+		itemSize: labelSize
+		itemText: qsTr("LWS Tor Address")        
+        valueText: "http://" + nodoConfig.getStringValueFromKey("config", "tor_address") + ":8133/basic\n"
+	}
+	
+NodoInfoField {
+        id: moneroLWSI2PAddress
+        anchors.left: moneroLWSAddAccountScreen.left
+		anchors.top: moneroLWSTorAddress.bottom
+		anchors.topMargin: NodoSystem.nodoTopMargin
+        width: infoFieldSize
+        height: NodoSystem.nodoItemHeight
+		itemSize: labelSize
+		itemText: qsTr("LWS I2P b32 Address")        
+        valueText: "http://" + nodoConfig.getStringValueFromKey("config", "i2p_b32_addr_lws") + ":8133/basic\n"
+	}	
 }
 
 

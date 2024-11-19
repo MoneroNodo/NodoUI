@@ -95,7 +95,7 @@ Rectangle {
         var syncPercentage = syncInfo.getSyncPercentage()
         if (networkManager.getNetworkConnectionStatusCode() !== 2 /*not connected*/)
         {
-            syncStatusField.valueText = qsTr("Not Synchronizing")
+            syncStatusField.valueText = qsTr("Disconnected")
             return
         }
         if(syncPercentage === 100)

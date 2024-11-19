@@ -216,21 +216,9 @@ NodoCanvas {
         color: "transparent"
 
         NodoInfoField{
-            id: sSIDField
-            anchors.left: showDetailsRect.left
-            anchors.top: showDetailsRect.top
-            anchors.topMargin: mainRect.spacing
-            width: showDetailsRect.width
-            itemSize: 300
-            height: networkDelegateItemHeight
-            itemText: systemMessages.messages[NodoMessages.Message.SSID]
-            valueText: ssidNameLabel.text
-        }
-
-        NodoInfoField{
             id: signalStrengthField
             anchors.left: showDetailsRect.left
-            anchors.top: sSIDField.bottom
+            anchors.top: showDetailsRect.top
             anchors.topMargin: mainRect.spacing
             width: showDetailsRect.width
             itemSize: 300
@@ -240,7 +228,7 @@ NodoCanvas {
         }
 
         NodoInfoField{
-            id: secutityField
+            id: securityField
             anchors.left: showDetailsRect.left
             anchors.top: signalStrengthField.bottom
             anchors.topMargin: mainRect.spacing
@@ -254,7 +242,7 @@ NodoCanvas {
         NodoInfoField{
             id: frequencyField
             anchors.left: showDetailsRect.left
-            anchors.top: secutityField.bottom
+            anchors.top: securityField.bottom
             anchors.topMargin: mainRect.spacing
             width: showDetailsRect.width
             itemSize: 300

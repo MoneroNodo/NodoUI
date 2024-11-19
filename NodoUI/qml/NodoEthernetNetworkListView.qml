@@ -40,7 +40,7 @@ NodoCanvas {
     Connections {
         target: networkManager
 
-        function onEthernetScanCopleted() {
+        function onEthernetScanCompleted() {
             getEthernetList()
         }
 
