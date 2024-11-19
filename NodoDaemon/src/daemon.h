@@ -34,7 +34,7 @@ public slots:
     void startRecovery(int recoverFS, int rsyncBlockchain);
     void changeServiceStatus(QString operation, QString service);
     void restart(void);
-    void updater(void);
+    void update(void);
     void shutdown(void);
     void setBacklightLevel(int backlightLevel);
     int getBacklightLevel(void);

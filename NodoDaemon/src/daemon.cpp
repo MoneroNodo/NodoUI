@@ -114,7 +114,7 @@ void Daemon::serviceStatusReceived(const QString &message)
     emit serviceManagerNotification(message);
 }
 
-void Daemon::updater(void)
+void Daemon::update(void)
 {
     qDebug() << "update request";
 

@@ -381,7 +381,6 @@ int NodoSystemControl::getErrorCode(void)
 void NodoSystemControl::sendUpdate(void)
 {
     enableComponent(false);
-    m_configParser->setClearnetPort(port);
     m_dbusController->serviceManager("restart", "monerod");
 }
 

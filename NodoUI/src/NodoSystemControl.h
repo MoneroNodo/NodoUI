@@ -20,6 +20,7 @@ public:
 
     bool getAppTheme(void);
     void setAppTheme(bool appTheme);
+    void sendUpdate(void);
 
     Q_INVOKABLE void setScreenSaverType(int state);
     Q_INVOKABLE int getScreenSaverType(void);
