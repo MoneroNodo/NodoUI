@@ -22,13 +22,13 @@ Item {
         if(moneroLWSPrivateViewkeyLabel.labelRectRoundSize > labelSize)
         labelSize = moneroLWSPrivateViewkeyLabel.labelRectRoundSize
 		
-		if(moneroLWSClearnetAddressLabel.labelRectRoundSize > labelSize)
+		if(moneroLWSClearnetAddress.labelRectRoundSize > labelSize)
 		labelSize = moneroLWSClearnetAddressLabel.labelRectRoundSize
 		
-		if(moneroLWSTorAddressLabel.labelRectRoundSize > labelSize)
+		if(moneroLWSTorAddress.labelRectRoundSize > labelSize)
         labelSize = moneroLWSTorAddressLabel.labelRectRoundSize
 		
-		if(moneroLWSI2PAddressLabel.labelRectRoundSize > labelSize)
+		if(moneroLWSI2PAddress.labelRectRoundSize > labelSize)
 		labelSize = moneroLWSI2PAddressLabel.labelRectRoundSize
     }
 
@@ -83,7 +83,7 @@ Item {
         id: moneroLWSClearnetAddress
         anchors.left: moneroLWSAddAccountScreen.left
 		anchors.top: moneroLWSAddAccountButton.bottom
-		anchors.topMargin: 20
+		anchors.topMargin: 40
         width: infoFieldSize
         height: NodoSystem.nodoItemHeight
 		itemSize: labelSize
@@ -95,8 +95,7 @@ Item {
         id: moneroLWSTorAddress
         anchors.left: moneroLWSAddAccountScreen.left
 		anchors.top: moneroLWSClearnetAddress.bottom
-		anchors.topMargin: NodoSystem.nodoTopMargin
-        width: infoFieldSize
+	    width: infoFieldSize
         height: NodoSystem.nodoItemHeight
 		itemSize: labelSize
 		itemText: qsTr("LWS Tor Address")        
@@ -107,8 +106,7 @@ NodoInfoField {
         id: moneroLWSI2PAddress
         anchors.left: moneroLWSAddAccountScreen.left
 		anchors.top: moneroLWSTorAddress.bottom
-		anchors.topMargin: NodoSystem.nodoTopMargin
-        width: infoFieldSize
+	    width: infoFieldSize
         height: NodoSystem.nodoItemHeight
 		itemSize: labelSize
 		itemText: qsTr("LWS I2P b32 Address")        

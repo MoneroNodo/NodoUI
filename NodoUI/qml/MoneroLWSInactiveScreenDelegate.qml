@@ -7,8 +7,8 @@ import NodoCanvas 1.0
 
 NodoCanvas {
     id: mainRect
-    width: 1900
-    height: 178
+    width: 1904
+    height: 200
     color: nodoControl.appTheme ? NodoSystem.dataFieldTextBGColorNightModeOn  : NodoSystem.dataFieldTextBGColorNightModeOff
     property string inactiveAddress: ""
     property int scanHeight: 0
@@ -32,8 +32,8 @@ NodoCanvas {
         anchors.right: mainRect.right
         anchors.top: mainRect.top
         anchors.topMargin: 10
-        anchors.leftMargin: 10
-        anchors.rightMargin: 10
+        anchors.leftMargin: 8
+        anchors.rightMargin: 8
         itemSize: 0
         height: NodoSystem.nodoItemHeight
         itemText: systemMessages.messages[NodoMessages.Message.Address]
@@ -71,7 +71,7 @@ NodoCanvas {
         id: moneroLWSDeleteButton
         anchors.left: moneroLWSReactivateButton.right
         anchors.top: moneroLWSinactiveHeightField.top
-        anchors.leftMargin: 16
+        anchors.leftMargin: 20
         text: qsTr("Delete")
         height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontUrbanist.name

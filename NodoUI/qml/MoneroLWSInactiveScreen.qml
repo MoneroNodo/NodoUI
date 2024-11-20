@@ -37,10 +37,10 @@ Item {
         anchors.top: moneroLWSInactiveScreen.top
         anchors.left: moneroLWSInactiveScreen.left
         anchors.bottom: moneroLWSInactiveScreen.bottom
-        anchors.leftMargin: 10
+        anchors.leftMargin: 8
         model: inactiveListModel
         visible: true
-        width: 1840
+        width: 1904
         clip: true
 
         delegate: MoneroLWSInactiveScreenDelegate {
