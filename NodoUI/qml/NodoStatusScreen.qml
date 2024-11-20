@@ -18,7 +18,7 @@ Rectangle {
     property int componentLeftMargin: 8
     property int componentBottomMargin: 8
     property int componentTopMargin: 34
-    property int cardMargin: 13
+    property int cardMargin: 10
     property color cardBackgroundColor: "#1F1F1F"
 
     property int statusScreenInfoFieldHeight: NodoSystem.nodoItemHeight
@@ -510,7 +510,7 @@ Rectangle {
             width: componentWidth
             height: statusScreenInfoFieldHeight
             itemSize: labelSize
-            itemText: qsTr("Blockchain Storage")
+            itemText: qsTr("Blockchain")
             valueText: systemMessages.messages[NodoMessages.Message.Loading]
         }
 
@@ -522,7 +522,7 @@ Rectangle {
             width: componentWidth
             height: statusScreenInfoFieldHeight
             itemSize: labelSize
-            itemText: qsTr("System Storage")
+            itemText: qsTr("Storage")
             valueText: systemMessages.messages[NodoMessages.Message.Loading]
         }
     }
