@@ -93,7 +93,7 @@ Rectangle {
 
     function updateSyncPercentage() {
         var syncPercentage = syncInfo.getSyncPercentage()
-        if (networkManager.getNetworkConnectionStatusCode() !== 2 /*not connected*/)
+        if (networkManager.getNetworkConnectionStatusCode() !== 1 /*not connected*/)
         {
             syncStatusField.valueText = qsTr("Disconnected")
             return
