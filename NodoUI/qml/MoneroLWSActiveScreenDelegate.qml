@@ -9,7 +9,6 @@ NodoCanvas {
     id: mainRect
     width: 1870
     height: 196
-    font.family: NodoSystem.fontUrbanist.name
     color: nodoControl.appTheme ? NodoSystem.dataFieldTextBGColorNightModeOn  : NodoSystem.dataFieldTextBGColorNightModeOff
     property string activeAddress: ""
     property int scanHeight: 0
@@ -48,9 +47,9 @@ NodoCanvas {
         anchors.left: moneroLWSActiveAddressField.left
         anchors.top: moneroLWSActiveAddressField.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
-        width: labelSize+300
+        width: labelSize + 200
         height: NodoSystem.nodoItemHeight
-        itemSize: 250
+        itemSize: 200
         itemText: qsTr("Height")
         valueText: scanHeight
     }
@@ -74,6 +73,7 @@ NodoCanvas {
         anchors.left: moneroLWSDeactivateButton.right
         anchors.top: moneroLWSActiveHeightField.top
         anchors.leftMargin: 30
+        itemSize: 200
         width: labelSize+300
         height: NodoSystem.nodoItemHeight
         itemText: qsTr("Rescan Height")

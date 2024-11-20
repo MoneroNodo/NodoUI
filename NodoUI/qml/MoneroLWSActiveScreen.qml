@@ -41,7 +41,7 @@ Item {
         anchors.leftMargin: NodoSystem.padding
         model: activeListModel
         visible: true
-        width: 1875
+        width: 1880
         clip: true
 
         delegate: MoneroLWSActiveScreenDelegate {
