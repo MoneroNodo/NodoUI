@@ -9,7 +9,7 @@ Item {
     id: moneroLWSAddAccountScreen
 	anchors.fill: parent
     property int labelSize: 0
-    property int infoFieldSize: 1860
+    property int infoFieldSize: 1865
 
     Component.onCompleted: {
         onCalculateMaximumTextLabelLength()
@@ -87,6 +87,7 @@ Item {
         width: infoFieldSize
         height: NodoSystem.nodoItemHeight
 		itemSize: labelSize
+        font.family: NodoSystem.fontUrbanist.name
 		itemText: qsTr("LWS Address")
         valueText: "http://" + networkManager.getNetworkIP() + ":8133/basic\n"
 	}	
