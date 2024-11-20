@@ -7,8 +7,8 @@ import NodoCanvas 1.0
 
 NodoCanvas {
     id: mainRect
-    width: 1904
-    height: 296
+    width: 1888
+    height: 292
     color: nodoControl.appTheme ? NodoSystem.dataFieldTextBGColorNightModeOn  : NodoSystem.dataFieldTextBGColorNightModeOff
     property string activeAddress: ""
     property int scanHeight: 0
@@ -50,6 +50,7 @@ NodoCanvas {
         height: NodoSystem.nodoItemHeight
         itemSize: labelSize
         itemText: qsTr("Height")
+        wrapMode: Text.WordWrap
         valueText: scanHeight
     }
 
