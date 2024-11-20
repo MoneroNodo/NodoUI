@@ -9,19 +9,19 @@ Item {
     id: moneroLWSAddAccountScreen
 	anchors.fill: parent
     property int labelSize: 0
-    property int infoFieldSize: 1850
+    property int infoFieldSize: 1860
 
     Component.onCompleted: {
         onCalculateMaximumTextLabelLength()
     }
 
     function onCalculateMaximumTextLabelLength() {
-/*        if(moneroLWSMainAddressInput.labelRectRoundSize > labelSize)
+        if(moneroLWSMainAddressInput.labelRectRoundSize > labelSize)
         labelSize = moneroLWSMainAddressInput.labelRectRoundSize
 
         if(moneroLWSPrivateViewkeyLabel.labelRectRoundSize > labelSize)
         labelSize = moneroLWSPrivateViewkeyLabel.labelRectRoundSize
-*/		
+		
 		if(moneroLWSClearnetAddress.labelRectRoundSize > labelSize)
 		labelSize = moneroLWSClearnetAddress.labelRectRoundSize
 		

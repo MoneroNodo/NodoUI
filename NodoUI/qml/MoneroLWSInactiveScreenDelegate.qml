@@ -7,14 +7,14 @@ import NodoCanvas 1.0
 
 NodoCanvas {
     id: mainRect
-    width: 1888
+    width: 1870
     height: 194
     color: nodoControl.appTheme ? NodoSystem.dataFieldTextBGColorNightModeOn  : NodoSystem.dataFieldTextBGColorNightModeOff
     property string inactiveAddress: ""
     property int scanHeight: 0
-    property int labelSize: 0
+    property int labelSize: 400
 
-    Component.onCompleted: {
+/*    Component.onCompleted: {
         onCalculateMaximumTextLabelLength()
     }
 
@@ -25,7 +25,7 @@ NodoCanvas {
         if(moneroLWSinactiveHeightField.labelRectRoundSize > labelSize)
             labelSize = moneroLWSinactiveHeightField.labelRectRoundSize
     }
-
+*/
     NodoInfoField {
         id: moneroLWSinactiveAddressField
         anchors.left: mainRect.left
@@ -38,6 +38,7 @@ NodoCanvas {
         height: NodoSystem.nodoItemHeight
         itemText: systemMessages.messages[NodoMessages.Message.Address]
         valueText: inactiveAddress
+        valueFontSize: 32
     }
 
 
@@ -46,7 +47,7 @@ NodoCanvas {
         anchors.left: moneroLWSinactiveAddressField.left
         anchors.top: moneroLWSinactiveAddressField.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
-        width: labelSize + 300
+        width: labelSize
         height: NodoSystem.nodoItemHeight
         itemSize: labelSize
         itemText: qsTr("Height")
