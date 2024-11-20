@@ -34,11 +34,11 @@ NodoCanvas {
         anchors.topMargin: 10
         anchors.leftMargin: 8
         anchors.rightMargin: 8
-        itemSize: 0
+        itemSize: 160
         height: NodoSystem.nodoItemHeight
         itemText: systemMessages.messages[NodoMessages.Message.Address] //qsTr("Address")
         valueText: activeAddress
-        valueFontSize: 32 
+        valueFontSize: 30 
     }
 
 
@@ -47,9 +47,9 @@ NodoCanvas {
         anchors.left: moneroLWSActiveAddressField.left
         anchors.top: moneroLWSActiveAddressField.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
-        width: labelSize + 200
+        itemSize: 160
+        width: 250
         height: NodoSystem.nodoItemHeight
-        itemSize: 200
         itemText: qsTr("Height")
         valueText: scanHeight
     }
@@ -73,8 +73,7 @@ NodoCanvas {
         anchors.left: moneroLWSDeactivateButton.right
         anchors.top: moneroLWSActiveHeightField.top
         anchors.leftMargin: 30
-        itemSize: 200
-        width: labelSize+300
+        width: labelSize + 250
         height: NodoSystem.nodoItemHeight
         itemText: qsTr("Rescan Height")
         valueText: ""

@@ -7,7 +7,7 @@ import NodoCanvas 1.0
 
 NodoCanvas {
     id: mainRect
-    width: 1870
+    width: 1880
     height: 196
     color: nodoControl.appTheme ? NodoSystem.dataFieldTextBGColorNightModeOn  : NodoSystem.dataFieldTextBGColorNightModeOff
     property string inactiveAddress: ""
@@ -34,11 +34,11 @@ NodoCanvas {
         anchors.topMargin: 10
         anchors.leftMargin: 8
         anchors.rightMargin: 8
-        itemSize: 150
+        itemSize: 160
         height: NodoSystem.nodoItemHeight
-        itemText: systemMessages.messages[NodoMessages.Message.Address]
+        itemText: systemMessages.messages[NodoMessages.Message.Address] //Label "Address"
         valueText: inactiveAddress
-        valueFontSize: 32
+        valueFontSize: 30
     }
 
 
@@ -47,8 +47,8 @@ NodoCanvas {
         anchors.left: moneroLWSinactiveAddressField.left
         anchors.top: moneroLWSinactiveAddressField.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
-        itemSize: 200
-        width: labelSize + 200
+        itemSize: 160
+        width: 250
         height: NodoSystem.nodoItemHeight
         itemText: qsTr("Height")
         valueText: scanHeight

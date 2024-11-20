@@ -9,7 +9,7 @@ Item {
     id: moneroLWSAddAccountScreen
 	anchors.fill: parent
     property int labelSize: 0
-    property int infoFieldSize: 1875
+    property int infoFieldSize: 1880
 
     Component.onCompleted: {
         onCalculateMaximumTextLabelLength()
