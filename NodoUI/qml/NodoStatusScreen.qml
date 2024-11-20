@@ -209,14 +209,14 @@ Rectangle {
             anchors.left: syncStatus.left
             anchors.top: syncStatus.top
             anchors.topMargin: componentTopMargin
-            anchors.leftMargin: componentLeftMargin + 5
+            anchors.leftMargin: componentLeftMargin + 20
             width: syncStatusTabName.paintedWidth
             height: 20
             text: qsTr("Monero Daemon")
             verticalAlignment: Text.AlignBottom
             horizontalAlignment: Text.AlignHCenter
             font.pixelSize: NodoSystem.topMenuButtonFontSize
-            color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
+            color: nodoControl.appTheme ? NodoSystem.highlightedColorNightModeOn : NodoSystem.highlightedColorNightModeOff
             font.family: NodoSystem.fontUrbanist.name
         }
 
@@ -361,14 +361,14 @@ Rectangle {
             anchors.left: systemStatus.left
             anchors.top: systemStatus.top
             anchors.topMargin: componentTopMargin
-            anchors.leftMargin: componentLeftMargin + 5
+            anchors.leftMargin: componentLeftMargin + 20
             width: systemStatusTabName.paintedWidth
             height: 16
             text: qsTr("Services")
             verticalAlignment: Text.AlignBottom
             horizontalAlignment: Text.AlignHCenter
             font.pixelSize: NodoSystem.topMenuButtonFontSize
-            color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
+            color: nodoControl.appTheme ? NodoSystem.highlightedColorNightModeOn : NodoSystem.highlightedColorNightModeOff
             font.family: NodoSystem.fontUrbanist.name
         }
 
@@ -456,14 +456,14 @@ Rectangle {
             anchors.left: hardwareStatus.left
             anchors.top: hardwareStatus.top
             anchors.topMargin: componentTopMargin
-            anchors.leftMargin: componentLeftMargin + 5
+            anchors.leftMargin: componentLeftMargin + 20
             width: hardwareStatusTabName.paintedWidth
             height: 16
             text: qsTr("System")
             verticalAlignment: Text.AlignBottom
             horizontalAlignment: Text.AlignHCenter
             font.pixelSize: NodoSystem.topMenuButtonFontSize
-            color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
+            color: nodoControl.appTheme ? NodoSystem.highlightedColorNightModeOn : NodoSystem.highlightedColorNightModeOff
             font.family: NodoSystem.fontUrbanist.name
         }
 
@@ -474,7 +474,7 @@ Rectangle {
             anchors.topMargin: fieldTopMargin
             width: componentWidth
             height: statusScreenInfoFieldHeight
-            itemSize: 60
+            itemSize: 300
             itemText: qsTr("CPU")
             valueText: systemMessages.messages[NodoMessages.Message.Loading]
         }
@@ -486,7 +486,7 @@ Rectangle {
             anchors.topMargin: fieldTopMargin
             width: componentWidth
             height: statusScreenInfoFieldHeight
-            itemSize: 60
+            itemSize: 300
             itemText: qsTr("Temperature")
             valueText: systemMessages.messages[NodoMessages.Message.Loading]
         }
@@ -498,7 +498,7 @@ Rectangle {
             anchors.topMargin: fieldTopMargin
             width: componentWidth
             height: statusScreenInfoFieldHeight
-            itemSize: 60
+            itemSize: 300
             itemText: qsTr("RAM")
             valueText: systemMessages.messages[NodoMessages.Message.Loading]
         }
@@ -510,7 +510,7 @@ Rectangle {
             anchors.topMargin: fieldTopMargin
             width: componentWidth
             height: statusScreenInfoFieldHeight
-            itemSize: 60
+            itemSize: 300
             itemText: qsTr("Blockchain")
             valueText: systemMessages.messages[NodoMessages.Message.Loading]
         }
@@ -522,7 +522,7 @@ Rectangle {
             anchors.topMargin: fieldTopMargin
             width: componentWidth
             height: statusScreenInfoFieldHeight
-            itemSize: 60
+            itemSize: 300
             itemText: qsTr("Storage")
             valueText: systemMessages.messages[NodoMessages.Message.Loading]
         }
