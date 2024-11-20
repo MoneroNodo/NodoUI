@@ -26,7 +26,7 @@ Item {
 		labelSize = moneroLWSClearnetAddress.labelRectRoundSize
 		
 		if(moneroLWSTorAddress.labelRectRoundSize > labelSize)
-        labelSize = moneroLWSTorAddressLabel.labelRectRoundSize
+        labelSize = moneroLWSTorAddress.labelRectRoundSize
 		
 		if(moneroLWSI2PAddress.labelRectRoundSize > labelSize)
 		labelSize = moneroLWSI2PAddress.labelRectRoundSize
@@ -100,8 +100,7 @@ Item {
 	    width: infoFieldSize
         height: NodoSystem.nodoItemHeight
 		itemSize: labelSize
-		itemText: qsTr("LWS Tor Address")
-        horizontalAlignment: Text.AlignHCenter       
+		itemText: qsTr("LWS Tor Address")      
         valueText: "http://" + nodoConfig.getStringValueFromKey("config", "tor_address") + ":8133/basic\n"
 	}
 	
@@ -113,8 +112,7 @@ Item {
 	    width: infoFieldSize
         height: NodoSystem.nodoItemHeight
 		itemSize: labelSize
-		itemText: qsTr("LWS I2P Address")
-        horizontalAlignment: Text.AlignHCenter     
+		itemText: qsTr("LWS I2P Address") 
         valueText: "http://" + nodoConfig.getStringValueFromKey("config", "i2p_b32_addr_lws") + ":8133/basic\n"
 	}	
 }

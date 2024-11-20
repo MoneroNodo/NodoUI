@@ -50,7 +50,6 @@ NodoCanvas {
         height: NodoSystem.nodoItemHeight
         itemSize: labelSize
         itemText: qsTr("Height")
-        wrapMode: Text.WordWrap
         valueText: scanHeight
     }
 
