@@ -87,7 +87,6 @@ Item {
         width: infoFieldSize
         height: NodoSystem.nodoItemHeight
 		itemSize: labelSize
-        font.family: NodoSystem.fontUrbanist.name
 		itemText: qsTr("LWS Address")
         valueText: "http://" + networkManager.getNetworkIP() + ":8133/basic\n"
 	}	

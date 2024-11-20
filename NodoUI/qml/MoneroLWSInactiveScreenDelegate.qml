@@ -12,7 +12,7 @@ NodoCanvas {
     color: nodoControl.appTheme ? NodoSystem.dataFieldTextBGColorNightModeOn  : NodoSystem.dataFieldTextBGColorNightModeOff
     property string inactiveAddress: ""
     property int scanHeight: 0
-    property int labelSize: 200
+    property int labelSize: 0
 
     Component.onCompleted: {
         onCalculateMaximumTextLabelLength()
@@ -47,9 +47,9 @@ NodoCanvas {
         anchors.left: moneroLWSinactiveAddressField.left
         anchors.top: moneroLWSinactiveAddressField.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
-        width: labelSize
+        itemSize: 250
+        width: labelSize + 300
         height: NodoSystem.nodoItemHeight
-        itemSize: labelSize + 300
         itemText: qsTr("Height")
         valueText: scanHeight
     }
