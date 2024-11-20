@@ -88,7 +88,6 @@ Item {
         height: NodoSystem.nodoItemHeight
 		itemSize: labelSize
 		itemText: qsTr("LWS Clearnet Address")
-        verticalAlignment: Text.AlignVCenter 
         valueText: "http://" + networkManager.getNetworkIP() + ":8133/basic\n"
 	}	
 	
