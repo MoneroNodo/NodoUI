@@ -9,7 +9,7 @@ Item {
     id: moneroLWSAddAccountScreen
 	anchors.fill: parent
     property int labelSize: 0
-    property int infoFieldSize: 1850
+    property int infoFieldSize: 1904
 
     Component.onCompleted: {
         onCalculateMaximumTextLabelLength()
@@ -83,7 +83,7 @@ Item {
         id: moneroLWSClearnetAddress
         anchors.left: moneroLWSAddAccountScreen.left
 		anchors.top: moneroLWSAddAccountButton.bottom
-		anchors.topMargin: 40
+		anchors.topMargin: 60
         width: infoFieldSize
         height: NodoSystem.nodoItemHeight
 		itemSize: labelSize
@@ -95,6 +95,7 @@ Item {
         id: moneroLWSTorAddress
         anchors.left: moneroLWSAddAccountScreen.left
 		anchors.top: moneroLWSClearnetAddress.bottom
+        anchors.topMargin: NodoSystem.nodoTopMargin
 	    width: infoFieldSize
         height: NodoSystem.nodoItemHeight
 		itemSize: labelSize
@@ -102,10 +103,11 @@ Item {
         valueText: "http://" + nodoConfig.getStringValueFromKey("config", "tor_address") + ":8133/basic\n"
 	}
 	
-NodoInfoField {
+    NodoInfoField {
         id: moneroLWSI2PAddress
         anchors.left: moneroLWSAddAccountScreen.left
 		anchors.top: moneroLWSTorAddress.bottom
+        anchors.topMargin: NodoSystem.nodoTopMargin
 	    width: infoFieldSize
         height: NodoSystem.nodoItemHeight
 		itemSize: labelSize
@@ -113,5 +115,3 @@ NodoInfoField {
         valueText: "http://" + nodoConfig.getStringValueFromKey("config", "i2p_b32_addr_lws") + ":8133/basic\n"
 	}	
 }
-
-

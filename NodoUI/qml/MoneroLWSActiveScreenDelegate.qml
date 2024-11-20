@@ -8,7 +8,7 @@ import NodoCanvas 1.0
 NodoCanvas {
     id: mainRect
     width: 1904
-    height: 300
+    height: 296
     color: nodoControl.appTheme ? NodoSystem.dataFieldTextBGColorNightModeOn  : NodoSystem.dataFieldTextBGColorNightModeOff
     property string activeAddress: ""
     property int scanHeight: 0
