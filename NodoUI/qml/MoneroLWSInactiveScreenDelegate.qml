@@ -47,8 +47,8 @@ NodoCanvas {
         anchors.left: moneroLWSinactiveAddressField.left
         anchors.top: moneroLWSinactiveAddressField.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
-        itemSize: 165
-        width: 400
+        itemSize: 180
+        width: itemSize * 2
         height: NodoSystem.nodoItemHeight
         itemText: qsTr("Height")
         valueText: scanHeight
