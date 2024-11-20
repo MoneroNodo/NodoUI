@@ -19,7 +19,7 @@ Rectangle {
     property int componentBottomMargin: 8
     property int componentTopMargin: 34
     property int cardMargin: 13
-    property color cardBackgroundColor: "#181818"
+    property color cardBackgroundColor: "#1F1F1F"
 
     property int statusScreenInfoFieldHeight: NodoSystem.nodoItemHeight
 
