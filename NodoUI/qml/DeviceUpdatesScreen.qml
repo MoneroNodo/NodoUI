@@ -36,6 +36,7 @@ Item {
 
     Rectangle {
         id: deviceUpdatesNodoSwitchRect
+        anchors.top: deviceUpdatesScreen.top
         anchors.left: deviceUpdatesScreen.left
         height: NodoSystem.nodoItemHeight
 
@@ -91,7 +92,7 @@ Item {
     Rectangle {
         id: deviceUpdatesMoneroLWSSwitchRect
         anchors.left: deviceUpdatesScreen.left
-        anchors.top: deviceUpdatesMoneroDaemonSwitchText.bottom
+        anchors.top: deviceUpdatesMoneroDaemonSwitchRect.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         height: NodoSystem.nodoItemHeight
 
