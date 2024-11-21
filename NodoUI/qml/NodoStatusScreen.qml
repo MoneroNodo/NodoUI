@@ -186,7 +186,7 @@ Rectangle {
         anchors.top: statusScreen.top
         anchors.topMargin: 5
         anchors.leftMargin: cardMargin
-        width: 650
+        width: 700
         height: networkConnectionField.y + networkConnectionField.height + componentBottomMargin//683
         color: cardBackgroundColor
 
@@ -345,7 +345,7 @@ Rectangle {
         anchors.horizontalCenter: statusScreen.horizontalCenter
         anchors.top: statusScreen.top
         anchors.topMargin: 10
-        width: 500
+        width: 450
         height: moneroPayField.y + moneroPayField.height + componentBottomMargin
         color: cardBackgroundColor
 
@@ -380,7 +380,7 @@ Rectangle {
             width: componentWidth
             height: statusScreenInfoFieldHeight
             itemSize: labelSize
-            itemText: qsTr("Monero Daemon")
+            itemText: qsTr("Daemon")
             valueText: ""
         }
 
@@ -439,7 +439,7 @@ Rectangle {
         anchors.right: statusScreen.right
         anchors.top: statusScreen.top
         anchors.topMargin: 10
-        width: 630
+        width: 670
         anchors.rightMargin: cardMargin
         height: systemStorageField.y + systemStorageField.height + componentBottomMargin
         color: cardBackgroundColor
