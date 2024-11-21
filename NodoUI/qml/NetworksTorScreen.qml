@@ -176,7 +176,7 @@ Item {
         anchors.right: networksTorScreen.right
         anchors.top: networksTorScreen.top
         anchors.topMargin: NodoSystem.nodoTopMargin
-        anchors.rightMargin: 8
+        anchors.rightMargin: 12
         color: "black"
         width: 512
         height: 512
