@@ -11,7 +11,7 @@ Item {
     anchors.fill: parent
     property alias themeMode: deviceDisplayNightModeSwitch
     themeMode.checked: nodoControl.appTheme
-    property int dropdownLength: 900
+    property int dropdownLength: 1800
 
     Component.onCompleted: {
         deviceDisplayCurrencyComboBox.currentIndex = priceTicker.getCurrentCurrencyIndex()
@@ -37,15 +37,15 @@ Item {
             anchors.left: deviceDisplaySliderLabel.right
             anchors.top: deviceDisplayBrightnessRect.top
             anchors.leftMargin: NodoSystem.padding
-            width: dropdownLength
+            width: (dropdownLength / 2)
             height: deviceDisplayBrightnessRect.height
             snapMode: Slider.NoSnap
             stepSize: 1
             from: 0
             value: 50
             to: 100
-            handleHight: height*0.8
-            handleWidth: handleHight
+            handleHeight: height*0.8
+            handleWidth: handleHeight
             onValueChanged: {
                 nodoControl.setBacklightLevel(value)
             }
@@ -150,7 +150,7 @@ Item {
         id: screenSaverRect
         anchors.left: deviceDisplayScreen.left
         anchors.top: deviceDisplayFlipOrientationSwitchRect.bottom
-        anchors.topMargin: 30
+        anchors.topMargin: NodoSystem.nodoTopMargin
         height: NodoSystem.nodoItemHeight
 
         NodoLabel {
@@ -304,7 +304,7 @@ Item {
             height: keyboardLayoutRect.height
             anchors.top: keyboardLayoutRect.top
             anchors.left: keyboardLayoutRect.left
-            text: qsTr("Keyboard Layout")
+            text: qsTr("Keyboard")
         }
 
         NodoComboBox

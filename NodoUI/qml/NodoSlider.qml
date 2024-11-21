@@ -8,7 +8,7 @@ import NodoCanvas 1.0
 Slider {
     id: control
     value: 0.5
-    property int handleHight: 20
+    property int handleHeight: 20
     property int handleWidth: 20
     property int handlePadding: 6
 
@@ -26,7 +26,7 @@ Slider {
         x: handlePadding + (control.visualPosition * (control.width - width - (2*handlePadding)))
         y: (control.height - height)/2
         width: handleWidth
-        height: handleHight
+        height: handleHeight
         color: "white"
         borderColor: "white"
     }
