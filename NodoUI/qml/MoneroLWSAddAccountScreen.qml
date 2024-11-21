@@ -88,7 +88,7 @@ Item {
         height: NodoSystem.nodoItemHeight
 		itemSize: labelSize
 		itemText: qsTr("LWS Address")
-        valueText: qsTr("http://") + networkManager.getNetworkIP() + qsTr(":8133/basic\n")
+        valueText: "http://" + networkManager.getNetworkIP() + ":8133/basic\n"
 	}	
 	
 	NodoInfoField {
@@ -99,8 +99,9 @@ Item {
 	    width: infoFieldSize
         height: NodoSystem.nodoItemHeight
 		itemSize: labelSize
-		itemText: qsTr("LWS Tor Address")      
-        valueText: qsTr("http://") + nodoConfig.getStringValueFromKey("config", "tor_address") + qsTr(":8133/basic\n")
+		itemText: qsTr("LWS Tor Address")   
+        verticalAlignment: Text.AlignVCenter  
+        valueText: "http://" + nodoConfig.getStringValueFromKey("config", "tor_address") + ":8133/basic\n"
 	}
 	
     NodoInfoField {
@@ -112,6 +113,6 @@ Item {
         height: NodoSystem.nodoItemHeight
 		itemSize: labelSize
 		itemText: qsTr("LWS I2P Address") 
-        valueText: qsTr("http://") + nodoConfig.getStringValueFromKey("config", "i2p_b32_addr_lws") + qsTr(":8133/basic\n")
+        valueText: "http://" + nodoConfig.getStringValueFromKey("config", "i2p_b32_addr_lws") + ":8133/basic\n"
 	}	
 }
