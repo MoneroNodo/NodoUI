@@ -156,6 +156,7 @@ Item {
         itemSize: labelSize
         itemText: qsTr("Onion Address")
         valueText: networksTorScreen.torOnionAddress
+        valueFontSize: 28
     }
 
     NodoInfoField {
@@ -175,7 +176,7 @@ Item {
         anchors.right: networksTorScreen.right
         anchors.top: networksTorScreen.top
         anchors.topMargin: NodoSystem.nodoTopMargin
-        anchors.rightMargin: 50
+        anchors.rightMargin: 8
         color: "black"
         width: 512
         height: 512
