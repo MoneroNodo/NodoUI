@@ -9,7 +9,7 @@ import QtQuick2QREncode 1.0
 Item {
     id: networksTorScreen
     property int labelSize: 0
-    property int infoFieldWidth: 1250
+    property int infoFieldWidth: 1300
     property int torPort
     property string torOnionAddress
     property bool torSwitchStatus
@@ -156,7 +156,7 @@ Item {
         itemSize: labelSize
         itemText: qsTr("Onion Address")
         valueText: networksTorScreen.torOnionAddress
-        valueFontSize: 30
+        valueFontSize: 28
     }
 
     NodoInfoField {
@@ -189,7 +189,7 @@ Item {
             qrData: createAddress()
             qrForeground: "black"
             qrBackground: "white"
-            qrMargin: 1
+            qrMargin: 5
             qrMode: QtQuick2QREncode.MODE_8    //encode model
             qrLevel: QtQuick2QREncode.LEVEL_Q // encode level
         }
