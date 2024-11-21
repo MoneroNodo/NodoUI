@@ -34,7 +34,7 @@ NodoCanvas {
         anchors.topMargin: 10
         anchors.leftMargin: 8
         anchors.rightMargin: 8
-        itemSize: 165
+        itemSize: 180
         height: NodoSystem.nodoItemHeight
         itemText: systemMessages.messages[NodoMessages.Message.Address] //Label "Address"
         valueText: inactiveAddress
@@ -48,7 +48,7 @@ NodoCanvas {
         anchors.top: moneroLWSinactiveAddressField.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         itemSize: 180
-        width: itemSize * 2
+        width: 400
         height: NodoSystem.nodoItemHeight
         itemText: qsTr("Height")
         valueText: scanHeight
