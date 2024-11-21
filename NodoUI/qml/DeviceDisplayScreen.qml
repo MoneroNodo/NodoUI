@@ -11,7 +11,7 @@ Item {
     anchors.fill: parent
     property alias themeMode: deviceDisplayNightModeSwitch
     themeMode.checked: nodoControl.appTheme
-    property int dropdownLength: 1200
+    property int dropdownLength: 1400
 
     Component.onCompleted: {
         deviceDisplayCurrencyComboBox.currentIndex = priceTicker.getCurrentCurrencyIndex()
@@ -37,7 +37,7 @@ Item {
             anchors.left: deviceDisplaySliderLabel.right
             anchors.top: deviceDisplayBrightnessRect.top
             anchors.leftMargin: NodoSystem.padding
-            width: (dropdownLength / 2)
+            width: dropdownLength
             height: deviceDisplayBrightnessRect.height
             snapMode: Slider.NoSnap
             stepSize: 1
