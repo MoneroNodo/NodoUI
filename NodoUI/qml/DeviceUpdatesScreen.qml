@@ -14,7 +14,7 @@ Item {
     Component.onCompleted: {
         onCalculateMaximumTextLabelLength()
 
-        deviceUpdatesNodoSwitchSwitch.checked = nodoConfig.getUpdateStatus("nodo")
+        deviceUpdatesNodoSwitch.checked = nodoConfig.getUpdateStatus("nodo")
         deviceUpdatesMoneroDaemonSwitch.checked = nodoConfig.getUpdateStatus("monero")
         deviceUpdatesMoneroLWSSwitch.checked = nodoConfig.getUpdateStatus("lws")
         deviceUpdatesMoneroPaySwitch.checked = nodoConfig.getUpdateStatus("pay")
@@ -49,7 +49,7 @@ Item {
         }
 
         NodoSwitch {
-            id: deviceUpdatesNodoSwitchSwitch
+            id: deviceUpdatesNodoSwitch
             anchors.left: deviceUpdatesNodoSwitchText.right
             anchors.leftMargin: NodoSystem.padding
             height: deviceUpdatesNodoSwitchRect.height

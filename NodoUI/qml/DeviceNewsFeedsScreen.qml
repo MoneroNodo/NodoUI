@@ -19,9 +19,6 @@ Item {
         if(deviceNewsFeed0Rect.labelRectRoundSize > labelSize)
             labelSize = deviceNewsFeed0Rect.labelRectRoundSize
 
-        if(deviceNewsFeed0Rect.labelRectRoundSize > labelSize)
-            labelSize = deviceNewsFeed0Rect.labelRectRoundSize
-
         if(deviceNewsFeed1Rect.labelRectRoundSize > labelSize)
             labelSize = deviceNewsFeed1Rect.labelRectRoundSize
 
