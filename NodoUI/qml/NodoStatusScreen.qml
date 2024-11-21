@@ -146,7 +146,7 @@ Rectangle {
 
         if(networkConnectionField.labelRectRoundSize > labelSize)
             labelSize = networkConnectionField.labelRectRoundSize
-
+/*
         if(moneroNodeField.labelRectRoundSize > labelSize)
             labelSize = moneroNodeField.labelRectRoundSize
 
@@ -161,7 +161,7 @@ Rectangle {
 
         if(moneroPayField.labelRectRoundSize > labelSize)
             labelSize = moneroPayField.labelRectRoundSize
-
+*/
 /*        if(cpuField.labelRectRoundSize > labelSize)
             labelSize = cpuField.labelRectRoundSize
 
@@ -439,7 +439,7 @@ Rectangle {
         anchors.right: statusScreen.right
         anchors.top: statusScreen.top
         anchors.topMargin: 10
-        width: 670
+        width: 675
         anchors.rightMargin: cardMargin
         height: systemStorageField.y + systemStorageField.height + componentBottomMargin
         color: cardBackgroundColor
