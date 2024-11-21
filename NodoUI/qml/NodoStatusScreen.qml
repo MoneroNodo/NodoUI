@@ -119,9 +119,6 @@ Rectangle {
         if(syncStatusField.labelRectRoundSize > labelSize)
             labelSize = syncStatusField.labelRectRoundSize
 
-        if(timestampField.labelRectRoundSize > labelSize)
-            labelSize = timestampField.labelRectRoundSize
-
         if(currentBlockHeightField.labelRectRoundSize > labelSize)
             labelSize = currentBlockHeightField.labelRectRoundSize
 
