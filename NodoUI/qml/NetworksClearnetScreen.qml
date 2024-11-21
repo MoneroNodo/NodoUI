@@ -169,7 +169,7 @@ Item {
         anchors.right: networksClearnetScreen.right
         anchors.top: networksClearnetScreen.top
         anchors.topMargin: NodoSystem.nodoTopMargin
-        anchors.rightMargin: 100
+        anchors.rightMargin: 12
         color: "black"
         width: 512
         height: 512
