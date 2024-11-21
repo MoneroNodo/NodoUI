@@ -68,13 +68,13 @@ Item {
                 if((true === priceTicker.isCurrencyReceived()) && (-1 !== currencyRate))
                 {
                     exchangeSymbolText.text = nodoCurrencies.currencySymbols[priceTicker.getCurrentCurrencyIndex()]
-                    exchangeRateText.text = currencyRate
+                    exchangeRateText.text = priceTicker.getCurrencyString()
                 }
             }
 
             function onCurrencyReceived() {
                 exchangeSymbolText.text = nodoCurrencies.currencySymbols[priceTicker.getCurrentCurrencyIndex()]
-                exchangeRateText.text = priceTicker.getCurrency()
+                exchangeRateText.text = priceTicker.getCurrencyString()
             }
         }
 
