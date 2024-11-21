@@ -81,7 +81,6 @@ Rectangle {
 
     function updateSystemStatus() {
         updateSyncPercentage()
-        timestampField.valueText = nodoSystemStatus.getIntValueFromKey("start_time")
         currentBlockHeightField.valueText = nodoSystemStatus.getIntValueFromKey("height")
         moneroVersionField.valueText = nodoSystemStatus.getStringValueFromKey("version")
         outgoingConnectionsField.valueText = nodoSystemStatus.getIntValueFromKey("outgoing_connections_count")
@@ -233,21 +232,9 @@ Rectangle {
         }
 
         NodoInfoField {
-            id: timestampField
-            anchors.left: syncStatusField.left
-            anchors.top: syncStatusField.bottom
-            anchors.topMargin: fieldTopMargin
-            width: componentWidth
-            height: statusScreenInfoFieldHeight
-            itemSize: labelSize
-            itemText: qsTr("Timestamp")
-            valueText: nodoSystemStatus.getIntValueFromKey("start_time")
-        }
-
-        NodoInfoField {
             id: currentBlockHeightField
             anchors.left: syncStatusField.left
-            anchors.top: timestampField.bottom
+            anchors.top: syncStatusField.bottom
             anchors.topMargin: fieldTopMargin
             width: componentWidth
             height: statusScreenInfoFieldHeight
