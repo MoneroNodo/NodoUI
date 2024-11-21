@@ -209,7 +209,7 @@ Rectangle {
             anchors.left: syncStatus.left
             anchors.top: syncStatus.top
             anchors.topMargin: componentTopMargin
-            anchors.leftMargin: 36
+            anchors.leftMargin: componentLeftMargin
             width: syncStatusTabName.paintedWidth
             height: 20
             text: qsTr("Monero Daemon")
@@ -361,7 +361,7 @@ Rectangle {
             anchors.left: systemStatus.left
             anchors.top: systemStatus.top
             anchors.topMargin: componentTopMargin
-            anchors.leftMargin: 40
+            anchors.leftMargin: componentLeftMargin
             width: systemStatusTabName.paintedWidth
             height: 16
             text: qsTr("Services")
@@ -455,8 +455,8 @@ Rectangle {
             id: hardwareStatusTabName
             anchors.left: hardwareStatus.left
             anchors.top: hardwareStatus.top
-//            anchors.topMargin: componentTopMargin
-            anchors.leftMargin: 32
+            anchors.topMargin: componentTopMargin
+            anchors.leftMargin: componentLeftMargin
             width: hardwareStatusTabName.paintedWidth
             height: 16
             text: qsTr("System")
@@ -474,7 +474,7 @@ Rectangle {
             anchors.topMargin: fieldTopMargin
             width: componentWidth
             height: statusScreenInfoFieldHeight
-            itemSize: 270
+            itemSize: 260
             itemText: qsTr("CPU")
             valueText: systemMessages.messages[NodoMessages.Message.Loading]
         }
@@ -486,7 +486,7 @@ Rectangle {
             anchors.topMargin: fieldTopMargin
             width: componentWidth
             height: statusScreenInfoFieldHeight
-            itemSize: 270
+            itemSize: 260
             itemText: qsTr("Temperature")
             valueText: systemMessages.messages[NodoMessages.Message.Loading]
         }
@@ -498,7 +498,7 @@ Rectangle {
             anchors.topMargin: fieldTopMargin
             width: componentWidth
             height: statusScreenInfoFieldHeight
-            itemSize: 270
+            itemSize: 260
             itemText: qsTr("RAM")
             valueText: systemMessages.messages[NodoMessages.Message.Loading]
         }
@@ -510,7 +510,7 @@ Rectangle {
             anchors.topMargin: fieldTopMargin
             width: componentWidth
             height: statusScreenInfoFieldHeight
-            itemSize: 270
+            itemSize: 260
             itemText: qsTr("Blockchain")
             valueText: systemMessages.messages[NodoMessages.Message.Loading]
         }
@@ -522,7 +522,7 @@ Rectangle {
             anchors.topMargin: fieldTopMargin
             width: componentWidth
             height: statusScreenInfoFieldHeight
-            itemSize: 270
+            itemSize: 260
             itemText: qsTr("Storage")
             valueText: systemMessages.messages[NodoMessages.Message.Loading]
         }
