@@ -161,8 +161,8 @@ Rectangle {
 
         if(moneroPayField.labelRectRoundSize > labelSize)
             labelSize = moneroPayField.labelRectRoundSize
-*/
-/*        if(cpuField.labelRectRoundSize > labelSize)
+
+        if(cpuField.labelRectRoundSize > labelSize)
             labelSize = cpuField.labelRectRoundSize
 
         if(cpuTemperatureField.labelRectRoundSize > labelSize)

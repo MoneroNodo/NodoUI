@@ -8,7 +8,7 @@ import NodoCanvas 1.0
 NodoCanvas {
     id: mainRect
     width: 1880
-    height: 280
+    height: 295
     color: "#1F1F1F"
     property string requestAddress: ""
     property int scanHeight: 0

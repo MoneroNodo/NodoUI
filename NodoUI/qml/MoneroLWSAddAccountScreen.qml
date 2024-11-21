@@ -100,7 +100,7 @@ Item {
         height: NodoSystem.nodoItemHeight
 		itemSize: labelSize
 		itemText: qsTr("LWS Tor Address")   
-        verticalAlignment: Text.AlignVCenter  
+        valueText: Text.AlignVCenter
         valueText: "http://" + nodoConfig.getStringValueFromKey("config", "tor_address") + ":8133/basic\n"
 	}
 	
