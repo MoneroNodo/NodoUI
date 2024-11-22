@@ -79,9 +79,9 @@ NodoCanvas {
         id: ssidNameLabel
         anchors.top: mainRect.top
         anchors.left: mainRect.left
-        anchors.topMargin: connectButton.y + (ssidNameLabel.paintedHeight)/2
+        anchors.topMargin: 20//connectButton.y + (ssidNameLabel.paintedHeight)/2
         anchors.leftMargin: 20
-        font.pixelSize: NodoSystem.infoFieldItemFontSize
+        font.pixelSize: NodoSystem.infoFieldItemFontSize + 2
         font.family: NodoSystem.fontUrbanist.name
         height: 40
         text: mainRect.ssidName
@@ -132,10 +132,10 @@ NodoCanvas {
         id: ssidSignalStrengthRect
         anchors.top: forgetButton.top
         anchors.right: forgetButton.left
-        anchors.rightMargin: 30
+        anchors.rightMargin: 20
         anchors.topMargin: (connectButton.height - height)/2
-        width: 72
-        height: 72
+        width: 78
+        height: 78
         color: "transparent"
 
         Image {
@@ -172,8 +172,8 @@ NodoCanvas {
             anchors.top: ssidSignalStrengthRect.top
             anchors.right: ssidSignalStrengthImage.left
             anchors.rightMargin: 30
-            width: 72
-            height: 72
+            width: 60
+            height: 60
             visible:
             {
                 var ency = ssidEncryption
