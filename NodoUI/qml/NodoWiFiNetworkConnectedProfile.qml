@@ -85,15 +85,15 @@ NodoCanvas {
         font.family: NodoSystem.fontUrbanist.name
         height: 40
         text: mainRect.ssidName
-        color: nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn  : NodoSystem.dataFieldTextColorNightModeOff
+        color: nodoControl.appTheme ? NodoSystem.dataFieldTitleColorNightModeOn  : NodoSystem.dataFieldTitleColorNightModeOff
     }
 
     NodoButton {
         id: connectButton
         anchors.top: mainRect.top
         anchors.right: mainRect.right
-        anchors.topMargin: 10
-        anchors.rightMargin: 10
+        anchors.topMargin: 14
+        anchors.rightMargin: 14
         width: mainRect.buttonSize
         height: networkDelegateItemHeight
         font.pixelSize: NodoSystem.infoFieldItemFontSize
@@ -113,8 +113,8 @@ NodoCanvas {
         id: forgetButton
         anchors.top: mainRect.top
         anchors.right: connectButton.left
-        anchors.topMargin: 10
-        anchors.rightMargin: 10
+        anchors.topMargin: 14
+        anchors.rightMargin: 20
         width: mainRect.buttonSize
         height: networkDelegateItemHeight
         font.pixelSize: NodoSystem.infoFieldItemFontSize
@@ -132,10 +132,10 @@ NodoCanvas {
         id: ssidSignalStrengthRect
         anchors.top: forgetButton.top
         anchors.right: forgetButton.left
-        anchors.rightMargin: 10
+        anchors.rightMargin: 20
         anchors.topMargin: (connectButton.height - height)/2
-        width: 48
-        height: 48
+        width: 48/2
+        height: 48/2
         color: "transparent"
 
         Image {
@@ -197,8 +197,8 @@ NodoCanvas {
         anchors.top: ssidSignalStrengthRect.bottom
         anchors.left: mainRect.left
         anchors.right: mainRect.right
-        anchors.leftMargin: 11
-        anchors.rightMargin: 11
+        anchors.leftMargin: 14
+        anchors.rightMargin: 14
         anchors.topMargin: 10
         height: frequencyField.y + frequencyField.height
         visible:  mainRect.state === "showDetails" ? true : false
