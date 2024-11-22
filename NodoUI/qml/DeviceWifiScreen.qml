@@ -10,7 +10,7 @@ Item {
     anchors.fill: parent
 
     NodoWiFiNetworkScreen {
-        width: 1880
+        width: 1875
         anchors.top: deviceWifiScreen.top
         anchors.bottom: deviceWifiScreen.bottom
         anchors.left: deviceWifiScreen.left

@@ -8,7 +8,7 @@ import NodoCanvas 1.0
 Item {
     id: deviceUpdatesScreen
     anchors.fill: parent
-    property int labelSize: 300
+    property int labelSize: 600
     property int nodoTopMargin: 20
 
     Component.onCompleted: {
@@ -21,7 +21,7 @@ Item {
     }
 
     function onCalculateMaximumTextLabelLength() {
-/*        if(deviceUpdatesNodoSwitchText.labelRectRoundSize > labelSize)
+        if(deviceUpdatesNodoSwitchText.labelRectRoundSize > labelSize)
             labelSize = deviceUpdatesNodoSwitchText.labelRectRoundSize
 
         if(deviceUpdatesMoneroDaemonSwitchText.labelRectRoundSize > labelSize)
@@ -31,7 +31,7 @@ Item {
             labelSize = deviceUpdatesMoneroLWSSwitchText.labelRectRoundSize
 
         if(deviceUpdatesMoneroPaySwitchText.labelRectRoundSize > labelSize)
-            labelSize = deviceUpdatesMoneroPaySwitchText.labelRectRoundSize */
+            labelSize = deviceUpdatesMoneroPaySwitchText.labelRectRoundSize
     }
 
     Rectangle {
