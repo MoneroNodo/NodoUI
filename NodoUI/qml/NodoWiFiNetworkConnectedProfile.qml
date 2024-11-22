@@ -10,7 +10,7 @@ NodoCanvas {
 
     property int networkDelegateItemHeight: NodoSystem.nodoItemHeight
     property int labelSize: 200
-    property int buttonSize: 220
+    property int buttonSize: 220 
     property int defaultHeight: 100
 
     property string ssidName
@@ -50,7 +50,7 @@ NodoCanvas {
 
         mainRect.state = ""
         connectButton.isActive = true
-        connectButton.text = systemMessages.messages[NodoMessages.Message.Disconnect]
+        connectButton.text = systemMessages.messages[NodoMessages.Message.Disconnect] //qsTr("Disconnect")
         connectButton.update()
         forgetButton.isActive = true
     }
@@ -92,8 +92,8 @@ NodoCanvas {
         id: connectButton
         anchors.top: mainRect.top
         anchors.right: mainRect.right
-        anchors.topMargin: 18
-        anchors.rightMargin: 11
+        anchors.topMargin: 10
+        anchors.rightMargin: 10
         width: mainRect.buttonSize
         height: networkDelegateItemHeight
         font.pixelSize: NodoSystem.infoFieldItemFontSize
@@ -113,7 +113,7 @@ NodoCanvas {
         id: forgetButton
         anchors.top: mainRect.top
         anchors.right: connectButton.left
-        anchors.topMargin: 18
+        anchors.topMargin: 10
         anchors.rightMargin: 10
         width: mainRect.buttonSize
         height: networkDelegateItemHeight
@@ -132,7 +132,7 @@ NodoCanvas {
         id: ssidSignalStrengthRect
         anchors.top: forgetButton.top
         anchors.right: forgetButton.left
-        anchors.rightMargin: 18
+        anchors.rightMargin: 10
         anchors.topMargin: (connectButton.height - height)/2
         width: 48
         height: 48
@@ -212,7 +212,7 @@ NodoCanvas {
             width: showDetailsRect.width
             itemSize: labelSize
             height: networkDelegateItemHeight
-            itemText: systemMessages.messages[NodoMessages.Message.IPAddress]
+            itemText: systemMessages.messages[NodoMessages.Message.IPAddress] //qsTr("Address")
             valueText: mainRect.ssidIP
         }
 
@@ -224,7 +224,7 @@ NodoCanvas {
             width: showDetailsRect.width
             itemSize: labelSize
             height:  networkDelegateItemHeight
-            itemText: systemMessages.messages[NodoMessages.Message.Router]
+            itemText: systemMessages.messages[NodoMessages.Message.Router] //qsTr("Router")
             valueText: mainRect.ssidGateway
         }
 
@@ -236,7 +236,7 @@ NodoCanvas {
             width: showDetailsRect.width
             itemSize: labelSize
             height: networkDelegateItemHeight
-            itemText: systemMessages.messages[NodoMessages.Message.SignalStrength]
+            itemText: systemMessages.messages[NodoMessages.Message.SignalStrength] //qsTr("Signal Strength")
             valueText: mainRect.ssidSignalStrength + "%"
         }
 
@@ -248,7 +248,7 @@ NodoCanvas {
             width: showDetailsRect.width
             itemSize: labelSize
             height: networkDelegateItemHeight
-            itemText: systemMessages.messages[NodoMessages.Message.SecurityType]
+            itemText: systemMessages.messages[NodoMessages.Message.SecurityType] //qsTr("Security Type")
             valueText: mainRect.ssidEncryption
         }
 
@@ -260,7 +260,7 @@ NodoCanvas {
             width: showDetailsRect.width
             itemSize: labelSize
             height: networkDelegateItemHeight
-            itemText: systemMessages.messages[NodoMessages.Message.Frequency]
+            itemText: systemMessages.messages[NodoMessages.Message.Frequency] //qsTr("Frequency")
             valueText: {
                 var freq = mainRect.ssidFrequency
                 freq.toFixed(1) + " GHz"
