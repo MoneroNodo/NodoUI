@@ -8,13 +8,13 @@ import NodoCanvas 1.0
 Item {
     id: deviceUpdatesScreen
     anchors.fill: parent
-    property int labelSize: 600
+    property int labelSize: 0
     property int nodoTopMargin: 20
 
     Component.onCompleted: {
         onCalculateMaximumTextLabelLength()
 
-        deviceUpdatesNodoSwitch.checked = nodoConfig.getUpdateStatus("nodo")
+        deviceUpdatesNodoSwitchSwitch.checked = nodoConfig.getUpdateStatus("nodo")
         deviceUpdatesMoneroDaemonSwitch.checked = nodoConfig.getUpdateStatus("monero")
         deviceUpdatesMoneroLWSSwitch.checked = nodoConfig.getUpdateStatus("lws")
         deviceUpdatesMoneroPaySwitch.checked = nodoConfig.getUpdateStatus("pay")
@@ -49,7 +49,7 @@ Item {
         }
 
         NodoSwitch {
-            id: deviceUpdatesNodoSwitch
+            id: deviceUpdatesNodoSwitchSwitch
             anchors.left: deviceUpdatesNodoSwitchText.right
             anchors.leftMargin: NodoSystem.padding
             height: deviceUpdatesNodoSwitchRect.height

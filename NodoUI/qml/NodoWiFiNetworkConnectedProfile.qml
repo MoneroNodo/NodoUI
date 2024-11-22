@@ -93,7 +93,7 @@ NodoCanvas {
         anchors.top: mainRect.top
         anchors.right: mainRect.right
         anchors.topMargin: 14
-        anchors.rightMargin: 14
+        anchors.rightMargin: 20
         width: mainRect.buttonSize
         height: networkDelegateItemHeight
         font.pixelSize: NodoSystem.infoFieldItemFontSize
@@ -134,8 +134,8 @@ NodoCanvas {
         anchors.right: forgetButton.left
         anchors.rightMargin: 30
         anchors.topMargin: (connectButton.height - height)/2
-        width: 66
-        height: 66
+        width: 72
+        height: 72
         color: "transparent"
 
         Image {
@@ -169,10 +169,11 @@ NodoCanvas {
 
         Image {
             id: ssidEncryptionImage
-            anchors.right: ssidSignalStrengthImage.right
-            anchors.bottom: ssidSignalStrengthImage.bottom
-            width: 18
-            height: 18
+            anchors.top: ssidSignalStrengthRect.top
+            anchors.right: ssidSignalStrengthImage.left
+            anchors.rightMargin: 30
+            width: 72
+            height: 72
             visible:
             {
                 var ency = ssidEncryption
