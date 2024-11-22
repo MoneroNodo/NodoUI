@@ -50,7 +50,7 @@ NodoCanvas {
 
         mainRect.state = ""
         connectButton.isActive = true
-        connectButton.text = systemMessages.messages[NodoMessages.Message.Disconnect] //qsTr("Disconnect")
+        connectButton.text = systemMessages.messages[NodoMessages.Message.Disconnect]
         connectButton.update()
         forgetButton.isActive = true
     }
@@ -131,12 +131,12 @@ NodoCanvas {
 
     Rectangle {
         id: ssidSignalStrengthRect
-        anchors.top: forgetButton.top
+        anchors.top: mainRect.top
         anchors.right: forgetButton.left
         anchors.rightMargin: 20
-        anchors.topMargin: (connectButton.height - height)/2
-        width: 84
-        height: 84
+        anchors.topMargin: 14//(connectButton.height - height)/2
+        width: 80
+        height: 80
         color: "transparent"
 
         Image {
@@ -170,11 +170,12 @@ NodoCanvas {
 
         Image {
             id: ssidEncryptionImage
-            anchors.top: ssidSignalStrengthRect.top
+            anchors.top: mainRect.top
             anchors.right: ssidSignalStrengthImage.left
             anchors.rightMargin: 20
-            width: 50
-            height: 50
+            anchors.topMargin: 14 //test insert to fix alignment
+            width: 60
+            height: 60
             visible:
             {
                 var ency = ssidEncryption
