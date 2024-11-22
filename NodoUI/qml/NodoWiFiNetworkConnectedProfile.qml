@@ -10,7 +10,7 @@ NodoCanvas {
 
     property int networkDelegateItemHeight: NodoSystem.nodoItemHeight
     property int labelSize: 200
-    property int buttonSize: 220 
+    property int buttonSize: 250 
     property int defaultHeight: 100
 
     property string ssidName
@@ -85,15 +85,15 @@ NodoCanvas {
         font.family: NodoSystem.fontUrbanist.name
         height: 40
         text: mainRect.ssidName
-        color: nodoControl.appTheme ? NodoSystem.dataFieldTitleColorNightModeOn  : NodoSystem.dataFieldTitleColorNightModeOff
+        color: nodoControl.appTheme ? NodoSystem.highlightedColorNightModeOn  : NodoSystem.highlightedColorNightModeOff
     }
 
     NodoButton {
         id: connectButton
         anchors.top: mainRect.top
         anchors.right: mainRect.right
-        anchors.topMargin: 14
-        anchors.rightMargin: 14
+        anchors.topMargin: 18
+        anchors.rightMargin: 18
         width: mainRect.buttonSize
         height: networkDelegateItemHeight
         font.pixelSize: NodoSystem.infoFieldItemFontSize
@@ -113,7 +113,7 @@ NodoCanvas {
         id: forgetButton
         anchors.top: mainRect.top
         anchors.right: connectButton.left
-        anchors.topMargin: 14
+        anchors.topMargin: 18
         anchors.rightMargin: 20
         width: mainRect.buttonSize
         height: networkDelegateItemHeight
@@ -134,8 +134,8 @@ NodoCanvas {
         anchors.right: forgetButton.left
         anchors.rightMargin: 20
         anchors.topMargin: (connectButton.height - height)/2
-        width: 48/2
-        height: 48/2
+        width: 60
+        height: 60
         color: "transparent"
 
         Image {
