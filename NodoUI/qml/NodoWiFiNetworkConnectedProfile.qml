@@ -10,7 +10,7 @@ NodoCanvas {
 
     property int networkDelegateItemHeight: NodoSystem.nodoItemHeight
     property int labelSize: 200
-    property int buttonSize: 250 
+    property int buttonSize: 300 
     property int defaultHeight: 100
 
     property string ssidName
@@ -79,7 +79,7 @@ NodoCanvas {
         id: ssidNameLabel
         anchors.top: mainRect.top
         anchors.left: mainRect.left
-        anchors.topMargin: 20//connectButton.y + (ssidNameLabel.paintedHeight)/2
+        anchors.topMargin: connectButton.y + (ssidNameLabel.paintedHeight)/2
         anchors.leftMargin: 20
         font.pixelSize: NodoSystem.infoFieldItemFontSize + 2
         font.family: NodoSystem.fontUrbanist.name
@@ -93,7 +93,7 @@ NodoCanvas {
         anchors.top: mainRect.top
         anchors.right: mainRect.right
         anchors.topMargin: 14
-        anchors.rightMargin: 20
+        anchors.rightMargin: 18
         width: mainRect.buttonSize
         height: networkDelegateItemHeight
         font.pixelSize: NodoSystem.infoFieldItemFontSize
@@ -103,9 +103,10 @@ NodoCanvas {
         fitMinimal: true
         onClicked: {
             connectButton.isActive = false
-            connectButton.text = systemMessages.messages[NodoMessages.Message.Disconnecting]
+            connectButton.text = systemMessages.messages[NodoMessages.Message.Disconnecting] //qsTr("Disconnecting")
             connectButton.update()
             networkManager.disconnectFromWiFi()
+            mainRect.state = ""
         }
     }
 
@@ -134,8 +135,8 @@ NodoCanvas {
         anchors.right: forgetButton.left
         anchors.rightMargin: 20
         anchors.topMargin: (connectButton.height - height)/2
-        width: 78
-        height: 78
+        width: 84
+        height: 84
         color: "transparent"
 
         Image {
@@ -171,9 +172,9 @@ NodoCanvas {
             id: ssidEncryptionImage
             anchors.top: ssidSignalStrengthRect.top
             anchors.right: ssidSignalStrengthImage.left
-            anchors.rightMargin: 30
-            width: 60
-            height: 60
+            anchors.rightMargin: 20
+            width: 50
+            height: 50
             visible:
             {
                 var ency = ssidEncryption
