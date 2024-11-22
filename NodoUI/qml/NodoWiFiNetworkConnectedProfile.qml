@@ -134,9 +134,9 @@ NodoCanvas {
         anchors.top: mainRect.top
         anchors.right: forgetButton.left
         anchors.rightMargin: 20
-        anchors.topMargin: 14//(connectButton.height - height)/2
-        width: 80
-        height: 80
+        anchors.topMargin: 10//(connectButton.height - height)/2
+        width: 84
+        height: 84
         color: "transparent"
 
         Image {
@@ -173,7 +173,6 @@ NodoCanvas {
             anchors.top: mainRect.top
             anchors.right: ssidSignalStrengthImage.left
             anchors.rightMargin: 20
-            anchors.topMargin: 14 //test insert to fix alignment
             width: 60
             height: 60
             visible:
