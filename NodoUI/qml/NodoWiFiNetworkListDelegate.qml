@@ -285,8 +285,8 @@ NodoCanvas {
         NodoButton {
             id: advancedSettings
             anchors.top: passwordInputField.bottom
-            anchors.left: connectToANetworkRect.left
-            anchors.leftMargin: 14//(connectToANetworkRect.width - advancedSettings.width)/2
+            anchors.left: connectToANetworkRect.right
+            anchors.leftMargin: 8//(connectToANetworkRect.width - advancedSettings.width)/2
             width: mainRect.buttonSize
             height: networkDelegateItemHeight
             font.pixelSize: NodoSystem.infoFieldItemFontSize
