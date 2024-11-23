@@ -134,7 +134,7 @@ NodoCanvas {
         anchors.top: forgetButton.top
         anchors.right: forgetButton.left
         anchors.rightMargin: 20
-        anchors.topMargin: (connectButton.height - height)/2
+        anchors.topMargin: 5//(connectButton.height - height)/2
         width: 84
         height: 84
         color: "transparent"
@@ -202,7 +202,7 @@ NodoCanvas {
         anchors.right: mainRect.right
         anchors.leftMargin: 14
         anchors.rightMargin: 14
-        anchors.topMargin: 10
+        anchors.topMargin: 5
         height: frequencyField.y + frequencyField.height
         visible:  mainRect.state === "showDetails" ? true : false
         color: "transparent"
@@ -211,7 +211,7 @@ NodoCanvas {
             id: ipField
             anchors.left: showDetailsRect.left
             anchors.top: showDetailsRect.top
-            anchors.topMargin: 10//mainRect.spacing
+            anchors.topMargin: 5//mainRect.spacing
             width: showDetailsRect.width
             itemSize: labelSize
             height: networkDelegateItemHeight
@@ -291,7 +291,7 @@ NodoCanvas {
     states: [
         State {
             name: "showDetails";
-            PropertyChanges { target: mainRect; height: defaultHeight + showDetailsRect.height + 10}
+            PropertyChanges { target: mainRect; height: defaultHeight + showDetailsRect.height + 14}
         },
         State {
             name: ""
