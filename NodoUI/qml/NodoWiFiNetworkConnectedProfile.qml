@@ -172,7 +172,7 @@ NodoCanvas {
             id: ssidEncryptionImage
             anchors.top: ssidSignalStrengthRect.top
             anchors.right: ssidSignalStrengthImage.left
-            anchors.rightMargin: 20
+            anchors.rightMargin: 15
             anchors.topMargin: 14
             width: 60
             height: 60
@@ -291,7 +291,7 @@ NodoCanvas {
     states: [
         State {
             name: "showDetails";
-            PropertyChanges { target: mainRect; height: defaultHeight + showDetailsRect.height + 14}
+            PropertyChanges { target: mainRect; height: defaultHeight + showDetailsRect.height + 10}
         },
         State {
             name: ""
