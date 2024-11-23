@@ -92,8 +92,8 @@ NodoCanvas {
         id: connectButton
         anchors.top: mainRect.top
         anchors.right: mainRect.right
-        anchors.topMargin: 14
-        anchors.rightMargin: 18
+        anchors.topMargin: 18
+        anchors.rightMargin: 14
         width: mainRect.buttonSize
         height: networkDelegateItemHeight
         font.pixelSize: NodoSystem.infoFieldItemFontSize
@@ -106,7 +106,7 @@ NodoCanvas {
             connectButton.text = systemMessages.messages[NodoMessages.Message.Disconnecting] //qsTr("Disconnecting")
             connectButton.update()
             networkManager.disconnectFromWiFi()
-            mainRect.state = ""
+            mainRect.state = "" //Added later
         }
     }
 
@@ -114,7 +114,7 @@ NodoCanvas {
         id: forgetButton
         anchors.top: mainRect.top
         anchors.right: connectButton.left
-        anchors.topMargin: 14
+        anchors.topMargin: 18
         anchors.rightMargin: 20
         width: mainRect.buttonSize
         height: networkDelegateItemHeight
@@ -131,7 +131,7 @@ NodoCanvas {
 
     Rectangle {
         id: ssidSignalStrengthRect
-        anchors.top: mainRect.top
+        anchors.top: forgetButton.top
         anchors.right: forgetButton.left
         anchors.rightMargin: 20
         anchors.topMargin: 10//(connectButton.height - height)/2
@@ -170,10 +170,10 @@ NodoCanvas {
 
         Image {
             id: ssidEncryptionImage
-            anchors.top: mainRect.top
+            anchors.top: ssidSignalStrengthRect.top
             anchors.right: ssidSignalStrengthImage.left
             anchors.rightMargin: 20
-            anchors.topMargin: 10
+            anchors.topMargin: 30
             width: 60
             height: 60
             visible:
