@@ -173,6 +173,7 @@ NodoCanvas {
             anchors.top: mainRect.top
             anchors.right: ssidSignalStrengthImage.left
             anchors.rightMargin: 20
+            anchors.topMargin: 10
             width: 60
             height: 60
             visible:
