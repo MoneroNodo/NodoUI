@@ -100,7 +100,7 @@ NodoCanvas {
                     connectButton.isActive = false
                     connectButton.text = systemMessages.messages[NodoMessages.Message.Connecting]
                     connectButton.update()
-                    networkManager.connectToWiFi(mainRect.ssidName, passwordInputField.valueText, dhcpSwitch.checked, wifiIPAddressField.valueText, wifiSubnetMaskField.valueText, wifiRouterField.valueText, wifiDNSField.valueText, ssidEncryption)
+                    networkManager.connectToWiFi(mainRect.ssidName, "", dhcpSwitch.checked, wifiIPAddressField.valueText, wifiSubnetMaskField.valueText, wifiRouterField.valueText, wifiDNSField.valueText, ssidEncryption)
                 }
                 else
                 {
@@ -278,7 +278,9 @@ NodoCanvas {
             height: networkDelegateItemHeight
             itemSize: labelSize
             itemText: systemMessages.messages[NodoMessages.Message.Password]
+
             valueText:""
+            visible: connectToANetworkRect.visible && mainRect.ssidEncryption != "WEP"
             passwordInput: true
         }
 

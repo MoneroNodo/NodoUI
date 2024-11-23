@@ -6,6 +6,7 @@ import NodoSystem 1.1
 import NodoCanvas 1.0
 
 Item {
+	  property bool syncDoneSyncDone: false
     id: moneroPayMainScreen
     anchors.fill: parent
     anchors.leftMargin: NodoSystem.subMenuLeftMargin
@@ -35,7 +36,7 @@ Item {
     Connections {
         target: syncInfo
         function onSyncDone() {
-            receiveButton.syncDoneSyncDone = true
+            moneroPayMainScreen.setButtonState(true);
         }
     }
 
@@ -75,7 +76,6 @@ Item {
         }
 
         NodoTabButton {
-            property bool syncDoneSyncDone: false
             id: receiveButton
             y: (moneroPayMainMenuBar.height - receiveButton.height)/2
             text: qsTr("RECEIVE")
@@ -86,7 +86,7 @@ Item {
             Connections {
                 target: receiveButton
                 function onSetButtonState(state) {
-                    receiveButton.enabled = (state && receiveButton.syncDoneSyncDone)
+                    receiveButton.enabled = (state && moneroPay.isDepositAddressSet())
                 }
             }
         }

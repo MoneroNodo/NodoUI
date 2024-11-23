@@ -232,7 +232,7 @@ void NodoWirelessController::addConnection(QString profileName, QString password
         connection["802-11-wireless-security"]["wep-key-type"] = 2;
         connection["802-11-wireless-security"]["wep-key0"] = password;
     }
-    if(security == "WPA2")
+    else if(security == "WPA2")
     {
         connection["802-11-wireless-security"]["key-mgmt"] = "wpa-psk";
         connection["802-11-wireless-security"]["psk"] = password;
