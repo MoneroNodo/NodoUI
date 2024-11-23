@@ -16,7 +16,7 @@ NodoCanvas {
     property int networkDelegateItemHeight: NodoSystem.nodoItemHeight
     property int labelSize: 200
     property bool showConnected: true
-    property int buttonSize: 220
+    property int buttonSize: 300
     property int defaultHeight: 100
     property int spacing: 1
 
@@ -75,8 +75,8 @@ NodoCanvas {
         id: connectButton
         anchors.top: mainRect.top
         anchors.right: mainRect.right
-        anchors.topMargin: 18
-        anchors.rightMargin: 11
+        anchors.topMargin: 14
+        anchors.rightMargin: 14
         width: mainRect.buttonSize
         height: networkDelegateItemHeight
         font.pixelSize: NodoSystem.infoFieldItemFontSize
@@ -125,8 +125,8 @@ NodoCanvas {
         id: forgetButton
         anchors.top: mainRect.top
         anchors.right: connectButton.left
-        anchors.topMargin: 18
-        anchors.rightMargin: 10
+        anchors.topMargin: 14
+        anchors.rightMargin: 20
         width: mainRect.buttonSize
         height: networkDelegateItemHeight
         font.pixelSize: NodoSystem.infoFieldItemFontSize
@@ -144,10 +144,10 @@ NodoCanvas {
         id: ssidSignalStrengthRect
         anchors.top: forgetButton.top
         anchors.right: forgetButton.visible ? forgetButton.left : connectButton.left
-        anchors.topMargin: (connectButton.height - height)/2
-        anchors.rightMargin: 16
-        width: 48
-        height: 48
+        anchors.topMargin: ((connectButton.height - height)/2) -4
+        anchors.rightMargin: 20
+        width: 84
+        height: 84
         color: "transparent"
 
         Image {
@@ -181,10 +181,12 @@ NodoCanvas {
 
         Image {
             id: ssidEncryptionImage
-            anchors.right: ssidSignalStrengthImage.right
-            anchors.bottom: ssidSignalStrengthImage.bottom
-            width: 18
-            height: 18
+            anchors.top: ssidSignalStrengthRect.top
+            anchors.right: ssidSignalStrengthImage.left
+            anchors.rightMargin: 15
+            anchors.topMargin: 14
+            width: 60
+            height: 60
             visible:
             {
                 var ency = ssidEncryption
@@ -208,9 +210,10 @@ NodoCanvas {
         id: showDetailsRect
         anchors.top: ssidSignalStrengthRect.bottom
         anchors.left: mainRect.left
-        anchors.leftMargin: 11
-        anchors.topMargin: 10
-        width: mainRect.width - (22)
+        anchors.right: mainRect.right
+        anchors.leftMargin: 14
+        anchors.rightMargin: 14
+        anchors.topMargin: 5
         height: frequencyField.y + frequencyField.height
         visible:  mainRect.state === "showDetails" ? true : false
         color: "transparent"
@@ -219,9 +222,9 @@ NodoCanvas {
             id: signalStrengthField
             anchors.left: showDetailsRect.left
             anchors.top: showDetailsRect.top
-            anchors.topMargin: mainRect.spacing
+            anchors.topMargin: 5//mainRect.spacing
             width: showDetailsRect.width
-            itemSize: 300
+            itemSize: labelSize
             height: networkDelegateItemHeight
             itemText: systemMessages.messages[NodoMessages.Message.SignalStrength]
             valueText: mainRect.ssidSignalStrength + "%"
@@ -233,7 +236,7 @@ NodoCanvas {
             anchors.top: signalStrengthField.bottom
             anchors.topMargin: mainRect.spacing
             width: showDetailsRect.width
-            itemSize: 300
+            itemSize: labelSize
             height: networkDelegateItemHeight
             itemText: systemMessages.messages[NodoMessages.Message.SecurityType]
             valueText: mainRect.ssidEncryption
@@ -245,7 +248,7 @@ NodoCanvas {
             anchors.top: securityField.bottom
             anchors.topMargin: mainRect.spacing
             width: showDetailsRect.width
-            itemSize: 300
+            itemSize: labelSize
             height: networkDelegateItemHeight
             itemText: systemMessages.messages[NodoMessages.Message.Frequency]
             valueText: {
@@ -259,7 +262,7 @@ NodoCanvas {
         id: connectToANetworkRect
         anchors.top: ssidSignalStrengthRect.bottom
         anchors.left: mainRect.left
-        anchors.leftMargin: 11
+        anchors.leftMargin: 14
         anchors.topMargin: 10
         width: mainRect.width - (22)
         height: 110
@@ -283,7 +286,7 @@ NodoCanvas {
             anchors.top: passwordInputField.bottom
             anchors.left: connectToANetworkRect.left
             anchors.leftMargin: (connectToANetworkRect.width - advancedSettings.width)/2
-            anchors.topMargin: 20
+            anchors.topMargin: 10
             width: mainRect.buttonSize
             height: networkDelegateItemHeight
             font.pixelSize: NodoSystem.infoFieldItemFontSize
