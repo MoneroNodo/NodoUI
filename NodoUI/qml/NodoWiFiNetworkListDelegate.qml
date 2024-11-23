@@ -262,10 +262,11 @@ NodoCanvas {
         id: connectToANetworkRect
         anchors.top: ssidSignalStrengthRect.bottom
         anchors.left: mainRect.left
+        anchors.right: mainRect.right
         anchors.leftMargin: 14
-        anchors.topMargin: 10
-        width: mainRect.width - (22)
-        height: 110
+        anchors.rightMargin: 14
+        anchors.topMargin: 5
+        height: 120
         visible: mainRect.state === "showDetails" || mainRect.state === "" ? false : true
         color: "transparent"
 
@@ -284,8 +285,8 @@ NodoCanvas {
         NodoButton {
             id: advancedSettings
             anchors.top: passwordInputField.bottom
-            anchors.left: connectToANetworkRect.left
-            anchors.leftMargin: (connectToANetworkRect.width - advancedSettings.width)/2
+            anchors.left: connectToANetworkRect.right
+            //anchors.leftMargin: (connectToANetworkRect.width - advancedSettings.width)/2
             anchors.topMargin: 5
             width: mainRect.buttonSize
             height: networkDelegateItemHeight
@@ -325,9 +326,9 @@ NodoCanvas {
 
             Rectangle {
                 id: dhcpSwitchRect
-                anchors.left: advancedSettingsRect.left
-                anchors.top: advancedSettingsRect.top
-                anchors.topMargin: mainRect.spacing
+                anchors.top: passwordInputField.bottom
+                anchors.left: connectToANetworkRect.left
+                topMargin: mainRect.spacing
                 height: NodoSystem.nodoItemHeight
 
                 NodoLabel{
