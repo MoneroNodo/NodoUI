@@ -285,7 +285,7 @@ NodoCanvas {
         NodoButton {
             id: advancedSettings
             anchors.top: passwordInputField.bottom
-            anchors.left: connectToANetworkRect.right
+            anchors.left: connectToANetworkRect.left
             anchors.topMargin: 5
             anchors.rightMargin: 14
             //anchors.leftMargin: (connectToANetworkRect.width - advancedSettings.width)/2
