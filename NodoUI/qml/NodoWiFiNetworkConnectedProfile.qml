@@ -134,7 +134,7 @@ NodoCanvas {
         anchors.top: forgetButton.top
         anchors.right: forgetButton.left
         anchors.rightMargin: 20
-        anchors.topMargin: 20//(connectButton.height - height)/2
+        anchors.topMargin: ((connectButton.height - height)/2) -2
         width: 84
         height: 84
         color: "transparent"
