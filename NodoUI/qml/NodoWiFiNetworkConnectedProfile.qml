@@ -134,7 +134,7 @@ NodoCanvas {
         anchors.top: forgetButton.top
         anchors.right: forgetButton.left
         anchors.rightMargin: 20
-        anchors.topMargin: ((connectButton.height - height)/2) -2
+        anchors.topMargin: ((connectButton.height - height)/2) -4
         width: 84
         height: 84
         color: "transparent"
@@ -291,7 +291,7 @@ NodoCanvas {
     states: [
         State {
             name: "showDetails";
-            PropertyChanges { target: mainRect; height: defaultHeight + showDetailsRect.height + 18}
+            PropertyChanges { target: mainRect; height: defaultHeight + showDetailsRect.height + 14}
         },
         State {
             name: ""
