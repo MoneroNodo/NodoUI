@@ -92,7 +92,7 @@ NodoCanvas {
         id: connectButton
         anchors.top: mainRect.top
         anchors.right: mainRect.right
-        anchors.topMargin: 18
+        anchors.topMargin: 14
         anchors.rightMargin: 14
         width: mainRect.buttonSize
         height: networkDelegateItemHeight
@@ -114,7 +114,7 @@ NodoCanvas {
         id: forgetButton
         anchors.top: mainRect.top
         anchors.right: connectButton.left
-        anchors.topMargin: 18
+        anchors.topMargin: 14
         anchors.rightMargin: 20
         width: mainRect.buttonSize
         height: networkDelegateItemHeight
@@ -134,7 +134,7 @@ NodoCanvas {
         anchors.top: forgetButton.top
         anchors.right: forgetButton.left
         anchors.rightMargin: 20
-        anchors.topMargin: 10//(connectButton.height - height)/2
+        anchors.topMargin: (connectButton.height - height)/2
         width: 84
         height: 84
         color: "transparent"
@@ -173,7 +173,7 @@ NodoCanvas {
             anchors.top: ssidSignalStrengthRect.top
             anchors.right: ssidSignalStrengthImage.left
             anchors.rightMargin: 20
-            anchors.topMargin: 30
+            //anchors.topMargin: 10
             width: 60
             height: 60
             visible:
