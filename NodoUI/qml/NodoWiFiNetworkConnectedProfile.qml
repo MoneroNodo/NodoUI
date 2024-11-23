@@ -106,7 +106,7 @@ NodoCanvas {
             connectButton.text = systemMessages.messages[NodoMessages.Message.Disconnecting] //qsTr("Disconnecting")
             connectButton.update()
             networkManager.disconnectFromWiFi()
-            //mainRect.state = "" //Added later
+            mainRect.state = "" //Added later
         }
     }
 
