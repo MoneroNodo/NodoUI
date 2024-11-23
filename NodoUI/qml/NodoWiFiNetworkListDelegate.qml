@@ -286,9 +286,9 @@ NodoCanvas {
             id: advancedSettings
             anchors.top: passwordInputField.bottom
             anchors.right: connectToANetworkRect.right
+            anchors.topMargin: 5
             anchors.rightMargin: 14
             //anchors.leftMargin: (connectToANetworkRect.width - advancedSettings.width)/2
-            anchors.topMargin: 5
             width: mainRect.buttonSize
             height: networkDelegateItemHeight
             font.pixelSize: NodoSystem.infoFieldItemFontSize
@@ -316,9 +316,9 @@ NodoCanvas {
 
         Rectangle {
             id: advancedSettingsRect
-            anchors.top: advancedSettings.bottom
-            anchors.left: connectToANetworkRect.left
-            anchors.right: connectToANetworkRect.right
+            //anchors.top: advancedSettings.bottom
+            //anchors.left: connectToANetworkRect.left
+            anchors.left: advancedSettings.right
             anchors.topMargin: 5
             height: dhcpSwitchRect.y + dhcpSwitchRect.height
             visible: mainRect.state === "showAdvancedConfigField" || mainRect.state === "showStaticConfigField" ? true : false
@@ -328,7 +328,8 @@ NodoCanvas {
             Rectangle {
                 id: dhcpSwitchRect
                 anchors.top: passwordInputField.bottom
-                anchors.left: connectToANetworkRect.left
+                anchors.left: advancedSettingsRect.left
+                anchors.leftMargin: 14
                 topMargin: mainRect.spacing
                 height: NodoSystem.nodoItemHeight
 
