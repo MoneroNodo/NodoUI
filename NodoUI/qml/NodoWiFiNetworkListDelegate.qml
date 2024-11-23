@@ -266,7 +266,7 @@ NodoCanvas {
         anchors.leftMargin: 14
         anchors.rightMargin: 14
         anchors.topMargin: 5
-        height: 120
+        height: 115
         visible: mainRect.state === "showDetails" || mainRect.state === "" ? false : true
         color: "transparent"
 
@@ -286,7 +286,7 @@ NodoCanvas {
             id: advancedSettings
             anchors.top: passwordInputField.bottom
             anchors.left: connectToANetworkRect.left
-            anchors.leftMargin: (connectToANetworkRect.width - advancedSettings.width)/2
+            anchors.leftMargin: 14//(connectToANetworkRect.width - advancedSettings.width)/2
             width: mainRect.buttonSize
             height: networkDelegateItemHeight
             font.pixelSize: NodoSystem.infoFieldItemFontSize
@@ -450,7 +450,7 @@ NodoCanvas {
     states: [
         State {
             name: "showDetails";
-            PropertyChanges { target: mainRect; height: defaultHeight+showDetailsRect.height +10}
+            PropertyChanges { target: mainRect; height: defaultHeight + showDetailsRect.height +10}
         },
         State {
             name: ""
@@ -463,12 +463,12 @@ NodoCanvas {
         },
         State {
             name: "showAdvancedConfigField"
-            PropertyChanges { target: mainRect; height: 157 + connectToANetworkRect.height + advancedSettingsRect.height}
+            PropertyChanges { target: mainRect; height: 170 + connectToANetworkRect.height + advancedSettingsRect.height}
             PropertyChanges { target: advancedSettingsRect; height: 75 }
         },
         State {
             name: "showStaticConfigField"
-            PropertyChanges { target: mainRect; height: 640 }
+            PropertyChanges { target: mainRect; height: 700 }
             PropertyChanges { target: advancedSettingsRect; height: 365 }
         }
     ]
