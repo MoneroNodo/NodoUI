@@ -211,7 +211,7 @@ Rectangle {
             text: qsTr("Monero Daemon")
             verticalAlignment: Text.AlignBottom
             horizontalAlignment: Text.AlignHCenter
-            font.pixelSize: NodoSystem.topMenuButtonFontSize
+            font.pixelSize: NodoSystem.topMenuButtonFontSize +2
             color: nodoControl.appTheme ? NodoSystem.highlightedColorNightModeOn : NodoSystem.highlightedColorNightModeOff
             font.family: NodoSystem.fontUrbanist.name
         }
@@ -329,7 +329,7 @@ Rectangle {
         anchors.horizontalCenter: statusScreen.horizontalCenter
         anchors.top: statusScreen.top
         anchors.topMargin: 10
-        width: 460
+        width: 470
         height: moneroPayField.y + moneroPayField.height + componentBottomMargin
         color: cardBackgroundColor
 
@@ -351,7 +351,7 @@ Rectangle {
             text: qsTr("Services")
             verticalAlignment: Text.AlignBottom
             horizontalAlignment: Text.AlignHCenter
-            font.pixelSize: NodoSystem.topMenuButtonFontSize
+            font.pixelSize: NodoSystem.topMenuButtonFontSize +2
             color: nodoControl.appTheme ? NodoSystem.highlightedColorNightModeOn : NodoSystem.highlightedColorNightModeOff
             font.family: NodoSystem.fontUrbanist.name
         }
@@ -423,7 +423,7 @@ Rectangle {
         anchors.right: statusScreen.right
         anchors.top: statusScreen.top
         anchors.topMargin: 10
-        width: 685
+        width: 670
         anchors.rightMargin: cardMargin
         height: systemStorageField.y + systemStorageField.height + componentBottomMargin
         color: cardBackgroundColor
@@ -446,7 +446,7 @@ Rectangle {
             text: qsTr("System")
             verticalAlignment: Text.AlignBottom
             horizontalAlignment: Text.AlignHCenter
-            font.pixelSize: NodoSystem.topMenuButtonFontSize
+            font.pixelSize: NodoSystem.topMenuButtonFontSize +2
             color: nodoControl.appTheme ? NodoSystem.highlightedColorNightModeOn : NodoSystem.highlightedColorNightModeOff
             font.family: NodoSystem.fontUrbanist.name
         }
