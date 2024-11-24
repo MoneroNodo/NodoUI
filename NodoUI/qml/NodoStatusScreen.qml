@@ -329,7 +329,7 @@ Rectangle {
         anchors.horizontalCenter: statusScreen.horizontalCenter
         anchors.top: statusScreen.top
         anchors.topMargin: 10
-        anchors.leftMargin: 20//cardMargin
+        anchors.leftMargin: 30//cardMargin
         width: 480
         height: moneroPayField.y + moneroPayField.height + componentBottomMargin
         color: cardBackgroundColor
