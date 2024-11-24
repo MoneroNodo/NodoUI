@@ -361,7 +361,7 @@ Rectangle {
             anchors.left: systemStatusTabName.left
             anchors.top: systemStatusTabName.bottom
             anchors.topMargin: fieldTopMargin
-            width: componentWidth
+            width: labelSize - 30
             height: statusScreenInfoFieldHeight
             itemSize: labelSize - 40
             itemText: qsTr("Daemon")
@@ -373,7 +373,7 @@ Rectangle {
             anchors.left: moneroNodeField.left
             anchors.top: moneroNodeField.bottom
             anchors.topMargin: fieldTopMargin
-            width: labelSize - 50
+            width: labelSize - 30
             height: statusScreenInfoFieldHeight
             itemSize: labelSize - 40
             itemText: qsTr("Tor Service")
@@ -385,7 +385,7 @@ Rectangle {
             anchors.left: moneroNodeField.left
             anchors.top: torServiceField.bottom
             anchors.topMargin: fieldTopMargin
-            width: labelSize - 50
+            width: labelSize - 30
             height: statusScreenInfoFieldHeight
             itemSize: labelSize - 40
             itemText: qsTr("I2P Service")
@@ -397,7 +397,7 @@ Rectangle {
             anchors.left: moneroNodeField.left
             anchors.top: i2pServiceField.bottom
             anchors.topMargin: fieldTopMargin
-            width: labelSize - 50
+            width: labelSize - 30
             height: statusScreenInfoFieldHeight
             itemSize: labelSize - 40
             itemText: qsTr("Monero LWS")
@@ -409,7 +409,7 @@ Rectangle {
             anchors.left: moneroNodeField.left
             anchors.top: moneroLWSField.bottom
             anchors.topMargin: fieldTopMargin
-            width: labelSize - 50
+            width: labelSize - 30
             height: statusScreenInfoFieldHeight
             itemSize: labelSize - 40
             itemText: qsTr("MoneroPay")
