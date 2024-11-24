@@ -377,20 +377,6 @@ NodoCanvas {
                 validator:RegularExpressionValidator{
                     regularExpression: /^((?:[0-1]?[0-9]?[0-9]|2?[0-4]?[0-9]|25[0-5]).){3}(?:[0-1]?[0-9]?[0-9]|2?[0-4]?[0-9]|25[0-5])$/
                 }
-                
-                onClicked: {
-				    if(valueText === "000.000.000.000;0")
-				    {
-					valueText: ""
-				    }
-                }
-
-                onTextEditFinished: {
-                    if(valueText === "")
-                    {
-                        valueText = "000.000.000.000;0"
-                    }
-                }
             }
             
             NodoInputField {
