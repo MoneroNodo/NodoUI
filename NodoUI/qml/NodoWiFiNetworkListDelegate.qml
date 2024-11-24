@@ -367,13 +367,13 @@ NodoCanvas {
                 anchors.top: dhcpSwitchRect.bottom
                 anchors.left: advancedSettingsRect.left
                 anchors.topMargin: 10
-                width: 640//advancedSettingsRect.width
+                width: 700//advancedSettingsRect.width
                 height: networkDelegateItemHeight
                 itemSize: labelSize
                 itemText: systemMessages.messages[NodoMessages.Message.IPAddress]
                 valueText: ""
                 textFlag: Qt.ImhDigitsOnly
-                inputMask: "000.000.000.000;0"
+                //inputMask: "000.000.000.000;0"
                 validator:RegularExpressionValidator{
                     regularExpression: /^((?:[0-1]?[0-9]?[0-9]|2?[0-4]?[0-9]|25[0-5]).){3}(?:[0-1]?[0-9]?[0-9]|2?[0-4]?[0-9]|25[0-5])$/
                 }
@@ -384,13 +384,13 @@ NodoCanvas {
                 anchors.top: wifiIPAddressField.bottom
                 anchors.left: advancedSettingsRect.left
                 anchors.topMargin: mainRect.spacing
-                width: 640//advancedSettingsRect.width
+                width: 700//advancedSettingsRect.width
                 height: networkDelegateItemHeight
                 itemSize: labelSize
                 itemText: systemMessages.messages[NodoMessages.Message.SubnetMask]
                 valueText: ""
                 textFlag: Qt.ImhDigitsOnly
-                inputMask: "000.000.000.000;0"
+                //inputMask: "000.000.000.000;0"
                 validator:RegularExpressionValidator{
                     regularExpression: /^((?:[0-1]?[0-9]?[0-9]|2?[0-4]?[0-9]|25[0-5]).){3}(?:[0-1]?[0-9]?[0-9]|2?[0-4]?[0-9]|25[0-5])$/
                 }
@@ -401,13 +401,13 @@ NodoCanvas {
                 anchors.top: wifiSubnetMaskField.bottom
                 anchors.left: advancedSettingsRect.left
                 anchors.topMargin: mainRect.spacing
-                width: 640//advancedSettingsRect.width
+                width: 700//advancedSettingsRect.width
                 height: networkDelegateItemHeight
                 itemSize: labelSize
                 itemText: systemMessages.messages[NodoMessages.Message.Router]
                 valueText: ""
                 textFlag: Qt.ImhDigitsOnly
-                inputMask: "000.000.000.000;0"
+                //inputMask: "000.000.000.000;0"
                 validator:RegularExpressionValidator{
                     regularExpression: /^((?:[0-1]?[0-9]?[0-9]|2?[0-4]?[0-9]|25[0-5]).){3}(?:[0-1]?[0-9]?[0-9]|2?[0-4]?[0-9]|25[0-5])$/
                 }
@@ -418,13 +418,13 @@ NodoCanvas {
                 anchors.top: wifiRouterField.bottom
                 anchors.left: advancedSettingsRect.left
                 anchors.topMargin: mainRect.spacing
-                width: 640//advancedSettingsRect.width
+                width: 700//advancedSettingsRect.width
                 height: networkDelegateItemHeight
                 itemSize: labelSize
                 itemText: systemMessages.messages[NodoMessages.Message.DNS]
                 valueText: ""
                 textFlag: Qt.ImhDigitsOnly
-                inputMask: "000.000.000.000;0"
+                //inputMask: "000.000.000.000;0"
                 validator:RegularExpressionValidator{
                     regularExpression: /^((?:[0-1]?[0-9]?[0-9]|2?[0-4]?[0-9]|25[0-5]).){3}(?:[0-1]?[0-9]?[0-9]|2?[0-4]?[0-9]|25[0-5])$/
                 }
