@@ -418,7 +418,7 @@ NodoCanvas {
                 anchors.top: wifiRouterField.bottom
                 anchors.left: advancedSettingsRect.left
                 anchors.topMargin: mainRect.spacing
-                width: advancedSettingsRect.width
+                width: 600//advancedSettingsRect.width
                 height: networkDelegateItemHeight
                 itemSize: labelSize
                 itemText: systemMessages.messages[NodoMessages.Message.DNS]
@@ -465,12 +465,12 @@ NodoCanvas {
         },
         State {
             name: "showAdvancedConfigField"
-            PropertyChanges { target: mainRect; height: 190 + connectToANetworkRect.height + advancedSettingsRect.height}
+            PropertyChanges { target: mainRect; height: 150 + connectToANetworkRect.height + advancedSettingsRect.height}
             PropertyChanges { target: advancedSettingsRect; height: 80 }
         },
         State {
             name: "showStaticConfigField"
-            PropertyChanges { target: mainRect; height: 720 }
+            PropertyChanges { target: mainRect; height: 680 }
             PropertyChanges { target: advancedSettingsRect; height: 410 }
         }
     ]
