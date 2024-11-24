@@ -115,6 +115,7 @@ Item {
         id: moneroPaySettingsClearAddressButton
         anchors.left: moneroPaySettingsSetDepositAddressButton.right
         anchors.top: moneroPaySettingsViewkeyLabel.bottom
+        anchors.topMargin: NodoSystem.nodoTopMargin
 		anchors.leftMargin: 25
         text: qsTr("Clear Deposit Address")
         height: NodoSystem.nodoItemHeight
