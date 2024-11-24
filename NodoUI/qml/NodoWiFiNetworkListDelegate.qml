@@ -367,7 +367,7 @@ NodoCanvas {
                 anchors.top: dhcpSwitchRect.bottom
                 anchors.left: advancedSettingsRect.left
                 anchors.topMargin: 10
-                width: advancedSettingsRect.width -600
+                width: 600//advancedSettingsRect.width
                 height: networkDelegateItemHeight
                 itemSize: labelSize
                 itemText: systemMessages.messages[NodoMessages.Message.IPAddress]
@@ -384,7 +384,7 @@ NodoCanvas {
                 anchors.top: wifiIPAddressField.bottom
                 anchors.left: advancedSettingsRect.left
                 anchors.topMargin: mainRect.spacing
-                width: advancedSettingsRect.width -500
+                width: 500//advancedSettingsRect.width
                 height: networkDelegateItemHeight
                 itemSize: labelSize
                 itemText: systemMessages.messages[NodoMessages.Message.SubnetMask]
@@ -401,7 +401,7 @@ NodoCanvas {
                 anchors.top: wifiSubnetMaskField.bottom
                 anchors.left: advancedSettingsRect.left
                 anchors.topMargin: mainRect.spacing
-                width: advancedSettingsRect.width -300
+                width: 400//advancedSettingsRect.width
                 height: networkDelegateItemHeight
                 itemSize: labelSize
                 itemText: systemMessages.messages[NodoMessages.Message.Router]
@@ -418,7 +418,7 @@ NodoCanvas {
                 anchors.top: wifiRouterField.bottom
                 anchors.left: advancedSettingsRect.left
                 anchors.topMargin: mainRect.spacing
-                width: 600//advancedSettingsRect.width -700
+                width: 300//advancedSettingsRect.width
                 height: networkDelegateItemHeight
                 itemSize: labelSize
                 itemText: systemMessages.messages[NodoMessages.Message.DNS]
