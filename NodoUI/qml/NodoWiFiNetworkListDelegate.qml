@@ -367,7 +367,7 @@ NodoCanvas {
                 anchors.top: dhcpSwitchRect.bottom
                 anchors.left: advancedSettingsRect.left
                 anchors.topMargin: 10
-                width: 600//advancedSettingsRect.width
+                width: 640//advancedSettingsRect.width
                 height: networkDelegateItemHeight
                 itemSize: labelSize
                 itemText: systemMessages.messages[NodoMessages.Message.IPAddress]
@@ -384,7 +384,7 @@ NodoCanvas {
                 anchors.top: wifiIPAddressField.bottom
                 anchors.left: advancedSettingsRect.left
                 anchors.topMargin: mainRect.spacing
-                width: 500//advancedSettingsRect.width
+                width: 640//advancedSettingsRect.width
                 height: networkDelegateItemHeight
                 itemSize: labelSize
                 itemText: systemMessages.messages[NodoMessages.Message.SubnetMask]
@@ -401,7 +401,7 @@ NodoCanvas {
                 anchors.top: wifiSubnetMaskField.bottom
                 anchors.left: advancedSettingsRect.left
                 anchors.topMargin: mainRect.spacing
-                width: 400//advancedSettingsRect.width
+                width: 640//advancedSettingsRect.width
                 height: networkDelegateItemHeight
                 itemSize: labelSize
                 itemText: systemMessages.messages[NodoMessages.Message.Router]
@@ -418,7 +418,7 @@ NodoCanvas {
                 anchors.top: wifiRouterField.bottom
                 anchors.left: advancedSettingsRect.left
                 anchors.topMargin: mainRect.spacing
-                width: 300//advancedSettingsRect.width
+                width: 640//advancedSettingsRect.width
                 height: networkDelegateItemHeight
                 itemSize: labelSize
                 itemText: systemMessages.messages[NodoMessages.Message.DNS]
@@ -465,7 +465,7 @@ NodoCanvas {
         },
         State {
             name: "showAdvancedConfigField"
-            PropertyChanges { target: mainRect; height: 150 + connectToANetworkRect.height + advancedSettingsRect.height}
+            PropertyChanges { target: mainRect; height: 160 + connectToANetworkRect.height + advancedSettingsRect.height}
             PropertyChanges { target: advancedSettingsRect; height: 80 }
         },
         State {
