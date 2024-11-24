@@ -255,7 +255,7 @@ KeyboardStyle {
                 when: control.pressed
                 PropertyChanges {
                     target: shiftKeyBackground
-					color: NodoSystem.keyboardButtonPressed
+//					color: NodoSystem.keyboardButtonPressed
 //                    opacity: 0.80
                 }
             },
