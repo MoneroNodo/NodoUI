@@ -7,10 +7,10 @@ import NodoCanvas 1.0
 
 NodoCanvas {
     id: mainRect
-
+    
     property int networkDelegateItemHeight: NodoSystem.nodoItemHeight
     property int labelSize: 200
-    property int buttonSize: 220
+    property int buttonSize: 300
     property int defaultHeight: 100
 
     property string profileName
@@ -75,15 +75,15 @@ NodoCanvas {
         font.family: NodoSystem.fontUrbanist.name
         height: 40
         text: mainRect.profileName
-        color: nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn  : NodoSystem.dataFieldTextColorNightModeOff
+        color: nodoControl.appTheme ? NodoSystem.highlightedColorNightModeOn  : NodoSystem.highlightedColorNightModeOff
     }
 
     NodoButton {
         id: connectButton
         anchors.top: mainRect.top
         anchors.right: mainRect.right
-        anchors.topMargin: 18
-        anchors.rightMargin: 11
+        anchors.topMargin: 14
+        anchors.rightMargin: 14
         width: mainRect.buttonSize
         height: networkDelegateItemHeight
         font.pixelSize: NodoSystem.infoFieldItemFontSize
@@ -104,8 +104,8 @@ NodoCanvas {
         id: forgetButton
         anchors.top: mainRect.top
         anchors.right: connectButton.left
-        anchors.topMargin: 18
-        anchors.rightMargin: 10
+        anchors.topMargin: 14
+        anchors.rightMargin: 20
         width: mainRect.buttonSize
         height: networkDelegateItemHeight
         font.pixelSize: NodoSystem.infoFieldItemFontSize
@@ -125,9 +125,9 @@ NodoCanvas {
         anchors.top: forgetButton.bottom
         anchors.left: mainRect.left
         anchors.right: mainRect.right
-        anchors.leftMargin: 11
-        anchors.rightMargin: 11
-        anchors.topMargin: 10
+        anchors.leftMargin: 14
+        anchors.rightMargin: 14
+        anchors.topMargin: 5
         height: deviceSpeedField.y + deviceSpeedField.height + 8
         visible:  mainRect.state === "showDetails" ? true : false
         color: "transparent"
@@ -167,7 +167,6 @@ NodoCanvas {
             itemText: systemMessages.messages[NodoMessages.Message.DeviceSpeed]
             valueText: mainRect.deviceSpeed
         }
-
     }
 
     MouseArea {
@@ -190,7 +189,7 @@ NodoCanvas {
     states: [
         State {
             name: "showDetails";
-            PropertyChanges { target: mainRect; height: defaultHeight + showDetailsRect.height }
+            PropertyChanges { target: mainRect; height: defaultHeight + showDetailsRect.height +10}
         },
         State {
             name: ""

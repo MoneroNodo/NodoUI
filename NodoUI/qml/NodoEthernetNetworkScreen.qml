@@ -14,7 +14,7 @@ Item {
     property bool isEthernetEnabled
     property int networkDelegateItemHeight: NodoSystem.nodoItemHeight
 
-    property int buttonSize: 220
+    property int buttonSize: 300
     property int defaultHeight: 100
     property int spacing: 1
 
@@ -125,8 +125,8 @@ Item {
             id: createNewConnectionRect
             anchors.top: createNewConnectionCanvas.top
             anchors.left: createNewConnectionCanvas.left
-            anchors.topMargin: 10
-            anchors.leftMargin: 10
+            anchors.topMargin: 14
+            anchors.leftMargin: 14
             width: createNewConnectionCanvas.width - 22
             height: createNewConnectionCanvas.height - createEthernetConnectionRect.height - 18
             visible: ethernetNetworkScreen.state === "" ? false : true
