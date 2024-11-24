@@ -95,12 +95,12 @@ NodoCanvas {
             }
             else
             {
-                if(ssidEncryption === "WEP" )
+                if(mainRect.ssidEncryption === "" || maiNRect.ssidEncryption === "WEP")
                 {
                     connectButton.isActive = false
                     connectButton.text = systemMessages.messages[NodoMessages.Message.Connecting]
                     connectButton.update()
-                    networkManager.connectToWiFi(mainRect.ssidName, "", dhcpSwitch.checked, wifiIPAddressField.valueText, wifiSubnetMaskField.valueText, wifiRouterField.valueText, wifiDNSField.valueText, ssidEncryption)
+                    networkManager.connectToWiFi(mainRect.ssidName, "", dhcpSwitch.checked, wifiIPAddressField.valueText, wifiSubnetMaskField.valueText, wifiRouterField.valueText, wifiDNSField.valueText, mainRect.ssidEncryption)
                 }
                 else
                 {
@@ -109,7 +109,7 @@ NodoCanvas {
                         connectButton.isActive = false
                         connectButton.text = systemMessages.messages[NodoMessages.Message.Connecting]
                         connectButton.update()
-                        networkManager.connectToWiFi(mainRect.ssidName, passwordInputField.valueText, dhcpSwitch.checked, wifiIPAddressField.valueText, wifiSubnetMaskField.valueText, wifiRouterField.valueText, wifiDNSField.valueText, ssidEncryption)
+                        networkManager.connectToWiFi(mainRect.ssidName, passwordInputField.valueText, dhcpSwitch.checked, wifiIPAddressField.valueText, wifiSubnetMaskField.valueText, wifiRouterField.valueText, wifiDNSField.valueText, mainRect.ssidEncryption)
                     }
                     else
                     {

@@ -226,7 +226,8 @@ void NodoWirelessController::addConnection(QString profileName, QString password
     connection["802-11-wireless"]["mode"] = "infrastructure";
     connection["802-11-wireless"]["ssid"] = QVariant(profileName.toLatin1());
 
-    if(security == "WEP")
+    qDebug() << "Wireless security: " << security;
+    if(security == "WEP" || security.isEmpty())
     {
         connection["802-11-wireless-security"]["key-mgmt"] = "none";
         connection["802-11-wireless-security"]["wep-key-type"] = 2;
