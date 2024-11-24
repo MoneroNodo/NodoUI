@@ -7,7 +7,7 @@ import NodoCanvas 1.0
 
 NodoCanvas {
     id: mainRect
-    
+
     property int networkDelegateItemHeight: NodoSystem.nodoItemHeight
     property int labelSize: 200
     property int buttonSize: 300
@@ -71,7 +71,7 @@ NodoCanvas {
         anchors.left: mainRect.left
         anchors.topMargin: connectButton.y + (profileNameLabel.paintedHeight)/2
         anchors.leftMargin: 20
-        font.pixelSize: NodoSystem.infoFieldItemFontSize
+        font.pixelSize: NodoSystem.infoFieldItemFontSize +2
         font.family: NodoSystem.fontUrbanist.name
         height: 40
         text: mainRect.profileName
