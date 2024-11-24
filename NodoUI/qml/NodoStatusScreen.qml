@@ -362,9 +362,9 @@ Rectangle {
             anchors.left: systemStatusTabName.left
             anchors.top: systemStatusTabName.bottom
             anchors.topMargin: fieldTopMargin
-            width: labelSize - 10
+            width: labelSize
             height: statusScreenInfoFieldHeight
-            itemSize: labelSize
+            itemSize: labelSize - 40
             itemText: qsTr("Daemon")
             valueText: ""
         }
@@ -376,7 +376,7 @@ Rectangle {
             anchors.topMargin: fieldTopMargin
             width: labelSize
             height: statusScreenInfoFieldHeight
-            itemSize: labelSize
+            itemSize: labelSize - 40
             itemText: qsTr("Tor Service")
             valueText: ""
         }
