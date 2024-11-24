@@ -22,7 +22,7 @@ NodoCanvas {
     property int spacing: 1
 
     height: defaultHeight
-    color: "#1F1F1F"
+    color: nodoControl.appTheme ? NodoSystem.dataFieldTitleBGColorNightModeOn  : NodoSystem.dataFieldTitleBGColorNightModeOff
 
     Component.onCompleted:
     {
@@ -71,7 +71,7 @@ NodoCanvas {
         anchors.left: mainRect.left
         anchors.topMargin: connectButton.y + (profileNameLabel.paintedHeight)/2
         anchors.leftMargin: 20
-        font.pixelSize: NodoSystem.infoFieldItemFontSize +2
+        font.pixelSize: NodoSystem.infoFieldItemFontSize + 2
         font.family: NodoSystem.fontUrbanist.name
         height: 40
         text: mainRect.profileName
@@ -96,7 +96,7 @@ NodoCanvas {
             connectButton.text = systemMessages.messages[NodoMessages.Message.Disconnecting]
             connectButton.update()
             networkManager.disconnectFromEthernet()
-
+            mainRect.state = "" //Added later
         }
     }
 
@@ -128,7 +128,7 @@ NodoCanvas {
         anchors.leftMargin: 14
         anchors.rightMargin: 14
         anchors.topMargin: 5
-        height: deviceSpeedField.y + deviceSpeedField.height + 8
+        height: deviceSpeedField.y + deviceSpeedField.height
         visible:  mainRect.state === "showDetails" ? true : false
         color: "transparent"
 
@@ -189,7 +189,7 @@ NodoCanvas {
     states: [
         State {
             name: "showDetails";
-            PropertyChanges { target: mainRect; height: defaultHeight + showDetailsRect.height +10}
+            PropertyChanges { target: mainRect; height: defaultHeight + showDetailsRect.height}
         },
         State {
             name: ""
