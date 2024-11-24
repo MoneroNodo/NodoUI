@@ -77,7 +77,7 @@ Item {
         itemText: qsTr("Deposit Address")
         readOnlyFlag: inputFieldReadOnly
         height: NodoSystem.nodoItemHeight
-        valueFontSize: 28
+        valueFontSize: 26
     }
 
     NodoInputField {
