@@ -10,10 +10,10 @@ Item {
 
     property int labelSize: 0
     property int buttonWidth: 0
-    property int infoFieldSize: 1900
+    property int infoFieldSize: 1880
     property bool inputFieldReadOnly: false
     property bool clearButtonActive: false
-    property bool setButtonActive: false
+    property bool setButtonActive: true
     signal deleteMe(int screenID)
 
 
@@ -77,6 +77,7 @@ Item {
         itemText: qsTr("Deposit Address")
         readOnlyFlag: inputFieldReadOnly
         height: NodoSystem.nodoItemHeight
+        valueFontSize: 28
     }
 
     NodoInputField {
