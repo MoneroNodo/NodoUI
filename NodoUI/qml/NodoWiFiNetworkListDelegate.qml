@@ -377,8 +377,22 @@ NodoCanvas {
                 validator:RegularExpressionValidator{
                     regularExpression: /^((?:[0-1]?[0-9]?[0-9]|2?[0-4]?[0-9]|25[0-5]).){3}(?:[0-1]?[0-9]?[0-9]|2?[0-4]?[0-9]|25[0-5])$/
                 }
-            }
+                
+                onClicked: {
+				    if(valueText === "000.000.000.000;0")
+				    {
+					valueText: ""
+				    }
+                }
 
+                onTextEditFinished: {
+                    if(valueText === "")
+                    {
+                        valueText = "000.000.000.000;0"
+                    }
+                }
+            }
+            
             NodoInputField {
                 id: wifiSubnetMaskField
                 anchors.top: wifiIPAddressField.bottom
@@ -465,7 +479,7 @@ NodoCanvas {
         },
         State {
             name: "showAdvancedConfigField"
-            PropertyChanges { target: mainRect; height: 150 + connectToANetworkRect.height + advancedSettingsRect.height}
+            PropertyChanges { target: mainRect; height: 160 + connectToANetworkRect.height + advancedSettingsRect.height}
             PropertyChanges { target: advancedSettingsRect; height: 80 }
         },
         State {
