@@ -180,8 +180,8 @@ Rectangle {
         id: syncStatus
         anchors.left: statusScreen.left
         anchors.top: statusScreen.top
-        anchors.topMargin: 5
-        anchors.leftMargin: cardMargin
+        anchors.topMargin: 10
+        anchors.leftMargin: 8//cardMargin
         width: 700
         height: networkConnectionField.y + networkConnectionField.height + componentBottomMargin//683
         color: cardBackgroundColor
@@ -330,7 +330,7 @@ Rectangle {
         anchors.top: statusScreen.top
         anchors.topMargin: 10
         anchors.leftMargin: cardMargin
-        width: 500
+        width: 480
         height: moneroPayField.y + moneroPayField.height + componentBottomMargin
         color: cardBackgroundColor
 
@@ -425,7 +425,7 @@ Rectangle {
         anchors.top: statusScreen.top
         anchors.topMargin: 10
         width: 680
-        anchors.rightMargin: cardMargin
+        anchors.rightMargin: 8//cardMargin
         height: systemStorageField.y + systemStorageField.height + componentBottomMargin
         color: cardBackgroundColor
 
