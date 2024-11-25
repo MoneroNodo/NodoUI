@@ -97,11 +97,7 @@ Item {
             if(newPin === newPin2)
             {
                 nodoControl.setAddressPin(newPin);
-                nodoLockPinControlPopup.commandID = -1;
-                nodoAddressPinControlPopup.popupMessageText = systemMessages.messages[NodoMessages.Message.AddressPINSet]
-                nodoAddressPinControlPopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Close]
-                nodoAddressPinControlPopup.open();
-                { pageLoader.source = "DevicePinScreen.qml" } //If PIN set, goto Main PIN screen
+                //{ pageLoader.source = "DevicePinScreen.qml" } //If PIN set, goto Main PIN screen
             }
             else
             {

@@ -207,11 +207,7 @@ Item {
                 if(newPin === newPin2)
                 {
                     nodoControl.setLockPin(newPin);
-                    nodoLockPinControlPopup.commandID = -1;
-                    nodoLockPinControlPopup.popupMessageText = systemMessages.messages[NodoMessages.Message.LockPINSet]
-                    nodoLockPinControlPopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Close]
-                    nodoLockPinControlPopup.open();
-                    { pageLoader.source = "DevicePinScreen.qml" } //If PIN set, goto Main PIN screen
+                    //{ pageLoader.source = "DevicePinScreen.qml" } //If PIN set, goto Main PIN screen
                 }
                 else
                 {

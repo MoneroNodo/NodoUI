@@ -36,8 +36,6 @@ Item {
         Address,
         Port,
         Loading,
-        LockPINSet,
-        AddressPINSet,
         PINCodesDoNotMatch,
         FailedToChangePassword,
         PasswordChangedSuccessfully,
@@ -86,8 +84,6 @@ Item {
         qsTr("Address"),
         qsTr("Port"),
         qsTr("Loading"),
-        qsTr("Lock PIN set"),
-        qsTr("Address PIN set"),
         qsTr("PIN codes do not match"),
         qsTr("Failed to change password"),
         qsTr("Password changed successfully"),
@@ -128,8 +124,8 @@ Item {
         qsTr("Cable disconnected!"),
         qsTr("Something is wrong!"),
         qsTr("New PIN is set successfully!"),
-        qsTr("Password doesn't meet requirements."),
-        qsTr("Passwords do not match.")
+        qsTr("Password doesn't meet requirements"),
+        qsTr("Passwords do not match")
     ]
 
     enum NetworkStatusMessages {
