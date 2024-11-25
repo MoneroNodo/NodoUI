@@ -208,3 +208,13 @@ void NodoWiredController::requestConnectionStateUpdate(void)
 {
     m_nmCommon->getDeviceState(&m_device);
 }
+
+void NodoWiredController::setDetailsOpened(bool opened)
+{
+    m_detailsOpened = opened;
+}
+
+bool NodoWiredController::getDetailsOpened(void)
+{
+    return m_detailsOpened;
+}

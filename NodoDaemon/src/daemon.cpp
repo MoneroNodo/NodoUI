@@ -126,6 +126,7 @@ void Daemon::update(void)
     QProcess process;
 
     process.start(program, arguments);
+    process.waitForFinished(-1);
 }
 
 void Daemon::restart(void)

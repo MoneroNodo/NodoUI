@@ -128,6 +128,11 @@ void NodoSystemControl::restartDevice()
     m_dbusController->restart();
 }
 
+void NodoSystemControl::updateDevice()
+{
+    m_dbusController->update();
+}
+
 void NodoSystemControl::shutdownDevice()
 {
     m_dbusController->shutdown();
