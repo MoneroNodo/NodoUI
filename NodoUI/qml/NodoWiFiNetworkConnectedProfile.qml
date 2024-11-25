@@ -291,7 +291,7 @@ NodoCanvas {
     states: [
         State {
             name: "showDetails";
-            PropertyChanges { target: mainRect; height: defaultHeight + showDetailsRect.height + 10}
+            PropertyChanges { target: mainRect; height: defaultHeight + showDetailsRect.height + 18}
         },
         State {
             name: ""

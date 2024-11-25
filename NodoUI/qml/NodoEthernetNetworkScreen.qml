@@ -127,7 +127,7 @@ Item {
             anchors.left: createNewConnectionCanvas.left
             anchors.leftMargin: 14
             anchors.rightMargin: 14
-            height: //networkDelegateItemHeight//createNewConnectionCanvas.height - createEthernetConnectionRect.height - 18
+            height: createNewConnectionCanvas.height - createEthernetConnectionRect.height// - 18
             visible: ethernetNetworkScreen.state === "" ? false : true
             color: nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn  : NodoSystem.dataFieldTextColorNightModeOff
 
@@ -206,7 +206,7 @@ Item {
                     itemText: systemMessages.messages[NodoMessages.Message.IPAddress]
                     valueText: ""
                     textFlag: Qt.ImhDigitsOnly
-                    inputMask: "000.000.000.000;0"
+                    //inputMask: "000.000.000.000;0"
                     validator:RegularExpressionValidator{
                         regularExpression: /^((?:[0-1]?[0-9]?[0-9]|2?[0-4]?[0-9]|25[0-5]).){3}(?:[0-1]?[0-9]?[0-9]|2?[0-4]?[0-9]|25[0-5])$/
                     }
@@ -223,7 +223,7 @@ Item {
                     itemText: systemMessages.messages[NodoMessages.Message.SubnetMask]
                     valueText: ""
                     textFlag: Qt.ImhDigitsOnly
-                    inputMask: "000.000.000.000;0"
+                    //inputMask: "000.000.000.000;0"
                     validator:RegularExpressionValidator{
                         regularExpression: /^((?:[0-1]?[0-9]?[0-9]|2?[0-4]?[0-9]|25[0-5]).){3}(?:[0-1]?[0-9]?[0-9]|2?[0-4]?[0-9]|25[0-5])$/
                     }
@@ -240,7 +240,7 @@ Item {
                     itemText: systemMessages.messages[NodoMessages.Message.Router]
                     valueText: ""
                     textFlag: Qt.ImhDigitsOnly
-                    inputMask: "000.000.000.000;0"
+                    //inputMask: "000.000.000.000;0"
                     validator:RegularExpressionValidator{
                         regularExpression: /^((?:[0-1]?[0-9]?[0-9]|2?[0-4]?[0-9]|25[0-5]).){3}(?:[0-1]?[0-9]?[0-9]|2?[0-4]?[0-9]|25[0-5])$/
                     }
@@ -257,7 +257,7 @@ Item {
                     itemText: systemMessages.messages[NodoMessages.Message.DNS]
                     valueText: ""
                     textFlag: Qt.ImhDigitsOnly
-                    inputMask: "000.000.000.000;0"
+                    //inputMask: "000.000.000.000;0"
                     validator:RegularExpressionValidator{
                         regularExpression: /^((?:[0-1]?[0-9]?[0-9]|2?[0-4]?[0-9]|25[0-5]).){3}(?:[0-1]?[0-9]?[0-9]|2?[0-4]?[0-9]|25[0-5])$/
                     }
