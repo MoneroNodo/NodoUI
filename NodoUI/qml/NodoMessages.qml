@@ -151,6 +151,6 @@ Item {
     property var serviceStatusMessages: [
         qsTr("Active"),
         qsTr("Inactive"),
-        qsTr("Activating"),
+        qsTr("Starting"),
     ]
 }

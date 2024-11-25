@@ -44,8 +44,6 @@ private:
     QString packageConnections(void);
     void getDeviceSpeed(m_device_config *dev);
 
-
-
 private slots:
     void updateNetworkConfig(unsigned int new_state, unsigned int old_state, unsigned int reason);
     void scanConnectionsThread(void);
