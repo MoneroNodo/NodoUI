@@ -121,7 +121,7 @@ void Daemon::update(void)
     QString program = "/usr/bin/bash";
 
     QStringList arguments;
-    arguments << "/home/nodo/update-all.sh";
+    arguments << "/home/nodo/update-all.sh" << "0";
 
     QProcess process;
 
