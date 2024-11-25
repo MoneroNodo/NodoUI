@@ -292,7 +292,7 @@ NodoCanvas {
             width: mainRect.buttonSize
             height: networkDelegateItemHeight
             font.pixelSize: NodoSystem.infoFieldItemFontSize
-            text: systemMessages.messages[NodoMessages.Message.Advanced]
+            text: systemMessages.messages[NodoMessages.Message.Advanced] //qsTr("Advanced")
             visible:  connectToANetworkRect.visible
             fitMinimal: true
             onClicked: {
