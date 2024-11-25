@@ -270,7 +270,7 @@ Item {
             id: createEthernetConnectionRect
             anchors.top: createNewConnectionRect.bottom
             anchors.left: createNewConnectionRect.left
-            //anchors.topMargin: 10
+            anchors.topMargin: 10
             height: NodoSystem.nodoItemHeight
             visible: ethernetNetworkScreen.state === "" ? false : true
 
@@ -278,7 +278,7 @@ Item {
                 id: createEthernetConnectionButton
                 anchors.top: createEthernetConnectionRect.top
                 anchors.left: createEthernetConnectionRect.left
-                anchors.topMargin: ethernetNetworkScreen.spacing
+                anchors.bottom: createEthernetConnectionRect.bottom
                 height: NodoSystem.nodoItemHeight
                 font.pixelSize: NodoSystem.infoFieldItemFontSize
                 text: systemMessages.messages[NodoMessages.Message.Add] //qsTr("Add")
