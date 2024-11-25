@@ -127,7 +127,7 @@ Item {
             anchors.left: createNewConnectionCanvas.left
             anchors.leftMargin: 14
             anchors.rightMargin: 14
-            height: createNewConnectionCanvas.height //- createEthernetConnectionRect.height// - 18
+            height: createNewConnectionCanvas.height - createEthernetConnectionRect.height// - 18
             visible: ethernetNetworkScreen.state === "" ? false : true
             color: nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn  : NodoSystem.dataFieldTextColorNightModeOff
 
