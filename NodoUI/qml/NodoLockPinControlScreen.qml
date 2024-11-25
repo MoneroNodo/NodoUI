@@ -9,7 +9,7 @@ import NodoCanvas 1.0
 Item {
     id: lockPinScreen
     property int labelSize: 0
-    property int inputFieldWidth: 700
+    property int inputFieldWidth: 680
     property bool pinFieldReadOnly: false
     property bool isLockPinEnabled: false
 
@@ -207,6 +207,7 @@ Item {
                 if(newPin === newPin2)
                 {
                     nodoControl.setLockPin(newPin);
+                    { pageLoader.source = "DevicePinScreen.qml" } //If PIN set, goto Main PIN screen
                 }
                 else
                 {

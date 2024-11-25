@@ -9,7 +9,7 @@ import NodoCanvas 1.0
 Item {
     id: addressPinControlScreen
     property int labelSize: 0
-    property int inputFieldWidth: 700
+    property int inputFieldWidth: 680
     property bool pinFieldReadOnly: false
 
     signal deleteMe(int screenID)
@@ -97,6 +97,7 @@ Item {
             if(newPin === newPin2)
             {
                 nodoControl.setAddressPin(newPin);
+                { pageLoader.source = "DevicePinScreen.qml" } //If PIN set, goto Main PIN screen
             }
             else
             {
