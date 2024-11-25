@@ -18,6 +18,7 @@ Item {
         deviceUpdatesMoneroDaemonSwitch.checked = nodoConfig.getUpdateStatus("monero")
         deviceUpdatesMoneroLWSSwitch.checked = nodoConfig.getUpdateStatus("lws")
         deviceUpdatesMoneroPaySwitch.checked = nodoConfig.getUpdateStatus("pay")
+        deviceUpdateAllButton.enabled = nodoConfig.isUpdateLocked()
     }
 
     function onCalculateMaximumTextLabelLength() {
@@ -33,10 +34,36 @@ Item {
         if(deviceUpdatesMoneroPaySwitchText.labelRectRoundSize > labelSize)
             labelSize = deviceUpdatesMoneroPaySwitchText.labelRectRoundSize
     }
+    Rectangle {
+        id: deviceUpdateAllRect
+        anchors.top: deviceUpdatesScreen.top
+        anchors.left: deviceUpdatesScreen.left
+        height: NodoSystem.nodoItemHeight
+
+        NodoButton {
+            id: deviceUpdateAllButton
+            anchors.top: deviceUpdatesScreen.top
+            anchors.left: deviceUpdatesScreen.left
+            height: deviceUpdateAllRect.height
+            text: qsTr("Check for Updates")
+            onClicked: {
+                deviceUpdateAllButton.enabled = false
+                dbusController.update()
+            }
+
+            Connections {
+                target: nodoConfig
+                function onLockGone() {
+                    deviceUpdateAllButton.enabled = true
+                }
+            }
+        }
+
+    }
 
     Rectangle {
         id: deviceUpdatesNodoSwitchRect
-        anchors.top: deviceUpdatesScreen.top
+        anchors.top: deviceUpdateAllRect.bottom
         anchors.left: deviceUpdatesScreen.left
         height: NodoSystem.nodoItemHeight
 
