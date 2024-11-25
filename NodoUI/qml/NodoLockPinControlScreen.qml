@@ -9,7 +9,7 @@ import NodoCanvas 1.0
 Item {
     id: lockPinScreen
     property int labelSize: 0
-    property int inputFieldWidth: 600
+    property int inputFieldWidth: 900
     property bool pinFieldReadOnly: false
     property bool isLockPinEnabled: false
 
@@ -150,11 +150,11 @@ Item {
             id: lockPinControlNewPinField
             anchors.left: lockPinControlRect.left
             anchors.top: lockPinControlLockAfterField.bottom
-            anchors.topMargin: 30
+            //anchors.topMargin: 30
             width: inputFieldWidth
             height: NodoSystem.nodoItemHeight
             itemSize: labelSize
-            itemText: qsTr("New PIN")
+            itemText: qsTr("New Lock PIN")
             textFlag: Qt.ImhDigitsOnly
             valueText: ""
             readOnlyFlag: pinFieldReadOnly
@@ -193,7 +193,7 @@ Item {
             anchors.left: lockPinControlRect.left
             anchors.top: lockPinControlReEnterNewPinField.bottom
             anchors.topMargin: NodoSystem.nodoTopMargin
-            text: qsTr("Change PIN")
+            text: qsTr("Change Lock PIN")
             height: NodoSystem.nodoItemHeight
             font.family: NodoSystem.fontUrbanist.name
             font.pixelSize: NodoSystem.buttonTextFontSize
@@ -211,7 +211,7 @@ Item {
                 else
                 {
                     nodoLockPinControlPopup.commandID = -1;
-                    nodoLockPinControlPopup.popupMessageText = systemMessages.messages[NodoMessages.Message.PINCodesAreDifferent]
+                    nodoLockPinControlPopup.popupMessageText = systemMessages.messages[NodoMessages.Message.PINCodesDoNotMatch]
                     nodoLockPinControlPopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Close]
                     nodoLockPinControlPopup.open();
                 }
