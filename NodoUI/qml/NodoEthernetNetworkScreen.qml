@@ -127,7 +127,7 @@ Item {
             anchors.left: createNewConnectionCanvas.left
             anchors.leftMargin: 14
             anchors.rightMargin: 14
-            height: createNewConnectionCanvas.height - createEthernetConnectionRect.height// - 18
+            height: createNewConnectionCanvas.height //- createEthernetConnectionRect.height// - 18
             visible: ethernetNetworkScreen.state === "" ? false : true
             color: nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn  : NodoSystem.dataFieldTextColorNightModeOff
 
@@ -317,7 +317,7 @@ Item {
     states: [
         State {
             name: "createNewConnectionRect";
-            PropertyChanges { target: createNewConnectionCanvas; height:defaultHeight + NodoSystem.nodoItemHeight }
+            PropertyChanges { target: createNewConnectionCanvas; height:defaultHeight + NodoSystem.nodoItemHeight +18}
         },
         State {
             name: ""
@@ -325,7 +325,7 @@ Item {
         },
         State {
             name: "showAdvancedConfigRect"
-            PropertyChanges { target: createNewConnectionCanvas; height: 438 + NodoSystem.nodoItemHeight }
+            PropertyChanges { target: createNewConnectionCanvas; height: 520 + NodoSystem.nodoItemHeight }
         }
     ]
 
