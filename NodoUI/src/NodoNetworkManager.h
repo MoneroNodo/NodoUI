@@ -53,6 +53,8 @@ public:
     Q_INVOKABLE bool getAPScanStatus(void);
 
 
+    Q_INVOKABLE bool getEthernetDetailsOpened(void);
+    Q_INVOKABLE void setEthernetDetailsOpened(bool);
     Q_INVOKABLE void forgetWiredNetwork(QString connectionPath);
     Q_INVOKABLE int getEthernetDeviceStatus(void);
     Q_INVOKABLE void setEthernetDeviceStatus(bool ethDeviceStatus);

@@ -19,6 +19,7 @@ NodoWiredController::NodoWiredController(QObject *parent)
     {
         m_nmCommon->getIP4Params(&m_device);
     }
+    m_detailsOpened = false;
 }
 
 /************private functions*******************/
@@ -94,6 +95,8 @@ QString NodoWiredController::packageConnections(void)
 
 void NodoWiredController::scanConnectionsThread(void)
 {
+    if (m_detailsOpened)
+        return;
     if(m_device.devicePath.isEmpty())
     {
         return;
