@@ -9,7 +9,7 @@ import NodoCanvas 1.0
 Item {
     id: addressPinControlScreen
     property int labelSize: 0
-    property int inputFieldWidth: 900
+    property int inputFieldWidth: 700
     property bool pinFieldReadOnly: false
 
     signal deleteMe(int screenID)
