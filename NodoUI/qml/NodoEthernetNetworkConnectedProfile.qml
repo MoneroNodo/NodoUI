@@ -177,11 +177,13 @@ NodoCanvas {
             {
                 mainRect.state = "showDetails"
                 networkManager.stopEthScan()
+                networkmanager.setEthernetDetailsOpened(true);
             }
             else
             {
                 mainRect.state = ""
                 networkManager.startEthScan()
+                networkmanager.setEthernetDetailsOpened(false);
             }
         }
     }
