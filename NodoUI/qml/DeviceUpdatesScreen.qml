@@ -67,6 +67,7 @@ Item {
         id: deviceUpdatesNodoSwitchRect
         anchors.top: deviceUpdateAllRect.bottom
         anchors.left: deviceUpdatesScreen.left
+        anchors.topMargin: NodoSystem.nodoTopMargin
         height: NodoSystem.nodoItemHeight
 
         NodoLabel {
