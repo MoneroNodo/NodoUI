@@ -100,7 +100,6 @@ Rectangle {
                 width: root.width - 2*feedBody.x
                 wrapMode: Text.WordWrap
                 textFormat: Text.RichText
-                color: nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn : NodoSystem.dataFieldTextColorNightModeOff
                 readOnly: true
                 selectByMouse: false
             }
