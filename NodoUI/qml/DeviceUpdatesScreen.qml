@@ -74,7 +74,6 @@ Item {
             height: deviceUpdatesNodoSwitchRect.height
             anchors.left: deviceUpdatesNodoSwitchRect.left
             anchors.top: deviceUpdatesNodoSwitchRect.top
-            labelWi
             text: qsTr("Nodo")
         }
 
