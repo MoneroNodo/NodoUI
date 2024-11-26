@@ -271,7 +271,7 @@ Item {
             anchors.top: createNewConnectionRect.bottom
             anchors.left: createNewConnectionRect.left
             anchors.topMargin: ethernetNetworkScreen.spacing
-            //height: NodoSystem.nodoItemHeight
+            height: NodoSystem.nodoItemHeight
             visible: ethernetNetworkScreen.state === "" ? false : true
 
             NodoButton {

@@ -74,7 +74,7 @@ Item {
             height: deviceUpdatesNodoSwitchRect.height
             anchors.left: deviceUpdatesNodoSwitchRect.left
             anchors.top: deviceUpdatesNodoSwitchRect.top
-            itemSize: 500
+            itemSize: labelSize
             text: qsTr("Nodo")
         }
 
