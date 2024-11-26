@@ -8,7 +8,7 @@ import NodoCanvas 1.0
 Item {
     id: deviceUpdatesScreen
     anchors.fill: parent
-    property int labelSize: 400
+    property int labelSize: 0
     property int nodoTopMargin: 20
 
     Component.onCompleted: {
@@ -74,7 +74,7 @@ Item {
             height: deviceUpdatesNodoSwitchRect.height
             anchors.left: deviceUpdatesNodoSwitchRect.left
             anchors.top: deviceUpdatesNodoSwitchRect.top
-            
+            labelWi
             text: qsTr("Nodo")
         }
 

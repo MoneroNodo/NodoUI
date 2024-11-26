@@ -9,7 +9,7 @@ import NodoCanvas 1.0
 Item {
     id: lockPinScreen
     property int labelSize: 0
-    property int inputFieldWidth: 620
+    property int inputFieldWidth: 640
     property bool pinFieldReadOnly: false
     property bool isLockPinEnabled: false
 
