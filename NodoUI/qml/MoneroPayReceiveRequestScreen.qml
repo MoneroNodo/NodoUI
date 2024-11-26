@@ -152,7 +152,7 @@ Item {
             anchors.left: blockConfirmationsRect.left
             anchors.top: blockConfirmationsRect.top
             height: blockConfirmationsRect.height
-            itemSize: labelSize + 30
+            itemSize: labelSize + 40
             width: labelSize + 100
             itemText: qsTr("Block Confirmations")
             valueText: "10"
