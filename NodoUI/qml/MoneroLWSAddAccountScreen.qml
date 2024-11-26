@@ -49,6 +49,9 @@ Item {
         itemText: systemMessages.messages[NodoMessages.Message.Address]  //LABEL "Address"
         valueText: ""
         height: NodoSystem.nodoItemHeight
+        validator: RegularExpressionValidator {
+            regularExpression: /^4[1-9A-HJ-NP-Za-km-z]{94}$/
+        }
     }
 
     NodoInputField {
@@ -61,6 +64,9 @@ Item {
         itemText: qsTr("Private Viewkey")
         valueText: ""
         height: NodoSystem.nodoItemHeight
+        validator: RegularExpressionValidator {
+            regularExpression: /^[a-f0-9]{64}$/
+        }
     }
 
     NodoButton {

@@ -68,18 +68,18 @@ Item {
             itemFontSize: 120
             valueFontSize: 120
 			
-			onClicked: {
-				if(valueText === "0.0000")
-				{
-					valueText: ""
-				}				
-            }
-						
-            onTextEditFinished: {
-                if(valueText === "")
+            onFocusChanged: {
+                if(focus && valueText === "0.0000")
+                {
+                    valueText: ""
+                }
+                else if (!focus && valueText == "")
                 {
                     valueText = "0.0000"
                 }
+            }
+
+            onTextEditFinished: {
 
                 xmrAmount = parseFloat(xmrRequestfield.valueText)
 
@@ -111,19 +111,18 @@ Item {
             itemFontSize: 120
             valueFontSize: 120
 
-			onClicked: {
-				if(valueText === "0.00")
-				{
-					valueText: ""
-				}
-            }
-			
-            onTextEditFinished: {
-                if(valueText === "")
+            onFocusChanged: {
+                if(focus && valueText === "0.00")
+                {
+                    valueText: ""
+                }
+                else if (!focus && valueText == "")
                 {
                     valueText = "0.00"
                 }
+            }
 
+            onTextEditFinished: {
                 xmrAmount = (parseFloat(fiatRequestfield.valueText)/exchangeRate)
 
                 if(xmrAmount > 9000000)
@@ -164,12 +163,13 @@ Item {
             }
 
             readOnlyFlag: zeroConfirmationSwitch.checked
-            onClicked: {
-                valueText: ""
-            }
 
-            onTextEditFinished: {
-                if(valueText === "")
+            onFocusChanged: {
+                if(focus && valueText === "10")
+                {
+                    valueText: ""
+                }
+                else if (!focus && valueText == "")
                 {
                     valueText = "10"
                 }

@@ -84,7 +84,7 @@ Item {
             onClicked: { moneroPayPageLoader.source = "MoneroPayReceiveMainScreen.qml" }
             enabled: false
             Connections {
-                target: receiveButton
+                target: moneroPayMainScreen
                 function onSetButtonState(state) {
                     receiveButton.enabled = (state && moneroPay.isDepositAddressSet())
                 }
