@@ -317,7 +317,7 @@ Item {
     states: [
         State {
             name: "createNewConnectionRect";
-            PropertyChanges { target: createNewConnectionCanvas; height:180 + NodoSystem.nodoItemHeight}
+            PropertyChanges { target: createNewConnectionCanvas; height:200 + NodoSystem.nodoItemHeight}
         },
         State {
             name: ""
@@ -325,7 +325,7 @@ Item {
         },
         State {
             name: "showAdvancedConfigRect"
-            PropertyChanges { target: createNewConnectionCanvas; height: 500 + NodoSystem.nodoItemHeight }
+            PropertyChanges { target: createNewConnectionCanvas; height: 520 + NodoSystem.nodoItemHeight }
         }
     ]
 
