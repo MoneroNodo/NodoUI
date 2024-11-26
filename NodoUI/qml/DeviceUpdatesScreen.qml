@@ -8,7 +8,7 @@ import NodoCanvas 1.0
 Item {
     id: deviceUpdatesScreen
     anchors.fill: parent
-    property int labelSize: 600
+    property int labelSize: 0
     property int nodoTopMargin: 20
 
     Component.onCompleted: {
@@ -22,7 +22,7 @@ Item {
     }
 
     function onCalculateMaximumTextLabelLength() {
-/*        if(deviceUpdatesNodoSwitchText.labelRectRoundSize > labelSize)
+        if(deviceUpdatesNodoSwitchText.labelRectRoundSize > labelSize)
             labelSize = deviceUpdatesNodoSwitchText.labelRectRoundSize
 
         if(deviceUpdatesMoneroDaemonSwitchText.labelRectRoundSize > labelSize)
@@ -32,7 +32,7 @@ Item {
             labelSize = deviceUpdatesMoneroLWSSwitchText.labelRectRoundSize
 
         if(deviceUpdatesMoneroPaySwitchText.labelRectRoundSize > labelSize)
-            labelSize = deviceUpdatesMoneroPaySwitchText.labelRectRoundSize */
+            labelSize = deviceUpdatesMoneroPaySwitchText.labelRectRoundSize
     }
     Rectangle {
         id: deviceUpdateAllRect
@@ -74,6 +74,7 @@ Item {
             height: deviceUpdatesNodoSwitchRect.height
             anchors.left: deviceUpdatesNodoSwitchRect.left
             anchors.top: deviceUpdatesNodoSwitchRect.top
+            itemSize: 500
             text: qsTr("Nodo")
         }
 
@@ -102,6 +103,7 @@ Item {
             height: deviceUpdatesMoneroDaemonSwitchRect.height
             anchors.left: deviceUpdatesMoneroDaemonSwitchRect.left
             anchors.top: deviceUpdatesMoneroDaemonSwitchRect.top
+            itemSize: labelSize
             text: qsTr("Monero Daemon")
         }
 
@@ -130,6 +132,7 @@ Item {
             height: deviceUpdatesMoneroLWSSwitchRect.height
             anchors.left: deviceUpdatesMoneroLWSSwitchRect.left
             anchors.top: deviceUpdatesMoneroLWSSwitchRect.top
+            itemSize: labelSize
             text: qsTr("Monero LWS")
         }
 
@@ -158,6 +161,7 @@ Item {
             height: deviceUpdatesMoneroPaySwitchRect.height
             anchors.left: deviceUpdatesMoneroPaySwitchRect.left
             anchors.top: deviceUpdatesMoneroPaySwitchRect.top
+            itemSize: labelSize
             text: qsTr("MoneroPay")
         }
 
