@@ -10,9 +10,9 @@ import QtWebView
 Item {
     id: moneroPayReceiveRequestScreen
 
-    property int labelSize: 320
-    property int inputFieldWidth: 600
-    property int addressFieldWidth: 1880
+    property int labelSize: 310
+    property int inputFieldWidth: 1890
+    property int addressFieldWidth: 1890
     property double exchangeRate
     property string exchangeName
     property double xmrAmount
@@ -52,7 +52,7 @@ Item {
         anchors.top: moneroPayReceiveRequestScreen.top
         anchors.left: moneroPayReceiveRequestScreen.left
         width: 1900
-        height: 135*2
+        height: 135*2 + NodoSystem.nodoTopMargin
         color: "black"
 
         NodoInputField {
@@ -60,7 +60,7 @@ Item {
             anchors.top: requestCurrenciesRect.top
             anchors.left: requestCurrenciesRect.left
             itemSize: labelSize
-            width: 1200
+            width: inputFieldWidth
             height: 135
             itemText: qsTr("XMR")
             valueText: "0.0000"
@@ -102,9 +102,8 @@ Item {
             anchors.top: xmrRequestfield.bottom
             anchors.left: requestCurrenciesRect.left
             anchors.topMargin: NodoSystem.nodoTopMargin
-            //anchors.leftMargin: 25
             itemSize: labelSize
-            width: 1200
+            width: inputFieldWidth
             height: 135
             itemText: moneroPayReceiveRequestScreen.exchangeName
             valueText: "0.00"
@@ -153,7 +152,7 @@ Item {
             anchors.left: blockConfirmationsRect.left
             anchors.top: blockConfirmationsRect.top
             height: blockConfirmationsRect.height
-            itemSize: labelSize
+            itemSize: labelSize + 30
             width: labelSize + 100
             itemText: qsTr("Block Confirmations")
             valueText: "10"
