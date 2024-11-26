@@ -153,7 +153,7 @@ Item {
             anchors.top: blockConfirmationsRect.top
             height: blockConfirmationsRect.height
             itemSize: labelSize + 40
-            width: labelSize + 100
+            width: labelSize + 140
             itemText: qsTr("Block Confirmations")
             valueText: "10"
             textFlag: Qt.ImhDigitsOnly
