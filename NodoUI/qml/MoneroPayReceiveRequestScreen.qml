@@ -10,9 +10,9 @@ import QtWebView
 Item {
     id: moneroPayReceiveRequestScreen
 
-    property int labelSize: 300
+    property int labelSize: 320
     property int inputFieldWidth: 600
-    property int addressFieldWidth: 1900
+    property int addressFieldWidth: 1880
     property double exchangeRate
     property string exchangeName
     property double xmrAmount
@@ -52,14 +52,14 @@ Item {
         anchors.top: moneroPayReceiveRequestScreen.top
         anchors.left: moneroPayReceiveRequestScreen.left
         width: 1900
-        height: 135
+        height: 135*2
         color: "black"
 
         NodoInputField {
             id: xmrRequestfield
             anchors.top: requestCurrenciesRect.top
             anchors.left: requestCurrenciesRect.left
-            itemSize: 210
+            itemSize: labelSize
             width: 1200
             height: 135
             itemText: qsTr("XMR")
@@ -99,11 +99,12 @@ Item {
 
         NodoInputField {
             id: fiatRequestfield
-            anchors.top: requestCurrenciesRect.top
-            anchors.left: xmrRequestfield.right
-            anchors.leftMargin: 25
-            itemSize: 210
-            width: 800
+            anchors.top: xmrRequestfield.bottom
+            anchors.left: requestCurrenciesRect.left
+            anchors.topMargin: NodoSystem.nodoTopMargin
+            //anchors.leftMargin: 25
+            itemSize: labelSize
+            width: 1200
             height: 135
             itemText: moneroPayReceiveRequestScreen.exchangeName
             valueText: "0.00"
@@ -147,14 +148,14 @@ Item {
         height: NodoSystem.nodoItemHeight
         color: "black"
 
-        NodoInputField{
+        NodoInputField {
             id: blockConfirmationsField
             anchors.left: blockConfirmationsRect.left
             anchors.top: blockConfirmationsRect.top
             height: blockConfirmationsRect.height
             itemSize: labelSize
             width: labelSize + 100
-            itemText:  qsTr("Block Confirmations")
+            itemText: qsTr("Block Confirmations")
             valueText: "10"
             textFlag: Qt.ImhDigitsOnly
             validator: RegularExpressionValidator {
