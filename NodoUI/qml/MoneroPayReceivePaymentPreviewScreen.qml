@@ -47,8 +47,8 @@ Item {
         anchors.topMargin: 1
         anchors.horizontalCenter: moneroPayReceivePaymentPreviewScreen.horizontalCenter
         color: "black"
-        width: 500
-        height: 500
+        width: 480
+        height: 480
 
         QtQuick2QREncode {
             id: qr
