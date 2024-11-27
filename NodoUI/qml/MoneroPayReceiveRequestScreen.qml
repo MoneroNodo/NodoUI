@@ -101,7 +101,7 @@ Item {
             id: fiatRequestfield
             anchors.top: xmrRequestfield.bottom
             anchors.left: requestCurrenciesRect.left
-            anchors.topMargin: NodoSystem.nodoTopMargin
+            anchors.topMargin: 2*(NodoSystem.nodoTopMargin)
             itemSize: labelSize
             width: inputFieldWidth
             height: 135
@@ -142,7 +142,7 @@ Item {
         id: blockConfirmationsRect
         anchors.left: moneroPayReceiveRequestScreen.left
         anchors.top: requestCurrenciesRect.bottom
-        anchors.topMargin: NodoSystem.nodoTopMargin
+        anchors.topMargin: 2*(NodoSystem.nodoTopMargin)
         anchors.right: descriptionInputfield.right
         height: NodoSystem.nodoItemHeight
         color: "black"
@@ -152,8 +152,8 @@ Item {
             anchors.left: blockConfirmationsRect.left
             anchors.top: blockConfirmationsRect.top
             height: blockConfirmationsRect.height
-            itemSize: labelSize + 50
-            width: labelSize + 150
+            itemSize: labelSize + 55
+            width: labelSize + 155
             itemText: qsTr("Block Confirmations")
             valueText: "10"
             textFlag: Qt.ImhDigitsOnly
@@ -207,11 +207,11 @@ Item {
         id: descriptionInputfield
         anchors.top: blockConfirmationsRect.bottom
         anchors.left: moneroPayReceiveRequestScreen.left
-        anchors.topMargin: NodoSystem.nodoTopMargin
+        anchors.topMargin: 2*(NodoSystem.nodoTopMargin)
         width: addressFieldWidth
         height: NodoSystem.nodoItemHeight
         itemSize: labelSize
-        itemText: qsTr("Note (Optional)")
+        itemText: qsTr("Note (optional)")
         valueText: ""
     }
 
