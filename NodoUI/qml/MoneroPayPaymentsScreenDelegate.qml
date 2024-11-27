@@ -95,7 +95,7 @@ NodoCanvas {
         anchors.leftMargin: 5
         height: NodoSystem.nodoItemHeight
         itemSize: 120
-        width: 500
+        width: 510
         itemText: "XMR"
         valueText: xmrAmount.toFixed(12)
     }
@@ -107,7 +107,7 @@ NodoCanvas {
         anchors.leftMargin: 5
         height: NodoSystem.nodoItemHeight
         itemSize: 120
-        width: 300
+        width: 320
         itemText: exchangeName
         valueText: fiatValue.toFixed(2)
     }
@@ -119,7 +119,7 @@ NodoCanvas {
         anchors.leftMargin: 5
         height: NodoSystem.nodoItemHeight
         itemSize: 220
-        width: 500
+        width: 470
         itemText: qsTr("Timestamp")
         valueText: timestamp
     }
