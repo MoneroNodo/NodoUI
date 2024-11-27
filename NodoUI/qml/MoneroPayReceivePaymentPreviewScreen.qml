@@ -47,8 +47,8 @@ Item {
         //anchors.topMargin: 1
         anchors.horizontalCenter: moneroPayReceivePaymentPreviewScreen.horizontalCenter
         color: "black"
-        width: 480
-        height: 480
+        width: 512
+        height: 512
 
         QtQuick2QREncode {
             id: qr
@@ -127,7 +127,7 @@ Item {
         itemSize: 230
         itemText: qsTr("Subaddress")
         height: NodoSystem.nodoItemHeight
-        valueFontSize: 27
+        valueFontSize: 28
     }
 
     NodoInfoField {
@@ -148,7 +148,7 @@ Item {
         anchors.top: moneroPayReceivePaymentPreviewScreen.top //anchors.top: descriptionPreviewField.top
         anchors.left: moneroPayReceivePaymentPreviewScreen.left
         //anchors.horizontalCenter: moneroPayReceivePaymentPreviewScreen.horizontalCenter
-        anchors.topMargin: NodoSystem.nodoTopMargin
+        //anchors.topMargin: NodoSystem.nodoTopMargin
         text: qsTr("New Payment")
         height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontUrbanist.name
