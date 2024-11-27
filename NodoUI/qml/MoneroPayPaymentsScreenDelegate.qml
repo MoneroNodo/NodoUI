@@ -67,7 +67,7 @@ NodoCanvas {
         anchors.topMargin: 15
         anchors.leftMargin: 8
         height: NodoSystem.nodoItemHeight
-        itemSize: labelSize - 40
+        itemSize: 180
         width: 495
         itemText: qsTr("Status")
         valueText: {
@@ -91,8 +91,8 @@ NodoCanvas {
         anchors.top: moneroPayReceivedPaymentStatusField.top
         anchors.leftMargin: 5
         height: NodoSystem.nodoItemHeight
-        itemSize: 100
-        width: 420
+        itemSize: 120
+        width: 500
         itemText: "XMR"
         valueText: xmrAmount.toFixed(12)
     }
@@ -103,8 +103,8 @@ NodoCanvas {
         anchors.top: moneroPayReceivedPaymentStatusField.top
         anchors.leftMargin: 5
         height: NodoSystem.nodoItemHeight
-        itemSize: 100
-        width: 360
+        itemSize: 120
+        width: 220
         itemText: exchangeName
         valueText: fiatValue.toFixed(2)
     }
@@ -115,7 +115,7 @@ NodoCanvas {
         anchors.top: moneroPayReceivedPaymentStatusField.top
         anchors.leftMargin: 5
         height: NodoSystem.nodoItemHeight
-        itemSize: 200
+        itemSize: 220
         width: 560
         itemText: qsTr("Timestamp")
         valueText: timestamp
@@ -127,7 +127,7 @@ NodoCanvas {
         anchors.top: moneroPayReceivedPaymentStatusField.bottom
         anchors.topMargin: fieldTopMargin
         height: NodoSystem.nodoItemHeight
-        itemSize: labelSize - 40
+        itemSize: 180
         width: 1880
         itemText: qsTr("Subaddress")
         valueText: depositAddress
