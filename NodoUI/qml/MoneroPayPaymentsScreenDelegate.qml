@@ -67,8 +67,8 @@ NodoCanvas {
         anchors.topMargin: 15
         anchors.leftMargin: 8
         height: NodoSystem.nodoItemHeight
-        itemSize: 180
-        width: 495
+        itemSize: 150
+        width: 350
         itemText: qsTr("Status")
         valueText: {
             switch (paymentStatus)
@@ -130,7 +130,7 @@ NodoCanvas {
         anchors.top: moneroPayReceivedPaymentStatusField.bottom
         anchors.topMargin: fieldTopMargin
         height: NodoSystem.nodoItemHeight
-        itemSize: 210
+        itemSize: 230
         width: 1880
         itemText: qsTr("Subaddress")
         valueText: depositAddress
