@@ -65,7 +65,7 @@ NodoCanvas {
         anchors.top: mainRect.top
         anchors.left: mainRect.left
         anchors.topMargin: 15
-        anchors.leftMargin: 14
+        anchors.leftMargin: 8
         height: NodoSystem.nodoItemHeight
         itemSize: labelSize - 40
         width: 495
@@ -131,7 +131,7 @@ NodoCanvas {
         width: 1880
         itemText: qsTr("Subaddress")
         valueText: depositAddress
-        valueFontSize: 26
+        valueFontSize: 28
     }
 
     NodoCanvas {
@@ -199,7 +199,7 @@ NodoCanvas {
         id: moneroPayReceivedQRCodeButton
         anchors.left: moneroPayReceivedRemovePaymentButton.right
         anchors.top: moneroPayReceivedRemovePaymentButton.top
-        anchors.leftMargin: 20
+        anchors.leftMargin: 25
         text: qsTr("View QR")
         height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontUrbanist.name
@@ -212,7 +212,7 @@ NodoCanvas {
                 mainRectPopup.qrCodeData = mainRectPopup.qrCodeData + "&tx_description=" + descriptionHTMLEncoded
             }
 
-            mainRectPopup.closeButtonText = qsTr("Dismiss")
+            mainRectPopup.closeButtonText = qsTr("Close")
             mainRectPopup.open();
         }
     }
