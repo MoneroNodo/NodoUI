@@ -74,16 +74,16 @@ NodoCanvas {
             switch (paymentStatus)
             {
                 case 1: // PAYMENT_STATUS_RECEIVED
-                qsTr("1 Received")
+                qsTr("Received")
                 break;
                 case 3: // PAYMENT_STATUS_PENDING
-                qsTr("3 Confirming")
+                qsTr("Confirming")
                 break;
                 case 2: // PAYMENT_STATUS_NOT_RECEIVED
-                qsTr("2 Not Received")
+                qsTr("Not Received")
                 break;
                 default: // PAYMENT_STATUS_NONE
-                paymentStatus + " ..."
+                qsTr("Waiting")
             }
         }
     }
