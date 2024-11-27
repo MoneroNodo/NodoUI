@@ -71,16 +71,19 @@ NodoCanvas {
         width: 495
         itemText: qsTr("Status")
         valueText: {
-            if(paymentStatus === 1)
+            switch (paymentStatus)
             {
+                case 1:
                 qsTr("Received")
-            }
-            else if (paymentStatus === 4)
-            {
+                break;
+                case 2:
+                qsTr("Pending")
+                break;
+                case 3:
                 qsTr("Not Received")
-            }
-            else {
-                ""
+                break;
+                default:
+                qsTr("Waiting")
             }
         }
     }

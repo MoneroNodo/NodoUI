@@ -133,6 +133,8 @@ Item {
             moneroPaySettingsScreenPopup.commandID = 0;
             moneroPaySettingsScreenPopup.applyButtonText = qsTr("Clear")
             moneroPaySettingsScreenPopup.open();
+            moneroPaySettingsAddressInput.valueText = ""
+            moneroPaySettingsViewkeyLabel.valueText = ""
         }
     }
 
