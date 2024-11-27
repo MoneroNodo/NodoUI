@@ -44,7 +44,7 @@ Item {
     Rectangle{
         id: qrCodeRect
         anchors.top: moneroPayReceivePaymentPreviewScreen.top
-        anchors.topMargin: 1
+        //anchors.topMargin: 1
         anchors.horizontalCenter: moneroPayReceivePaymentPreviewScreen.horizontalCenter
         color: "black"
         width: 480
@@ -145,8 +145,9 @@ Item {
 
     NodoButton {
         id: newPaymentButton
-        anchors.top: descriptionPreviewField.top
-        anchors.horizontalCenter: moneroPayReceivePaymentPreviewScreen.horizontalCenter
+        anchors.top: moneroPayReceivePaymentPreviewScreen.top //anchors.top: descriptionPreviewField.top
+        anchors.left: moneroPayReceivePaymentPreviewScreen.left
+        //anchors.horizontalCenter: moneroPayReceivePaymentPreviewScreen.horizontalCenter
         anchors.topMargin: NodoSystem.nodoTopMargin
         text: qsTr("New Payment")
         height: NodoSystem.nodoItemHeight
