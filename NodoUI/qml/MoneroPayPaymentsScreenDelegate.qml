@@ -9,7 +9,7 @@ NodoCanvas {
     id: mainRect
     property int componentWidth: 600
     property int fieldTopMargin: 5
-    color: "#181818"
+    color: "#1F1F1F"
     property int paymentIndex
     property int scanHeight: 0
     property int labelSize: 0
@@ -91,7 +91,7 @@ NodoCanvas {
         anchors.top: moneroPayReceivedPaymentStatusField.top
         anchors.leftMargin: 5
         height: NodoSystem.nodoItemHeight
-        itemSize: 90
+        itemSize: 100
         width: 390
         itemText: "XMR"
         valueText: xmrAmount.toFixed(12)
@@ -103,7 +103,7 @@ NodoCanvas {
         anchors.top: moneroPayReceivedPaymentStatusField.top
         anchors.leftMargin: 5
         height: NodoSystem.nodoItemHeight
-        itemSize: 90
+        itemSize: 100
         width: 390
         itemText: exchangeName
         valueText: fiatValue.toFixed(2)
@@ -115,7 +115,7 @@ NodoCanvas {
         anchors.top: moneroPayReceivedPaymentStatusField.top
         anchors.leftMargin: 5
         height: NodoSystem.nodoItemHeight
-        itemSize: 180
+        itemSize: 200
         width: 560
         itemText: qsTr("Timestamp")
         valueText: timestamp
@@ -128,20 +128,21 @@ NodoCanvas {
         anchors.topMargin: fieldTopMargin
         height: NodoSystem.nodoItemHeight
         itemSize: labelSize
-        width: 1850
+        width: 1880
         itemText: qsTr("Deposit Address")
         valueText: depositAddress
+        valueFontSize: 28
     }
 
     NodoCanvas {
         id: moneroPayReceivedTransactionIDField
         anchors.top: moneroPayReceivedDepositAddressField.bottom
         anchors.left: moneroPayReceivedPaymentStatusField.left
-        width: 1850
+        width: 1880
         height: paymentsList.contentHeight
         anchors.topMargin: fieldTopMargin
         anchors.bottomMargin: 30
-        color: "#181818"
+        color: "#1F1F1F"
         clip: true
 
         ListView {
@@ -174,7 +175,7 @@ NodoCanvas {
         anchors.topMargin: visible === true ? fieldTopMargin : 0
         height: visible === true ? NodoSystem.nodoItemHeight : 0
         itemSize: labelSize
-        width: 1850
+        width: 1880
         visible: description.length > 0 ? true : false
         itemText: qsTr("Note")
         valueText: description
