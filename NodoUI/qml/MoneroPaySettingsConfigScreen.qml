@@ -110,6 +110,8 @@ Item {
         isActive: (setButtonActive === true) && (moneroPaySettingsAddressInput.valueText.length === 95) && (moneroPaySettingsViewkeyLabel.valueText.length === 64)
         onClicked: {
             moneroPay.setDepositAddress(moneroPaySettingsAddressInput.valueText, moneroPaySettingsViewkeyLabel.valueText)
+            nodoControl.serviceManager("enable", "moneropay");
+            nodoControl.serviceManager("enable", "monero-wallet-rpc");
             nodoControl.serviceManager("restart", "moneropay");
             inputFieldReadOnly = true;
             clearButtonActive = true
