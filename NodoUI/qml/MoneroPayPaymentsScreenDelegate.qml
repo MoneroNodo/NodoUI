@@ -107,7 +107,7 @@ NodoCanvas {
         anchors.leftMargin: 5
         height: NodoSystem.nodoItemHeight
         itemSize: 120
-        width: 320
+        width: 340
         itemText: exchangeName
         valueText: fiatValue.toFixed(2)
     }
@@ -119,7 +119,7 @@ NodoCanvas {
         anchors.leftMargin: 5
         height: NodoSystem.nodoItemHeight
         itemSize: 220
-        width: 470
+        width: 460
         itemText: qsTr("Timestamp")
         valueText: timestamp
     }
