@@ -41,7 +41,7 @@ NodoCanvas {
     function updatePaymentStatus() {
         xmrAmount = moneroPay.getPaymentAmount(paymentIndex)/1000000000000;
         paymentStatus = moneroPay.getPaymentStatus(paymentIndex)
-        var dateTime = Qt.formatDateTime(moneroPay.getPaymentTimestamp(paymentIndex), "d MMM yyyy h:mm AP") + " UTC"
+        var dateTime = Qt.formatDateTime(moneroPay.getPaymentTimestamp(paymentIndex), "d MMM h:mm AP") + " UTC"
         timestamp = dateTime.toUpperCase()
         depositAddress = moneroPay.getPaymentDepositAddress(paymentIndex)
         description = moneroPay.getPaymentDescription(paymentIndex)
@@ -68,7 +68,7 @@ NodoCanvas {
         anchors.leftMargin: 8
         height: NodoSystem.nodoItemHeight
         itemSize: 150
-        width: 350
+        width: 400
         itemText: qsTr("Status")
         valueText: {
             switch (paymentStatus)
@@ -119,7 +119,7 @@ NodoCanvas {
         anchors.leftMargin: 5
         height: NodoSystem.nodoItemHeight
         itemSize: 220
-        width: 560
+        width: 500
         itemText: qsTr("Timestamp")
         valueText: timestamp
     }
