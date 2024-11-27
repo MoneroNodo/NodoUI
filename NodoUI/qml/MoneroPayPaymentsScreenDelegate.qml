@@ -83,7 +83,7 @@ NodoCanvas {
                 qsTr("2 Not Received")
                 break;
                 default: // PAYMENT_STATUS_NONE
-								paymentStatus + " ..."
+                paymentStatus + " ..."
             }
         }
     }
