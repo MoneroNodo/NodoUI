@@ -104,7 +104,7 @@ NodoCanvas {
         anchors.leftMargin: 5
         height: NodoSystem.nodoItemHeight
         itemSize: 120
-        width: 220
+        width: 300
         itemText: exchangeName
         valueText: fiatValue.toFixed(2)
     }
@@ -127,11 +127,11 @@ NodoCanvas {
         anchors.top: moneroPayReceivedPaymentStatusField.bottom
         anchors.topMargin: fieldTopMargin
         height: NodoSystem.nodoItemHeight
-        itemSize: 180
+        itemSize: 210
         width: 1880
         itemText: qsTr("Subaddress")
         valueText: depositAddress
-        valueFontSize: 28
+        valueFontSize: 27
     }
 
     NodoCanvas {
