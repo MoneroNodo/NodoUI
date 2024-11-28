@@ -34,6 +34,7 @@ Item {
         if(deviceUpdatesMoneroPaySwitchText.labelRectRoundSize > labelSize)
             labelSize = deviceUpdatesMoneroPaySwitchText.labelRectRoundSize
     }
+
     Rectangle {
         id: deviceUpdateAllRect
         anchors.top: deviceUpdatesScreen.top
@@ -42,8 +43,8 @@ Item {
 
         NodoButton {
             id: deviceUpdateAllButton
-            anchors.top: deviceUpdatesScreen.top
-            anchors.left: deviceUpdatesScreen.left
+            anchors.top: deviceUpdateAllRect.top
+            anchors.left: deviceUpdateAllRect.left
             height: NodoSystem.nodoItemHeight
             font.family: NodoSystem.fontUrbanist.name
             font.pixelSize: NodoSystem.buttonTextFontSize
