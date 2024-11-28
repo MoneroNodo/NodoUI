@@ -10,7 +10,7 @@ NodoCanvas {
 
     property int networkDelegateItemHeight: NodoSystem.nodoItemHeight
     property int labelSize: 200
-    property int buttonSize: 220
+    property int buttonSize: 300 
     property int defaultHeight: 100
 
     property string ssidName
@@ -81,19 +81,19 @@ NodoCanvas {
         anchors.left: mainRect.left
         anchors.topMargin: connectButton.y + (ssidNameLabel.paintedHeight)/2
         anchors.leftMargin: 20
-        font.pixelSize: NodoSystem.infoFieldItemFontSize
+        font.pixelSize: NodoSystem.infoFieldItemFontSize + 2
         font.family: NodoSystem.fontUrbanist.name
         height: 40
         text: mainRect.ssidName
-        color: nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn  : NodoSystem.dataFieldTextColorNightModeOff
+        color: nodoControl.appTheme ? NodoSystem.highlightedColorNightModeOn  : NodoSystem.highlightedColorNightModeOff
     }
 
     NodoButton {
         id: connectButton
         anchors.top: mainRect.top
         anchors.right: mainRect.right
-        anchors.topMargin: 18
-        anchors.rightMargin: 11
+        anchors.topMargin: 14
+        anchors.rightMargin: 14
         width: mainRect.buttonSize
         height: networkDelegateItemHeight
         font.pixelSize: NodoSystem.infoFieldItemFontSize
@@ -103,9 +103,10 @@ NodoCanvas {
         fitMinimal: true
         onClicked: {
             connectButton.isActive = false
-            connectButton.text = systemMessages.messages[NodoMessages.Message.Disconnecting]
+            connectButton.text = systemMessages.messages[NodoMessages.Message.Disconnecting] //qsTr("Disconnecting")
             connectButton.update()
             networkManager.disconnectFromWiFi()
+            mainRect.state = "" //Added later
         }
     }
 
@@ -113,8 +114,8 @@ NodoCanvas {
         id: forgetButton
         anchors.top: mainRect.top
         anchors.right: connectButton.left
-        anchors.topMargin: 18
-        anchors.rightMargin: 10
+        anchors.topMargin: 14
+        anchors.rightMargin: 20
         width: mainRect.buttonSize
         height: networkDelegateItemHeight
         font.pixelSize: NodoSystem.infoFieldItemFontSize
@@ -132,10 +133,10 @@ NodoCanvas {
         id: ssidSignalStrengthRect
         anchors.top: forgetButton.top
         anchors.right: forgetButton.left
-        anchors.rightMargin: 18
-        anchors.topMargin: (connectButton.height - height)/2
-        width: 48
-        height: 48
+        anchors.rightMargin: 20
+        anchors.topMargin: ((connectButton.height - height)/2) -4
+        width: 84
+        height: 84
         color: "transparent"
 
         Image {
@@ -169,10 +170,12 @@ NodoCanvas {
 
         Image {
             id: ssidEncryptionImage
-            anchors.right: ssidSignalStrengthImage.right
-            anchors.bottom: ssidSignalStrengthImage.bottom
-            width: 18
-            height: 18
+            anchors.top: ssidSignalStrengthRect.top
+            anchors.right: ssidSignalStrengthImage.left
+            anchors.rightMargin: 15
+            anchors.topMargin: 14
+            width: 60
+            height: 60
             visible:
             {
                 var ency = ssidEncryption
@@ -197,9 +200,9 @@ NodoCanvas {
         anchors.top: ssidSignalStrengthRect.bottom
         anchors.left: mainRect.left
         anchors.right: mainRect.right
-        anchors.leftMargin: 11
-        anchors.rightMargin: 11
-        anchors.topMargin: 10
+        anchors.leftMargin: 14
+        anchors.rightMargin: 14
+        anchors.topMargin: 5
         height: frequencyField.y + frequencyField.height
         visible:  mainRect.state === "showDetails" ? true : false
         color: "transparent"
@@ -208,11 +211,11 @@ NodoCanvas {
             id: ipField
             anchors.left: showDetailsRect.left
             anchors.top: showDetailsRect.top
-            anchors.topMargin: 10//mainRect.spacing
+            anchors.topMargin: 5//mainRect.spacing
             width: showDetailsRect.width
             itemSize: labelSize
             height: networkDelegateItemHeight
-            itemText: systemMessages.messages[NodoMessages.Message.IPAddress]
+            itemText: systemMessages.messages[NodoMessages.Message.IPAddress] //qsTr("Address")
             valueText: mainRect.ssidIP
         }
 
@@ -224,7 +227,7 @@ NodoCanvas {
             width: showDetailsRect.width
             itemSize: labelSize
             height:  networkDelegateItemHeight
-            itemText: systemMessages.messages[NodoMessages.Message.Router]
+            itemText: systemMessages.messages[NodoMessages.Message.Router] //qsTr("Router")
             valueText: mainRect.ssidGateway
         }
 
@@ -236,7 +239,7 @@ NodoCanvas {
             width: showDetailsRect.width
             itemSize: labelSize
             height: networkDelegateItemHeight
-            itemText: systemMessages.messages[NodoMessages.Message.SignalStrength]
+            itemText: systemMessages.messages[NodoMessages.Message.SignalStrength] //qsTr("Signal Strength")
             valueText: mainRect.ssidSignalStrength + "%"
         }
 
@@ -248,7 +251,7 @@ NodoCanvas {
             width: showDetailsRect.width
             itemSize: labelSize
             height: networkDelegateItemHeight
-            itemText: systemMessages.messages[NodoMessages.Message.SecurityType]
+            itemText: systemMessages.messages[NodoMessages.Message.SecurityType] //qsTr("Security Type")
             valueText: mainRect.ssidEncryption
         }
 
@@ -260,7 +263,7 @@ NodoCanvas {
             width: showDetailsRect.width
             itemSize: labelSize
             height: networkDelegateItemHeight
-            itemText: systemMessages.messages[NodoMessages.Message.Frequency]
+            itemText: systemMessages.messages[NodoMessages.Message.Frequency] //qsTr("Frequency")
             valueText: {
                 var freq = mainRect.ssidFrequency
                 freq.toFixed(1) + " GHz"
@@ -288,7 +291,7 @@ NodoCanvas {
     states: [
         State {
             name: "showDetails";
-            PropertyChanges { target: mainRect; height: defaultHeight + showDetailsRect.height }
+            PropertyChanges { target: mainRect; height: defaultHeight + showDetailsRect.height + 10}
         },
         State {
             name: ""

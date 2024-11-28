@@ -36,7 +36,7 @@ Item {
         Address,
         Port,
         Loading,
-        PINCodesAreDifferent,
+        PINCodesDoNotMatch,
         FailedToChangePassword,
         PasswordChangedSuccessfully,
         InputFieldCantBeEmpty,
@@ -83,18 +83,18 @@ Item {
         qsTr("Cable disconnected!"),
         qsTr("Address"),
         qsTr("Port"),
-        qsTr("<loading>"),
-        qsTr("PIN codes are different."),
-        qsTr("Failed to change password."),
-        qsTr("Password changed successfully."),
-        qsTr("Input field can't be Empty!"),
+        qsTr("Loading"),
+        qsTr("PIN codes do not match"),
+        qsTr("Failed to change password"),
+        qsTr("Password changed successfully"),
+        qsTr("Input field can't be empty!"),
         qsTr("This process will reset Nodo to factory defaults. All settings and user info will be lost. Begin factory reset?"),
         qsTr("Accept"),
         qsTr("Restoring Nodo to factory defaults..."),
         qsTr("Completed factory reset, now rebooting..."),
         qsTr("Blockchain storage not found!"),
         qsTr("New blockchain storage found!"),
-        qsTr("Old password is wrong!")
+        qsTr("Old password is incorrect!")
     ]
 
 
@@ -109,7 +109,6 @@ Item {
         CableDisconnected,
         SomethingIsWrong,
         NewPinIsSet,
-        RestartingBlockExplorerFailed,
         PasswordDoesntMeetRequirements,
         PasswordsDontMatch
     }
@@ -125,9 +124,8 @@ Item {
         qsTr("Cable disconnected!"),
         qsTr("Something is wrong!"),
         qsTr("New PIN is set successfully!"),
-        qsTr("Failed to change Block Explorer Service!"),
-        qsTr("Password doesn't meet requirements."),
-        qsTr("Passwords do not match.")
+        qsTr("Password doesn't meet requirements"),
+        qsTr("Passwords do not match")
     ]
 
     enum NetworkStatusMessages {
@@ -153,9 +151,6 @@ Item {
     property var serviceStatusMessages: [
         qsTr("Active"),
         qsTr("Inactive"),
-        qsTr("Activating"),
+        qsTr("Starting"),
     ]
 }
-
-
-

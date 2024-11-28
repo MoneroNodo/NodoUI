@@ -18,6 +18,7 @@ Item {
         deviceUpdatesMoneroDaemonSwitch.checked = nodoConfig.getUpdateStatus("monero")
         deviceUpdatesMoneroLWSSwitch.checked = nodoConfig.getUpdateStatus("lws")
         deviceUpdatesMoneroPaySwitch.checked = nodoConfig.getUpdateStatus("pay")
+        deviceUpdateAllButton.isActive = !nodoConfig.isUpdateLocked()
     }
 
     function onCalculateMaximumTextLabelLength() {
@@ -35,8 +36,38 @@ Item {
     }
 
     Rectangle {
-        id: deviceUpdatesNodoSwitchRect
+        id: deviceUpdateAllRect
+        anchors.top: deviceUpdatesScreen.top
         anchors.left: deviceUpdatesScreen.left
+        height: NodoSystem.nodoItemHeight
+
+        NodoButton {
+            id: deviceUpdateAllButton
+            anchors.top: deviceUpdateAllRect.top
+            anchors.left: deviceUpdateAllRect.left
+            height: NodoSystem.nodoItemHeight
+            font.family: NodoSystem.fontUrbanist.name
+            font.pixelSize: NodoSystem.buttonTextFontSize
+            text: qsTr("Check for Updates")
+            onClicked: {
+                deviceUpdateAllButton.isActive = false
+                nodoControl.updateDevice()
+            }
+
+            Connections {
+                target: nodoConfig
+                function onLockGone() {
+                    deviceUpdateAllButton.isActive = true
+                }
+            }
+        }
+    }
+
+    Rectangle {
+        id: deviceUpdatesNodoSwitchRect
+        anchors.top: deviceUpdateAllRect.bottom
+        anchors.left: deviceUpdatesScreen.left
+        anchors.topMargin: NodoSystem.nodoTopMargin
         height: NodoSystem.nodoItemHeight
 
         NodoLabel {
@@ -44,6 +75,7 @@ Item {
             height: deviceUpdatesNodoSwitchRect.height
             anchors.left: deviceUpdatesNodoSwitchRect.left
             anchors.top: deviceUpdatesNodoSwitchRect.top
+            itemSize: labelSize
             text: qsTr("Nodo")
         }
 
@@ -72,6 +104,7 @@ Item {
             height: deviceUpdatesMoneroDaemonSwitchRect.height
             anchors.left: deviceUpdatesMoneroDaemonSwitchRect.left
             anchors.top: deviceUpdatesMoneroDaemonSwitchRect.top
+            itemSize: labelSize
             text: qsTr("Monero Daemon")
         }
 
@@ -91,7 +124,7 @@ Item {
     Rectangle {
         id: deviceUpdatesMoneroLWSSwitchRect
         anchors.left: deviceUpdatesScreen.left
-        anchors.top: deviceUpdatesMoneroDaemonSwitchText.bottom
+        anchors.top: deviceUpdatesMoneroDaemonSwitchRect.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         height: NodoSystem.nodoItemHeight
 
@@ -100,6 +133,7 @@ Item {
             height: deviceUpdatesMoneroLWSSwitchRect.height
             anchors.left: deviceUpdatesMoneroLWSSwitchRect.left
             anchors.top: deviceUpdatesMoneroLWSSwitchRect.top
+            itemSize: labelSize
             text: qsTr("Monero LWS")
         }
 
@@ -128,6 +162,7 @@ Item {
             height: deviceUpdatesMoneroPaySwitchRect.height
             anchors.left: deviceUpdatesMoneroPaySwitchRect.left
             anchors.top: deviceUpdatesMoneroPaySwitchRect.top
+            itemSize: labelSize
             text: qsTr("MoneroPay")
         }
 

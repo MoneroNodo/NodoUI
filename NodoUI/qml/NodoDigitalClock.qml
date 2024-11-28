@@ -126,9 +126,10 @@ Item {
 
         Text {
             id: digitalClockDate
-            anchors.left: digitalClockBackground.left
+            //anchors.left: digitalClockBackground.left
             anchors.top: digitalClockDateBackground.bottom
-            anchors.leftMargin: 50
+            anchors.horizontalCenter: digitalClockBackground.horizontalCenter
+            //anchors.leftMargin: 50
             width: 800
             height: 200
             text: Qt.formatDateTime(nodoControl.getChangedDateTime(), "dddd, d MMMM yyyy")

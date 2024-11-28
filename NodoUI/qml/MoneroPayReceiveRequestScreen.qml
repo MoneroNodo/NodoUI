@@ -10,9 +10,9 @@ import QtWebView
 Item {
     id: moneroPayReceiveRequestScreen
 
-    property int labelSize: 300
-    property int inputFieldWidth: 600
-    property int addressFieldWidth: 1900
+    property int labelSize: 310
+    property int inputFieldWidth: 1890
+    property int addressFieldWidth: 1890
     property double exchangeRate
     property string exchangeName
     property double xmrAmount
@@ -52,15 +52,15 @@ Item {
         anchors.top: moneroPayReceiveRequestScreen.top
         anchors.left: moneroPayReceiveRequestScreen.left
         width: 1900
-        height: 135
+        height: 135*2 + NodoSystem.nodoTopMargin
         color: "black"
 
         NodoInputField {
             id: xmrRequestfield
             anchors.top: requestCurrenciesRect.top
             anchors.left: requestCurrenciesRect.left
-            itemSize: 210
-            width: 1200
+            itemSize: labelSize
+            width: inputFieldWidth
             height: 135
             itemText: qsTr("XMR")
             valueText: "0.0000"
@@ -68,18 +68,18 @@ Item {
             itemFontSize: 120
             valueFontSize: 120
 			
-			onClicked: {
-				if(valueText === "0.0000")
-				{
-					valueText: ""
-				}				
-            }
-						
-            onTextEditFinished: {
-                if(valueText === "")
+            onFocusChanged: {
+                if(focus && valueText === "0.0000")
+                {
+                    valueText: ""
+                }
+                else if (!focus && valueText == "")
                 {
                     valueText = "0.0000"
                 }
+            }
+
+            onTextEditFinished: {
 
                 xmrAmount = parseFloat(xmrRequestfield.valueText)
 
@@ -99,11 +99,11 @@ Item {
 
         NodoInputField {
             id: fiatRequestfield
-            anchors.top: requestCurrenciesRect.top
-            anchors.left: xmrRequestfield.right
-            anchors.leftMargin: 25
-            itemSize: 210
-            width: 800
+            anchors.top: xmrRequestfield.bottom
+            anchors.left: requestCurrenciesRect.left
+            anchors.topMargin: 2*(NodoSystem.nodoTopMargin)
+            itemSize: labelSize
+            width: inputFieldWidth
             height: 135
             itemText: moneroPayReceiveRequestScreen.exchangeName
             valueText: "0.00"
@@ -111,19 +111,18 @@ Item {
             itemFontSize: 120
             valueFontSize: 120
 
-			onClicked: {
-				if(valueText === "0.00")
-				{
-					valueText: ""
-				}
-            }
-			
-            onTextEditFinished: {
-                if(valueText === "")
+            onFocusChanged: {
+                if(focus && valueText === "0.00")
+                {
+                    valueText: ""
+                }
+                else if (!focus && valueText == "")
                 {
                     valueText = "0.00"
                 }
+            }
 
+            onTextEditFinished: {
                 xmrAmount = (parseFloat(fiatRequestfield.valueText)/exchangeRate)
 
                 if(xmrAmount > 9000000)
@@ -143,19 +142,19 @@ Item {
         id: blockConfirmationsRect
         anchors.left: moneroPayReceiveRequestScreen.left
         anchors.top: requestCurrenciesRect.bottom
-        anchors.topMargin: NodoSystem.nodoTopMargin
+        anchors.topMargin: 2*(NodoSystem.nodoTopMargin)
         anchors.right: descriptionInputfield.right
         height: NodoSystem.nodoItemHeight
         color: "black"
 
-        NodoInputField{
+        NodoInputField {
             id: blockConfirmationsField
             anchors.left: blockConfirmationsRect.left
             anchors.top: blockConfirmationsRect.top
             height: blockConfirmationsRect.height
-            itemSize: labelSize
-            width: labelSize + 100
-            itemText:  qsTr("Block Confirmations")
+            itemSize: labelSize + 55
+            width: labelSize + 155
+            itemText: qsTr("Block Confirmations")
             valueText: "10"
             textFlag: Qt.ImhDigitsOnly
             validator: RegularExpressionValidator {
@@ -164,12 +163,13 @@ Item {
             }
 
             readOnlyFlag: zeroConfirmationSwitch.checked
-            onClicked: {
-                valueText: ""
-            }
 
-            onTextEditFinished: {
-                if(valueText === "")
+            onFocusChanged: {
+                if(focus && valueText === "10")
+                {
+                    valueText: ""
+                }
+                else if (!focus && valueText == "")
                 {
                     valueText = "10"
                 }
@@ -207,11 +207,11 @@ Item {
         id: descriptionInputfield
         anchors.top: blockConfirmationsRect.bottom
         anchors.left: moneroPayReceiveRequestScreen.left
-        anchors.topMargin: NodoSystem.nodoTopMargin
+        anchors.topMargin: 2*(NodoSystem.nodoTopMargin)
         width: addressFieldWidth
         height: NodoSystem.nodoItemHeight
         itemSize: labelSize
-        itemText: qsTr("Note (Optional)")
+        itemText: qsTr("Note (optional)")
         valueText: ""
     }
 

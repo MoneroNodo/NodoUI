@@ -9,7 +9,7 @@ import QtQuick2QREncode 1.0
 Item {
     id: networksTorScreen
     property int labelSize: 0
-    property int infoFieldWidth: 1200
+    property int infoFieldWidth: 1320
     property int torPort
     property string torOnionAddress
     property bool torSwitchStatus
@@ -156,6 +156,7 @@ Item {
         itemSize: labelSize
         itemText: qsTr("Onion Address")
         valueText: networksTorScreen.torOnionAddress
+        valueFontSize: 28
     }
 
     NodoInfoField {
@@ -166,7 +167,7 @@ Item {
         width: infoFieldWidth
         height: NodoSystem.nodoItemHeight
         itemSize: labelSize
-        itemText: systemMessages.messages[NodoMessages.Message.Port]
+        itemText: systemMessages.messages[NodoMessages.Message.Port] //qstr("Port")
         valueText: networksTorScreen.torPort
     }
 
@@ -175,7 +176,7 @@ Item {
         anchors.right: networksTorScreen.right
         anchors.top: networksTorScreen.top
         anchors.topMargin: NodoSystem.nodoTopMargin
-        anchors.rightMargin: 100
+        anchors.rightMargin: 12
         color: "black"
         width: 512
         height: 512

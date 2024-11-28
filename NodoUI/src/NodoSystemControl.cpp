@@ -128,6 +128,14 @@ void NodoSystemControl::restartDevice()
     m_dbusController->restart();
 }
 
+void NodoSystemControl::updateDevice()
+{
+    QTimer *t = new QTimer(m_configParser);
+    connect(t, SIGNAL(timeout()), m_configParser, SLOT(checkLock()));
+    t->start(3000);
+    m_dbusController->update();
+}
+
 void NodoSystemControl::shutdownDevice()
 {
     m_dbusController->shutdown();

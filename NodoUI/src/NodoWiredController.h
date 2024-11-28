@@ -25,6 +25,8 @@ public:
     int getDeviceSpeed(void);
     QString getIP(void);
     void requestConnectionStateUpdate(void);
+    bool getDetailsOpened(void);
+    void setDetailsOpened(bool);
 
 
 signals:
@@ -36,12 +38,11 @@ private:
     NetworkManagerCommon *m_nmCommon;
     QDBusInterface *m_interface;
     m_device_config m_device;
+    bool m_detailsOpened = false;
 
     void getActiveConnection(void);
     QString packageConnections(void);
     void getDeviceSpeed(m_device_config *dev);
-
-
 
 private slots:
     void updateNetworkConfig(unsigned int new_state, unsigned int old_state, unsigned int reason);

@@ -68,13 +68,13 @@ Item {
                 if((true === priceTicker.isCurrencyReceived()) && (-1 !== currencyRate))
                 {
                     exchangeSymbolText.text = nodoCurrencies.currencySymbols[priceTicker.getCurrentCurrencyIndex()]
-                    exchangeRateText.text = currencyRate
+                    exchangeRateText.text = priceTicker.getCurrencyString()
                 }
             }
 
             function onCurrencyReceived() {
                 exchangeSymbolText.text = nodoCurrencies.currencySymbols[priceTicker.getCurrentCurrencyIndex()]
-                exchangeRateText.text = priceTicker.getCurrency()
+                exchangeRateText.text = priceTicker.getCurrencyString()
             }
         }
 
@@ -168,10 +168,11 @@ Item {
                 text: qsTr("MONEROPAY")
                 font.family: NodoSystem.fontUrbanist.name
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
-                onClicked: {
-                    pageLoader.source = "MoneroPayMainScreen.qml"
-                    pageLoader.anchors.topMargin = 0
-                }
+								enabled: false
+                // onClicked: {
+                //     pageLoader.source = "MoneroPayMainScreen.qml"
+                //     pageLoader.anchors.topMargin = 0
+                // }
             }
 
             NodoTabButton {

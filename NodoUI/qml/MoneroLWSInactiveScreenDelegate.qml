@@ -7,8 +7,8 @@ import NodoCanvas 1.0
 
 NodoCanvas {
     id: mainRect
-    width: 1900
-    height: 178
+    width: 1880
+    height: 196
     color: nodoControl.appTheme ? NodoSystem.dataFieldTextBGColorNightModeOn  : NodoSystem.dataFieldTextBGColorNightModeOff
     property string inactiveAddress: ""
     property int scanHeight: 0
@@ -32,12 +32,13 @@ NodoCanvas {
         anchors.right: mainRect.right
         anchors.top: mainRect.top
         anchors.topMargin: 10
-        anchors.leftMargin: 10
-        anchors.rightMargin: 10
-        itemSize: 0
+        anchors.leftMargin: 8
+        anchors.rightMargin: 8
+        itemSize: 180
         height: NodoSystem.nodoItemHeight
-        itemText: systemMessages.messages[NodoMessages.Message.Address]
+        itemText: systemMessages.messages[NodoMessages.Message.Address] //Label "Address"
         valueText: inactiveAddress
+        valueFontSize: 28
     }
 
 
@@ -46,9 +47,9 @@ NodoCanvas {
         anchors.left: moneroLWSinactiveAddressField.left
         anchors.top: moneroLWSinactiveAddressField.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
-        width: labelSize + 300
+        itemSize: 180
+        width: 400
         height: NodoSystem.nodoItemHeight
-        itemSize: labelSize
         itemText: qsTr("Height")
         valueText: scanHeight
     }
@@ -71,7 +72,7 @@ NodoCanvas {
         id: moneroLWSDeleteButton
         anchors.left: moneroLWSReactivateButton.right
         anchors.top: moneroLWSinactiveHeightField.top
-        anchors.leftMargin: 16
+        anchors.leftMargin: 20
         text: qsTr("Delete")
         height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontUrbanist.name

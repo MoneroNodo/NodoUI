@@ -7,8 +7,8 @@ import NodoCanvas 1.0
 
 NodoCanvas {
     id: mainRect
-    width: 1900
-    height: 263
+    width: 1880
+    height: 196
     color: nodoControl.appTheme ? NodoSystem.dataFieldTextBGColorNightModeOn  : NodoSystem.dataFieldTextBGColorNightModeOff
     property string activeAddress: ""
     property int scanHeight: 0
@@ -32,12 +32,13 @@ NodoCanvas {
         anchors.right: mainRect.right
         anchors.top: mainRect.top
         anchors.topMargin: 10
-        anchors.leftMargin: 10
-        anchors.rightMargin: 10
-        itemSize: 0
+        anchors.leftMargin: 8
+        anchors.rightMargin: 8
+        itemSize: 180
         height: NodoSystem.nodoItemHeight
         itemText: systemMessages.messages[NodoMessages.Message.Address] //qsTr("Address")
         valueText: activeAddress
+        valueFontSize: 28 
     }
 
 
@@ -46,9 +47,9 @@ NodoCanvas {
         anchors.left: moneroLWSActiveAddressField.left
         anchors.top: moneroLWSActiveAddressField.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
-        width: labelSize+300
+        itemSize: 180
+        width: 400
         height: NodoSystem.nodoItemHeight
-        itemSize: labelSize
         itemText: qsTr("Height")
         valueText: scanHeight
     }
@@ -69,10 +70,10 @@ NodoCanvas {
 
     NodoInputField {
         id: moneroLWSRescanHeightInput
-        anchors.left: moneroLWSActiveAddressField.left
-        anchors.top: moneroLWSActiveHeightField.bottom
-        anchors.topMargin: NodoSystem.nodoTopMargin
-        width: 600
+        anchors.left: moneroLWSDeactivateButton.right
+        anchors.top: moneroLWSActiveHeightField.top
+        anchors.leftMargin: 20
+        width: labelSize + 250
         height: NodoSystem.nodoItemHeight
         itemText: qsTr("Rescan Height")
         valueText: ""

@@ -8,7 +8,7 @@ import NodoCanvas 1.0
 Item {
     id: nodePrivateNodeScreen
     property int labelSize: 0
-    property int inputFieldWidth: 600
+    property int inputFieldWidth: 900
     property bool isRPCEnabled
     property int rpcPort
 

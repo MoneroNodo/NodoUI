@@ -6,21 +6,22 @@ import NodoSystem 1.1
 import NodoCanvas 1.0
 
 Item {
+	  property bool syncDoneSyncDone: false
     id: moneroPayMainScreen
     anchors.fill: parent
     anchors.leftMargin: NodoSystem.subMenuLeftMargin
     signal setButtonState(bool state)
 
     Component.onCompleted: {
-		if(100 === syncInfo.getSyncPercentage() && moneroPay.isDepositAddressSet())
-        {
-            settingsButton.enabled = true
-            paymentsButton.checked = false
-            receiveButton.enabled = true
-            receiveButton.checked = true
-            receiveButton.clicked()
-        }
-        else
+		// if(100 === syncInfo.getSyncPercentage() && moneroPay.isDepositAddressSet())
+        // {
+            // paymentsButton.checked = false
+            // settingsButton.enabled = true
+            // receiveButton.enabled = true
+            // receiveButton.checked = true
+            // receiveButton.clicked()
+        // }
+        // else
         {
             paymentsButton.checked = true
             paymentsButton.enabled = true
@@ -35,7 +36,7 @@ Item {
     Connections {
         target: syncInfo
         function onSyncDone() {
-            receiveButton.syncDoneSyncDone = true
+            moneroPayMainScreen.setButtonState(true);
         }
     }
 
@@ -75,7 +76,6 @@ Item {
         }
 
         NodoTabButton {
-            property bool syncDoneSyncDone: false
             id: receiveButton
             y: (moneroPayMainMenuBar.height - receiveButton.height)/2
             text: qsTr("RECEIVE")
@@ -84,9 +84,10 @@ Item {
             onClicked: { moneroPayPageLoader.source = "MoneroPayReceiveMainScreen.qml" }
             enabled: false
             Connections {
-                target: receiveButton
+                target: moneroPayMainScreen
                 function onSetButtonState(state) {
-                    receiveButton.enabled = (state && receiveButton.syncDoneSyncDone)
+                    receiveButton.enabled = false
+                    // receiveButton.enabled = (state && moneroPay.isDepositAddressSet())
                 }
             }
         }

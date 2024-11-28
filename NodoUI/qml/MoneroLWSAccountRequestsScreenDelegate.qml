@@ -7,9 +7,9 @@ import NodoCanvas 1.0
 
 NodoCanvas {
     id: mainRect
-    width: 1840
-    height: 263
-    color: "#181818"
+    width: 1880
+    height: 295
+    color: "#1F1F1F"
     property string requestAddress: ""
     property int scanHeight: 0
     property int labelSize: 0
@@ -32,12 +32,13 @@ NodoCanvas {
         anchors.right: mainRect.right
         anchors.top: mainRect.top
         anchors.topMargin: 10
-        anchors.leftMargin: 10
-        anchors.rightMargin: 10
-        itemSize: 0
+        anchors.leftMargin: 8
+        anchors.rightMargin: 8
+        itemSize: 180
         height: NodoSystem.nodoItemHeight
-        itemText: systemMessages.messages[NodoMessages.Message.Address]
+        itemText: systemMessages.messages[NodoMessages.Message.Address] //Label "Address"
         valueText: requestAddress
+        valueFontSize: 28
     }
 
     NodoInfoField {
@@ -45,9 +46,10 @@ NodoCanvas {
         anchors.left: moneroLWSAccountRequestsAddressField.left
         anchors.top: moneroLWSAccountRequestsAddressField.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
-        width: labelSize+300
+        itemSize: 180
+        width: 400
         height: NodoSystem.nodoItemHeight
-        itemSize: labelSize
+        
         itemText: qsTr("Height")
         valueText: scanHeight
     }

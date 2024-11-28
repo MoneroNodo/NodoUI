@@ -19,6 +19,9 @@ MoneroPay::MoneroPay(NodoConfigParser *configParser)
     QString s = "1970-01-01T00:00:00";
     date = QDateTime::fromString(s,"yyyy-MM-ddThh:mm:ss");
     m_lastPayment.dateTime = date;
+    if (m_configParser->getMoneroPayAddress().length() == 95
+        && m_configParser->getMoneroPayViewKey().length() == 64)
+        m_isDepositAddressSet = true;
 }
 
 bool compareByDate(payment_t left, payment_t right)

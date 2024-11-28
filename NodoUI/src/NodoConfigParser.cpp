@@ -1,11 +1,20 @@
 #include "NodoConfigParser.h"
+#include <QFileSystemWatcher>
+
+#define LOCKFILE "/home/nodo/variables/updatelock"
 
 NodoConfigParser::NodoConfigParser(QObject *parent) : QObject(parent)
 {
     readFile();
     m_timer = new QTimer(this);
     connect(m_timer, SIGNAL(timeout()), this, SLOT(updateStatus()));
+    connect(this, SIGNAL(fileChanged()), this, SLOT(checkLock()));
     m_timer->start(0);
+}
+
+bool NodoConfigParser::isUpdateLocked()
+{
+    return QFileInfo::exists(LOCKFILE);
 }
 
 void NodoConfigParser::readFile(void)
@@ -118,6 +127,13 @@ int NodoConfigParser::getIntValueFromKey(QString object, QString key)
     return jsonValue.toInt();
 }
 
+void NodoConfigParser::checkLock(void)
+{
+    if (!isUpdateLocked())
+    {
+        emit lockGone();
+    }
+}
 
 void NodoConfigParser::updateStatus(void)
 {

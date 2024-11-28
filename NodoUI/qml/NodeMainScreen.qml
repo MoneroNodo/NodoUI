@@ -22,21 +22,22 @@ Item {
         }
 
         NodoTabButton {
-            id: privateNodeButton
-            y: (nodoMenuBar.height - privateNodeButton.height)/2
-            text: qsTr("PRIVATE NODE")
-            font.family: NodoSystem.fontUrbanist.name
-            font.pixelSize: NodoSystem.topMenuButtonFontSize
-            onClicked: { pageLoader.source = "NodePrivateNodeScreen.qml" }
-        }
-        NodoTabButton {
             id: bandwidthButton
             y: (nodoMenuBar.height - bandwidthButton.height)/2
-            anchors.left: privateNodeButton.right
             text: qsTr("BANDWIDTH")
             font.family: NodoSystem.fontUrbanist.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: { pageLoader.source = "NodeBandwidthScreen.qml" }
+        }
+
+        NodoTabButton {
+            id: privateNodeButton
+            y: (nodoMenuBar.height - privateNodeButton.height)/2
+            anchors.left: bandwidthButton.right
+            text: qsTr("PRIVATE NODE")
+            font.family: NodoSystem.fontUrbanist.name
+            font.pixelSize: NodoSystem.topMenuButtonFontSize
+            onClicked: { pageLoader.source = "NodePrivateNodeScreen.qml" }
         }
     }
 
@@ -47,6 +48,6 @@ Item {
         anchors.right: nodeMainScreen.right
         anchors.bottom: nodeMainScreen.bottom
         anchors.topMargin: 40
-        source: "NodePrivateNodeScreen.qml"
+        source: "NodeBandwidthScreen.qml"
     }
 }

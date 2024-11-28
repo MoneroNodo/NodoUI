@@ -38,10 +38,10 @@ Item {
         anchors.top: moneroLWSActiveScreen.top
         anchors.left: moneroLWSActiveScreen.left
         anchors.bottom: moneroLWSActiveScreen.bottom
-        anchors.leftMargin: 10
+        anchors.leftMargin: NodoSystem.padding
         model: activeListModel
         visible: true
-        width: 1840
+        width: 1880
         clip: true
 
         delegate: MoneroLWSActiveScreenDelegate {

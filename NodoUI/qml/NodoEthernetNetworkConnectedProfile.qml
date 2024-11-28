@@ -10,7 +10,7 @@ NodoCanvas {
 
     property int networkDelegateItemHeight: NodoSystem.nodoItemHeight
     property int labelSize: 200
-    property int buttonSize: 220
+    property int buttonSize: 300
     property int defaultHeight: 100
 
     property string profileName
@@ -22,7 +22,7 @@ NodoCanvas {
     property int spacing: 1
 
     height: defaultHeight
-    color: "#1F1F1F"
+    color: nodoControl.appTheme ? NodoSystem.dataFieldTitleBGColorNightModeOn  : NodoSystem.dataFieldTitleBGColorNightModeOff
 
     Component.onCompleted:
     {
@@ -71,19 +71,19 @@ NodoCanvas {
         anchors.left: mainRect.left
         anchors.topMargin: connectButton.y + (profileNameLabel.paintedHeight)/2
         anchors.leftMargin: 20
-        font.pixelSize: NodoSystem.infoFieldItemFontSize
+        font.pixelSize: NodoSystem.infoFieldItemFontSize + 2
         font.family: NodoSystem.fontUrbanist.name
         height: 40
         text: mainRect.profileName
-        color: nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn  : NodoSystem.dataFieldTextColorNightModeOff
+        color: nodoControl.appTheme ? NodoSystem.highlightedColorNightModeOn  : NodoSystem.highlightedColorNightModeOff
     }
 
     NodoButton {
         id: connectButton
         anchors.top: mainRect.top
         anchors.right: mainRect.right
-        anchors.topMargin: 18
-        anchors.rightMargin: 11
+        anchors.topMargin: 14
+        anchors.rightMargin: 14
         width: mainRect.buttonSize
         height: networkDelegateItemHeight
         font.pixelSize: NodoSystem.infoFieldItemFontSize
@@ -96,7 +96,7 @@ NodoCanvas {
             connectButton.text = systemMessages.messages[NodoMessages.Message.Disconnecting]
             connectButton.update()
             networkManager.disconnectFromEthernet()
-
+            mainRect.state = "" //Added later
         }
     }
 
@@ -104,8 +104,8 @@ NodoCanvas {
         id: forgetButton
         anchors.top: mainRect.top
         anchors.right: connectButton.left
-        anchors.topMargin: 18
-        anchors.rightMargin: 10
+        anchors.topMargin: 14
+        anchors.rightMargin: 20
         width: mainRect.buttonSize
         height: networkDelegateItemHeight
         font.pixelSize: NodoSystem.infoFieldItemFontSize
@@ -125,10 +125,10 @@ NodoCanvas {
         anchors.top: forgetButton.bottom
         anchors.left: mainRect.left
         anchors.right: mainRect.right
-        anchors.leftMargin: 11
-        anchors.rightMargin: 11
-        anchors.topMargin: 10
-        height: deviceSpeedField.y + deviceSpeedField.height + 8
+        anchors.leftMargin: 14
+        anchors.rightMargin: 14
+        anchors.topMargin: 5
+        height: deviceSpeedField.y + deviceSpeedField.height
         visible:  mainRect.state === "showDetails" ? true : false
         color: "transparent"
 
@@ -167,7 +167,6 @@ NodoCanvas {
             itemText: systemMessages.messages[NodoMessages.Message.DeviceSpeed]
             valueText: mainRect.deviceSpeed
         }
-
     }
 
     MouseArea {
@@ -178,11 +177,13 @@ NodoCanvas {
             {
                 mainRect.state = "showDetails"
                 networkManager.stopEthScan()
+                networkmanager.setEthernetDetailsOpened(true);
             }
             else
             {
                 mainRect.state = ""
                 networkManager.startEthScan()
+                networkmanager.setEthernetDetailsOpened(false);
             }
         }
     }
@@ -190,7 +191,7 @@ NodoCanvas {
     states: [
         State {
             name: "showDetails";
-            PropertyChanges { target: mainRect; height: defaultHeight + showDetailsRect.height }
+            PropertyChanges { target: mainRect; height: defaultHeight + showDetailsRect.height +10}
         },
         State {
             name: ""

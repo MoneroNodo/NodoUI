@@ -11,7 +11,7 @@ Item {
     id: moneroPayReceivePaymentPreviewScreen
 
     property int labelSize: 300
-    property int addressFieldWidth: 1850
+    property int addressFieldWidth: 1900
     property double exchangeRate
     property string exchangeName
     property double xmrAmount
@@ -44,11 +44,11 @@ Item {
     Rectangle{
         id: qrCodeRect
         anchors.top: moneroPayReceivePaymentPreviewScreen.top
-        anchors.topMargin: 10
+        //anchors.topMargin: 1
         anchors.horizontalCenter: moneroPayReceivePaymentPreviewScreen.horizontalCenter
         color: "black"
-        width: 380
-        height: 380
+        width: 512
+        height: 512
 
         QtQuick2QREncode {
             id: qr
@@ -57,7 +57,7 @@ Item {
             qrSize: Qt.size(width,width)
             qrData: qrCodeData
             qrForeground: "black"
-            qrBackground: "white"
+            qrBackground: "#FCFCFC"
             qrMargin: 8
             qrMode: QtQuick2QREncode.MODE_8    //encode model
             qrLevel: QtQuick2QREncode.LEVEL_Q // encode level
@@ -67,7 +67,7 @@ Item {
     Rectangle {
         id: currenciesRect
         anchors.top: qrCodeRect.bottom
-        anchors.topMargin: 2*(NodoSystem.nodoTopMargin) + 10
+        anchors.topMargin: 2*(NodoSystem.nodoTopMargin) //+ 10
         anchors.left: moneroPayReceivePaymentPreviewScreen.left
         width: timestampField.x + timestampField.width
         height: timestampField.height
@@ -79,7 +79,7 @@ Item {
             anchors.left: currenciesRect.left
             horizontalAlignment: Text.AlignLeft
             text: qsTr("Awaiting Payment")
-            height: 64
+            height: NodoSystem.nodoItemHeight
         }
 
         NodoInfoField {
@@ -87,8 +87,8 @@ Item {
             anchors.top: currenciesRect.top
             anchors.left: sendPaymentLabel.right
             anchors.leftMargin: 15
-            itemSize: 90
-            width: 390
+            itemSize: 120
+            width: 510
             height: NodoSystem.nodoItemHeight
             itemText: qsTr("XMR")
         }
@@ -97,9 +97,9 @@ Item {
             id: fiatPreviewfield
             anchors.top: currenciesRect.top
             anchors.left: xmrPreviewfield.right
-            anchors.leftMargin: 15
-            itemSize: 90
-            width: 390
+            anchors.leftMargin: 5
+            itemSize: 120
+            width: 340
             height: NodoSystem.nodoItemHeight
             itemText: exchangeName
         }
@@ -108,10 +108,10 @@ Item {
             id: timestampField
             anchors.top: currenciesRect.top
             anchors.left: fiatPreviewfield.right
-            anchors.leftMargin: 15
+            anchors.leftMargin: 5
             height: NodoSystem.nodoItemHeight
-            itemSize: 0
-            width: 725
+            itemSize: 220
+            width: 460
             visible: true
             itemText: qsTr("Timestamp")
             valueText: ""
@@ -124,9 +124,10 @@ Item {
         anchors.topMargin: NodoSystem.nodoTopMargin
         anchors.left: moneroPayReceivePaymentPreviewScreen.left
         width: addressFieldWidth
-        itemSize: labelSize
-        itemText: qsTr("Deposit Address")
+        itemSize: 230
+        itemText: qsTr("Subaddress")
         height: NodoSystem.nodoItemHeight
+        valueFontSize: 28
     }
 
     NodoInfoField {
@@ -144,9 +145,10 @@ Item {
 
     NodoButton {
         id: newPaymentButton
-        anchors.top: descriptionPreviewField.top
-        anchors.horizontalCenter: moneroPayReceivePaymentPreviewScreen.horizontalCenter
-        anchors.topMargin: NodoSystem.nodoTopMargin
+        anchors.top: moneroPayReceivePaymentPreviewScreen.top //anchors.top: descriptionPreviewField.top
+        anchors.left: moneroPayReceivePaymentPreviewScreen.left
+        //anchors.horizontalCenter: moneroPayReceivePaymentPreviewScreen.horizontalCenter
+        //anchors.topMargin: NodoSystem.nodoTopMargin
         text: qsTr("New Payment")
         height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontUrbanist.name

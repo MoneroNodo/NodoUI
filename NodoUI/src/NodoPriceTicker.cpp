@@ -154,6 +154,11 @@ void NodoPriceTicker::doDownload(const QString currencyCode)
 #endif 
 }
 
+QString NodoPriceTicker::getCurrencyString(void)
+{
+    return QString::number(m_currency, 'f', 2);
+}
+
 double NodoPriceTicker::getCurrency(void)
 {
     return m_currency;

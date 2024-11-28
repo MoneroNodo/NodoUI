@@ -37,10 +37,10 @@ Item {
         anchors.top: moneroLWSInactiveScreen.top
         anchors.left: moneroLWSInactiveScreen.left
         anchors.bottom: moneroLWSInactiveScreen.bottom
-        anchors.leftMargin: 10
+        anchors.leftMargin: NodoSystem.padding
         model: inactiveListModel
         visible: true
-        width: 1840
+        width: 1880
         clip: true
 
         delegate: MoneroLWSInactiveScreenDelegate {

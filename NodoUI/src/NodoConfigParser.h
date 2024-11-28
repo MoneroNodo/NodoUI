@@ -22,6 +22,7 @@ public:
     Q_INVOKABLE QString getStringValueFromKey(QString object, QString key);
     Q_INVOKABLE int getIntValueFromKey(QString object, QString key);
     Q_INVOKABLE void updateRequested(void);
+    Q_INVOKABLE bool isUpdateLocked(void);
 
     QString getSelectedCurrencyName(void);
     void setCurrencyName(QString currency);
@@ -57,6 +58,7 @@ public:
 
 signals:
     void configParserReady(void);
+    void lockGone(void);
 
 private:
     void readFile(void);
@@ -87,6 +89,7 @@ private:
 
 private slots:
     void updateStatus(void);
+    void checkLock(void);
 };
 
 #endif // NODO_CONFIG_PARSER_H

@@ -9,7 +9,7 @@ import NodoCanvas 1.0
 Item {
     id: addressPinControlScreen
     property int labelSize: 0
-    property int inputFieldWidth: 600
+    property int inputFieldWidth: 640
     property bool pinFieldReadOnly: false
 
     signal deleteMe(int screenID)
@@ -65,7 +65,7 @@ Item {
         width: inputFieldWidth
         height: NodoSystem.nodoItemHeight
         itemSize: labelSize
-        itemText: qsTr("Re-enter New Address PIN")
+        itemText: qsTr("Re-enter New PIN")
         textFlag: Qt.ImhDigitsOnly
         valueText: ""
         readOnlyFlag: pinFieldReadOnly
@@ -83,7 +83,7 @@ Item {
         anchors.left: addressPinControlScreen.left
         anchors.top: addressPinControlReEnterNewPinField.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
-        text: qsTr("Change PIN")
+        text: qsTr("Change Address PIN")
         height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize
@@ -97,11 +97,12 @@ Item {
             if(newPin === newPin2)
             {
                 nodoControl.setAddressPin(newPin);
+                //{ pageLoader.source = "DevicePinScreen.qml" } //If PIN set, goto Main PIN screen
             }
             else
             {
                 nodoAddressPinControlPopup.commandID = -1;
-                nodoAddressPinControlPopup.popupMessageText = systemMessages.messages[NodoMessages.Message.PINCodesAreDifferent]
+                nodoAddressPinControlPopup.popupMessageText = systemMessages.messages[NodoMessages.Message.PINCodesDoNotMatch]
                 nodoAddressPinControlPopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Close]
                 nodoAddressPinControlPopup.open();
             }

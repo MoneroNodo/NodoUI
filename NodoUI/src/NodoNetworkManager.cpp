@@ -51,6 +51,16 @@ void NodoNetworkManager::updateNetworking(void)
     }
 }
 
+void NodoNetworkManager::setEthernetDetailsOpened(bool opened)
+{
+    m_wired->setDetailsOpened(opened);
+}
+
+bool NodoNetworkManager::getEthernetDetailsOpened()
+{
+    return m_wired->getDetailsOpened();
+}
+
 void NodoNetworkManager::processWirelessDeviceStatus(unsigned wifiDeviceStatus)
 {
     if(nullptr == m_wireless)

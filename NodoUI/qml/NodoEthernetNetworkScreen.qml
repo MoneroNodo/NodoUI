@@ -14,7 +14,7 @@ Item {
     property bool isEthernetEnabled
     property int networkDelegateItemHeight: NodoSystem.nodoItemHeight
 
-    property int buttonSize: 220
+    property int buttonSize: 300
     property int defaultHeight: 100
     property int spacing: 1
 
@@ -92,7 +92,7 @@ Item {
         id: addEthernetConnectionButton
         anchors.left: ethernetNetworkScreen.left
         anchors.top: ethernetNetworkScreen.top
-        height: NodoSystem.nodoItemHeight
+        height: networkDelegateItemHeight
         font.pixelSize: NodoSystem.infoFieldItemFontSize
         text: systemMessages.messages[NodoMessages.Message.AddNewConnection]
         visible: true
@@ -125,9 +125,8 @@ Item {
             id: createNewConnectionRect
             anchors.top: createNewConnectionCanvas.top
             anchors.left: createNewConnectionCanvas.left
-            anchors.topMargin: 10
-            anchors.leftMargin: 10
-            width: createNewConnectionCanvas.width - 22
+            anchors.leftMargin: 14
+            anchors.rightMargin: 14
             height: createNewConnectionCanvas.height - createEthernetConnectionRect.height - 18
             visible: ethernetNetworkScreen.state === "" ? false : true
             color: nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn  : NodoSystem.dataFieldTextColorNightModeOff
@@ -201,13 +200,13 @@ Item {
                     anchors.top: advancedSettingsRect.top
                     anchors.left: advancedSettingsRect.left
                     anchors.topMargin: ethernetNetworkScreen.spacing
-                    width: advancedSettingsRect.width
+                    width: 700//advancedSettingsRect.width
                     height: networkDelegateItemHeight
                     itemSize: labelSize
                     itemText: systemMessages.messages[NodoMessages.Message.IPAddress]
                     valueText: ""
                     textFlag: Qt.ImhDigitsOnly
-                    inputMask: "000.000.000.000;0"
+                    //inputMask: "000.000.000.000;0"
                     validator:RegularExpressionValidator{
                         regularExpression: /^((?:[0-1]?[0-9]?[0-9]|2?[0-4]?[0-9]|25[0-5]).){3}(?:[0-1]?[0-9]?[0-9]|2?[0-4]?[0-9]|25[0-5])$/
                     }
@@ -218,13 +217,13 @@ Item {
                     anchors.top: ethIPAddressField.bottom
                     anchors.left: advancedSettingsRect.left
                     anchors.topMargin: ethernetNetworkScreen.spacing
-                    width: advancedSettingsRect.width
+                    width: 700//advancedSettingsRect.width
                     height: networkDelegateItemHeight
                     itemSize: labelSize
                     itemText: systemMessages.messages[NodoMessages.Message.SubnetMask]
                     valueText: ""
                     textFlag: Qt.ImhDigitsOnly
-                    inputMask: "000.000.000.000;0"
+                    //inputMask: "000.000.000.000;0"
                     validator:RegularExpressionValidator{
                         regularExpression: /^((?:[0-1]?[0-9]?[0-9]|2?[0-4]?[0-9]|25[0-5]).){3}(?:[0-1]?[0-9]?[0-9]|2?[0-4]?[0-9]|25[0-5])$/
                     }
@@ -235,13 +234,13 @@ Item {
                     anchors.top: ethSubnetMaskField.bottom
                     anchors.left: advancedSettingsRect.left
                     anchors.topMargin: ethernetNetworkScreen.spacing
-                    width: advancedSettingsRect.width
+                    width: 700//advancedSettingsRect.width
                     height: networkDelegateItemHeight
                     itemSize: labelSize
                     itemText: systemMessages.messages[NodoMessages.Message.Router]
                     valueText: ""
                     textFlag: Qt.ImhDigitsOnly
-                    inputMask: "000.000.000.000;0"
+                    //inputMask: "000.000.000.000;0"
                     validator:RegularExpressionValidator{
                         regularExpression: /^((?:[0-1]?[0-9]?[0-9]|2?[0-4]?[0-9]|25[0-5]).){3}(?:[0-1]?[0-9]?[0-9]|2?[0-4]?[0-9]|25[0-5])$/
                     }
@@ -252,13 +251,13 @@ Item {
                     anchors.top: ethRouterField.bottom
                     anchors.left: advancedSettingsRect.left
                     anchors.topMargin: ethernetNetworkScreen.spacing
-                    width: advancedSettingsRect.width
+                    width: 700//advancedSettingsRect.width
                     height: networkDelegateItemHeight
                     itemSize: labelSize
                     itemText: systemMessages.messages[NodoMessages.Message.DNS]
                     valueText: ""
                     textFlag: Qt.ImhDigitsOnly
-                    inputMask: "000.000.000.000;0"
+                    //inputMask: "000.000.000.000;0"
                     validator:RegularExpressionValidator{
                         regularExpression: /^((?:[0-1]?[0-9]?[0-9]|2?[0-4]?[0-9]|25[0-5]).){3}(?:[0-1]?[0-9]?[0-9]|2?[0-4]?[0-9]|25[0-5])$/
                     }
@@ -271,7 +270,7 @@ Item {
             id: createEthernetConnectionRect
             anchors.top: createNewConnectionRect.bottom
             anchors.left: createNewConnectionRect.left
-            anchors.topMargin: 10
+            anchors.topMargin: ethernetNetworkScreen.spacing
             height: NodoSystem.nodoItemHeight
             visible: ethernetNetworkScreen.state === "" ? false : true
 
@@ -279,9 +278,9 @@ Item {
                 id: createEthernetConnectionButton
                 anchors.top: createEthernetConnectionRect.top
                 anchors.left: createEthernetConnectionRect.left
-                height: createEthernetConnectionRect.height
-                font.pixelSize: NodoSystem.infoFieldItemFontSize
-                text: systemMessages.messages[NodoMessages.Message.Add]
+                height: NodoSystem.nodoItemHeight
+                font.pixelSize: NodoSystem.buttonTextFontSize
+                text: systemMessages.messages[NodoMessages.Message.Add] //qsTr("Add")
                 visible: createNewConnectionRect.visible
                 isActive: false
                 fitMinimal: false
@@ -318,7 +317,7 @@ Item {
     states: [
         State {
             name: "createNewConnectionRect";
-            PropertyChanges { target: createNewConnectionCanvas; height: 164 + NodoSystem.nodoItemHeight }
+            PropertyChanges { target: createNewConnectionCanvas; height:200 + NodoSystem.nodoItemHeight}
         },
         State {
             name: ""
@@ -326,7 +325,7 @@ Item {
         },
         State {
             name: "showAdvancedConfigRect"
-            PropertyChanges { target: createNewConnectionCanvas; height: 438 + NodoSystem.nodoItemHeight }
+            PropertyChanges { target: createNewConnectionCanvas; height: 520 + NodoSystem.nodoItemHeight }
         }
     ]
 

@@ -10,7 +10,7 @@ Item {
     anchors.fill: parent
 
     NodoEthernetNetworkScreen {
-        width: 1100
+        width: 1880
         anchors.top: deviceEthernetScreen.top
         anchors.bottom: deviceEthernetScreen.bottom
         anchors.left: deviceEthernetScreen.left

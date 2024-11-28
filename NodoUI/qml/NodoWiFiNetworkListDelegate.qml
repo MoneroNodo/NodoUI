@@ -16,7 +16,7 @@ NodoCanvas {
     property int networkDelegateItemHeight: NodoSystem.nodoItemHeight
     property int labelSize: 200
     property bool showConnected: true
-    property int buttonSize: 220
+    property int buttonSize: 300
     property int defaultHeight: 100
     property int spacing: 1
 
@@ -75,8 +75,8 @@ NodoCanvas {
         id: connectButton
         anchors.top: mainRect.top
         anchors.right: mainRect.right
-        anchors.topMargin: 18
-        anchors.rightMargin: 11
+        anchors.topMargin: 14
+        anchors.rightMargin: 14
         width: mainRect.buttonSize
         height: networkDelegateItemHeight
         font.pixelSize: NodoSystem.infoFieldItemFontSize
@@ -95,12 +95,12 @@ NodoCanvas {
             }
             else
             {
-                if(ssidEncryption === "WEP" )
+                if(mainRect.ssidEncryption === "" )
                 {
                     connectButton.isActive = false
                     connectButton.text = systemMessages.messages[NodoMessages.Message.Connecting]
                     connectButton.update()
-                    networkManager.connectToWiFi(mainRect.ssidName, passwordInputField.valueText, dhcpSwitch.checked, wifiIPAddressField.valueText, wifiSubnetMaskField.valueText, wifiRouterField.valueText, wifiDNSField.valueText, ssidEncryption)
+                    networkManager.connectToWiFi(mainRect.ssidName, "", dhcpSwitch.checked, wifiIPAddressField.valueText, wifiSubnetMaskField.valueText, wifiRouterField.valueText, wifiDNSField.valueText, mainRect.ssidEncryption)
                 }
                 else
                 {
@@ -109,7 +109,7 @@ NodoCanvas {
                         connectButton.isActive = false
                         connectButton.text = systemMessages.messages[NodoMessages.Message.Connecting]
                         connectButton.update()
-                        networkManager.connectToWiFi(mainRect.ssidName, passwordInputField.valueText, dhcpSwitch.checked, wifiIPAddressField.valueText, wifiSubnetMaskField.valueText, wifiRouterField.valueText, wifiDNSField.valueText, ssidEncryption)
+                        networkManager.connectToWiFi(mainRect.ssidName, passwordInputField.valueText, dhcpSwitch.checked, wifiIPAddressField.valueText, wifiSubnetMaskField.valueText, wifiRouterField.valueText, wifiDNSField.valueText, mainRect.ssidEncryption)
                     }
                     else
                     {
@@ -125,8 +125,8 @@ NodoCanvas {
         id: forgetButton
         anchors.top: mainRect.top
         anchors.right: connectButton.left
-        anchors.topMargin: 18
-        anchors.rightMargin: 10
+        anchors.topMargin: 14
+        anchors.rightMargin: 20
         width: mainRect.buttonSize
         height: networkDelegateItemHeight
         font.pixelSize: NodoSystem.infoFieldItemFontSize
@@ -144,10 +144,10 @@ NodoCanvas {
         id: ssidSignalStrengthRect
         anchors.top: forgetButton.top
         anchors.right: forgetButton.visible ? forgetButton.left : connectButton.left
-        anchors.topMargin: (connectButton.height - height)/2
-        anchors.rightMargin: 16
-        width: 48
-        height: 48
+        anchors.topMargin: ((connectButton.height - height)/2) -4
+        anchors.rightMargin: 20
+        width: 84
+        height: 84
         color: "transparent"
 
         Image {
@@ -181,10 +181,12 @@ NodoCanvas {
 
         Image {
             id: ssidEncryptionImage
-            anchors.right: ssidSignalStrengthImage.right
-            anchors.bottom: ssidSignalStrengthImage.bottom
-            width: 18
-            height: 18
+            anchors.top: ssidSignalStrengthRect.top
+            anchors.right: ssidSignalStrengthImage.left
+            anchors.rightMargin: 15
+            anchors.topMargin: 14
+            width: 60
+            height: 60
             visible:
             {
                 var ency = ssidEncryption
@@ -208,9 +210,10 @@ NodoCanvas {
         id: showDetailsRect
         anchors.top: ssidSignalStrengthRect.bottom
         anchors.left: mainRect.left
-        anchors.leftMargin: 11
-        anchors.topMargin: 10
-        width: mainRect.width - (22)
+        anchors.right: mainRect.right
+        anchors.leftMargin: 14
+        anchors.rightMargin: 14
+        anchors.topMargin: 5
         height: frequencyField.y + frequencyField.height
         visible:  mainRect.state === "showDetails" ? true : false
         color: "transparent"
@@ -219,9 +222,9 @@ NodoCanvas {
             id: signalStrengthField
             anchors.left: showDetailsRect.left
             anchors.top: showDetailsRect.top
-            anchors.topMargin: mainRect.spacing
+            anchors.topMargin: 5//mainRect.spacing
             width: showDetailsRect.width
-            itemSize: 300
+            itemSize: labelSize
             height: networkDelegateItemHeight
             itemText: systemMessages.messages[NodoMessages.Message.SignalStrength]
             valueText: mainRect.ssidSignalStrength + "%"
@@ -233,7 +236,7 @@ NodoCanvas {
             anchors.top: signalStrengthField.bottom
             anchors.topMargin: mainRect.spacing
             width: showDetailsRect.width
-            itemSize: 300
+            itemSize: labelSize
             height: networkDelegateItemHeight
             itemText: systemMessages.messages[NodoMessages.Message.SecurityType]
             valueText: mainRect.ssidEncryption
@@ -245,7 +248,7 @@ NodoCanvas {
             anchors.top: securityField.bottom
             anchors.topMargin: mainRect.spacing
             width: showDetailsRect.width
-            itemSize: 300
+            itemSize: labelSize
             height: networkDelegateItemHeight
             itemText: systemMessages.messages[NodoMessages.Message.Frequency]
             valueText: {
@@ -259,10 +262,11 @@ NodoCanvas {
         id: connectToANetworkRect
         anchors.top: ssidSignalStrengthRect.bottom
         anchors.left: mainRect.left
-        anchors.leftMargin: 11
-        anchors.topMargin: 10
-        width: mainRect.width - (22)
-        height: 110
+        anchors.right: mainRect.right
+        anchors.leftMargin: 14
+        anchors.rightMargin: 14
+        anchors.topMargin: 5
+        height: 115
         visible: mainRect.state === "showDetails" || mainRect.state === "" ? false : true
         color: "transparent"
 
@@ -274,7 +278,9 @@ NodoCanvas {
             height: networkDelegateItemHeight
             itemSize: labelSize
             itemText: systemMessages.messages[NodoMessages.Message.Password]
+
             valueText:""
+            visible: connectToANetworkRect.visible && mainRect.ssidEncryption != "WEP"
             passwordInput: true
         }
 
@@ -282,12 +288,11 @@ NodoCanvas {
             id: advancedSettings
             anchors.top: passwordInputField.bottom
             anchors.left: connectToANetworkRect.left
-            anchors.leftMargin: (connectToANetworkRect.width - advancedSettings.width)/2
-            anchors.topMargin: 20
+            //anchors.rightMargin: 14//(connectToANetworkRect.width - advancedSettings.width)/2
             width: mainRect.buttonSize
             height: networkDelegateItemHeight
             font.pixelSize: NodoSystem.infoFieldItemFontSize
-            text: systemMessages.messages[NodoMessages.Message.Advanced]
+            text: systemMessages.messages[NodoMessages.Message.Advanced] //qsTr("Advanced")
             visible:  connectToANetworkRect.visible
             fitMinimal: true
             onClicked: {
@@ -314,7 +319,7 @@ NodoCanvas {
             anchors.top: advancedSettings.bottom
             anchors.left: connectToANetworkRect.left
             anchors.right: connectToANetworkRect.right
-            anchors.topMargin: 10
+            anchors.topMargin: mainRect.spacing
             height: dhcpSwitchRect.y + dhcpSwitchRect.height
             visible: mainRect.state === "showAdvancedConfigField" || mainRect.state === "showStaticConfigField" ? true : false
             color: "transparent"
@@ -322,8 +327,8 @@ NodoCanvas {
 
             Rectangle {
                 id: dhcpSwitchRect
-                anchors.left: advancedSettingsRect.left
                 anchors.top: advancedSettingsRect.top
+                anchors.left: advancedSettingsRect.left
                 anchors.topMargin: mainRect.spacing
                 height: NodoSystem.nodoItemHeight
 
@@ -362,30 +367,30 @@ NodoCanvas {
                 anchors.top: dhcpSwitchRect.bottom
                 anchors.left: advancedSettingsRect.left
                 anchors.topMargin: 10
-                width: advancedSettingsRect.width
+                width: 700//advancedSettingsRect.width
                 height: networkDelegateItemHeight
                 itemSize: labelSize
                 itemText: systemMessages.messages[NodoMessages.Message.IPAddress]
                 valueText: ""
                 textFlag: Qt.ImhDigitsOnly
-                inputMask: "000.000.000.000;0"
+                //inputMask: "000.000.000.000;0"
                 validator:RegularExpressionValidator{
                     regularExpression: /^((?:[0-1]?[0-9]?[0-9]|2?[0-4]?[0-9]|25[0-5]).){3}(?:[0-1]?[0-9]?[0-9]|2?[0-4]?[0-9]|25[0-5])$/
                 }
             }
-
+            
             NodoInputField {
                 id: wifiSubnetMaskField
                 anchors.top: wifiIPAddressField.bottom
                 anchors.left: advancedSettingsRect.left
                 anchors.topMargin: mainRect.spacing
-                width: advancedSettingsRect.width
+                width: 700//advancedSettingsRect.width
                 height: networkDelegateItemHeight
                 itemSize: labelSize
                 itemText: systemMessages.messages[NodoMessages.Message.SubnetMask]
                 valueText: ""
                 textFlag: Qt.ImhDigitsOnly
-                inputMask: "000.000.000.000;0"
+                //inputMask: "000.000.000.000;0"
                 validator:RegularExpressionValidator{
                     regularExpression: /^((?:[0-1]?[0-9]?[0-9]|2?[0-4]?[0-9]|25[0-5]).){3}(?:[0-1]?[0-9]?[0-9]|2?[0-4]?[0-9]|25[0-5])$/
                 }
@@ -396,13 +401,13 @@ NodoCanvas {
                 anchors.top: wifiSubnetMaskField.bottom
                 anchors.left: advancedSettingsRect.left
                 anchors.topMargin: mainRect.spacing
-                width: advancedSettingsRect.width
+                width: 700//advancedSettingsRect.width
                 height: networkDelegateItemHeight
                 itemSize: labelSize
                 itemText: systemMessages.messages[NodoMessages.Message.Router]
                 valueText: ""
                 textFlag: Qt.ImhDigitsOnly
-                inputMask: "000.000.000.000;0"
+                //inputMask: "000.000.000.000;0"
                 validator:RegularExpressionValidator{
                     regularExpression: /^((?:[0-1]?[0-9]?[0-9]|2?[0-4]?[0-9]|25[0-5]).){3}(?:[0-1]?[0-9]?[0-9]|2?[0-4]?[0-9]|25[0-5])$/
                 }
@@ -413,13 +418,13 @@ NodoCanvas {
                 anchors.top: wifiRouterField.bottom
                 anchors.left: advancedSettingsRect.left
                 anchors.topMargin: mainRect.spacing
-                width: advancedSettingsRect.width
+                width: 700//advancedSettingsRect.width
                 height: networkDelegateItemHeight
                 itemSize: labelSize
                 itemText: systemMessages.messages[NodoMessages.Message.DNS]
                 valueText: ""
                 textFlag: Qt.ImhDigitsOnly
-                inputMask: "000.000.000.000;0"
+                //inputMask: "000.000.000.000;0"
                 validator:RegularExpressionValidator{
                     regularExpression: /^((?:[0-1]?[0-9]?[0-9]|2?[0-4]?[0-9]|25[0-5]).){3}(?:[0-1]?[0-9]?[0-9]|2?[0-4]?[0-9]|25[0-5])$/
                 }
@@ -447,7 +452,7 @@ NodoCanvas {
     states: [
         State {
             name: "showDetails";
-            PropertyChanges { target: mainRect; height: defaultHeight+showDetailsRect.height }
+            PropertyChanges { target: mainRect; height: defaultHeight + showDetailsRect.height +10}
         },
         State {
             name: ""
@@ -460,13 +465,13 @@ NodoCanvas {
         },
         State {
             name: "showAdvancedConfigField"
-            PropertyChanges { target: mainRect; height: 157 + connectToANetworkRect.height + advancedSettingsRect.height}
-            PropertyChanges { target: advancedSettingsRect; height: 75 }
+            PropertyChanges { target: mainRect; height: 160 + connectToANetworkRect.height + advancedSettingsRect.height}
+            PropertyChanges { target: advancedSettingsRect; height: 80 }
         },
         State {
             name: "showStaticConfigField"
-            PropertyChanges { target: mainRect; height: 640 }
-            PropertyChanges { target: advancedSettingsRect; height: 365 }
+            PropertyChanges { target: mainRect; height: 680 }
+            PropertyChanges { target: advancedSettingsRect; height: 410 }
         }
     ]
 

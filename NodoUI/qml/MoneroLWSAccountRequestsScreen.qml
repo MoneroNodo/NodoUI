@@ -55,7 +55,7 @@ Item {
         anchors.topMargin: 10
         model: requestListModel
         visible: true
-        width: 1840
+        width: 1880
         clip: true
 
         delegate: MoneroLWSAccountRequestsScreenDelegate {

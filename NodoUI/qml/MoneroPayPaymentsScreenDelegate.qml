@@ -9,7 +9,7 @@ NodoCanvas {
     id: mainRect
     property int componentWidth: 600
     property int fieldTopMargin: 5
-    color: "#181818"
+    color: "#1F1F1F"
     property int paymentIndex
     property int scanHeight: 0
     property int labelSize: 0
@@ -41,7 +41,7 @@ NodoCanvas {
     function updatePaymentStatus() {
         xmrAmount = moneroPay.getPaymentAmount(paymentIndex)/1000000000000;
         paymentStatus = moneroPay.getPaymentStatus(paymentIndex)
-        var dateTime = Qt.formatDateTime(moneroPay.getPaymentTimestamp(paymentIndex), "d MMM yyyy h:mm AP") + " UTC"
+        var dateTime = Qt.formatDateTime(moneroPay.getPaymentTimestamp(paymentIndex), "d MMM h:mm AP") + " UTC"
         timestamp = dateTime.toUpperCase()
         depositAddress = moneroPay.getPaymentDepositAddress(paymentIndex)
         description = moneroPay.getPaymentDescription(paymentIndex)
@@ -65,22 +65,25 @@ NodoCanvas {
         anchors.top: mainRect.top
         anchors.left: mainRect.left
         anchors.topMargin: 15
-        anchors.leftMargin: 15
+        anchors.leftMargin: 8
         height: NodoSystem.nodoItemHeight
-        itemSize: labelSize
-        width: 495
+        itemSize: 150
+        width: 400
         itemText: qsTr("Status")
         valueText: {
-            if(paymentStatus === 1)
+            switch (paymentStatus)
             {
+                case 1: // PAYMENT_STATUS_RECEIVED
                 qsTr("Received")
-            }
-            else if (paymentStatus === 4)
-            {
+                break;
+                case 3: // PAYMENT_STATUS_PENDING
+                qsTr("Confirming")
+                break;
+                case 2: // PAYMENT_STATUS_NOT_RECEIVED
                 qsTr("Not Received")
-            }
-            else {
-                ""
+                break;
+                default: // PAYMENT_STATUS_NONE
+                qsTr("Waiting")
             }
         }
     }
@@ -91,8 +94,8 @@ NodoCanvas {
         anchors.top: moneroPayReceivedPaymentStatusField.top
         anchors.leftMargin: 5
         height: NodoSystem.nodoItemHeight
-        itemSize: 90
-        width: 390
+        itemSize: 120
+        width: 510
         itemText: "XMR"
         valueText: xmrAmount.toFixed(12)
     }
@@ -103,8 +106,8 @@ NodoCanvas {
         anchors.top: moneroPayReceivedPaymentStatusField.top
         anchors.leftMargin: 5
         height: NodoSystem.nodoItemHeight
-        itemSize: 90
-        width: 390
+        itemSize: 120
+        width: 340
         itemText: exchangeName
         valueText: fiatValue.toFixed(2)
     }
@@ -115,8 +118,8 @@ NodoCanvas {
         anchors.top: moneroPayReceivedPaymentStatusField.top
         anchors.leftMargin: 5
         height: NodoSystem.nodoItemHeight
-        itemSize: 180
-        width: 560
+        itemSize: 220
+        width: 460
         itemText: qsTr("Timestamp")
         valueText: timestamp
     }
@@ -127,21 +130,22 @@ NodoCanvas {
         anchors.top: moneroPayReceivedPaymentStatusField.bottom
         anchors.topMargin: fieldTopMargin
         height: NodoSystem.nodoItemHeight
-        itemSize: labelSize
-        width: 1850
-        itemText: qsTr("Deposit Address")
+        itemSize: 230
+        width: 1880
+        itemText: qsTr("Subaddress")
         valueText: depositAddress
+        valueFontSize: 27
     }
 
     NodoCanvas {
         id: moneroPayReceivedTransactionIDField
         anchors.top: moneroPayReceivedDepositAddressField.bottom
         anchors.left: moneroPayReceivedPaymentStatusField.left
-        width: 1850
+        width: 1880
         height: paymentsList.contentHeight
         anchors.topMargin: fieldTopMargin
         anchors.bottomMargin: 30
-        color: "#181818"
+        color: "#1F1F1F"
         clip: true
 
         ListView {
@@ -155,7 +159,7 @@ NodoCanvas {
                 NodoInfoField {
                     id: infoField
                     height: NodoSystem.nodoItemHeight
-                    itemSize: labelSize
+                    itemSize: labelSize - 40
                     width: ListView.view.width
                     itemText: qsTr("Transaction ID")
                     valueText: model.trID
@@ -174,7 +178,7 @@ NodoCanvas {
         anchors.topMargin: visible === true ? fieldTopMargin : 0
         height: visible === true ? NodoSystem.nodoItemHeight : 0
         itemSize: labelSize
-        width: 1850
+        width: 1880
         visible: description.length > 0 ? true : false
         itemText: qsTr("Note")
         valueText: description
@@ -198,7 +202,7 @@ NodoCanvas {
         id: moneroPayReceivedQRCodeButton
         anchors.left: moneroPayReceivedRemovePaymentButton.right
         anchors.top: moneroPayReceivedRemovePaymentButton.top
-        anchors.leftMargin: 20
+        anchors.leftMargin: 25
         text: qsTr("View QR")
         height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontUrbanist.name
@@ -211,7 +215,7 @@ NodoCanvas {
                 mainRectPopup.qrCodeData = mainRectPopup.qrCodeData + "&tx_description=" + descriptionHTMLEncoded
             }
 
-            mainRectPopup.closeButtonText = qsTr("Dismiss")
+            mainRectPopup.closeButtonText = qsTr("Close")
             mainRectPopup.open();
         }
     }

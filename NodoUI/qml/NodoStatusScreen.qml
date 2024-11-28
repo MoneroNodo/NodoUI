@@ -19,7 +19,7 @@ Rectangle {
     property int componentBottomMargin: 8
     property int componentTopMargin: 34
     property int cardMargin: 13
-    property color cardBackgroundColor: "#181818"
+    property color cardBackgroundColor: "#1F1F1F"
 
     property int statusScreenInfoFieldHeight: NodoSystem.nodoItemHeight
 
@@ -81,7 +81,6 @@ Rectangle {
 
     function updateSystemStatus() {
         updateSyncPercentage()
-        timestampField.valueText = nodoSystemStatus.getIntValueFromKey("start_time")
         currentBlockHeightField.valueText = nodoSystemStatus.getIntValueFromKey("height")
         moneroVersionField.valueText = nodoSystemStatus.getStringValueFromKey("version")
         outgoingConnectionsField.valueText = nodoSystemStatus.getIntValueFromKey("outgoing_connections_count")
@@ -93,7 +92,7 @@ Rectangle {
 
     function updateSyncPercentage() {
         var syncPercentage = syncInfo.getSyncPercentage()
-        if (networkManager.getNetworkConnectionStatusCode() !== 2 /*not connected*/)
+        if (networkManager.getNetworkConnectionStatusCode() !== 1 /*not connected*/)
         {
             syncStatusField.valueText = qsTr("Disconnected")
             return
@@ -120,9 +119,6 @@ Rectangle {
         if(syncStatusField.labelRectRoundSize > labelSize)
             labelSize = syncStatusField.labelRectRoundSize
 
-        if(timestampField.labelRectRoundSize > labelSize)
-            labelSize = timestampField.labelRectRoundSize
-
         if(currentBlockHeightField.labelRectRoundSize > labelSize)
             labelSize = currentBlockHeightField.labelRectRoundSize
 
@@ -146,7 +142,7 @@ Rectangle {
 
         if(networkConnectionField.labelRectRoundSize > labelSize)
             labelSize = networkConnectionField.labelRectRoundSize
-
+/*
         if(moneroNodeField.labelRectRoundSize > labelSize)
             labelSize = moneroNodeField.labelRectRoundSize
 
@@ -176,6 +172,7 @@ Rectangle {
 
         if(systemStorageField.labelRectRoundSize > labelSize)
             labelSize = systemStorageField.labelRectRoundSize
+*/
     }
 
 
@@ -183,9 +180,9 @@ Rectangle {
         id: syncStatus
         anchors.left: statusScreen.left
         anchors.top: statusScreen.top
-        anchors.topMargin: 5
-        anchors.leftMargin: cardMargin
-        width: componentWidth + 2 + (2*componentLeftMargin)
+        anchors.topMargin: 10
+        anchors.leftMargin: 8//cardMargin
+        width: 700
         height: networkConnectionField.y + networkConnectionField.height + componentBottomMargin//683
         color: cardBackgroundColor
 
@@ -214,8 +211,8 @@ Rectangle {
             text: qsTr("Monero Daemon")
             verticalAlignment: Text.AlignBottom
             horizontalAlignment: Text.AlignHCenter
-            font.pixelSize: NodoSystem.topMenuButtonFontSize
-            color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
+            font.pixelSize: NodoSystem.topMenuButtonFontSize +2
+            color: nodoControl.appTheme ? NodoSystem.highlightedColorNightModeOn : NodoSystem.highlightedColorNightModeOff
             font.family: NodoSystem.fontUrbanist.name
         }
 
@@ -232,21 +229,9 @@ Rectangle {
         }
 
         NodoInfoField {
-            id: timestampField
-            anchors.left: syncStatusField.left
-            anchors.top: syncStatusField.bottom
-            anchors.topMargin: fieldTopMargin
-            width: componentWidth
-            height: statusScreenInfoFieldHeight
-            itemSize: labelSize
-            itemText: qsTr("Timestamp")
-            valueText: nodoSystemStatus.getIntValueFromKey("start_time")
-        }
-
-        NodoInfoField {
             id: currentBlockHeightField
             anchors.left: syncStatusField.left
-            anchors.top: timestampField.bottom
+            anchors.top: syncStatusField.bottom
             anchors.topMargin: fieldTopMargin
             width: componentWidth
             height: statusScreenInfoFieldHeight
@@ -344,7 +329,8 @@ Rectangle {
         anchors.horizontalCenter: statusScreen.horizontalCenter
         anchors.top: statusScreen.top
         anchors.topMargin: 10
-        width: componentWidth + 2 + (2*componentLeftMargin)
+        anchors.leftMargin: cardMargin
+        width: 480
         height: moneroPayField.y + moneroPayField.height + componentBottomMargin
         color: cardBackgroundColor
 
@@ -366,8 +352,8 @@ Rectangle {
             text: qsTr("Services")
             verticalAlignment: Text.AlignBottom
             horizontalAlignment: Text.AlignHCenter
-            font.pixelSize: NodoSystem.topMenuButtonFontSize
-            color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
+            font.pixelSize: NodoSystem.topMenuButtonFontSize +2
+            color: nodoControl.appTheme ? NodoSystem.highlightedColorNightModeOn : NodoSystem.highlightedColorNightModeOff
             font.family: NodoSystem.fontUrbanist.name
         }
 
@@ -376,10 +362,10 @@ Rectangle {
             anchors.left: systemStatusTabName.left
             anchors.top: systemStatusTabName.bottom
             anchors.topMargin: fieldTopMargin
-            width: componentWidth
+            width: labelSize
             height: statusScreenInfoFieldHeight
-            itemSize: labelSize
-            itemText: qsTr("Monero Daemon")
+            itemSize: labelSize - 40
+            itemText: qsTr("Daemon")
             valueText: ""
         }
 
@@ -388,9 +374,9 @@ Rectangle {
             anchors.left: moneroNodeField.left
             anchors.top: moneroNodeField.bottom
             anchors.topMargin: fieldTopMargin
-            width: componentWidth
+            width: labelSize
             height: statusScreenInfoFieldHeight
-            itemSize: labelSize
+            itemSize: labelSize - 40
             itemText: qsTr("Tor Service")
             valueText: ""
         }
@@ -400,9 +386,9 @@ Rectangle {
             anchors.left: moneroNodeField.left
             anchors.top: torServiceField.bottom
             anchors.topMargin: fieldTopMargin
-            width: componentWidth
+            width: labelSize
             height: statusScreenInfoFieldHeight
-            itemSize: labelSize
+            itemSize: labelSize - 40
             itemText: qsTr("I2P Service")
             valueText: ""
         }
@@ -412,9 +398,9 @@ Rectangle {
             anchors.left: moneroNodeField.left
             anchors.top: i2pServiceField.bottom
             anchors.topMargin: fieldTopMargin
-            width: componentWidth
+            width: labelSize
             height: statusScreenInfoFieldHeight
-            itemSize: labelSize
+            itemSize: labelSize - 40
             itemText: qsTr("Monero LWS")
             valueText: ""
         }
@@ -424,9 +410,9 @@ Rectangle {
             anchors.left: moneroNodeField.left
             anchors.top: moneroLWSField.bottom
             anchors.topMargin: fieldTopMargin
-            width: componentWidth
+            width: labelSize
             height: statusScreenInfoFieldHeight
-            itemSize: labelSize
+            itemSize: labelSize - 40
             itemText: qsTr("MoneroPay")
             valueText: ""
         }
@@ -438,8 +424,8 @@ Rectangle {
         anchors.right: statusScreen.right
         anchors.top: statusScreen.top
         anchors.topMargin: 10
-        width: componentWidth + 2 + (2*componentLeftMargin)
-        anchors.rightMargin: cardMargin
+        width: 700
+        anchors.rightMargin: 8//cardMargin
         height: systemStorageField.y + systemStorageField.height + componentBottomMargin
         color: cardBackgroundColor
 
@@ -461,8 +447,8 @@ Rectangle {
             text: qsTr("System")
             verticalAlignment: Text.AlignBottom
             horizontalAlignment: Text.AlignHCenter
-            font.pixelSize: NodoSystem.topMenuButtonFontSize
-            color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
+            font.pixelSize: NodoSystem.topMenuButtonFontSize +2
+            color: nodoControl.appTheme ? NodoSystem.highlightedColorNightModeOn : NodoSystem.highlightedColorNightModeOff
             font.family: NodoSystem.fontUrbanist.name
         }
 
@@ -473,7 +459,7 @@ Rectangle {
             anchors.topMargin: fieldTopMargin
             width: componentWidth
             height: statusScreenInfoFieldHeight
-            itemSize: labelSize
+            itemSize: labelSize - 40
             itemText: qsTr("CPU")
             valueText: systemMessages.messages[NodoMessages.Message.Loading]
         }
@@ -485,7 +471,7 @@ Rectangle {
             anchors.topMargin: fieldTopMargin
             width: componentWidth
             height: statusScreenInfoFieldHeight
-            itemSize: labelSize
+            itemSize: labelSize - 40
             itemText: qsTr("Temperature")
             valueText: systemMessages.messages[NodoMessages.Message.Loading]
         }
@@ -497,7 +483,7 @@ Rectangle {
             anchors.topMargin: fieldTopMargin
             width: componentWidth
             height: statusScreenInfoFieldHeight
-            itemSize: labelSize
+            itemSize: labelSize - 40
             itemText: qsTr("RAM")
             valueText: systemMessages.messages[NodoMessages.Message.Loading]
         }
@@ -509,8 +495,8 @@ Rectangle {
             anchors.topMargin: fieldTopMargin
             width: componentWidth
             height: statusScreenInfoFieldHeight
-            itemSize: labelSize
-            itemText: qsTr("Blockchain Storage")
+            itemSize: labelSize - 40
+            itemText: qsTr("Blockchain")
             valueText: systemMessages.messages[NodoMessages.Message.Loading]
         }
 
@@ -521,10 +507,9 @@ Rectangle {
             anchors.topMargin: fieldTopMargin
             width: componentWidth
             height: statusScreenInfoFieldHeight
-            itemSize: labelSize
-            itemText: qsTr("System Storage")
+            itemSize: labelSize - 40
+            itemText: qsTr("Storage")
             valueText: systemMessages.messages[NodoMessages.Message.Loading]
         }
     }
 }
-

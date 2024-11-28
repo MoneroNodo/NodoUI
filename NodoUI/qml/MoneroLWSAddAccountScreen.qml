@@ -9,7 +9,7 @@ Item {
     id: moneroLWSAddAccountScreen
 	anchors.fill: parent
     property int labelSize: 0
-    property int infoFieldSize: 1850
+    property int infoFieldSize: 1875
 
     Component.onCompleted: {
         onCalculateMaximumTextLabelLength()
@@ -22,14 +22,14 @@ Item {
         if(moneroLWSPrivateViewkeyLabel.labelRectRoundSize > labelSize)
         labelSize = moneroLWSPrivateViewkeyLabel.labelRectRoundSize
 		
-		if(moneroLWSClearnetAddressLabel.labelRectRoundSize > labelSize)
-		labelSize = moneroLWSClearnetAddressLabel.labelRectRoundSize
+		if(moneroLWSClearnetAddress.labelRectRoundSize > labelSize)
+		labelSize = moneroLWSClearnetAddress.labelRectRoundSize
 		
-		if(moneroLWSTorAddressLabel.labelRectRoundSize > labelSize)
-        labelSize = moneroLWSTorAddressLabel.labelRectRoundSize
+		if(moneroLWSTorAddress.labelRectRoundSize > labelSize)
+        labelSize = moneroLWSTorAddress.labelRectRoundSize
 		
-		if(moneroLWSI2PAddressLabel.labelRectRoundSize > labelSize)
-		labelSize = moneroLWSI2PAddressLabel.labelRectRoundSize
+		if(moneroLWSI2PAddress.labelRectRoundSize > labelSize)
+		labelSize = moneroLWSI2PAddress.labelRectRoundSize
     }
 
     Connections {
@@ -49,6 +49,9 @@ Item {
         itemText: systemMessages.messages[NodoMessages.Message.Address]  //LABEL "Address"
         valueText: ""
         height: NodoSystem.nodoItemHeight
+        validator: RegularExpressionValidator {
+            regularExpression: /^4[1-9A-HJ-NP-Za-km-z]{94}$/
+        }
     }
 
     NodoInputField {
@@ -61,6 +64,9 @@ Item {
         itemText: qsTr("Private Viewkey")
         valueText: ""
         height: NodoSystem.nodoItemHeight
+        validator: RegularExpressionValidator {
+            regularExpression: /^[a-f0-9]{64}$/
+        }
     }
 
     NodoButton {
@@ -83,11 +89,11 @@ Item {
         id: moneroLWSClearnetAddress
         anchors.left: moneroLWSAddAccountScreen.left
 		anchors.top: moneroLWSAddAccountButton.bottom
-		anchors.topMargin: 20
+		anchors.topMargin: 60
         width: infoFieldSize
         height: NodoSystem.nodoItemHeight
 		itemSize: labelSize
-		itemText: qsTr("LWS Clearnet Address")        
+		itemText: qsTr("LWS Address")
         valueText: "http://" + networkManager.getNetworkIP() + ":8133/basic\n"
 	}	
 	
@@ -95,25 +101,23 @@ Item {
         id: moneroLWSTorAddress
         anchors.left: moneroLWSAddAccountScreen.left
 		anchors.top: moneroLWSClearnetAddress.bottom
-		anchors.topMargin: NodoSystem.nodoTopMargin
-        width: infoFieldSize
+        anchors.topMargin: NodoSystem.nodoTopMargin
+	    width: infoFieldSize
         height: NodoSystem.nodoItemHeight
 		itemSize: labelSize
-		itemText: qsTr("LWS Tor Address")        
+		itemText: qsTr("LWS Tor Address")   
         valueText: "http://" + nodoConfig.getStringValueFromKey("config", "tor_address") + ":8133/basic\n"
 	}
 	
-NodoInfoField {
+    NodoInfoField {
         id: moneroLWSI2PAddress
         anchors.left: moneroLWSAddAccountScreen.left
 		anchors.top: moneroLWSTorAddress.bottom
-		anchors.topMargin: NodoSystem.nodoTopMargin
-        width: infoFieldSize
+        anchors.topMargin: NodoSystem.nodoTopMargin
+	    width: infoFieldSize
         height: NodoSystem.nodoItemHeight
 		itemSize: labelSize
-		itemText: qsTr("LWS I2P b32 Address")        
+		itemText: qsTr("LWS I2P Address") 
         valueText: "http://" + nodoConfig.getStringValueFromKey("config", "i2p_b32_addr_lws") + ":8133/basic\n"
 	}	
 }
-
-

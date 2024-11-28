@@ -60,7 +60,7 @@ Rectangle {
                     width: feedAuth.paintedWidth
                     height: 22
                     text: headerAuthStr
-                    color: nodoControl.appTheme ? NodoSystem.highlightedColorNightModeOn : "white"
+                    color: nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn : NodoSystem.dataFieldTextColorNightModeOff
                     font.family: NodoSystem.fontUrbanist.name
                     font.pixelSize: 38
                 }
@@ -73,7 +73,7 @@ Rectangle {
                     width: feedChannel.paintedWidth
                     height: 22
                     text: channelStr
-                    color: nodoControl.appTheme ? NodoSystem.highlightedColorNightModeOn : "white"
+                    color: nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn : NodoSystem.dataFieldTextColorNightModeOff
                     font.family: NodoSystem.fontUrbanist.name
                     font.pixelSize: 38
                 }
@@ -86,7 +86,7 @@ Rectangle {
                     width: feedTimestamp.paintedWidth
                     height: 22
                     text: dataTimestampStr
-                    color: nodoControl.appTheme ? NodoSystem.highlightedColorNightModeOn : "white"
+                    color: nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn : NodoSystem.dataFieldTextColorNightModeOff
                     font.family: NodoSystem.fontUrbanist.name
                     font.pixelSize: 38
                 }
