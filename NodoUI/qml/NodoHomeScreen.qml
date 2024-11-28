@@ -168,10 +168,11 @@ Item {
                 text: qsTr("MONEROPAY")
                 font.family: NodoSystem.fontUrbanist.name
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
-                onClicked: {
-                    pageLoader.source = "MoneroPayMainScreen.qml"
-                    pageLoader.anchors.topMargin = 0
-                }
+								enabled: false
+                // onClicked: {
+                //     pageLoader.source = "MoneroPayMainScreen.qml"
+                //     pageLoader.anchors.topMargin = 0
+                // }
             }
 
             NodoTabButton {

@@ -75,7 +75,8 @@ Item {
         width: infoFieldSize
         itemSize: labelSize
         itemText: qsTr("Deposit Address")
-        readOnlyFlag: inputFieldReadOnly
+        // readOnlyFlag: inputFieldReadOnly
+        readOnlyFlag: true
         height: NodoSystem.nodoItemHeight
         valueFontSize: 26
         validator: RegularExpressionValidator {
@@ -91,7 +92,8 @@ Item {
         width: infoFieldSize
         itemSize: labelSize
         itemText: qsTr("Private Viewkey")
-        readOnlyFlag: inputFieldReadOnly
+        // readOnlyFlag: inputFieldReadOnly
+        readOnlyFlag: true
         height: NodoSystem.nodoItemHeight
         validator: RegularExpressionValidator {
             regularExpression: /^[a-f0-9]{64}$/
@@ -107,17 +109,26 @@ Item {
         height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize
-        isActive: (setButtonActive === true) && (moneroPaySettingsAddressInput.valueText.length === 95) && (moneroPaySettingsViewkeyLabel.valueText.length === 64)
-        onClicked: {
-            moneroPay.setDepositAddress(moneroPaySettingsAddressInput.valueText, moneroPaySettingsViewkeyLabel.valueText)
-            nodoControl.serviceManager("enable", "moneropay");
-            nodoControl.serviceManager("enable", "monero-wallet-rpc");
-            nodoControl.serviceManager("restart", "moneropay");
-            inputFieldReadOnly = true;
-            clearButtonActive = true
-            setButtonActive = false
-            moneroPayMainScreen.setButtonState(true)
-        }
+        // isActive: (setButtonActive === true) && (moneroPaySettingsAddressInput.valueText.length === 95) && (moneroPaySettingsViewkeyLabel.valueText.length === 64)
+        isActive: false
+        // onClicked: {
+        //     moneroPay.setDepositAddress(moneroPaySettingsAddressInput.valueText, moneroPaySettingsViewkeyLabel.valueText)
+        //     nodoControl.serviceManager("enable", "moneropay");
+        //     nodoControl.serviceManager("enable", "monero-wallet-rpc");
+        //     nodoControl.serviceManager("restart", "moneropay");
+        //     inputFieldReadOnly = true;
+        //     clearButtonActive = true
+        //     setButtonActive = false
+        //     moneroPayMainScreen.setButtonState(true)
+        // }
+    }
+    NodoLabel {
+        id: moneroPayDisabledWarningLabel
+        height: 94
+        anchors.left: moneroPaySettingsSetDepositAddressButton.left
+        anchors.top: moneroPaySettingsSetDepositAddressButton.bottom
+        itemSize: 0
+        text: qsTr("Due to recent changes, MoneroPay functionality is currently undergoing a revamp.")
     }
 
     NodoButton {
