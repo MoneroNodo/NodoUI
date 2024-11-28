@@ -138,12 +138,24 @@ Item {
         }
     }
 
+    NodoInputField {
+        id: descriptionInputfield
+        anchors.top: requestCurrenciesRect.bottom
+        anchors.left: moneroPayReceiveRequestScreen.left
+        anchors.topMargin: 2*(NodoSystem.nodoTopMargin)
+        width: addressFieldWidth
+        height: NodoSystem.nodoItemHeight
+        itemSize: labelSize
+        itemText: qsTr("Note (optional)")
+        valueText: ""
+    }
+
     Rectangle {
         id: blockConfirmationsRect
         anchors.left: moneroPayReceiveRequestScreen.left
-        anchors.top: requestCurrenciesRect.bottom
+        anchors.top: descriptionInputfield.bottom
         anchors.topMargin: 2*(NodoSystem.nodoTopMargin)
-        anchors.right: descriptionInputfield.right
+        //anchors.right: descriptionInputfield.right
         height: NodoSystem.nodoItemHeight
         color: "black"
 
@@ -203,23 +215,11 @@ Item {
         }
     }
 
-    NodoInputField {
-        id: descriptionInputfield
+    NodoButton {
+        id: receivePaymentButton
         anchors.top: blockConfirmationsRect.bottom
         anchors.left: moneroPayReceiveRequestScreen.left
         anchors.topMargin: 2*(NodoSystem.nodoTopMargin)
-        width: addressFieldWidth
-        height: NodoSystem.nodoItemHeight
-        itemSize: labelSize
-        itemText: qsTr("Note (optional)")
-        valueText: ""
-    }
-
-    NodoButton {
-        id: receivePaymentButton
-        anchors.top: descriptionInputfield.bottom
-        anchors.left: moneroPayReceiveRequestScreen.left
-        anchors.topMargin: NodoSystem.nodoTopMargin
         text: qsTr("Receive Payment")
         height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontUrbanist.name
@@ -231,4 +231,3 @@ Item {
         }
     }
 }
-
