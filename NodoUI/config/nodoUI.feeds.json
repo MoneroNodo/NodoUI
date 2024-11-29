@@ -50,7 +50,7 @@
             "image_tag": "media:content",
             "name": "Revuo Monero",
             "num_of_feeds_to_show": 2,
-            "pub_date_tag": "updated",
+            "pub_date_tag": "pubDate",
             "selected": true,
             "uri": "https://www.revuo-xmr.com/index.xml",
             "visible": true
