@@ -21,15 +21,15 @@ Item {
         if(deviceLockPinSettingsButton.buttonWidth > labelSize)
             labelSize = deviceLockPinSettingsButton.buttonWidth
 
-        if(systemShutdownButton.buttonWidth > labelSize)
-            labelSize = systemShutdownButton.buttonWidth
+        if(deviceAddressPinSettingsButton.buttonWidth > labelSize)
+            labelSize = deviceAddressPinSettingsButton.buttonWidth
     }
 
     NodoButton {
         id: deviceLockPinSettingsButton
         anchors.left: devicePinScreen.left
         anchors.top: devicePinScreen.top
-        text: qsTr("Change Lock PIN")
+        text: qsTr("Lock PIN Settings")
         height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize
@@ -40,11 +40,11 @@ Item {
     }
 
     NodoButton {
-        id: systemShutdownButton
+        id: deviceAddressPinSettingsButton
         anchors.left: devicePinScreen.left
         anchors.top: deviceLockPinSettingsButton.bottom
         anchors.topMargin: devicePinScreen.buttonTopMargin
-        text: qsTr("Change Address PIN")
+        text: qsTr("Address PIN Settings")
         height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize
