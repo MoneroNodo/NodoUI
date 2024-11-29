@@ -124,8 +124,8 @@ Item {
         qsTr("Cable disconnected!"),
         qsTr("Something is wrong!"),
         qsTr("New PIN is set successfully!"),
-        qsTr("Password doesn't meet requirements"),
-        qsTr("Passwords do not match")
+        qsTr("Password doesn't meet requirements."),
+        qsTr("Passwords do not match.")
     ]
 
     enum NetworkStatusMessages {
