@@ -203,7 +203,7 @@ Item {
                 anchors.top: rightMenu.top
                 anchors.bottom: rightMenu.bottom
                 anchors.right: timeText.left
-                anchors.rightMargin: 20
+                anchors.rightMargin: 15
                 color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
                 topPadding: NodoSystem.topMenuTextTopPadding
                 horizontalAlignment: Text.AlignHCenter
