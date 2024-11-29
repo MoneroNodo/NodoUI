@@ -48,7 +48,7 @@ Item {
             height: NodoSystem.nodoItemHeight
             font.family: NodoSystem.fontUrbanist.name
             font.pixelSize: NodoSystem.buttonTextFontSize
-            text: qsTr("Check for Updates")
+            text: qsTr("Update All")
             onClicked: {
                 deviceUpdateAllButton.isActive = false
                 nodoControl.updateDevice()

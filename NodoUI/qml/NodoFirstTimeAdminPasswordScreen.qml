@@ -11,7 +11,7 @@ Item {
     anchors.leftMargin: 20
 
     property int labelSize: 0
-    property int inputFieldWidth: 900
+    property int inputFieldWidth: 1100
     property bool inputFieldReadOnly: false
     property bool isPasswordValid: false
 
@@ -104,6 +104,7 @@ Item {
             anchors.top: adminPasswordRect.top
             anchors.left: adminPasswordRect.left
             anchors.right: adminPasswordRect.right
+            anchors.topmargin: NodoSystem.nodoTopMargin
             height: 180
             color: "black"
             Text {
