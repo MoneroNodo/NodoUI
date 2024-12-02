@@ -74,7 +74,7 @@ void Daemon::startRecovery(int recoverFS, int rsyncBlockchain)
 {
     qDebug() << QString("received recovery request").append("recoverFS: ").append(QString::number(recoverFS).append(" rsyncBlockchain: ").append(QString::number(rsyncBlockchain)));
 
-    QString program = "/usr/bin/recovery.sh";
+    QString program = "/home/nodo/recovery.sh";
     QStringList arguments;
 
     if(1 == recoverFS)
