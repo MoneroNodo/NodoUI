@@ -21,10 +21,9 @@ Item {
         onCalculateMaximumTextLabelLength()
 
         moneroPaySettingsAddressInput.valueText = moneroPay.getMoneroPayAddress()
-        moneroPaySettingsViewkeyLabel.valueText = moneroPay.getMoneroPayViewKey()
 
 
-        if((moneroPaySettingsAddressInput.valueText.length === 95) && (moneroPaySettingsViewkeyLabel.valueText.length === 64))
+        if(moneroPaySettingsAddressInput.valueText.length === 95)
         {
             inputFieldReadOnly = true;
             setButtonActive = false
@@ -36,9 +35,6 @@ Item {
     function onCalculateMaximumTextLabelLength() {
         if(moneroPaySettingsAddressInput.labelRectRoundSize > labelSize)
             labelSize = moneroPaySettingsAddressInput.labelRectRoundSize
-
-        if(moneroPaySettingsViewkeyLabel.labelRectRoundSize > labelSize)
-            labelSize = moneroPaySettingsViewkeyLabel.labelRectRoundSize
 
         if(moneroPaySettingsSetDepositAddressButton.width > buttonWidth)
             buttonWidth = moneroPaySettingsSetDepositAddressButton.width
@@ -61,7 +57,6 @@ Item {
         function onDepositAddressCleared()
         {
             moneroPaySettingsAddressInput.valueText = moneroPay.getMoneroPayAddress()
-            moneroPaySettingsViewkeyLabel.valueText = moneroPay.getMoneroPayViewKey()
             clearButtonActive = false
             setButtonActive = true
 			receiveButton.enabled = false
@@ -75,8 +70,7 @@ Item {
         width: infoFieldSize
         itemSize: labelSize
         itemText: qsTr("Deposit Address")
-        // readOnlyFlag: inputFieldReadOnly
-        readOnlyFlag: true
+        readOnlyFlag: inputFieldReadOnly
         height: NodoSystem.nodoItemHeight
         valueFontSize: 26
         validator: RegularExpressionValidator {
@@ -84,43 +78,24 @@ Item {
         }
     }
 
-    NodoInputField {
-        id: moneroPaySettingsViewkeyLabel
-        anchors.left: moneroPaySettingsAddressInput.left
-        anchors.top: moneroPaySettingsAddressInput.bottom
-        anchors.topMargin: NodoSystem.nodoTopMargin
-        width: infoFieldSize
-        itemSize: labelSize
-        itemText: qsTr("Private Viewkey")
-        // readOnlyFlag: inputFieldReadOnly
-        readOnlyFlag: true
-        height: NodoSystem.nodoItemHeight
-        validator: RegularExpressionValidator {
-            regularExpression: /^[a-f0-9]{64}$/
-        }
-    }
-
     NodoButton {
         id: moneroPaySettingsSetDepositAddressButton
         anchors.left: moneroPaySettingsAddressInput.left
-        anchors.top: moneroPaySettingsViewkeyLabel.bottom
+        anchors.top: moneroPaySettingsAddressInput.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         text: qsTr("Set Deposit Address")
         height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize
-        // isActive: (setButtonActive === true) && (moneroPaySettingsAddressInput.valueText.length === 95) && (moneroPaySettingsViewkeyLabel.valueText.length === 64)
+        isActive: (setButtonActive === true) && (moneroPaySettingsAddressInput.valueText.length === 95) && (moneroPaySettingsViewkeyLabel.valueText.length === 64)
         isActive: false
-        // onClicked: {
-        //     moneroPay.setDepositAddress(moneroPaySettingsAddressInput.valueText, moneroPaySettingsViewkeyLabel.valueText)
-        //     nodoControl.serviceManager("enable", "moneropay");
-        //     nodoControl.serviceManager("enable", "monero-wallet-rpc");
-        //     nodoControl.serviceManager("restart", "moneropay");
-        //     inputFieldReadOnly = true;
-        //     clearButtonActive = true
-        //     setButtonActive = false
-        //     moneroPayMainScreen.setButtonState(true)
-        // }
+        onClicked: {
+            moneroPay.setDepositAddress(moneroPaySettingsAddressInput.valueText)
+            inputFieldReadOnly = true;
+            clearButtonActive = true
+            setButtonActive = false
+            moneroPayMainScreen.setButtonState(true)
+        }
     }
     NodoLabel {
         id: moneroPayDisabledWarningLabel

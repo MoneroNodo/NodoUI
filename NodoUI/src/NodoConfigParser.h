@@ -48,9 +48,8 @@ public:
     void setrpcEnabledStatus(bool status);
     void setrpcPort(QString port);
 
-    void setMoneroPayParameters(QString address, QString viewKey);
+    void setMoneroPayParameters(QString address);
     QString getMoneroPayAddress(void);
-    QString getMoneroPayViewKey(void);
 
     Q_INVOKABLE bool getUpdateStatus(QString moduleName);
     Q_INVOKABLE void setUpdateStatus(QString moduleName, bool newStatus);

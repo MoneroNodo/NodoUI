@@ -19,8 +19,7 @@ MoneroPay::MoneroPay(NodoConfigParser *configParser)
     QString s = "1970-01-01T00:00:00";
     date = QDateTime::fromString(s,"yyyy-MM-ddThh:mm:ss");
     m_lastPayment.dateTime = date;
-    if (m_configParser->getMoneroPayAddress().length() == 95
-        && m_configParser->getMoneroPayViewKey().length() == 64)
+    if (m_configParser->getMoneroPayAddress().length() == 95)
         m_isDepositAddressSet = true;
 }
 
@@ -324,13 +323,13 @@ void MoneroPay::enableComponent(bool enabled)
     emit componentEnabledStatusChanged();
 }
 
-void MoneroPay::setDepositAddress(QString address, QString viewKey)
+void MoneroPay::setDepositAddress(QString address)
 {
     QFile::remove(m_mpayFile);
     QFile::remove(m_mpayKeyFile);
 
-    m_configParser->setMoneroPayParameters(address, viewKey);
-    emit depositAddressSet(address, viewKey);
+    m_configParser->setMoneroPayParameters(address);
+    emit depositAddressSet(address);
 }
 
 QString MoneroPay::getMoneroPayAddress(void)
@@ -338,15 +337,10 @@ QString MoneroPay::getMoneroPayAddress(void)
     return m_configParser->getMoneroPayAddress();
 }
 
-QString MoneroPay::getMoneroPayViewKey(void)
-{
-    return m_configParser->getMoneroPayViewKey();
-}
-
 void MoneroPay::clearDepositAddress(void)
 {
     enableComponent(false);
-    m_configParser->setMoneroPayParameters("", "");
+    m_configParser->setMoneroPayParameters("");
     enableComponent(true);
     emit depositAddressCleared();
 }
