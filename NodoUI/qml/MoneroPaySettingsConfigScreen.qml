@@ -97,14 +97,6 @@ Item {
             moneroPayMainScreen.setButtonState(true)
         }
     }
-    NodoLabel {
-        id: moneroPayDisabledWarningLabel
-        height: 94
-        anchors.left: moneroPaySettingsSetDepositAddressButton.left
-        anchors.top: moneroPaySettingsSetDepositAddressButton.bottom
-        itemSize: 0
-        text: qsTr("Due to recent changes, MoneroPay functionality is currently undergoing a revamp.")
-    }
 
     NodoButton {
         id: moneroPaySettingsClearAddressButton
