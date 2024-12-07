@@ -326,14 +326,14 @@ void NodoConfigParser::setNodeBandwidthParameters(QString in_peers, QString out_
 
 void NodoConfigParser::setMoneroPayParameters(QString address)
 {
-    m_moneropayObj.insert("address", address);
+    m_moneropayObj.insert("deposit_address", address);
     writeJson();
 }
 
 QString NodoConfigParser::getMoneroPayAddress(void)
 {
     QJsonValue jsonValue;
-    jsonValue = m_moneropayObj.value("address");
+    jsonValue = m_moneropayObj.value("deposit_address");
     if("" == jsonValue.toString())
     {
         return "";

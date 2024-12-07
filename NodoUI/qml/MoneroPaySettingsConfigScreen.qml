@@ -63,19 +63,31 @@ Item {
         }
     }
 
-    NodoInputField {
-        id: moneroPaySettingsAddressInput
-        anchors.left: moneroPaySettingsConfigScreen.left
-        anchors.top: moneroPaySettingsConfigScreen.top
-        width: infoFieldSize
-        itemSize: labelSize
-        itemText: qsTr("Deposit Address")
-        readOnlyFlag: inputFieldReadOnly
-        height: NodoSystem.nodoItemHeight
-        valueFontSize: 26
-        validator: RegularExpressionValidator {
-            regularExpression: /^4[1-9A-HJ-NP-Za-km-z]{94}$/
+    Rectangle {
+        NodoInputField {
+            id: moneroPaySettingsAddressInput
+            anchors.left: moneroPaySettingsConfigScreen.left
+            anchors.top: moneroPaySettingsConfigScreen.top
+            width: infoFieldSize
+            itemSize: labelSize
+            itemText: qsTr("Deposit Address")
+            readOnlyFlag: inputFieldReadOnly
+            height: NodoSystem.nodoItemHeight
+            valueFontSize: 26
+            validator: RegularExpressionValidator {
+                regularExpression: /^4[1-9A-HJ-NP-Za-km-z]{94}$/
+            }
         }
+
+        NodoLabel{
+            id: moneroPaySettingsAddressDescriptionText
+            height: moneroPaySettingsAddressInput.height + 16
+            anchors.left: moneroPaySettingsConfigScreen.left
+            anchors.top: moneroPaySettingsAddressInput.bottom
+            itemSize: labelSize
+            text: qsTr("Received transactions will periodically be sweeped to this address.")
+        }
+
     }
 
     NodoButton {
