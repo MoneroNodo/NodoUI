@@ -33,9 +33,10 @@
         <file>Images/Nodo_white.png</file>
         <file>qml/NodoBusyIndicator.qml</file>
         <file>qml/NodoFeedsSwitch.qml</file>
-        <file>qml/NodoFeederScreenSaver.qml</file>
+        <file>qml/NodoNewsScreensaver.qml</file>
         <file>qml/NodoHomeScreen.qml</file>
-        <file>qml/NodoScreenSaver.qml</file>
+        <file>qml/NodoAnalogClock.qml</file>
+        <file>qml/NodoDisplayOffScreensaver.qml</file>
         <file>qml/NodoTabButton.qml</file>
         <file>Images/Nodo_ClockFace_Red.png</file>
         <file>Images/Nodo_ClockFace_White.png</file>

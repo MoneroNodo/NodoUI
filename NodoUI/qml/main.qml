@@ -218,15 +218,19 @@ ApplicationWindow {
                 var screenSaverType = nodoControl.getScreenSaverType()
 
                 if(0 === screenSaverType) {
-                    mainAppStackView.push("NodoFeederScreenSaver.qml")
+                    mainAppStackView.push("NodoNewsScreensaver.qml")
                 }
                 else if(1 === screenSaverType)
                 {
-                    mainAppStackView.push("NodoScreenSaver.qml")
+                    mainAppStackView.push("NodoAnalogClock.qml")
                 }
                 else if(2 === screenSaverType)
                 {
                     mainAppStackView.push("NodoDigitalClock.qml")
+                }
+                else if(3 === screenSaverType)
+                {
+                    mainAppStackView.push("NodoDisplayOffScreensaver.qml")
                 }
                 nodoControl.closePopup()
                 nodoControl.stopScreenSaverTimer();

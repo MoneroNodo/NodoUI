@@ -170,7 +170,7 @@ Item {
             width: dropdownLength
             height: screenSaverRect.height
             currentIndex: nodoControl.getScreenSaverType()
-            model: [qsTr("News Carousel"), qsTr("Analog Clock"), qsTr("Digital Clock"), qsTr("Off")]
+            model: [qsTr("News"), qsTr("Analog Clock"), qsTr("Digital Clock"), qsTr("Display Off"), qsTr("Screensaver Off")]
             onCurrentIndexChanged: {
                 nodoControl.setScreenSaverType(currentIndex)
             }
