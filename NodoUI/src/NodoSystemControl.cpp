@@ -458,7 +458,7 @@ int NodoSystemControl::geti2pPort(void)
 
 int NodoSystemControl::getclearnetPort(void)
 {
-    return m_configParser->getIntValueFromKey("config", "monero_public_port");
+    return 18089;
 }
 
 int NodoSystemControl::getrpcPort(void)
