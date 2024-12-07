@@ -7,6 +7,7 @@ import NodoCanvas 1.0
 
 Item {
     id: displayOff
+    signal deleteMe(int screenID)
     width: 1920
     height: 1080
     
@@ -14,5 +15,6 @@ Item {
         id: displayOffBackground
         anchors.fill: parent
         color: "black"
+        isScreenSaver: true
     }
 }

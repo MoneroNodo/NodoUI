@@ -6,14 +6,14 @@ import NodoSystem 1.1
 import NodoCanvas 1.0
 
 Item {
-    id: feederScreenSaver
+    id: newsScreensaver
     signal deleteMe(int screenID)
 
     NewsMainScreen{
         x: 0
         y: 0
-        width: feederScreenSaver.width
-        height: feederScreenSaver.height
+        width: newsScreensaver.width
+        height: newsScreensaver.height
         isScreenSaver: true
     }
 }
