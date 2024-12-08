@@ -230,7 +230,7 @@ ApplicationWindow {
                 }
                 else if(3 === screenSaverType)
                 {
-                    mainAppStackView.push("NodoDisplayOffScreensaver.qml")
+                    mainAppStackView.push("NodoDisplayOff.qml")
                 }
                 nodoControl.closePopup()
                 nodoControl.stopScreenSaverTimer();

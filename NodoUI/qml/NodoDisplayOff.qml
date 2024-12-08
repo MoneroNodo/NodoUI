@@ -7,9 +7,10 @@ import NodoCanvas 1.0
 
 Item {
     id: displayOff
-    signal deleteMe(int screenID)
     width: 1920
     height: 1080
+    
+    //signal deleteMe(int screenID)
     
     Rectangle {
         id: displayOffBackground
