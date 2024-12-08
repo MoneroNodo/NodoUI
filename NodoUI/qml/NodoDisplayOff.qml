@@ -16,6 +16,5 @@ Item {
         id: displayOffBackground
         anchors.fill: parent
         color: "black"
-        //isScreenSaver: true
     }
 }
