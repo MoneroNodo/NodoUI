@@ -10,12 +10,12 @@ Item {
     width: 1920
     height: 1080
     
-    //signal deleteMe(int screenID)
+    signal deleteMe(int screenID)
     
     Rectangle {
         id: displayOffBackground
         anchors.fill: parent
         color: "black"
-        isScreenSaver: true
+        //isScreenSaver: true
     }
 }
