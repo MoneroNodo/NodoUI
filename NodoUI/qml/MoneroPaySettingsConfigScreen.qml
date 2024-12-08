@@ -100,7 +100,6 @@ Item {
         font.family: NodoSystem.fontUrbanist.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         isActive: (setButtonActive === true) && (moneroPaySettingsAddressInput.valueText.length === 95) && (moneroPaySettingsViewkeyLabel.valueText.length === 64)
-        isActive: false
         onClicked: {
             moneroPay.setDepositAddress(moneroPaySettingsAddressInput.valueText)
             inputFieldReadOnly = true;
