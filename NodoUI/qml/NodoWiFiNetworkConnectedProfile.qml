@@ -96,7 +96,8 @@ NodoCanvas {
         anchors.rightMargin: 14
         width: mainRect.buttonSize
         height: networkDelegateItemHeight
-        font.pixelSize: NodoSystem.infoFieldItemFontSize
+        font.family: NodoSystem.fontInter.name
+        font.pixelSize: NodoSystem.buttonTextFontSize
         text: systemMessages.messages[NodoMessages.Message.Disconnect]
         visible: true
         isActive: true
@@ -118,7 +119,8 @@ NodoCanvas {
         anchors.rightMargin: 20
         width: mainRect.buttonSize
         height: networkDelegateItemHeight
-        font.pixelSize: NodoSystem.infoFieldItemFontSize
+        font.family: NodoSystem.fontInter.name
+        font.pixelSize: NodoSystem.buttonTextFontSize
         text: systemMessages.messages[NodoMessages.Message.Forget]
         visible: true
         isActive: true
