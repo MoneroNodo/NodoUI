@@ -3,7 +3,7 @@ Makefile
 NodoUI/Makefile
 NodoUI/nodo_embedded_interface.*
 NodoUI/build
-NodoUI/assets
+//NodoUI/assets
 NodoDaemon/Makefile
 NodoDaemon/nodo_embedded_adaptor.*
 NodoDaemon/build
