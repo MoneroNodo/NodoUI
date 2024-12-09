@@ -140,7 +140,7 @@ Item {
                 anchors.left: lockPinControlLockAfterTimeRect.right
                 height: NodoSystem.nodoItemHeight
                 verticalAlignment: Text.AlignVCenter
-                font.family: NodoSystem.fontUrbanist.name
+                font.family: NodoSystem.fontInter.name
                 font.pixelSize: NodoSystem.inputFieldValueFontSize
                 color: nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn : NodoSystem.dataFieldTextColorNightModeOff
             }
@@ -195,7 +195,7 @@ Item {
             anchors.topMargin: NodoSystem.nodoTopMargin
             text: qsTr("Change Lock PIN")
             height: NodoSystem.nodoItemHeight
-            font.family: NodoSystem.fontUrbanist.name
+            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.buttonTextFontSize
             isActive: false
             onClicked: {

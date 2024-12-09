@@ -97,7 +97,7 @@ Item {
         anchors.topMargin: NodoSystem.nodoTopMargin
         text: qsTr("Set Deposit Address")
         height: NodoSystem.nodoItemHeight
-        font.family: NodoSystem.fontUrbanist.name
+        font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         isActive: (setButtonActive === true) && (moneroPaySettingsAddressInput.valueText.length === 95) && (moneroPaySettingsViewkeyLabel.valueText.length === 64)
         onClicked: {
@@ -117,7 +117,7 @@ Item {
 		anchors.leftMargin: 25
         text: qsTr("Clear Deposit Address")
         height: NodoSystem.nodoItemHeight
-        font.family: NodoSystem.fontUrbanist.name
+        font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         isActive: clearButtonActive
         onClicked: {

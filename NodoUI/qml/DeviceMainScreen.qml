@@ -25,7 +25,7 @@ Item {
             id: wifiButton
             y: (deviceMainMenuBar.height - wifiButton.height)/2
             text: qsTr("WI-FI")
-            font.family: NodoSystem.fontUrbanist.name
+            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: { pageLoader.source = "DeviceWifiScreen.qml" }
         }
@@ -34,7 +34,7 @@ Item {
             anchors.top: wifiButton.top
             anchors.left: wifiButton.right
             text: qsTr("ETHERNET")
-            font.family: NodoSystem.fontUrbanist.name
+            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: { pageLoader.source = "DeviceEthernetScreen.qml" }
         }
@@ -43,7 +43,7 @@ Item {
             anchors.top: wifiButton.top
             anchors.left: ethernetButton.right
             text: qsTr("SYSTEM")
-            font.family: NodoSystem.fontUrbanist.name
+            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: { pageLoader.source = "DeviceSystemScreen.qml" }
         }
@@ -53,7 +53,7 @@ Item {
             anchors.top: wifiButton.top
             anchors.left: systemButton.right
             text: qsTr("UPDATES")
-            font.family: NodoSystem.fontUrbanist.name
+            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: { pageLoader.source = "DeviceUpdatesScreen.qml" }
         }
@@ -64,7 +64,7 @@ Item {
             anchors.top: wifiButton.top
             anchors.left: updatesButton.right
             text: qsTr("DISPLAY")
-            font.family: NodoSystem.fontUrbanist.name
+            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: { pageLoader.source = "DeviceDisplayScreen.qml" }
         }
@@ -73,7 +73,7 @@ Item {
             anchors.top: wifiButton.top
             anchors.left: displayButton.right
             text: qsTr("PIN")
-            font.family: NodoSystem.fontUrbanist.name
+            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: { pageLoader.source = "DevicePinScreen.qml" }
         }
@@ -82,7 +82,7 @@ Item {
             anchors.top: wifiButton.top
             anchors.left: pinButton.right
             text: qsTr("NEWS FEEDS")
-            font.family: NodoSystem.fontUrbanist.name
+            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: { pageLoader.source = "DeviceNewsFeedsScreen.qml" }
         }
@@ -91,7 +91,7 @@ Item {
             anchors.top: wifiButton.top
             anchors.left: newsFeedsButton.right
             text: qsTr("SSH")
-            font.family: NodoSystem.fontUrbanist.name
+            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: { pageLoader.source = "DeviceSSHScreen.qml" }
         }

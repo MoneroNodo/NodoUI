@@ -65,7 +65,7 @@ Item {
             color: "black"
             Text {
                 text: qsTr("Please set your 6 digit Address PIN.\nThe Address PIN is used to change or remove the Monero Deposit Address for Miner and MoneroPay.\nIt can be changed later on DEVICE->PIN")
-                font.family: NodoSystem.fontUrbanist.name
+                font.family: NodoSystem.fontInter.name
                 font.pixelSize: NodoSystem.textFontSize
                 verticalAlignment: Text.AlignVCenter
                 wrapMode: Text.WordWrap
@@ -117,7 +117,7 @@ Item {
             anchors.topMargin: NodoSystem.nodoTopMargin
             text: systemMessages.messages[NodoMessages.Message.Apply]
             height: NodoSystem.nodoItemHeight
-            font.family: NodoSystem.fontUrbanist.name
+            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.buttonTextFontSize
             isActive: (addressPINField.valueText.length >= 6) && (addressPINReenterField.valueText === addressPINField.valueText) ? true : false
             onClicked: {

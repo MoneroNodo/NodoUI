@@ -213,7 +213,7 @@ Rectangle {
             horizontalAlignment: Text.AlignHCenter
             font.pixelSize: NodoSystem.topMenuButtonFontSize +2
             color: nodoControl.appTheme ? NodoSystem.highlightedColorNightModeOn : NodoSystem.highlightedColorNightModeOff
-            font.family: NodoSystem.fontUrbanist.name
+            font.family: NodoSystem.fontInter.name
         }
 
         NodoInfoField {
@@ -354,7 +354,7 @@ Rectangle {
             horizontalAlignment: Text.AlignHCenter
             font.pixelSize: NodoSystem.topMenuButtonFontSize +2
             color: nodoControl.appTheme ? NodoSystem.highlightedColorNightModeOn : NodoSystem.highlightedColorNightModeOff
-            font.family: NodoSystem.fontUrbanist.name
+            font.family: NodoSystem.fontInter.name
         }
 
         NodoInfoField {
@@ -449,7 +449,7 @@ Rectangle {
             horizontalAlignment: Text.AlignHCenter
             font.pixelSize: NodoSystem.topMenuButtonFontSize +2
             color: nodoControl.appTheme ? NodoSystem.highlightedColorNightModeOn : NodoSystem.highlightedColorNightModeOff
-            font.family: NodoSystem.fontUrbanist.name
+            font.family: NodoSystem.fontInter.name
         }
 
         NodoInfoField {

@@ -61,7 +61,7 @@ NodoCanvas {
         anchors.topMargin: NodoSystem.nodoTopMargin
         text: qsTr("Accept")
         height: NodoSystem.nodoItemHeight
-        font.family: NodoSystem.fontUrbanist.name
+        font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         onClicked: {
             moneroLWS.acceptRequest(moneroLWSAccountRequestsAddressField.valueText);
@@ -75,7 +75,7 @@ NodoCanvas {
         anchors.leftMargin: 20
         text: qsTr("Reject")
         height: NodoSystem.nodoItemHeight
-        font.family: NodoSystem.fontUrbanist.name
+        font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         onClicked: {
             moneroLWS.rejectRequest(moneroLWSAccountRequestsAddressField.valueText);

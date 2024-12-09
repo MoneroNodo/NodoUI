@@ -25,7 +25,7 @@ Item {
             id: bandwidthButton
             y: (nodoMenuBar.height - bandwidthButton.height)/2
             text: qsTr("BANDWIDTH")
-            font.family: NodoSystem.fontUrbanist.name
+            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: { pageLoader.source = "NodeBandwidthScreen.qml" }
         }
@@ -35,7 +35,7 @@ Item {
             y: (nodoMenuBar.height - privateNodeButton.height)/2
             anchors.left: bandwidthButton.right
             text: qsTr("PRIVATE NODE")
-            font.family: NodoSystem.fontUrbanist.name
+            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: { pageLoader.source = "NodePrivateNodeScreen.qml" }
         }

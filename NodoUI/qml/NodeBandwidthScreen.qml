@@ -232,7 +232,7 @@ Item {
 
             height: NodoSystem.nodoItemHeight
             verticalAlignment: Text.AlignVCenter
-            font.family: NodoSystem.fontUrbanist.name
+            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.inputFieldValueFontSize
             color: (nodeBandwidthScreen.inputFieldReadOnly === true) ? NodoSystem.buttonDisabledColor : nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn : NodoSystem.dataFieldTextColorNightModeOff
         }
@@ -324,7 +324,7 @@ Item {
 
             height: NodoSystem.nodoItemHeight
             verticalAlignment: Text.AlignVCenter
-            font.family: NodoSystem.fontUrbanist.name
+            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.inputFieldValueFontSize
             color: (inputFieldReadOnly === true) ? NodoSystem.buttonDisabledColor : nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn : NodoSystem.dataFieldTextColorNightModeOff
         }
@@ -384,7 +384,7 @@ Item {
         anchors.topMargin: 20
         text: systemMessages.messages[NodoMessages.Message.Apply]
         height: NodoSystem.nodoItemHeight
-        font.family: NodoSystem.fontUrbanist.name
+        font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         isActive: false
         onClicked:

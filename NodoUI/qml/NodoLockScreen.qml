@@ -107,7 +107,7 @@ Item {
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignHCenter
             color: "#FCFCFC"
-            font.family: NodoSystem.fontUrbanist.name
+            font.family: NodoSystem.fontInter.name
         }
     }
 
@@ -236,7 +236,7 @@ Item {
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
                 color: NodoSystem.lockButtonTextColor
-                font.family: NodoSystem.fontUrbanist.name
+                font.family: NodoSystem.fontInter.name
             }
 
             onClicked: {
@@ -262,7 +262,7 @@ Item {
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
                 color: NodoSystem.lockButtonTextColor
-                font.family: NodoSystem.fontUrbanist.name
+                font.family: NodoSystem.fontInter.name
             }
 
             onClicked: {
@@ -288,7 +288,7 @@ Item {
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
                 color: NodoSystem.lockButtonTextColor
-                font.family: NodoSystem.fontUrbanist.name
+                font.family: NodoSystem.fontInter.name
             }
 
             onClicked: {
@@ -315,7 +315,7 @@ Item {
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
                 color: NodoSystem.lockButtonTextColor
-                font.family: NodoSystem.fontUrbanist.name
+                font.family: NodoSystem.fontInter.name
             }
 
             onClicked: {
@@ -341,7 +341,7 @@ Item {
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
                 color: NodoSystem.lockButtonTextColor
-                font.family: NodoSystem.fontUrbanist.name
+                font.family: NodoSystem.fontInter.name
             }
 
             onClicked: {
@@ -367,7 +367,7 @@ Item {
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
                 color: NodoSystem.lockButtonTextColor
-                font.family: NodoSystem.fontUrbanist.name
+                font.family: NodoSystem.fontInter.name
             }
 
             onClicked: {
@@ -394,7 +394,7 @@ Item {
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
                 color: NodoSystem.lockButtonTextColor
-                font.family: NodoSystem.fontUrbanist.name
+                font.family: NodoSystem.fontInter.name
             }
 
             onClicked: {
@@ -420,7 +420,7 @@ Item {
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
                 color: NodoSystem.lockButtonTextColor
-                font.family: NodoSystem.fontUrbanist.name
+                font.family: NodoSystem.fontInter.name
             }
 
             onClicked: {
@@ -446,7 +446,7 @@ Item {
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
                 color: NodoSystem.lockButtonTextColor
-                font.family: NodoSystem.fontUrbanist.name
+                font.family: NodoSystem.fontInter.name
             }
 
             onClicked: {
@@ -471,7 +471,7 @@ Item {
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
                 color: NodoSystem.lockButtonTextColor
-                font.family: NodoSystem.fontUrbanist.name
+                font.family: NodoSystem.fontInter.name
             }
 
             onClicked: {

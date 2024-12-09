@@ -3,7 +3,7 @@ import QtQuick 2.15
 
 Item
 {
-    readonly property FontLoader fontUrbanist: FontLoader { source: "qrc:/NodoSystem/InterRegular.ttf" }
+    readonly property FontLoader fontInter: FontLoader { source: "qrc:/NodoSystem/InterDisplay.ttf" }
 
     property int nodoItemHeight: 80
 

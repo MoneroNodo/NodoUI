@@ -22,7 +22,7 @@ CheckBox {
         x: 1
         y: -6
         text: "\u2713"
-        font.family: NodoSystem.fontUrbanist.name
+        font.family: NodoSystem.fontInter.name
         font.pixelSize: checkBox.width
         color: "white"
         visible: checkBox.checked

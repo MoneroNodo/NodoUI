@@ -46,7 +46,7 @@ Item {
             anchors.top: deviceUpdateAllRect.top
             anchors.left: deviceUpdateAllRect.left
             height: NodoSystem.nodoItemHeight
-            font.family: NodoSystem.fontUrbanist.name
+            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.buttonTextFontSize
             text: qsTr("Update All")
             onClicked: {

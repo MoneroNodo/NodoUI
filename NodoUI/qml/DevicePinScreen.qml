@@ -31,7 +31,7 @@ Item {
         anchors.top: devicePinScreen.top
         text: qsTr("Lock PIN Settings")
         height: NodoSystem.nodoItemHeight
-        font.family: NodoSystem.fontUrbanist.name
+        font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         width: labelSize
         onClicked: {
@@ -46,7 +46,7 @@ Item {
         anchors.topMargin: devicePinScreen.buttonTopMargin
         text: qsTr("Address PIN Settings")
         height: NodoSystem.nodoItemHeight
-        font.family: NodoSystem.fontUrbanist.name
+        font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         width: labelSize
         onClicked: {

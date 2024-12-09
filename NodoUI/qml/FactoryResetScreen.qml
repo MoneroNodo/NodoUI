@@ -46,7 +46,7 @@ Item {
         color: "black"
         Text {
             id: resetStatusText
-            font.family: NodoSystem.fontUrbanist.name
+            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.textFontSize
             verticalAlignment: Text.AlignVCenter
             wrapMode: Text.WordWrap

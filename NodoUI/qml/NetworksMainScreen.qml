@@ -25,7 +25,7 @@ Item {
             id: clearnetButton
             y: (networksMenuBar.height - clearnetButton.height)/2
             text: qsTr("CLEARNET")
-            font.family: NodoSystem.fontUrbanist.name
+            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: { pageLoader.source = "NetworksClearnetScreen.qml" }
         }
@@ -34,7 +34,7 @@ Item {
             anchors.left: clearnetButton.right
             anchors.top: clearnetButton.top
             text: qsTr("TOR")
-            font.family: NodoSystem.fontUrbanist.name
+            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: { pageLoader.source = "NetworksTorScreen.qml" }
         }
@@ -43,7 +43,7 @@ Item {
             anchors.left: torButton.right
             anchors.top: clearnetButton.top
             text: qsTr("I2P")
-            font.family: NodoSystem.fontUrbanist.name
+            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: { pageLoader.source = "NetworksI2PScreen.qml" }
         }

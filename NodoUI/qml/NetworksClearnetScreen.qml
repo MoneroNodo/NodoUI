@@ -154,7 +154,7 @@ Item {
         anchors.topMargin: 20
         text: systemMessages.messages[NodoMessages.Message.ApplyPort]
         height: NodoSystem.nodoItemHeight
-        font.family: NodoSystem.fontUrbanist.name
+        font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         isActive: false
         onClicked:

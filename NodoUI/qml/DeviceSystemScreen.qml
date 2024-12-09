@@ -23,7 +23,7 @@ Rectangle {
             anchors.top: deviceSystemScreen.top
             text: qsTr("Restart")
             height: NodoSystem.nodoItemHeight
-            font.family: NodoSystem.fontUrbanist.name
+            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.buttonTextFontSize
             onClicked: {
                 deviceSystemPopup.commandID = 0;
@@ -39,7 +39,7 @@ Rectangle {
             anchors.topMargin: deviceSystemScreen.buttonTopMargin
             text: qsTr("Shutdown")
             height: NodoSystem.nodoItemHeight
-            font.family: NodoSystem.fontUrbanist.name
+            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.buttonTextFontSize
             onClicked: {
                 deviceSystemPopup.commandID = 1;
@@ -55,7 +55,7 @@ Rectangle {
             anchors.topMargin: deviceSystemScreen.buttonTopMargin
             text: qsTr("Recovery")
             height: NodoSystem.nodoItemHeight
-            font.family: NodoSystem.fontUrbanist.name
+            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.buttonTextFontSize
             backgroundColor:  nodoControl.appTheme ? "#F50000" : "#F50000"
             onClicked: {
@@ -150,7 +150,7 @@ Rectangle {
                 anchors.topMargin: 80
                 text: qsTr("Start")
                 height: NodoSystem.nodoItemHeight
-                font.family: NodoSystem.fontUrbanist.name
+                font.family: NodoSystem.fontInter.name
                 font.pixelSize: NodoSystem.buttonTextFontSize
                 onClicked: {
                     deviceSystemPopup.commandID = 2;
@@ -166,7 +166,7 @@ Rectangle {
                 anchors.leftMargin: 16
                 text: systemMessages.messages[NodoMessages.Message.Cancel]
                 height: NodoSystem.nodoItemHeight
-                font.family: NodoSystem.fontUrbanist.name
+                font.family: NodoSystem.fontInter.name
                 font.pixelSize: NodoSystem.buttonTextFontSize
                 onClicked: {
                     deviceSystemScreen.visible = true

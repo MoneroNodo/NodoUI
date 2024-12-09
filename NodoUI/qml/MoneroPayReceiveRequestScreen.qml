@@ -222,7 +222,7 @@ Item {
         anchors.topMargin: 2*(NodoSystem.nodoTopMargin)
         text: qsTr("Receive Payment")
         height: NodoSystem.nodoItemHeight
-        font.family: NodoSystem.fontUrbanist.name
+        font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         isActive: xmrAmount === 0 ? false : true
         onClicked: {

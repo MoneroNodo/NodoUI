@@ -112,7 +112,7 @@ Item {
                 anchors.leftMargin: 20
                 height: NodoSystem.nodoItemHeight
                 text: qsTr("DEVICE")
-                font.family: NodoSystem.fontUrbanist.name
+                font.family: NodoSystem.fontInter.name
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
                 onClicked: {
                     pageLoader.source = "DeviceMainScreen.qml"
@@ -125,7 +125,7 @@ Item {
                 anchors.left: deviceButton.right
                 height: NodoSystem.nodoItemHeight
                 text: qsTr("NETWORKS")
-                font.family: NodoSystem.fontUrbanist.name
+                font.family: NodoSystem.fontInter.name
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
                 onClicked: {
                     pageLoader.source = "NetworksMainScreen.qml"
@@ -139,7 +139,7 @@ Item {
                 anchors.left: networksButton.right
                 height: NodoSystem.nodoItemHeight
                 text: qsTr("NODE")
-                font.family: NodoSystem.fontUrbanist.name
+                font.family: NodoSystem.fontInter.name
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
                 onClicked: {
                     pageLoader.source = "NodeMainScreen.qml"
@@ -152,7 +152,7 @@ Item {
                 anchors.left: nodeButton.right
                 height: NodoSystem.nodoItemHeight
                 text: qsTr("LWS")
-                font.family: NodoSystem.fontUrbanist.name
+                font.family: NodoSystem.fontInter.name
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
                 onClicked: {
                     pageLoader.source = "MoneroLWSMainScreen.qml"
@@ -166,7 +166,7 @@ Item {
                 anchors.left: moneroLWSButton.right
                 height: NodoSystem.nodoItemHeight
                 text: qsTr("MONEROPAY")
-                font.family: NodoSystem.fontUrbanist.name
+                font.family: NodoSystem.fontInter.name
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
 								enabled: false
                 // onClicked: {
@@ -181,7 +181,7 @@ Item {
                 anchors.left: mPayButton.right
                 height: NodoSystem.nodoItemHeight
                 text: qsTr("NEWS")
-                font.family: NodoSystem.fontUrbanist.name
+                font.family: NodoSystem.fontInter.name
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
                 onClicked: {
                     pageLoader.source = "NewsMainScreen.qml"
@@ -208,7 +208,7 @@ Item {
                 topPadding: NodoSystem.topMenuTextTopPadding
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
-                font.family: NodoSystem.fontUrbanist.name
+                font.family: NodoSystem.fontInter.name
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
             }
 
@@ -222,7 +222,7 @@ Item {
                 topPadding: NodoSystem.topMenuTextTopPadding
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
-                font.family: NodoSystem.fontUrbanist.name
+                font.family: NodoSystem.fontInter.name
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
             }
         }
@@ -243,7 +243,7 @@ Item {
                 color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
                 text: "XMR-" + nodoCurrencies.currencyCodes[priceTicker.getCurrentCurrencyIndex()] + ":"
                 topPadding: NodoSystem.topMenuTextTopPadding
-                font.family: NodoSystem.fontUrbanist.name
+                font.family: NodoSystem.fontInter.name
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignRight
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
@@ -258,7 +258,7 @@ Item {
                 color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
                 text: nodoCurrencies.currencySymbols[priceTicker.getCurrentCurrencyIndex()]
                 topPadding: NodoSystem.topMenuTextTopPadding
-                font.family: NodoSystem.fontUrbanist.name
+                font.family: NodoSystem.fontInter.name
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignRight
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
@@ -275,7 +275,7 @@ Item {
                 color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
                 text: "---.--"
                 topPadding: NodoSystem.topMenuTextTopPadding
-                font.family: NodoSystem.fontUrbanist.name
+                font.family: NodoSystem.fontInter.name
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
                 font.pixelSize: NodoSystem.topMenuButtonFontSize

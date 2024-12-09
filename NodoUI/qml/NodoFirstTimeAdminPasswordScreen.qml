@@ -109,7 +109,7 @@ Item {
             color: "black"
             Text {
                 text: qsTr("Please set your Admin Password. The Admin Password should be at least 8 characters, with uppercase and lowercase letters, number and special character.\nThe Admin Password is used to connect to Nodo remotely via SSH. It can be changed later on DEVICE->SSH.")
-                font.family: NodoSystem.fontUrbanist.name
+                font.family: NodoSystem.fontInter.name
                 font.pixelSize: NodoSystem.textFontSize
                 verticalAlignment: Text.AlignVCenter
                 wrapMode: Text.WordWrap
@@ -147,7 +147,7 @@ Item {
             Text {
                 id: passwordWarningText
                 anchors.fill: passwordWarningRect
-                font.family: NodoSystem.fontUrbanist.name
+                font.family: NodoSystem.fontInter.name
                 font.pixelSize: NodoSystem.textFontSize
                 verticalAlignment: Text.AlignVCenter
                 wrapMode: Text.WordWrap
@@ -179,7 +179,7 @@ Item {
             anchors.topMargin: NodoSystem.nodoTopMargin
             text: systemMessages.messages[NodoMessages.Message.Apply]
             height: NodoSystem.nodoItemHeight
-            font.family: NodoSystem.fontUrbanist.name
+            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.buttonTextFontSize
             isActive: (adminPasswordScreen.isPasswordValid) && (adminPasswordField.valueText.length >= 8) && (adminPasswordField.valueText === adminPasswordReenterField.valueText) ? true : false
             onClicked: {
