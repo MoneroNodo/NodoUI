@@ -3,11 +3,10 @@
         <file>qml/main.qml</file>
         <file>qml/NodoStatusScreen.qml</file>
         <file>qml/NodoInfoField.qml</file>
-        <file>qml/NetworksMainScreen.qml</file>
-        <file>qml/NetworksClearnetScreen.qml</file>
-        <file>qml/NetworksTorScreen.qml</file>
+        <file>qml/NodeClearnetScreen.qml</file>
+        <file>qml/NodeTorScreen.qml</file>
         <file>qml/NodoSwitch.qml</file>
-        <file>qml/NetworksI2PScreen.qml</file>
+        <file>qml/NodeI2PScreen.qml</file>
         <file>qml/NodeMainScreen.qml</file>
         <file>qml/NodePrivateNodeScreen.qml</file>
         <file>qml/NodeBandwidthScreen.qml</file>

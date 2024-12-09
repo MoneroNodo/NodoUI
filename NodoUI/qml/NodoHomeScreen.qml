@@ -119,24 +119,11 @@ Item {
                     pageLoader.anchors.topMargin = 0
                 }
             }
-            NodoTabButton {
-                id: networksButton
-                anchors.top: deviceButton.top
-                anchors.left: deviceButton.right
-                height: NodoSystem.nodoItemHeight
-                text: qsTr("NETWORKS")
-                font.family: NodoSystem.fontInter.name
-                font.pixelSize: NodoSystem.topMenuButtonFontSize
-                onClicked: {
-                    pageLoader.source = "NetworksMainScreen.qml"
-                    pageLoader.anchors.topMargin = 0
-                }
-            }
 
             NodoTabButton {
                 id: nodeButton
                 anchors.top: deviceButton.top
-                anchors.left: networksButton.right
+                anchors.left: deviceButton.right
                 height: NodoSystem.nodoItemHeight
                 text: qsTr("NODE")
                 font.family: NodoSystem.fontInter.name

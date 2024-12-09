@@ -7,7 +7,7 @@ import NodoCanvas 1.0
 import QtQuick2QREncode 1.0
 
 Item {
-    id: networksTorScreen
+    id: nodeTorScreen
     property int labelSize: 0
     property int infoFieldWidth: 1320
     property int torPort
@@ -26,21 +26,21 @@ Item {
         var rpcStat = nodoControl.getrpcEnabledStatus()
         var rpcu = nodoControl.getrpcUser()
         var rpcp = nodoControl.getrpcPassword()
-        networksTorScreen.port = nodoControl.gettorPort()
+        nodeTorScreen.port = nodoControl.gettorPort()
 
         if((rpcu === "") || (rpcp === ""))
         {
             rpcStat = false
         }
 
-        networksTorScreen.isRPCEnabled = rpcStat
-        networksTorScreen.rpcUser = rpcu
-        networksTorScreen.rpcPassword = rpcp
+        nodeTorScreen.isRPCEnabled = rpcStat
+        nodeTorScreen.rpcUser = rpcu
+        nodeTorScreen.rpcPassword = rpcp
     }
 
     function createAddress()
     {
-        var uri = "xmrrpc://" + networksTorScreen.rpcUser + ":" + networksTorScreen.rpcPassword + "@" + torOnionAddressField.valueText + ":" + networksTorScreen.port.toString() + "?label=Nodo Tor Node"
+        var uri = "xmrrpc://" + nodeTorScreen.rpcUser + ":" + nodeTorScreen.rpcPassword + "@" + torOnionAddressField.valueText + ":" + nodeTorScreen.port.toString() + "?label=Nodo Tor Node"
         return uri
     }
 
@@ -65,10 +65,10 @@ Item {
     Connections {
         target: nodoConfig
         function onConfigParserReady() {
-            networksTorScreen.torSwitchStatus = nodoConfig.getStringValueFromKey("config", "tor_enabled") === "TRUE" ? true : false
-            networksTorScreen.torRouteSwitchStatus = nodoConfig.getStringValueFromKey("config", "tor_global_enabled") === "TRUE" ? true : false
-            networksTorScreen.torOnionAddress = nodoConfig.getStringValueFromKey("config", "tor_address")
-            networksTorScreen.torPort = nodoConfig.getIntValueFromKey("config", "tor_port")
+            nodeTorScreen.torSwitchStatus = nodoConfig.getStringValueFromKey("config", "tor_enabled") === "TRUE" ? true : false
+            nodeTorScreen.torRouteSwitchStatus = nodoConfig.getStringValueFromKey("config", "tor_global_enabled") === "TRUE" ? true : false
+            nodeTorScreen.torOnionAddress = nodoConfig.getStringValueFromKey("config", "tor_address")
+            nodeTorScreen.torPort = nodoConfig.getIntValueFromKey("config", "tor_port")
 
             updateParams()
         }
@@ -80,10 +80,10 @@ Item {
             var errorCode = nodoControl.getErrorCode();
             if(0 !== errorCode)
             {
-                networksTorPopup.popupMessageText = systemMessages.backendMessages[errorCode]
-                networksTorPopup.commandID = -1;
-                networksTorPopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Close]
-                networksTorPopup.open();
+                nodeTorPopup.popupMessageText = systemMessages.backendMessages[errorCode]
+                nodeTorPopup.commandID = -1;
+                nodeTorPopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Close]
+                nodeTorPopup.open();
             }
         }
 
@@ -96,8 +96,8 @@ Item {
 
     Rectangle {
         id: torSwitchRect
-        anchors.left: networksTorScreen.left
-        anchors.top: networksTorScreen.top
+        anchors.left: nodeTorScreen.left
+        anchors.top: nodeTorScreen.top
         height: NodoSystem.nodoItemHeight
 
         NodoLabel{
@@ -116,13 +116,13 @@ Item {
             height: torSwitchRect.height
             width: 2*torSwitchRect.height
             display: AbstractButton.IconOnly
-            checked: networksTorScreen.torSwitchStatus
+            checked: nodeTorScreen.torSwitchStatus
         }
     }
 
     Rectangle {
         id: torRouteSwitchRect
-        anchors.left: networksTorScreen.left
+        anchors.left: nodeTorScreen.left
         anchors.top: torSwitchRect.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         height: NodoSystem.nodoItemHeight
@@ -142,39 +142,39 @@ Item {
             height: torRouteSwitchRect.height
             width: 2*torRouteSwitchRect.height
             display: AbstractButton.IconOnly
-            checked: networksTorScreen.torRouteSwitchStatus
+            checked: nodeTorScreen.torRouteSwitchStatus
         }
     }
 
     NodoInfoField {
         id: torOnionAddressField
-        anchors.left: networksTorScreen.left
+        anchors.left: nodeTorScreen.left
         anchors.top: torRouteSwitchRect.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         width: infoFieldWidth
         height: NodoSystem.nodoItemHeight
         itemSize: labelSize
         itemText: qsTr("Onion Address")
-        valueText: networksTorScreen.torOnionAddress
+        valueText: nodeTorScreen.torOnionAddress
         valueFontSize: 28
     }
 
     NodoInfoField {
         id: torPortField
-        anchors.left: networksTorScreen.left
+        anchors.left: nodeTorScreen.left
         anchors.top: torOnionAddressField.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         width: infoFieldWidth
         height: NodoSystem.nodoItemHeight
         itemSize: labelSize
         itemText: systemMessages.messages[NodoMessages.Message.Port] //qstr("Port")
-        valueText: networksTorScreen.torPort
+        valueText: nodeTorScreen.torPort
     }
 
     Rectangle{
         id: qrCodeRect
-        anchors.right: networksTorScreen.right
-        anchors.top: networksTorScreen.top
+        anchors.right: nodeTorScreen.right
+        anchors.top: nodeTorScreen.top
         anchors.topMargin: NodoSystem.nodoTopMargin
         anchors.rightMargin: 12
         color: "black"
@@ -196,7 +196,7 @@ Item {
     }
 
     NodoPopup {
-        id: networksTorPopup
+        id: nodeTorPopup
         onApplyClicked: {
             close()
         }

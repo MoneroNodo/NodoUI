@@ -7,7 +7,7 @@ import NodoCanvas 1.0
 import QtQuick2QREncode 1.0
 
 Item {
-    id: networksClearnetScreen
+    id: nodeClearnetScreen
     property int labelSize: 0
     property int clearnetPort
     property bool inputFieldReadOnly: false
@@ -23,16 +23,16 @@ Item {
         var rpcStat = nodoControl.getrpcEnabledStatus()
         var rpcu = nodoControl.getrpcUser()
         var rpcp = nodoControl.getrpcPassword()
-        networksClearnetScreen.port = nodoControl.getclearnetPort()
+        nodeClearnetScreen.port = nodoControl.getclearnetPort()
 
         if((rpcu === "") || (rpcp === ""))
         {
             rpcStat = false
         }
 
-        networksClearnetScreen.isRPCEnabled = rpcStat
-        networksClearnetScreen.rpcUser = rpcu
-        networksClearnetScreen.rpcPassword = rpcp
+        nodeClearnetScreen.isRPCEnabled = rpcStat
+        nodeClearnetScreen.rpcUser = rpcu
+        nodeClearnetScreen.rpcPassword = rpcp
     }
 
     function onCalculateMaximumTextLabelLength() {
@@ -45,14 +45,14 @@ Item {
 
     function createAddress()
     {
-        var uri = "xmrrpc://" + networksClearnetScreen.rpcUser + ":" + networksClearnetScreen.rpcPassword + "@" + clearnetAddressField.valueText + ":" + networksClearnetScreen.port.toString() + "?label=Nodo"
+        var uri = "xmrrpc://" + nodeClearnetScreen.rpcUser + ":" + nodeClearnetScreen.rpcPassword + "@" + clearnetAddressField.valueText + ":" + nodeClearnetScreen.port.toString() + "?label=Nodo"
         return uri
         /*
         var uri = "xmrrpc://%1:%2@%3:%4?label=Nodo"
-        return uri.arg(networksClearnetScreen.rpcUser,
-            networksClearnetScreen.rpcPassword,
+        return uri.arg(nodeClearnetScreen.rpcUser,
+            nodeClearnetScreen.rpcPassword,
             clearnetAddressField.valueText,
-            networksClearnetScreen.port.toString())
+            nodeClearnetScreen.port.toString())
             */
     }
 
@@ -61,7 +61,7 @@ Item {
     Connections {
         target: nodoConfig
         function onConfigParserReady() {
-            networksClearnetScreen.clearnetPort = nodoConfig.getIntValueFromKey("config", "monero_public_port")
+            nodeClearnetScreen.clearnetPort = nodoConfig.getIntValueFromKey("config", "monero_public_port")
             updateParams()
         }
     }
@@ -78,11 +78,11 @@ Item {
             {
                 clearnetAddressField.valueText = "nan";
             }
-            networksClearnetPopup.popupMessageText = systemMessages.backendMessages[errorCode]
-            // networksClearnetPopup.popupMessageText = networkManager.getErrorMessage()
-            networksClearnetPopup.commandID = -1;
-            networksClearnetPopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Close]
-            networksClearnetPopup.open();
+            nodeClearnetPopup.popupMessageText = systemMessages.backendMessages[errorCode]
+            // nodeClearnetPopup.popupMessageText = networkManager.getErrorMessage()
+            nodeClearnetPopup.commandID = -1;
+            nodeClearnetPopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Close]
+            nodeClearnetPopup.open();
         }
     }
 
@@ -90,11 +90,11 @@ Item {
         target: nodoControl
         function onErrorDetected() {
             var errorCode = nodoControl.getErrorCode();
-            networksClearnetPopup.popupMessageText = systemMessages.backendMessages[errorCode]
-            // networksClearnetPopup.popupMessageText = nodoControl.getErrorMessage()
-            networksClearnetPopup.commandID = -1;
-            networksClearnetPopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Close]
-            networksClearnetPopup.open();
+            nodeClearnetPopup.popupMessageText = systemMessages.backendMessages[errorCode]
+            // nodeClearnetPopup.popupMessageText = nodoControl.getErrorMessage()
+            nodeClearnetPopup.commandID = -1;
+            nodeClearnetPopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Close]
+            nodeClearnetPopup.open();
         }
 
         function onComponentEnabledStatusChanged() {
@@ -106,14 +106,14 @@ Item {
         nodoConfig.updateRequested()
         onCalculateMaximumTextLabelLength()
         networkManager.checkNetworkStatusAndIP();
-        networksClearnetScreen.inputFieldReadOnly = !nodoControl.isComponentEnabled();
+        nodeClearnetScreen.inputFieldReadOnly = !nodoControl.isComponentEnabled();
         updateParams()
     }
 
     NodoInfoField {
         id: clearnetAddressField
-        anchors.left: networksClearnetScreen.left
-        anchors.top: networksClearnetScreen.top
+        anchors.left: nodeClearnetScreen.left
+        anchors.top: nodeClearnetScreen.top
         width: 924
         height: NodoSystem.nodoItemHeight
         itemSize: labelSize
@@ -123,24 +123,24 @@ Item {
 
     NodoInputField {
         id: clearnetPortField
-        anchors.left: networksClearnetScreen.left
+        anchors.left: nodeClearnetScreen.left
         anchors.top: clearnetAddressField.bottom
         anchors.topMargin: 16
         width: 924
         height: NodoSystem.nodoItemHeight
         itemSize: labelSize
         itemText: systemMessages.messages[NodoMessages.Message.Port]
-        valueText: networksClearnetScreen.clearnetPort
+        valueText: nodeClearnetScreen.clearnetPort
         textFlag: Qt.ImhDigitsOnly
-        readOnlyFlag: networksClearnetScreen.inputFieldReadOnly
+        readOnlyFlag: nodeClearnetScreen.inputFieldReadOnly
         validator: IntValidator{bottom: 0; top: 65535}
         onTextEditFinished: {
             if("" === clearnetPortField.valueText)
             {
-                clearnetPortField.valueText = networksClearnetScreen.clearnetPort.toString()
+                clearnetPortField.valueText = nodeClearnetScreen.clearnetPort.toString()
             }
 
-            if(clearnetPortField.valueText !== networksClearnetScreen.clearnetPort.toString())
+            if(clearnetPortField.valueText !== nodeClearnetScreen.clearnetPort.toString())
             {
                 clearnetApplyPortButton.isActive = true
             }
@@ -149,7 +149,7 @@ Item {
 
     NodoButton {
         id: clearnetApplyPortButton
-        anchors.left: networksClearnetScreen.left
+        anchors.left: nodeClearnetScreen.left
         anchors.top: clearnetPortField.bottom
         anchors.topMargin: 20
         text: systemMessages.messages[NodoMessages.Message.ApplyPort]
@@ -166,8 +166,8 @@ Item {
 
     Rectangle{
         id: qrCodeRect
-        anchors.right: networksClearnetScreen.right
-        anchors.top: networksClearnetScreen.top
+        anchors.right: nodeClearnetScreen.right
+        anchors.top: nodeClearnetScreen.top
         anchors.topMargin: NodoSystem.nodoTopMargin
         anchors.rightMargin: 12
         color: "black"
@@ -189,7 +189,7 @@ Item {
     }
 
     NodoPopup {
-        id: networksClearnetPopup
+        id: nodeClearnetPopup
         onApplyClicked: {
             close()
         }
