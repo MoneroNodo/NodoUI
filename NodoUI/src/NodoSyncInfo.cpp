@@ -47,7 +47,7 @@ int NodoSyncInfo::getSyncPercentage(void)
     {
         if(m_targetHeight == 0)
         {
-            return -1;
+            return 100;
         }
     }
 
