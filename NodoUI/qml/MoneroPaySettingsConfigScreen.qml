@@ -93,13 +93,13 @@ Item {
     NodoButton {
         id: moneroPaySettingsSetDepositAddressButton
         anchors.left: moneroPaySettingsAddressInput.left
-        anchors.top: moneroPaySettingsAddressInput.bottom
+        anchors.top: moneroPaySettingsAddressDescriptionText.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         text: qsTr("Set Deposit Address")
         height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
-        isActive: (setButtonActive === true) && (moneroPaySettingsAddressInput.valueText.length === 95) && (moneroPaySettingsViewkeyLabel.valueText.length === 64)
+        isActive: (setButtonActive === true) && (moneroPaySettingsAddressInput.valueText.length === 95)
         onClicked: {
             moneroPay.setDepositAddress(moneroPaySettingsAddressInput.valueText)
             inputFieldReadOnly = true;
