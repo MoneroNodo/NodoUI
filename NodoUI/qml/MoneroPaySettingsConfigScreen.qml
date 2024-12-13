@@ -78,22 +78,12 @@ Item {
                 regularExpression: /^4[1-9A-HJ-NP-Za-km-z]{94}$/
             }
         }
-
-        NodoLabel{
-            id: moneroPaySettingsAddressDescriptionText
-            height: moneroPaySettingsAddressInput.height + 16
-            anchors.left: moneroPaySettingsConfigScreen.left
-            anchors.top: moneroPaySettingsAddressInput.bottom
-            itemSize: labelSize
-            text: qsTr("Received transactions will periodically be sweeped to this address.")
-        }
-
     }
 
     NodoButton {
         id: moneroPaySettingsSetDepositAddressButton
         anchors.left: moneroPaySettingsAddressInput.left
-        anchors.top: moneroPaySettingsAddressDescriptionText.bottom
+        anchors.top: moneroPaySettingsAddressInput.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         text: qsTr("Set Deposit Address")
         height: NodoSystem.nodoItemHeight
@@ -112,7 +102,7 @@ Item {
     NodoButton {
         id: moneroPaySettingsClearAddressButton
         anchors.left: moneroPaySettingsSetDepositAddressButton.right
-        anchors.top: moneroPaySettingsViewkeyLabel.bottom
+        anchors.top: moneroPaySettingsAddressInput.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
 		anchors.leftMargin: 25
         text: qsTr("Clear Deposit Address")
@@ -127,6 +117,20 @@ Item {
             moneroPaySettingsAddressInput.valueText = ""
             moneroPaySettingsViewkeyLabel.valueText = ""
         }
+    }
+
+    Text {
+    id: moneroPaySettingsAddressDescriptionText
+	anchors.left: moneroPaySettingsConfigScreen.left
+    anchors.top: moneroPaySettingsSetDepositAddressButton.bottom
+	anchors.topMargin: NodoSystem.nodoTopMargin
+    width: 1800
+    height: 38
+    text: qsTr("Received transactions will periodically be sweeped to this address")
+    font.pixelSize: NodoSystem.infoFieldItemFontSize
+    verticalAlignment: Text.AlignVCenter
+    color: nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn : NodoSystem.dataFieldTextColorNightModeOff
+    font.family: NodoSystem.fontInter.name
     }
 
     NodoPopup {
