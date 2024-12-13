@@ -82,7 +82,7 @@ Item {
 
     NodoButton {
         id: moneroPaySettingsSetDepositAddressButton
-        anchors.left: moneroPaySettingsAddressInput.left
+        anchors.left: moneroPaySettingsConfigScreen.left
         anchors.top: moneroPaySettingsAddressInput.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         text: qsTr("Set Deposit Address")
