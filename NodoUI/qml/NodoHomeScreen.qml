@@ -203,7 +203,7 @@ Item {
                 anchors.top: rightMenu.top
                 anchors.bottom: rightMenu.bottom
                 anchors.right: rightMenu.right
-                anchors.rightMargin: 10
+                anchors.rightMargin: 5
                 color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
                 topPadding: NodoSystem.topMenuTextTopPadding
                 horizontalAlignment: Text.AlignHCenter
@@ -217,7 +217,7 @@ Item {
             id: priceTickerRect
             anchors.right: mainAppWindowRectangle.right
             anchors.top: rightMenu.bottom
-            anchors.topMargin: 35
+            anchors.topMargin: 40
             color: "black"
 
             Text {
@@ -240,7 +240,7 @@ Item {
                 anchors.top: priceTickerRect.top
                 anchors.bottom: priceTickerRect.bottom
                 anchors.right: exchangeRateText.left
-                anchors.rightMargin: 6
+                anchors.rightMargin: 5
                 color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
                 text: nodoCurrencies.currencySymbols[priceTicker.getCurrentCurrencyIndex()]
                 topPadding: NodoSystem.topMenuTextTopPadding
@@ -257,7 +257,7 @@ Item {
                 anchors.top: priceTickerRect.top
                 anchors.bottom: priceTickerRect.bottom
                 anchors.right: priceTickerRect.right
-                anchors.rightMargin: 10
+                anchors.rightMargin: 5
                 color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
                 text: "---.--"
                 topPadding: NodoSystem.topMenuTextTopPadding
