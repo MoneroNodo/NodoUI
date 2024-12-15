@@ -5,19 +5,19 @@ Item
 {
     readonly property FontLoader fontInter: FontLoader { source: "qrc:/NodoSystem/InterDisplay.ttf" }
 
-    property int nodoItemHeight: 85
+    property int nodoItemHeight: 80
 
     property int topMenuYposition: 32
-    property int topMenuButtonHeight: 100
-    property int topMenuButtonFontSize: 44
+    property int topMenuButtonHeight: 90
+    property int topMenuButtonFontSize: 46
     property int topMenuGapBetweenButtons: 25
     property int dateTimeFontSize: 56
 
     property int subMenuButtonHeight: nodoItemHeight
-    property int subMenuButtonFontSize: 42
+    property int subMenuButtonFontSize: 46
     property int textFontSize: 44
-    property int buttonTextFontSize: 46
-    property int subMenuLeftMargin: 32
+    property int buttonTextFontSize: 48
+    property int subMenuLeftMargin: 24
 
     property int topMenuTextTopPadding: 0
 
