@@ -5,18 +5,18 @@ Item
 {
     readonly property FontLoader fontInter: FontLoader { source: "qrc:/NodoSystem/InterDisplay.ttf" }
 
-    property int nodoItemHeight: 80
+    property int nodoItemHeight: 82
 
     property int topMenuYposition: 32
     property int topMenuButtonHeight: 90
-    property int topMenuButtonFontSize: 46
+    property int topMenuButtonFontSize: 48
     property int topMenuGapBetweenButtons: 25
     property int dateTimeFontSize: 56
 
-    property int subMenuButtonHeight: nodoItemHeight
-    property int subMenuButtonFontSize: 46
+    property int subMenuButtonHeight: topMenuButtonHeight
+    property int subMenuButtonFontSize: topMenuButtonFontSize
     property int textFontSize: 44
-    property int buttonTextFontSize: 48
+    property int buttonTextFontSize: topMenuButtonFontSize
     property int subMenuLeftMargin: 24
 
     property int topMenuTextTopPadding: 0
@@ -27,11 +27,11 @@ Item
 	property color highlightedColorNightModeOff: "#FA5501"			//1COLOR BG//
     property color highlightedColorNightModeOn: "#F50000"			//NMCOLOR1 BG//
 
-    property int infoFieldItemFontSize: 44
-    property int infoFieldValueFontSize: 44
+    property int infoFieldItemFontSize: textFontSize
+    property int infoFieldValueFontSize: textFontSize
 
-    property int inputFieldItemFontSize: 44
-    property int inputFieldValueFontSize: 44
+    property int inputFieldItemFontSize: textFontSize
+    property int inputFieldValueFontSize: textFontSize
 
     property color dataFieldTextColorNightModeOn: "#AE0000"						//NMCOLOR2//
     property color dataFieldTextColorNightModeOff: "#FCFCFC"		//1TEXT FONT//
