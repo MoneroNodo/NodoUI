@@ -95,7 +95,7 @@ Item {
             id: accountRequestsButton
             y: (moneroLWSMenuBar.height - accountRequestsButton.height)/2
             anchors.left: addAccountButton.right
-            text: qsTr("ACCOUNT CREATION REQUESTS")
+            text: qsTr("WALLET REQUESTS")
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: { pageLoader.source = "MoneroLWSAccountRequestsScreen.qml" }
