@@ -5,10 +5,10 @@ Item
 {
     readonly property FontLoader fontInter: FontLoader { source: "qrc:/NodoSystem/InterDisplay.ttf" }
 
-    property int nodoItemHeight: 82
+    property int nodoItemHeight: 85
 
     property int topMenuYposition: 32
-    property int topMenuButtonHeight: 90
+    property int topMenuButtonHeight: nodoItemHeight
     property int topMenuButtonFontSize: 48
     property int topMenuGapBetweenButtons: 25
     property int dateTimeFontSize: 56
