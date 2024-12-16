@@ -9,7 +9,7 @@ Rectangle {
     id: statusScreen
     color: "black"
     anchors.fill: parent
-    anchors.topMargin: 65
+    anchors.topMargin: 70
 
     property int labelSize: 0
     property int fieldTopMargin: 5
@@ -93,24 +93,24 @@ Rectangle {
         var syncPercentage = syncInfo.getSyncPercentage()
         if (networkManager.getNetworkConnectionStatusCode() !== 1 /*not connected*/)
         {
-            syncStatusField.valueText = qsTr("Disconnected")
+            syncStatusField.itemText = qsTr("Disconnected")
             return
         }
         if(syncPercentage === 100)
         {
-            syncStatusField.valueText = qsTr("Synchronized (100%)")
+            syncStatusField.itemText = qsTr("Synchronized (100%)")
         }
         else if(syncPercentage >= 0)
         {
-            syncStatusField.valueText = qsTr("Synchronizing (") + syncPercentage + "%)"
+            syncStatusField.itemText = qsTr("Synchronizing (") + syncPercentage + "%)"
         }
         else if(syncPercentage === -1)
         {
-            syncStatusField.valueText = qsTr("Not Synchronizing")
+            syncStatusField.itemText = qsTr("Not Synchronizing")
         }
         else
         {
-            syncStatusField.valueText = qsTr("Waiting")
+            syncStatusField.itemText = qsTr("Waiting")
         }
     }
 

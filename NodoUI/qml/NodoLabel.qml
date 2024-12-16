@@ -7,8 +7,8 @@ import NodoCanvas 1.0
 
 Label {
     id: root
-    leftPadding: 10
-    rightPadding: 10
+    property int textLeftPadding: NodoSystem.textPadding
+    property int textRightPadding: NodoSystem.textPadding
     property color backgroundColor: nodoControl.appTheme ? NodoSystem.dataFieldTitleBGColorNightModeOn : NodoSystem.dataFieldTitleBGColorNightModeOff
 
     property int labelWidth: root.paintedWidth + root.leftPadding + root.rightPadding
