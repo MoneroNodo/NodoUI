@@ -56,8 +56,6 @@ Item {
             */
     }
 
-
-
     Connections {
         target: nodoConfig
         function onConfigParserReady() {
@@ -81,7 +79,7 @@ Item {
             nodeClearnetPopup.popupMessageText = systemMessages.backendMessages[errorCode]
             // nodeClearnetPopup.popupMessageText = networkManager.getErrorMessage()
             nodeClearnetPopup.commandID = -1;
-            nodeClearnetPopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Close]
+            //nodeClearnetPopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Close]
             nodeClearnetPopup.open();
         }
     }
@@ -93,7 +91,7 @@ Item {
             nodeClearnetPopup.popupMessageText = systemMessages.backendMessages[errorCode]
             // nodeClearnetPopup.popupMessageText = nodoControl.getErrorMessage()
             nodeClearnetPopup.commandID = -1;
-            nodeClearnetPopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Close]
+            //nodeClearnetPopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Close]
             nodeClearnetPopup.open();
         }
 
@@ -125,7 +123,7 @@ Item {
         id: clearnetPortField
         anchors.left: nodeClearnetScreen.left
         anchors.top: clearnetAddressField.bottom
-        anchors.topMargin: 16
+        anchors.topMargin: NodoSystem.nodoTopMargin
         width: 924
         height: NodoSystem.nodoItemHeight
         itemSize: labelSize
@@ -146,7 +144,7 @@ Item {
             }
         }
     }
-
+/*
     NodoButton {
         id: clearnetApplyPortButton
         anchors.left: nodeClearnetScreen.left
@@ -163,13 +161,13 @@ Item {
             nodoControl.setClearnetPort(clearnetPortField.valueText)
         }
     }
-
+*/
     Rectangle{
         id: qrCodeRect
         anchors.right: nodeClearnetScreen.right
         anchors.top: nodeClearnetScreen.top
         anchors.topMargin: NodoSystem.nodoTopMargin
-        anchors.rightMargin: 12
+        anchors.rightMargin: 10
         color: "black"
         width: 512
         height: 512
