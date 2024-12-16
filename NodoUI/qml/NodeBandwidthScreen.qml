@@ -145,7 +145,6 @@ Item {
         id: outgoingPeersLimitField
         anchors.left: nodeBandwidthScreen.left
         anchors.top: nodeBandwidthScreen.top
-        anchors.topMargin: NodoSystem.nodoTopMargin
         width: inputFieldWidth
         height: NodoSystem.nodoItemHeight
         itemSize: labelSize
@@ -171,7 +170,8 @@ Item {
     NodoInputField {
         id: incomingPeersLimitField
         anchors.left: nodeBandwidthScreen.left
-        anchors.top: incomingPeersLimitField.bottom
+        anchors.top: outgoingPeersLimitField.bottom
+        anchors.topMargin: NodoSystem.nodoTopMargin
         width: inputFieldWidth
         height: NodoSystem.nodoItemHeight
         itemSize: labelSize
