@@ -14,10 +14,10 @@ Rectangle {
     property int labelSize: 0
     property int fieldTopMargin: 5
 
-    property int componentWidth: 600
+    property int componentWidth: 650
     property int componentLeftMargin: 8
     property int componentBottomMargin: 8
-    property int componentTopMargin: 36
+    property int componentTopMargin: 34
     property int cardMargin: 15
 
     property int statusScreenInfoFieldHeight: NodoSystem.nodoItemHeight
@@ -174,7 +174,6 @@ Rectangle {
 */
     }
 
-
     NodoCanvas {
         id: syncStatus
         anchors.left: statusScreen.left
@@ -220,7 +219,7 @@ Rectangle {
             anchors.left: syncStatusTabName.left
             anchors.top: syncStatusTabName.bottom
             anchors.topMargin: fieldTopMargin
-            width: componentWidth
+            width: syncStatusTabName.paintedWidth - componentLeftMargin
             height: statusScreenInfoFieldHeight
             itemSize: componentWidth
             //itemText: qsTr("Sync Status")
@@ -361,7 +360,7 @@ Rectangle {
             anchors.left: systemStatusTabName.left
             anchors.top: systemStatusTabName.bottom
             anchors.topMargin: fieldTopMargin
-            width: labelSize
+            width: systemStatusTabName.paintedWidth - componentLeftMargin
             height: statusScreenInfoFieldHeight
             itemSize: labelSize - 40
             itemText: qsTr("Daemon")
@@ -470,7 +469,7 @@ Rectangle {
             anchors.topMargin: fieldTopMargin
             width: componentWidth
             height: statusScreenInfoFieldHeight
-            itemSize: labelSize - 40
+            itemSize: labelSize - 45
             itemText: qsTr("Temperature")
             valueText: systemMessages.messages[NodoMessages.Message.Loading]
         }
