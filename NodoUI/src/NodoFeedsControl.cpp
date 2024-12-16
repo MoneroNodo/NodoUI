@@ -1,6 +1,6 @@
 #include "NodoFeedsControl.h"
 
-const QString html_start = "<!DOCTYPE html> <html> <head>  <link href='qrc:/NodoSystem/InterDisplay.ttf'/*'https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'> <style> body { background-color: rgba(255,255,255,0.0); font-family: 'Inter'; font-size: 44px;  color: ";
+const QString html_start = "<!DOCTYPE html> <html> <head> <style> @font-face {font-family: 'Inter'; src: url('assets/NodoSystem/InterDisplay.ttf') format('truetype');} body { background-color: rgba(255,255,255,0.0); font-family: 'Inter'; font-size: 44px;  color: ";
 const QString html_part_1 = ";} a { color: ";
 const QString html_part_2 = "; text-decoration: none; } </style> </head> <body>";
 const QString html_end = "</body> </html>";
