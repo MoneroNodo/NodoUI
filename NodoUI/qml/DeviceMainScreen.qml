@@ -9,6 +9,7 @@ Item {
     id: deviceMainScreen
     anchors.fill: parent
     anchors.leftMargin: NodoSystem.subMenuLeftMargin
+    anchors.topMargin: NodoSystem.subMenuTopMargin
 
     TabBar {
         id: deviceMainMenuBar

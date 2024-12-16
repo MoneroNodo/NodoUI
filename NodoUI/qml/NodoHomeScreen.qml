@@ -257,7 +257,7 @@ Item {
                 anchors.top: priceTickerRect.top
                 anchors.bottom: priceTickerRect.bottom
                 anchors.right: priceTickerRect.right
-                anchors.rightMargin: 5
+                anchors.rightMargin: 2
                 color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
                 text: "---.--"
                 topPadding: NodoSystem.topMenuTextTopPadding
