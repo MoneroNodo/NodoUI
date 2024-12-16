@@ -9,7 +9,7 @@ import QtQuick2QREncode 1.0
 Item {
     id: nodeI2PScreen
     property int labelSize: 0
-    property int infoFieldWidth: 1340
+    property int infoFieldWidth: 1350
 
     property int i2pPort
     property string i2pAddress
@@ -100,6 +100,7 @@ Item {
 
         NodoLabel {
             id: i2pSwitchText
+            itemSize: labelSize
             height: i2pSwitchRect.height
             anchors.left: i2pSwitchRect.left
             anchors.top: i2pSwitchRect.top
@@ -127,7 +128,7 @@ Item {
         itemSize: labelSize
         itemText: qsTr("I2P b32 Address")
         valueText: nodeI2PScreen.i2pAddress
-        valueFontSize: 32
+        valueFontSize: 34
     }
 
     NodoInfoField {
