@@ -18,7 +18,7 @@ Item
     property int textFontSize: 44
     property int buttonTextFontSize: topMenuButtonFontSize
     property int subMenuLeftMargin: 10
-    property int subMenuTopMargin: 10
+    property int subMenuTopMargin: 20
 
     property int topMenuTextTopPadding: 0
 
@@ -52,10 +52,10 @@ Item
     property color buttonBGColorNightModeOff: "#FA5501"				//1COLOR BG//
 
     property color dayTextColorNightModeOn: "#F50000"				//NMCOLOR1 BG//
-    property color dayTextColorNightModeOff: "#CFCFCF"				//CLOCK DAY COLOR//
+    property color dayTextColorNightModeOff: "#CFCFCF"				//ANALOG CLOCK DAY COLOR//
 
     property color dateTextColorNightModeOn: "#AE0000"						//NMCOLOR2 CLOCK NIGHT COLOR//
-    property color dateTextColorNightModeOff: "#9D9D9D"				//CLOCK DAY COLOR//
+    property color dateTextColorNightModeOff: "#9D9D9D"				//ANALOG CLOCK DAY COLOR//
 
     property color switchBackgroundColor: "#3A3A3C"										//3COLOR BG//
     property color buttonDisabledColor: "#464646"					//BUTTON DISABLED//
@@ -66,7 +66,7 @@ Item
     property int textPadding: 15
 
     property int nodoItemWidth: 300
-    property int nodoTopMargin: 12
+    property int nodoTopMargin: 15
 
     property int comboboxFontSize: 25
 

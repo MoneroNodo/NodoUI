@@ -9,7 +9,7 @@ Rectangle {
     id: statusScreen
     color: "black"
     anchors.fill: parent
-    anchors.topMargin: 70
+    anchors.topMargin: NodoSystem.subMenuTopMargin + 60
 
     property int labelSize: 0
     property int fieldTopMargin: 5
@@ -17,8 +17,8 @@ Rectangle {
     property int componentWidth: 600
     property int componentLeftMargin: 8
     property int componentBottomMargin: 8
-    property int componentTopMargin: 34
-    property int cardMargin: 13
+    property int componentTopMargin: 36
+    property int cardMargin: 15
 
     property int statusScreenInfoFieldHeight: NodoSystem.nodoItemHeight
 
