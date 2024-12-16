@@ -93,7 +93,7 @@ Item {
             NodoTabButton {
                 id: nodoLogoButton
                 x: 0
-                y: (nodoLogoButton.height - mainMenuBar.height)/2
+                y: (mainMenuBar.height - nodoLogoButton.height)/2
                 text: " "
                 width: 288
                 implicitHeight: 110//NodoSystem.topMenuButtonHeight
@@ -107,7 +107,7 @@ Item {
             NodoTabButton {
                 id: deviceButton
                 anchors.top: nodoLogoButton.top
-                anchors.topMargin: (NodoSystem.topMenuButtonHeight - NodoSystem.nodoItemHeight)/2
+                anchors.topMargin: ((NodoSystem.topMenuButtonHeight - NodoSystem.nodoItemHeight)+1)/2
                 anchors.left: nodoLogoButton.right
                 anchors.leftMargin: 20
                 height: NodoSystem.nodoItemHeight
