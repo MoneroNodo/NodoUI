@@ -9,7 +9,7 @@ Rectangle {
     id: statusScreen
     color: "black"
     anchors.fill: parent
-    anchors.topMargin: 60
+    anchors.topMargin: 65
 
     property int labelSize: 0
     property int fieldTopMargin: 5
@@ -222,9 +222,9 @@ Rectangle {
             anchors.topMargin: fieldTopMargin
             width: componentWidth
             height: statusScreenInfoFieldHeight
-            itemSize: labelSize
-            itemText: qsTr("Sync Status")
-            valueText: (true === nodoSystemStatus.getBoolValueFromKey("synchronized")) ? qsTr("Synchronized") : qsTr("Synchronizing")
+            itemSize: componentWidth
+            //itemText: qsTr("Sync Status")
+            itemText: (true === nodoSystemStatus.getBoolValueFromKey("synchronized")) ? qsTr("Synchronized") : qsTr("Synchronizing")
         }
 
         NodoInfoField {
