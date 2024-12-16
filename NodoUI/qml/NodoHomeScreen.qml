@@ -203,7 +203,7 @@ Item {
                 anchors.top: rightMenu.top
                 anchors.bottom: rightMenu.bottom
                 anchors.right: rightMenu.right
-                anchors.rightMargin: 5
+                anchors.rightMargin: 2
                 color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
                 topPadding: NodoSystem.topMenuTextTopPadding
                 horizontalAlignment: Text.AlignHCenter
@@ -217,7 +217,7 @@ Item {
             id: priceTickerRect
             anchors.right: mainAppWindowRectangle.right
             anchors.top: rightMenu.bottom
-            anchors.topMargin: NodoSystem.subMenuTopMargin//40
+            anchors.topMargin: NodoSystem.subMenuTopMargin + 40//40
             color: "black"
 
             Text {
