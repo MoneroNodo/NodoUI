@@ -107,7 +107,7 @@ Item {
             NodoTabButton {
                 id: deviceButton
                 anchors.top: nodoLogoButton.top
-                anchors.topMargin: NodoSystem.topMenuYposition//(NodoSystem.topMenuButtonHeight - NodoSystem.nodoItemHeight)/2
+                anchors.topMargin: 10//(NodoSystem.topMenuButtonHeight - NodoSystem.nodoItemHeight)/2
                 anchors.left: nodoLogoButton.right
                 anchors.leftMargin: 20
                 height: NodoSystem.nodoItemHeight
