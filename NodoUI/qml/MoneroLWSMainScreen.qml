@@ -9,6 +9,7 @@ Item {
     id: moneroLWSMainScreen
     anchors.fill: parent
     anchors.leftMargin: NodoSystem.subMenuLeftMargin
+    anchors.topMargin: NodoSystem.subMenuTopMargin
 
     Component.onCompleted: {
         var dbusConnStat = moneroLWS.getDbusConnectionStatus()
