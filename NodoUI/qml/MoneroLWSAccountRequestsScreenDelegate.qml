@@ -9,7 +9,7 @@ NodoCanvas {
     id: mainRect
     width: 1880
     height: 295
-    color: "#1F1F1F"
+    color: NodoSystem.cardBackgroundColor
     property string requestAddress: ""
     property int scanHeight: 0
     property int labelSize: 0

@@ -9,7 +9,7 @@ NodoCanvas {
     id: mainRect
     property int componentWidth: 600
     property int fieldTopMargin: 5
-    color: "#1F1F1F"
+    color: NodoSystem.cardBackgroundColor
     property int paymentIndex
     property int scanHeight: 0
     property int labelSize: 0

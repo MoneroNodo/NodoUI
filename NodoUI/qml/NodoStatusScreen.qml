@@ -19,7 +19,6 @@ Rectangle {
     property int componentBottomMargin: 8
     property int componentTopMargin: 34
     property int cardMargin: 13
-    property color cardBackgroundColor: "#1F1F1F"
 
     property int statusScreenInfoFieldHeight: NodoSystem.nodoItemHeight
 
@@ -184,7 +183,7 @@ Rectangle {
         anchors.leftMargin: 8//cardMargin
         width: 700
         height: networkConnectionField.y + networkConnectionField.height + componentBottomMargin//683
-        color: cardBackgroundColor
+        color: NodoSystem.cardBackgroundColor
 
         Connections {
             target: nodoSystemStatus
@@ -332,7 +331,7 @@ Rectangle {
         anchors.leftMargin: cardMargin
         width: 480
         height: moneroPayField.y + moneroPayField.height + componentBottomMargin
-        color: cardBackgroundColor
+        color: NodoSystem.cardBackgroundColor
 
         Connections {
             target: nodoControl
@@ -427,7 +426,7 @@ Rectangle {
         width: 700
         anchors.rightMargin: 8//cardMargin
         height: systemStorageField.y + systemStorageField.height + componentBottomMargin
-        color: cardBackgroundColor
+        color: NodoSystem.cardBackgroundColor
 
         Connections {
             target: nodoControl

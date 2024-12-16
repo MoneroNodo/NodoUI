@@ -9,7 +9,7 @@ NodoCanvas {
     id: mainRect
     width: 1880
     height: 196
-    color: nodoControl.appTheme ? NodoSystem.dataFieldTextBGColorNightModeOn  : NodoSystem.dataFieldTextBGColorNightModeOff
+    color: NodoSystem.cardBackgroundColor
     property string inactiveAddress: ""
     property int scanHeight: 0
     property int labelSize: 0
