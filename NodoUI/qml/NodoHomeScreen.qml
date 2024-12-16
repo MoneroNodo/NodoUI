@@ -82,7 +82,7 @@ Item {
             id: mainMenuBar
             anchors.top: mainAppWindowRectangle.top
             anchors.left: mainAppWindowRectangle.left
-            anchors.leftMargin: 5
+            anchors.leftMargin: 2
             height: NodoSystem.topMenuButtonHeight
             implicitWidth: newsButton.x + newsButton.width
 
@@ -107,7 +107,7 @@ Item {
             NodoTabButton {
                 id: deviceButton
                 anchors.top: nodoLogoButton.top
-                anchors.topMargin: 10//(NodoSystem.topMenuButtonHeight - NodoSystem.nodoItemHeight)/2
+                anchors.topMargin: (nodoLogoButton.height - NodoSystem.nodoItemHeight)/2
                 anchors.left: nodoLogoButton.right
                 anchors.leftMargin: 20
                 height: NodoSystem.nodoItemHeight

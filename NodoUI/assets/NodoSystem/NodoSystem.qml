@@ -7,7 +7,7 @@ Item
 
     property int nodoItemHeight: 85
 
-    property int topMenuYposition: 38
+    property int topMenuYposition: 32
     property int topMenuButtonHeight: nodoItemHeight
     property int topMenuButtonFontSize: 48
     property int topMenuGapBetweenButtons: 25
@@ -17,7 +17,7 @@ Item
     property int subMenuButtonFontSize: topMenuButtonFontSize
     property int textFontSize: 44
     property int buttonTextFontSize: topMenuButtonFontSize
-    property int subMenuLeftMargin: 24
+    property int subMenuLeftMargin: 10
 
     property int topMenuTextTopPadding: 0
 
