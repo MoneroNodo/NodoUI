@@ -142,40 +142,14 @@ Item {
     }
 
     NodoInputField {
-        id: incomingPeersLimitField
-        anchors.left: nodeBandwidthScreen.left
-        anchors.top: nodeBandwidthScreen.top
-        width: inputFieldWidth
-        height: NodoSystem.nodoItemHeight
-        itemSize: labelSize
-        itemText: qsTr("Incoming peers limit")
-        valueText: incomingPeersLimit
-        textFlag: Qt.ImhDigitsOnly
-        readOnlyFlag: inputFieldReadOnly
-        validator: IntValidator{bottom: 0; top: 65535}
-        onTextEditFinished: {
-            if("" === incomingPeersLimitField.valueText)
-            {
-                incomingPeersLimitField.valueText = incomingPeersLimit.toString()
-            }
-
-            if(incomingPeersLimitField.valueText !== incomingPeersLimit.toString())
-            {
-                processConfig = false
-                nodeBandwidthApplyButton.isActive = true
-            }
-        }
-    }
-
-    NodoInputField {
         id: outgoingPeersLimitField
         anchors.left: nodeBandwidthScreen.left
-        anchors.top: incomingPeersLimitField.bottom
+        anchors.top: nodeBandwidthScreen.top
         anchors.topMargin: NodoSystem.nodoTopMargin
         width: inputFieldWidth
         height: NodoSystem.nodoItemHeight
         itemSize: labelSize
-        itemText: qsTr("Outgoing peers limit")
+        itemText: qsTr("Outgoing Peers")
         valueText: outgoingPeersLimit
         textFlag: Qt.ImhDigitsOnly
         readOnlyFlag: inputFieldReadOnly
@@ -194,10 +168,36 @@ Item {
         }
     }
 
+    NodoInputField {
+        id: incomingPeersLimitField
+        anchors.left: nodeBandwidthScreen.left
+        anchors.top: incomingPeersLimitField.bottom
+        width: inputFieldWidth
+        height: NodoSystem.nodoItemHeight
+        itemSize: labelSize
+        itemText: qsTr("Incoming Peers")
+        valueText: incomingPeersLimit
+        textFlag: Qt.ImhDigitsOnly
+        readOnlyFlag: inputFieldReadOnly
+        validator: IntValidator{bottom: 0; top: 65535}
+        onTextEditFinished: {
+            if("" === incomingPeersLimitField.valueText)
+            {
+                incomingPeersLimitField.valueText = incomingPeersLimit.toString()
+            }
+
+            if(incomingPeersLimitField.valueText !== incomingPeersLimit.toString())
+            {
+                processConfig = false
+                nodeBandwidthApplyButton.isActive = true
+            }
+        }
+    }
+
     Rectangle {
         id: rateLimitUpFieldRect
         anchors.left: nodeBandwidthScreen.left
-        anchors.top: outgoingPeersLimitField.bottom
+        anchors.top: incomingPeersLimitField.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         height: NodoSystem.nodoItemHeight
 
@@ -206,7 +206,7 @@ Item {
             width: inputFieldWidth
             height: NodoSystem.nodoItemHeight
             itemSize: labelSize
-            itemText: qsTr("Bandwidth Up")
+            itemText: qsTr("Upload Speed")
             textFlag: Qt.ImhDigitsOnly
             validator: IntValidator{bottom: 0}
             onTextEditFinished: {
@@ -298,7 +298,7 @@ Item {
             width: inputFieldWidth
             height: NodoSystem.nodoItemHeight
             itemSize: labelSize
-            itemText: qsTr("Bandwidth Down")
+            itemText: qsTr("Download Speed")
             textFlag: Qt.ImhDigitsOnly
             validator: IntValidator{bottom: 0}
             onTextEditFinished: {
