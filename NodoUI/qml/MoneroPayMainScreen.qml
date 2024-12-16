@@ -10,6 +10,8 @@ Item {
     id: moneroPayMainScreen
     anchors.fill: parent
     anchors.leftMargin: NodoSystem.subMenuLeftMargin
+    anchors.topMargin: NodoSystem.subMenuTopMargin
+    
     signal setButtonState(bool state)
 
     Component.onCompleted: {

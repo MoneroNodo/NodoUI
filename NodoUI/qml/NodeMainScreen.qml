@@ -9,6 +9,7 @@ Item {
     id: nodeMainScreen
     anchors.fill: parent
     anchors.leftMargin: NodoSystem.subMenuLeftMargin
+    anchors.topMargin: NodoSystem.subMenuTopMargin
 
     TabBar {
         id: nodeMenuBar

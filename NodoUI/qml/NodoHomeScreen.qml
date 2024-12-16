@@ -107,7 +107,7 @@ Item {
             NodoTabButton {
                 id: deviceButton
                 anchors.top: nodoLogoButton.top
-                anchors.topMargin: (nodoLogoButton.height - NodoSystem.nodoItemHeight)/2
+                anchors.topMargin: (nodoLogoButton.height - NodoSystem.topMenuButtonHeight)/2
                 anchors.left: nodoLogoButton.right
                 anchors.leftMargin: 20
                 height: NodoSystem.nodoItemHeight
@@ -217,7 +217,7 @@ Item {
             id: priceTickerRect
             anchors.right: mainAppWindowRectangle.right
             anchors.top: rightMenu.bottom
-            anchors.topMargin: 40
+            anchors.topMargin: NodoSystem.subMenuTopMargin//40
             color: "black"
 
             Text {
