@@ -9,7 +9,7 @@ import QtQuick2QREncode 1.0
 Item {
     id: nodeI2PScreen
     property int labelSize: 0
-    property int infoFieldWidth: 1320
+    property int infoFieldWidth: 1340
 
     property int i2pPort
     property string i2pAddress
@@ -52,6 +52,9 @@ Item {
     }
 
     function onCalculateMaximumTextLabelLength() {
+        if(i2pSwitchText.labelRectRoundSize > labelSize)
+            labelSize = i2pSwitchText.labelRectRoundSize
+
         if(i2pAddressField.labelRectRoundSize > labelSize)
             labelSize = i2pAddressField.labelRectRoundSize
 
@@ -78,7 +81,6 @@ Item {
             {
                 nodeI2PPopup.popupMessageText = systemMessages.backendMessages[errorCode]
                 nodeI2PPopup.commandID = -1;
-                nodeI2PPopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Close]
                 nodeI2PPopup.open();
             }
         }
@@ -96,7 +98,7 @@ Item {
         anchors.top: nodeI2PScreen.top
         height: NodoSystem.nodoItemHeight
 
-        NodoLabel{
+        NodoLabel {
             id: i2pSwitchText
             height: i2pSwitchRect.height
             anchors.left: i2pSwitchRect.left
@@ -125,7 +127,7 @@ Item {
         itemSize: labelSize
         itemText: qsTr("I2P b32 Address")
         valueText: nodeI2PScreen.i2pAddress
-        valueFontSize: 28
+        valueFontSize: 32
     }
 
     NodoInfoField {
@@ -141,12 +143,12 @@ Item {
 
     }
 
-    Rectangle{
+    Rectangle {
         id: qrCodeRect
         anchors.right: nodeI2PScreen.right
         anchors.top: nodeI2PScreen.top
         anchors.topMargin: NodoSystem.nodoTopMargin
-        anchors.rightMargin: 12
+        anchors.rightMargin: 10
         color: "black"
         width: 512
         height: 512
