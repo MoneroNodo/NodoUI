@@ -45,6 +45,7 @@ Item {
             id: i2pButton
             anchors.top: clearnetButton.top
             anchors.left: torButton.right
+            width: torButton.width
             text: qsTr("I2P")
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
