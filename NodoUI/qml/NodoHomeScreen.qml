@@ -82,7 +82,7 @@ Item {
             id: mainMenuBar
             anchors.top: mainAppWindowRectangle.top
             anchors.left: mainAppWindowRectangle.left
-            anchors.leftMargin: 10
+            anchors.leftMargin: 5
             height: NodoSystem.topMenuButtonHeight
             implicitWidth: newsButton.x + newsButton.width
 
@@ -93,7 +93,7 @@ Item {
             NodoTabButton {
                 id: nodoLogoButton
                 x: 0
-                y: (mainMenuBar.height - nodoLogoButton.height)/2
+                y: (nodoLogoButton.height - mainMenuBar.height)/2
                 text: " "
                 width: 288
                 implicitHeight: 110//NodoSystem.topMenuButtonHeight
@@ -225,7 +225,7 @@ Item {
                 anchors.top: priceTickerRect.top
                 anchors.bottom: priceTickerRect.bottom
                 anchors.right: exchangeSymbolText.left
-                anchors.rightMargin: 2
+                anchors.rightMargin: 5
                 color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
                 text: "XMR-" + nodoCurrencies.currencyCodes[priceTicker.getCurrentCurrencyIndex()] + ":"
                 topPadding: NodoSystem.topMenuTextTopPadding
