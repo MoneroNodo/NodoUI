@@ -26,7 +26,7 @@ Item {
         var rpcStat = nodoControl.getrpcEnabledStatus()
         var rpcu = nodoControl.getrpcUser()
         var rpcp = nodoControl.getrpcPassword()
-        nodeI2PScreen.port = nodoControl.getclearnetPort()
+        nodeI2PScreen.port = nodoControl.geti2pPort()
 
         if((rpcu === "") || (rpcp === ""))
         {
