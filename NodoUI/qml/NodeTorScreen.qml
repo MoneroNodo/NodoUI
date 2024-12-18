@@ -26,7 +26,7 @@ Item {
         var rpcStat = nodoControl.getrpcEnabledStatus()
         var rpcu = nodoControl.getrpcUser()
         var rpcp = nodoControl.getrpcPassword()
-        nodeTorScreen.port = nodoControl.gettorPort()
+        nodeTorScreen.port = nodoControl.getrpcPort()
 
         if((rpcu === "") || (rpcp === ""))
         {
@@ -68,7 +68,7 @@ Item {
             nodeTorScreen.torSwitchStatus = nodoConfig.getStringValueFromKey("config", "tor_enabled") === "TRUE" ? true : false
             nodeTorScreen.torRouteSwitchStatus = nodoConfig.getStringValueFromKey("config", "tor_global_enabled") === "TRUE" ? true : false
             nodeTorScreen.torOnionAddress = nodoConfig.getStringValueFromKey("config", "tor_address")
-            nodeTorScreen.torPort = nodoConfig.getIntValueFromKey("config", "tor_port")
+            nodeTorScreen.torPort = nodoConfig.getIntValueFromKey("config", "monero_rpc_port")
 
             updateParams()
         }

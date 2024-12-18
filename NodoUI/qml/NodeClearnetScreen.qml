@@ -23,7 +23,7 @@ Item {
         var rpcStat = nodoControl.getrpcEnabledStatus()
         var rpcu = nodoControl.getrpcUser()
         var rpcp = nodoControl.getrpcPassword()
-        nodeClearnetScreen.port = nodoControl.getclearnetPort()
+        nodeClearnetScreen.port = nodoControl.getrpcPort()
 
         if((rpcu === "") || (rpcp === ""))
         {
@@ -59,7 +59,7 @@ Item {
     Connections {
         target: nodoConfig
         function onConfigParserReady() {
-            nodeClearnetScreen.clearnetPort = nodoConfig.getIntValueFromKey("config", "monero_public_port")
+            nodeClearnetScreen.clearnetPort = nodoConfig.getIntValueFromKey("config", "monero_rpc_port")
             updateParams()
         }
     }
