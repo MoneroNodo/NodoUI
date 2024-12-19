@@ -217,7 +217,7 @@ Item {
             id: priceTickerRect
             anchors.right: mainAppWindowRectangle.right
             anchors.top: rightMenu.bottom
-            anchors.topMargin: NodoSystem.subMenuTopMargin + 42//40
+            anchors.topMargin: NodoSystem.subMenuTopMargin + 43//40
             color: "black"
 
             Text {
