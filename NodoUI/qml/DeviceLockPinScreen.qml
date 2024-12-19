@@ -22,7 +22,7 @@ Rectangle {
         }
         else
         {        
-            deviceLockPinScreenStackView.push("NodoLockScreen.qml")
+            deviceLockPinScreenStackView.push("NodoLockPinControlScreen.qml")
         }
     }
 
