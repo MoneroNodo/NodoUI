@@ -14,7 +14,15 @@ Rectangle {
     color: "black"
 
     Component.onCompleted: {
-            deviceLockPinScreenStackView.push("NodoLockPinControlScreen.qml")
+        isLockPinEnabled = nodoControl.isLockPinEnabled()
+
+        if(isLockPinEnabled)
+        {
+            deviceLockPinScreenStackView.push("NodoLockScreen.qml", {parentID: 0})
+        }
+        else
+        {        
+            deviceLockPinScreenStackView.push("NodoLockScreen.qml")
         }
     }
 
