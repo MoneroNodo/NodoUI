@@ -171,7 +171,7 @@ Item {
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
                 onClicked: {
                     pageLoader.source = "NewsMainScreen.qml"
-                    pageLoader.anchors.topMargin = NodoSystem.subMenuTopMargin + 62//60
+                    pageLoader.anchors.topMargin = NodoSystem.subMenuTopMargin + 60//60
                 }
             }
         }
@@ -217,7 +217,7 @@ Item {
             id: priceTickerRect
             anchors.right: mainAppWindowRectangle.right
             anchors.top: rightMenu.bottom
-            anchors.topMargin: NodoSystem.subMenuTopMargin + 40//40
+            anchors.topMargin: NodoSystem.subMenuTopMargin + 42//40
             color: "black"
 
             Text {
