@@ -30,6 +30,7 @@ Item {
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: { pageLoader.source = "DeviceWifiScreen.qml" }
         }
+
         NodoTabButton {
             id: ethernetButton
             anchors.top: wifiButton.top
@@ -39,6 +40,7 @@ Item {
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: { pageLoader.source = "DeviceEthernetScreen.qml" }
         }
+
         NodoTabButton {
             id: systemButton
             anchors.top: wifiButton.top
@@ -59,7 +61,6 @@ Item {
             onClicked: { pageLoader.source = "DeviceUpdatesScreen.qml" }
         }
 
-
         NodoTabButton {
             id: displayButton
             anchors.top: wifiButton.top
@@ -69,32 +70,15 @@ Item {
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: { pageLoader.source = "DeviceDisplayScreen.qml" }
         }
-        NodoTabButton {
-            id: pinButton
-            anchors.top: wifiButton.top
-            anchors.left: displayButton.right
-            text: qsTr("PIN")
-            font.family: NodoSystem.fontInter.name
-            font.pixelSize: NodoSystem.topMenuButtonFontSize
-            onClicked: { pageLoader.source = "DevicePinScreen.qml" }
-        }
+      
         NodoTabButton {
             id: newsFeedsButton
             anchors.top: wifiButton.top
-            anchors.left: pinButton.right
+            anchors.left: displayButton.right
             text: qsTr("NEWS FEEDS")
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: { pageLoader.source = "DeviceNewsFeedsScreen.qml" }
-        }
-        NodoTabButton {
-            id: sshButton
-            anchors.top: wifiButton.top
-            anchors.left: newsFeedsButton.right
-            text: qsTr("SSH")
-            font.family: NodoSystem.fontInter.name
-            font.pixelSize: NodoSystem.topMenuButtonFontSize
-            onClicked: { pageLoader.source = "DeviceSSHScreen.qml" }
         }
     }
 
@@ -108,4 +92,3 @@ Item {
         source: "DeviceWifiScreen.qml"
     }
 }
-

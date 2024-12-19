@@ -81,10 +81,10 @@
         <file>qml/NodoPopup.qml</file>
         <file>qml/NodoFirstTimeSetupScreen.qml</file>
         <file>qml/NodoFirstTimeAdminPasswordScreen.qml</file>
-        <file>qml/NodoFirstTimeAddressPinScreen.qml</file>
+//        <file>qml/NodoFirstTimeAddressPinScreen.qml</file>
         <file>qml/NodoFirstTimeLockPinScreen.qml</file>
         <file>qml/DeviceLockPinScreen.qml</file>
-        <file>qml/DeviceAddressPinScreen.qml</file>
+//        <file>qml/DeviceAddressPinScreen.qml</file>
         <file>qml/NodoAddressPinControlScreen.qml</file>
         <file>qml/FactoryResetScreen.qml</file>
 //        <file>Images/MPAY_tick.html</file>

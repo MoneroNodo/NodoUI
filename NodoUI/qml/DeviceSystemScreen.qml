@@ -13,7 +13,7 @@ Rectangle {
     Rectangle {
         id: deviceSystemScreen
         anchors.fill: parent
-        property int buttonTopMargin: 32
+        property int buttonTopMargin: 40
         color: "black"
         visible: true
 
@@ -21,7 +21,7 @@ Rectangle {
             id: systemResetButton
             anchors.left: deviceSystemScreen.left
             anchors.top: deviceSystemScreen.top
-            text: qsTr("Restart")
+            text: qsTr("Reboot")
             height: NodoSystem.nodoItemHeight
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.buttonTextFontSize
@@ -49,10 +49,34 @@ Rectangle {
         }
 
         NodoButton {
-            id: systemRecoveryButton
+            id: deviceLockPinSettingsButton
             anchors.left: deviceSystemScreen.left
             anchors.top: systemShutdownButton.bottom
+            anchors.topMargin: deviceSystemScreen.buttonTopMargin + 10
+            text: qsTr("PIN Settings")
+            height: NodoSystem.nodoItemHeight
+            font.family: NodoSystem.fontInter.name
+            font.pixelSize: NodoSystem.buttonTextFontSize
+            onClicked: { pageLoader.source = "DeviceLockPinScreen.qml" }
+        }
+        
+        NodoButton {
+            id: deviceSSHButton
+            anchors.left: deviceSystemScreen.left
+            anchors.top: deviceLockPinSettingsButton.bottom
             anchors.topMargin: deviceSystemScreen.buttonTopMargin
+            text: qsTr("Admin Password & SSH")
+            height: NodoSystem.nodoItemHeight
+            font.family: NodoSystem.fontInter.name
+            font.pixelSize: NodoSystem.buttonTextFontSize
+            onClicked: { pageLoader.source = "DeviceSSHScreen.qml" }
+        }        
+
+        NodoButton {
+            id: systemRecoveryButton
+            anchors.left: deviceSystemScreen.left
+            anchors.top: deviceSSHButton.bottom
+            anchors.topMargin: deviceSystemScreen.buttonTopMargin + 30
             text: qsTr("Recovery")
             height: NodoSystem.nodoItemHeight
             font.family: NodoSystem.fontInter.name
@@ -106,7 +130,7 @@ Rectangle {
                     anchors.top: deviceSystemRecoveryScreenRect.top
                 }
 
-                NodoLabel{
+                NodoLabel {
                     id: deviceSystemRecoveryRecoverFSText
                     width: deviceSystemRecoveryMainScreen.labelSize
                     height: deviceSystemRecoveryRecoverFS.height
@@ -133,7 +157,7 @@ Rectangle {
                     anchors.top: deviceSystemRecoveryResyncBlockchainRect.top
                 }
 
-                NodoLabel{
+                NodoLabel {
                     id: deviceSystemRecoveryResyncBlockchainText
                     width: deviceSystemRecoveryMainScreen.labelSize
                     height: deviceSystemRecoveryResyncBlockchain.height
@@ -154,7 +178,7 @@ Rectangle {
                 font.pixelSize: NodoSystem.buttonTextFontSize
                 onClicked: {
                     deviceSystemPopup.commandID = 2;
-                    deviceSystemPopup.applyButtonText = qsTr("Recover")
+                    deviceSystemPopup.applyButtonText = qsTr("Start Recovery")
                     deviceSystemPopup.open();
                 }
             }
