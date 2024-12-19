@@ -146,7 +146,7 @@ Item {
                     pageLoader.anchors.topMargin = 0
                 }
             }
-
+/*
             NodoTabButton {
                 id: mPayButton
                 anchors.top: deviceButton.top
@@ -160,11 +160,11 @@ Item {
                     pageLoader.anchors.topMargin = 0
                 }
             }
-
+*/
             NodoTabButton {
                 id: newsButton
                 anchors.top: deviceButton.top
-                anchors.left: mPayButton.right
+                anchors.left: moneroLWSButton.right//mPayButton.right
                 height: NodoSystem.nodoItemHeight
                 text: qsTr("NEWS")
                 font.family: NodoSystem.fontInter.name
