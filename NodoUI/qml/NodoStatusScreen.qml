@@ -67,7 +67,7 @@ Rectangle {
         torServiceField.valueText = getServiceStatusText(nodoControl.getServiceStatus("tor"))
         i2pServiceField.valueText = getServiceStatusText(nodoControl.getServiceStatus("i2pd"))
         moneroLWSField.valueText = getServiceStatusText(nodoControl.getServiceStatus("monero-lws"))
-        moneroPayField.valueText = getServiceStatusText(nodoControl.getServiceStatus("moneropay"))
+        //moneroPayField.valueText = getServiceStatusText(nodoControl.getServiceStatus("moneropay"))
     }
 
     function updateHardwareStatus() {
@@ -154,8 +154,8 @@ Rectangle {
         if(moneroLWSField.labelRectRoundSize > labelSize)
             labelSize = moneroLWSField.labelRectRoundSize
 
-        if(moneroPayField.labelRectRoundSize > labelSize)
-            labelSize = moneroPayField.labelRectRoundSize
+        //if(moneroPayField.labelRectRoundSize > labelSize)
+        //    labelSize = moneroPayField.labelRectRoundSize
 
         if(cpuField.labelRectRoundSize > labelSize)
             labelSize = cpuField.labelRectRoundSize
@@ -399,10 +399,10 @@ Rectangle {
             width: labelSize
             height: statusScreenInfoFieldHeight
             itemSize: labelSize - 40
-            itemText: qsTr("Monero LWS")
+            itemText: qsTr("LWS")
             valueText: ""
         }
-
+/*
         NodoInfoField {
             id: moneroPayField
             anchors.left: moneroNodeField.left
@@ -414,7 +414,7 @@ Rectangle {
             itemText: qsTr("MoneroPay")
             valueText: ""
         }
-
+*/
     }
 
     NodoCanvas {
@@ -441,7 +441,7 @@ Rectangle {
             anchors.topMargin: componentTopMargin
             anchors.leftMargin: componentLeftMargin
             width: hardwareStatusTabName.paintedWidth
-            height: 16
+            height: 22
             text: qsTr("System")
             verticalAlignment: Text.AlignBottom
             horizontalAlignment: Text.AlignHCenter
@@ -457,7 +457,7 @@ Rectangle {
             anchors.topMargin: fieldTopMargin
             width: componentWidth
             height: statusScreenInfoFieldHeight
-            itemSize: labelSize - 40
+            itemSize: labelSize - 50
             itemText: qsTr("CPU")
             valueText: systemMessages.messages[NodoMessages.Message.Loading]
         }
@@ -469,7 +469,7 @@ Rectangle {
             anchors.topMargin: fieldTopMargin
             width: componentWidth
             height: statusScreenInfoFieldHeight
-            itemSize: labelSize - 45
+            itemSize: labelSize - 50
             itemText: qsTr("Temperature")
             valueText: systemMessages.messages[NodoMessages.Message.Loading]
         }
@@ -481,7 +481,7 @@ Rectangle {
             anchors.topMargin: fieldTopMargin
             width: componentWidth
             height: statusScreenInfoFieldHeight
-            itemSize: labelSize - 40
+            itemSize: labelSize - 50
             itemText: qsTr("RAM")
             valueText: systemMessages.messages[NodoMessages.Message.Loading]
         }
@@ -493,7 +493,7 @@ Rectangle {
             anchors.topMargin: fieldTopMargin
             width: componentWidth
             height: statusScreenInfoFieldHeight
-            itemSize: labelSize - 40
+            itemSize: labelSize - 50
             itemText: qsTr("Blockchain")
             valueText: systemMessages.messages[NodoMessages.Message.Loading]
         }
@@ -505,7 +505,7 @@ Rectangle {
             anchors.topMargin: fieldTopMargin
             width: componentWidth
             height: statusScreenInfoFieldHeight
-            itemSize: labelSize - 40
+            itemSize: labelSize - 50
             itemText: qsTr("Storage")
             valueText: systemMessages.messages[NodoMessages.Message.Loading]
         }

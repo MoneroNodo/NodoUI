@@ -17,7 +17,7 @@ Item {
         deviceUpdatesNodoSwitchSwitch.checked = nodoConfig.getUpdateStatus("nodo")
         deviceUpdatesMoneroDaemonSwitch.checked = nodoConfig.getUpdateStatus("monero")
         deviceUpdatesMoneroLWSSwitch.checked = nodoConfig.getUpdateStatus("lws")
-        deviceUpdatesMoneroPaySwitch.checked = nodoConfig.getUpdateStatus("pay")
+        //deviceUpdatesMoneroPaySwitch.checked = nodoConfig.getUpdateStatus("pay")
         deviceUpdateAllButton.isActive = !nodoConfig.isUpdateLocked()
     }
 
@@ -31,8 +31,8 @@ Item {
         if(deviceUpdatesMoneroLWSSwitchText.labelRectRoundSize > labelSize)
             labelSize = deviceUpdatesMoneroLWSSwitchText.labelRectRoundSize
 
-        if(deviceUpdatesMoneroPaySwitchText.labelRectRoundSize > labelSize)
-            labelSize = deviceUpdatesMoneroPaySwitchText.labelRectRoundSize
+        //if(deviceUpdatesMoneroPaySwitchText.labelRectRoundSize > labelSize)
+        //    labelSize = deviceUpdatesMoneroPaySwitchText.labelRectRoundSize
     }
 
     Rectangle {
@@ -149,7 +149,7 @@ Item {
             }
         }
     }
-
+/*
     Rectangle {
         id: deviceUpdatesMoneroPaySwitchRect
         anchors.left: deviceUpdatesScreen.left
@@ -178,4 +178,5 @@ Item {
             }
         }
     }
+*/
 }
