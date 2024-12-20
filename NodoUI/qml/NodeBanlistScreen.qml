@@ -8,8 +8,7 @@ import NodoCanvas 1.0
 Item {
     id: nodeBanlistScreen
     anchors.fill: parent
-    color: "black"
-
+    
     property int labelSize: 0
     property int checkBoxMargin: 0
 
