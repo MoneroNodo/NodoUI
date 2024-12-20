@@ -203,7 +203,7 @@ Rectangle {
             anchors.left: syncStatus.left
             anchors.top: syncStatus.top
             anchors.topMargin: componentTopMargin
-            anchors.leftMargin: componentLeftMargin*2
+            anchors.leftMargin: componentLeftMargin + 20
             width: syncStatusTabName.paintedWidth
             height: 20
             text: qsTr("Monero Daemon")
@@ -219,9 +219,9 @@ Rectangle {
             anchors.left: syncStatusTabName.left
             anchors.top: syncStatusTabName.bottom
             anchors.topMargin: fieldTopMargin
-            width: 692 - itemSize
+            width: parent.width - 4
             height: statusScreenInfoFieldHeight
-            itemSize: labelSize + width
+            itemSize: parent.width - 4
             //itemText: qsTr("Sync Status")
             itemText: (true === nodoSystemStatus.getBoolValueFromKey("synchronized")) ? qsTr("Synchronized") : qsTr("Synchronizing")
         }
@@ -231,7 +231,7 @@ Rectangle {
             anchors.left: syncStatusField.left
             anchors.top: syncStatusField.bottom
             anchors.topMargin: fieldTopMargin
-            width: 692 - itemSize
+            width: parent.width - itemSize
             height: statusScreenInfoFieldHeight
             itemSize: labelSize
             itemText: qsTr("Block Height")
@@ -255,7 +255,7 @@ Rectangle {
             anchors.left: syncStatusField.left
             anchors.top: moneroVersionField.bottom
             anchors.topMargin: fieldTopMargin
-            width: componentWidth
+            width: parent.width
             height: statusScreenInfoFieldHeight
             itemSize: labelSize
             itemText: qsTr("Outgoing Peers")
@@ -361,7 +361,7 @@ Rectangle {
             anchors.left: systemStatusTabName.left
             anchors.top: systemStatusTabName.bottom
             anchors.topMargin: fieldTopMargin
-            width: systemStatus.paintedWidth - componentLeftMargin
+            width: parent.width - itemSize
             height: statusScreenInfoFieldHeight
             itemSize: labelSize - 70
             itemText: qsTr("Daemon")
