@@ -17,7 +17,7 @@ Rectangle {
     property int componentWidth: 500
     property int componentLeftMargin: 5
     property int componentBottomMargin: NodoSystem.nodoTopMargin
-    property int componentTopMargin: 30
+    property int componentTopMargin: 40
     property int cardMargin: 15
 
     property int statusScreenInfoFieldHeight: NodoSystem.nodoItemHeight
@@ -180,7 +180,7 @@ Rectangle {
         anchors.top: statusScreen.top
         anchors.topMargin: 10
         anchors.leftMargin: 2//cardMargin
-        width: 690
+        width: 670
         height: networkConnectionField.y + networkConnectionField.height + componentBottomMargin//683
         color: NodoSystem.cardBackgroundColor
 
@@ -231,7 +231,7 @@ Rectangle {
             anchors.left: syncStatusField.left
             anchors.top: syncStatusField.bottom
             anchors.topMargin: fieldTopMargin
-            width: parent.width - 35
+            width: parent.width - 30
             height: statusScreenInfoFieldHeight
             itemSize: labelSize
             itemText: qsTr("Block Height")
@@ -243,7 +243,7 @@ Rectangle {
             anchors.left: syncStatusField.left
             anchors.top: currentBlockHeightField.bottom
             anchors.topMargin: fieldTopMargin
-            width: parent.width - 40
+            width: parent.width - 25
             height: statusScreenInfoFieldHeight
             itemSize: labelSize
             itemText: qsTr("Version")
@@ -327,7 +327,7 @@ Rectangle {
         //anchors.horizontalCenter: statusScreen.horizontalCenter
         anchors.left: syncStatus.right
         anchors.top: statusScreen.top
-        anchors.topMargin: 10
+        anchors.topMargin: 30
         anchors.leftMargin: cardMargin
         width: 500
         height: moneroLWSField.y + moneroLWSField.height + componentBottomMargin
@@ -361,7 +361,7 @@ Rectangle {
             anchors.left: systemStatusTabName.left
             anchors.top: systemStatusTabName.bottom
             anchors.topMargin: fieldTopMargin
-            width: 100
+            width: parent.width - 20
             height: statusScreenInfoFieldHeight
             itemSize: labelSize - 70
             itemText: qsTr("Daemon")
@@ -373,7 +373,7 @@ Rectangle {
             anchors.left: moneroNodeField.left
             anchors.top: moneroNodeField.bottom
             anchors.topMargin: fieldTopMargin
-            width: 110
+            width: parent.width - 30
             height: statusScreenInfoFieldHeight
             itemSize: labelSize - 70
             itemText: qsTr("Tor Service")
@@ -385,7 +385,7 @@ Rectangle {
             anchors.left: moneroNodeField.left
             anchors.top: torServiceField.bottom
             anchors.topMargin: fieldTopMargin
-            width: parent.width - 70
+            width: parent.width - 40
             height: statusScreenInfoFieldHeight
             itemSize: labelSize - 70
             itemText: qsTr("I2P Service")
@@ -397,7 +397,7 @@ Rectangle {
             anchors.left: moneroNodeField.left
             anchors.top: i2pServiceField.bottom
             anchors.topMargin: fieldTopMargin
-            width: labelSize
+            width: parent.width - 10
             height: statusScreenInfoFieldHeight
             itemSize: labelSize - 70
             itemText: qsTr("LWS")
@@ -422,8 +422,8 @@ Rectangle {
         id: hardwareStatus
         anchors.left: systemStatus.right
         anchors.top: statusScreen.top
-        anchors.topMargin: 10
-        width: 710
+        anchors.topMargin: 50
+        width: 720
         anchors.leftMargin: cardMargin
         //anchors.rightMargin: 2//cardMargin
         height: systemStorageField.y + systemStorageField.height + componentBottomMargin
