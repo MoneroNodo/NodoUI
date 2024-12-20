@@ -172,7 +172,7 @@ Item {
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
                 onClicked: {
                     pageLoader.source = "NewsMainScreen.qml"
-                    pageLoader.anchors.topMargin = NodoSystem.subMenuTopMargin + 60//60
+                    pageLoader.anchors.topMargin = NodoSystem.subMenuTopMargin + 62//60
                 }
             }
         }
