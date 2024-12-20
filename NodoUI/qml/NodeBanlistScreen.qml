@@ -61,7 +61,7 @@ Item {
 
             NodoCheckBox
             {
-                id: nodeBanlistScreenIndex1Check
+                id: nodeBanlistScreenIndex2Check
                 height: nodeBanlistScreenIndex2.height
                 width: height
                 anchors.left: nodeBanlistScreenIndex2.left
@@ -69,7 +69,7 @@ Item {
             }
 
             NodoLabel {
-                id: nodeBanlistScreenIndex1Text
+                id: nodeBanlistScreenIndex2Text
                 width: nodeBanlistScreen.labelSize
                 height: nodeBanlistScreenIndex2Check.height
                 anchors.left: nodeBanlistScreenIndex2Check.right
@@ -87,7 +87,7 @@ Item {
         font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         text: qsTr("Apply")
-        onClicked {}
+        onClicked: {}
     }
 
     NodoButton {
@@ -99,7 +99,7 @@ Item {
         font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         text: qsTr("Clear")
-        onClicked {}
+        onClicked: {}
     }
 
 }
