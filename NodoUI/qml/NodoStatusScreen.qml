@@ -231,7 +231,7 @@ Rectangle {
             anchors.left: syncStatusField.left
             anchors.top: syncStatusField.bottom
             anchors.topMargin: fieldTopMargin
-            width: parent.width - itemSize
+            width: parent.width - 20
             height: statusScreenInfoFieldHeight
             itemSize: labelSize
             itemText: qsTr("Block Height")
@@ -243,7 +243,7 @@ Rectangle {
             anchors.left: syncStatusField.left
             anchors.top: currentBlockHeightField.bottom
             anchors.topMargin: fieldTopMargin
-            width: parent.width - 10
+            width: parent.width - 25
             height: statusScreenInfoFieldHeight
             itemSize: labelSize
             itemText: qsTr("Version")
@@ -255,7 +255,7 @@ Rectangle {
             anchors.left: syncStatusField.left
             anchors.top: moneroVersionField.bottom
             anchors.topMargin: fieldTopMargin
-            width: parent.width - itemSize
+            width: parent.width - 30
             height: statusScreenInfoFieldHeight
             itemSize: labelSize
             itemText: qsTr("Outgoing Peers")
@@ -361,7 +361,7 @@ Rectangle {
             anchors.left: systemStatusTabName.left
             anchors.top: systemStatusTabName.bottom
             anchors.topMargin: fieldTopMargin
-            width: parent.width - itemSize
+            width: parent.paintedWidth
             height: statusScreenInfoFieldHeight
             itemSize: labelSize - 70
             itemText: qsTr("Daemon")
@@ -373,7 +373,7 @@ Rectangle {
             anchors.left: moneroNodeField.left
             anchors.top: moneroNodeField.bottom
             anchors.topMargin: fieldTopMargin
-            width: 570 - labelSize
+            width: parent.width - labelSize
             height: statusScreenInfoFieldHeight
             itemSize: labelSize - 70
             itemText: qsTr("Tor Service")
