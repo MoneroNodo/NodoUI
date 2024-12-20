@@ -420,7 +420,7 @@ Rectangle {
 
     NodoCanvas {
         id: hardwareStatus
-        anchors.right: systemStatus.right
+        anchors.left: systemStatus.right
         anchors.top: statusScreen.top
         anchors.topMargin: 10
         width: 710
