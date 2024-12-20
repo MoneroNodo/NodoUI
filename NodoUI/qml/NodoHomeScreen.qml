@@ -218,7 +218,7 @@ Item {
             id: priceTickerRect
             anchors.right: mainAppWindowRectangle.right
             anchors.top: rightMenu.bottom
-            anchors.topMargin: NodoSystem.subMenuTopMargin + 43//40
+            anchors.topMargin: NodoSystem.subMenuTopMargin + 42//40
             color: "black"
 
             Text {
@@ -241,7 +241,7 @@ Item {
                 anchors.top: priceTickerRect.top
                 anchors.bottom: priceTickerRect.bottom
                 anchors.right: exchangeRateText.left
-                anchors.rightMargin: 5
+                anchors.rightMargin: 6
                 color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
                 text: nodoCurrencies.currencySymbols[priceTicker.getCurrentCurrencyIndex()]
                 topPadding: NodoSystem.topMenuTextTopPadding
