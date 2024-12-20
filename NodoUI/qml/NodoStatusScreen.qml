@@ -14,11 +14,11 @@ Rectangle {
     property int labelSize: 0
     property int fieldTopMargin: NodoSystem.nodoTopMargin//5
 
-    property int componentWidth: 600
+    property int componentWidth: 500
     property int componentLeftMargin: 5
     property int componentBottomMargin: NodoSystem.nodoTopMargin
     property int componentTopMargin: 34
-    property int cardMargin: 15
+    property int cardMargin: 10
 
     property int statusScreenInfoFieldHeight: NodoSystem.nodoItemHeight
 
@@ -219,9 +219,9 @@ Rectangle {
             anchors.left: syncStatusTabName.left
             anchors.top: syncStatusTabName.bottom
             anchors.topMargin: fieldTopMargin
-            width: syncStatus.paintedWidth - componentLeftMargin
+            width: componentWidth + 
             height: statusScreenInfoFieldHeight
-            //itemSize: componentWidth
+            itemSize: componentWidth + 250
             //itemText: qsTr("Sync Status")
             itemText: (true === nodoSystemStatus.getBoolValueFromKey("synchronized")) ? qsTr("Synchronized") : qsTr("Synchronizing")
         }
@@ -231,7 +231,7 @@ Rectangle {
             anchors.left: syncStatusField.left
             anchors.top: syncStatusField.bottom
             anchors.topMargin: fieldTopMargin
-            width: syncStatusTabName.paintedWidth
+            width: componentWidth + 300
             height: statusScreenInfoFieldHeight
             itemSize: labelSize
             itemText: qsTr("Block Height")
@@ -243,7 +243,7 @@ Rectangle {
             anchors.left: syncStatusField.left
             anchors.top: currentBlockHeightField.bottom
             anchors.topMargin: fieldTopMargin
-            width: componentWidth
+            width: componentWidth + 230
             height: statusScreenInfoFieldHeight
             itemSize: labelSize
             itemText: qsTr("Version")
