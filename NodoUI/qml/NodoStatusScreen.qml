@@ -243,7 +243,7 @@ Rectangle {
             anchors.left: syncStatusField.left
             anchors.top: currentBlockHeightField.bottom
             anchors.topMargin: fieldTopMargin
-            width: 692 - labelSize
+            width: parent.width - 10
             height: statusScreenInfoFieldHeight
             itemSize: labelSize
             itemText: qsTr("Version")
@@ -255,7 +255,7 @@ Rectangle {
             anchors.left: syncStatusField.left
             anchors.top: moneroVersionField.bottom
             anchors.topMargin: fieldTopMargin
-            width: parent.width
+            width: parent.width - itemSize
             height: statusScreenInfoFieldHeight
             itemSize: labelSize
             itemText: qsTr("Outgoing Peers")
