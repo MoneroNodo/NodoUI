@@ -18,7 +18,7 @@ Rectangle {
     property int componentLeftMargin: 5
     property int componentBottomMargin: NodoSystem.nodoTopMargin
     property int componentTopMargin: 34
-    property int cardMargin: 5//15
+    property int cardMargin: 15
 
     property int statusScreenInfoFieldHeight: NodoSystem.nodoItemHeight
 
@@ -221,7 +221,7 @@ Rectangle {
             anchors.topMargin: fieldTopMargin
             width: syncStatus.paintedWidth - componentLeftMargin
             height: statusScreenInfoFieldHeight
-            itemSize: componentWidth
+            //itemSize: componentWidth
             //itemText: qsTr("Sync Status")
             itemText: (true === nodoSystemStatus.getBoolValueFromKey("synchronized")) ? qsTr("Synchronized") : qsTr("Synchronizing")
         }
@@ -361,7 +361,7 @@ Rectangle {
             anchors.left: systemStatusTabName.left
             anchors.top: systemStatusTabName.bottom
             anchors.topMargin: fieldTopMargin
-            width: systemStatusTabName.paintedWidth - componentLeftMargin
+            width: systemStatus.paintedWidth - componentLeftMargin
             height: statusScreenInfoFieldHeight
             itemSize: labelSize - 70
             itemText: qsTr("Daemon")
