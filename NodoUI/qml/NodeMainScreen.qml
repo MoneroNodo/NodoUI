@@ -24,7 +24,7 @@ Item {
 
         NodoTabButton {
             id: clearnetButton
-            y: (nodoMenuBar.height - clearnetButton.height)/2
+            y: (nodeMenuBar.height - clearnetButton.height)/2
             text: qsTr("CLEARNET")
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
