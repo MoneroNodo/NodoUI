@@ -128,6 +128,10 @@ int NodoConfigParser::getIntValueFromKey(QString object, QString key)
     {
         jsonValue = m_autoupdateObj.value(key);
     }
+    else if(banlistsObjName == object)
+    {
+        jsonValue = m_banlistsObj.value(key);
+    }
 
     return jsonValue.toInt();
 }
@@ -297,6 +301,7 @@ bool NodoConfigParser::getBanlistsListEnabled(QString banlist)
 void NodoConfigParser::setBanlistsListEnabled(QString banlist, bool enabled)
 {
     m_banlistsObj.insert(banlist, enabled ? "TRUE" : "FALSE");
+    writeJson();
 }
 
 void NodoConfigParser::setClearnetPort(QString port)

@@ -8,7 +8,7 @@ import NodoCanvas 1.0
 Item {
     id: nodeBanlistScreen
     anchors.fill: parent
-    
+
     property int labelSize: 0
     property int checkBoxMargin: 0
 
@@ -40,7 +40,7 @@ Item {
                 anchors.top: nodeBanlistScreenIndex1.top
                 checked: nodoControl.getBanlistsListEnabled("boog900")
                 onClicked: {
-                    applyBanlistButton.enabled = true
+                    applyBanlistButton.isActive = true
                 }
             }
 
@@ -71,7 +71,7 @@ Item {
                 anchors.top: nodeBanlistScreenIndex1.top
                 checked: nodoControl.getBanlistsListEnabled("gui-xmr-pm")
                 onClicked: {
-                    applyBanlistButton.enabled = true
+                    applyBanlistButton.isActive = true
                 }
             }
 
@@ -98,7 +98,7 @@ Item {
         onClicked: {
             nodoControl.setBanlistsListEnabled("boog900", nodeBanlistScreenIndex1Check.checked);
             nodoControl.setBanlistsListEnabled("gui-xmr-pm", nodeBanlistScreenIndex2Check.checked);
-            applyBanlistButton.enabled = false
+            applyBanlistButton.isActive = false
         }
     }
 
@@ -115,7 +115,7 @@ Item {
             nodeBanlistScreenIndex1Check.checked = false;
             nodeBanlistScreenIndex2Check.checked = false;
             applyBanlistButton.clicked();
-            applyBanlistButton.enabled = false
+            applyBanlistButton.isActive = false
         }
     }
 
