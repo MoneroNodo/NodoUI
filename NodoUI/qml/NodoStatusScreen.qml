@@ -15,10 +15,10 @@ Rectangle {
     property int fieldTopMargin: NodoSystem.nodoTopMargin//5
 
     property int componentWidth: 600
-    property int componentLeftMargin: 8
-    property int componentBottomMargin: 15
+    property int componentLeftMargin: 5
+    property int componentBottomMargin: NodoSystem.nodoTopMargin
     property int componentTopMargin: 34
-    property int cardMargin: 15
+    property int cardMargin: 5//15
 
     property int statusScreenInfoFieldHeight: NodoSystem.nodoItemHeight
 
@@ -179,7 +179,7 @@ Rectangle {
         anchors.left: statusScreen.left
         anchors.top: statusScreen.top
         anchors.topMargin: 10
-        anchors.leftMargin: 10//cardMargin
+        anchors.leftMargin: 2//cardMargin
         width: 700
         height: networkConnectionField.y + networkConnectionField.height + componentBottomMargin//683
         color: NodoSystem.cardBackgroundColor
@@ -325,11 +325,11 @@ Rectangle {
     NodoCanvas {
         id: systemStatus
         //anchors.horizontalCenter: statusScreen.horizontalCenter
-        
+        anchors.left: syncStatus.right
         anchors.top: statusScreen.top
         anchors.topMargin: 10
         anchors.leftMargin: cardMargin
-        width: 480
+        width: 500
         height: moneroLWSField.y + moneroLWSField.height + componentBottomMargin
         color: NodoSystem.cardBackgroundColor
 
@@ -363,7 +363,7 @@ Rectangle {
             anchors.topMargin: fieldTopMargin
             width: systemStatusTabName.paintedWidth - componentLeftMargin
             height: statusScreenInfoFieldHeight
-            itemSize: labelSize - 60
+            itemSize: labelSize - 70
             itemText: qsTr("Daemon")
             valueText: ""
         }
@@ -375,7 +375,7 @@ Rectangle {
             anchors.topMargin: fieldTopMargin
             width: labelSize
             height: statusScreenInfoFieldHeight
-            itemSize: labelSize - 60
+            itemSize: labelSize - 70
             itemText: qsTr("Tor Service")
             valueText: ""
         }
@@ -387,7 +387,7 @@ Rectangle {
             anchors.topMargin: fieldTopMargin
             width: labelSize
             height: statusScreenInfoFieldHeight
-            itemSize: labelSize - 60
+            itemSize: labelSize - 70
             itemText: qsTr("I2P Service")
             valueText: ""
         }
@@ -399,7 +399,7 @@ Rectangle {
             anchors.topMargin: fieldTopMargin
             width: labelSize
             height: statusScreenInfoFieldHeight
-            itemSize: labelSize - 60
+            itemSize: labelSize - 70
             itemText: qsTr("LWS")
             valueText: ""
         }
@@ -420,11 +420,12 @@ Rectangle {
 
     NodoCanvas {
         id: hardwareStatus
-        anchors.right: statusScreen.right
+        anchors.right: systemStatus.right
         anchors.top: statusScreen.top
         anchors.topMargin: 10
-        width: 700
-        anchors.rightMargin: 2//cardMargin
+        width: 710
+        anchors.leftMargin: cardMargin
+        //anchors.rightMargin: 2//cardMargin
         height: systemStorageField.y + systemStorageField.height + componentBottomMargin
         color: NodoSystem.cardBackgroundColor
 
