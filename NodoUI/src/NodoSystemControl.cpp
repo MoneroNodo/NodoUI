@@ -392,6 +392,26 @@ void NodoSystemControl::sendUpdate(void)
     m_dbusController->serviceManager("restart", "monerod");
 }
 
+bool NodoSystemControl::getBanlistEnabled()
+{
+    return m_configParser->getBanlistEnabled();
+}
+
+void NodoSystemControl::setBanlistEnabled(bool enabled)
+{
+    m_configParser->setBanlistEnabled(enabled);
+}
+
+bool NodoSystemControl::getBanlistsListEnabled(QString banlist)
+{
+    return m_configParser->getBanlistsListEnabled(banlist);
+}
+
+void NodoSystemControl::setBanlistsListEnabled(QString banlist, bool enabled)
+{
+    m_configParser->setBanlistsListEnabled(banlist, enabled);
+}
+
 void NodoSystemControl::setClearnetPort(QString port)
 {
     enableComponent(false);

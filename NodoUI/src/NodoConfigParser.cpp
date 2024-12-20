@@ -54,6 +54,7 @@ void NodoConfigParser::readFile(void)
         m_versionsObj = m_configObj[versionsObjName].toObject();
         m_moneropayObj = m_configObj[moneropayObjName].toObject();
         m_autoupdateObj = m_configObj[autoupdateObjName].toObject();
+        m_banlistsObj = m_configObj[banlistsObjName].toObject();
 
         emit configParserReady();
     }
@@ -91,6 +92,10 @@ QString NodoConfigParser::getStringValueFromKey(QString object, QString key)
     else if(autoupdateObjName == object)
     {
         jsonValue = m_autoupdateObj.value(key);
+    }
+    else if(banlistsObjName == object)
+    {
+        jsonValue = m_banlistsObj.value(key);
     }
 
     return jsonValue.toString();
@@ -271,6 +276,27 @@ bool NodoConfigParser::getTheme(void)
         return false;
     }
     return jsonValue.toBool();
+}
+
+bool NodoConfigParser::getBanlistEnabled(void)
+{
+    return m_configObj.value("banlist") == "TRUE";
+}
+
+void NodoConfigParser::setBanlistEnabled(bool enabled)
+{
+    m_configObj.insert("banlist", enabled ? "TRUE" : "FALSE");
+    writeJson();
+}
+
+bool NodoConfigParser::getBanlistsListEnabled(QString banlist)
+{
+    return m_banlistsObj.value(banlist) == "TRUE";
+}
+
+void NodoConfigParser::setBanlistsListEnabled(QString banlist, bool enabled)
+{
+    m_banlistsObj.insert(banlist, enabled ? "TRUE" : "FALSE");
 }
 
 void NodoConfigParser::setClearnetPort(QString port)
