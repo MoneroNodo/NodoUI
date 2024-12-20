@@ -369,8 +369,8 @@ void Daemon::readBlockchainStorageUsage(void)
         {
             bool ok;
             QStringList status2 = status.at(i).split(" ", Qt::SkipEmptyParts);
-            m_blockChainStorageTotal = status2.at(1).toFloat(&ok) / (float) SIZE_GB;
-            m_blockChainStorageUsed = status2.at(2).toFloat(&ok) / (float) SIZE_GB;
+            m_blockChainStorageTotal = status2.at(1).toFloat(&ok) / (float) SIZE_TB;
+            m_blockChainStorageUsed = status2.at(2).toFloat(&ok) / (float) SIZE_TB;
         }
     }
 }
