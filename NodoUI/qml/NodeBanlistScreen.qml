@@ -39,6 +39,10 @@ Item {
                 width: height
                 anchors.left: nodeBanlistScreenIndex1.left
                 anchors.top: nodeBanlistScreenIndex1.top
+                checked: nodoControl.getBanlistsListEnabled("boog900")
+                onClicked: {
+                    applyBanlistButton.enabled = true
+                }
             }
 
             NodoLabel {
@@ -66,6 +70,10 @@ Item {
                 width: height
                 anchors.left: nodeBanlistScreenIndex2.left
                 anchors.top: nodeBanlistScreenIndex1.top
+                checked: nodoControl.getBanlistsListEnabled("gui-xmr-pm")
+                onClicked: {
+                    applyBanlistButton.enabled = true
+                }
             }
 
             NodoLabel {
@@ -87,7 +95,12 @@ Item {
         font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         text: qsTr("Apply")
-        onClicked: {}
+        enabled: false
+        onClicked: {
+            nodoControl.setBanlistsListEnabled("boog900", nodeBanlistScreenIndex1Check.checked);
+            nodoControl.setBanlistsListEnabled("gui-xmr-pm", nodeBanlistScreenIndex2Check.checked);
+            applyBanlistButton.enabled = false
+        }
     }
 
     NodoButton {
@@ -99,7 +112,12 @@ Item {
         font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         text: qsTr("Clear")
-        onClicked: {}
+        onClicked: {
+            nodeBanlistScreenIndex1Check.checked = false;
+            nodeBanlistScreenIndex2Check.checked = false;
+            applyBanlistButton.clicked();
+            applyBanlistButton.enabled = false
+        }
     }
 
 }
