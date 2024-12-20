@@ -17,8 +17,8 @@ Rectangle {
     property int componentWidth: 500
     property int componentLeftMargin: 5
     property int componentBottomMargin: NodoSystem.nodoTopMargin
-    property int componentTopMargin: 34
-    property int cardMargin: 10
+    property int componentTopMargin: 30
+    property int cardMargin: 15
 
     property int statusScreenInfoFieldHeight: NodoSystem.nodoItemHeight
 
@@ -180,7 +180,7 @@ Rectangle {
         anchors.top: statusScreen.top
         anchors.topMargin: 10
         anchors.leftMargin: 2//cardMargin
-        width: 700
+        width: 690
         height: networkConnectionField.y + networkConnectionField.height + componentBottomMargin//683
         color: NodoSystem.cardBackgroundColor
 
@@ -203,7 +203,7 @@ Rectangle {
             anchors.left: syncStatus.left
             anchors.top: syncStatus.top
             anchors.topMargin: componentTopMargin
-            anchors.leftMargin: componentLeftMargin
+            anchors.leftMargin: componentLeftMargin*2
             width: syncStatusTabName.paintedWidth
             height: 20
             text: qsTr("Monero Daemon")
@@ -219,9 +219,9 @@ Rectangle {
             anchors.left: syncStatusTabName.left
             anchors.top: syncStatusTabName.bottom
             anchors.topMargin: fieldTopMargin
-            width: componentWidth + 
+            width: 692 - itemSize
             height: statusScreenInfoFieldHeight
-            itemSize: componentWidth + 250
+            itemSize: labelSize + width
             //itemText: qsTr("Sync Status")
             itemText: (true === nodoSystemStatus.getBoolValueFromKey("synchronized")) ? qsTr("Synchronized") : qsTr("Synchronizing")
         }
@@ -231,7 +231,7 @@ Rectangle {
             anchors.left: syncStatusField.left
             anchors.top: syncStatusField.bottom
             anchors.topMargin: fieldTopMargin
-            width: componentWidth + 300
+            width: 692 - itemSize
             height: statusScreenInfoFieldHeight
             itemSize: labelSize
             itemText: qsTr("Block Height")
@@ -243,7 +243,7 @@ Rectangle {
             anchors.left: syncStatusField.left
             anchors.top: currentBlockHeightField.bottom
             anchors.topMargin: fieldTopMargin
-            width: componentWidth + 230
+            width: 692 - labelSize
             height: statusScreenInfoFieldHeight
             itemSize: labelSize
             itemText: qsTr("Version")
@@ -347,7 +347,7 @@ Rectangle {
             anchors.topMargin: componentTopMargin
             anchors.leftMargin: componentLeftMargin
             width: systemStatusTabName.paintedWidth
-            height: 16
+            height: 20
             text: qsTr("Services")
             verticalAlignment: Text.AlignBottom
             horizontalAlignment: Text.AlignHCenter
@@ -373,7 +373,7 @@ Rectangle {
             anchors.left: moneroNodeField.left
             anchors.top: moneroNodeField.bottom
             anchors.topMargin: fieldTopMargin
-            width: labelSize
+            width: 570 - labelSize
             height: statusScreenInfoFieldHeight
             itemSize: labelSize - 70
             itemText: qsTr("Tor Service")
