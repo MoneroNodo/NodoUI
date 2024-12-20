@@ -71,6 +71,17 @@ Item {
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: { pageLoader.source = "NodePrivateNodeScreen.qml" }
         }
+
+        NodoTabButton {
+            id: banlistButton
+            anchors.top: clearnetButton.top
+            anchors.left: privateNodeButton.right
+            text: qsTr("BANLIST")
+            font.family: NodoSystem.fontInter.name
+            font.pixelSize: NodoSystem.topMenuButtonFontSize
+            onClicked: { pageLoader.source = "NodeBanlistScreen.qml" }
+        }
+
     }
 
     Loader {

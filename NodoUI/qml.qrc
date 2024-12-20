@@ -10,6 +10,7 @@
         <file>qml/NodeMainScreen.qml</file>
         <file>qml/NodePrivateNodeScreen.qml</file>
         <file>qml/NodeBandwidthScreen.qml</file>
+        <file>qml/NodeBanlistScreen.qml</file>
         <file>qml/DeviceMainScreen.qml</file>
         <file>qml/DeviceWifiScreen.qml</file>
         <file>qml/NodoComboBox.qml</file>
