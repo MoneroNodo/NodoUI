@@ -94,10 +94,11 @@ Item {
         font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         text: qsTr("Apply")
-        enabled: false
+        isActive: false
         onClicked: {
             nodoControl.setBanlistsListEnabled("boog900", nodeBanlistScreenIndex1Check.checked);
             nodoControl.setBanlistsListEnabled("gui-xmr-pm", nodeBanlistScreenIndex2Check.checked);
+            nodoControl.sendUpdate();
             applyBanlistButton.isActive = false
         }
     }
