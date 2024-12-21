@@ -96,8 +96,8 @@ Item {
                 x: 0
                 y: (mainMenuBar.height - nodoLogoButton.height)/2
                 text: " "
-                width: 288
-                implicitHeight: 110//NodoSystem.topMenuButtonHeight
+                width: 300//288
+                implicitHeight: 120//110//NodoSystem.nodoItemHeight
                 buttonBorderColor: "black"
                 imagePath: (nodoControl.appTheme ? "qrc:/Images/nodologo_title_red.png" : "qrc:/Images/nodologo_title_white.png")
                 onClicked: {

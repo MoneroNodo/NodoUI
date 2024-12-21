@@ -7,13 +7,13 @@ Item
 
     property int nodoItemHeight: 85
 
-    property int topMenuYposition: 32
-    property int topMenuButtonHeight: nodoItemHeight
+    property int topMenuYposition: 37//32 + 5
+    property int topMenuButtonHeight: nodoItemHeight - 5
     property int topMenuButtonFontSize: 48
     property int topMenuGapBetweenButtons: 25
     property int dateTimeFontSize: 56
 
-    property int subMenuButtonHeight: topMenuButtonHeight
+    property int subMenuButtonHeight: nodoItemHeight
     property int subMenuButtonFontSize: topMenuButtonFontSize
     property int textFontSize: 42
     property int buttonTextFontSize: topMenuButtonFontSize
