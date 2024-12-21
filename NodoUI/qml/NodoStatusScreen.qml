@@ -180,7 +180,7 @@ Rectangle {
         anchors.top: statusScreen.top
         anchors.topMargin: 42
         anchors.leftMargin: 2//cardMargin
-        width: 680
+        width: 705
         height: networkConnectionField.y + networkConnectionField.height + componentBottomMargin//683
         color: NodoSystem.cardBackgroundColor
 
@@ -243,7 +243,7 @@ Rectangle {
             anchors.left: syncStatusField.left
             anchors.top: currentBlockHeightField.bottom
             anchors.topMargin: fieldTopMargin
-            width: parent.width - 20
+            width: parent.width - (componentLeftMargin*2)
             height: statusScreenInfoFieldHeight
             itemSize: labelSize
             itemText: qsTr("Version")
@@ -255,7 +255,7 @@ Rectangle {
             anchors.left: syncStatusField.left
             anchors.top: moneroVersionField.bottom
             anchors.topMargin: fieldTopMargin
-            width: parent.width - 30
+            width: parent.width - 20
             height: statusScreenInfoFieldHeight
             itemSize: labelSize
             itemText: qsTr("Outgoing Peers")
@@ -267,7 +267,7 @@ Rectangle {
             anchors.left: syncStatusField.left
             anchors.top: outgoingConnectionsField.bottom
             anchors.topMargin: fieldTopMargin
-            width: parent.width - 5
+            width: parent.width - 20
             height: statusScreenInfoFieldHeight
             itemSize: labelSize
             itemText: qsTr("Incoming Peers")
@@ -329,7 +329,7 @@ Rectangle {
         anchors.top: statusScreen.top
         anchors.topMargin: 42
         anchors.leftMargin: cardMargin
-        width: 480
+        width: 460
         height: moneroLWSField.y + moneroLWSField.height + componentBottomMargin
         color: NodoSystem.cardBackgroundColor
 
@@ -505,7 +505,7 @@ Rectangle {
             anchors.left: hardwareStatusTabName.left
             anchors.top: blockchainStorageField.bottom
             anchors.topMargin: fieldTopMargin
-            width: parent.width - 15
+            width: parent.width - 20
             height: statusScreenInfoFieldHeight
             itemSize: labelSize - 50
             itemText: qsTr("Storage")
