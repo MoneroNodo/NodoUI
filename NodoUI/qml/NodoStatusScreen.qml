@@ -15,7 +15,7 @@ Rectangle {
     property int fieldTopMargin: NodoSystem.nodoTopMargin//5
 
     property int componentWidth: 500
-    property int componentLeftMargin: 5
+    property int componentLeftMargin: 15
     property int componentBottomMargin: NodoSystem.nodoTopMargin
     property int componentTopMargin: 40
     property int cardMargin: 15
@@ -361,9 +361,9 @@ Rectangle {
             anchors.left: systemStatusTabName.left
             anchors.top: systemStatusTabName.bottom
             anchors.topMargin: fieldTopMargin
-            width: parent.width - 10
+            width: parent.width - 15
             height: statusScreenInfoFieldHeight
-            itemSize: labelSize - 70
+            itemSize: labelSize - 120
             itemText: qsTr("Daemon")
             valueText: ""
         }
@@ -373,10 +373,10 @@ Rectangle {
             anchors.left: moneroNodeField.left
             anchors.top: moneroNodeField.bottom
             anchors.topMargin: fieldTopMargin
-            width: parent.width - 12
+            width: parent.width - 15
             height: statusScreenInfoFieldHeight
-            itemSize: labelSize - 70
-            itemText: qsTr("Tor Service")
+            itemSize: labelSize - 90
+            itemText: qsTr("Tor")
             valueText: ""
         }
 
@@ -387,8 +387,8 @@ Rectangle {
             anchors.topMargin: fieldTopMargin
             width: parent.width - 15
             height: statusScreenInfoFieldHeight
-            itemSize: labelSize - 70
-            itemText: qsTr("I2P Service")
+            itemSize: labelSize - 100
+            itemText: qsTr("I2P")
             valueText: ""
         }
 
@@ -397,9 +397,9 @@ Rectangle {
             anchors.left: moneroNodeField.left
             anchors.top: i2pServiceField.bottom
             anchors.topMargin: fieldTopMargin
-            width: parent.width - 10
+            width: parent.width - 15
             height: statusScreenInfoFieldHeight
-            itemSize: labelSize - 70
+            itemSize: labelSize - 110
             itemText: qsTr("LWS")
             valueText: ""
         }
@@ -443,7 +443,7 @@ Rectangle {
             anchors.topMargin: componentTopMargin
             anchors.leftMargin: componentLeftMargin
             width: hardwareStatusTabName.paintedWidth
-            height: 20
+            height: 18
             text: qsTr("System")
             verticalAlignment: Text.AlignBottom
             horizontalAlignment: Text.AlignHCenter
@@ -457,7 +457,7 @@ Rectangle {
             anchors.left: hardwareStatusTabName.left
             anchors.top: hardwareStatusTabName.bottom
             anchors.topMargin: fieldTopMargin
-            width: parent.width - 20
+            width: parent.width - 15
             height: statusScreenInfoFieldHeight
             itemSize: labelSize - 50
             itemText: qsTr("CPU")
@@ -481,7 +481,7 @@ Rectangle {
             anchors.left: hardwareStatusTabName.left
             anchors.top: cpuTemperatureField.bottom
             anchors.topMargin: fieldTopMargin
-            width: parent.width - 10
+            width: parent.width - 15
             height: statusScreenInfoFieldHeight
             itemSize: labelSize - 50
             itemText: qsTr("RAM")
@@ -493,7 +493,7 @@ Rectangle {
             anchors.left: hardwareStatusTabName.left
             anchors.top: ramField.bottom
             anchors.topMargin: fieldTopMargin
-            width: parent.width - 5
+            width: parent.width - 15
             height: statusScreenInfoFieldHeight
             itemSize: labelSize - 50
             itemText: qsTr("Blockchain")
@@ -505,7 +505,7 @@ Rectangle {
             anchors.left: hardwareStatusTabName.left
             anchors.top: blockchainStorageField.bottom
             anchors.topMargin: fieldTopMargin
-            width: parent.width
+            width: parent.width - 15
             height: statusScreenInfoFieldHeight
             itemSize: labelSize - 50
             itemText: qsTr("Storage")
