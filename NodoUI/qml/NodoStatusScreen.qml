@@ -14,7 +14,7 @@ Rectangle {
     property int labelSize: 0
     property int fieldTopMargin: NodoSystem.nodoTopMargin//5
 
-    property int componentWidth: 500
+    //property int componentWidth: 500
     property int componentLeftMargin: 10
     property int componentBottomMargin: NodoSystem.nodoTopMargin
     property int componentTopMargin: 40
@@ -178,9 +178,9 @@ Rectangle {
         id: syncStatus
         anchors.left: statusScreen.left
         anchors.top: statusScreen.top
-        anchors.topMargin: 35
+        anchors.topMargin: 42
         anchors.leftMargin: 2//cardMargin
-        width: 670
+        width: 680
         height: networkConnectionField.y + networkConnectionField.height + componentBottomMargin//683
         color: NodoSystem.cardBackgroundColor
 
@@ -219,7 +219,7 @@ Rectangle {
             anchors.left: syncStatusTabName.left
             anchors.top: syncStatusTabName.bottom
             anchors.topMargin: fieldTopMargin
-            width: parent.width - 15
+            width: parent.width - 20
             height: statusScreenInfoFieldHeight
             itemSize: parent.width - 10
             //itemText: qsTr("Sync Status")
@@ -231,7 +231,7 @@ Rectangle {
             anchors.left: syncStatusField.left
             anchors.top: syncStatusField.bottom
             anchors.topMargin: fieldTopMargin
-            width: parent.width - 5
+            width: parent.width - 15
             height: statusScreenInfoFieldHeight
             itemSize: labelSize
             itemText: qsTr("Block Height")
@@ -243,7 +243,7 @@ Rectangle {
             anchors.left: syncStatusField.left
             anchors.top: currentBlockHeightField.bottom
             anchors.topMargin: fieldTopMargin
-            width: parent.width
+            width: parent.width - 20
             height: statusScreenInfoFieldHeight
             itemSize: labelSize
             itemText: qsTr("Version")
@@ -255,7 +255,7 @@ Rectangle {
             anchors.left: syncStatusField.left
             anchors.top: moneroVersionField.bottom
             anchors.topMargin: fieldTopMargin
-            width: parent.width - 5
+            width: parent.width - 30
             height: statusScreenInfoFieldHeight
             itemSize: labelSize
             itemText: qsTr("Outgoing Peers")
@@ -327,7 +327,7 @@ Rectangle {
         //anchors.horizontalCenter: statusScreen.horizontalCenter
         anchors.left: syncStatus.right
         anchors.top: statusScreen.top
-        anchors.topMargin: 35
+        anchors.topMargin: 42
         anchors.leftMargin: cardMargin
         width: 480
         height: moneroLWSField.y + moneroLWSField.height + componentBottomMargin
@@ -422,7 +422,7 @@ Rectangle {
         id: hardwareStatus
         anchors.left: systemStatus.right
         anchors.top: statusScreen.top
-        anchors.topMargin: 35
+        anchors.topMargin: 42
         width: 720
         anchors.leftMargin: cardMargin
         //anchors.rightMargin: 2//cardMargin
@@ -469,7 +469,7 @@ Rectangle {
             anchors.left: hardwareStatusTabName.left
             anchors.top: cpuField.bottom
             anchors.topMargin: fieldTopMargin
-            width: parent.width - 15
+            width: parent.width - 30
             height: statusScreenInfoFieldHeight
             itemSize: labelSize - 50
             itemText: qsTr("Temperature")
@@ -481,7 +481,7 @@ Rectangle {
             anchors.left: hardwareStatusTabName.left
             anchors.top: cpuTemperatureField.bottom
             anchors.topMargin: fieldTopMargin
-            width: parent.width - 15
+            width: parent.width - 25
             height: statusScreenInfoFieldHeight
             itemSize: labelSize - 50
             itemText: qsTr("RAM")
@@ -493,7 +493,7 @@ Rectangle {
             anchors.left: hardwareStatusTabName.left
             anchors.top: ramField.bottom
             anchors.topMargin: fieldTopMargin
-            width: parent.width - 15
+            width: parent.width - 20
             height: statusScreenInfoFieldHeight
             itemSize: labelSize - 50
             itemText: qsTr("Blockchain")
