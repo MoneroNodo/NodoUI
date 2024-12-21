@@ -24,7 +24,7 @@ Item
 
     property color cardBackgroundColor: "#1C1C1E"
 
-    property color defaultColorNightModeOff: "#FCFCFC"				//1TEXT FONT//
+    property color defaultColorNightModeOff: "#F2F2F7"				//1TEXT FONT//
 	property color defaultColorNightModeOn: "#AE0000"							//NMCOLOR2//
     
 	property color highlightedColorNightModeOff: "#FA5501"			//1COLOR BG//
@@ -37,7 +37,7 @@ Item
     property int inputFieldValueFontSize: textFontSize
 
     property color dataFieldTextColorNightModeOn: "#AE0000"						//NMCOLOR2//
-    property color dataFieldTextColorNightModeOff: "#FCFCFC"		//1TEXT FONT//
+    property color dataFieldTextColorNightModeOff: "#F2F2F7"		//1TEXT FONT//
 
     property color dataFieldTitleBGColorNightModeOn: "#2C2C2E"					//2COLOR BG//
     property color dataFieldTitleBGColorNightModeOff: "#2C2C2E"					//2COLOR BG//
@@ -45,10 +45,10 @@ Item
     property color dataFieldTextBGColorNightModeOn: "#242426"								//3COLOR BG//
     property color dataFieldTextBGColorNightModeOff: "#242426"								//3COLOR BG//
 
-    property color buttonTextColorNightModeOn: "#FCFCFC"			//1TEXT FONT//
+    property color buttonTextColorNightModeOn: "#F2F2F7"			//1TEXT FONT//
     property color buttonBGColorNightModeOn: "#AE0000"							//NMCOLOR2//			
 
-    property color buttonTextColorNightModeOff: "#FCFCFC"			//1TEXT FONT//
+    property color buttonTextColorNightModeOff: "#F2F2F7"			//1TEXT FONT//
     property color buttonBGColorNightModeOff: "#FA5501"				//1COLOR BG//
 
     property color dayTextColorNightModeOn: "#F50000"				//NMCOLOR1 BG//
@@ -57,7 +57,7 @@ Item
     property color dateTextColorNightModeOn: "#AE0000"						//NMCOLOR2 CLOCK NIGHT COLOR//
     property color dateTextColorNightModeOff: "#9D9D9D"				//ANALOG CLOCK DAY COLOR//
 
-    property color switchBackgroundColor: "#3A3A3C"										//3COLOR BG//
+    property color switchBackgroundColor: "#3A3A3C"	//RGB 58,58,60									//3COLOR BG//
     property color buttonDisabledColor: "#464646"					//BUTTON DISABLED//
 
     property int digitalClockPixelSize: 750
@@ -73,13 +73,13 @@ Item
     property color comboBoxHighligtedItemBGColorNightModeOff: "#FA5501" 	//1COLOR BG//
     property color comboBoxHighligtedItemBGColorNightModeOn: "#F50000"		//NMCOLOR1 BG//
 
-    property color comboBoxTextColor: "#FCFCFC"							//1TEXT FONT//
+    property color comboBoxTextColor: "#F2F2F7"							//1TEXT FONT//
 
     property color lockIndicatorBorderColor: "#FA5501"						//1COLOR BG//
     property color lockIndicatorFilledColor: "#FA5501"						//1COLOR BG//
     property color lockIndicatorEmptyColor: "black"
     property color lockButtonColor: "#1F1F1F"												//3COLOR BG//
-    property color lockButtonTextColor: "#FCFCFC"						//1TEXT FONT//
+    property color lockButtonTextColor: "#F2F2F7"						//1TEXT FONT//
     property int lockButtonTextSize: 50
     property int lockButtonWidth: 130
     property int lockButtonHeight: 130
@@ -89,11 +89,11 @@ Item
     property color keyboardButtonUnpressed: "#1F1F1F"										//3COLOR BG//
     property color keyboardButtonPressed: "#303030"						//KBONPRESS//
     property color keyboardBackgroundColor: "#000000"
-    property color textColorOnUnpressedButton: "#FCFCFC"				//1TEXT FONT//
+    property color textColorOnUnpressedButton: "#F2F2F7"				//1TEXT FONT//
     property color capsLockOnColor: "#FA5501"							//1COLOR BG//
 
     property color inputPreviewBackgroundColor: keyboardButtonUnpressed						//3COLOR BG//
-    property color inputPreviewTextColor: "#FCFCFC"						//1TEXT FONT//
+    property color inputPreviewTextColor: "#F2F2F7"						//1TEXT FONT//
 
     property color popupBackgroundColor: "#262626"								//2COLOR BG//
 }
