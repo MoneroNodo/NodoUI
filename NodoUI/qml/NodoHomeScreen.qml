@@ -110,8 +110,8 @@ Item {
                 anchors.top: nodoLogoButton.top
                 anchors.topMargin: (nodoLogoButton.height - NodoSystem.topMenuButtonHeight)/2
                 anchors.left: nodoLogoButton.right
-                anchors.leftMargin: 20
-                height: NodoSystem.nodoItemHeight
+                anchors.leftMargin: 25
+                height: NodoSystem.topMenuButtonHeight
                 text: qsTr("DEVICE")
                 font.family: NodoSystem.fontInter.name
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
@@ -125,7 +125,7 @@ Item {
                 id: nodeButton
                 anchors.top: deviceButton.top
                 anchors.left: deviceButton.right
-                height: NodoSystem.nodoItemHeight
+                height: NodoSystem.topMenuButtonHeight
                 text: qsTr("NODE")
                 font.family: NodoSystem.fontInter.name
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
@@ -138,7 +138,7 @@ Item {
                 id: moneroLWSButton
                 anchors.top: deviceButton.top
                 anchors.left: nodeButton.right
-                height: NodoSystem.nodoItemHeight
+                height: NodoSystem.topMenuButtonHeight
                 text: qsTr("LWS")
                 font.family: NodoSystem.fontInter.name
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
@@ -152,7 +152,7 @@ Item {
                 id: mPayButton
                 anchors.top: deviceButton.top
                 anchors.left: moneroLWSButton.right
-                height: NodoSystem.nodoItemHeight
+                height: NodoSystem.topMenuButtonHeight
                 text: qsTr("MONEROPAY")
                 font.family: NodoSystem.fontInter.name
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
@@ -166,7 +166,7 @@ Item {
                 id: newsButton
                 anchors.top: deviceButton.top
                 anchors.left: moneroLWSButton.right//mPayButton.right
-                height: NodoSystem.nodoItemHeight
+                height: NodoSystem.topMenuButtonHeight
                 text: qsTr("NEWS")
                 font.family: NodoSystem.fontInter.name
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
