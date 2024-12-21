@@ -179,8 +179,8 @@ Rectangle {
         anchors.left: statusScreen.left
         anchors.top: statusScreen.top
         anchors.topMargin: 42
-        anchors.leftMargin: 2//cardMargin
-        width: 705
+        anchors.leftMargin: 1//cardMargin
+        width: 710
         height: networkConnectionField.y + networkConnectionField.height + componentBottomMargin//683
         color: NodoSystem.cardBackgroundColor
 
@@ -423,7 +423,7 @@ Rectangle {
         anchors.left: systemStatus.right
         anchors.top: statusScreen.top
         anchors.topMargin: 42
-        width: 720
+        width: 710
         anchors.leftMargin: cardMargin
         //anchors.rightMargin: 2//cardMargin
         height: systemStorageField.y + systemStorageField.height + componentBottomMargin
@@ -505,7 +505,7 @@ Rectangle {
             anchors.left: hardwareStatusTabName.left
             anchors.top: blockchainStorageField.bottom
             anchors.topMargin: fieldTopMargin
-            width: parent.width - 20
+            width: parent.width - (componentLeftMargin*2)
             height: statusScreenInfoFieldHeight
             itemSize: labelSize - 50
             itemText: qsTr("Storage")
