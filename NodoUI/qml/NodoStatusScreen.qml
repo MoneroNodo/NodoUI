@@ -219,9 +219,9 @@ Rectangle {
             anchors.left: syncStatusTabName.left
             anchors.top: syncStatusTabName.bottom
             anchors.topMargin: fieldTopMargin
-            width: parent.width - 20
+            width: parent.width - (componentLeftMargin*2)
             height: statusScreenInfoFieldHeight
-            itemSize: parent.width - 10
+            itemSize: parent.width - (componentLeftMargin*2)
             //itemText: qsTr("Sync Status")
             itemText: (true === nodoSystemStatus.getBoolValueFromKey("synchronized")) ? qsTr("Synchronized") : qsTr("Synchronizing")
         }
@@ -231,7 +231,7 @@ Rectangle {
             anchors.left: syncStatusField.left
             anchors.top: syncStatusField.bottom
             anchors.topMargin: fieldTopMargin
-            width: parent.width - 15
+            width: parent.width - (componentLeftMargin*2)
             height: statusScreenInfoFieldHeight
             itemSize: labelSize
             itemText: qsTr("Block Height")
@@ -255,7 +255,7 @@ Rectangle {
             anchors.left: syncStatusField.left
             anchors.top: moneroVersionField.bottom
             anchors.topMargin: fieldTopMargin
-            width: parent.width - 20
+            width: parent.width - (componentLeftMargin*2)
             height: statusScreenInfoFieldHeight
             itemSize: labelSize
             itemText: qsTr("Outgoing Peers")
@@ -267,7 +267,7 @@ Rectangle {
             anchors.left: syncStatusField.left
             anchors.top: outgoingConnectionsField.bottom
             anchors.topMargin: fieldTopMargin
-            width: parent.width - 20
+            width: parent.width - (componentLeftMargin*2)
             height: statusScreenInfoFieldHeight
             itemSize: labelSize
             itemText: qsTr("Incoming Peers")
@@ -291,7 +291,7 @@ Rectangle {
             anchors.left: syncStatusField.left
             anchors.top: whitePeerlistSizeField.bottom
             anchors.topMargin: fieldTopMargin
-            width: componentWidth
+            width: parent.width - (componentLeftMargin*2)
             height: statusScreenInfoFieldHeight
             itemSize: labelSize
             itemText: qsTr("Grey Peerlist")
@@ -303,7 +303,7 @@ Rectangle {
             anchors.left: syncStatusField.left
             anchors.top: incomingConnectionsField.bottom
             anchors.topMargin: fieldTopMargin
-            width: parent.width - 55
+            width: parent.width - (componentLeftMargin*2)
             height: statusScreenInfoFieldHeight
             itemSize: labelSize
             itemText: qsTr("Update")
@@ -315,7 +315,7 @@ Rectangle {
             anchors.left: syncStatusField.left
             anchors.top: updateAvailableField.bottom
             anchors.topMargin: fieldTopMargin
-            width: parent.width - 60
+            width: parent.width - (componentLeftMargin*2)
             height: statusScreenInfoFieldHeight
             itemSize: labelSize
             itemText: qsTr("Network")
@@ -361,7 +361,7 @@ Rectangle {
             anchors.left: systemStatusTabName.left
             anchors.top: systemStatusTabName.bottom
             anchors.topMargin: fieldTopMargin
-            width: parent.width - 15
+            width: parent.width - (componentLeftMargin*2)
             height: statusScreenInfoFieldHeight
             itemSize: labelSize - 120
             itemText: qsTr("Daemon")
@@ -373,7 +373,7 @@ Rectangle {
             anchors.left: moneroNodeField.left
             anchors.top: moneroNodeField.bottom
             anchors.topMargin: fieldTopMargin
-            width: parent.width - 15
+            width: parent.width - (componentLeftMargin*2)
             height: statusScreenInfoFieldHeight
             itemSize: labelSize - 120
             itemText: qsTr("Tor")
@@ -385,7 +385,7 @@ Rectangle {
             anchors.left: moneroNodeField.left
             anchors.top: torServiceField.bottom
             anchors.topMargin: fieldTopMargin
-            width: parent.width - 15
+            width: parent.width - (componentLeftMargin*2)
             height: statusScreenInfoFieldHeight
             itemSize: labelSize - 120
             itemText: qsTr("I2P")
@@ -397,7 +397,7 @@ Rectangle {
             anchors.left: moneroNodeField.left
             anchors.top: i2pServiceField.bottom
             anchors.topMargin: fieldTopMargin
-            width: parent.width - 15
+            width: parent.width - (componentLeftMargin*2)
             height: statusScreenInfoFieldHeight
             itemSize: labelSize - 120
             itemText: qsTr("LWS")
@@ -457,7 +457,7 @@ Rectangle {
             anchors.left: hardwareStatusTabName.left
             anchors.top: hardwareStatusTabName.bottom
             anchors.topMargin: fieldTopMargin
-            width: parent.width - 15
+            width: parent.width - 25
             height: statusScreenInfoFieldHeight
             itemSize: labelSize - 50
             itemText: qsTr("CPU")
@@ -469,7 +469,7 @@ Rectangle {
             anchors.left: hardwareStatusTabName.left
             anchors.top: cpuField.bottom
             anchors.topMargin: fieldTopMargin
-            width: parent.width - 30
+            width: parent.width - 25
             height: statusScreenInfoFieldHeight
             itemSize: labelSize - 50
             itemText: qsTr("Temperature")
@@ -493,7 +493,7 @@ Rectangle {
             anchors.left: hardwareStatusTabName.left
             anchors.top: ramField.bottom
             anchors.topMargin: fieldTopMargin
-            width: parent.width - 20
+            width: parent.width - 25
             height: statusScreenInfoFieldHeight
             itemSize: labelSize - 50
             itemText: qsTr("Blockchain")
