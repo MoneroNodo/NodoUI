@@ -457,7 +457,7 @@ Rectangle {
             anchors.left: hardwareStatusTabName.left
             anchors.top: hardwareStatusTabName.bottom
             anchors.topMargin: fieldTopMargin
-            width: parent.width - 25
+            width: parent.width - (componentLeftMargin*2)
             height: statusScreenInfoFieldHeight
             itemSize: labelSize - 50
             itemText: qsTr("CPU")
@@ -469,7 +469,7 @@ Rectangle {
             anchors.left: hardwareStatusTabName.left
             anchors.top: cpuField.bottom
             anchors.topMargin: fieldTopMargin
-            width: parent.width - 25
+            width: parent.width - (componentLeftMargin*2)
             height: statusScreenInfoFieldHeight
             itemSize: labelSize - 50
             itemText: qsTr("Temperature")
@@ -481,7 +481,7 @@ Rectangle {
             anchors.left: hardwareStatusTabName.left
             anchors.top: cpuTemperatureField.bottom
             anchors.topMargin: fieldTopMargin
-            width: parent.width - 25
+            width: parent.width - (componentLeftMargin*2)
             height: statusScreenInfoFieldHeight
             itemSize: labelSize - 50
             itemText: qsTr("RAM")
@@ -493,7 +493,7 @@ Rectangle {
             anchors.left: hardwareStatusTabName.left
             anchors.top: ramField.bottom
             anchors.topMargin: fieldTopMargin
-            width: parent.width - 25
+            width: parent.width - (componentLeftMargin*2)
             height: statusScreenInfoFieldHeight
             itemSize: labelSize - 50
             itemText: qsTr("Blockchain")
