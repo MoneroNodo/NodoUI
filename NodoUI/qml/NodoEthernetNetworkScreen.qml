@@ -93,7 +93,8 @@ Item {
         anchors.left: ethernetNetworkScreen.left
         anchors.top: ethernetNetworkScreen.top
         height: networkDelegateItemHeight
-        font.pixelSize: NodoSystem.infoFieldItemFontSize
+        font.pixelSize: NodoSystem.buttonTextFontSize
+        font.family: NodoSystem.fontInter.name
         text: systemMessages.messages[NodoMessages.Message.AddNewConnection]
         visible: true
         isActive: ethernetNetworkScreen.isEthernetEnabled
