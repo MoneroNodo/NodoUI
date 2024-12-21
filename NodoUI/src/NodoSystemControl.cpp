@@ -290,16 +290,16 @@ void NodoSystemControl::updateHardwareStatus(QString message)
     RAMTotalStr = QString::number(RAMTotal, 'f', 0);
 
     blockChainStorageUsedStr = variableFormat(blockChainStorageUsed);
-    blockChainStorageTotalStr = QString::number(blockChainStorageTotal, 'f', 0);
+    blockChainStorageTotalStr = variableFormat(blockChainStorageTotal);
 
     systemStorageUsedStr = variableFormat(systemStorageUsed);
     systemStorageTotalStr = QString::number(systemStorageTotal, 'f', 0);
 
     m_CPUUsage = QString("%1").arg(averageCPUFreq, 0, 'f', 2).append(" GHz (").append(QString("%1").arg(CPUUsage, 0, 'f', 0)).append("%)");
-    m_Temperature = QString("%1").arg(CPUTemperature, 0, 'f', 0).append("°C");
-	m_RAMUsage = RAMUsedStr + " /" + RAMTotalStr + " GB (" + QString("%1").arg((RAMUsed/RAMTotal)*100, 0, 'f', 0).append("%)");
-    m_blockchainStorage = blockChainStorageUsedStr + " /" + blockChainStorageTotalStr + " GB (" + QString("%1").arg((blockChainStorageUsed/blockChainStorageTotal)*100, 0, 'f', 0).append("%)");
-    m_systemStorage = systemStorageUsedStr + " /" + systemStorageTotalStr + " GB (" + QString("%1").arg((systemStorageUsed/systemStorageTotal)*100, 0, 'f', 0).append("%)");
+    m_Temperature = QString("%1").arg(CPUTemperature, 0, 'f', 0).append(" °C");
+	m_RAMUsage = RAMUsedStr + " / " + RAMTotalStr + " GB (" + QString("%1").arg((RAMUsed/RAMTotal)*100, 0, 'f', 0).append("%)");
+    m_blockchainStorage = blockChainStorageUsedStr + " / " + blockChainStorageTotalStr + " TB (" + QString("%1").arg((blockChainStorageUsed/blockChainStorageTotal)*100, 0, 'f', 0).append("%)");
+    m_systemStorage = systemStorageUsedStr + " / " + systemStorageTotalStr + " GB (" + QString("%1").arg((systemStorageUsed/systemStorageTotal)*100, 0, 'f', 0).append("%)");
     emit systemStatusReady();
 }
 

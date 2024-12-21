@@ -94,11 +94,12 @@ Item {
         font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         text: qsTr("Apply")
-        enabled: false
+        isActive: false
         onClicked: {
+            applyBanlistButton.isActive = false
             nodoControl.setBanlistsListEnabled("boog900", nodeBanlistScreenIndex1Check.checked);
             nodoControl.setBanlistsListEnabled("gui-xmr-pm", nodeBanlistScreenIndex2Check.checked);
-            applyBanlistButton.isActive = false
+            nodoControl.serviceManager("restart", "monerod");
         }
     }
 
@@ -112,10 +113,10 @@ Item {
         font.pixelSize: NodoSystem.buttonTextFontSize
         text: qsTr("Clear")
         onClicked: {
+            applyBanlistButton.isActive = false
             nodeBanlistScreenIndex1Check.checked = false;
             nodeBanlistScreenIndex2Check.checked = false;
             applyBanlistButton.clicked();
-            applyBanlistButton.isActive = false
         }
     }
 
