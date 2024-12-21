@@ -18,7 +18,7 @@ Rectangle {
     property int componentLeftMargin: 10
     property int componentBottomMargin: NodoSystem.nodoTopMargin
     property int componentTopMargin: 40
-    property int cardMargin: 15
+    property int cardMargin: 20
 
     property int statusScreenInfoFieldHeight: NodoSystem.nodoItemHeight
 
@@ -178,7 +178,7 @@ Rectangle {
         id: syncStatus
         anchors.left: statusScreen.left
         anchors.top: statusScreen.top
-        anchors.topMargin: 30
+        anchors.topMargin: 35
         anchors.leftMargin: 2//cardMargin
         width: 670
         height: networkConnectionField.y + networkConnectionField.height + componentBottomMargin//683
@@ -327,9 +327,9 @@ Rectangle {
         //anchors.horizontalCenter: statusScreen.horizontalCenter
         anchors.left: syncStatus.right
         anchors.top: statusScreen.top
-        anchors.topMargin: 30
+        anchors.topMargin: 35
         anchors.leftMargin: cardMargin
-        width: 500
+        width: 480
         height: moneroLWSField.y + moneroLWSField.height + componentBottomMargin
         color: NodoSystem.cardBackgroundColor
 
@@ -422,7 +422,7 @@ Rectangle {
         id: hardwareStatus
         anchors.left: systemStatus.right
         anchors.top: statusScreen.top
-        anchors.topMargin: 30
+        anchors.topMargin: 35
         width: 720
         anchors.leftMargin: cardMargin
         //anchors.rightMargin: 2//cardMargin
