@@ -18,7 +18,7 @@ Rectangle {
     property int componentLeftMargin: 10
     property int componentBottomMargin: NodoSystem.nodoTopMargin
     property int componentTopMargin: 40
-    property int cardMargin: 20
+    property int cardMargin: 25
 
     property int statusScreenInfoFieldHeight: NodoSystem.nodoItemHeight
 
@@ -180,7 +180,7 @@ Rectangle {
         anchors.top: statusScreen.top
         anchors.topMargin: 42
         anchors.leftMargin: 1//cardMargin
-        width: 710
+        width: 705
         height: networkConnectionField.y + networkConnectionField.height + componentBottomMargin//683
         color: NodoSystem.cardBackgroundColor
 
@@ -423,7 +423,7 @@ Rectangle {
         anchors.left: systemStatus.right
         anchors.top: statusScreen.top
         anchors.topMargin: 42
-        width: 710
+        width: 705
         anchors.leftMargin: cardMargin
         //anchors.rightMargin: 2//cardMargin
         height: systemStorageField.y + systemStorageField.height + componentBottomMargin
