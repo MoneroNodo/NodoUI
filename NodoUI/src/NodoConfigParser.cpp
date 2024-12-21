@@ -54,6 +54,7 @@ void NodoConfigParser::readFile(void)
         m_versionsObj = m_configObj[versionsObjName].toObject();
         m_moneropayObj = m_configObj[moneropayObjName].toObject();
         m_autoupdateObj = m_configObj[autoupdateObjName].toObject();
+        m_banlistsObj = m_configObj[banlistsObjName].toObject();
 
         emit configParserReady();
     }
@@ -92,6 +93,10 @@ QString NodoConfigParser::getStringValueFromKey(QString object, QString key)
     {
         jsonValue = m_autoupdateObj.value(key);
     }
+    else if(banlistsObjName == object)
+    {
+        jsonValue = m_banlistsObj.value(key);
+    }
 
     return jsonValue.toString();
 }
@@ -122,6 +127,10 @@ int NodoConfigParser::getIntValueFromKey(QString object, QString key)
     else if(autoupdateObjName == object)
     {
         jsonValue = m_autoupdateObj.value(key);
+    }
+    else if(banlistsObjName == object)
+    {
+        jsonValue = m_banlistsObj.value(key);
     }
 
     return jsonValue.toInt();
@@ -273,6 +282,28 @@ bool NodoConfigParser::getTheme(void)
     return jsonValue.toBool();
 }
 
+bool NodoConfigParser::getBanlistEnabled(void)
+{
+    return m_configObj.value("banlist") == "TRUE";
+}
+
+void NodoConfigParser::setBanlistEnabled(bool enabled)
+{
+    m_configObj.insert("banlist", enabled ? "TRUE" : "FALSE");
+    writeJson();
+}
+
+bool NodoConfigParser::getBanlistsListEnabled(QString banlist)
+{
+    return m_banlistsObj.value(banlist) == "TRUE";
+}
+
+void NodoConfigParser::setBanlistsListEnabled(QString banlist, bool enabled)
+{
+    m_banlistsObj.insert(banlist, enabled ? "TRUE" : "FALSE");
+    writeJson();
+}
+
 void NodoConfigParser::setClearnetPort(QString port)
 {
     m_configObj.insert("monero_public_port", port.toInt());
@@ -324,28 +355,16 @@ void NodoConfigParser::setNodeBandwidthParameters(QString in_peers, QString out_
     writeJson();
 }
 
-void NodoConfigParser::setMoneroPayParameters(QString address, QString viewKey)
+void NodoConfigParser::setMoneroPayParameters(QString address)
 {
-    m_moneropayObj.insert("address", address);
-    m_moneropayObj.insert("viewkey", viewKey);
+    m_moneropayObj.insert("deposit_address", address);
     writeJson();
 }
 
 QString NodoConfigParser::getMoneroPayAddress(void)
 {
     QJsonValue jsonValue;
-    jsonValue = m_moneropayObj.value("address");
-    if("" == jsonValue.toString())
-    {
-        return "";
-    }
-    return jsonValue.toString();
-}
-
-QString NodoConfigParser::getMoneroPayViewKey(void)
-{
-    QJsonValue jsonValue;
-    jsonValue = m_moneropayObj.value("viewkey");
+    jsonValue = m_moneropayObj.value("deposit_address");
     if("" == jsonValue.toString())
     {
         return "";

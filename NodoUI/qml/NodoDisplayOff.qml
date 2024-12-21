@@ -6,14 +6,15 @@ import NodoSystem 1.1
 import NodoCanvas 1.0
 
 Item {
-    id: feederScreenSaver
+    id: displayOff
+    width: 1920
+    height: 1080
+    
     signal deleteMe(int screenID)
-
-    NewsMainScreen{
-        x: 0
-        y: 0
-        width: feederScreenSaver.width
-        height: feederScreenSaver.height
-        isScreenSaver: true
+    
+    Rectangle {
+        id: displayOffBackground
+        anchors.fill: parent
+        color: "black"
     }
 }

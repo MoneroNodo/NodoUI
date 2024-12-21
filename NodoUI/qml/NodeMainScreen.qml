@@ -9,45 +9,88 @@ Item {
     id: nodeMainScreen
     anchors.fill: parent
     anchors.leftMargin: NodoSystem.subMenuLeftMargin
+    anchors.topMargin: NodoSystem.subMenuTopMargin
 
     TabBar {
-        id: nodoMenuBar
+        id: nodeMenuBar
         anchors.top: nodeMainScreen.top
         anchors.left: nodeMainScreen.left
         height: NodoSystem.subMenuButtonHeight
-        contentWidth: 1400
+        contentWidth: 1460
 
         background: Rectangle {
             color: "black"
         }
 
         NodoTabButton {
+            id: clearnetButton
+            y: (nodeMenuBar.height - clearnetButton.height)/2
+            text: qsTr("CLEARNET")
+            font.family: NodoSystem.fontInter.name
+            font.pixelSize: NodoSystem.topMenuButtonFontSize
+            onClicked: { pageLoader.source = "NodeClearnetScreen.qml" }
+        }
+
+        NodoTabButton {
+            id: torButton
+            anchors.top: clearnetButton.top
+            anchors.left: clearnetButton.right
+            text: qsTr("TOR")
+            font.family: NodoSystem.fontInter.name
+            font.pixelSize: NodoSystem.topMenuButtonFontSize
+            onClicked: { pageLoader.source = "NodeTorScreen.qml" }
+        }
+
+        NodoTabButton {
+            id: i2pButton
+            anchors.top: clearnetButton.top
+            anchors.left: torButton.right
+            width: torButton.width
+            text: qsTr("I2P")
+            font.family: NodoSystem.fontInter.name
+            font.pixelSize: NodoSystem.topMenuButtonFontSize
+            onClicked: { pageLoader.source = "NodeI2PScreen.qml" }
+        }
+
+        NodoTabButton {
             id: bandwidthButton
-            y: (nodoMenuBar.height - bandwidthButton.height)/2
+            anchors.top: clearnetButton.top
+            anchors.left: i2pButton.right
             text: qsTr("BANDWIDTH")
-            font.family: NodoSystem.fontUrbanist.name
+            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: { pageLoader.source = "NodeBandwidthScreen.qml" }
         }
 
         NodoTabButton {
             id: privateNodeButton
-            y: (nodoMenuBar.height - privateNodeButton.height)/2
+            anchors.top: clearnetButton.top
             anchors.left: bandwidthButton.right
             text: qsTr("PRIVATE NODE")
-            font.family: NodoSystem.fontUrbanist.name
+            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: { pageLoader.source = "NodePrivateNodeScreen.qml" }
         }
+
+        NodoTabButton {
+            id: banlistButton
+            anchors.top: clearnetButton.top
+            anchors.left: privateNodeButton.right
+            text: qsTr("BANLIST")
+            font.family: NodoSystem.fontInter.name
+            font.pixelSize: NodoSystem.topMenuButtonFontSize
+            onClicked: { pageLoader.source = "NodeBanlistScreen.qml" }
+        }
+
     }
 
     Loader {
         id: pageLoader
-        anchors.top: nodoMenuBar.bottom
+        anchors.top: nodeMenuBar.bottom
         anchors.left: nodeMainScreen.left
         anchors.right: nodeMainScreen.right
         anchors.bottom: nodeMainScreen.bottom
         anchors.topMargin: 40
-        source: "NodeBandwidthScreen.qml"
+        source: "NodeClearnetScreen.qml"
     }
 }

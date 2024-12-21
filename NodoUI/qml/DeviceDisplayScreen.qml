@@ -11,7 +11,7 @@ Item {
     anchors.fill: parent
     property alias themeMode: deviceDisplayNightModeSwitch
     themeMode.checked: nodoControl.appTheme
-    property int dropdownLength: 1520
+    property int dropdownLength: 1550
 
     Component.onCompleted: {
         deviceDisplayCurrencyComboBox.currentIndex = priceTicker.getCurrentCurrencyIndex()
@@ -24,7 +24,7 @@ Item {
         anchors.top: deviceDisplayScreen.top
         height: NodoSystem.nodoItemHeight
 
-        NodoLabel{
+        NodoLabel {
             id: deviceDisplaySliderLabel
             anchors.left: deviceDisplayBrightnessRect.left
             anchors.top: deviceDisplayBrightnessRect.top
@@ -59,7 +59,7 @@ Item {
         anchors.topMargin: NodoSystem.nodoTopMargin
         height: NodoSystem.nodoItemHeight
 
-        NodoLabel{
+        NodoLabel {
             id: deviceDisplayNightModeSwitchText
             height: deviceDisplayNightModeSwitchRect.height
             anchors.left: deviceDisplayNightModeSwitchRect.left
@@ -87,12 +87,12 @@ Item {
         anchors.topMargin: NodoSystem.nodoTopMargin
         height: NodoSystem.nodoItemHeight
 
-        NodoLabel{
+        NodoLabel {
             id: deviceDisplayFlipOrientationSwitchText
             height: deviceDisplayFlipOrientationSwitchRect.height
             anchors.left: deviceDisplayFlipOrientationSwitchRect.left
             anchors.top: deviceDisplayFlipOrientationSwitchRect.top
-            text: qsTr("Flip Orientation")
+            text: qsTr("Flip Display")
         }
 
         NodoSwitch {
@@ -161,8 +161,7 @@ Item {
             text: qsTr("Screensaver")
         }
 
-        NodoComboBox
-        {
+        NodoComboBox {
             id: screenSaverComboBox
             anchors.left: screenSaverLabel.right
             anchors.leftMargin: NodoSystem.padding
@@ -170,7 +169,7 @@ Item {
             width: dropdownLength
             height: screenSaverRect.height
             currentIndex: nodoControl.getScreenSaverType()
-            model: [qsTr("News Carousel"), qsTr("Analog Clock"), qsTr("Digital Clock"), qsTr("Off")]
+            model: [qsTr("News"), qsTr("Analog Clock"), qsTr("Digital Clock"), qsTr("Display Off"), qsTr("None")]
             onCurrentIndexChanged: {
                 nodoControl.setScreenSaverType(currentIndex)
             }
@@ -307,8 +306,7 @@ Item {
             text: qsTr("Keyboard")
         }
 
-        NodoComboBox
-        {
+        NodoComboBox {
             id: keyboardLayoutComboBox
             anchors.left: keyboardLayoutLabel.right
             anchors.leftMargin: NodoSystem.padding

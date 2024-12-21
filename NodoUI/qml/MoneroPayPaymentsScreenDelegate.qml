@@ -9,7 +9,7 @@ NodoCanvas {
     id: mainRect
     property int componentWidth: 600
     property int fieldTopMargin: 5
-    color: "#1F1F1F"
+    color: NodoSystem.cardBackgroundColor
     property int paymentIndex
     property int scanHeight: 0
     property int labelSize: 0
@@ -191,7 +191,7 @@ NodoCanvas {
         anchors.topMargin: fieldTopMargin
         text: qsTr("Clear Payment")
         height: NodoSystem.nodoItemHeight
-        font.family: NodoSystem.fontUrbanist.name
+        font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         onClicked: {
             moneroPay.deletePayment(depositAddress)
@@ -205,7 +205,7 @@ NodoCanvas {
         anchors.leftMargin: 25
         text: qsTr("View QR")
         height: NodoSystem.nodoItemHeight
-        font.family: NodoSystem.fontUrbanist.name
+        font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         onClicked: {
             mainRectPopup.qrCodeData = "monero:" + depositAddress + "?tx_amount=" + (xmrAmount)

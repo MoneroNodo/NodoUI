@@ -33,7 +33,7 @@ Item {
             leftPadding: textLeftPadding
             rightPadding: textRightPadding
             verticalAlignment: Text.AlignVCenter
-            font.family: NodoSystem.fontUrbanist.name
+            font.family: NodoSystem.fontInter.name
             font.pixelSize: itemFontSize
             color: nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn  : NodoSystem.dataFieldTextColorNightModeOff
         }
@@ -55,7 +55,7 @@ Item {
             leftPadding: textLeftPadding
             rightPadding: textRightPadding
             verticalAlignment: Text.AlignVCenter
-            font.family: NodoSystem.fontUrbanist.name
+            font.family: NodoSystem.fontInter.name
             font.pixelSize: valueFontSize
             color: nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn  : NodoSystem.dataFieldTextColorNightModeOff
         }

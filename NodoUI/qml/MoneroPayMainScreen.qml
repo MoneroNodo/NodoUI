@@ -10,6 +10,8 @@ Item {
     id: moneroPayMainScreen
     anchors.fill: parent
     anchors.leftMargin: NodoSystem.subMenuLeftMargin
+    anchors.topMargin: NodoSystem.subMenuTopMargin
+    
     signal setButtonState(bool state)
 
     Component.onCompleted: {
@@ -79,7 +81,7 @@ Item {
             id: receiveButton
             y: (moneroPayMainMenuBar.height - receiveButton.height)/2
             text: qsTr("RECEIVE")
-            font.family: NodoSystem.fontUrbanist.name
+            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: { moneroPayPageLoader.source = "MoneroPayReceiveMainScreen.qml" }
             enabled: false
@@ -96,7 +98,7 @@ Item {
             anchors.top: receiveButton.top
             anchors.left: receiveButton.right
             text: qsTr("PAYMENTS")
-            font.family: NodoSystem.fontUrbanist.name
+            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: { moneroPayPageLoader.source = "MoneroPayPaymentsScreen.qml" }
         }
@@ -105,7 +107,7 @@ Item {
             anchors.top: receiveButton.top
             anchors.left: paymentsButton.right
             text: qsTr("SETTINGS")
-            font.family: NodoSystem.fontUrbanist.name
+            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: { moneroPayPageLoader.source = "MoneroPaySettingsMainScreen.qml" }
         }

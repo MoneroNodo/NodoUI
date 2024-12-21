@@ -7,7 +7,7 @@ import NodoCanvas 1.0
 
 ComboBox {
     id: control
-    font.family: NodoSystem.fontUrbanist.name
+    font.family: NodoSystem.fontInter.name
     font.pixelSize: NodoSystem.infoFieldItemFontSize
 
     delegate: ItemDelegate {
@@ -47,7 +47,7 @@ ComboBox {
             context.lineTo(width, 0);
             context.lineTo(width / 2, height);
             context.closePath();
-            context.fillStyle = "white"
+            context.fillStyle = "#F2F2F7"
             context.fill();
         }
     }

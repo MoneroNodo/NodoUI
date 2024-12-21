@@ -21,7 +21,7 @@ Rectangle {
             deviceLockPinScreenStackView.push("NodoLockScreen.qml", {parentID: 0})
         }
         else
-        {
+        {        
             deviceLockPinScreenStackView.push("NodoLockPinControlScreen.qml")
         }
     }

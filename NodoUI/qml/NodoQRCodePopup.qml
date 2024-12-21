@@ -58,7 +58,7 @@ Popup {
                 qrSize: Qt.size(width,width)
                 qrData: qrCodeData
                 qrForeground: "black"
-                qrBackground: "white"
+                qrBackground: "#F2F2F7"
                 qrMargin: 8
                 qrMode: QtQuick2QREncode.MODE_8    //encode model
                 qrLevel: QtQuick2QREncode.LEVEL_Q // encode level
@@ -72,7 +72,7 @@ Popup {
             anchors.topMargin: 25
             anchors.horizontalCenter: popupContent.horizontalCenter
             height: NodoSystem.nodoItemHeight
-            font.family: NodoSystem.fontUrbanist.name
+            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.buttonTextFontSize
             visible: true
             onClicked: {

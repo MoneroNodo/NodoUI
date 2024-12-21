@@ -39,7 +39,7 @@ Item {
         anchors.left: moneroPayPaymentsScreen.left
         text: qsTr("Clear All Payments")
         height: NodoSystem.nodoItemHeight
-        font.family: NodoSystem.fontUrbanist.name
+        font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         isActive: paymentsListModel.count > 0 ? true : false
         onClicked: {

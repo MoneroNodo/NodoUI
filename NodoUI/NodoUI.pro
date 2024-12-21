@@ -44,10 +44,10 @@ SOURCES += \
         src/NodoTranslator.cpp \
         src/NodoDBusController.cpp \
         src/NodoPriceTicker.cpp \
-        src/MoneroPay.cpp \
-        src/MoneroPayConnection.cpp \
-        src/MoneroPayDbManager.cpp \
 
+#        src/MoneroPay.cpp \
+#        src/MoneroPayConnection.cpp \
+#        src/MoneroPayDbManager.cpp \
 
 HEADERS += \
         src/MoneroLWS.h \
@@ -68,9 +68,10 @@ HEADERS += \
         src/NodoTranslator.h \
         src/NodoDBusController.h \
         src/NodoPriceTicker.h \
-        src/MoneroPay.h \
-        src/MoneroPayConnection.h \
-        src/MoneroPayDbManager.h \
+
+#        src/MoneroPay.h \
+#        src/MoneroPayConnection.h \
+#        src/MoneroPayDbManager.h \
 
 RESOURCES += qml.qrc
 
@@ -80,7 +81,6 @@ RESOURCES += qml.qrc
 CONFIG += disable-desktop
 CONFIG += disable-hunspell
 CONFIG += disable-layouts
-
 
 TRANSLATIONS += \
     i18n/NodoUI_af_ZA.ts \
@@ -200,7 +200,6 @@ TRANSLATIONS += \
 DISTFILES += \
     i18n/NodoUI_en.qm \
     i18n/NodoUI_en.rs \
-
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH = $$PWD/assets

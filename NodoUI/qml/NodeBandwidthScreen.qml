@@ -142,40 +142,13 @@ Item {
     }
 
     NodoInputField {
-        id: incomingPeersLimitField
+        id: outgoingPeersLimitField
         anchors.left: nodeBandwidthScreen.left
         anchors.top: nodeBandwidthScreen.top
         width: inputFieldWidth
         height: NodoSystem.nodoItemHeight
         itemSize: labelSize
-        itemText: qsTr("Incoming peers limit")
-        valueText: incomingPeersLimit
-        textFlag: Qt.ImhDigitsOnly
-        readOnlyFlag: inputFieldReadOnly
-        validator: IntValidator{bottom: 0; top: 65535}
-        onTextEditFinished: {
-            if("" === incomingPeersLimitField.valueText)
-            {
-                incomingPeersLimitField.valueText = incomingPeersLimit.toString()
-            }
-
-            if(incomingPeersLimitField.valueText !== incomingPeersLimit.toString())
-            {
-                processConfig = false
-                nodeBandwidthApplyButton.isActive = true
-            }
-        }
-    }
-
-    NodoInputField {
-        id: outgoingPeersLimitField
-        anchors.left: nodeBandwidthScreen.left
-        anchors.top: incomingPeersLimitField.bottom
-        anchors.topMargin: NodoSystem.nodoTopMargin
-        width: inputFieldWidth
-        height: NodoSystem.nodoItemHeight
-        itemSize: labelSize
-        itemText: qsTr("Outgoing peers limit")
+        itemText: qsTr("Outgoing Peers")
         valueText: outgoingPeersLimit
         textFlag: Qt.ImhDigitsOnly
         readOnlyFlag: inputFieldReadOnly
@@ -194,10 +167,37 @@ Item {
         }
     }
 
+    NodoInputField {
+        id: incomingPeersLimitField
+        anchors.left: nodeBandwidthScreen.left
+        anchors.top: outgoingPeersLimitField.bottom
+        anchors.topMargin: NodoSystem.nodoTopMargin
+        width: inputFieldWidth
+        height: NodoSystem.nodoItemHeight
+        itemSize: labelSize
+        itemText: qsTr("Incoming Peers")
+        valueText: incomingPeersLimit
+        textFlag: Qt.ImhDigitsOnly
+        readOnlyFlag: inputFieldReadOnly
+        validator: IntValidator{bottom: 0; top: 65535}
+        onTextEditFinished: {
+            if("" === incomingPeersLimitField.valueText)
+            {
+                incomingPeersLimitField.valueText = incomingPeersLimit.toString()
+            }
+
+            if(incomingPeersLimitField.valueText !== incomingPeersLimit.toString())
+            {
+                processConfig = false
+                nodeBandwidthApplyButton.isActive = true
+            }
+        }
+    }
+
     Rectangle {
         id: rateLimitUpFieldRect
         anchors.left: nodeBandwidthScreen.left
-        anchors.top: outgoingPeersLimitField.bottom
+        anchors.top: incomingPeersLimitField.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         height: NodoSystem.nodoItemHeight
 
@@ -206,7 +206,7 @@ Item {
             width: inputFieldWidth
             height: NodoSystem.nodoItemHeight
             itemSize: labelSize
-            itemText: qsTr("Bandwidth Up")
+            itemText: qsTr("Upload Speed")
             textFlag: Qt.ImhDigitsOnly
             validator: IntValidator{bottom: 0}
             onTextEditFinished: {
@@ -232,7 +232,7 @@ Item {
 
             height: NodoSystem.nodoItemHeight
             verticalAlignment: Text.AlignVCenter
-            font.family: NodoSystem.fontUrbanist.name
+            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.inputFieldValueFontSize
             color: (nodeBandwidthScreen.inputFieldReadOnly === true) ? NodoSystem.buttonDisabledColor : nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn : NodoSystem.dataFieldTextColorNightModeOff
         }
@@ -298,7 +298,7 @@ Item {
             width: inputFieldWidth
             height: NodoSystem.nodoItemHeight
             itemSize: labelSize
-            itemText: qsTr("Bandwidth Down")
+            itemText: qsTr("Download Speed")
             textFlag: Qt.ImhDigitsOnly
             validator: IntValidator{bottom: 0}
             onTextEditFinished: {
@@ -324,7 +324,7 @@ Item {
 
             height: NodoSystem.nodoItemHeight
             verticalAlignment: Text.AlignVCenter
-            font.family: NodoSystem.fontUrbanist.name
+            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.inputFieldValueFontSize
             color: (inputFieldReadOnly === true) ? NodoSystem.buttonDisabledColor : nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn : NodoSystem.dataFieldTextColorNightModeOff
         }
@@ -384,7 +384,7 @@ Item {
         anchors.topMargin: 20
         text: systemMessages.messages[NodoMessages.Message.Apply]
         height: NodoSystem.nodoItemHeight
-        font.family: NodoSystem.fontUrbanist.name
+        font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         isActive: false
         onClicked:

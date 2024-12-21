@@ -10,7 +10,7 @@ import NodoCanvas 1.0
 
 KeyboardStyle {
     id: currentStyle
-    readonly property string fontFamily: NodoSystem.fontUrbanist.name
+    readonly property string fontFamily: NodoSystem.fontInter.name
     readonly property real keyBackgroundMargin: Math.round(8 * scaleHint)
     readonly property real keyContentMargin: Math.round(40 * scaleHint)
     readonly property real keyIconScale: scaleHint * 0.8

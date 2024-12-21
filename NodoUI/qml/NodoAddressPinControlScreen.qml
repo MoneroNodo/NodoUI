@@ -85,7 +85,7 @@ Item {
         anchors.topMargin: NodoSystem.nodoTopMargin
         text: qsTr("Change Address PIN")
         height: NodoSystem.nodoItemHeight
-        font.family: NodoSystem.fontUrbanist.name
+        font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         isActive: false
         onClicked: {

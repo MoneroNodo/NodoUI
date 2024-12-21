@@ -43,8 +43,8 @@ Rectangle {
                 text: headerTextStr
                 textFormat: Text.RichText
                 color: nodoControl.appTheme ? NodoSystem.highlightedColorNightModeOn : NodoSystem.highlightedColorNightModeOff
-                font.family: NodoSystem.fontUrbanist.name
-                font.pixelSize: 92
+                font.family: NodoSystem.fontInter.name
+                font.pixelSize: 100
                 wrapMode: Text.WordWrap
             }
 
@@ -52,7 +52,7 @@ Rectangle {
                 id: middleSection
                 anchors.left: feedTitle.left
                 anchors.top: feedTitle.bottom
-                anchors.topMargin: 16
+                anchors.topMargin: 15
                 Label {
                     id: feedAuth
                     anchors.left: middleSection.left
@@ -61,8 +61,8 @@ Rectangle {
                     height: 22
                     text: headerAuthStr
                     color: nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn : NodoSystem.dataFieldTextColorNightModeOff
-                    font.family: NodoSystem.fontUrbanist.name
-                    font.pixelSize: 38
+                    font.family: NodoSystem.fontInter.name
+                    //font.pixelSize: 38
                 }
 
                 Label {
@@ -74,7 +74,7 @@ Rectangle {
                     height: 22
                     text: channelStr
                     color: nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn : NodoSystem.dataFieldTextColorNightModeOff
-                    font.family: NodoSystem.fontUrbanist.name
+                    font.family: NodoSystem.fontInter.name
                     font.pixelSize: 38
                 }
 
@@ -87,7 +87,7 @@ Rectangle {
                     height: 22
                     text: dataTimestampStr
                     color: nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn : NodoSystem.dataFieldTextColorNightModeOff
-                    font.family: NodoSystem.fontUrbanist.name
+                    font.family: NodoSystem.fontInter.name
                     font.pixelSize: 38
                 }
             }
@@ -96,7 +96,7 @@ Rectangle {
                 id: feedBody
                 anchors.left: middleSection.left
                 anchors.top: middleSection.bottom
-                anchors.topMargin: 100
+                anchors.topMargin: NodoSystem.subMenuTopMargin + 80//100
                 width: root.width - 2*feedBody.x
                 wrapMode: Text.WordWrap
                 textFormat: Text.RichText

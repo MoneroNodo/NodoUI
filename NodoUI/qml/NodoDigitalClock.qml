@@ -89,12 +89,12 @@ Item {
                 anchors.top: digitalClockDateBackground.top
                 anchors.left: digitalClockDateBackground.left
                 anchors.topMargin: clockTopMargin
-                text: hours
+                text: hours == 0 ? "12" : hours
                 font.pixelSize: NodoSystem.digitalClockPixelSize
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
                 color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
-                font.family: NodoSystem.fontUrbanist.name
+                font.family: NodoSystem.fontInter.name
             }
 
             Text {
@@ -107,7 +107,7 @@ Item {
                 font.pixelSize: NodoSystem.digitalClockPixelSize
                 verticalAlignment: Text.AlignTop
                 color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
-                font.family: NodoSystem.fontUrbanist.name
+                font.family: NodoSystem.fontInter.name
             }
 
             Text {
@@ -120,7 +120,7 @@ Item {
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
                 color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
-                font.family: NodoSystem.fontUrbanist.name
+                font.family: NodoSystem.fontInter.name
             }
         }
 
@@ -135,7 +135,7 @@ Item {
             text: Qt.formatDateTime(nodoControl.getChangedDateTime(), "dddd, d MMMM yyyy")
             font.pixelSize: 70
             color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
-            font.family: NodoSystem.fontUrbanist.name
+            font.family: NodoSystem.fontInter.name
         }
     }
 

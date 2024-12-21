@@ -70,6 +70,11 @@ public:
     Q_INVOKABLE void restartScreenSaverTimer(void);
     Q_INVOKABLE void stopScreenSaverTimer(void);
 
+    Q_INVOKABLE bool getBanlistEnabled(void);
+    Q_INVOKABLE void setBanlistEnabled(bool);
+    Q_INVOKABLE bool getBanlistsListEnabled(QString);
+    Q_INVOKABLE void setBanlistsListEnabled(QString, bool);
+
     Q_INVOKABLE void setClearnetPort(QString port);
     Q_INVOKABLE void setTorPort(QString port);
     Q_INVOKABLE void setI2pPort(QString port);

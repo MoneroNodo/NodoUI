@@ -72,7 +72,7 @@ NodoCanvas {
         anchors.topMargin: connectButton.y + (profileNameLabel.paintedHeight)/2
         anchors.leftMargin: 20
         font.pixelSize: NodoSystem.infoFieldItemFontSize + 2
-        font.family: NodoSystem.fontUrbanist.name
+        font.family: NodoSystem.fontInter.name
         height: 40
         text: mainRect.profileName
         color: nodoControl.appTheme ? NodoSystem.highlightedColorNightModeOn  : NodoSystem.highlightedColorNightModeOff
@@ -86,7 +86,8 @@ NodoCanvas {
         anchors.rightMargin: 14
         width: mainRect.buttonSize
         height: networkDelegateItemHeight
-        font.pixelSize: NodoSystem.infoFieldItemFontSize
+        font.family: NodoSystem.fontInter.name
+        font.pixelSize: NodoSystem.buttonTextFontSize
         text: systemMessages.messages[NodoMessages.Message.Disconnect]
         visible: true
         isActive: true
@@ -108,7 +109,8 @@ NodoCanvas {
         anchors.rightMargin: 20
         width: mainRect.buttonSize
         height: networkDelegateItemHeight
-        font.pixelSize: NodoSystem.infoFieldItemFontSize
+        font.family: NodoSystem.fontInter.name
+        font.pixelSize: NodoSystem.buttonTextFontSize
         text: systemMessages.messages[NodoMessages.Message.Forget]
         visible: true
         isActive: true

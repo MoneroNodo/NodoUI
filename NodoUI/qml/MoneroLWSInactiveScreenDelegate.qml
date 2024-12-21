@@ -9,7 +9,7 @@ NodoCanvas {
     id: mainRect
     width: 1880
     height: 196
-    color: nodoControl.appTheme ? NodoSystem.dataFieldTextBGColorNightModeOn  : NodoSystem.dataFieldTextBGColorNightModeOff
+    color: NodoSystem.cardBackgroundColor
     property string inactiveAddress: ""
     property int scanHeight: 0
     property int labelSize: 0
@@ -61,7 +61,7 @@ NodoCanvas {
         anchors.leftMargin: 20
         text: qsTr("Reactivate")
         height: NodoSystem.nodoItemHeight
-        font.family: NodoSystem.fontUrbanist.name
+        font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         onClicked: {
             moneroLWS.reactivateAccount(moneroLWSinactiveAddressField.valueText)
@@ -75,7 +75,7 @@ NodoCanvas {
         anchors.leftMargin: 20
         text: qsTr("Delete")
         height: NodoSystem.nodoItemHeight
-        font.family: NodoSystem.fontUrbanist.name
+        font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         onClicked: {
             moneroLWS.deleteAccount(moneroLWSinactiveAddressField.valueText)

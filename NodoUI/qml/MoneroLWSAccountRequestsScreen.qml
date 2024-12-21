@@ -38,7 +38,7 @@ Item {
         anchors.top: moneroLWSAccountCreationRequestsScreen.top
         text: qsTr("Accept All Requests")
         height: NodoSystem.nodoItemHeight
-        font.family: NodoSystem.fontUrbanist.name
+        font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         isActive: requestListModel.count > 0 ? true : false
         onClicked: {

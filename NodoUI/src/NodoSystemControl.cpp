@@ -290,16 +290,16 @@ void NodoSystemControl::updateHardwareStatus(QString message)
     RAMTotalStr = QString::number(RAMTotal, 'f', 0);
 
     blockChainStorageUsedStr = variableFormat(blockChainStorageUsed);
-    blockChainStorageTotalStr = QString::number(blockChainStorageTotal, 'f', 0);
+    blockChainStorageTotalStr = variableFormat(blockChainStorageTotal);
 
     systemStorageUsedStr = variableFormat(systemStorageUsed);
     systemStorageTotalStr = QString::number(systemStorageTotal, 'f', 0);
 
     m_CPUUsage = QString("%1").arg(averageCPUFreq, 0, 'f', 2).append(" GHz (").append(QString("%1").arg(CPUUsage, 0, 'f', 0)).append("%)");
-    m_Temperature = QString("%1").arg(CPUTemperature, 0, 'f', 0).append("°C");
-	m_RAMUsage = RAMUsedStr + " / " + RAMTotalStr + "GB (" + QString("%1").arg((RAMUsed/RAMTotal)*100, 0, 'f', 0).append("%)");
-    m_blockchainStorage = blockChainStorageUsedStr + " / " + blockChainStorageTotalStr + "GB (" + QString("%1").arg((blockChainStorageUsed/blockChainStorageTotal)*100, 0, 'f', 0).append("%)");
-    m_systemStorage = systemStorageUsedStr + " / " + systemStorageTotalStr + "GB (" + QString("%1").arg((systemStorageUsed/systemStorageTotal)*100, 0, 'f', 0).append("%)");
+    m_Temperature = QString("%1").arg(CPUTemperature, 0, 'f', 0).append(" °C");
+	m_RAMUsage = RAMUsedStr + " / " + RAMTotalStr + " GB (" + QString("%1").arg((RAMUsed/RAMTotal)*100, 0, 'f', 0).append("%)");
+    m_blockchainStorage = blockChainStorageUsedStr + " / " + blockChainStorageTotalStr + " TB (" + QString("%1").arg((blockChainStorageUsed/blockChainStorageTotal)*100, 0, 'f', 0).append("%)");
+    m_systemStorage = systemStorageUsedStr + " / " + systemStorageTotalStr + " GB (" + QString("%1").arg((systemStorageUsed/systemStorageTotal)*100, 0, 'f', 0).append("%)");
     emit systemStatusReady();
 }
 
@@ -392,6 +392,26 @@ void NodoSystemControl::sendUpdate(void)
     m_dbusController->serviceManager("restart", "monerod");
 }
 
+bool NodoSystemControl::getBanlistEnabled()
+{
+    return m_configParser->getBanlistEnabled();
+}
+
+void NodoSystemControl::setBanlistEnabled(bool enabled)
+{
+    m_configParser->setBanlistEnabled(enabled);
+}
+
+bool NodoSystemControl::getBanlistsListEnabled(QString banlist)
+{
+    return m_configParser->getBanlistsListEnabled(banlist);
+}
+
+void NodoSystemControl::setBanlistsListEnabled(QString banlist, bool enabled)
+{
+    m_configParser->setBanlistsListEnabled(banlist, enabled);
+}
+
 void NodoSystemControl::setClearnetPort(QString port)
 {
     enableComponent(false);
@@ -458,7 +478,7 @@ int NodoSystemControl::geti2pPort(void)
 
 int NodoSystemControl::getclearnetPort(void)
 {
-    return m_configParser->getIntValueFromKey("config", "monero_public_port");
+    return 18089;
 }
 
 int NodoSystemControl::getrpcPort(void)

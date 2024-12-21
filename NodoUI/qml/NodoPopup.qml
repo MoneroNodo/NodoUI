@@ -58,7 +58,7 @@ Popup {
             wrapMode: Text.WordWrap
             horizontalAlignment: Text.AlignHCenter
             font.pixelSize: NodoSystem.infoFieldItemFontSize
-            font.family: NodoSystem.fontUrbanist.name
+            font.family: NodoSystem.fontInter.name
             color: nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn  : NodoSystem.dataFieldTextColorNightModeOff
         }
 
@@ -70,7 +70,7 @@ Popup {
             anchors.topMargin: 30
             anchors.leftMargin: systemPopup.commandID > -1 ? 12 : (systemPopup.width - applyButton.width)/2
             height: NodoSystem.nodoItemHeight
-            font.family: NodoSystem.fontUrbanist.name
+            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.buttonTextFontSize
             visible: !systemPopup.notificationOnly
 
@@ -86,7 +86,7 @@ Popup {
             anchors.left: applyButton.right
             anchors.leftMargin: 16
             height: NodoSystem.nodoItemHeight
-            font.family: NodoSystem.fontUrbanist.name
+            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.buttonTextFontSize
             visible: systemPopup.commandID === -1 ? false : true
             onClicked: {

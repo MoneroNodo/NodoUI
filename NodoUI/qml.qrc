@@ -3,14 +3,14 @@
         <file>qml/main.qml</file>
         <file>qml/NodoStatusScreen.qml</file>
         <file>qml/NodoInfoField.qml</file>
-        <file>qml/NetworksMainScreen.qml</file>
-        <file>qml/NetworksClearnetScreen.qml</file>
-        <file>qml/NetworksTorScreen.qml</file>
+        <file>qml/NodeClearnetScreen.qml</file>
+        <file>qml/NodeTorScreen.qml</file>
         <file>qml/NodoSwitch.qml</file>
-        <file>qml/NetworksI2PScreen.qml</file>
+        <file>qml/NodeI2PScreen.qml</file>
         <file>qml/NodeMainScreen.qml</file>
         <file>qml/NodePrivateNodeScreen.qml</file>
         <file>qml/NodeBandwidthScreen.qml</file>
+        <file>qml/NodeBanlistScreen.qml</file>
         <file>qml/DeviceMainScreen.qml</file>
         <file>qml/DeviceWifiScreen.qml</file>
         <file>qml/NodoComboBox.qml</file>
@@ -33,9 +33,10 @@
         <file>Images/Nodo_white.png</file>
         <file>qml/NodoBusyIndicator.qml</file>
         <file>qml/NodoFeedsSwitch.qml</file>
-        <file>qml/NodoFeederScreenSaver.qml</file>
+        <file>qml/NodoNewsScreensaver.qml</file>
         <file>qml/NodoHomeScreen.qml</file>
-        <file>qml/NodoScreenSaver.qml</file>
+        <file>qml/NodoAnalogClock.qml</file>
+        <file>qml/NodoDisplayOff.qml</file>
         <file>qml/NodoTabButton.qml</file>
         <file>Images/Nodo_ClockFace_Red.png</file>
         <file>Images/Nodo_ClockFace_White.png</file>
@@ -81,22 +82,24 @@
         <file>qml/NodoPopup.qml</file>
         <file>qml/NodoFirstTimeSetupScreen.qml</file>
         <file>qml/NodoFirstTimeAdminPasswordScreen.qml</file>
-        <file>qml/NodoFirstTimeAddressPinScreen.qml</file>
+<!--        <file>qml/NodoFirstTimeAddressPinScreen.qml</file> -->
         <file>qml/NodoFirstTimeLockPinScreen.qml</file>
         <file>qml/DeviceLockPinScreen.qml</file>
-        <file>qml/DeviceAddressPinScreen.qml</file>
+<!--        <file>qml/DeviceAddressPinScreen.qml</file> -->
         <file>qml/NodoAddressPinControlScreen.qml</file>
         <file>qml/FactoryResetScreen.qml</file>
-        <file>Images/MPAY_tick.html</file>
-        <file>qml/MoneroPaySettingsConfigScreen.qml</file>
-        <file>qml/MoneroPayReceiveMainScreen.qml</file>
-        <file>qml/MoneroPayPaymentsScreenDelegate.qml</file>
-        <file>qml/MoneroPayPaymentsScreen.qml</file>
-        <file>qml/MoneroPayMainScreen.qml</file>
-        <file>qml/MoneroPaySettingsMainScreen.qml</file>
-        <file>qml/MoneroPayReceivePaymentPreviewScreen.qml</file>
-        <file>qml/MoneroPayReceivePaymentResultScreen.qml</file>
-        <file>qml/MoneroPayReceiveRequestScreen.qml</file>
+<!--        <file>Images/MPAY_tick.html</file> -->
+
+<!--        <file>qml/MoneroPaySettingsConfigScreen.qml</file> -->
+<!--        <file>qml/MoneroPayReceiveMainScreen.qml</file> -->
+<!--        <file>qml/MoneroPayPaymentsScreenDelegate.qml</file> -->
+<!--        <file>qml/MoneroPayPaymentsScreen.qml</file> -->
+<!--        <file>qml/MoneroPayMainScreen.qml</file> -->
+<!--        <file>qml/MoneroPaySettingsMainScreen.qml</file> -->
+<!--        <file>qml/MoneroPayReceivePaymentPreviewScreen.qml</file> -->
+<!--        <file>qml/MoneroPayReceivePaymentResultScreen.qml</file> -->
+<!--        <file>qml/MoneroPayReceiveRequestScreen.qml</file> -->
+
         <file>qml/NodoQRCodePopup.qml</file>
         <file>qml/DeviceUpdatesScreen.qml</file>
         <file>qml/NodoFirstTimeRebootScreen.qml</file>
@@ -104,7 +107,7 @@
     <qresource prefix="/NodoSystem">
         <file alias="qmldir">assets/NodoSystem/qmldir</file>
         <file alias="NodoSystem.qml">assets/NodoSystem/NodoSystem.qml</file>
-        <file alias="InterRegular.ttf">assets/NodoSystem/InterRegular.ttf</file>
+        <file alias="InterDisplay.ttf">assets/NodoSystem/InterDisplay.ttf</file>
     </qresource>
     <qresource prefix="/layout">
         <file>assets/NodoKeyboard/QtQuick/VirtualKeyboard/layouts/en_US/dialpad.fallback</file>

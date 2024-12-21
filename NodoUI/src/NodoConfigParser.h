@@ -40,6 +40,11 @@ public:
     void setTheme(bool theme);
     bool getTheme(void);
 
+    bool getBanlistEnabled(void);
+    void setBanlistEnabled(bool);
+    bool getBanlistsListEnabled(QString);
+    void setBanlistsListEnabled(QString, bool);
+
     void setClearnetPort(QString port);
     void setTorPort(QString port);
     void setI2pPort(QString port);
@@ -48,9 +53,8 @@ public:
     void setrpcEnabledStatus(bool status);
     void setrpcPort(QString port);
 
-    void setMoneroPayParameters(QString address, QString viewKey);
+    void setMoneroPayParameters(QString address);
     QString getMoneroPayAddress(void);
-    QString getMoneroPayViewKey(void);
 
     Q_INVOKABLE bool getUpdateStatus(QString moduleName);
     Q_INVOKABLE void setUpdateStatus(QString moduleName, bool newStatus);
@@ -71,6 +75,7 @@ private:
     QJsonObject m_versionsObj;
     QJsonObject m_moneropayObj;
     QJsonObject m_autoupdateObj;
+    QJsonObject m_banlistsObj;
 
     const QString configObjName = "config";
     const QString ethernetObjName = "ethernet";
@@ -78,6 +83,7 @@ private:
     const QString versionsObjName = "versions";
     const QString moneropayObjName = "moneropay";
     const QString autoupdateObjName = "autoupdate";
+    const QString banlistsObjName = "banlists";
 
     QTimer *m_timer;
     QMutex m_mutex;

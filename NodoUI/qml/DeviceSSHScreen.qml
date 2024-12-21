@@ -200,7 +200,7 @@ Item {
         Text {
             id: passwordWarningText
             anchors.fill: passwordWarningRect
-            font.family: NodoSystem.fontUrbanist.name
+            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.textFontSize
             verticalAlignment: Text.AlignVCenter
             wrapMode: Text.WordWrap
@@ -233,7 +233,7 @@ Item {
         anchors.topMargin: NodoSystem.nodoTopMargin
         text: systemMessages.messages[NodoMessages.Message.Apply]
         height: NodoSystem.nodoItemHeight
-        font.family: NodoSystem.fontUrbanist.name
+        font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         isActive: (deviceSSHOldPasswordField.valueText !== "") && (deviceSSHScreen.isPasswordValid) && (deviceSSHPasswordField.valueText.length >= 8) && (deviceSSHReenterPasswordField.valueText === deviceSSHPasswordField.valueText) ? true : false
         onClicked: {

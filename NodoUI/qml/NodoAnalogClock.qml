@@ -135,7 +135,7 @@ Item {
             color: nodoControl.appTheme ? NodoSystem.dateTextColorNightModeOn : NodoSystem.dateTextColorNightModeOff
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
-            font.family: NodoSystem.fontUrbanist.name
+            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.dateTimeFontSize
             text: dateString.toUpperCase()
         }
@@ -147,7 +147,7 @@ Item {
             color: nodoControl.appTheme ? NodoSystem.dayTextColorNightModeOn : NodoSystem.dayTextColorNightModeOff
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
-            font.family: NodoSystem.fontUrbanist.name
+            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.dateTimeFontSize
             text: dayString.toUpperCase()
         }

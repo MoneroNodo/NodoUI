@@ -33,9 +33,8 @@ public:
     Q_INVOKABLE int transactionIDSize(int index);
 
     Q_INVOKABLE QString getMoneroPayAddress(void);
-    Q_INVOKABLE QString getMoneroPayViewKey(void);
     Q_INVOKABLE void clearDepositAddress(void);
-    Q_INVOKABLE void setDepositAddress(QString address, QString viewKey);
+    Q_INVOKABLE void setDepositAddress(QString address);
     Q_INVOKABLE void xmrRequestPayment(QString xmrAmount, QString fiatAmount, int fiatIndex, QString description, int blockConfirmation);
 
     Q_INVOKABLE double getLastXMRAmount(void);
@@ -90,7 +89,7 @@ signals:
     void depositAddressCleared(void);
     void paymentReceived(void);
     void depositAddressReceived(void);
-    void depositAddressSet(QString, QString);
+    void depositAddressSet(QString);
 
     void newPaymentRequested(void);
     void openViewPaymentsScreenRequested(void);

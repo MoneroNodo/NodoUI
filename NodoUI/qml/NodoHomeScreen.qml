@@ -47,7 +47,7 @@ Item {
         Component.onCompleted: {
             findCurrencyIndex()
             dateTimer.start()
-            if(100 === syncInfo.getSyncPercentage() && moneroPay.isDepositAddressSet())
+/*            if(100 === syncInfo.getSyncPercentage() && moneroPay.isDepositAddressSet())
             {
                 receiveButton.enabled = true
             }
@@ -55,6 +55,7 @@ Item {
             {
                 receiveButton.enabled = false
             }
+*/
         }
 
         Connections {
@@ -82,7 +83,7 @@ Item {
             id: mainMenuBar
             anchors.top: mainAppWindowRectangle.top
             anchors.left: mainAppWindowRectangle.left
-            anchors.leftMargin: 10
+            anchors.leftMargin: 2
             height: NodoSystem.topMenuButtonHeight
             implicitWidth: newsButton.x + newsButton.width
 
@@ -95,8 +96,8 @@ Item {
                 x: 0
                 y: (mainMenuBar.height - nodoLogoButton.height)/2
                 text: " "
-                width: 288
-                implicitHeight: NodoSystem.topMenuButtonHeight
+                width: 300//288
+                implicitHeight: 120//110//NodoSystem.nodoItemHeight
                 buttonBorderColor: "black"
                 imagePath: (nodoControl.appTheme ? "qrc:/Images/nodologo_title_red.png" : "qrc:/Images/nodologo_title_white.png")
                 onClicked: {
@@ -107,28 +108,15 @@ Item {
             NodoTabButton {
                 id: deviceButton
                 anchors.top: nodoLogoButton.top
-                anchors.topMargin: (NodoSystem.topMenuButtonHeight - NodoSystem.nodoItemHeight)/2
+                anchors.topMargin: (nodoLogoButton.height - NodoSystem.topMenuButtonHeight)/2
                 anchors.left: nodoLogoButton.right
-                anchors.leftMargin: 20
-                height: NodoSystem.nodoItemHeight
+                anchors.leftMargin: 25
+                height: NodoSystem.topMenuButtonHeight
                 text: qsTr("DEVICE")
-                font.family: NodoSystem.fontUrbanist.name
+                font.family: NodoSystem.fontInter.name
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
                 onClicked: {
                     pageLoader.source = "DeviceMainScreen.qml"
-                    pageLoader.anchors.topMargin = 0
-                }
-            }
-            NodoTabButton {
-                id: networksButton
-                anchors.top: deviceButton.top
-                anchors.left: deviceButton.right
-                height: NodoSystem.nodoItemHeight
-                text: qsTr("NETWORKS")
-                font.family: NodoSystem.fontUrbanist.name
-                font.pixelSize: NodoSystem.topMenuButtonFontSize
-                onClicked: {
-                    pageLoader.source = "NetworksMainScreen.qml"
                     pageLoader.anchors.topMargin = 0
                 }
             }
@@ -136,10 +124,10 @@ Item {
             NodoTabButton {
                 id: nodeButton
                 anchors.top: deviceButton.top
-                anchors.left: networksButton.right
-                height: NodoSystem.nodoItemHeight
+                anchors.left: deviceButton.right
+                height: NodoSystem.topMenuButtonHeight
                 text: qsTr("NODE")
-                font.family: NodoSystem.fontUrbanist.name
+                font.family: NodoSystem.fontInter.name
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
                 onClicked: {
                     pageLoader.source = "NodeMainScreen.qml"
@@ -150,42 +138,41 @@ Item {
                 id: moneroLWSButton
                 anchors.top: deviceButton.top
                 anchors.left: nodeButton.right
-                height: NodoSystem.nodoItemHeight
+                height: NodoSystem.topMenuButtonHeight
                 text: qsTr("LWS")
-                font.family: NodoSystem.fontUrbanist.name
+                font.family: NodoSystem.fontInter.name
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
                 onClicked: {
                     pageLoader.source = "MoneroLWSMainScreen.qml"
                     pageLoader.anchors.topMargin = 0
                 }
             }
-
+/*
             NodoTabButton {
                 id: mPayButton
                 anchors.top: deviceButton.top
                 anchors.left: moneroLWSButton.right
-                height: NodoSystem.nodoItemHeight
+                height: NodoSystem.topMenuButtonHeight
                 text: qsTr("MONEROPAY")
-                font.family: NodoSystem.fontUrbanist.name
+                font.family: NodoSystem.fontInter.name
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
-								enabled: false
-                // onClicked: {
-                //     pageLoader.source = "MoneroPayMainScreen.qml"
-                //     pageLoader.anchors.topMargin = 0
-                // }
+                onClicked: {
+                    pageLoader.source = "MoneroPayMainScreen.qml"
+                    pageLoader.anchors.topMargin = 0
+                }
             }
-
+*/
             NodoTabButton {
                 id: newsButton
                 anchors.top: deviceButton.top
-                anchors.left: mPayButton.right
-                height: NodoSystem.nodoItemHeight
+                anchors.left: moneroLWSButton.right//mPayButton.right
+                height: NodoSystem.topMenuButtonHeight
                 text: qsTr("NEWS")
-                font.family: NodoSystem.fontUrbanist.name
+                font.family: NodoSystem.fontInter.name
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
                 onClicked: {
                     pageLoader.source = "NewsMainScreen.qml"
-                    pageLoader.anchors.topMargin = 60
+                    pageLoader.anchors.topMargin = NodoSystem.subMenuTopMargin + 62//60
                 }
             }
         }
@@ -203,12 +190,12 @@ Item {
                 anchors.top: rightMenu.top
                 anchors.bottom: rightMenu.bottom
                 anchors.right: timeText.left
-                anchors.rightMargin: 20
+                anchors.rightMargin: 15
                 color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
                 topPadding: NodoSystem.topMenuTextTopPadding
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
-                font.family: NodoSystem.fontUrbanist.name
+                font.family: NodoSystem.fontInter.name
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
             }
 
@@ -217,12 +204,12 @@ Item {
                 anchors.top: rightMenu.top
                 anchors.bottom: rightMenu.bottom
                 anchors.right: rightMenu.right
-                anchors.rightMargin: 10
+                anchors.rightMargin: 2
                 color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
                 topPadding: NodoSystem.topMenuTextTopPadding
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
-                font.family: NodoSystem.fontUrbanist.name
+                font.family: NodoSystem.fontInter.name
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
             }
         }
@@ -231,7 +218,7 @@ Item {
             id: priceTickerRect
             anchors.right: mainAppWindowRectangle.right
             anchors.top: rightMenu.bottom
-            anchors.topMargin: 35
+            anchors.topMargin: NodoSystem.subMenuTopMargin + 42//40
             color: "black"
 
             Text {
@@ -239,11 +226,11 @@ Item {
                 anchors.top: priceTickerRect.top
                 anchors.bottom: priceTickerRect.bottom
                 anchors.right: exchangeSymbolText.left
-                anchors.rightMargin: 2
+                anchors.rightMargin: 5
                 color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
                 text: "XMR-" + nodoCurrencies.currencyCodes[priceTicker.getCurrentCurrencyIndex()] + ":"
                 topPadding: NodoSystem.topMenuTextTopPadding
-                font.family: NodoSystem.fontUrbanist.name
+                font.family: NodoSystem.fontInter.name
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignRight
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
@@ -258,7 +245,7 @@ Item {
                 color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
                 text: nodoCurrencies.currencySymbols[priceTicker.getCurrentCurrencyIndex()]
                 topPadding: NodoSystem.topMenuTextTopPadding
-                font.family: NodoSystem.fontUrbanist.name
+                font.family: NodoSystem.fontInter.name
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignRight
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
@@ -271,11 +258,11 @@ Item {
                 anchors.top: priceTickerRect.top
                 anchors.bottom: priceTickerRect.bottom
                 anchors.right: priceTickerRect.right
-                anchors.rightMargin: 10
+                anchors.rightMargin: 2
                 color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
                 text: "---.--"
                 topPadding: NodoSystem.topMenuTextTopPadding
-                font.family: NodoSystem.fontUrbanist.name
+                font.family: NodoSystem.fontInter.name
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
                 font.pixelSize: NodoSystem.topMenuButtonFontSize

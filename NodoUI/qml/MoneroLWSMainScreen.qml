@@ -9,6 +9,7 @@ Item {
     id: moneroLWSMainScreen
     anchors.fill: parent
     anchors.leftMargin: NodoSystem.subMenuLeftMargin
+    anchors.topMargin: NodoSystem.subMenuTopMargin
 
     Component.onCompleted: {
         var dbusConnStat = moneroLWS.getDbusConnectionStatus()
@@ -68,7 +69,7 @@ Item {
             id: activeButton
             y: (moneroLWSMenuBar.height - activeButton.height)/2
             text: qsTr("ACTIVE")
-            font.family: NodoSystem.fontUrbanist.name
+            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: { pageLoader.source = "MoneroLWSActiveScreen.qml" }
         }
@@ -77,7 +78,7 @@ Item {
             y: (moneroLWSMenuBar.height - inactiveButton.height)/2
             anchors.left: activeButton.right
             text: qsTr("INACTIVE")
-            font.family: NodoSystem.fontUrbanist.name
+            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: { pageLoader.source = "MoneroLWSInactiveScreen.qml" }
         }
@@ -86,7 +87,7 @@ Item {
             y: (moneroLWSMenuBar.height - addAccountButton.height)/2
             anchors.left: inactiveButton.right
             text: qsTr("ADD ACCOUNT")
-            font.family: NodoSystem.fontUrbanist.name
+            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: { pageLoader.source = "MoneroLWSAddAccountScreen.qml" }
             enabled: false
@@ -95,8 +96,8 @@ Item {
             id: accountRequestsButton
             y: (moneroLWSMenuBar.height - accountRequestsButton.height)/2
             anchors.left: addAccountButton.right
-            text: qsTr("ACCOUNT CREATION REQUESTS")
-            font.family: NodoSystem.fontUrbanist.name
+            text: qsTr("WALLET REQUESTS")
+            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: { pageLoader.source = "MoneroLWSAccountRequestsScreen.qml" }
         }
