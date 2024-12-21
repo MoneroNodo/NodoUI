@@ -15,7 +15,7 @@ Rectangle {
     property int fieldTopMargin: NodoSystem.nodoTopMargin//5
 
     property int componentWidth: 500
-    property int componentLeftMargin: 15
+    property int componentLeftMargin: 10
     property int componentBottomMargin: NodoSystem.nodoTopMargin
     property int componentTopMargin: 40
     property int cardMargin: 15
@@ -178,7 +178,7 @@ Rectangle {
         id: syncStatus
         anchors.left: statusScreen.left
         anchors.top: statusScreen.top
-        anchors.topMargin: 10
+        anchors.topMargin: 30
         anchors.leftMargin: 2//cardMargin
         width: 670
         height: networkConnectionField.y + networkConnectionField.height + componentBottomMargin//683
@@ -347,7 +347,7 @@ Rectangle {
             anchors.topMargin: componentTopMargin
             anchors.leftMargin: componentLeftMargin
             width: systemStatusTabName.paintedWidth
-            height: 20
+            height: 15
             text: qsTr("Services")
             verticalAlignment: Text.AlignBottom
             horizontalAlignment: Text.AlignHCenter
@@ -375,7 +375,7 @@ Rectangle {
             anchors.topMargin: fieldTopMargin
             width: parent.width - 15
             height: statusScreenInfoFieldHeight
-            itemSize: labelSize - 90
+            itemSize: labelSize - 120
             itemText: qsTr("Tor")
             valueText: ""
         }
@@ -387,7 +387,7 @@ Rectangle {
             anchors.topMargin: fieldTopMargin
             width: parent.width - 15
             height: statusScreenInfoFieldHeight
-            itemSize: labelSize - 100
+            itemSize: labelSize - 120
             itemText: qsTr("I2P")
             valueText: ""
         }
@@ -399,7 +399,7 @@ Rectangle {
             anchors.topMargin: fieldTopMargin
             width: parent.width - 15
             height: statusScreenInfoFieldHeight
-            itemSize: labelSize - 110
+            itemSize: labelSize - 120
             itemText: qsTr("LWS")
             valueText: ""
         }
@@ -422,7 +422,7 @@ Rectangle {
         id: hardwareStatus
         anchors.left: systemStatus.right
         anchors.top: statusScreen.top
-        anchors.topMargin: 15
+        anchors.topMargin: 30
         width: 720
         anchors.leftMargin: cardMargin
         //anchors.rightMargin: 2//cardMargin
@@ -443,7 +443,7 @@ Rectangle {
             anchors.topMargin: componentTopMargin
             anchors.leftMargin: componentLeftMargin
             width: hardwareStatusTabName.paintedWidth
-            height: 18
+            height: 15
             text: qsTr("System")
             verticalAlignment: Text.AlignBottom
             horizontalAlignment: Text.AlignHCenter
