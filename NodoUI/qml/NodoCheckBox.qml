@@ -24,7 +24,7 @@ CheckBox {
         text: "\u2713"
         font.family: NodoSystem.fontInter.name
         font.pixelSize: checkBox.width
-        color: "F2F2F7"
+        color: "#F2F2F7"
         visible: checkBox.checked
     }
 }

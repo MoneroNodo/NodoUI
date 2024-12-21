@@ -58,7 +58,7 @@ Popup {
                 qrSize: Qt.size(width,width)
                 qrData: qrCodeData
                 qrForeground: "black"
-                qrBackground: "F2F2F7"
+                qrBackground: "#F2F2F7"
                 qrMargin: 8
                 qrMode: QtQuick2QREncode.MODE_8    //encode model
                 qrLevel: QtQuick2QREncode.LEVEL_Q // encode level

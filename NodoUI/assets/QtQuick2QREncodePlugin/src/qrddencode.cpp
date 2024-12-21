@@ -11,7 +11,7 @@ QREnCode::QREnCode(QQuickItem *parent):
     qrMargin =5;
     qrSize = QSize(128,128);
     qrForeground = QColor("#0E4963");
-    qrBackground = QColor("F2F2F7");
+    qrBackground = QColor("#F2F2F7");
     qrCasesen = true;
     qrMode = MODE_8;
     qrLevel = LEVEL_Q;

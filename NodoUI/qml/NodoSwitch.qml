@@ -40,8 +40,8 @@ Switch {
             y: (control.height - height) / 2
             width: parent.height*0.8
             height: parent.height*0.8
-            color: "F2F2F7"
-            borderColor: "F2F2F7"
+            color: "#F2F2F7"
+            borderColor: "#F2F2F7"
         }
     }
 

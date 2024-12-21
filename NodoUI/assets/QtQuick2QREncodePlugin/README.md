@@ -23,7 +23,7 @@ import com.duoduo.component 1.0
         anchors.centerIn: parent
         qrData:"duoduozhijiao" //encode contents
         qrForeground: "#29aee1" //encode color
-        qrBackground: "F2F2F7"
+        qrBackground: "#F2F2F7"
         qrMargin: 2
         qrMode: QtQuick1QREncode.MODE_8    //encode model
 		qrLevel: QtQuick1QREncode.LEVEL_Q // encode level
@@ -49,7 +49,7 @@ Item {
            qrSize: Qt.size(width,width)
            qrData:"www.heilqt.com" //encode contents
            qrForeground: "#29aee1" //encode color
-           qrBackground: "F2F2F7"
+           qrBackground: "#F2F2F7"
            qrMargin: 4
            qrMode: QtQuick1QREncode.MODE_8    //encode model
            qrLevel: QtQuick1QREncode.LEVEL_Q // encode level
