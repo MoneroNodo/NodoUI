@@ -120,8 +120,8 @@ Item {
 
     Rectangle {
         id: torRouteSwitchRect
-        anchors.left: torSwitchRect.right
-        anchors.top: torSwitchRect.top
+        anchors.left: torSwitch.right
+        anchors.top: nodeTorScreen.top
         anchors.leftMargin: 20
         //anchors.topMargin: NodoSystem.nodoTopMargin
         height: NodoSystem.nodoItemHeight
