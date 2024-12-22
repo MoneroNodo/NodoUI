@@ -120,9 +120,10 @@ Item {
 
     Rectangle {
         id: torRouteSwitchRect
-        anchors.left: nodeTorScreen.left
-        anchors.top: torSwitchRect.bottom
-        anchors.topMargin: NodoSystem.nodoTopMargin
+        anchors.left: torSwitchRect.right
+        anchors.top: nodeTorScreen.top
+        anchors.leftMargin: 25
+        //anchors.topMargin: NodoSystem.nodoTopMargin
         height: NodoSystem.nodoItemHeight
 
         NodoLabel {
@@ -130,7 +131,7 @@ Item {
             height: torRouteSwitchRect.height
             anchors.left: torRouteSwitchRect.left
             anchors.top: torRouteSwitchRect.top
-            text: qsTr("Route all connections through Tor")
+            text: qsTr("Route All Connections Through Tor")
         }
 
         NodoSwitch {
