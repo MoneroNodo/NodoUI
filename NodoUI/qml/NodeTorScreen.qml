@@ -9,7 +9,7 @@ import QtQuick2QREncode 1.0
 Item {
     id: nodeTorScreen
     property int labelSize: 0
-    property int infoFieldWidth: 1350
+    property int infoFieldWidth: 1850
     property int torPort
     property string torOnionAddress
     property bool torSwitchStatus
@@ -97,6 +97,7 @@ Item {
         anchors.left: nodeTorScreen.left
         anchors.top: nodeTorScreen.top
         height: NodoSystem.nodoItemHeight
+        width: torSwitchText.width + torSwitch.width
 
         NodoLabel {
             id: torSwitchText
@@ -122,7 +123,7 @@ Item {
         id: torRouteSwitchRect
         anchors.left: torSwitchRect.right
         anchors.top: nodeTorScreen.top
-        anchors.leftMargin: 25
+        anchors.leftMargin: 20
         //anchors.topMargin: NodoSystem.nodoTopMargin
         height: NodoSystem.nodoItemHeight
 
@@ -148,14 +149,14 @@ Item {
     NodoInfoField {
         id: torOnionAddressField
         anchors.left: nodeTorScreen.left
-        anchors.top: torRouteSwitchRect.bottom
+        anchors.top: torSwitchRect.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         width: infoFieldWidth
         height: NodoSystem.nodoItemHeight
         itemSize: labelSize
         itemText: qsTr("Onion Address")
         valueText: nodeTorScreen.torOnionAddress
-        valueFontSize: 34
+        //valueFontSize: 34
     }
 
     NodoInfoField {
@@ -174,7 +175,7 @@ Item {
         id: qrCodeRect
         anchors.right: nodeTorScreen.right
         anchors.top: nodeTorScreen.top
-        anchors.topMargin: NodoSystem.nodoTopMargin
+        anchors.topMargin: ((NodoSystem.nodoItemHeight + NodoSystem.nodoTopMargin)*3)
         anchors.rightMargin: 10
         color: "black"
         width: 512
