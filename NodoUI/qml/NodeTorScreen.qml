@@ -148,7 +148,7 @@ Item {
     NodoInfoField {
         id: torOnionAddressField
         anchors.left: nodeTorScreen.left
-        anchors.top: torRouteSwitchRect.bottom
+        anchors.top: torSwitchRect.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         width: infoFieldWidth
         height: NodoSystem.nodoItemHeight
