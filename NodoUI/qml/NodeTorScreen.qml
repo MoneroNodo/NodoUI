@@ -120,8 +120,8 @@ Item {
 
     Rectangle {
         id: torRouteSwitchRect
-        anchors.left: torSwitchRect.right
-        anchors.top: torSwitchRect.top
+        anchors.left: torSwitch.right
+        anchors.top: nodeTorScreen.top
         anchors.leftMargin: 20
         //anchors.topMargin: NodoSystem.nodoTopMargin
         height: NodoSystem.nodoItemHeight
@@ -155,7 +155,7 @@ Item {
         itemSize: labelSize
         itemText: qsTr("Onion Address")
         valueText: nodeTorScreen.torOnionAddress
-        valueFontSize: 34
+        //valueFontSize: 34
     }
 
     NodoInfoField {
@@ -174,7 +174,7 @@ Item {
         id: qrCodeRect
         anchors.right: nodeTorScreen.right
         anchors.top: nodeTorScreen.top
-        anchors.topMargin: (NodoSystem.nodoItemHeight)*3
+        anchors.topMargin: ((NodoSystem.nodoItemHeight)*3 + (NodoSystem.nodoTopMargin)*2)
         anchors.rightMargin: 10
         color: "black"
         width: 512
