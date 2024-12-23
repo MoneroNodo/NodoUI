@@ -9,7 +9,7 @@ import QtQuick2QREncode 1.0
 Item {
     id: nodeTorScreen
     property int labelSize: 0
-    property int infoFieldWidth: 1350
+    property int infoFieldWidth: 1850
     property int torPort
     property string torOnionAddress
     property bool torSwitchStatus
@@ -121,7 +121,7 @@ Item {
     Rectangle {
         id: torRouteSwitchRect
         anchors.left: torSwitch.right
-        anchors.top: torSwitchRect.top
+        anchors.top: torRouteSwitchRect.top
         anchors.leftMargin: 20
         //anchors.topMargin: NodoSystem.nodoTopMargin
         height: NodoSystem.nodoItemHeight
