@@ -221,8 +221,7 @@ Item {
             anchors.top: rightMenu.bottom
             anchors.topMargin: NodoSystem.subMenuTopMargin + 42//40
             color: "black"
-            width: exchangeNameText.width + exchangeSymbolText.width + exchangeRateText.width + 11
-
+            
             Text {
                 id: exchangeNameText
                 anchors.top: priceTickerRect.top
