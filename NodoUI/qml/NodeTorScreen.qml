@@ -165,7 +165,7 @@ Item {
         anchors.left: nodeTorScreen.left
         anchors.top: torOnionAddressField.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
-        width: labelSize + 50
+        width: 250
         height: NodoSystem.nodoItemHeight
         itemSize: labelSize
         itemText: systemMessages.messages[NodoMessages.Message.Port] //qstr("Port")
