@@ -44,6 +44,3 @@ Item {
         qsTr("(UTC -13:00) Niue Time (NUT)"),
     ]
 }
-
-
-
