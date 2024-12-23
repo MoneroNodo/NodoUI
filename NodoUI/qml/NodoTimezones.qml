@@ -3,7 +3,6 @@ import QtQuick
 Item {
     property var timezoneNames:[
         qsTr("(UTC +00:00) Coordinated Universal Time (UTC)"),
-        qsTr("(UTC +00:00) Greenwich Mean Time (GMT)"),
         qsTr("(UTC +01:00) Central European Time (CET)"),
         qsTr("(UTC +02:00) Eastern European Time (EET)"),
         qsTr("(UTC +03:00) Moscow Standard Time (MSK)"),
