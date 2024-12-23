@@ -66,7 +66,7 @@ Item {
             id: privateNodeButton
             anchors.top: clearnetButton.top
             anchors.left: bandwidthButton.right
-            text: qsTr("PRIVATE NODE")
+            text: qsTr("PRIVATE") //qsTr("PRIVATE NODE")
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: { pageLoader.source = "NodePrivateNodeScreen.qml" }
