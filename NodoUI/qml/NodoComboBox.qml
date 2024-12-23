@@ -20,8 +20,8 @@ ComboBox {
             elide: Text.ElideRight
             verticalAlignment: Text.AlignVCenter
         }
-        background: Rectangle {color: highlighted ? (nodoControl.appTheme ? NodoSystem.comboBoxHighligtedItemBGColorNightModeOn : NodoSystem.comboBoxHighligtedItemBGColorNightModeOff) :
-                                                    (nodoControl.appTheme ? NodoSystem.dataFieldTitleBGColorNightModeOn : NodoSystem.dataFieldTitleBGColorNightModeOff)}
+        background: Rectangle {color: highlighted ? (nodoControl.appTheme ? NodoSystem.comboBoxHighlightedItemBGColorNightModeOn : NodoSystem.comboBoxHighlightedItemBGColorNightModeOff) :
+                                                    (nodoControl.appTheme ? NodoSystem.dataFieldTextBGColorNightModeOn : NodoSystem.dataFieldTextBGColorNightModeOff)}
 
         highlighted: control.highlightedIndex === index
     }
