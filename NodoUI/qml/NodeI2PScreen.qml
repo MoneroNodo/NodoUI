@@ -67,7 +67,7 @@ Item {
         target: nodoConfig
         function onConfigParserReady() {
             nodeI2PScreen.i2pSwitchStatus = nodoConfig.getStringValueFromKey("config", "i2p_enabled") === "TRUE" ? true : false
-            nodeI2PScreen.i2pAddress = nodoConfig.getStringValueFromKey("config", "i2p_b32_addr_rpc");
+            nodeI2PScreen.i2pAddress = nodoConfig.getStringValueFromKey("config", "i2p_address");
             nodeI2PScreen.i2pPort = nodoConfig.getIntValueFromKey("config", "monero_rpc_port")
             updateParams()
         }
