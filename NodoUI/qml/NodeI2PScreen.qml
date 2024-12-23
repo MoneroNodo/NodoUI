@@ -9,7 +9,7 @@ import QtQuick2QREncode 1.0
 Item {
     id: nodeI2PScreen
     property int labelSize: 0
-    property int infoFieldWidth: 1350
+    property int infoFieldWidth: width - NodoSystem.subMenuLeftMargin
 
     property int i2pPort
     property string i2pAddress
@@ -128,7 +128,7 @@ Item {
         itemSize: labelSize
         itemText: qsTr("I2P b32 Address")
         valueText: nodeI2PScreen.i2pAddress
-        valueFontSize: 34
+        //valueFontSize: 34
     }
 
     NodoInfoField {
@@ -136,10 +136,10 @@ Item {
         anchors.left: nodeI2PScreen.left
         anchors.top: i2pAddressField.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
-        width: infoFieldWidth
+        width: labelSize + 150
         height: NodoSystem.nodoItemHeight
         itemSize: labelSize
-        itemText: systemMessages.messages[NodoMessages.Message.Port]
+        itemText: systemMessages.messages[NodoMessages.Message.Port] //qsTr("Port")
         valueText: nodeI2PScreen.i2pPort
 
     }
@@ -147,9 +147,10 @@ Item {
     Rectangle {
         id: qrCodeRect
         anchors.right: nodeI2PScreen.right
-        anchors.top: nodeI2PScreen.top
-        anchors.topMargin: NodoSystem.nodoTopMargin
+        anchors.bottom: nodeI2PScreen.bottom
+        //anchors.topMargin: NodoSystem.nodoTopMargin
         anchors.rightMargin: 10
+        anchors.bottomMargin: 10
         color: "black"
         width: 512
         height: 512
