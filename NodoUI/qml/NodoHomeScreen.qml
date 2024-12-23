@@ -140,6 +140,7 @@ Item {
                 anchors.left: nodeButton.right
                 height: NodoSystem.topMenuButtonHeight
                 text: qsTr("LWS")
+                width: nodeButton.width
                 font.family: NodoSystem.fontInter.name
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
                 onClicked: {
