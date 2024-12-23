@@ -16,7 +16,8 @@ Item {
         anchors.top: nodeMainScreen.top
         anchors.left: nodeMainScreen.left
         height: NodoSystem.subMenuButtonHeight
-        contentWidth: 1460
+        //contentWidth: 1460
+        implicitWidth: banlistButton.x + banlistButton.width
 
         background: Rectangle {
             color: "black"
