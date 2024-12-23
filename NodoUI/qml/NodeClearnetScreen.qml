@@ -117,7 +117,6 @@ Item {
         itemSize: labelSize
         itemText: systemMessages.messages[NodoMessages.Message.Address]
         valueText: ""
-        //font.pixelSize: (NodoSystem.textFontSize)*2
     }
 
     NodoInputField {
@@ -127,7 +126,6 @@ Item {
         anchors.topMargin: NodoSystem.nodoTopMargin
         width: labelSize + 150
         height: NodoSystem.nodoItemHeight
-        font.pixelSize: (NodoSystem.textFontSize *2)
         itemSize: labelSize
         itemText: systemMessages.messages[NodoMessages.Message.Port]
         valueText: nodeClearnetScreen.clearnetPort
