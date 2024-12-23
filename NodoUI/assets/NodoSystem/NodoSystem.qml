@@ -70,8 +70,8 @@ Item
 
     property int comboboxFontSize: 25
 
-    property color comboBoxHighligtedItemBGColorNightModeOff: "#FA5501" 	//1COLOR BG//
-    property color comboBoxHighligtedItemBGColorNightModeOn: "#F50000"		//NMCOLOR1 BG//
+    property color comboBoxHighlightedItemBGColorNightModeOff: "#FA5501" 	//1COLOR BG//
+    property color comboBoxHighlightedItemBGColorNightModeOn: "#F50000"		//NMCOLOR1 BG//
 
     property color comboBoxTextColor: "#F2F2F7"							//1TEXT FONT//
 
