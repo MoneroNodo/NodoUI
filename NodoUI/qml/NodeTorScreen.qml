@@ -120,8 +120,8 @@ Item {
 
     Rectangle {
         id: torRouteSwitchRect
-        anchors.left: torSwitch.right
-        anchors.top: nodeTorScreen.top
+        anchors.left: torSwitchRect.right
+        anchors.top: torSwitchRect.top
         anchors.leftMargin: 20
         //anchors.topMargin: NodoSystem.nodoTopMargin
         height: NodoSystem.nodoItemHeight
@@ -174,7 +174,7 @@ Item {
         id: qrCodeRect
         anchors.right: nodeTorScreen.right
         anchors.top: nodeTorScreen.top
-        anchors.topMargin: NodoSystem.nodoTopMargin
+        anchors.topMargin: (NodoSystem.nodoItemHeight)*3
         anchors.rightMargin: 10
         color: "black"
         width: 512
