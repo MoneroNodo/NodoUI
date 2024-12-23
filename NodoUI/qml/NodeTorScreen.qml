@@ -9,7 +9,7 @@ import QtQuick2QREncode 1.0
 Item {
     id: nodeTorScreen
     property int labelSize: 0
-    property int infoFieldWidth: 1850
+    property int infoFieldWidth: width - NodoSystem.subMenuLeftMargin
     property int torPort
     property string torOnionAddress
     property bool torSwitchStatus
