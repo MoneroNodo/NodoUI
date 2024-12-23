@@ -65,7 +65,7 @@ Rectangle {
             anchors.left: deviceSystemScreen.left
             anchors.top: deviceLockPinSettingsButton.bottom
             anchors.topMargin: deviceSystemScreen.buttonTopMargin
-            text: qsTr("Admin Password & SSH")
+            text: qsTr("Admin & SSH")
             height: NodoSystem.nodoItemHeight
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.buttonTextFontSize
