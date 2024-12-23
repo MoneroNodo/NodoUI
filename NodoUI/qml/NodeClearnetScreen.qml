@@ -113,11 +113,11 @@ Item {
         anchors.left: nodeClearnetScreen.left
         anchors.top: nodeClearnetScreen.top
         width: width - NodoSystem.subMenuLeftMargin
-        height: (NodoSystem.nodoItemHeight)*2
+        height: NodoSystem.nodoItemHeight
         itemSize: labelSize
         itemText: systemMessages.messages[NodoMessages.Message.Address]
         valueText: ""
-        font.pixelSize: (NodoSystem.textFontSize)*2
+        //font.pixelSize: (NodoSystem.textFontSize)*2
     }
 
     NodoInputField {
@@ -125,9 +125,9 @@ Item {
         anchors.left: nodeClearnetScreen.left
         anchors.top: clearnetAddressField.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
-        width: (labelSize + 150)*2
-        height: (NodoSystem.nodoItemHeight)*2
-        font.pixelSize: (NodoSystem.textFontSize)*2
+        width: labelSize + 150
+        height: NodoSystem.nodoItemHeight
+        font.pixelSize: (NodoSystem.textFontSize *2)
         itemSize: labelSize
         itemText: systemMessages.messages[NodoMessages.Message.Port]
         valueText: nodeClearnetScreen.clearnetPort
