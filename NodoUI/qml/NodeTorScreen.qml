@@ -97,6 +97,7 @@ Item {
         anchors.left: nodeTorScreen.left
         anchors.top: nodeTorScreen.top
         height: NodoSystem.nodoItemHeight
+        color: "black"
         width: torSwitchText.width + torSwitch.width
 
         NodoLabel {
@@ -123,7 +124,7 @@ Item {
         id: torRouteSwitchRect
         anchors.left: torSwitchRect.right
         anchors.top: nodeTorScreen.top
-        anchors.leftMargin: 20
+        anchors.leftMargin: 25
         //anchors.topMargin: NodoSystem.nodoTopMargin
         height: NodoSystem.nodoItemHeight
 
