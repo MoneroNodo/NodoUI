@@ -112,11 +112,12 @@ Item {
         id: clearnetAddressField
         anchors.left: nodeClearnetScreen.left
         anchors.top: nodeClearnetScreen.top
-        width: 924
-        height: NodoSystem.nodoItemHeight
+        width: width - NodoSystem.subMenuLeftMargin
+        height: NodoSystem.nodoItemHeight*1.4
         itemSize: labelSize
         itemText: systemMessages.messages[NodoMessages.Message.Address]
         valueText: ""
+        font.pixelSize: NodoSystem.textFont*1.4
     }
 
     NodoInputField {
@@ -124,8 +125,9 @@ Item {
         anchors.left: nodeClearnetScreen.left
         anchors.top: clearnetAddressField.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
-        width: 924
-        height: NodoSystem.nodoItemHeight
+        width: (labelSize + 150)*1.4
+        height: NodoSystem.nodoItemHeight*1.4
+        font.pixelSize: NodoSystem.textFont*1.4
         itemSize: labelSize
         itemText: systemMessages.messages[NodoMessages.Message.Port]
         valueText: nodeClearnetScreen.clearnetPort
@@ -162,12 +164,13 @@ Item {
         }
     }
 */
-    Rectangle{
+    Rectangle {
         id: qrCodeRect
         anchors.right: nodeClearnetScreen.right
-        anchors.top: nodeClearnetScreen.top
-        anchors.topMargin: NodoSystem.nodoTopMargin
+        anchors.bottom: nodeClearnetScreen.bottom
+        //anchors.topMargin: NodoSystem.nodoTopMargin
         anchors.rightMargin: 10
+        anchors.bottomMargin: 10
         color: "black"
         width: 512
         height: 512
