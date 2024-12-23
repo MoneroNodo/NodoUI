@@ -221,6 +221,7 @@ Item {
             anchors.top: rightMenu.bottom
             anchors.topMargin: NodoSystem.subMenuTopMargin + 42//40
             color: "black"
+            width: exchangeNameText.width + exchangeSymbolText.width + exchangeRateText.width + 11
 
             Text {
                 id: exchangeNameText
@@ -251,8 +252,6 @@ Item {
                 horizontalAlignment: Text.AlignRight
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
             }
-
-
 
             Text {
                 id: exchangeRateText
