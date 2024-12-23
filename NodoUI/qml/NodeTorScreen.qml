@@ -124,7 +124,7 @@ Item {
         id: torRouteSwitchRect
         anchors.left: torSwitchRect.right
         anchors.top: nodeTorScreen.top
-        anchors.leftMargin: 25
+        anchors.leftMargin: 30
         //anchors.topMargin: NodoSystem.nodoTopMargin
         height: NodoSystem.nodoItemHeight
 
@@ -165,7 +165,7 @@ Item {
         anchors.left: nodeTorScreen.left
         anchors.top: torOnionAddressField.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
-        width: infoFieldWidth
+        width: labelSize + 50
         height: NodoSystem.nodoItemHeight
         itemSize: labelSize
         itemText: systemMessages.messages[NodoMessages.Message.Port] //qstr("Port")
