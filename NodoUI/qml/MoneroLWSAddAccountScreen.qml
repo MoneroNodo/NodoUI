@@ -9,7 +9,7 @@ Item {
     id: moneroLWSAddAccountScreen
 	anchors.fill: parent
     property int labelSize: 0
-    property int infoFieldSize: 1875
+    property int infoFieldSize: width - NodoSystem.subMenuLeftMargin
 
     Component.onCompleted: {
         onCalculateMaximumTextLabelLength()
@@ -76,6 +76,7 @@ Item {
         anchors.topMargin: NodoSystem.nodoTopMargin
         text: qsTr("Add Account")
         height: NodoSystem.nodoItemHeight
+        width: labelSize
         font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         isActive: moneroLWSMainAddressInput.valueText.length === 95 ? moneroLWSPrivateViewkeyLabel.valueText.length === 64 ? true : false : false
@@ -95,6 +96,7 @@ Item {
 		itemSize: labelSize
 		itemText: qsTr("LWS Address")
         valueText: "http://" + networkManager.getNetworkIP() + ":18086/basic"
+        
 	}	
 	
 	NodoInfoField {
@@ -107,7 +109,8 @@ Item {
 		itemSize: labelSize
 		itemText: qsTr("LWS Tor Address")   
         valueText: "http://" + nodoConfig.getStringValueFromKey("config", "tor_address") + ":18086/basic"
-	}
+        valueFontSize: 38
+    }
 	
     NodoInfoField {
         id: moneroLWSI2PAddress
