@@ -122,5 +122,6 @@ Item {
 		itemSize: labelSize
 		itemText: qsTr("LWS I2P Address") 
         valueText: "http://" + nodoConfig.getStringValueFromKey("config", "i2p_b32_addr_lws") + ":18086/basic"
-	}	
+        valueFontSize: 38
+    }	
 }
