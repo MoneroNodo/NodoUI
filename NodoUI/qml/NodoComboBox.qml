@@ -93,7 +93,7 @@ ComboBox {
         background: NodoCanvas {
             width: control.width
             height: comboboxPopup.implicitHeight
-            color: nodoControl.appTheme ? NodoSystem.dataFieldTitleBGColorNightModeOn : NodoSystem.dataFieldTitleBGColorNightModeOff
+            color: nodoControl.appTheme ? NodoSystem.dataFieldTextBGColorNightModeOn : NodoSystem.dataFieldTextBGColorNightModeOff
         }
     }
 }
