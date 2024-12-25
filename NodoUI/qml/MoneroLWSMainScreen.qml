@@ -59,7 +59,8 @@ Item {
         anchors.top: moneroLWSMainScreen.top
         anchors.left: moneroLWSMainScreen.left
         height: NodoSystem.subMenuButtonHeight
-        contentWidth: 1400
+        //contentWidth: 1400
+        implicitWidth: accountRequestsButton.x + accountRequestsButton.width
 
         background: Rectangle {
             color: "black"
@@ -73,6 +74,7 @@ Item {
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: { pageLoader.source = "MoneroLWSActiveScreen.qml" }
         }
+
         NodoTabButton {
             id: inactiveButton
             y: (moneroLWSMenuBar.height - inactiveButton.height)/2
@@ -82,6 +84,7 @@ Item {
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: { pageLoader.source = "MoneroLWSInactiveScreen.qml" }
         }
+
         NodoTabButton {
             id: addAccountButton
             y: (moneroLWSMenuBar.height - addAccountButton.height)/2
@@ -92,6 +95,7 @@ Item {
             onClicked: { pageLoader.source = "MoneroLWSAddAccountScreen.qml" }
             enabled: false
         }
+
         NodoTabButton {
             id: accountRequestsButton
             y: (moneroLWSMenuBar.height - accountRequestsButton.height)/2
@@ -113,5 +117,3 @@ Item {
         source: "MoneroLWSActiveScreen.qml"
     }
 }
-
-
