@@ -50,7 +50,7 @@ Item {
         valueText: ""
         height: NodoSystem.nodoItemHeight
         validator: RegularExpressionValidator {
-            regularExpression: /^4[1-9A-HJ-NP-Za-km-z]{94}$/
+            regularExpression: /^4[0-9A-Za-z]{94}$/
         }
     }
 
@@ -65,7 +65,7 @@ Item {
         valueText: ""
         height: NodoSystem.nodoItemHeight
         validator: RegularExpressionValidator {
-            regularExpression: /^[a-f0-9]{64}$/
+            regularExpression: /^[0-9a-z]{64}$/
         }
     }
 
