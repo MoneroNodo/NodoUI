@@ -112,7 +112,7 @@ Item {
         id: clearnetAddressField
         anchors.left: nodeClearnetScreen.left
         anchors.top: nodeClearnetScreen.top
-        width: labelSize + 400
+        width: labelSize + 300
         height: NodoSystem.nodoItemHeight
         itemSize: labelSize
         itemText: systemMessages.messages[NodoMessages.Message.Address]
