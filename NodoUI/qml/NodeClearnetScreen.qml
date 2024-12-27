@@ -112,14 +112,14 @@ Item {
         id: clearnetAddressField
         anchors.left: nodeClearnetScreen.left
         anchors.top: nodeClearnetScreen.top
-        width: width - NodoSystem.subMenuLeftMargin
+        width: labelSize + 400
         height: NodoSystem.nodoItemHeight
         itemSize: labelSize
         itemText: systemMessages.messages[NodoMessages.Message.Address]
         valueText: ""
     }
 
-    NodoInputField {
+    NodoInfoField {
         id: clearnetPortField
         anchors.left: nodeClearnetScreen.left
         anchors.top: clearnetAddressField.bottom
@@ -129,7 +129,7 @@ Item {
         itemSize: labelSize
         itemText: systemMessages.messages[NodoMessages.Message.Port]
         valueText: nodeClearnetScreen.clearnetPort
-        textFlag: Qt.ImhDigitsOnly
+/*      textFlag: Qt.ImhDigitsOnly
         readOnlyFlag: nodeClearnetScreen.inputFieldReadOnly
         validator: IntValidator{bottom: 0; top: 65535}
         onTextEditFinished: {
@@ -143,6 +143,7 @@ Item {
                 clearnetApplyPortButton.isActive = true
             }
         }
+*/
     }
 /*
     NodoButton {
