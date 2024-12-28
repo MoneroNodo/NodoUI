@@ -176,8 +176,8 @@ private:
 
     QStringList m_tzList = {
         "UTC",
-        "GMT",
-        "CET",
+        "Europe/London", // GMT
+        "Europe/Berlin", // CET
         "Europe/Bucharest",
         "Europe/Moscow",
         "Asia/Tehran",
