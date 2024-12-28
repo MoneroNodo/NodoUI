@@ -223,6 +223,20 @@ QString NodoConfigParser::getTimezone(void)
 
         return "UTC";
     }
+    if("GMT" == jsonValue.toString())
+    {
+        m_configObj.insert("timezone", "Europe/London");
+        writeJson();
+
+        return "Europe/London";
+    }
+    if("CET" == jsonValue.toString())
+    {
+        m_configObj.insert("timezone", "Europe/Berlin");
+        writeJson();
+
+        return "Europe/Berlin";
+    }
     return jsonValue.toString();
 }
 

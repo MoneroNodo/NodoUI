@@ -9,7 +9,10 @@ NodoSystemControl::NodoSystemControl(NodoUISystemParser *uiSystemParser, NodoCon
 
     m_displaySettings = m_uiSystemParser->readDisplaySettings();
     m_timezone = m_configParser->getTimezone();
-    m_tz_id = m_tzList.indexOf(m_timezone);
+    if (m_tzList.contains(m_timezone))
+        m_tz_id = m_tzList.indexOf(m_timezone);
+    else
+        m_tz_id = m_tzList.indexOf("UTC");
 
     m_dbusConnectionStatus = m_dbusController->isConnected();
 
