@@ -44,7 +44,7 @@ Rectangle {
                 textFormat: Text.RichText
                 color: nodoControl.appTheme ? NodoSystem.highlightedColorNightModeOn : NodoSystem.highlightedColorNightModeOff
                 font.family: NodoSystem.fontInter.name
-                font.pixelSize: 100
+                font.pixelSize: 96
                 wrapMode: Text.WordWrap
             }
 
@@ -62,7 +62,7 @@ Rectangle {
                     text: headerAuthStr
                     color: nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn : NodoSystem.dataFieldTextColorNightModeOff
                     font.family: NodoSystem.fontInter.name
-                    //font.pixelSize: 38
+                    font.pixelSize: 42
                 }
 
                 Label {
@@ -73,9 +73,9 @@ Rectangle {
                     width: feedChannel.paintedWidth
                     height: 22
                     text: channelStr
-                    color: nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn : NodoSystem.dataFieldTextColorNightModeOff
+                    color: nodoControl.appTheme ? NodoSystem.highlightedColorNightModeOn : NodoSystem.highlightedColorNightModeOff
                     font.family: NodoSystem.fontInter.name
-                    font.pixelSize: 38
+                    font.pixelSize: 44
                 }
 
                 Label {
@@ -88,7 +88,7 @@ Rectangle {
                     text: dataTimestampStr
                     color: nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn : NodoSystem.dataFieldTextColorNightModeOff
                     font.family: NodoSystem.fontInter.name
-                    font.pixelSize: 38
+                    font.pixelSize: 42
                 }
             }
 
@@ -96,7 +96,7 @@ Rectangle {
                 id: feedBody
                 anchors.left: middleSection.left
                 anchors.top: middleSection.bottom
-                anchors.topMargin: NodoSystem.subMenuTopMargin + 80//100
+                anchors.topMargin: NodoSystem.subMenuTopMargin + 82//100
                 width: root.width - 2*feedBody.x
                 wrapMode: Text.WordWrap
                 textFormat: Text.RichText
@@ -138,4 +138,3 @@ Rectangle {
         feedBody.text = dataTextStr
     }
 }
-
