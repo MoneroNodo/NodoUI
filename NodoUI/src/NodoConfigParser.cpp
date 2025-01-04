@@ -197,6 +197,7 @@ void NodoConfigParser::writeJson(void)
     m_configObj.insert(versionsObjName, m_versionsObj);
     m_configObj.insert(moneropayObjName, m_moneropayObj);
     m_configObj.insert(autoupdateObjName, m_autoupdateObj);
+    m_configObj.insert(banlistsObjName, m_banlistsObj);
 
     m_rootObj.insert(configObjName, m_configObj);
 
