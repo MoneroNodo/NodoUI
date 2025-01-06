@@ -11,6 +11,7 @@
 
 #include "NodoConfigParser.h"
 #include "NodoNetworkManager.h"
+#include "NodoSystemControl.h"
 
 #define FETCH_PERIOD 60*1000
 
@@ -18,7 +19,7 @@ class NodoPriceTicker : public QObject
 {
     Q_OBJECT
 public:
-    explicit NodoPriceTicker(NodoConfigParser *configParser = Q_NULLPTR, NodoNetworkManager *networkManager = Q_NULLPTR);
+    explicit NodoPriceTicker(NodoConfigParser *configParser = Q_NULLPTR, NodoNetworkManager *networkManager = Q_NULLPTR, NodoSystemControl *systemControl = Q_NULLPTR);
 
     Q_INVOKABLE int getCurrentCurrencyIndex(void);
     Q_INVOKABLE void setCurrentCurrencyIndex(int index);
@@ -42,6 +43,7 @@ private:
     QString m_currentCurrencyCode = "";
     QString m_newCurrencyCode = "";
     NodoConfigParser *m_configParser;
+    NodoSystemControl *m_systemControl;
     NodoNetworkManager *m_networkManager;
 
     QNetworkAccessManager m_manager;

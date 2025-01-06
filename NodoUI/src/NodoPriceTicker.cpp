@@ -1,12 +1,13 @@
 #include "NodoPriceTicker.h"
 #include "qdebug.h"
 
-NodoPriceTicker::NodoPriceTicker(NodoConfigParser *configParser, NodoNetworkManager *networkManager) : QObject(configParser)
+NodoPriceTicker::NodoPriceTicker(NodoConfigParser *configParser, NodoNetworkManager *networkManager, NodoSystemControl *systemControl) : QObject(configParser)
 {
     m_currency = -1;
     m_currentCurrencyIndex = 0;
     m_configParser = configParser;
     m_networkManager = networkManager;
+    m_systemControl = systemControl;
     m_currentCurrencyCode = m_configParser->getSelectedCurrencyName();
     m_newCurrencyCode = m_currentCurrencyCode;
 
@@ -144,9 +145,27 @@ bool NodoPriceTicker::isCurrencyReceived(void)
 void NodoPriceTicker::doDownload(const QString currencyCode)
 {
     m_timer->stop();
+    if (!m_systemControl->isTickerEnabled())
+        return;
+
+    if (m_systemControl->istorProxyEnabled())
+    {
+        QNetworkProxy torProxy;
+        torProxy.setType(QNetworkProxy::Socks5Proxy);
+        torProxy.setHostName("127.0.0.1");
+        torProxy.setPort(9050);
+        m_manager.setProxy(torProxy);
+    }
+    else
+    {
+        QNetworkProxy noProxy;
+        noProxy.setType(QNetworkProxy::NoProxy);
+        m_manager.setProxy(noProxy);
+    }
 
     const QUrl &url = "https://api.coingecko.com/api/v3/simple/price?ids=monero&vs_currencies=" +currencyCode + "&precision=2";
     QNetworkRequest request(url);
+
     QNetworkReply *reply = m_manager.get(request);
 
 #ifndef QT_NO_SSL

@@ -1,6 +1,5 @@
 #include "NodoSystemControl.h"
 
-
 NodoSystemControl::NodoSystemControl(NodoUISystemParser *uiSystemParser, NodoConfigParser *configParser, NodoDBusController *dbusController)
 {
     m_uiSystemParser = uiSystemParser;
@@ -420,6 +419,36 @@ void NodoSystemControl::setClearnetPort(QString port)
     enableComponent(false);
     m_configParser->setClearnetPort(port);
     m_dbusController->serviceManager("restart", "monerod");
+}
+
+bool NodoSystemControl::istorProxyEnabled()
+{
+    return m_configParser->getStringValueFromKey("config", "tor_global_enabled") == "TRUE";
+}
+
+bool NodoSystemControl::isTickerEnabled()
+{
+    return m_uiSystemParser->isTickerEnabled();
+}
+
+bool NodoSystemControl::isFeedsEnabled()
+{
+    return m_uiSystemParser->isFeedsEnabled();
+}
+
+void NodoSystemControl::settorProxyEnabled(bool enabled)
+{
+    m_configParser->setProperty("tor_global_enabled", enabled ? "TRUE" : "FALSE");
+}
+
+void NodoSystemControl::setTickerEnabled(bool enabled)
+{
+    m_uiSystemParser->setTickerEnabled(enabled);
+}
+
+void NodoSystemControl::setFeedsEnabled(bool enabled)
+{
+    m_uiSystemParser->setFeedsEnabled(enabled);
 }
 
 void NodoSystemControl::setTorPort(QString port)

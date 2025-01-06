@@ -373,3 +373,25 @@ bool NodoUISystemParser::setNewAddressPin(QString newPin)
     return true;
 }
 
+
+bool NodoUISystemParser::isFeedsEnabled(void)
+{
+    return m_rootObj.value("feeds_enabled").toBool(true);
+}
+
+bool NodoUISystemParser::isTickerEnabled(void)
+{
+    return m_rootObj.value("ticker_enabled").toBool(true);
+}
+
+void NodoUISystemParser::setFeedsEnabled(bool enabled)
+{
+    m_rootObj.insert("feeds_enabled", enabled);
+    writeJson();
+}
+
+void NodoUISystemParser::setTickerEnabled(bool enabled)
+{
+    m_rootObj.insert("ticker_enabled", enabled);
+    writeJson();
+}

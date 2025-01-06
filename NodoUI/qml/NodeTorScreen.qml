@@ -66,7 +66,7 @@ Item {
         target: nodoConfig
         function onConfigParserReady() {
             nodeTorScreen.torSwitchStatus = nodoConfig.getStringValueFromKey("config", "tor_enabled") === "TRUE" ? true : false
-            nodeTorScreen.torRouteSwitchStatus = nodoConfig.getStringValueFromKey("config", "tor_global_enabled") === "TRUE" ? true : false
+            nodeTorScreen.torRouteSwitchStatus = nodoConfig.istorProxyEnabled();
             nodeTorScreen.torOnionAddress = nodoConfig.getStringValueFromKey("config", "tor_address")
             nodeTorScreen.torPort = nodoConfig.getIntValueFromKey("config", "monero_rpc_port")
 
