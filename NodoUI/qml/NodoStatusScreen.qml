@@ -102,7 +102,9 @@ Rectangle {
         }
         else if(syncPercentage >= 0)
         {
-            syncStatusField.itemText = qsTr("Synchronizing (") + syncPercentage + "%)"
+            syncStatusField.itemText = qsTr("Synchronizing (") + syncPercentage + "%) " + (nodoSystemStatus.getIntValueFromKey("target_height") - nodoSystemStatus.getIntValueFromKey("height")) + " remaining"
+
+
         }
         else if(syncPercentage === -1)
         {
