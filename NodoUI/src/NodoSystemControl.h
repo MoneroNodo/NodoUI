@@ -1,6 +1,7 @@
 #ifndef NODO_SYSTEM_CONTROL_H
 #define NODO_SYSTEM_CONTROL_H
 #include <QObject>
+#include <QNetworkProxy>
 #include "NodoUISystemParser.h"
 #include "NodoConfigParser.h"
 #include "NodoDBusController.h"
@@ -20,7 +21,6 @@ public:
 
     bool getAppTheme(void);
     void setAppTheme(bool appTheme);
-    void sendUpdate(void);
 
     Q_INVOKABLE void setScreenSaverType(int state);
     Q_INVOKABLE int getScreenSaverType(void);
@@ -78,6 +78,9 @@ public:
     Q_INVOKABLE void setClearnetPort(QString port);
     Q_INVOKABLE void setTorPort(QString port);
     Q_INVOKABLE void setI2pPort(QString port);
+    Q_INVOKABLE void settorProxyEnabled(bool enabled);
+    Q_INVOKABLE void setTickerEnabled(bool enabled);
+    Q_INVOKABLE void setFeedsEnabled(bool enabled);
 
     Q_INVOKABLE int getErrorCode(void);
 
@@ -94,6 +97,9 @@ public:
     Q_INVOKABLE void setrpcPort(QString port);
     Q_INVOKABLE QString getrpcUser(void);
     Q_INVOKABLE QString getrpcPassword(void);
+    Q_INVOKABLE bool istorProxyEnabled(void);
+    Q_INVOKABLE bool isTickerEnabled(void);
+    Q_INVOKABLE bool isFeedsEnabled(void);
 
     Q_INVOKABLE bool isLockPinEnabled(void);
     Q_INVOKABLE bool verifyLockPinCode(QString pin);
@@ -164,7 +170,6 @@ private:
     int m_errorCode;
     bool m_firstBootDone = false;
     QString m_firstBootFileName = "/home/nodo/variables/firstboot";
-
 
     QString m_CPUUsage;
     QString m_Temperature;

@@ -4,6 +4,7 @@
 #include <QObject>
 
 #include "NodoNetworkManager.h"
+#include "NodoSystemControl.h"
 #include "NodoFeedParser.h"
 #include "pugixml.hpp"
 
@@ -38,7 +39,7 @@ class NodoFeedsControl : public QObject
 {
     Q_OBJECT
 public:
-    explicit NodoFeedsControl(NodoNetworkManager *networkManager);
+    explicit NodoFeedsControl(NodoNetworkManager *networkManager = Q_NULLPTR, NodoSystemControl *systemControl = Q_NULLPTR);
 
     Q_INVOKABLE bool getVisibleState(int index);
 
@@ -64,6 +65,7 @@ private:
 
     NodoNetworkManager *m_networkManager;
     NodoFeedParser *m_feedParser;
+    NodoSystemControl *m_systemControl;
     QNetworkAccessManager m_downloadManager;
 
     QVector< feed_tags_t > m_feeds_str;

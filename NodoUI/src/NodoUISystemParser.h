@@ -77,6 +77,11 @@ public:
     void disableLockPin(void);
     int getLockAfterTime(void);
     void setLockAfterTime(int newTime);
+    bool isFeedsEnabled(void);
+    bool isTickerEnabled(void);
+
+    void setFeedsEnabled(bool enabled);
+    void setTickerEnabled(bool enabled);
 
     int readKeyboardLayoutType(void);
     void writeKeyboardLayoutType(int kbLayout);

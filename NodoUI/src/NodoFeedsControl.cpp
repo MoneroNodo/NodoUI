@@ -1,16 +1,18 @@
 #include "NodoFeedsControl.h"
+#include "NodoSystemControl.h"
 
 const QString html_start = "<!DOCTYPE html> <html> <head> <style> body { background-color: rgba(255,255,255,0.0); font-family: 'Inter Display'; font-size: 44px;  color: ";
 const QString html_part_1 = ";} a { color: ";
 const QString html_part_2 = "; text-decoration: none; } </style> </head> <body>";
 const QString html_end = "</body> </html>";
 
-NodoFeedsControl::NodoFeedsControl(NodoNetworkManager *networkManager)
+NodoFeedsControl::NodoFeedsControl(NodoNetworkManager *networkManager, NodoSystemControl *systemControl)
 {
     m_textColor = "#FCFCFC";
 
     m_timer = new QTimer(this);
     m_networkManager = networkManager;
+    m_systemControl = systemControl;
     m_feedParser = new NodoFeedParser();
 
     m_feeds_str = m_feedParser->readFeedKeys();
@@ -56,9 +58,26 @@ void NodoFeedsControl::prepareDownload(int index)
 
 void NodoFeedsControl::downloadRSSContent(void)
 {
+    if (!m_systemControl->isFeedsEnabled())
+        return;
+    if (m_systemControl->istorProxyEnabled())
+    {
+        QNetworkProxy torProxy;
+        torProxy.setType(QNetworkProxy::Socks5Proxy);
+        torProxy.setHostName("127.0.0.1");
+        torProxy.setPort(9050);
+        m_downloadManager.setProxy(torProxy);
+    }
+    else
+    {
+        QNetworkProxy noProxy;
+        noProxy.setType(QNetworkProxy::NoProxy);
+        m_downloadManager.setProxy(noProxy);
+    }
     for(int index = 0; index < m_feeds_str.size(); index++)
     {
-        if((m_rss_sources[index].downloadStatus == FEED_STATUS_DOWNLOADED) || (m_rss_sources[index].downloadStatus == FEED_STATUS_DOWNLOAD_FAILED))
+        if((m_rss_sources[index].downloadStatus == FEED_STATUS_DOWNLOADED)
+            || (m_rss_sources[index].downloadStatus == FEED_STATUS_DOWNLOAD_FAILED))
         {
             m_rss_sources[index].downloadStatus = FEED_STATUS_DOWNLOADABLE;
             m_rss_sources[index].m_feeds.clear();

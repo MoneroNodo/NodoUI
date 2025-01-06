@@ -34,14 +34,14 @@ int main(int argc, char *argv[]) {
     NodoConfigParser *configParser = new NodoConfigParser();
 
     NodoNetworkManager *networkManager = new NodoNetworkManager(dbusController);
-    NodoFeedsControl *feedsControl = new NodoFeedsControl(networkManager);
     MoneroLWS *moneroLWS = new MoneroLWS(dbusController);
     NodoSystemStatusParser *systemStatusParser = new NodoSystemStatusParser(configParser);
     NodoSystemControl *systemControl = new NodoSystemControl(uiSystemParser, configParser, dbusController);
     NodoSyncInfo *syncInfo = new NodoSyncInfo(systemStatusParser);
     Translator *translator = new Translator(configParser, &engine);
     //MoneroPay *moneroPay = new MoneroPay(configParser);
-    NodoPriceTicker *priceTicker = new NodoPriceTicker(configParser, networkManager);
+    NodoPriceTicker *priceTicker = new NodoPriceTicker(configParser, networkManager, systemControl);
+    NodoFeedsControl *feedsControl = new NodoFeedsControl(networkManager, systemControl);
 
     engine.rootContext()->setContextProperty("moneroLWS", moneroLWS);
     engine.rootContext()->setContextProperty("priceTicker", priceTicker);
