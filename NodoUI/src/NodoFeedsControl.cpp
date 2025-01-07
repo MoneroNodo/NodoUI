@@ -8,7 +8,7 @@ const QString html_end = "</body> </html>";
 
 NodoFeedsControl::NodoFeedsControl(NodoNetworkManager *networkManager, NodoSystemControl *systemControl)
 {
-    m_textColor = "#FCFCFC";
+    m_textColor = "#F5F5F5";
 
     m_timer = new QTimer(this);
     m_networkManager = networkManager;

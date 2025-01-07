@@ -27,7 +27,7 @@ Slider {
         y: (control.height - height)/2
         width: handleWidth
         height: handleHeight
-        color: "#F2F2F7"
-        borderColor: "#F2F2F7"
+        color: "#F5F5F5"
+        borderColor: "#F5F5F5"
     }
 }

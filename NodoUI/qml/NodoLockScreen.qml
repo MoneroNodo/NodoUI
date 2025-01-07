@@ -106,7 +106,7 @@ Item {
             font.pixelSize: 32
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignHCenter
-            color: "#FCFCFC"
+            color: "#F5F5F5"
             font.family: NodoSystem.fontInter.name
         }
     }

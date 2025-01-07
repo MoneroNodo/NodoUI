@@ -190,7 +190,7 @@ Item {
             qrSize: Qt.size(width,width)
             qrData: createAddress()
             qrForeground: "black"
-            qrBackground: "#F2F2F7"
+            qrBackground: "#F5F5F5"
             qrMargin: 8
             qrMode: QtQuick2QREncode.MODE_8    //encode model
             qrLevel: QtQuick2QREncode.LEVEL_Q // encode level
