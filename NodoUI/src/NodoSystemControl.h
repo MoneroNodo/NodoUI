@@ -126,6 +126,7 @@ public:
     Q_INVOKABLE int getBlockchainStorageStatus(void);
 
     Q_INVOKABLE bool isPasswordValid(QString password);
+    Q_INVOKABLE void sendUpdate(void);
 
 
 signals:
