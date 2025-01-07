@@ -182,7 +182,7 @@ Rectangle {
         anchors.top: statusScreen.top
         anchors.topMargin: 42
         anchors.leftMargin: 1//cardMargin
-        width: 730
+        width: 750
         height: networkConnectionField.y + networkConnectionField.height + componentBottomMargin//683
         color: NodoSystem.cardBackgroundColor
 
@@ -331,7 +331,7 @@ Rectangle {
         anchors.top: statusScreen.top
         anchors.topMargin: 42
         anchors.leftMargin: cardMargin
-        width: 520
+        width: 550
         height: moneroLWSField.y + moneroLWSField.height + componentBottomMargin
         color: NodoSystem.cardBackgroundColor
 
@@ -425,7 +425,7 @@ Rectangle {
         anchors.left: systemStatus.right
         anchors.top: statusScreen.top
         anchors.topMargin: 42
-        width: 600
+        width: 550
         anchors.leftMargin: cardMargin
         //anchors.rightMargin: 2//cardMargin
         height: systemStorageField.y + systemStorageField.height + componentBottomMargin
