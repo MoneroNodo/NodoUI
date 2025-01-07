@@ -147,12 +147,15 @@ void NodoFeedsControl::downloadFinished(QNetworkReply *reply)
         parser.channelName = m_feeds_str.at(index).nameItem;
         parser.author = QString::fromStdString(xn.node().child("auth").text().get());
         parser.title = QString::fromStdString(xn.node().child("title").text().get());
+        QString desc = QString::fromStdString(xn.node().child(m_feeds_str.at(index).description_tag.toStdString().c_str()).text().get());
+        desc.replace(QRegularExpression("\\&amp;#x(\\d{4});"), "\\u\\1");
         parser.description.append(html_start)
             .append(m_textColor)
             .append(html_part_1)
             .append(m_textColor)
             .append(html_part_2)
-            .append(QString::fromStdString(xn.node().child(m_feeds_str.at(index).description_tag.toStdString().c_str()).text().get())).append(html_end);
+            .append(desc)
+            .append(html_end);
 
         //search for image
         for (pugi::xml_node n : xn.node().children())
