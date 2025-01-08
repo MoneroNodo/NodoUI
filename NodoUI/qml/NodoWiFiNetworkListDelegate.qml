@@ -312,7 +312,7 @@ NodoCanvas {
                     onCheckedChanged: {
                         if(checked === true)
                         {
-                            mainRect.state = "showPasswordField"
+                            mainRect.state = "showStaticConfigField"
                         }
                         else
                         {
@@ -376,7 +376,7 @@ NodoCanvas {
                 valueText: ""
                 textFlag: Qt.ImhDigitsOnly
                 //inputMask: "000.000.000.000;0"
-                Validator:RegularExpressionValidator{
+                validator:RegularExpressionValidator{
                     regularExpression: /^((?:[0-1]?[0-9]?[0-9]|2?[0-4]?[0-9]|25[0-5]).){3}(?:[0-1]?[0-9]?[0-9]|2?[0-4]?[0-9]|25[0-5])$/
                 }
             }
@@ -433,7 +433,7 @@ NodoCanvas {
             }
         }
     }
-    
+}
     MouseArea {
         anchors.fill: parent;
         z: -1
