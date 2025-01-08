@@ -79,7 +79,7 @@ NodoCanvas {
         id: ssidNameLabel
         anchors.top: mainRect.top
         anchors.left: mainRect.left
-        anchors.topMargin: ((connectButton.height)/2) //NodoSystem.nodoTopMargin + (connectButton.paintedHeight/2) //14//connectButton.y + (ssidNameLabel.paintedHeight)/2
+        anchors.topMargin: ((connectButton.height- height)/2) //NodoSystem.nodoTopMargin + (connectButton.paintedHeight/2) //14//connectButton.y + (ssidNameLabel.paintedHeight)/2
         anchors.leftMargin: 20
         font.pixelSize: NodoSystem.buttonTextFontSize
         font.family: NodoSystem.fontInter.name
