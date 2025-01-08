@@ -324,16 +324,16 @@ NodoCanvas {
             anchors.left: connectToANetworkRect.left
             anchors.right: connectToANetworkRect.right
             anchors.topMargin: NodoSystem.nodoTopMargin
-            height: dhcpSwitchRect.y + dhcpSwitchRect.height
+            height: connectToANetworkRect.y + connectToANetworkRect.height + NodoSystem.nodoItemHeight//dhcpSwitchRect.y + dhcpSwitchRect.height
             visible: mainRect.state === "showAdvancedConfigField" || mainRect.state === "showStaticConfigField" ? true : false
             color: "transparent"
             clip: true
 
             Rectangle {
                 id: dhcpSwitchRect
-                anchors.top: advancedSettingsRect.top
-                anchors.left: advancedSettingsRect.left
-                anchors.topMargin: mainRect.spacing
+                anchors.top: connectToANetworkRect.top
+                anchors.left: connectToANetworkRect.left
+                anchors.topMargin: NodoSystem.nodoTopMargin
                 height: NodoSystem.nodoItemHeight
 
                 NodoLabel{
