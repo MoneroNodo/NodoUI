@@ -285,6 +285,43 @@ NodoCanvas {
             passwordInput: true
         }
 
+        Rectangle {
+                id: dhcpSwitchRect
+                anchors.top: passwordInputField.bottom
+                anchors.left: connectToANetworkRect.left
+                anchors.topMargin: NodoSystem.nodoTopMargin
+                height: NodoSystem.nodoItemHeight
+
+                NodoLabel{
+                    id: dhcpSwitchText
+                    height: dhcpSwitchRect.height
+                    anchors.left: dhcpSwitchRect.left
+                    anchors.top: dhcpSwitchRect.top
+                    itemSize: labelSize
+                    text: systemMessages.messages[NodoMessages.Message.DHCP]
+                }
+
+                NodoSwitch {
+                    id: dhcpSwitch
+                    anchors.left: dhcpSwitchText.right
+                    anchors.leftMargin: NodoSystem.padding
+                    height: dhcpSwitchRect.height
+                    width: 2*dhcpSwitchRect.height
+                    display: AbstractButton.IconOnly
+                    checked: true
+                    onCheckedChanged: {
+                        if(checked === true)
+                        {
+                            mainRect.state = "showAdvancedConfigField"
+                        }
+                        else
+                        {
+                            mainRect.state = "showStaticConfigField"
+                        }
+                    }
+                }
+            }
+
         NodoButton {
             id: advancedButton
             anchors.top: passwordInputField.bottom
@@ -327,43 +364,7 @@ NodoCanvas {
             color: "transparent"
             clip: true
 
-            Rectangle {
-                id: dhcpSwitchRect
-                anchors.top: passwordInputField.bottom
-                anchors.left: connectToANetworkRect.left
-                anchors.topMargin: NodoSystem.nodoTopMargin
-                height: NodoSystem.nodoItemHeight
-
-                NodoLabel{
-                    id: dhcpSwitchText
-                    height: dhcpSwitchRect.height
-                    anchors.left: dhcpSwitchRect.left
-                    anchors.top: dhcpSwitchRect.top
-                    itemSize: labelSize
-                    text: systemMessages.messages[NodoMessages.Message.DHCP]
-                }
-
-                NodoSwitch {
-                    id: dhcpSwitch
-                    anchors.left: dhcpSwitchText.right
-                    anchors.leftMargin: NodoSystem.padding
-                    height: dhcpSwitchRect.height
-                    width: 2*dhcpSwitchRect.height
-                    display: AbstractButton.IconOnly
-                    checked: true
-                    onCheckedChanged: {
-                        if(checked === true)
-                        {
-                            mainRect.state = "showAdvancedConfigField"
-                        }
-                        else
-                        {
-                            mainRect.state = "showStaticConfigField"
-                        }
-                    }
-                }
-            }
-
+            
             NodoInputField {
                 id: wifiIPAddressField
                 anchors.top: dhcpSwitchRect.bottom
