@@ -316,7 +316,7 @@ NodoCanvas {
                         }
                         else
                         {
-                            mainRect.state = "showStaticConfigField"
+                            mainRect.state = "showAdvancedConfigField"
                         }
                     }
                 }
@@ -352,7 +352,7 @@ NodoCanvas {
             //    }
         //    }
         //}
-/*
+
         Rectangle {
             id: advancedSettingsRect
             anchors.top: dhcpSwitchRect.bottom
@@ -363,7 +363,7 @@ NodoCanvas {
             visible: mainRect.state === "showAdvancedConfigField" || mainRect.state === "showStaticConfigField" ? true : false
             color: "transparent"
             clip: true
-*/
+
             
             NodoInputField {
                 id: wifiIPAddressField
@@ -466,16 +466,16 @@ NodoCanvas {
             PropertyChanges { target: mainRect; height: defaultHeight + connectToANetworkRect.height }
             //PropertyChanges { target: advancedSettingsRect; height: 75 }
         },
-        //State {
-        //    name: "showAdvancedConfigField"
-        //    PropertyChanges { target: mainRect; height: defaultHeight +  advancedSettingsRect.height}
-            //PropertyChanges { target: advancedSettingsRect; height: 80 }
-        //},
         State {
-            name: "showStaticConfigField"
-            PropertyChanges { target: mainRect; height: defaultHeight + connectToANetworkRect.height + (NodoSystem.nodoItemHeight*5) + (mainRect.spacing*5) }
+            name: "showAdvancedConfigField"
+            PropertyChanges { target: mainRect; height: defaultHeight +  advancedSettingsRect.height}
+            //PropertyChanges { target: advancedSettingsRect; height: 80 }
+        },
+        //State {
+        //    name: "showStaticConfigField"
+        //    PropertyChanges { target: mainRect; height: defaultHeight + connectToANetworkRect.height + (NodoSystem.nodoItemHeight*5) + (mainRect.spacing*5) }
             //PropertyChanges { target: advancedSettingsRect; height: 410 }
-        }
+        //}
     ]
 
     transitions: Transition {
