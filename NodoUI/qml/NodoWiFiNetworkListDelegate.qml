@@ -334,6 +334,7 @@ NodoCanvas {
                 }
             }
         }
+    }
         //NodoButton {
             //id: advancedButton
             //anchors.top: passwordInputField.bottom
@@ -372,7 +373,7 @@ NodoCanvas {
             anchors.right: connectToANetworkRect.right
             anchors.topMargin: NodoSystem.nodoTopMargin
             height: dhcpSwitchRect.y + dhcpSwitchRect.height
-            visible: mainRect.state === "showAdvancedConfigField" || mainRect.state === "showStaticConfigField" ? true : false
+            visible: mainRect.state === "showAdvancedConfigField" || mainRect.state === "showAdvancedConfigField" ? true : false
             color: "transparent"
             clip: true
 

@@ -66,7 +66,7 @@ Item {
         qsTr("Wi-Fi"),
         qsTr("Connection name"),
         qsTr("SSID"),
-        qsTr("DHCP Auto"),
+        qsTr("DHCP"),
         qsTr("Address"),
         qsTr("Subnet Mask"),
         qsTr("Router"),
