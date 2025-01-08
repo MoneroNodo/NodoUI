@@ -333,7 +333,7 @@ NodoCanvas {
                     }
                 }
             }
-
+        }
         //NodoButton {
             //id: advancedButton
             //anchors.top: passwordInputField.bottom
