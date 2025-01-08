@@ -268,7 +268,7 @@ NodoCanvas {
         anchors.leftMargin: 14
         anchors.rightMargin: 14
         anchors.topMargin: 5
-        height: advancedButton.y + advancedButton.height 
+        height: dhcpSwitchRect.y + dhcpSwitchRect.height 
         visible: mainRect.state === "showDetails" || mainRect.state === "" ? false : true
         color: "transparent"
 
@@ -324,16 +324,16 @@ NodoCanvas {
 
         NodoButton {
             id: advancedButton
-            anchors.top: passwordInputField.bottom
-            anchors.right: connectToANetworkRect.right
-            anchors.topMargin: NodoSystem.nodoTopMargin
-            width: mainRect.buttonSize
-            height: networkDelegateItemHeight
-            font.family: NodoSystem.fontInter.name
-            font.pixelSize: NodoSystem.buttonTextFontSize
-            text: systemMessages.messages[NodoMessages.Message.Advanced] //qsTr("Advanced")
-            visible:  connectToANetworkRect.visible
-            fitMinimal: true
+            //anchors.top: passwordInputField.bottom
+            //anchors.right: connectToANetworkRect.right
+            //anchors.topMargin: NodoSystem.nodoTopMargin
+            //width: mainRect.buttonSize
+            //height: networkDelegateItemHeight
+            //font.family: NodoSystem.fontInter.name
+            //font.pixelSize: NodoSystem.buttonTextFontSize
+            //text: systemMessages.messages[NodoMessages.Message.Advanced] //qsTr("Advanced")
+            visible:  false //Hide redundant button
+            //fitMinimal: true
             onClicked: {
                 if("showPasswordField" === mainRect.state)
                 {
@@ -473,7 +473,7 @@ NodoCanvas {
         },
         State {
             name: "showStaticConfigField"
-            PropertyChanges { target: mainRect; height: defaultHeight + connectToANetworkRect.height + advancedSettingsRect.height }
+            PropertyChanges { target: mainRect; height: defaultHeight + connectToANetworkRect.height + (NodoSystem.nodoItemHeight*4) + (mainRect.spacing*3) }
             //PropertyChanges { target: advancedSettingsRect; height: 410 }
         }
     ]
