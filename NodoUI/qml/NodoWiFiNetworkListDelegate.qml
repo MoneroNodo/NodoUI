@@ -472,7 +472,7 @@ NodoCanvas {
         },
         State {
             name: "showStaticConfigField"
-            PropertyChanges { target: mainRect; height: defaultHeight + connectToANetworkRect.height + advancedSettingsRect.height + (NodoSystem.nodoItemHeight*4) }
+            PropertyChanges { target: mainRect; height: defaultHeight + connectToANetworkRect.height + advancedSettingsRect.height }
             //PropertyChanges { target: advancedSettingsRect; height: 410 }
         }
     ]
