@@ -324,14 +324,14 @@ NodoCanvas {
             anchors.left: connectToANetworkRect.left
             anchors.right: connectToANetworkRect.right
             anchors.topMargin: NodoSystem.nodoTopMargin
-            height: connectToANetworkRect.y + connectToANetworkRect.height + NodoSystem.nodoItemHeight//dhcpSwitchRect.y + dhcpSwitchRect.height
+            height: connectToANetworkRect.y + connectToANetworkRect.height //dhcpSwitchRect.y + dhcpSwitchRect.height
             visible: mainRect.state === "showAdvancedConfigField" || mainRect.state === "showStaticConfigField" ? true : false
             color: "transparent"
             clip: true
 
             Rectangle {
                 id: dhcpSwitchRect
-                anchors.top: connectToANetworkRect.top
+                anchors.top: passwordInputField.bottom
                 anchors.left: connectToANetworkRect.left
                 anchors.topMargin: NodoSystem.nodoTopMargin
                 height: NodoSystem.nodoItemHeight
