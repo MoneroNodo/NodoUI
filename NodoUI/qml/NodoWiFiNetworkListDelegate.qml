@@ -16,8 +16,8 @@ NodoCanvas {
     property int networkDelegateItemHeight: NodoSystem.nodoItemHeight
     property int labelSize: 200
     property bool showConnected: true
-    property int buttonSize: 300
-    property int defaultHeight: 100
+    property int buttonSize: 320
+    property int defaultHeight: NodoSystem.nodoItemHeight + (NodoSystem.nodoTopMargin*2)
     property int spacing: 1
 
     height: defaultHeight
@@ -62,9 +62,9 @@ NodoCanvas {
         id: ssidNameLabel
         anchors.top: mainRect.top
         anchors.left: mainRect.left
-        anchors.topMargin: connectButton.y + (ssidNameLabel.paintedHeight)/2
+        anchors.topMargin: (ssidNameLabel.paintedHeight)/2
         anchors.leftMargin: 20
-        font.pixelSize: NodoSystem.infoFieldItemFontSize
+        font.pixelSize: NodoSystem.buttonTextFontSize
         font.family: NodoSystem.fontInter.name
         height: 40
         text: mainRect.ssidName
@@ -75,8 +75,8 @@ NodoCanvas {
         id: connectButton
         anchors.top: mainRect.top
         anchors.right: mainRect.right
-        anchors.topMargin: 14
-        anchors.rightMargin: 14
+        anchors.topMargin: NodoSystem.nodoTopMargin
+        anchors.rightMargin: NodoSystem.nodoTopMargin
         width: mainRect.buttonSize
         height: networkDelegateItemHeight
         font.family: NodoSystem.fontInter.name
@@ -126,7 +126,7 @@ NodoCanvas {
         id: forgetButton
         anchors.top: mainRect.top
         anchors.right: connectButton.left
-        anchors.topMargin: 14
+        anchors.topMargin: NodoSystem.nodoTopMargin
         anchors.rightMargin: 20
         width: mainRect.buttonSize
         height: networkDelegateItemHeight
@@ -220,7 +220,7 @@ NodoCanvas {
         visible:  mainRect.state === "showDetails" ? true : false
         color: "transparent"
 
-        NodoInfoField{
+        NodoInfoField {
             id: signalStrengthField
             anchors.left: showDetailsRect.left
             anchors.top: showDetailsRect.top
@@ -232,7 +232,7 @@ NodoCanvas {
             valueText: mainRect.ssidSignalStrength + "%"
         }
 
-        NodoInfoField{
+        NodoInfoField {
             id: securityField
             anchors.left: showDetailsRect.left
             anchors.top: signalStrengthField.bottom
@@ -244,7 +244,7 @@ NodoCanvas {
             valueText: mainRect.ssidEncryption
         }
 
-        NodoInfoField{
+        NodoInfoField {
             id: frequencyField
             anchors.left: showDetailsRect.left
             anchors.top: securityField.bottom
@@ -268,7 +268,7 @@ NodoCanvas {
         anchors.leftMargin: 14
         anchors.rightMargin: 14
         anchors.topMargin: 5
-        height: 115
+        height: dhcpSwitchRect.y + dhcpSwitchRect.height 
         visible: mainRect.state === "showDetails" || mainRect.state === "" ? false : true
         color: "transparent"
 
@@ -280,67 +280,25 @@ NodoCanvas {
             height: networkDelegateItemHeight
             itemSize: labelSize
             itemText: systemMessages.messages[NodoMessages.Message.Password]
-
             valueText:""
             visible: connectToANetworkRect.visible && mainRect.ssidEncryption != "WEP"
             passwordInput: true
         }
 
-        NodoButton {
-            id: advancedSettings
+        Rectangle {
+            id: dhcpSwitchRect
             anchors.top: passwordInputField.bottom
             anchors.left: connectToANetworkRect.left
-            //anchors.rightMargin: 14//(connectToANetworkRect.width - advancedSettings.width)/2
-            width: mainRect.buttonSize
-            height: networkDelegateItemHeight
-            font.pixelSize: NodoSystem.infoFieldItemFontSize
-            text: systemMessages.messages[NodoMessages.Message.Advanced] //qsTr("Advanced")
-            visible:  connectToANetworkRect.visible
-            fitMinimal: true
-            onClicked: {
-                if("showPasswordField" === mainRect.state)
-                {
-                    if(dhcpSwitch.checked)
-                    {
-                        mainRect.state = "showAdvancedConfigField"
-                    }
-                    else
-                    {
-                        mainRect.state = "showStaticConfigField"
-                    }
-                }
-                else
-                {
-                    mainRect.state = "showPasswordField"
-                }
-            }
-        }
+            anchors.topMargin: NodoSystem.nodoTopMargin
+            height: NodoSystem.nodoItemHeight
 
-        Rectangle {
-            id: advancedSettingsRect
-            anchors.top: advancedSettings.bottom
-            anchors.left: connectToANetworkRect.left
-            anchors.right: connectToANetworkRect.right
-            anchors.topMargin: mainRect.spacing
-            height: dhcpSwitchRect.y + dhcpSwitchRect.height
-            visible: mainRect.state === "showAdvancedConfigField" || mainRect.state === "showStaticConfigField" ? true : false
-            color: "transparent"
-            clip: true
-
-            Rectangle {
-                id: dhcpSwitchRect
-                anchors.top: advancedSettingsRect.top
-                anchors.left: advancedSettingsRect.left
-                anchors.topMargin: mainRect.spacing
-                height: NodoSystem.nodoItemHeight
-
-                NodoLabel{
+                NodoLabel {
                     id: dhcpSwitchText
                     height: dhcpSwitchRect.height
                     anchors.left: dhcpSwitchRect.left
                     anchors.top: dhcpSwitchRect.top
                     itemSize: labelSize
-                    text: systemMessages.messages[NodoMessages.Message.DHCP]
+                    text: systemMessages.messages[NodoMessages.Message.DHCP] //qsTr("DHCP Auto")
                 }
 
                 NodoSwitch {
@@ -354,21 +312,63 @@ NodoCanvas {
                     onCheckedChanged: {
                         if(checked === true)
                         {
-                            mainRect.state = "showAdvancedConfigField"
+                            mainRect.state = "showStaticConfigField"
                         }
                         else
                         {
-                            mainRect.state = "showStaticConfigField"
-                        }
+                            mainRect.state = "showAdvancedConfigField"
+                        }  
                     }
                 }
-            }
+        }
+    
+        //NodoButton {
+            //id: advancedButton
+            //anchors.top: passwordInputField.bottom
+            //anchors.right: connectToANetworkRect.right
+            //anchors.topMargin: NodoSystem.nodoTopMargin
+            //width: mainRect.buttonSize
+            //height: networkDelegateItemHeight
+            //font.family: NodoSystem.fontInter.name
+            //font.pixelSize: NodoSystem.buttonTextFontSize
+            //text: systemMessages.messages[NodoMessages.Message.Advanced] //qsTr("Advanced")
+            //visible:  false //Hide redundant button
+            //fitMinimal: true
+            //onClicked: {
+            //    if("showPasswordField" === mainRect.state)
+            //    {
+            //        if(dhcpSwitch.checked)
+            //        {
+            //            mainRect.state = "showPasswordField"
+            //       }
+            //        else
+            //        {
+            //            mainRect.state = "showAdvancedConfigField"
+            //        }
+            //    }
+            //    else
+            //    {
+            //        mainRect.state = "showPasswordField"
+            //    }
+        //    }
+        //}
 
+        Rectangle {
+            id: advancedSettingsRect
+            anchors.top: dhcpSwitchRect.bottom
+            anchors.left: connectToANetworkRect.left
+            anchors.right: connectToANetworkRect.right
+            anchors.topMargin: NodoSystem.nodoTopMargin
+            height: dhcpSwitchRect.y + dhcpSwitchRect.height
+            visible: mainRect.state === "showAdvancedConfigField" || mainRect.state === "showStaticConfigField" ? true : false
+            color: "transparent"
+            clip: true
+            
             NodoInputField {
                 id: wifiIPAddressField
                 anchors.top: dhcpSwitchRect.bottom
                 anchors.left: advancedSettingsRect.left
-                anchors.topMargin: 10
+                anchors.topMargin: 5
                 width: 700//advancedSettingsRect.width
                 height: networkDelegateItemHeight
                 itemSize: labelSize
@@ -433,7 +433,7 @@ NodoCanvas {
             }
         }
     }
-
+}
     MouseArea {
         anchors.fill: parent;
         z: -1
@@ -449,12 +449,11 @@ NodoCanvas {
                 networkManager.startWifiScan()
             }
         }
-    }
 
     states: [
         State {
             name: "showDetails";
-            PropertyChanges { target: mainRect; height: defaultHeight + showDetailsRect.height +10}
+            PropertyChanges { target: mainRect; height: defaultHeight + showDetailsRect.height }
         },
         State {
             name: ""
@@ -462,18 +461,18 @@ NodoCanvas {
         },
         State {
             name: "showPasswordField"
-            PropertyChanges { target: mainRect; height: 82 + connectToANetworkRect.height + advancedSettingsRect.height}
-            PropertyChanges { target: advancedSettingsRect; height: 75 }
+            PropertyChanges { target: mainRect; height: defaultHeight + connectToANetworkRect.height }
+            //PropertyChanges { target: advancedSettingsRect; height: 75 }
         },
         State {
             name: "showAdvancedConfigField"
-            PropertyChanges { target: mainRect; height: 160 + connectToANetworkRect.height + advancedSettingsRect.height}
-            PropertyChanges { target: advancedSettingsRect; height: 80 }
+            PropertyChanges { target: mainRect; height: defaultHeight +  advancedSettingsRect.height}
+            //PropertyChanges { target: advancedSettingsRect; height: 80 }
         },
         State {
             name: "showStaticConfigField"
-            PropertyChanges { target: mainRect; height: 680 }
-            PropertyChanges { target: advancedSettingsRect; height: 410 }
+            PropertyChanges { target: mainRect; height: defaultHeight + connectToANetworkRect.height }
+            //PropertyChanges { target: advancedSettingsRect; height: 410 }
         }
     ]
 
