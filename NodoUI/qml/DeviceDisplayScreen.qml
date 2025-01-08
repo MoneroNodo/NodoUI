@@ -321,4 +321,60 @@ Item {
             }
         }
     }
+
+    Rectangle {
+        id: deviceDisplayPricetickerSwitchRect
+        anchors.left: deviceDisplayScreen.left
+        anchors.top: keyboardLayoutRect.bottom
+        anchors.topMargin: NodoSystem.nodoTopMargin
+        height: NodoSystem.nodoItemHeight
+
+        NodoLabel {
+            id: deviceDisplayPricetickerSwitchText
+            height: deviceDisplayPricetickerSwitchRect.height
+            anchors.left: deviceDisplayPricetickerSwitchRect.left
+            anchors.top: deviceDisplayPricetickerSwitchRect.top
+            text: qsTr("Priceticker")
+        }
+
+        NodoSwitch {
+            id: deviceDisplayPricetickerDisplaySwitch
+            anchors.left: deviceDisplayPricetickerSwitchText.right
+            anchors.leftMargin: NodoSystem.padding
+            height: deviceDisplayPricetickerSwitchRect.height
+            width: 2*deviceDisplayPricetickerSwitchRect.height
+            display: AbstractButton.IconOnly
+            onCheckedChanged: {
+                nodoControl.setTickerEnabled = true;
+            }
+        }
+    }
+
+    Rectangle {
+        id: deviceDisplayFeedsSwitchRect
+        anchors.left: deviceDisplayScreen.left
+        anchors.top: deviceDisplayPricetickerSwitchRect.bottom
+        anchors.topMargin: NodoSystem.nodoTopMargin
+        height: NodoSystem.nodoItemHeight
+
+        NodoLabel {
+            id: deviceDisplayFeedsSwitchText
+            height: deviceDisplayFeedsSwitchRect.height
+            anchors.left: deviceDisplayFeedsSwitchRect.left
+            anchors.top: deviceDisplayFeedsSwitchRect.top
+            text: qsTr("RSS Feeds")
+        }
+
+        NodoSwitch {
+            id: deviceDisplayFeedsSwitch
+            anchors.left: deviceDisplayFeedsSwitchText.right
+            anchors.leftMargin: NodoSystem.padding
+            height: deviceDisplayFeedsSwitchRect.height
+            width: 2*deviceDisplayFeedsSwitchRect.height
+            display: AbstractButton.IconOnly
+            onCheckedChanged: {
+                nodoControl.setFeedsEnabled = true;
+            }
+        }
+    }
 }
