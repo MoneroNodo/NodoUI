@@ -288,7 +288,7 @@ NodoCanvas {
         NodoButton {
             id: advancedSettings
             anchors.top: passwordInputField.bottom
-            anchors.right: mainRect.right //anchors.right: connectToANetworkRect.right
+            anchors.right: connectToANetworkRect.right //anchors.right: connectToANetworkRect.right
             anchors.topMargin: NodoSystem.nodoTopMargin
             anchors.rightMargin: NodoSystem.nodoTopMargin
             //anchors.rightMargin: 14//(connectToANetworkRect.width - advancedSettings.width)/2
@@ -323,7 +323,7 @@ NodoCanvas {
             anchors.top: advancedSettings.bottom
             anchors.left: connectToANetworkRect.left
             anchors.right: connectToANetworkRect.right
-            anchors.topMargin: mainRect.spacing
+            anchors.topMargin: NodoSystem.nodoTopMargin
             height: dhcpSwitchRect.y + dhcpSwitchRect.height
             visible: mainRect.state === "showAdvancedConfigField" || mainRect.state === "showStaticConfigField" ? true : false
             color: "transparent"
