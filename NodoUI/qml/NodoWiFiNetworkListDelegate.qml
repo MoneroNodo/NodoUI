@@ -318,6 +318,18 @@ NodoCanvas {
                         {
                             mainRect.state = "showAdvancedConfigField"
                         }
+                        
+                        if("showPasswordField" === mainRect.state)
+                        {
+                            if(dhcpSwitch.checked)
+                            {
+                            mainRect.state = "showPasswordField"
+                            }
+                            else
+                            {
+                            mainRect.state = "showAdvancedConfigField"
+                            }   
+                        }
                     }
                 }
             }
@@ -332,18 +344,18 @@ NodoCanvas {
             //font.family: NodoSystem.fontInter.name
             //font.pixelSize: NodoSystem.buttonTextFontSize
             //text: systemMessages.messages[NodoMessages.Message.Advanced] //qsTr("Advanced")
-            visible:  false //Hide redundant button
+            //visible:  false //Hide redundant button
             //fitMinimal: true
             //onClicked: {
             //    if("showPasswordField" === mainRect.state)
             //    {
             //        if(dhcpSwitch.checked)
             //        {
-            //            mainRect.state = "showAdvancedConfigField"
+            //            mainRect.state = "showPasswordField"
             //       }
             //        else
             //        {
-            //            mainRect.state = "showStaticConfigField"
+            //            mainRect.state = "showAdvancedConfigField"
             //        }
             //    }
             //    else
