@@ -268,7 +268,7 @@ NodoCanvas {
         anchors.leftMargin: 14
         anchors.rightMargin: 14
         anchors.topMargin: 5
-        height: advancedButton.y + advancedButton.height
+        height: dhcpSwitchRect.y + dhcpSwitchRect.height 
         visible: mainRect.state === "showDetails" || mainRect.state === "" ? false : true
         color: "transparent"
 
