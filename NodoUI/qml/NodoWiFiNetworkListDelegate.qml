@@ -268,7 +268,7 @@ NodoCanvas {
         anchors.leftMargin: 14
         anchors.rightMargin: 14
         anchors.topMargin: 5
-        height: dhcpSwitchRect.y + dhcpSwitchRect.height 
+        height: advancedButton.y + advancedButton.height
         visible: mainRect.state === "showDetails" || mainRect.state === "" ? false : true
         color: "transparent"
 
@@ -355,7 +355,7 @@ NodoCanvas {
 
         Rectangle {
             id: advancedSettingsRect
-            anchors.top: advancedButton.bottom
+            anchors.top: dhcpSwitchRect.bottom
             anchors.left: connectToANetworkRect.left
             anchors.right: connectToANetworkRect.right
             anchors.topMargin: NodoSystem.nodoTopMargin
