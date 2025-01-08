@@ -78,7 +78,7 @@ NodoCanvas {
     Label {
         id: ssidNameLabel
         anchors.top: mainRect.top
-        anchors.left: mainRect.left
+        anchors.left: mainRect.right
         anchors.topMargin: ((connectButton.height - height)/2) //NodoSystem.nodoTopMargin + (connectButton.paintedHeight/2) //14//connectButton.y + (ssidNameLabel.paintedHeight)/2
         anchors.leftMargin: 20
         font.pixelSize: NodoSystem.buttonTextFontSize
@@ -206,7 +206,7 @@ NodoCanvas {
         anchors.leftMargin: 14
         anchors.rightMargin: 14
         anchors.topMargin: 5
-        height: frequencyField.y + frequencyField.height //+ NodoSystem.nodoTopMargin
+        height: frequencyField.y + frequencyField.height
         visible:  mainRect.state === "showDetails" ? true : false
         color: "transparent"
 
