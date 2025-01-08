@@ -268,7 +268,7 @@ NodoCanvas {
         anchors.leftMargin: 14
         anchors.rightMargin: 14
         anchors.topMargin: 5
-        height: advancedSettings.y + advancedButton.height 
+        height: advancedButton.y + advancedButton.height 
         visible: mainRect.state === "showDetails" || mainRect.state === "" ? false : true
         color: "transparent"
 
