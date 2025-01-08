@@ -268,7 +268,7 @@ NodoCanvas {
         anchors.leftMargin: 14
         anchors.rightMargin: 14
         anchors.topMargin: 5
-        height: advancedSettings.y + advancedSettings.height 
+        height: advancedSettings.y + advancedButton.height 
         visible: mainRect.state === "showDetails" || mainRect.state === "" ? false : true
         color: "transparent"
 
@@ -291,7 +291,7 @@ NodoCanvas {
             anchors.right: connectToANetworkRect.right //anchors.right: connectToANetworkRect.right
             anchors.topMargin: NodoSystem.nodoTopMargin
             anchors.rightMargin: NodoSystem.nodoTopMargin
-            //anchors.rightMargin: 14//(connectToANetworkRect.width - advancedSettings.width)/2
+            //anchors.rightMargin: 14//(connectToANetworkRect.width - advancedButton.width)/2
             width: mainRect.buttonSize
             height: networkDelegateItemHeight
             font.family: NodoSystem.fontInter.name
@@ -320,7 +320,7 @@ NodoCanvas {
 
         Rectangle {
             id: advancedSettingsRect
-            anchors.top: advancedSettings.bottom
+            anchors.top: advancedButton.bottom
             anchors.left: connectToANetworkRect.left
             anchors.right: connectToANetworkRect.right
             anchors.topMargin: NodoSystem.nodoTopMargin
