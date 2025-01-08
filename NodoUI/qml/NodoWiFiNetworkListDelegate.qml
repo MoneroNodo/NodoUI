@@ -352,7 +352,7 @@ NodoCanvas {
             //    }
         //    }
         //}
-
+/*
         Rectangle {
             id: advancedSettingsRect
             anchors.top: dhcpSwitchRect.bottom
@@ -363,7 +363,7 @@ NodoCanvas {
             visible: mainRect.state === "showAdvancedConfigField" || mainRect.state === "showStaticConfigField" ? true : false
             color: "transparent"
             clip: true
-
+*/
             
             NodoInputField {
                 id: wifiIPAddressField
@@ -473,7 +473,7 @@ NodoCanvas {
         //},
         State {
             name: "showStaticConfigField"
-            PropertyChanges { target: mainRect; height: defaultHeight + connectToANetworkRect.height + (NodoSystem.nodoItemHeight*5) + (mainRect.spacing*5) + NodoSystem.nodoTopMargin }
+            PropertyChanges { target: mainRect; height: defaultHeight + connectToANetworkRect.height + (NodoSystem.nodoItemHeight*5) + (mainRect.spacing*5) }
             //PropertyChanges { target: advancedSettingsRect; height: 410 }
         }
     ]
