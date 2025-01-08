@@ -16,8 +16,8 @@ NodoCanvas {
     property int networkDelegateItemHeight: NodoSystem.nodoItemHeight
     property int labelSize: 200
     property bool showConnected: true
-    property int buttonSize: 300
-    property int defaultHeight: 100
+    property int buttonSize: 320
+    property int defaultHeight: NodoSystem.nodoItemHeight + (NodoSystem.nodoTopMargin*2)
     property int spacing: 1
 
     height: defaultHeight
@@ -64,7 +64,7 @@ NodoCanvas {
         anchors.left: mainRect.left
         anchors.topMargin: connectButton.y + (ssidNameLabel.paintedHeight)/2
         anchors.leftMargin: 20
-        font.pixelSize: NodoSystem.infoFieldItemFontSize
+        font.pixelSize: NodoSystem.buttonTextFontSize
         font.family: NodoSystem.fontInter.name
         height: 40
         text: mainRect.ssidName
@@ -75,8 +75,8 @@ NodoCanvas {
         id: connectButton
         anchors.top: mainRect.top
         anchors.right: mainRect.right
-        anchors.topMargin: 14
-        anchors.rightMargin: 14
+        anchors.topMargin: NodoSystem.nodoTopMargin
+        anchors.rightMargin: NodoSystem.nodoTopMargin
         width: mainRect.buttonSize
         height: networkDelegateItemHeight
         font.family: NodoSystem.fontInter.name
@@ -126,7 +126,7 @@ NodoCanvas {
         id: forgetButton
         anchors.top: mainRect.top
         anchors.right: connectButton.left
-        anchors.topMargin: 14
+        anchors.topMargin: NodoSystem.nodoTopMargin
         anchors.rightMargin: 20
         width: mainRect.buttonSize
         height: networkDelegateItemHeight
@@ -268,7 +268,7 @@ NodoCanvas {
         anchors.leftMargin: 14
         anchors.rightMargin: 14
         anchors.topMargin: 5
-        height: 115
+        height: advancedSettings.y + advancedSettings.height 
         visible: mainRect.state === "showDetails" || mainRect.state === "" ? false : true
         color: "transparent"
 
@@ -454,7 +454,7 @@ NodoCanvas {
     states: [
         State {
             name: "showDetails";
-            PropertyChanges { target: mainRect; height: defaultHeight + showDetailsRect.height +10}
+            PropertyChanges { target: mainRect; height: defaultHeight + showDetailsRect.height }
         },
         State {
             name: ""
