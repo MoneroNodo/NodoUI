@@ -286,13 +286,13 @@ NodoCanvas {
         }
 
         Rectangle {
-                id: dhcpSwitchRect
-                anchors.top: passwordInputField.bottom
-                anchors.left: connectToANetworkRect.left
-                anchors.topMargin: NodoSystem.nodoTopMargin
-                height: NodoSystem.nodoItemHeight
+            id: dhcpSwitchRect
+            anchors.top: passwordInputField.bottom
+            anchors.left: connectToANetworkRect.left
+            anchors.topMargin: NodoSystem.nodoTopMargin
+            height: NodoSystem.nodoItemHeight
 
-                NodoLabel{
+                NodoLabel {
                     id: dhcpSwitchText
                     height: dhcpSwitchRect.height
                     anchors.left: dhcpSwitchRect.left
@@ -323,17 +323,17 @@ NodoCanvas {
                         {
                             if(dhcpSwitch.checked)
                             {
-                            mainRect.state = "showPasswordField"
+                                mainRect.state = "showPasswordField"
                             }
                             else
                             {
-                            mainRect.state = "showAdvancedConfigField"
+                                mainRect.state = "showAdvancedConfigField"
                             }   
                         }
                     }
                 }
-            }
         }
+        
     
         //NodoButton {
             //id: advancedButton
@@ -364,7 +364,7 @@ NodoCanvas {
             //        mainRect.state = "showPasswordField"
             //    }
         //    }
-        //}
+    }
 
     Rectangle {
         id: advancedSettingsRect
@@ -373,7 +373,7 @@ NodoCanvas {
         anchors.right: connectToANetworkRect.right
         anchors.topMargin: NodoSystem.nodoTopMargin
         height: dhcpSwitchRect.y + dhcpSwitchRect.height
-        visible: mainRect.state === "showAdvancedConfigField" || mainRect.state === "showAdvancedConfigField" ? true : false
+        visible: mainRect.state === "showAdvancedConfigField" || mainRect.state === "showStaticConfigField" ? true : false
         color: "transparent"
         clip: true
             
@@ -444,7 +444,7 @@ NodoCanvas {
                     regularExpression: /^((?:[0-1]?[0-9]?[0-9]|2?[0-4]?[0-9]|25[0-5]).){3}(?:[0-1]?[0-9]?[0-9]|2?[0-4]?[0-9]|25[0-5])$/
                 }
             }
-    }
+        }
 
     MouseArea {
         anchors.fill: parent;
@@ -483,9 +483,9 @@ NodoCanvas {
         },
         State {
             name: "showStaticConfigField"
-            PropertyChanges { target: mainRect; height: defaultHeight + advancedSettingsRect.height }
+            PropertyChanges { target: mainRect; height: defaultHeight + connectToANetworkRect.height }
             //PropertyChanges { target: advancedSettingsRect; height: 410 }
-        //}
+        }
     ]
 
     transitions: Transition {
