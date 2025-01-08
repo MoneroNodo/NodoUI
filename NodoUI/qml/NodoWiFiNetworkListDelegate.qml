@@ -290,7 +290,7 @@ NodoCanvas {
             anchors.top: passwordInputField.bottom
             anchors.right: connectToANetworkRect.right //anchors.right: connectToANetworkRect.right
             anchors.topMargin: NodoSystem.nodoTopMargin
-            anchors.rightMargin: NodoSystem.nodoTopMargin
+            //anchors.rightMargin: NodoSystem.nodoTopMargin
             //anchors.rightMargin: 14//(connectToANetworkRect.width - advancedButton.width)/2
             width: mainRect.buttonSize
             height: networkDelegateItemHeight
@@ -474,7 +474,7 @@ NodoCanvas {
         },
         State {
             name: "showStaticConfigField"
-            PropertyChanges { target: mainRect; height: defaultHeight + advancedSettingsRect.height + wifiDNSField.y + wifiDNSField.height }
+            PropertyChanges { target: mainRect; height: defaultHeight + advancedSettingsRect.height }
             //PropertyChanges { target: advancedSettingsRect; height: 410 }
         }
     ]
