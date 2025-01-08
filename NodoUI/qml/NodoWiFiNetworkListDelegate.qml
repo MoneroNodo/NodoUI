@@ -334,7 +334,7 @@ NodoCanvas {
                 }
             }
         }
-    }
+    
         //NodoButton {
             //id: advancedButton
             //anchors.top: passwordInputField.bottom
@@ -366,17 +366,16 @@ NodoCanvas {
         //    }
         //}
 
-        Rectangle {
-            id: advancedSettingsRect
-            anchors.top: dhcpSwitchRect.bottom
-            anchors.left: connectToANetworkRect.left
-            anchors.right: connectToANetworkRect.right
-            anchors.topMargin: NodoSystem.nodoTopMargin
-            height: dhcpSwitchRect.y + dhcpSwitchRect.height
-            visible: mainRect.state === "showAdvancedConfigField" || mainRect.state === "showAdvancedConfigField" ? true : false
-            color: "transparent"
-            clip: true
-
+    Rectangle {
+        id: advancedSettingsRect
+        anchors.top: dhcpSwitchRect.bottom
+        anchors.left: connectToANetworkRect.left
+        anchors.right: connectToANetworkRect.right
+        anchors.topMargin: NodoSystem.nodoTopMargin
+        height: dhcpSwitchRect.y + dhcpSwitchRect.height
+        visible: mainRect.state === "showAdvancedConfigField" || mainRect.state === "showAdvancedConfigField" ? true : false
+        color: "transparent"
+        clip: true
             
             NodoInputField {
                 id: wifiIPAddressField
@@ -390,7 +389,7 @@ NodoCanvas {
                 valueText: ""
                 textFlag: Qt.ImhDigitsOnly
                 //inputMask: "000.000.000.000;0"
-                validator:RegularExpressionValidator{
+                Validator:RegularExpressionValidator{
                     regularExpression: /^((?:[0-1]?[0-9]?[0-9]|2?[0-4]?[0-9]|25[0-5]).){3}(?:[0-1]?[0-9]?[0-9]|2?[0-4]?[0-9]|25[0-5])$/
                 }
             }
@@ -445,7 +444,6 @@ NodoCanvas {
                     regularExpression: /^((?:[0-1]?[0-9]?[0-9]|2?[0-4]?[0-9]|25[0-5]).){3}(?:[0-1]?[0-9]?[0-9]|2?[0-4]?[0-9]|25[0-5])$/
                 }
             }
-        }
     }
 
     MouseArea {
@@ -463,7 +461,6 @@ NodoCanvas {
                 networkManager.startWifiScan()
             }
         }
-    }
 
     states: [
         State {
