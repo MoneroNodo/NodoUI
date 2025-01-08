@@ -280,7 +280,6 @@ NodoCanvas {
             height: networkDelegateItemHeight
             itemSize: labelSize
             itemText: systemMessages.messages[NodoMessages.Message.Password]
-
             valueText:""
             visible: connectToANetworkRect.visible && mainRect.ssidEncryption != "WEP"
             passwordInput: true
@@ -289,7 +288,7 @@ NodoCanvas {
         NodoButton {
             id: advancedSettings
             anchors.top: passwordInputField.bottom
-            anchors.left: connectToANetworkRect.right
+            anchors.right: mainRect.right //anchors.right: connectToANetworkRect.right
             anchors.topMargin: NodoSystem.nodoTopMargin
             anchors.rightMargin: NodoSystem.nodoTopMargin
             //anchors.rightMargin: 14//(connectToANetworkRect.width - advancedSettings.width)/2
