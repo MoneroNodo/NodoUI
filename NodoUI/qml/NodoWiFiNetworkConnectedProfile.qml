@@ -11,7 +11,7 @@ NodoCanvas {
     property int networkDelegateItemHeight: NodoSystem.nodoItemHeight
     property int labelSize: 200
     property int buttonSize: 300 
-    property int defaultHeight: 100
+    property int defaultHeight: NodoSystem.nodoItemHeight + (NodoSystem.nodoTopMargin*2)
 
     property string ssidName
     property string ssidIP
@@ -79,9 +79,9 @@ NodoCanvas {
         id: ssidNameLabel
         anchors.top: mainRect.top
         anchors.left: mainRect.left
-        anchors.topMargin: connectButton.y + (ssidNameLabel.paintedHeight)/2
+        anchors.topMargin: NodoSystem.nodoTopMargin //14//connectButton.y + (ssidNameLabel.paintedHeight)/2
         anchors.leftMargin: 20
-        font.pixelSize: NodoSystem.infoFieldItemFontSize + 2
+        font.pixelSize: NodoSystem.infoFieldItemFontSize + 4
         font.family: NodoSystem.fontInter.name
         height: 40
         text: mainRect.ssidName
@@ -128,6 +128,7 @@ NodoCanvas {
         onClicked: {
             forgetButton.isActive = false
             networkManager.forgetWirelessNetwork(mainRect.ssidConnectionPath)
+            mainRect.state = "" //Added later
         }
     }
 
