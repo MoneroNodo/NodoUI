@@ -47,7 +47,7 @@ void QREnCode::paint(QPainter *painter)
         QRcode_free(qrcode);
         //if qr_logo is empty return
 
-        painter->setBrush(QColor("#00ffffff"));
+        painter->setBrush(QColor("#F5F5F5"));
         double icon_width = (w- 2.0 * qrMargin) * qrPercent;
         double icon_height = icon_width;
         double wrap_x = (w - icon_width) / 2.0;
