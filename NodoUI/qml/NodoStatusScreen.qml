@@ -331,7 +331,7 @@ Rectangle {
         anchors.top: statusScreen.top
         anchors.topMargin: 42
         anchors.leftMargin: cardMargin
-        width: 470
+        width: 430
         height: moneroLWSField.y + moneroLWSField.height + componentBottomMargin
         color: NodoSystem.cardBackgroundColor
 
