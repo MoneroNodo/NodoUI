@@ -289,11 +289,13 @@ NodoCanvas {
         NodoButton {
             id: advancedSettings
             anchors.top: passwordInputField.bottom
-            anchors.left: connectToANetworkRect.left
+            anchors.left: connectToANetworkRect.right
+            anchors.topMargin: mainRect.spacing
             //anchors.rightMargin: 14//(connectToANetworkRect.width - advancedSettings.width)/2
             width: mainRect.buttonSize
             height: networkDelegateItemHeight
-            font.pixelSize: NodoSystem.infoFieldItemFontSize
+            font.family: NodoSystem.fontInter.name
+            font.pixelSize: NodoSystem.buttonTextFontSize
             text: systemMessages.messages[NodoMessages.Message.Advanced] //qsTr("Advanced")
             visible:  connectToANetworkRect.visible
             fitMinimal: true
