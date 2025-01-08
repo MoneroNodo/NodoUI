@@ -220,7 +220,7 @@ NodoCanvas {
         visible:  mainRect.state === "showDetails" ? true : false
         color: "transparent"
 
-        NodoInfoField{
+        NodoInfoField {
             id: signalStrengthField
             anchors.left: showDetailsRect.left
             anchors.top: showDetailsRect.top
@@ -232,7 +232,7 @@ NodoCanvas {
             valueText: mainRect.ssidSignalStrength + "%"
         }
 
-        NodoInfoField{
+        NodoInfoField {
             id: securityField
             anchors.left: showDetailsRect.left
             anchors.top: signalStrengthField.bottom
@@ -244,7 +244,7 @@ NodoCanvas {
             valueText: mainRect.ssidEncryption
         }
 
-        NodoInfoField{
+        NodoInfoField {
             id: frequencyField
             anchors.left: showDetailsRect.left
             anchors.top: securityField.bottom
@@ -317,23 +317,10 @@ NodoCanvas {
                         else
                         {
                             mainRect.state = "showAdvancedConfigField"
-                        }
-                        
-                        if("showPasswordField" === mainRect.state)
-                        {
-                            if(dhcpSwitch.checked)
-                            {
-                                mainRect.state = "showPasswordField"
-                            }
-                            else
-                            {
-                                mainRect.state = "showAdvancedConfigField"
-                            }   
-                        }
+                        }  
                     }
                 }
         }
-        
     
         //NodoButton {
             //id: advancedButton
@@ -364,18 +351,18 @@ NodoCanvas {
             //        mainRect.state = "showPasswordField"
             //    }
         //    }
-    }
+        //}
 
-    Rectangle {
-        id: advancedSettingsRect
-        anchors.top: dhcpSwitchRect.bottom
-        anchors.left: connectToANetworkRect.left
-        anchors.right: connectToANetworkRect.right
-        anchors.topMargin: NodoSystem.nodoTopMargin
-        height: dhcpSwitchRect.y + dhcpSwitchRect.height
-        visible: mainRect.state === "showAdvancedConfigField" || mainRect.state === "showStaticConfigField" ? true : false
-        color: "transparent"
-        clip: true
+        Rectangle {
+            id: advancedSettingsRect
+            anchors.top: dhcpSwitchRect.bottom
+            anchors.left: connectToANetworkRect.left
+            anchors.right: connectToANetworkRect.right
+            anchors.topMargin: NodoSystem.nodoTopMargin
+            height: dhcpSwitchRect.y + dhcpSwitchRect.height
+            visible: mainRect.state === "showAdvancedConfigField" || mainRect.state === "showStaticConfigField" ? true : false
+            color: "transparent"
+            clip: true
             
             NodoInputField {
                 id: wifiIPAddressField
@@ -445,7 +432,8 @@ NodoCanvas {
                 }
             }
         }
-
+    }
+    
     MouseArea {
         anchors.fill: parent;
         z: -1
