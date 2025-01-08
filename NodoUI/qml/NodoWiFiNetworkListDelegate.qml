@@ -62,7 +62,7 @@ NodoCanvas {
         id: ssidNameLabel
         anchors.top: mainRect.top
         anchors.left: mainRect.left
-        anchors.topMargin: connectButton.y + (ssidNameLabel.paintedHeight)/2
+        anchors.topMargin: (ssidNameLabel.paintedHeight)/2
         anchors.leftMargin: 20
         font.pixelSize: NodoSystem.buttonTextFontSize
         font.family: NodoSystem.fontInter.name
@@ -462,18 +462,18 @@ NodoCanvas {
         },
         State {
             name: "showPasswordField"
-            PropertyChanges { target: mainRect; height: 82 + connectToANetworkRect.height + advancedSettingsRect.height}
-            PropertyChanges { target: advancedSettingsRect; height: 75 }
+            PropertyChanges { target: mainRect; height: defaultHeight + connectToANetworkRect.height }
+            //PropertyChanges { target: advancedSettingsRect; height: 75 }
         },
         State {
             name: "showAdvancedConfigField"
-            PropertyChanges { target: mainRect; height: 160 + connectToANetworkRect.height + advancedSettingsRect.height}
-            PropertyChanges { target: advancedSettingsRect; height: 80 }
+            PropertyChanges { target: mainRect; height: defaultHeight + advancedSettingsRect.height}
+            //PropertyChanges { target: advancedSettingsRect; height: 80 }
         },
         State {
             name: "showStaticConfigField"
-            PropertyChanges { target: mainRect; height: 680 }
-            PropertyChanges { target: advancedSettingsRect; height: 410 }
+            PropertyChanges { target: mainRect; height: defaultHeight + wifiDNSField.y + wifiDNSField.height }
+            //PropertyChanges { target: advancedSettingsRect; height: 410 }
         }
     ]
 
