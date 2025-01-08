@@ -79,7 +79,7 @@ NodoCanvas {
         id: ssidNameLabel
         anchors.top: mainRect.top
         anchors.left: mainRect.left
-        anchors.topMargin: NodoSystem.nodoTopMargin //14//connectButton.y + (ssidNameLabel.paintedHeight)/2
+        anchors.topMargin: NodoSystem.nodoTopMargin + (connectButton.paintedHeight/2) //14//connectButton.y + (ssidNameLabel.paintedHeight)/2
         anchors.leftMargin: 20
         font.pixelSize: NodoSystem.infoFieldItemFontSize + 4
         font.family: NodoSystem.fontInter.name
@@ -206,7 +206,7 @@ NodoCanvas {
         anchors.leftMargin: 14
         anchors.rightMargin: 14
         anchors.topMargin: 5
-        height: frequencyField.y + frequencyField.height
+        height: frequencyField.y + NodoSystem.nodoTopMargin
         visible:  mainRect.state === "showDetails" ? true : false
         color: "transparent"
 
@@ -294,7 +294,7 @@ NodoCanvas {
     states: [
         State {
             name: "showDetails";
-            PropertyChanges { target: mainRect; height: defaultHeight + showDetailsRect.height + 10}
+            PropertyChanges { target: mainRect; height: defaultHeight + showDetailsRect.height }
         },
         State {
             name: ""
