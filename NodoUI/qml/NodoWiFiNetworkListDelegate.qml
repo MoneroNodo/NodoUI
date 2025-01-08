@@ -286,7 +286,7 @@ NodoCanvas {
         }
 
         NodoButton {
-            id: advancedSettings
+            id: advancedButton
             anchors.top: passwordInputField.bottom
             anchors.right: connectToANetworkRect.right //anchors.right: connectToANetworkRect.right
             anchors.topMargin: NodoSystem.nodoTopMargin
@@ -474,7 +474,7 @@ NodoCanvas {
         },
         State {
             name: "showStaticConfigField"
-            PropertyChanges { target: mainRect; height: defaultHeight + wifiDNSField.y + wifiDNSField.height }
+            PropertyChanges { target: mainRect; height: defaultHeight + advancedSettingsRect.height + wifiDNSField.y + wifiDNSField.height }
             //PropertyChanges { target: advancedSettingsRect; height: 410 }
         }
     ]
