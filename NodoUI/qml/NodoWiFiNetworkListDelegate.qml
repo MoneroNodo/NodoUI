@@ -298,7 +298,7 @@ NodoCanvas {
                     anchors.left: dhcpSwitchRect.left
                     anchors.top: dhcpSwitchRect.top
                     itemSize: labelSize
-                    text: systemMessages.messages[NodoMessages.Message.DHCP] //qsTr("DHCP Auto)
+                    text: systemMessages.messages[NodoMessages.Message.DHCP] //qsTr("DHCP Auto")
                 }
 
                 NodoSwitch {
@@ -466,11 +466,11 @@ NodoCanvas {
             PropertyChanges { target: mainRect; height: defaultHeight + connectToANetworkRect.height }
             //PropertyChanges { target: advancedSettingsRect; height: 75 }
         },
-        State {
-            name: "showAdvancedConfigField"
-            PropertyChanges { target: mainRect; height: defaultHeight +  advancedSettingsRect.height}
+        //State {
+        //    name: "showAdvancedConfigField"
+        //    PropertyChanges { target: mainRect; height: defaultHeight +  advancedSettingsRect.height}
             //PropertyChanges { target: advancedSettingsRect; height: 80 }
-        },
+        //},
         State {
             name: "showStaticConfigField"
             PropertyChanges { target: mainRect; height: defaultHeight + connectToANetworkRect.height + (NodoSystem.nodoItemHeight*5) + (mainRect.spacing*5) + NodoSystem.nodoTopMargin }
