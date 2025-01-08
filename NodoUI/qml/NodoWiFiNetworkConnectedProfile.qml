@@ -10,7 +10,7 @@ NodoCanvas {
 
     property int networkDelegateItemHeight: NodoSystem.nodoItemHeight
     property int labelSize: 200
-    property int buttonSize: 300 
+    property int buttonSize: 320 
     property int defaultHeight: NodoSystem.nodoItemHeight + (NodoSystem.nodoTopMargin*2)
 
     property string ssidName
