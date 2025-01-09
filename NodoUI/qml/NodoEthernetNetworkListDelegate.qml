@@ -7,14 +7,14 @@ import NodoCanvas 1.0
 
 NodoCanvas {
     id: mainRect
-    width: 1880
+    width: 1900
 
     property int ethConnIndex
     property int networkDelegateItemHeight: NodoSystem.nodoItemHeight
     property int labelSize: 200
     property bool showConnected: true
-    property int buttonSize: 300
-    property int defaultHeight: 100
+    property int buttonSize: 320
+    property int defaultHeight: NodoSystem.nodoItemHeight + (NodoSystem.nodoTopMargin*2)
     property int spacing: 1
 
     height: defaultHeight
@@ -28,9 +28,9 @@ NodoCanvas {
         id: ethConnLabel
         anchors.top: mainRect.top
         anchors.left: mainRect.left
-        anchors.topMargin: connectButton.y + (ethConnLabel.paintedHeight)/2
+        anchors.topMargin: (ethConnLabel.paintedHeight)/2
         anchors.leftMargin: 20
-        font.pixelSize: NodoSystem.infoFieldItemFontSize
+        font.pixelSize: NodoSystem.buttonTextFontSize
         font.family: NodoSystem.fontInter.name
         height: 40
         text: mainRect.connectionName
@@ -41,8 +41,8 @@ NodoCanvas {
         id: connectButton
         anchors.top: mainRect.top
         anchors.right: mainRect.right
-        anchors.topMargin: 14
-        anchors.rightMargin: 14
+        anchors.topMargin: NodoSystem.nodoTopMargin
+        anchors.rightMargin: NodoSystem.nodoTopMargin
         width: mainRect.buttonSize
         height: networkDelegateItemHeight
         font.family: NodoSystem.fontInter.name
@@ -57,6 +57,7 @@ NodoCanvas {
                 connectButton.text = systemMessages.messages[NodoMessages.Message.Connecting]
                 connectButton.update()
                 networkManager.activateEthernetConnection(mainRect.ethConnIndex)
+                mainRect.state = "" //Added later
         }
     }
 
@@ -64,7 +65,7 @@ NodoCanvas {
         id: forgetButton
         anchors.top: mainRect.top
         anchors.right: connectButton.left
-        anchors.topMargin: 14
+        anchors.topMargin: NodoSystem.nodoTopMargin
         anchors.rightMargin: 20
         width: mainRect.buttonSize
         height: networkDelegateItemHeight
@@ -77,6 +78,7 @@ NodoCanvas {
         onClicked: {
             forgetButton.isActive = false
             networkManager.forgetWiredNetwork(mainRect.connectionPath)
+            mainRect.state = "" //Added later
         }
     }
 }

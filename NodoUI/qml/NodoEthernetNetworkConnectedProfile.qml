@@ -10,8 +10,8 @@ NodoCanvas {
 
     property int networkDelegateItemHeight: NodoSystem.nodoItemHeight
     property int labelSize: 200
-    property int buttonSize: 300
-    property int defaultHeight: 100
+    property int buttonSize: 320
+    property int defaultHeight: NodoSystem.nodoItemHeight + (NodoSystem.nodoTopMargin*2)
 
     property string profileName
     property string profileIP
@@ -69,9 +69,9 @@ NodoCanvas {
         id: profileNameLabel
         anchors.top: mainRect.top
         anchors.left: mainRect.left
-        anchors.topMargin: connectButton.y + (profileNameLabel.paintedHeight)/2
+        anchors.topMargin: (profileNameLabel.paintedHeight)/2
         anchors.leftMargin: 20
-        font.pixelSize: NodoSystem.infoFieldItemFontSize + 2
+        font.pixelSize: NodoSystem.buttonTextFontSize
         font.family: NodoSystem.fontInter.name
         height: 40
         text: mainRect.profileName
@@ -82,8 +82,8 @@ NodoCanvas {
         id: connectButton
         anchors.top: mainRect.top
         anchors.right: mainRect.right
-        anchors.topMargin: 14
-        anchors.rightMargin: 14
+        anchors.topMargin: NodoSystem.nodoTopMargin
+        anchors.rightMargin: NodoSystem.nodoTopMargin
         width: mainRect.buttonSize
         height: networkDelegateItemHeight
         font.family: NodoSystem.fontInter.name
@@ -92,6 +92,7 @@ NodoCanvas {
         visible: true
         isActive: true
         fitMinimal: true
+        
         onClicked: {
             connectButton.isActive = false
             connectButton.text = systemMessages.messages[NodoMessages.Message.Disconnecting]
@@ -105,7 +106,7 @@ NodoCanvas {
         id: forgetButton
         anchors.top: mainRect.top
         anchors.right: connectButton.left
-        anchors.topMargin: 14
+        anchors.topMargin: NodoSystem.nodoTopMargin
         anchors.rightMargin: 20
         width: mainRect.buttonSize
         height: networkDelegateItemHeight
@@ -119,6 +120,7 @@ NodoCanvas {
             forgetButton.isActive = false
             forgetButton.update()
             networkManager.forgetWiredNetwork(mainRect.connectionPath)
+            mainRect.state = "" //Added later
         }
     }
 
@@ -138,7 +140,7 @@ NodoCanvas {
             id: ipField
             anchors.left: showDetailsRect.left
             anchors.top: showDetailsRect.top
-            anchors.topMargin: mainRect.spacing
+            anchors.topMargin: NodoSystem.nodoTopMargin
             width: showDetailsRect.width
             itemSize: labelSize
             height: networkDelegateItemHeight
@@ -167,7 +169,7 @@ NodoCanvas {
             itemSize: labelSize
             height:  networkDelegateItemHeight
             itemText: systemMessages.messages[NodoMessages.Message.DeviceSpeed]
-            valueText: mainRect.deviceSpeed
+            valueText: labelSize //mainRect.deviceSpeed
         }
     }
 
@@ -193,7 +195,7 @@ NodoCanvas {
     states: [
         State {
             name: "showDetails";
-            PropertyChanges { target: mainRect; height: defaultHeight + showDetailsRect.height +10}
+            PropertyChanges { target: mainRect; height: defaultHeight + showDetailsRect.height }
         },
         State {
             name: ""
