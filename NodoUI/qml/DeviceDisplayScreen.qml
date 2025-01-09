@@ -58,6 +58,8 @@ Item {
         anchors.top: deviceDisplayBrightnessRect.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         height: NodoSystem.nodoItemHeight
+        color: "black"
+        width: deviceDisplayNightModeSwitchText.width + deviceDisplayNightModeSwitch.width
 
         NodoLabel {
             id: deviceDisplayNightModeSwitchText
@@ -82,9 +84,10 @@ Item {
 
     Rectangle {
         id: deviceDisplayFlipOrientationSwitchRect
-        anchors.left: deviceDisplayScreen.left
-        anchors.top: deviceDisplayNightModeSwitchRect.bottom
+        anchors.left: deviceDisplayNightModeSwitchRect.right
+        anchors.top: deviceDisplayBrightnessRect.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
+        anchors.leftMargin: 30
         height: NodoSystem.nodoItemHeight
 
         NodoLabel {
@@ -149,7 +152,7 @@ Item {
     Rectangle {
         id: screenSaverRect
         anchors.left: deviceDisplayScreen.left
-        anchors.top: deviceDisplayFlipOrientationSwitchRect.bottom
+        anchors.top: deviceDisplayNightModeSwitchRect.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         height: NodoSystem.nodoItemHeight
 
