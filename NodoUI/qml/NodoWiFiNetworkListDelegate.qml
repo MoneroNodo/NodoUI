@@ -224,7 +224,7 @@ NodoCanvas {
             id: signalStrengthField
             anchors.left: showDetailsRect.left
             anchors.top: showDetailsRect.top
-            anchors.topMargin: 5//mainRect.spacing
+            anchors.topMargin: NodoSystem.nodoTopMargin
             width: showDetailsRect.width
             itemSize: labelSize
             height: networkDelegateItemHeight
@@ -268,7 +268,7 @@ NodoCanvas {
         anchors.leftMargin: 14
         anchors.rightMargin: 14
         anchors.topMargin: 5
-        height: dhcpSwitchRect.y + dhcpSwitchRect.height 
+        height: dhcpSwitchRect.y + dhcpSwitchRect.height
         visible: mainRect.state === "showDetails" || mainRect.state === "" ? false : true
         color: "transparent"
 
@@ -312,55 +312,24 @@ NodoCanvas {
                     onCheckedChanged: {
                         if(checked === true)
                         {
-                            mainRect.state = "showStaticConfigField"
+                            mainRect.state = "showPasswordField"
                         }
                         else
                         {
-                            mainRect.state = "showAdvancedConfigField"
-                        }  
+                            mainRect.state = "showStaticConfigField"
+                        }
                     }
                 }
         }
-    
-        //NodoButton {
-            //id: advancedButton
-            //anchors.top: passwordInputField.bottom
-            //anchors.right: connectToANetworkRect.right
-            //anchors.topMargin: NodoSystem.nodoTopMargin
-            //width: mainRect.buttonSize
-            //height: networkDelegateItemHeight
-            //font.family: NodoSystem.fontInter.name
-            //font.pixelSize: NodoSystem.buttonTextFontSize
-            //text: systemMessages.messages[NodoMessages.Message.Advanced] //qsTr("Advanced")
-            //visible:  false //Hide redundant button
-            //fitMinimal: true
-            //onClicked: {
-            //    if("showPasswordField" === mainRect.state)
-            //    {
-            //        if(dhcpSwitch.checked)
-            //        {
-            //            mainRect.state = "showPasswordField"
-            //       }
-            //        else
-            //        {
-            //            mainRect.state = "showAdvancedConfigField"
-            //        }
-            //    }
-            //    else
-            //    {
-            //        mainRect.state = "showPasswordField"
-            //    }
-        //    }
-        //}
 
         Rectangle {
             id: advancedSettingsRect
             anchors.top: dhcpSwitchRect.bottom
             anchors.left: connectToANetworkRect.left
             anchors.right: connectToANetworkRect.right
-            anchors.topMargin: NodoSystem.nodoTopMargin
-            height: dhcpSwitchRect.y + dhcpSwitchRect.height
-            visible: mainRect.state === "showAdvancedConfigField" || mainRect.state === "showStaticConfigField" ? true : false
+            anchors.topMargin: mainRect.spacing
+            height: wifiDNSField.y + wifiDNSField.height
+            visible: connectToANetworkRect.visible && mainRect.state === "showAdvancedConfigField" || mainRect.state === "showStaticConfigField" ? true : false
             color: "transparent"
             clip: true
             
@@ -368,7 +337,7 @@ NodoCanvas {
                 id: wifiIPAddressField
                 anchors.top: dhcpSwitchRect.bottom
                 anchors.left: advancedSettingsRect.left
-                anchors.topMargin: 5
+                //anchors.topMargin: mainRect.spacing
                 width: 700//advancedSettingsRect.width
                 height: networkDelegateItemHeight
                 itemSize: labelSize
@@ -433,7 +402,7 @@ NodoCanvas {
             }
         }
     }
-}
+
     MouseArea {
         anchors.fill: parent;
         z: -1
@@ -449,6 +418,7 @@ NodoCanvas {
                 networkManager.startWifiScan()
             }
         }
+    }
 
     states: [
         State {
@@ -462,17 +432,14 @@ NodoCanvas {
         State {
             name: "showPasswordField"
             PropertyChanges { target: mainRect; height: defaultHeight + connectToANetworkRect.height }
-            //PropertyChanges { target: advancedSettingsRect; height: 75 }
         },
         State {
             name: "showAdvancedConfigField"
-            PropertyChanges { target: mainRect; height: defaultHeight +  advancedSettingsRect.height}
-            //PropertyChanges { target: advancedSettingsRect; height: 80 }
+            PropertyChanges { target: mainRect; height: defaultHeight + connectToANetworkRect.height }
         },
         State {
             name: "showStaticConfigField"
-            PropertyChanges { target: mainRect; height: defaultHeight + connectToANetworkRect.height }
-            //PropertyChanges { target: advancedSettingsRect; height: 410 }
+            PropertyChanges { target: mainRect; height: defaultHeight + connectToANetworkRect.height + advancedSettingsRect.height }
         }
     ]
 
