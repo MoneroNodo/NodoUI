@@ -331,6 +331,8 @@ Item {
         anchors.top: keyboardLayoutRect.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         height: NodoSystem.nodoItemHeight
+        color: "black"
+        width: deviceDisplayPricetickerSwitchText.width + deviceDisplayPricetickerDisplaySwitch.width
 
         NodoLabel {
             id: deviceDisplayPricetickerSwitchText
@@ -347,25 +349,36 @@ Item {
             height: deviceDisplayPricetickerSwitchRect.height
             width: 2*deviceDisplayPricetickerSwitchRect.height
             display: AbstractButton.IconOnly
+            
             onCheckedChanged: {
-                nodoControl.setTickerEnabled = true;
+                if(checked)
+                {
+                    nodoControl.setTickerEnabled = true
+                }
+                else
+                {
+                    nodoControl.setTickerEnabled = false
+                }
             }
         }
     }
 
     Rectangle {
         id: deviceDisplayFeedsSwitchRect
-        anchors.left: deviceDisplayScreen.left
-        anchors.top: deviceDisplayPricetickerSwitchRect.bottom
+        anchors.left: deviceDisplayPricetickerSwitchRect.right
+        anchors.leftMargin: 30
+        anchors.top: keyboardLayoutRect.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         height: NodoSystem.nodoItemHeight
+        color: "black"
+        width: deviceDisplayFeedsSwitchText.width + deviceDisplayFeedsSwitch.width + deviceDisplayManageFeedsButton.x + deviceDisplayManageFeedsButton.width + 30
 
         NodoLabel {
             id: deviceDisplayFeedsSwitchText
             height: deviceDisplayFeedsSwitchRect.height
             anchors.left: deviceDisplayFeedsSwitchRect.left
             anchors.top: deviceDisplayFeedsSwitchRect.top
-            text: qsTr("RSS Feeds")
+            text: qsTr("News Feeds")
         }
 
         NodoSwitch {
@@ -375,9 +388,36 @@ Item {
             height: deviceDisplayFeedsSwitchRect.height
             width: 2*deviceDisplayFeedsSwitchRect.height
             display: AbstractButton.IconOnly
+            
             onCheckedChanged: {
-                nodoControl.setFeedsEnabled = true;
+                if(checked === true)
+                    {
+                        nodoControl.setFeedsEnabled = "true"
+                        newsButton.visible = "true"
+                        deviceDisplayManageFeedsButton.visible = "true"
+                    }
+                    else
+                    {
+                        nodoControl.setFeedsEnabled = "false"
+                        newsButton.visible = "false"
+                        //deviceDisplayManageFeedsButton.visible = false
+                    }
             }
+        }
+
+        NodoButton  {
+            id: deviceDisplayManageFeedsButton
+            anchors.left: deviceDisplayFeedsSwitchRect.right
+            anchors.leftMargin: 30
+            anchors.top: keyboardLayoutRect.bottom
+            anchors.topMargin: NodoSystem.nodoTopMargin
+            height: NodoSystem.nodoItemHeight
+            width: 320
+            text: qsTr("Manage Feeds")
+            font.family: NodoSystem.fontInter.name
+            font.pixelSize: NodoSystem.buttonTextFontSize
+
+            onClicked: { pageLoader.source = "DeviceNewsFeedsScreen.qml" }
         }
     }
 }
