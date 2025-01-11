@@ -322,7 +322,7 @@ Item {
     states: [
         State {
             name: "createNewConnectionRect";
-            PropertyChanges { target: createNewConnectionCanvas; height: defaultHeight + createEthernetConnectionRect.height }
+            PropertyChanges { target: createNewConnectionCanvas; height: defaultHeight + createEthernetConnectionRect.height + NodoSystem.nodoTopMargin + NodoSystem.nodoItemHeight }
         },
         State {
             name: ""
@@ -330,7 +330,7 @@ Item {
         },
         State {
             name: "showAdvancedConfigRect"
-            PropertyChanges { target: createNewConnectionCanvas; height: defaultHeight + createEthernetConnectionRect.height + advancedSettingsRect.height }
+            PropertyChanges { target: createNewConnectionCanvas; height: defaultHeight + createEthernetConnectionRect.height + advancedSettingsRect.height + NodoSystem.nodoTopMargin + NodoSystem.nodoItemHeight }
         }
     ]
 
