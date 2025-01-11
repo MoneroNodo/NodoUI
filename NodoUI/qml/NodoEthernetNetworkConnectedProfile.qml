@@ -169,7 +169,7 @@ NodoCanvas {
             itemSize: labelSize
             height:  networkDelegateItemHeight
             itemText: systemMessages.messages[NodoMessages.Message.DeviceSpeed]
-            valueText: labelSize //mainRect.deviceSpeed
+            valueText: mainRect.deviceSpeed
         }
     }
 

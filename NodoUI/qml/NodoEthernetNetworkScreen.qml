@@ -129,7 +129,7 @@ Item {
             //anchors.topMargin: NodoSystem.nodoTopMargin
             anchors.leftMargin: 14
             anchors.rightMargin: 14
-            height: dhcpSwitchRect.y + dhcpSwitchRect.height + NodoSystem.nodoTopMargin
+            height: createNewConnectionCanvas.height - createEthernetConnectionRect.height
             visible: ethernetNetworkScreen.state === "" ? false : true
             color: nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn  : NodoSystem.dataFieldTextColorNightModeOff
 
@@ -257,7 +257,7 @@ Item {
                     width: 700//advancedSettingsRect.width
                     height: networkDelegateItemHeight
                     itemSize: labelSize
-                    itemText: labelSize//systemMessages.messages[NodoMessages.Message.DNS]
+                    itemText: systemMessages.messages[NodoMessages.Message.DNS]
                     valueText: ""
                     textFlag: Qt.ImhDigitsOnly
                     //inputMask: "000.000.000.000;0"
