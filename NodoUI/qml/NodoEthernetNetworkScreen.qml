@@ -126,7 +126,7 @@ Item {
             id: createNewConnectionRect
             anchors.top: createNewConnectionCanvas.top
             anchors.left: createNewConnectionCanvas.left
-            //anchors.topMargin: NodoSystem.nodoTopMargin
+            anchors.topMargin: NodoSystem.nodoTopMargin
             anchors.leftMargin: 14
             anchors.rightMargin: 14
             height: createNewConnectionCanvas.height - createEthernetConnectionRect.height - NodoSystem.nodoTopMargin
