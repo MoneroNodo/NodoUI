@@ -117,7 +117,7 @@ Item {
         id: createNewConnectionCanvas
         anchors.top: addEthernetConnectionButton.bottom
         anchors.left: addEthernetConnectionButton.left
-        anchors.topMargin: NodoSystem.nodoTopMargin
+        //anchors.topMargin: NodoSystem.nodoTopMargin
         width: ethernetNetworkScreen.width
         height: 0
 		color: nodoControl.appTheme ? NodoSystem.dataFieldTextBGColorNightModeOn  : NodoSystem.dataFieldTextBGColorNightModeOff
