@@ -142,7 +142,6 @@ Item {
                 height: networkDelegateItemHeight
                 itemSize: labelSize
                 itemText: systemMessages.messages[NodoMessages.Message.ConnectionName]
-                readOnly: false
                 valueText: ""
                 onTextEditFinished: {
                     if(ethConnectionNameField.valueText !== "")
