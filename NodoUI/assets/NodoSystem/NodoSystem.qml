@@ -21,8 +21,8 @@ Item
     property int subMenuTopMargin: 20
 
     property int descriptionTextFontSize: textFontSize - 4
-    property color descriptionTextFontColorNightModeOff: "#AFAFAF" //RGB 175
-    property color descriptionTextFontColorNightModeOn: "#780000" //R100
+    property color descriptionTextFontColorNightModeOff: "#A5A5A5" //RGB 165
+    property color descriptionTextFontColorNightModeOn: "#7D0500" //R125 G5
 
     property int topMenuTextTopPadding: 0
 

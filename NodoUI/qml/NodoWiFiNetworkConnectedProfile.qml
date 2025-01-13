@@ -220,7 +220,6 @@ NodoCanvas {
             height: networkDelegateItemHeight
             itemText: systemMessages.messages[NodoMessages.Message.IPAddress] //qsTr("Address")
             valueText: mainRect.ssidIP
-            color: NodoSystem.cardBackgroundColor 
         }
 
         NodoInfoField {
@@ -246,7 +245,7 @@ NodoCanvas {
             height: networkDelegateItemHeight
             itemText: systemMessages.messages[NodoMessages.Message.SignalStrength] //qsTr("Signal Strength")
             valueText: mainRect.ssidSignalStrength + "%"
-            color: NodoSystem.cardBackgroundColor 
+            color: NodoSystem.cardBackgroundColor
         }
 
         NodoInfoField {
@@ -259,6 +258,7 @@ NodoCanvas {
             height: networkDelegateItemHeight
             itemText: systemMessages.messages[NodoMessages.Message.SecurityType] //qsTr("Security Type")
             valueText: mainRect.ssidEncryption
+            color: NodoSystem.cardBackgroundColor
         }
 
         NodoInfoField {
