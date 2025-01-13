@@ -57,7 +57,7 @@ Item {
             verticalAlignment: Text.AlignVCenter
             font.family: NodoSystem.fontInter.name
             font.pixelSize: valueFontSize
-            color: nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn  : NodoSystem.dataFieldTextColorNightModeOff
+            color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn  : NodoSystem.descriptionTextFontColorNightModeOff
         }
     }
 }

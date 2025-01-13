@@ -46,8 +46,8 @@ Item
     property color dataFieldTitleBGColorNightModeOn: "#2D2D2D"					//2COLOR BG//
     property color dataFieldTitleBGColorNightModeOff: "#2D2D2D"					//2COLOR BG//
 
-    property color dataFieldTextBGColorNightModeOn: "#232323"								//3COLOR BG//
-    property color dataFieldTextBGColorNightModeOff: "#232323"								//3COLOR BG//
+    property color dataFieldTextBGColorNightModeOn: "#161616"								//3COLOR BG//
+    property color dataFieldTextBGColorNightModeOff: "#161616"								//3COLOR BG//
 
     property color buttonTextColorNightModeOn: "#F5F5F5"			//1TEXT FONT//
     property color buttonBGColorNightModeOn: "#AE0000"							//NMCOLOR2//			
