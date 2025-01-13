@@ -66,10 +66,10 @@ Item {
         Text {
             id: deviceUpdateAllText
             height: NodoSystem.nodoItemHeight
-            width: parent.width - deviceUpdateAllRect.width
-            anchors.left: deviceUpdateAllRect.right
+            width: parent.width - deviceUpdateAllButton.width
+            anchors.left: deviceUpdateAllButton.right
             anchors.leftMargin: 25
-            anchors.top: deviceUpdateAllRect.top
+            anchors.top: deviceUpdateAllButton.top
             verticalAlignment: Text.AlignVCenter
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.descriptionTextFontSize
