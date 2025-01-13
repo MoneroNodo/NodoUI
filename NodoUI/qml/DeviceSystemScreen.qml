@@ -48,6 +48,7 @@ Rectangle {
             id: systemResetButton
             anchors.left: deviceSystemScreen.left
             anchors.top: deviceSSHButton.bottom
+            anchors.topMargin: deviceSystemScreen.buttonTopMargin + 30
             text: qsTr("Reboot")
             height: NodoSystem.nodoItemHeight
             width: mainRect.buttonSize
@@ -83,7 +84,7 @@ Rectangle {
             width: parent.width - systemShutdownButton
             anchors.left: systemShutdownButton.right
             anchors.leftMargin: 25
-            anchors.top: //
+            anchors.top: deviceSSHButton.bottom
             anchors.topMargin: NodoSystem.nodoTopMargin
             verticalAlignment: Text.AlignVCenter
             font.family: NodoSystem.fontInter.name
@@ -97,7 +98,7 @@ Rectangle {
             id: systemRecoveryButton
             anchors.left: deviceSystemScreen.left
             anchors.top: systemShutdownButton.bottom
-            anchors.topMargin: deviceSystemScreen.buttonTopMargin + 40
+            anchors.topMargin: deviceSystemScreen.buttonTopMargin + 30
             text: qsTr("Recovery")
             height: NodoSystem.nodoItemHeight
             width: mainRect.buttonSize
