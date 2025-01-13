@@ -118,7 +118,6 @@ Item {
         anchors.top: addEthernetConnectionButton.bottom
         anchors.left: addEthernetConnectionButton.left
         anchors.topMargin: NodoSystem.nodoTopMargin
-        visible: ethernetNetworkScreen.state === "" ? true : false
         width: ethernetNetworkScreen.width
         height: 0
 		color: nodoControl.appTheme ? NodoSystem.dataFieldTextBGColorNightModeOn  : NodoSystem.dataFieldTextBGColorNightModeOff
@@ -130,7 +129,7 @@ Item {
             //anchors.topMargin: NodoSystem.nodoTopMargin
             anchors.leftMargin: 14
             anchors.rightMargin: 14
-            height: createNewConnectionCanvas.height - createEthernetConnectionRect.height - NodoSystem.nodoTopMargin
+            height: createNewConnectionCanvas.height - createEthernetConnectionRect.height - NodoSystem.nodoTopMargin*2
             visible: ethernetNetworkScreen.state === "" ? false : true
             color: nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn  : NodoSystem.dataFieldTextColorNightModeOff
 
@@ -327,7 +326,7 @@ Item {
         },
         State {
             name: ""
-            PropertyChanges { target: createNewConnectionCanvas; height: -15 }
+            PropertyChanges { target: createNewConnectionCanvas; height: 0 }
         },
         State {
             name: "showAdvancedConfigRect"
