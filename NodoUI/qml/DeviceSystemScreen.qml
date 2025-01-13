@@ -25,11 +25,26 @@ Rectangle {
             anchors.top: deviceSystemScreen.top
             text: qsTr("PIN Settings")
             height: NodoSystem.nodoItemHeight
-            width: mainRect.buttonSize
+            width: deviceSystemScreen.buttonSize
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.buttonTextFontSize
             onClicked: { pageLoader.source = "DeviceLockPinScreen.qml" }
         }
+
+        Text {
+            id: deviceLockPinSettingsButtonText
+            height: NodoSystem.nodoItemHeight
+            width: parent.width - deviceLockPinSettingsButton.width
+            anchors.left: deviceLockPinSettingsButton.right
+            anchors.leftMargin: 25
+            anchors.top: deviceLockPinSettingsButton.top
+            //anchors.topMargin: NodoSystem.nodoTopMargin
+            verticalAlignment: Text.AlignVCenter
+            font.family: NodoSystem.fontInter.name
+            font.pixelSize: NodoSystem.descriptionTextFontSize
+            color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
+            text: qsTr("Toggle Lock PIN and change PIN")
+        }   
         
         NodoButton {
             id: deviceSSHButton
@@ -42,6 +57,21 @@ Rectangle {
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.buttonTextFontSize
             onClicked: { pageLoader.source = "DeviceSSHScreen.qml" }
+        }
+
+        Text {
+            id: deviceSSHButtonText
+            height: NodoSystem.nodoItemHeight
+            width: parent.width - deviceSSHButton.width
+            anchors.left: deviceSSHButton.right
+            anchors.leftMargin: 25
+            anchors.top: deviceSSHButton.top
+            //anchors.topMargin: NodoSystem.nodoTopMargin
+            verticalAlignment: Text.AlignVCenter
+            font.family: NodoSystem.fontInter.name
+            font.pixelSize: NodoSystem.descriptionTextFontSize
+            color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
+            text: qsTr("Toggle SSH and change Admin Password")
         }        
 
         NodoButton {
@@ -59,6 +89,21 @@ Rectangle {
                 deviceSystemPopup.applyButtonText = systemResetButton.text
                 deviceSystemPopup.open();
             }
+        }
+
+        Text {
+            id: systemResetButtonText
+            height: NodoSystem.nodoItemHeight
+            width: parent.width - systemResetButton.width
+            anchors.left: systemResetButton.right
+            anchors.leftMargin: 25
+            anchors.top: systemResetButton.top
+            //anchors.topMargin: NodoSystem.nodoTopMargin
+            verticalAlignment: Text.AlignVCenter
+            font.family: NodoSystem.fontInter.name
+            font.pixelSize: NodoSystem.descriptionTextFontSize
+            color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
+            text: qsTr("Safe Reboot")
         }
 
         NodoButton {
@@ -93,7 +138,6 @@ Rectangle {
             text: qsTr("Safe Shutdown")
         }
 
-
         NodoButton {
             id: systemRecoveryButton
             anchors.left: deviceSystemScreen.left
@@ -109,6 +153,21 @@ Rectangle {
                 deviceSystemScreen.visible = false
                 deviceSystemRecoveryMainScreen.visible = true
             }
+        }
+
+        Text {
+            id: systemRecoveryButtonText
+            height: NodoSystem.nodoItemHeight
+            width: parent.width - systemRecoveryButton.width
+            anchors.left: systemRecoveryButton.right
+            anchors.leftMargin: 25
+            anchors.top: systemRecoveryButton.top
+            //anchors.topMargin: NodoSystem.nodoTopMargin
+            verticalAlignment: Text.AlignVCenter
+            font.family: NodoSystem.fontInter.name
+            font.pixelSize: NodoSystem.descriptionTextFontSize
+            color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
+            text: qsTr("Access recovery options")
         }
     }
 
