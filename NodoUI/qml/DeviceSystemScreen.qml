@@ -81,15 +81,15 @@ Rectangle {
         Text {
             id: systemShutdownButtonText
             height: NodoSystem.nodoItemHeight
-            width: parent.width - systemShutdownButton
+            width: parent.width - systemShutdownButton.width
             anchors.left: systemShutdownButton.right
             anchors.leftMargin: 25
             anchors.top: deviceSSHButton.bottom
-            anchors.topMargin: NodoSystem.nodoTopMargin
+            //anchors.topMargin: NodoSystem.nodoTopMargin
             verticalAlignment: Text.AlignVCenter
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.descriptionTextFontSize
-            color: nodoControl.appTheme ? NodoSystem.descriptionColorNightModeOn : NodoSystem.descriptionColorNightModeOff
+            color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
             text: qsTr("Safe Shutdown")
         }
 
