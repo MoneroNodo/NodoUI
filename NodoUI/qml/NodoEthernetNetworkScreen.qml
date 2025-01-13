@@ -92,7 +92,7 @@ Item {
         id: addEthernetConnectionButton
         anchors.left: ethernetNetworkScreen.left
         anchors.top: ethernetNetworkScreen.top
-        anchors.bottomMargin: NodoSystem.nodoTopMargin*2
+        anchors.bottomMargin: ((NodoSystem.nodoTopMargin)*2)
         height: networkDelegateItemHeight
         font.pixelSize: NodoSystem.buttonTextFontSize
         font.family: NodoSystem.fontInter.name
