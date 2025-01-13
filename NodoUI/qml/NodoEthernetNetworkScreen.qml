@@ -118,6 +118,7 @@ Item {
         anchors.top: addEthernetConnectionButton.bottom
         anchors.left: addEthernetConnectionButton.left
         anchors.topMargin: NodoSystem.nodoTopMargin
+        visible: ethernetNetworkScreen.state === "" ? true : false
         width: ethernetNetworkScreen.width
         height: 0
 		color: nodoControl.appTheme ? NodoSystem.dataFieldTextBGColorNightModeOn  : NodoSystem.dataFieldTextBGColorNightModeOff
