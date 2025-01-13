@@ -43,7 +43,7 @@ Rectangle {
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.descriptionTextFontSize
             color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
-            text: qsTr("Toggle Lock PIN and change PIN")
+            text: qsTr("Change PIN and toggle device lock using PIN")
         }   
         
         NodoButton {
@@ -71,7 +71,7 @@ Rectangle {
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.descriptionTextFontSize
             color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
-            text: qsTr("Toggle SSH and change Admin Password")
+            text: qsTr("Change Admin Password and toggle SSH for remote access")
         }        
 
         NodoButton {
