@@ -17,7 +17,7 @@ Button {
     property string backgroundColor:  nodoControl.appTheme ? NodoSystem.buttonBGColorNightModeOn : NodoSystem.buttonBGColorNightModeOff
     property bool isActive: true
     property bool fitMinimal: false
-    property int buttonWidth: buttonText.paintedWidth*2
+    property int buttonWidth: buttonText.paintedWidth + textLeftPadding*4
     width: fitMinimal == false ?  (buttonWidth > NodoSystem.nodoItemWidth ? buttonWidth : NodoSystem.nodoItemWidth) : buttonWidth
     enabled: isActive
 
