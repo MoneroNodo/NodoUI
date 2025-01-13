@@ -17,7 +17,7 @@ Item {
         anchors.left: deviceMainScreen.left
         height: NodoSystem.subMenuButtonHeight
         //contentWidth: 1460
-        implicitWidth: newsFeedsButton.x + newsFeedsButton.width
+        implicitWidth: displayButton.x + displayButton.width
 
         background: Rectangle {
             color: "black"
@@ -70,16 +70,6 @@ Item {
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: { pageLoader.source = "DeviceDisplayScreen.qml" }
-        }
-      
-        NodoTabButton {
-            id: newsFeedsButton
-            anchors.top: wifiButton.top
-            anchors.left: displayButton.right
-            text: qsTr("FEEDS")//qsTr("NEWS FEEDS")
-            font.family: NodoSystem.fontInter.name
-            font.pixelSize: NodoSystem.topMenuButtonFontSize
-            onClicked: { pageLoader.source = "DeviceNewsFeedsScreen.qml" }
         }
     }
 

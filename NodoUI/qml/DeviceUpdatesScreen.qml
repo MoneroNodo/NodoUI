@@ -19,6 +19,8 @@ Item {
         deviceUpdatesMoneroLWSSwitch.checked = nodoConfig.getUpdateStatus("lws")
         //deviceUpdatesMoneroPaySwitch.checked = nodoConfig.getUpdateStatus("pay")
         deviceUpdateAllButton.isActive = !nodoConfig.isUpdateLocked()
+
+        updateSystemStatus()
     }
 
     function onCalculateMaximumTextLabelLength() {
@@ -35,6 +37,10 @@ Item {
         //    labelSize = deviceUpdatesMoneroPaySwitchText.labelRectRoundSize
     }
 
+    function updateSystemStatus() {
+        deviceUpdatesMoneroDaemonDescText.valueText = nodoSystemStatus.getStringValueFromKey("version")
+    }
+
     Rectangle {
         id: deviceUpdateAllRect
         anchors.top: deviceUpdatesScreen.top
@@ -46,6 +52,7 @@ Item {
             anchors.top: deviceUpdateAllRect.top
             anchors.left: deviceUpdateAllRect.left
             height: NodoSystem.nodoItemHeight
+            width: labelSize
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.buttonTextFontSize
             text: qsTr("Update All")
@@ -61,13 +68,27 @@ Item {
                 }
             }
         }
+
+        Text {
+            id: deviceUpdateAllText
+            height: NodoSystem.nodoItemHeight
+            width: parent.width - deviceUpdateAllButton.width
+            anchors.left: deviceUpdateAllButton.right
+            anchors.leftMargin: 25
+            anchors.top: deviceUpdateAllButton.top
+            verticalAlignment: Text.AlignVCenter
+            font.family: NodoSystem.fontInter.name
+            font.pixelSize: NodoSystem.descriptionTextFontSize
+            color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
+            text: qsTr("Force Updates, if found, this button will stay greyed out during the update process.")
+        }
     }
 
     Rectangle {
         id: deviceUpdatesNodoSwitchRect
         anchors.top: deviceUpdateAllRect.bottom
         anchors.left: deviceUpdatesScreen.left
-        anchors.topMargin: NodoSystem.nodoTopMargin
+        anchors.topMargin: NodoSystem.nodoTopMargin + 25
         height: NodoSystem.nodoItemHeight
 
         NodoLabel {
@@ -89,6 +110,20 @@ Item {
             onCheckedChanged: {
                 nodoConfig.setUpdateStatus("nodo", checked)
             }
+        }
+
+        Text {
+            id: deviceUpdatesNodoDescText
+            height: NodoSystem.nodoItemHeight
+            width: parent.width - deviceUpdatesNodoSwitchRect.width
+            anchors.left: deviceUpdatesNodoSwitchSwitch.right
+            anchors.leftMargin: 25
+            anchors.top: deviceUpdatesNodoSwitchSwitch.top
+            verticalAlignment: Text.AlignVCenter
+            font.family: NodoSystem.fontInter.name
+            font.pixelSize: NodoSystem.descriptionTextFontSize
+            color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
+            text: qsTr("Nodo v NodoUI v")
         }
     }
 
@@ -119,6 +154,20 @@ Item {
                 nodoConfig.setUpdateStatus("monero", checked)
             }
         }
+
+        Text {
+            id: deviceUpdatesMoneroDaemonDescText
+            height: NodoSystem.nodoItemHeight
+            width: parent.width - deviceUpdatesMoneroDaemonSwitchRect.width
+            anchors.left: deviceUpdatesMoneroDaemonSwitch.right
+            anchors.leftMargin: 25
+            anchors.top: deviceUpdatesMoneroDaemonSwitch.top
+            verticalAlignment: Text.AlignVCenter
+            font.family: NodoSystem.fontInter.name
+            font.pixelSize: NodoSystem.descriptionTextFontSize
+            color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
+            text: nodoSystemStatus.getIntValueFromKey("version")
+        }
     }
 
     Rectangle {
@@ -148,7 +197,23 @@ Item {
                 nodoConfig.setUpdateStatus("lws", checked)
             }
         }
+
+        Text {
+            id: deviceUpdatesMoneroLWSDescText
+            height: NodoSystem.nodoItemHeight
+            width: parent.width - deviceUpdatesMoneroLWSSwitchRect.width
+            anchors.left: deviceUpdatesMoneroLWSSwitch.right
+            anchors.leftMargin: 25
+            anchors.top: deviceUpdatesMoneroLWSSwitch.top
+            verticalAlignment: Text.AlignVCenter
+            font.family: NodoSystem.fontInter.name
+            font.pixelSize: NodoSystem.descriptionTextFontSize
+            color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
+            text: qsTr("Monero LWS v")
+        }
     }
+}
+    
 /*
     Rectangle {
         id: deviceUpdatesMoneroPaySwitchRect
@@ -179,4 +244,4 @@ Item {
         }
     }
 */
-}
+

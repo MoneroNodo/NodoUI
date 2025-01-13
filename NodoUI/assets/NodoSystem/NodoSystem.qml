@@ -20,7 +20,7 @@ Item
     property int subMenuLeftMargin: 10
     property int subMenuTopMargin: 20
 
-    property int descriptionTextFontSize: textFontSize - 4
+    property int descriptionTextFontSize: textFontSize
     property color descriptionTextFontColorNightModeOff: "#A5A5A5" //RGB 165
     property color descriptionTextFontColorNightModeOn: "#8A0000" //R138
 
@@ -70,7 +70,7 @@ Item
     property int textPadding: 15
 
     property int nodoItemWidth: 300
-    property int nodoTopMargin: 15
+    property int nodoTopMargin: 20
 
     property int comboboxFontSize: 25
 

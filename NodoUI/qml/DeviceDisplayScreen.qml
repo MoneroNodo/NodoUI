@@ -11,7 +11,8 @@ Item {
     anchors.fill: parent
     property alias themeMode: deviceDisplayNightModeSwitch
     themeMode.checked: nodoControl.appTheme
-    property int dropdownLength: width - deviceDisplaySliderLabel.width - NodoSystem.subMenuLeftMargin
+    property int labelSize: 260
+    property int dropdownLength: width - labelSize - NodoSystem.subMenuLeftMargin
 
     Component.onCompleted: {
         deviceDisplayCurrencyComboBox.currentIndex = priceTicker.getCurrentCurrencyIndex()
@@ -29,6 +30,7 @@ Item {
             anchors.left: deviceDisplayBrightnessRect.left
             anchors.top: deviceDisplayBrightnessRect.top
             height: deviceDisplayBrightnessRect.height
+            width: labelSize
             text: qsTr("Brightness")
         }
 
@@ -53,9 +55,40 @@ Item {
     }
 
     Rectangle {
-        id: deviceDisplayNightModeSwitchRect
+        id: screenSaverRect
         anchors.left: deviceDisplayScreen.left
         anchors.top: deviceDisplayBrightnessRect.bottom
+        anchors.topMargin: NodoSystem.nodoTopMargin
+        height: NodoSystem.nodoItemHeight
+
+        NodoLabel {
+            id: screenSaverLabel
+            height: screenSaverRect.height
+            anchors.top: screenSaverRect.top
+            anchors.left: screenSaverRect.left
+            width: labelSize
+            text: qsTr("Screensaver")
+        }
+
+        NodoComboBox {
+            id: screenSaverComboBox
+            anchors.left: screenSaverLabel.right
+            anchors.leftMargin: NodoSystem.padding
+            anchors.top: screenSaverRect.top
+            width: dropdownLength
+            height: screenSaverRect.height
+            currentIndex: nodoControl.getScreenSaverType()
+            model: [qsTr("News"), qsTr("Analog Clock"), qsTr("Digital Clock"), qsTr("Display Off"), qsTr("None")]
+            onCurrentIndexChanged: {
+                nodoControl.setScreenSaverType(currentIndex)
+            }
+        }
+    }
+
+    Rectangle {
+        id: deviceDisplayNightModeSwitchRect
+        anchors.left: deviceDisplayScreen.left
+        anchors.top: screenSaverRect.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         height: NodoSystem.nodoItemHeight
         color: "black"
@@ -66,6 +99,7 @@ Item {
             height: deviceDisplayNightModeSwitchRect.height
             anchors.left: deviceDisplayNightModeSwitchRect.left
             anchors.top: deviceDisplayNightModeSwitchRect.top
+            width: labelSize
             text: qsTr("Night Mode")
         }
 
@@ -85,9 +119,9 @@ Item {
     Rectangle {
         id: deviceDisplayFlipOrientationSwitchRect
         anchors.left: deviceDisplayNightModeSwitchRect.right
-        anchors.top: deviceDisplayBrightnessRect.bottom
+        anchors.top: screenSaverRect.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
-        anchors.leftMargin: 30
+        anchors.leftMargin: 25
         height: NodoSystem.nodoItemHeight
 
         NodoLabel {
@@ -95,6 +129,7 @@ Item {
             height: deviceDisplayFlipOrientationSwitchRect.height
             anchors.left: deviceDisplayFlipOrientationSwitchRect.left
             anchors.top: deviceDisplayFlipOrientationSwitchRect.top
+            width: labelSize - 20
             text: qsTr("Flip Display")
         }
 
@@ -149,35 +184,6 @@ Item {
         }
     }
 
-    Rectangle {
-        id: screenSaverRect
-        anchors.left: deviceDisplayScreen.left
-        anchors.top: deviceDisplayNightModeSwitchRect.bottom
-        anchors.topMargin: NodoSystem.nodoTopMargin
-        height: NodoSystem.nodoItemHeight
-
-        NodoLabel {
-            id: screenSaverLabel
-            height: screenSaverRect.height
-            anchors.top: screenSaverRect.top
-            anchors.left: screenSaverRect.left
-            text: qsTr("Screensaver")
-        }
-
-        NodoComboBox {
-            id: screenSaverComboBox
-            anchors.left: screenSaverLabel.right
-            anchors.leftMargin: NodoSystem.padding
-            anchors.top: screenSaverRect.top
-            width: dropdownLength
-            height: screenSaverRect.height
-            currentIndex: nodoControl.getScreenSaverType()
-            model: [qsTr("News"), qsTr("Analog Clock"), qsTr("Digital Clock"), qsTr("Display Off"), qsTr("None")]
-            onCurrentIndexChanged: {
-                nodoControl.setScreenSaverType(currentIndex)
-            }
-        }
-    }
 
     Rectangle {
         id: languageRect
@@ -194,6 +200,7 @@ Item {
             anchors.top: languageRect.top
             anchors.left: languageRect.left
             anchors.rightMargin: NodoSystem.padding
+            width: labelSize
             text: qsTr("Language")
         }
 
@@ -213,11 +220,82 @@ Item {
         }
     }
 
+        Rectangle {
+        id: keyboardLayoutRect
+        anchors.left: deviceDisplayScreen.left
+        anchors.top: languageRect.bottom
+        anchors.topMargin: NodoSystem.nodoTopMargin
+        height: NodoSystem.nodoItemHeight
+
+        NodoLabel {
+            id: keyboardLayoutLabel
+            height: keyboardLayoutRect.height
+            anchors.top: keyboardLayoutRect.top
+            anchors.left: keyboardLayoutRect.left
+            width: labelSize
+            text: qsTr("Keyboard")
+        }
+
+        NodoComboBox {
+            id: keyboardLayoutComboBox
+            anchors.left: keyboardLayoutLabel.right
+            anchors.leftMargin: NodoSystem.padding
+            anchors.top: keyboardLayoutRect.top
+            width: dropdownLength
+            height: keyboardLayoutRect.height
+            currentIndex: nodoControl.getKeyboardLayoutType()
+            model: [qsTr("QWERTY"), qsTr("QWERTZ"), qsTr("AZERTY")]
+            onCurrentIndexChanged: {
+                nodoControl.setKeyboardLayoutType(currentIndex)
+                VirtualKeyboardSettings.locale = nodoControl.getKeyboardLayoutLocale()
+            }
+        }
+    }
+
+    Rectangle {
+        id: deviceDisplay24hTimeSwitchRect
+        anchors.left: deviceDisplayScreen.left
+        anchors.top: keyboardLayoutRect.bottom
+        anchors.topMargin: NodoSystem.nodoTopMargin
+        height: NodoSystem.nodoItemHeight
+        color: "black"
+        width: deviceDisplay24hTimeSwitchText.width + deviceDisplay24hTimeSwitch.width
+
+        NodoLabel {
+            id: deviceDisplay24hTimeSwitchText
+            height: deviceDisplay24hTimeSwitchRect.height
+            anchors.left: deviceDisplay24hTimeSwitchRect.left
+            anchors.top: deviceDisplay24hTimeSwitchRect.top
+            width: labelSize
+            text: qsTr("24h Time")
+        }
+
+        NodoSwitch {
+            id: deviceDisplay24hTimeSwitch
+            anchors.left: deviceDisplay24hTimeSwitchText.right
+            anchors.leftMargin: NodoSystem.padding
+            height: deviceDisplay24hTimeSwitchRect.height
+            width: 2*deviceDisplay24hTimeSwitchRect.height
+            display: AbstractButton.IconOnly
+            
+            /*onCheckedChanged: {
+                if(checked)
+                {
+                    //24h time = true
+                }
+                else
+                {
+                    //24h time = false
+                }
+            }*/
+        }
+    }
+
     Rectangle {
         id: timezoneRect
-        anchors.left: deviceDisplayScreen.left
-        // anchors.top: languageRect.bottom
-        anchors.top: screenSaverRect.bottom
+        anchors.left: deviceDisplay24hTimeSwitchRect.right
+        anchors.leftMargin: 25
+        anchors.top: keyboardLayoutRect.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         height: NodoSystem.nodoItemHeight
 
@@ -227,6 +305,7 @@ Item {
             anchors.top: timezoneRect.top
             anchors.left: timezoneRect.left
             anchors.rightMargin: NodoSystem.padding
+            width: labelSize - 20
             text: qsTr("Time Zone")
         }
 
@@ -236,7 +315,7 @@ Item {
             anchors.left: deviceDisplayTimezoneLabel.right
             anchors.leftMargin: NodoSystem.padding
             anchors.top: deviceDisplayTimezoneLabel.top
-            width: dropdownLength
+            width: dropdownLength - deviceDisplay24hTimeSwitchRect.width - 5//dropdownLength
             height: timezoneRect.height
             currentIndex: nodoControl.getTimeZoneIndex()
             model: nodoTimezones.timezoneNames
@@ -247,9 +326,49 @@ Item {
     }
 
     Rectangle {
-        id: currencyRect
+        id: deviceDisplayPricetickerSwitchRect
         anchors.left: deviceDisplayScreen.left
         anchors.top: timezoneRect.bottom
+        anchors.topMargin: NodoSystem.nodoTopMargin
+        height: NodoSystem.nodoItemHeight
+        color: "black"
+        width: deviceDisplayPricetickerSwitchText.width + deviceDisplayPricetickerSwitch.width
+
+        NodoLabel {
+            id: deviceDisplayPricetickerSwitchText
+            height: deviceDisplayPricetickerSwitchRect.height
+            anchors.left: deviceDisplayPricetickerSwitchRect.left
+            anchors.top: deviceDisplayPricetickerSwitchRect.top
+            width: labelSize
+            text: qsTr("Priceticker")
+        }
+
+        NodoSwitch {
+            id: deviceDisplayPricetickerSwitch
+            anchors.left: deviceDisplayPricetickerSwitchText.right
+            anchors.leftMargin: NodoSystem.padding
+            height: deviceDisplayPricetickerSwitchRect.height
+            width: 2*deviceDisplayPricetickerSwitchRect.height
+            display: AbstractButton.IconOnly
+            
+            onCheckedChanged: {
+                if(checked)
+                {
+                    nodoControl.setTickerEnabled = true
+                }
+                else
+                {
+                    nodoControl.setTickerEnabled = false
+                }
+            }
+        }
+    }
+
+    Rectangle {
+        id: currencyRect
+        anchors.left: deviceDisplayPricetickerSwitchRect.right
+        anchors.top: timezoneRect.bottom
+        anchors.leftMargin: 25
         anchors.topMargin: NodoSystem.nodoTopMargin
         height: NodoSystem.nodoItemHeight
 
@@ -259,7 +378,9 @@ Item {
             anchors.top: currencyRect.top
             anchors.left: currencyRect.left
             anchors.rightMargin: NodoSystem.padding
+            width: labelSize - 20
             text: qsTr("Currency")
+
         }
 
         NodoComboBox
@@ -268,7 +389,7 @@ Item {
             anchors.left: deviceDisplayCurrencyLabel.right
             anchors.leftMargin: NodoSystem.padding
             anchors.top: deviceDisplayCurrencyLabel.top
-            width: dropdownLength
+            width: dropdownLength - deviceDisplayPricetickerSwitchRect.width - 5
             height: currencyRect.height
             model: currencyListModel
             currentIndex: priceTicker.getCurrentCurrencyIndex()
@@ -294,90 +415,26 @@ Item {
         }
     }
 
-    Rectangle {
-        id: keyboardLayoutRect
-        anchors.left: deviceDisplayScreen.left
-        anchors.top: currencyRect.bottom
-        anchors.topMargin: NodoSystem.nodoTopMargin
-        height: NodoSystem.nodoItemHeight
 
-        NodoLabel {
-            id: keyboardLayoutLabel
-            height: keyboardLayoutRect.height
-            anchors.top: keyboardLayoutRect.top
-            anchors.left: keyboardLayoutRect.left
-            text: qsTr("Keyboard")
-        }
 
-        NodoComboBox {
-            id: keyboardLayoutComboBox
-            anchors.left: keyboardLayoutLabel.right
-            anchors.leftMargin: NodoSystem.padding
-            anchors.top: keyboardLayoutRect.top
-            width: dropdownLength
-            height: keyboardLayoutRect.height
-            currentIndex: nodoControl.getKeyboardLayoutType()
-            model: [qsTr("QWERTY"), qsTr("QWERTZ"), qsTr("AZERTY")]
-            onCurrentIndexChanged: {
-                nodoControl.setKeyboardLayoutType(currentIndex)
-                VirtualKeyboardSettings.locale = nodoControl.getKeyboardLayoutLocale()
-            }
-        }
-    }
 
-    Rectangle {
-        id: deviceDisplayPricetickerSwitchRect
-        anchors.left: deviceDisplayScreen.left
-        anchors.top: keyboardLayoutRect.bottom
-        anchors.topMargin: NodoSystem.nodoTopMargin
-        height: NodoSystem.nodoItemHeight
-        color: "black"
-        width: deviceDisplayPricetickerSwitchText.width + deviceDisplayPricetickerDisplaySwitch.width
-
-        NodoLabel {
-            id: deviceDisplayPricetickerSwitchText
-            height: deviceDisplayPricetickerSwitchRect.height
-            anchors.left: deviceDisplayPricetickerSwitchRect.left
-            anchors.top: deviceDisplayPricetickerSwitchRect.top
-            text: qsTr("Priceticker")
-        }
-
-        NodoSwitch {
-            id: deviceDisplayPricetickerDisplaySwitch
-            anchors.left: deviceDisplayPricetickerSwitchText.right
-            anchors.leftMargin: NodoSystem.padding
-            height: deviceDisplayPricetickerSwitchRect.height
-            width: 2*deviceDisplayPricetickerSwitchRect.height
-            display: AbstractButton.IconOnly
-            
-            onCheckedChanged: {
-                if(checked)
-                {
-                    nodoControl.setTickerEnabled = true
-                }
-                else
-                {
-                    nodoControl.setTickerEnabled = false
-                }
-            }
-        }
-    }
 
     Rectangle {
         id: deviceDisplayFeedsSwitchRect
-        anchors.left: deviceDisplayPricetickerSwitchRect.right
-        anchors.leftMargin: 30
-        anchors.top: keyboardLayoutRect.bottom
+        anchors.left: deviceDisplayScreen.left
+        //anchors.leftMargin: 30
+        anchors.top: deviceDisplayPricetickerSwitchRect.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         height: NodoSystem.nodoItemHeight
         color: "black"
-        width: deviceDisplayFeedsSwitchText.width + deviceDisplayFeedsSwitch.width + deviceDisplayManageFeedsButton.x + deviceDisplayManageFeedsButton.width + 30
+        width: deviceDisplayFeedsSwitchText.width + deviceDisplayFeedsSwitch.width
 
         NodoLabel {
             id: deviceDisplayFeedsSwitchText
             height: deviceDisplayFeedsSwitchRect.height
             anchors.left: deviceDisplayFeedsSwitchRect.left
             anchors.top: deviceDisplayFeedsSwitchRect.top
+            width: labelSize
             text: qsTr("News Feeds")
         }
 
@@ -393,13 +450,13 @@ Item {
                 if(checked === true)
                     {
                         nodoControl.setFeedsEnabled = "true"
-                        newsButton.visible = "true"
-                        deviceDisplayManageFeedsButton.visible = "true"
+                        //newsButton.visible = "true"
+                        //deviceDisplayManageFeedsButton.visible = "true"
                     }
                     else
                     {
                         nodoControl.setFeedsEnabled = "false"
-                        newsButton.visible = "false"
+                        //newsButton.visible = "false"
                         //deviceDisplayManageFeedsButton.visible = false
                     }
             }
@@ -408,11 +465,11 @@ Item {
         NodoButton  {
             id: deviceDisplayManageFeedsButton
             anchors.left: deviceDisplayFeedsSwitchRect.right
-            anchors.leftMargin: 30
-            anchors.top: keyboardLayoutRect.bottom
+            anchors.leftMargin: 25
+            anchors.top: deviceDisplayPricetickerSwitchRect.bottom
             anchors.topMargin: NodoSystem.nodoTopMargin
             height: NodoSystem.nodoItemHeight
-            width: 320
+            //width: 320
             text: qsTr("Manage Feeds")
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.buttonTextFontSize
