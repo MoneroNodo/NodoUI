@@ -45,7 +45,7 @@ Item {
         anchors.leftMargin: NodoSystem.padding
         width: root.width - labelCanvas.width
         height: root.height
-        color: nodoControl.appTheme ? NodoSystem.dataFieldTextBGColorNightModeOn : NodoSystem.dataFieldTextBGColorNightModeOff
+        color: nodoControl.appTheme ? NodoSystem.dataFieldTitleBGColorNightModeOn : NodoSystem.dataFieldTitleBGColorNightModeOff
 
         Text {
             id: valueLabel
@@ -57,7 +57,7 @@ Item {
             verticalAlignment: Text.AlignVCenter
             font.family: NodoSystem.fontInter.name
             font.pixelSize: valueFontSize
-            color: nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn  : NodoSystem.dataFieldTextColorNightModeOff
+            color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn  : NodoSystem.descriptionTextFontColorNightModeOff
         }
     }
 }

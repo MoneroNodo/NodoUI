@@ -5,7 +5,7 @@ NodoCanvas::NodoCanvas(QQuickItem *parent)
     : QQuickPaintedItem(parent)
 {
     m_color = Qt::gray;
-    m_borderColor = "#181818";
+    m_borderColor = "#1E1E1E";
 
     QSizeF itemSize(m_cwidth, m_cheight);
     this->setSize(itemSize);

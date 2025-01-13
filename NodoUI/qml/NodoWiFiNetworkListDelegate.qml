@@ -25,7 +25,7 @@ NodoCanvas {
     property string ssidName
     property string connectionPath
 
-    color: nodoControl.appTheme ? NodoSystem.dataFieldTextBGColorNightModeOn  : NodoSystem.dataFieldTextBGColorNightModeOff
+    color: NodoSystem.cardBackgroundColor
 
     Component.onCompleted:
     {
@@ -276,6 +276,7 @@ NodoCanvas {
             id: passwordInputField
             anchors.left: connectToANetworkRect.left
             anchors.top: connectToANetworkRect.top
+            anchors.topMargin: NodoSystem.nodoTopMargin
             width: connectToANetworkRect.width
             height: networkDelegateItemHeight
             itemSize: labelSize

@@ -222,7 +222,7 @@ NodoCanvas {
             valueText: mainRect.ssidIP
         }
 
-        NodoInfoField{
+        NodoInfoField {
             id: gatewayField
             anchors.left: showDetailsRect.left
             anchors.top: ipField.bottom
@@ -231,10 +231,10 @@ NodoCanvas {
             itemSize: labelSize
             height:  networkDelegateItemHeight
             itemText: systemMessages.messages[NodoMessages.Message.Router] //qsTr("Router")
-            valueText: mainRect.ssidGateway
+            valueText: mainRect.ssidGateway 
         }
 
-        NodoInfoField{
+        NodoInfoField {
             id: signalStrengthField
             anchors.left: showDetailsRect.left
             anchors.top: gatewayField.bottom
@@ -246,7 +246,7 @@ NodoCanvas {
             valueText: mainRect.ssidSignalStrength + "%"
         }
 
-        NodoInfoField{
+        NodoInfoField {
             id: securityField
             anchors.left: showDetailsRect.left
             anchors.top: signalStrengthField.bottom
@@ -258,7 +258,7 @@ NodoCanvas {
             valueText: mainRect.ssidEncryption
         }
 
-        NodoInfoField{
+        NodoInfoField {
             id: frequencyField
             anchors.left: showDetailsRect.left
             anchors.top: securityField.bottom
@@ -266,7 +266,7 @@ NodoCanvas {
             width: showDetailsRect.width
             itemSize: labelSize
             height: networkDelegateItemHeight
-            itemText: systemMessages.messages[NodoMessages.Message.Frequency] //qsTr("Frequency")
+            itemText: systemMessages.messages[NodoMessages.Message.Frequency] //qsTr("Frequency") 
             valueText: {
                 var freq = mainRect.ssidFrequency
                 freq.toFixed(1) + " GHz"
