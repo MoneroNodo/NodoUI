@@ -46,6 +46,7 @@ Item {
             anchors.top: deviceUpdateAllRect.top
             anchors.left: deviceUpdateAllRect.left
             height: NodoSystem.nodoItemHeight
+            width: labelSize
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.buttonTextFontSize
             text: qsTr("Update All")
@@ -61,13 +62,27 @@ Item {
                 }
             }
         }
+
+        Text {
+            id: deviceUpdateAllText
+            height: NodoSystem.nodoItemHeight
+            width: parent.width - deviceUpdateAllRect.width
+            anchors.left: deviceUpdateAllRect.right
+            anchors.leftMargin: 25
+            anchors.top: deviceUpdateAllRect.top
+            verticalAlignment: Text.AlignVCenter
+            font.family: NodoSystem.fontInter.name
+            font.pixelSize: NodoSystem.descriptionTextFontSize
+            color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
+            text: qsTr("The button will stay greyed out during the update process.")
+        }
     }
 
     Rectangle {
         id: deviceUpdatesNodoSwitchRect
         anchors.top: deviceUpdateAllRect.bottom
         anchors.left: deviceUpdatesScreen.left
-        anchors.topMargin: NodoSystem.nodoTopMargin
+        anchors.topMargin: NodoSystem.nodoTopMargin*2
         height: NodoSystem.nodoItemHeight
 
         NodoLabel {
@@ -89,6 +104,20 @@ Item {
             onCheckedChanged: {
                 nodoConfig.setUpdateStatus("nodo", checked)
             }
+        }
+
+        Text {
+            id: deviceUpdatesNodoSwitchText
+            height: NodoSystem.nodoItemHeight
+            width: parent.width - deviceUpdatesNodoSwitchRect.width
+            anchors.left: deviceUpdatesNodoSwitchRect.right
+            anchors.leftMargin: 25
+            anchors.top: deviceUpdatesNodoSwitchRect.top
+            verticalAlignment: Text.AlignVCenter
+            font.family: NodoSystem.fontInter.name
+            font.pixelSize: NodoSystem.descriptionTextFontSize
+            color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
+            text: qsTr("Nodo v1.1 NodoUI v1.1")
         }
     }
 
@@ -119,6 +148,20 @@ Item {
                 nodoConfig.setUpdateStatus("monero", checked)
             }
         }
+
+        Text {
+            id: deviceUpdatesMoneroDaemonSwitchText
+            height: NodoSystem.nodoItemHeight
+            width: parent.width - deviceUpdatesMoneroDaemonSwitchRect.width
+            anchors.left: deviceUpdatesMoneroDaemonSwitchRect.right
+            anchors.leftMargin: 25
+            anchors.top: deviceUpdatesMoneroDaemonSwitchRect.top
+            verticalAlignment: Text.AlignVCenter
+            font.family: NodoSystem.fontInter.name
+            font.pixelSize: NodoSystem.descriptionTextFontSize
+            color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
+            text: qsTr("Monero v" + nodoSystemStatus.getIntValueFromKey("version"))
+        }
     }
 
     Rectangle {
@@ -147,6 +190,20 @@ Item {
             onCheckedChanged: {
                 nodoConfig.setUpdateStatus("lws", checked)
             }
+        }
+
+        Text {
+            id: deviceUpdatesMoneroLWSSwitchText
+            height: NodoSystem.nodoItemHeight
+            width: parent.width - deviceUpdatesMoneroLWSSwitchRect.width
+            anchors.left: deviceUpdatesMoneroLWSSwitchRect.right
+            anchors.leftMargin: 25
+            anchors.top: deviceUpdatesMoneroLWSSwitchRect.top
+            verticalAlignment: Text.AlignVCenter
+            font.family: NodoSystem.fontInter.name
+            font.pixelSize: NodoSystem.descriptionTextFontSize
+            color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
+            text: qsTr("LWS version placeholder text")
         }
     }
 /*
