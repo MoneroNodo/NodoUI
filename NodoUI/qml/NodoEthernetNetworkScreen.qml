@@ -92,7 +92,6 @@ Item {
         id: addEthernetConnectionButton
         anchors.left: ethernetNetworkScreen.left
         anchors.top: ethernetNetworkScreen.top
-        anchors.bottomMargin: NodoSystem.nodoTopMargin
         height: networkDelegateItemHeight
         font.pixelSize: NodoSystem.buttonTextFontSize
         font.family: NodoSystem.fontInter.name
@@ -327,7 +326,7 @@ Item {
         },
         State {
             name: ""
-            PropertyChanges { target: createNewConnectionCanvas; height: 0 }
+            PropertyChanges { target: createNewConnectionCanvas; height: -15 }
         },
         State {
             name: "showAdvancedConfigRect"
