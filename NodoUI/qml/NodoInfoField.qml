@@ -45,7 +45,7 @@ Item {
         anchors.leftMargin: NodoSystem.padding
         width: root.width - labelCanvas.width
         height: root.height
-        color: nodoControl.appTheme ? NodoSystem.dataFieldTextBGColorNightModeOn : NodoSystem.dataFieldTextBGColorNightModeOff
+        color: nodoControl.appTheme ? NodoSystem.dataFieldTitleBGColorNightModeOn : NodoSystem.dataFieldTitleBGColorNightModeOff
 
         Text {
             id: valueLabel
