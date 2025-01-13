@@ -129,7 +129,7 @@ Item {
             //anchors.topMargin: NodoSystem.nodoTopMargin
             anchors.leftMargin: 14
             anchors.rightMargin: 14
-            height: createNewConnectionCanvas.height - createEthernetConnectionRect.height - NodoSystem.nodoTopMargin*2
+            height: createNewConnectionCanvas.height - createEthernetConnectionRect.height - NodoSystem.nodoTopMargin
             visible: ethernetNetworkScreen.state === "" ? false : true
             color: nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn  : NodoSystem.dataFieldTextColorNightModeOff
 
