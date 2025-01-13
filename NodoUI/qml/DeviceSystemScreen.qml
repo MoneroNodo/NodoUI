@@ -37,7 +37,7 @@ Rectangle {
             anchors.top: deviceLockPinSettingsButton.bottom
             anchors.topMargin: deviceSystemScreen.buttonTopMargin
             text: qsTr("Admin & SSH")
-            width: mainRect.buttonSize
+            width: deviceSystemScreen.buttonSize
             height: NodoSystem.nodoItemHeight
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.buttonTextFontSize
@@ -51,7 +51,7 @@ Rectangle {
             anchors.topMargin: deviceSystemScreen.buttonTopMargin + 30
             text: qsTr("Reboot")
             height: NodoSystem.nodoItemHeight
-            width: mainRect.buttonSize
+            width: deviceSystemScreen.buttonSize
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.buttonTextFontSize
             onClicked: {
@@ -68,7 +68,7 @@ Rectangle {
             anchors.topMargin: deviceSystemScreen.buttonTopMargin
             text: qsTr("Shutdown")
             height: NodoSystem.nodoItemHeight
-            width: mainRect.buttonSize
+            width: deviceSystemScreen.buttonSize
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.buttonTextFontSize
             onClicked: {
@@ -84,7 +84,7 @@ Rectangle {
             width: parent.width - systemShutdownButton.width
             anchors.left: systemShutdownButton.right
             anchors.leftMargin: 25
-            anchors.top: deviceSSHButton.bottom
+            anchors.top: systemShutdownButton.top
             //anchors.topMargin: NodoSystem.nodoTopMargin
             verticalAlignment: Text.AlignVCenter
             font.family: NodoSystem.fontInter.name
@@ -101,7 +101,7 @@ Rectangle {
             anchors.topMargin: deviceSystemScreen.buttonTopMargin + 30
             text: qsTr("Recovery")
             height: NodoSystem.nodoItemHeight
-            width: mainRect.buttonSize
+            width: deviceSystemScreen.buttonSize
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.buttonTextFontSize
             backgroundColor:  nodoControl.appTheme ? "#F50000" : "#F50000"
