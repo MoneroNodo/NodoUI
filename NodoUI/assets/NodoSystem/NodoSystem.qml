@@ -43,8 +43,8 @@ Item
     property color dataFieldTextColorNightModeOn: "#AE0000"						//NMCOLOR2//
     property color dataFieldTextColorNightModeOff: "#F5F5F5"		//1TEXT FONT//
 
-    property color dataFieldTitleBGColorNightModeOn: "#323232"					//2COLOR BG//
-    property color dataFieldTitleBGColorNightModeOff: "#323232"					//2COLOR BG//
+    property color dataFieldTitleBGColorNightModeOn: "#2D2D2D"					//2COLOR BG//
+    property color dataFieldTitleBGColorNightModeOff: "#2D2D2D"					//2COLOR BG//
 
     property color dataFieldTextBGColorNightModeOn: "#282828"								//3COLOR BG//
     property color dataFieldTextBGColorNightModeOff: "#282828"								//3COLOR BG//
@@ -61,8 +61,8 @@ Item
     property color dateTextColorNightModeOn: "#AE0000"						//NMCOLOR2 CLOCK NIGHT COLOR//
     property color dateTextColorNightModeOff: "#9D9D9D"				//ANALOG CLOCK DAY COLOR//
 
-    property color switchBackgroundColor: "#464646"	//RGB 58,58,60									//3COLOR BG//
-    property color buttonDisabledColor: "#464646"					//BUTTON DISABLED//
+    property color switchBackgroundColor: "#414141"	//RGB 65,65,65									//3COLOR BG//
+    property color buttonDisabledColor: "#414141"					//BUTTON DISABLED//
 
     property int digitalClockPixelSize: 750
 
