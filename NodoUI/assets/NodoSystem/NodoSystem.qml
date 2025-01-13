@@ -22,7 +22,7 @@ Item
 
     property int descriptionTextFontSize: textFontSize - 4
     property color descriptionTextFontColorNightModeOff: "#A5A5A5" //RGB 165
-    property color descriptionTextFontColorNightModeOn: "#960000" //R150
+    property color descriptionTextFontColorNightModeOn: "#8A0000" //R138
 
     property int topMenuTextTopPadding: 0
 
@@ -82,7 +82,7 @@ Item
     property color lockIndicatorBorderColor: "#FA5501"						//1COLOR BG//
     property color lockIndicatorFilledColor: "#FA5501"						//1COLOR BG//
     property color lockIndicatorEmptyColor: "black"
-    property color lockButtonColor: "#232323"												//3COLOR BG//
+    property color lockButtonColor: dataFieldTextBGColorNightModeOff//"#232323"												//3COLOR BG//
     property color lockButtonTextColor: "#F5F5F5"						//1TEXT FONT//
     property int lockButtonTextSize: 50
     property int lockButtonWidth: 130
@@ -99,5 +99,5 @@ Item
     property color inputPreviewBackgroundColor: keyboardButtonUnpressed						//3COLOR BG//
     property color inputPreviewTextColor: "#F5F5F5"						//1TEXT FONT//
 
-    property color popupBackgroundColor: "#232323"								//2COLOR BG//
+    property color popupBackgroundColor: dataFieldTitleBGColorNightModeOff//"#232323"								//2COLOR BG//
 }
