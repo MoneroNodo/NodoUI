@@ -74,7 +74,7 @@ Item {
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.descriptionTextFontSize
             color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
-            text: qsTr("The button will stay greyed out during the update process.")
+            text: qsTr("One tapped, this button will stay greyed out during the update process.")
         }
     }
 
@@ -160,7 +160,7 @@ Item {
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.descriptionTextFontSize
             color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
-            text: qsTr("Monero v" + nodoSystemStatus.getIntValueFromKey("version"))
+            text: qsTr("Monero v placeholder")
         }
     }
 
