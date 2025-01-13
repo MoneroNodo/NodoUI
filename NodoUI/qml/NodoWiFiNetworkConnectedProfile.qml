@@ -208,7 +208,7 @@ NodoCanvas {
         anchors.topMargin: 5
         height: frequencyField.y + frequencyField.height
         visible:  mainRect.state === "showDetails" ? true : false
-        color: NodoSystem.cardBackgroundColor//"transparent"
+        color: "transparent"
 
         NodoInfoField {
             id: ipField

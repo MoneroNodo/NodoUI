@@ -276,6 +276,7 @@ NodoCanvas {
             id: passwordInputField
             anchors.left: connectToANetworkRect.left
             anchors.top: connectToANetworkRect.top
+            anchors.topMargin: NodoSystem.nodoTopMargin
             width: connectToANetworkRect.width
             height: networkDelegateItemHeight
             itemSize: labelSize
