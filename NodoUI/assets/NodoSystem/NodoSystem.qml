@@ -21,8 +21,8 @@ Item
     property int subMenuTopMargin: 20
 
     property int descriptionTextFontSize: textFontSize - 4
-    property color descriptionTextFontColorNightModeOff: "#EBEBEB"
-    property color descriptionTextFontColorNightModeOn: "#8C0000"
+    property color descriptionTextFontColorNightModeOff: "#E1E1E1"
+    property color descriptionTextFontColorNightModeOn: "#780000"
 
     property int topMenuTextTopPadding: 0
 
@@ -43,11 +43,11 @@ Item
     property color dataFieldTextColorNightModeOn: "#AE0000"						//NMCOLOR2//
     property color dataFieldTextColorNightModeOff: "#F5F5F5"		//1TEXT FONT//
 
-    property color dataFieldTitleBGColorNightModeOn: "#2D2D2D"					//2COLOR BG//
-    property color dataFieldTitleBGColorNightModeOff: "#2D2D2D"					//2COLOR BG//
+    property color dataFieldTitleBGColorNightModeOn: "#232323"					//2COLOR BG//
+    property color dataFieldTitleBGColorNightModeOff: "#232323"					//2COLOR BG//
 
-    property color dataFieldTextBGColorNightModeOn: "#161616"								//3COLOR BG//
-    property color dataFieldTextBGColorNightModeOff: "#161616"								//3COLOR BG//
+    property color dataFieldTextBGColorNightModeOn: "#1A1A1A"								//3COLOR BG//
+    property color dataFieldTextBGColorNightModeOff: "#1A1A1A"								//3COLOR BG//
 
     property color buttonTextColorNightModeOn: "#F5F5F5"			//1TEXT FONT//
     property color buttonBGColorNightModeOn: "#AE0000"							//NMCOLOR2//			
