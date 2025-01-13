@@ -22,7 +22,7 @@ Item
 
     property int descriptionTextFontSize: textFontSize - 4
     property color descriptionTextFontColorNightModeOff: "#A5A5A5" //RGB 165
-    property color descriptionTextFontColorNightModeOn: "#7D0500" //R125 G5
+    property color descriptionTextFontColorNightModeOn: "#960000" //R150
 
     property int topMenuTextTopPadding: 0
 
@@ -90,8 +90,8 @@ Item
     property int lockPinDiameter: 33
 
 
-    property color keyboardButtonUnpressed: "#282828"										//3COLOR BG//
-    property color keyboardButtonPressed: "#323232"						//KBONPRESS//
+    property color keyboardButtonUnpressed: dataFieldTextBGColorNightModeOff//"#282828"
+    property color keyboardButtonPressed: switchBackgroundColor//"#323232"						//KBONPRESS//
     property color keyboardBackgroundColor: "#000000"
     property color textColorOnUnpressedButton: "#F5F5F5"				//1TEXT FONT//
     property color capsLockOnColor: "#FA5501"							//1COLOR BG//
