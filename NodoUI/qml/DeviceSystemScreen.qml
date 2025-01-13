@@ -13,16 +13,44 @@ Rectangle {
     Rectangle {
         id: deviceSystemScreen
         anchors.fill: parent
+
+        property int buttonSize: 320
         property int buttonTopMargin: 40
         color: "black"
         visible: true
 
         NodoButton {
-            id: systemResetButton
+            id: deviceLockPinSettingsButton
             anchors.left: deviceSystemScreen.left
             anchors.top: deviceSystemScreen.top
+            text: qsTr("PIN Settings")
+            height: NodoSystem.nodoItemHeight
+            width: mainRect.buttonSize
+            font.family: NodoSystem.fontInter.name
+            font.pixelSize: NodoSystem.buttonTextFontSize
+            onClicked: { pageLoader.source = "DeviceLockPinScreen.qml" }
+        }
+        
+        NodoButton {
+            id: deviceSSHButton
+            anchors.left: deviceSystemScreen.left
+            anchors.top: deviceLockPinSettingsButton.bottom
+            anchors.topMargin: deviceSystemScreen.buttonTopMargin
+            text: qsTr("Admin & SSH")
+            width: mainRect.buttonSize
+            height: NodoSystem.nodoItemHeight
+            font.family: NodoSystem.fontInter.name
+            font.pixelSize: NodoSystem.buttonTextFontSize
+            onClicked: { pageLoader.source = "DeviceSSHScreen.qml" }
+        }        
+
+        NodoButton {
+            id: systemResetButton
+            anchors.left: deviceSystemScreen.left
+            anchors.top: deviceSSHButton.bottom
             text: qsTr("Reboot")
             height: NodoSystem.nodoItemHeight
+            width: mainRect.buttonSize
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.buttonTextFontSize
             onClicked: {
@@ -39,6 +67,7 @@ Rectangle {
             anchors.topMargin: deviceSystemScreen.buttonTopMargin
             text: qsTr("Shutdown")
             height: NodoSystem.nodoItemHeight
+            width: mainRect.buttonSize
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.buttonTextFontSize
             onClicked: {
@@ -48,37 +77,30 @@ Rectangle {
             }
         }
 
-        NodoButton {
-            id: deviceLockPinSettingsButton
-            anchors.left: deviceSystemScreen.left
-            anchors.top: systemShutdownButton.bottom
-            anchors.topMargin: deviceSystemScreen.buttonTopMargin + 10
-            text: qsTr("PIN Settings")
+        Text {
+            id: systemShutdownButtonText
             height: NodoSystem.nodoItemHeight
+            width: parent.width - systemShutdownButton
+            anchors.left: systemShutdownButton.right
+            anchors.leftMargin: 25
+            anchors.top: //
+            anchors.topMargin: NodoSystem.nodoTopMargin
+            verticalAlignment: Text.AlignVCenter
             font.family: NodoSystem.fontInter.name
-            font.pixelSize: NodoSystem.buttonTextFontSize
-            onClicked: { pageLoader.source = "DeviceLockPinScreen.qml" }
+            font.pixelSize: NodoSystem.descriptionTextFontSize
+            color: nodoControl.appTheme ? NodoSystem.descriptionColorNightModeOn : NodoSystem.descriptionColorNightModeOff
+            text: qsTr("Safe Shutdown")
         }
-        
-        NodoButton {
-            id: deviceSSHButton
-            anchors.left: deviceSystemScreen.left
-            anchors.top: deviceLockPinSettingsButton.bottom
-            anchors.topMargin: deviceSystemScreen.buttonTopMargin
-            text: qsTr("Admin & SSH")
-            height: NodoSystem.nodoItemHeight
-            font.family: NodoSystem.fontInter.name
-            font.pixelSize: NodoSystem.buttonTextFontSize
-            onClicked: { pageLoader.source = "DeviceSSHScreen.qml" }
-        }        
+
 
         NodoButton {
             id: systemRecoveryButton
             anchors.left: deviceSystemScreen.left
-            anchors.top: deviceSSHButton.bottom
-            anchors.topMargin: deviceSystemScreen.buttonTopMargin + 30
+            anchors.top: systemShutdownButton.bottom
+            anchors.topMargin: deviceSystemScreen.buttonTopMargin + 40
             text: qsTr("Recovery")
             height: NodoSystem.nodoItemHeight
+            width: mainRect.buttonSize
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.buttonTextFontSize
             backgroundColor:  nodoControl.appTheme ? "#F50000" : "#F50000"
