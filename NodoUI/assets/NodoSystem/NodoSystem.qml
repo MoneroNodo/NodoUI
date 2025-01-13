@@ -26,7 +26,7 @@ Item
 
     property int topMenuTextTopPadding: 0
 
-    property color cardBackgroundColor: "#1E1E1E"
+    property color cardBackgroundColor: "#1E1E1E" //RGB 30
 
     property color defaultColorNightModeOff: "#F5F5F5"				//1TEXT FONT//
 	property color defaultColorNightModeOn: "#AE0000"							//NMCOLOR2//
@@ -43,11 +43,11 @@ Item
     property color dataFieldTextColorNightModeOn: "#AE0000"						//NMCOLOR2//
     property color dataFieldTextColorNightModeOff: "#F5F5F5"		//1TEXT FONT//
 
-    property color dataFieldTitleBGColorNightModeOn: "#232323"					//2COLOR BG//
-    property color dataFieldTitleBGColorNightModeOff: "#232323"					//2COLOR BG//
+    property color dataFieldTitleBGColorNightModeOn: "#2A2A2A" //RGB 42
+    property color dataFieldTitleBGColorNightModeOff: "#2A2A2A"
 
-    property color dataFieldTextBGColorNightModeOn: "#1A1A1A"								//3COLOR BG//
-    property color dataFieldTextBGColorNightModeOff: "#1A1A1A"								//3COLOR BG//
+    property color dataFieldTextBGColorNightModeOn: "#1C1C1C" //RGB 28
+    property color dataFieldTextBGColorNightModeOff: "#1C1C1C"
 
     property color buttonTextColorNightModeOn: "#F5F5F5"			//1TEXT FONT//
     property color buttonBGColorNightModeOn: "#AE0000"							//NMCOLOR2//			
