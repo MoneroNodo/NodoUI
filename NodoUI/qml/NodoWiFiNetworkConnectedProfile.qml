@@ -208,7 +208,7 @@ NodoCanvas {
         anchors.topMargin: 5
         height: frequencyField.y + frequencyField.height
         visible:  mainRect.state === "showDetails" ? true : false
-        color: "transparent"
+        color: NodoSystem.cardBackgroundColor//"transparent"
 
         NodoInfoField {
             id: ipField
@@ -231,8 +231,7 @@ NodoCanvas {
             itemSize: labelSize
             height:  networkDelegateItemHeight
             itemText: systemMessages.messages[NodoMessages.Message.Router] //qsTr("Router")
-            valueText: mainRect.ssidGateway
-            color: NodoSystem.cardBackgroundColor 
+            valueText: mainRect.ssidGateway 
         }
 
         NodoInfoField {
@@ -245,7 +244,6 @@ NodoCanvas {
             height: networkDelegateItemHeight
             itemText: systemMessages.messages[NodoMessages.Message.SignalStrength] //qsTr("Signal Strength")
             valueText: mainRect.ssidSignalStrength + "%"
-            color: NodoSystem.cardBackgroundColor
         }
 
         NodoInfoField {
@@ -258,7 +256,6 @@ NodoCanvas {
             height: networkDelegateItemHeight
             itemText: systemMessages.messages[NodoMessages.Message.SecurityType] //qsTr("Security Type")
             valueText: mainRect.ssidEncryption
-            color: NodoSystem.cardBackgroundColor
         }
 
         NodoInfoField {
@@ -269,8 +266,7 @@ NodoCanvas {
             width: showDetailsRect.width
             itemSize: labelSize
             height: networkDelegateItemHeight
-            itemText: systemMessages.messages[NodoMessages.Message.Frequency] //qsTr("Frequency")
-            color: NodoSystem.cardBackgroundColor 
+            itemText: systemMessages.messages[NodoMessages.Message.Frequency] //qsTr("Frequency") 
             valueText: {
                 var freq = mainRect.ssidFrequency
                 freq.toFixed(1) + " GHz"
