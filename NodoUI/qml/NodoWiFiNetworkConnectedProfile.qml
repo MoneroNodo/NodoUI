@@ -220,9 +220,10 @@ NodoCanvas {
             height: networkDelegateItemHeight
             itemText: systemMessages.messages[NodoMessages.Message.IPAddress] //qsTr("Address")
             valueText: mainRect.ssidIP
+            color: NodoSystem.cardBackgroundColor 
         }
 
-        NodoInfoField{
+        NodoInfoField {
             id: gatewayField
             anchors.left: showDetailsRect.left
             anchors.top: ipField.bottom
@@ -232,9 +233,10 @@ NodoCanvas {
             height:  networkDelegateItemHeight
             itemText: systemMessages.messages[NodoMessages.Message.Router] //qsTr("Router")
             valueText: mainRect.ssidGateway
+            color: NodoSystem.cardBackgroundColor 
         }
 
-        NodoInfoField{
+        NodoInfoField {
             id: signalStrengthField
             anchors.left: showDetailsRect.left
             anchors.top: gatewayField.bottom
@@ -244,9 +246,10 @@ NodoCanvas {
             height: networkDelegateItemHeight
             itemText: systemMessages.messages[NodoMessages.Message.SignalStrength] //qsTr("Signal Strength")
             valueText: mainRect.ssidSignalStrength + "%"
+            color: NodoSystem.cardBackgroundColor 
         }
 
-        NodoInfoField{
+        NodoInfoField {
             id: securityField
             anchors.left: showDetailsRect.left
             anchors.top: signalStrengthField.bottom
@@ -258,7 +261,7 @@ NodoCanvas {
             valueText: mainRect.ssidEncryption
         }
 
-        NodoInfoField{
+        NodoInfoField {
             id: frequencyField
             anchors.left: showDetailsRect.left
             anchors.top: securityField.bottom
@@ -267,6 +270,7 @@ NodoCanvas {
             itemSize: labelSize
             height: networkDelegateItemHeight
             itemText: systemMessages.messages[NodoMessages.Message.Frequency] //qsTr("Frequency")
+            color: NodoSystem.cardBackgroundColor 
             valueText: {
                 var freq = mainRect.ssidFrequency
                 freq.toFixed(1) + " GHz"
