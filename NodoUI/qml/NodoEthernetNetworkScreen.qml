@@ -119,7 +119,7 @@ Item {
         anchors.left: addEthernetConnectionButton.left
         anchors.topMargin: NodoSystem.nodoTopMargin
         width: ethernetNetworkScreen.width
-        height: 0
+        height: -15
 		color: nodoControl.appTheme ? NodoSystem.dataFieldTextBGColorNightModeOn  : NodoSystem.dataFieldTextBGColorNightModeOff
 
         Rectangle {
@@ -326,7 +326,7 @@ Item {
         },
         State {
             name: ""
-            PropertyChanges { target: createNewConnectionCanvas; height: 0 }
+            PropertyChanges { target: createNewConnectionCanvas; height: -15 }
         },
         State {
             name: "showAdvancedConfigRect"
