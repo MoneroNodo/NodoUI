@@ -22,7 +22,7 @@ NodoCanvas {
     property string connectionName: networkManager.getEthernetConnectionName(ethConnIndex)
     property string connectionPath: networkManager.getEthernetConnectionPath(ethConnIndex)
 
-    color: nodoControl.appTheme ? NodoSystem.dataFieldTextBGColorNightModeOn  : NodoSystem.dataFieldTextBGColorNightModeOff
+    color: NodoSystem.cardBackgroundColor
 
     Label {
         id: ethConnLabel
@@ -34,7 +34,7 @@ NodoCanvas {
         font.family: NodoSystem.fontInter.name
         height: 40
         text: mainRect.connectionName
-        color: nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn  : NodoSystem.dataFieldTextColorNightModeOff
+        color: NodoSystem.cardBackgroundColor
     }
 
     NodoButton {

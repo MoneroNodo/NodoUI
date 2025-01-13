@@ -18,7 +18,7 @@ Slider {
         y: 0
         width: control.width
         height: control.height
-        color: nodoControl.appTheme ? NodoSystem.highlightedColorNightModeOn : NodoSystem.highlightedColorNightModeOff
+        color: NodoSystem.dataFieldTitleBGColorNightModeOff//nodoControl.appTheme ? NodoSystem.highlightedColorNightModeOn : NodoSystem.highlightedColorNightModeOff
     }
 
     handle: NodoCanvas {

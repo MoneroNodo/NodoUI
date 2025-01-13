@@ -21,7 +21,7 @@ Item
     property int subMenuTopMargin: 20
 
     property int descriptionTextFontSize: textFontSize - 4
-    property color descriptionTextFontColorNightModeOff: "#E1E1E1"
+    property color descriptionTextFontColorNightModeOff: "#C7C7C7"
     property color descriptionTextFontColorNightModeOn: "#780000"
 
     property int topMenuTextTopPadding: 0
