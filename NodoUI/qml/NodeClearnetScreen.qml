@@ -10,7 +10,8 @@ Item {
     id: nodeClearnetScreen
     property int labelSize: 0
     property int clearnetPort
-    property bool inputFieldReadOnly: false
+    property bool clearnetSwitchStatus
+
     property bool isRPCEnabled
     property int port
     property string rpcUser
@@ -94,24 +95,47 @@ Item {
             //nodeClearnetPopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Close]
             nodeClearnetPopup.open();
         }
-
-        function onComponentEnabledStatusChanged() {
-            inputFieldReadOnly = !nodoControl.isComponentEnabled();
-        }
     }
 
     Component.onCompleted: {
         nodoConfig.updateRequested()
         onCalculateMaximumTextLabelLength()
         networkManager.checkNetworkStatusAndIP();
-        nodeClearnetScreen.inputFieldReadOnly = !nodoControl.isComponentEnabled();
         updateParams()
+    }
+
+    Rectangle {
+        id: clearnetSwitchRect
+        anchors.left: nodeTorScreen.left
+        anchors.top: nodeTorScreen.top
+        height: NodoSystem.nodoItemHeight
+        color: "black"
+        width: clearnetSwitchText.width + clearnetSwitch.width
+
+        NodoLabel {
+            id: clearnetSwitchText
+            height: clearnetSwitchRect.height
+            anchors.left: clearnetSwitchRect.left
+            anchors.top: clearnetSwitchRect.top
+            itemSize: labelSize
+            text: qsTr("Clearnet")
+        }
+
+        NodoSwitch {
+            id: clearnetSwitch
+            anchors.left: clearnetSwitchText.right
+            anchors.leftMargin: NodoSystem.padding
+            height: clearnetSwitchRect.height
+            width: 2*clearnetSwitchRect.height
+            display: AbstractButton.IconOnly
+            checked: nodeClearnetScreen.clearnetSwitchStatus
+        }
     }
 
     NodoInfoField {
         id: clearnetAddressField
         anchors.left: nodeClearnetScreen.left
-        anchors.top: nodeClearnetScreen.top
+        anchors.top: clearnetSwitchRect.bottom
         width: labelSize + 300
         height: NodoSystem.nodoItemHeight
         itemSize: labelSize
@@ -129,40 +153,8 @@ Item {
         itemSize: labelSize
         itemText: systemMessages.messages[NodoMessages.Message.Port]
         valueText: nodeClearnetScreen.clearnetPort
-/*      textFlag: Qt.ImhDigitsOnly
-        readOnlyFlag: nodeClearnetScreen.inputFieldReadOnly
-        validator: IntValidator{bottom: 0; top: 65535}
-        onTextEditFinished: {
-            if("" === clearnetPortField.valueText)
-            {
-                clearnetPortField.valueText = nodeClearnetScreen.clearnetPort.toString()
-            }
+    }
 
-            if(clearnetPortField.valueText !== nodeClearnetScreen.clearnetPort.toString())
-            {
-                clearnetApplyPortButton.isActive = true
-            }
-        }
-*/
-    }
-/*
-    NodoButton {
-        id: clearnetApplyPortButton
-        anchors.left: nodeClearnetScreen.left
-        anchors.top: clearnetPortField.bottom
-        anchors.topMargin: 20
-        text: systemMessages.messages[NodoMessages.Message.ApplyPort]
-        height: NodoSystem.nodoItemHeight
-        font.family: NodoSystem.fontInter.name
-        font.pixelSize: NodoSystem.buttonTextFontSize
-        isActive: false
-        onClicked:
-        {
-            isActive = false
-            nodoControl.setClearnetPort(clearnetPortField.valueText)
-        }
-    }
-*/
     Rectangle {
         id: qrCodeRect
         anchors.right: nodeClearnetScreen.right
