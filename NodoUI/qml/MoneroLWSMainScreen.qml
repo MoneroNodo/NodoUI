@@ -60,36 +60,16 @@ Item {
         anchors.left: moneroLWSMainScreen.left
         height: NodoSystem.subMenuButtonHeight
         //contentWidth: 1400
-        implicitWidth: accountRequestsButton.x + accountRequestsButton.width
+        implicitWidth: inactiveButton.x + inactiveButton.width
 
         background: Rectangle {
             color: "black"
         }
 
         NodoTabButton {
-            id: activeButton
-            y: (moneroLWSMenuBar.height - activeButton.height)/2
-            text: qsTr("ACTIVE")
-            font.family: NodoSystem.fontInter.name
-            font.pixelSize: NodoSystem.topMenuButtonFontSize
-            onClicked: { pageLoader.source = "MoneroLWSActiveScreen.qml" }
-        }
-
-        NodoTabButton {
-            id: inactiveButton
-            y: (moneroLWSMenuBar.height - inactiveButton.height)/2
-            anchors.left: activeButton.right
-            text: qsTr("INACTIVE")
-            font.family: NodoSystem.fontInter.name
-            font.pixelSize: NodoSystem.topMenuButtonFontSize
-            onClicked: { pageLoader.source = "MoneroLWSInactiveScreen.qml" }
-        }
-
-        NodoTabButton {
             id: addAccountButton
             y: (moneroLWSMenuBar.height - addAccountButton.height)/2
-            anchors.left: inactiveButton.right
-            text: qsTr("ADD ACCOUNT")
+            text: qsTr("ADD WALLET")
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: { pageLoader.source = "MoneroLWSAddAccountScreen.qml" }
@@ -105,6 +85,26 @@ Item {
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: { pageLoader.source = "MoneroLWSAccountRequestsScreen.qml" }
         }
+
+        NodoTabButton {
+            id: activeButton
+            y: (moneroLWSMenuBar.height - activeButton.height)/2
+            anchors.left: accountRequestsButton.right
+            text: qsTr("ACTIVE")
+            font.family: NodoSystem.fontInter.name
+            font.pixelSize: NodoSystem.topMenuButtonFontSize
+            onClicked: { pageLoader.source = "MoneroLWSActiveScreen.qml" }
+        }
+
+        NodoTabButton {
+            id: inactiveButton
+            y: (moneroLWSMenuBar.height - inactiveButton.height)/2
+            anchors.left: activeButton.right
+            text: qsTr("INACTIVE")
+            font.family: NodoSystem.fontInter.name
+            font.pixelSize: NodoSystem.topMenuButtonFontSize
+            onClicked: { pageLoader.source = "MoneroLWSInactiveScreen.qml" }
+        }
     }
 
     Loader {
@@ -114,6 +114,6 @@ Item {
         anchors.right: moneroLWSMainScreen.right
         anchors.bottom: moneroLWSMainScreen.bottom
         anchors.topMargin: 40
-        source: "MoneroLWSActiveScreen.qml"
+        source: "MoneroLWSAddAccountScreen.qml"
     }
 }
