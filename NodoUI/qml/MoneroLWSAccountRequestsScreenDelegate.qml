@@ -7,8 +7,8 @@ import NodoCanvas 1.0
 
 NodoCanvas {
     id: mainRect
-    width: 1880
-    height: 295
+    width: parent.width
+    height: moneroLWSAccountRequestsHeightField.y + moneroLWSAccountRequestsHeightField.height + NodoSystem.cardTopMargin//295
     color: NodoSystem.cardBackgroundColor
     property string requestAddress: ""
     property int scanHeight: 0
@@ -31,14 +31,14 @@ NodoCanvas {
         anchors.left: mainRect.left
         anchors.right: mainRect.right
         anchors.top: mainRect.top
-        anchors.topMargin: 10
-        anchors.leftMargin: 8
-        anchors.rightMargin: 8
+        anchors.topMargin: NodoSystem.cardTopMargin
+        anchors.leftMargin: NodoSystem.cardLeftMargin - 2
+        anchors.rightMargin: NodoSystem.cardLeftMargin - 2
         itemSize: 180
         height: NodoSystem.nodoItemHeight
         itemText: systemMessages.messages[NodoMessages.Message.Address] //Label "Address"
         valueText: requestAddress
-        valueFontSize: 28
+        valueFontSize: 31
     }
 
     NodoInfoField {
@@ -56,9 +56,10 @@ NodoCanvas {
 
     NodoButton {
         id: moneroLWSAccountRequestsAcceptButton
-        anchors.left: moneroLWSAccountRequestsAddressField.left
-        anchors.top: moneroLWSAccountRequestsHeightField.bottom
-        anchors.topMargin: NodoSystem.nodoTopMargin
+        anchors.right: mainRect.right
+        anchors.rightMargin: NodoSystem.cardTopMargin
+        anchors.bottom: mainRect.bottom
+        anchors.bottomMargin: NodoSystem.cardTopMargin
         text: qsTr("Accept")
         height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontInter.name
@@ -70,9 +71,10 @@ NodoCanvas {
 
     NodoButton {
         id: moneroLWSAccountRequestsRejectButton
-        anchors.left: moneroLWSAccountRequestsAcceptButton.right
-        anchors.top: moneroLWSAccountRequestsAcceptButton.top
-        anchors.leftMargin: 20
+        anchors.right: moneroLWSAccountRequestsAcceptButton.left
+        anchors.rightMargin: 25
+        anchors.bottom: mainRect.bottom
+        anchors.bottomMargin: NodoSystem.cardTopMargin
         text: qsTr("Reject")
         height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontInter.name
@@ -82,4 +84,3 @@ NodoCanvas {
         }
     }
 }
-

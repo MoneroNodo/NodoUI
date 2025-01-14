@@ -27,6 +27,8 @@ Item
     property int topMenuTextTopPadding: 0
 
     property color cardBackgroundColor: "#242424" //RGB 36
+    property int cardLeftMargin: 10
+    property int cardTopMargin: 15
 
     property color defaultColorNightModeOff: "#F5F5F5"				//1TEXT FONT//
 	property color defaultColorNightModeOn: "#AE0000"							//NMCOLOR2//

@@ -16,7 +16,7 @@ Item {
         onCalculateMaximumTextLabelLength()
         nodePrivateNodeScreen.isRPCEnabled = nodoControl.getrpcEnabledStatus()
         nodePrivateNodeScreen.rpcPort = nodoControl.getrpcPort()
-        privateNodePortField.readOnlyFlag = !nodePrivateNodeScreen.isRPCEnabled
+        //privateNodePortField.readOnlyFlag = !nodePrivateNodeScreen.isRPCEnabled
     }
 
     function onCalculateMaximumTextLabelLength() {
@@ -55,7 +55,7 @@ Item {
         function onComponentEnabledStatusChanged() {
             var enabled = nodoControl.isComponentEnabled();
             privateNodeSwitch.enabled = enabled
-            privateNodePortField.readOnlyFlag = enabled === true ? !privateNodeSwitch.checked : true
+            //privateNodePortField.readOnlyFlag = enabled === true ? !privateNodeSwitch.checked : true
         }
     }
 
@@ -93,17 +93,17 @@ Item {
         }
     }
 
-    NodoInputField {
+    NodoInfoField {
         id: privateNodePortField
         anchors.left: nodePrivateNodeScreen.left
         anchors.top: privateNodeSwitchRect.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         height: NodoSystem.nodoItemHeight
-        width: inputFieldWidth
-        itemSize: labelSize
+        width: labelSize + privateNodeSwitch.width//labelSize + 150//inputFieldWidth
+        //itemSize: labelSize
         itemText: systemMessages.messages[NodoMessages.Message.Port]
         valueText: nodePrivateNodeScreen.rpcPort
-        textFlag: Qt.ImhDigitsOnly
+        /*textFlag: Qt.ImhDigitsOnly
         validator: IntValidator{bottom: 0; top: 65535}
         onTextEditFinished: {
             if("" === privateNodePortField.valueText)
@@ -116,7 +116,7 @@ Item {
                 hiddenInputField.focus = true
                 nodoControl.setrpcPort(privateNodePortField.valueText)
             }
-        }
+        }*/
     }
 
     NodoInputField {

@@ -60,6 +60,7 @@ Item {
     Connections {
         target: nodoConfig
         function onConfigParserReady() {
+            //nodeClearnetScreen.clearnetSwitchStatus = nodoControl.isClearnetEnabled();
             nodeClearnetScreen.clearnetPort = nodoConfig.getIntValueFromKey("config", "monero_rpc_port")
             updateParams()
         }
@@ -94,6 +95,10 @@ Item {
             nodeClearnetPopup.commandID = -1;
             //nodeClearnetPopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Close]
             nodeClearnetPopup.open();
+        }
+
+        function onComponentEnabledStatusChanged() {
+            var enabled = !nodoControl.isComponentEnabled();
         }
     }
 
@@ -136,6 +141,7 @@ Item {
         id: clearnetAddressField
         anchors.left: nodeClearnetScreen.left
         anchors.top: clearnetSwitchRect.bottom
+        anchors.topMargin: NodoSystem.nodoTopMargin
         width: labelSize + 300
         height: NodoSystem.nodoItemHeight
         itemSize: labelSize

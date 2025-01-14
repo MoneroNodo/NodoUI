@@ -7,8 +7,8 @@ import NodoCanvas 1.0
 
 NodoCanvas {
     id: mainRect
-    width: 1880
-    height: 196
+    width: parent.width
+    height: moneroLWSinactiveHeightField.y + moneroLWSinactiveHeightField.height + NodoSystem.cardTopMargin//196
     color: NodoSystem.cardBackgroundColor
     property string inactiveAddress: ""
     property int scanHeight: 0
@@ -31,14 +31,14 @@ NodoCanvas {
         anchors.left: mainRect.left
         anchors.right: mainRect.right
         anchors.top: mainRect.top
-        anchors.topMargin: 10
-        anchors.leftMargin: 8
-        anchors.rightMargin: 8
+        anchors.topMargin: NodoSystem.cardTopMargin
+        anchors.leftMargin: NodoSystem.cardLeftMargin - 2
+        anchors.rightMargin: NodoSystem.cardLeftMargin - 2
         itemSize: 180
         height: NodoSystem.nodoItemHeight
         itemText: systemMessages.messages[NodoMessages.Message.Address] //Label "Address"
         valueText: inactiveAddress
-        valueFontSize: 28
+        valueFontSize: 31
     }
 
 
@@ -56,9 +56,13 @@ NodoCanvas {
 
     NodoButton {
         id: moneroLWSReactivateButton
-        anchors.left: moneroLWSinactiveHeightField.right
-        anchors.top: moneroLWSinactiveHeightField.top
-        anchors.leftMargin: 20
+        anchors.right: mainRect.right
+        anchors.rightMargin: NodoSystem.cardTopMargin
+        anchors.bottom: mainRect.bottom
+        anchors.bottomMargin: NodoSystem.cardTopMargin
+        //anchors.left: moneroLWSinactiveHeightField.right
+        //anchors.top: moneroLWSinactiveHeightField.top
+        //anchors.leftMargin: 25
         text: qsTr("Reactivate")
         height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontInter.name
@@ -70,9 +74,12 @@ NodoCanvas {
 
     NodoButton {
         id: moneroLWSDeleteButton
-        anchors.left: moneroLWSReactivateButton.right
-        anchors.top: moneroLWSinactiveHeightField.top
-        anchors.leftMargin: 20
+        anchors.right: moneroLWSReactivateButton.left
+        anchors.rightMargin: 20
+        anchors.bottom: mainRect.bottom
+        anchors.bottomMargin: NodoSystem.cardTopMargin
+        //anchors.top: moneroLWSinactiveHeightField.top
+        //anchors.leftMargin: 25
         text: qsTr("Delete")
         height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontInter.name
@@ -81,5 +88,4 @@ NodoCanvas {
             moneroLWS.deleteAccount(moneroLWSinactiveAddressField.valueText)
         }
     }
-
 }

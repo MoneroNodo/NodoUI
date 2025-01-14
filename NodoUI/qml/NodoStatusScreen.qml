@@ -15,8 +15,8 @@ Rectangle {
     property int fieldTopMargin: NodoSystem.nodoTopMargin//5
 
     //property int componentWidth: 500
-    property int componentLeftMargin: 10
-    property int componentBottomMargin: NodoSystem.nodoTopMargin
+    property int componentLeftMargin: NodoSystem.cardLeftMargin
+    property int componentBottomMargin: NodoSystem.cardTopMargin
     property int componentTopMargin: 40
     property int cardMargin: 25
 

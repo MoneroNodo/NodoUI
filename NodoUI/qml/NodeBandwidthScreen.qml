@@ -228,7 +228,7 @@ Item {
             text: bwUnit
             anchors.left: rateLimitUpField.right
             anchors.top: rateLimitUpFieldRect.top
-            anchors.leftMargin: 8
+            anchors.leftMargin: 10
 
             height: NodoSystem.nodoItemHeight
             verticalAlignment: Text.AlignVCenter
@@ -242,7 +242,7 @@ Item {
             anchors.left: rateLimitUpUnit.right
             anchors.top: rateLimitUpFieldRect.top
             height: NodoSystem.nodoItemHeight
-            anchors.leftMargin: 10
+            anchors.leftMargin: 25
 
             NodoLabel{
                 id: rateLimitUpUnlimitedSwitchText
@@ -320,7 +320,7 @@ Item {
             text: bwUnit
             anchors.left: rateLimitDownField.right
             anchors.top: rateLimitDownField.top
-            anchors.leftMargin: 8
+            anchors.leftMargin: 10
 
             height: NodoSystem.nodoItemHeight
             verticalAlignment: Text.AlignVCenter
@@ -334,7 +334,7 @@ Item {
             anchors.left: rateLimitDownUnit.right
             anchors.top: rateLimitDownFieldRect.top
             height: NodoSystem.nodoItemHeight
-            anchors.leftMargin: 10
+            anchors.leftMargin: 25
 
             NodoLabel{
                 id: rateLimitDownUnlimitedSwitchText
@@ -376,12 +376,12 @@ Item {
         }
     }
 
-
     NodoButton {
         id: nodeBandwidthApplyButton
         anchors.left: nodeBandwidthScreen.left
         anchors.top: rateLimitDownFieldRect.bottom
-        anchors.topMargin: 20
+        anchors.topMargin: NodoSystem.nodoTopMargin
+        width: labelSize
         text: systemMessages.messages[NodoMessages.Message.Apply]
         height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontInter.name
@@ -394,6 +394,21 @@ Item {
         }
     }
 
+    Text {
+        id: nodeBandwidthApplyButtonText
+        height: NodoSystem.nodoItemHeight
+        width: parent.width - nodeBandwidthApplyButton.width
+        anchors.left: nodeBandwidthApplyButton.right
+        anchors.leftMargin: 25
+        anchors.top: rateLimitDownFieldRect.bottom
+        anchors.topMargin: NodoSystem.nodoTopMargin
+        verticalAlignment: Text.AlignVCenter
+        font.family: NodoSystem.fontInter.name
+        font.pixelSize: NodoSystem.descriptionTextFontSize
+        color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
+        text: qsTr("Monero Daemon will restart to apply changes")
+    } 
+
     NodoPopup {
         id: nodeBandwithPopup
         onApplyClicked: {
@@ -401,4 +416,3 @@ Item {
         }
     }
 }
-

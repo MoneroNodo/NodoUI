@@ -11,7 +11,7 @@ NodoCanvas {
     property int networkDelegateItemHeight: NodoSystem.nodoItemHeight
     property int labelSize: 200
     property int buttonSize: 320
-    property int defaultHeight: NodoSystem.nodoItemHeight + (NodoSystem.nodoTopMargin*2)
+    property int defaultHeight: NodoSystem.nodoItemHeight + (NodoSystem.cardTopMargin*2)
 
     property string profileName
     property string profileIP
@@ -70,7 +70,7 @@ NodoCanvas {
         anchors.top: mainRect.top
         anchors.left: mainRect.left
         anchors.topMargin: (profileNameLabel.paintedHeight)/2
-        anchors.leftMargin: 20
+        anchors.leftMargin: NodoSystem.cardLeftMargin*2
         font.pixelSize: NodoSystem.buttonTextFontSize
         font.family: NodoSystem.fontInter.name
         height: 40
@@ -82,8 +82,8 @@ NodoCanvas {
         id: connectButton
         anchors.top: mainRect.top
         anchors.right: mainRect.right
-        anchors.topMargin: NodoSystem.nodoTopMargin
-        anchors.rightMargin: NodoSystem.nodoTopMargin
+        anchors.topMargin: NodoSystem.cardTopMargin
+        anchors.rightMargin: NodoSystem.cardTopMargin
         width: mainRect.buttonSize
         height: networkDelegateItemHeight
         font.family: NodoSystem.fontInter.name
@@ -106,8 +106,8 @@ NodoCanvas {
         id: forgetButton
         anchors.top: mainRect.top
         anchors.right: connectButton.left
-        anchors.topMargin: NodoSystem.nodoTopMargin
-        anchors.rightMargin: 20
+        anchors.topMargin: NodoSystem.cardTopMargin
+        anchors.rightMargin: 25
         width: mainRect.buttonSize
         height: networkDelegateItemHeight
         font.family: NodoSystem.fontInter.name
@@ -129,8 +129,8 @@ NodoCanvas {
         anchors.top: forgetButton.bottom
         anchors.left: mainRect.left
         anchors.right: mainRect.right
-        anchors.leftMargin: 14
-        anchors.rightMargin: 14
+        anchors.leftMargin: NodoSystem.cardTopMargin
+        anchors.rightMargin: NodoSystem.cardTopMargin
         anchors.topMargin: 5
         height: deviceSpeedField.y + deviceSpeedField.height
         visible:  mainRect.state === "showDetails" ? true : false
@@ -140,7 +140,7 @@ NodoCanvas {
             id: ipField
             anchors.left: showDetailsRect.left
             anchors.top: showDetailsRect.top
-            anchors.topMargin: NodoSystem.nodoTopMargin
+            anchors.topMargin: NodoSystem.cardTopMargin
             width: showDetailsRect.width
             itemSize: labelSize
             height: networkDelegateItemHeight
@@ -195,7 +195,7 @@ NodoCanvas {
     states: [
         State {
             name: "showDetails";
-            PropertyChanges { target: mainRect; height: defaultHeight + showDetailsRect.height }
+            PropertyChanges { target: mainRect; height: defaultHeight + showDetailsRect.height + 5 }
         },
         State {
             name: ""

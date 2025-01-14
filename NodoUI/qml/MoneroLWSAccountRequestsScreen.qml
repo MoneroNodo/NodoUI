@@ -51,11 +51,10 @@ Item {
         anchors.top: moneroLWSAcceptAllRequestsButton.bottom
         anchors.left: moneroLWSAccountCreationRequestsScreen.left
         anchors.bottom: moneroLWSAccountCreationRequestsScreen.bottom
-        anchors.leftMargin: 10
-        anchors.topMargin: 10
+        anchors.topMargin: NodoSystem.nodoTopMargin//10
         model: requestListModel
         visible: true
-        width: 1880
+        width: parent.width
         clip: true
 
         delegate: MoneroLWSAccountRequestsScreenDelegate {
@@ -64,10 +63,9 @@ Item {
             scanHeight: model.scanHeight
             width: requestList.width
         }
-        spacing: 15
+        spacing: NodoSystem.nodoTopMargin
     }
     ListModel {
         id: requestListModel
     }
 }
-

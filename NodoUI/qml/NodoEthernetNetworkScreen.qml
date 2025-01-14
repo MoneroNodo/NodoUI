@@ -8,8 +8,7 @@ import NodoCanvas 1.0
 
 Item {
     id: ethernetNetworkScreen
-    width: parent.width
-    height: parent.height
+    anchors.fill: parent
     property int labelSize: 300
     property bool isEthernetEnabled
     property int networkDelegateItemHeight: NodoSystem.nodoItemHeight
@@ -119,17 +118,17 @@ Item {
         anchors.left: addEthernetConnectionButton.left
         anchors.topMargin: NodoSystem.nodoTopMargin
         width: ethernetNetworkScreen.width
-        height: -15
-		color: nodoControl.appTheme ? NodoSystem.dataFieldTextBGColorNightModeOn  : NodoSystem.dataFieldTextBGColorNightModeOff
+        height: -20//-(NodoSystem.cardTopMargin)-5 //-20
+		color: NodoSystem.cardBackgroundColor//nodoControl.appTheme ? NodoSystem.dataFieldTextBGColorNightModeOn  : NodoSystem.dataFieldTextBGColorNightModeOff
 
         Rectangle {
             id: createNewConnectionRect
             anchors.top: createNewConnectionCanvas.top
             anchors.left: createNewConnectionCanvas.left
             //anchors.topMargin: NodoSystem.nodoTopMargin
-            anchors.leftMargin: 14
-            anchors.rightMargin: 14
-            height: createNewConnectionCanvas.height - createEthernetConnectionRect.height - NodoSystem.nodoTopMargin
+            anchors.leftMargin: NodoSystem.cardTopMargin
+            anchors.rightMargin: NodoSystem.cardTopMargin
+            height: createNewConnectionCanvas.height - createEthernetConnectionRect.height - NodoSystem.cardTopMargin
             visible: ethernetNetworkScreen.state === "" ? false : true
             color: nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn  : NodoSystem.dataFieldTextColorNightModeOff
 
@@ -137,7 +136,7 @@ Item {
                 id: ethConnectionNameField
                 anchors.top: createNewConnectionRect.top
                 anchors.left: createNewConnectionRect.left
-                anchors.topMargin: NodoSystem.nodoTopMargin
+                anchors.topMargin: NodoSystem.cardTopMargin
                 width: createNewConnectionRect.width
                 height: networkDelegateItemHeight
                 itemSize: labelSize
@@ -285,7 +284,7 @@ Item {
                 width: ethernetNetworkScreen.buttonSize
                 font.pixelSize: NodoSystem.buttonTextFontSize
                 font.family: NodoSystem.fontInter.name
-                text: systemMessages.messages[NodoMessages.Message.Add] //qsTr("Add")
+                text: systemMessages.messages[NodoMessages.Message.Add] //qsTr("Connect")
                 visible: createNewConnectionRect.visible
                 isActive: false
                 fitMinimal: false
@@ -322,15 +321,15 @@ Item {
     states: [
         State {
             name: "createNewConnectionRect";
-            PropertyChanges { target: createNewConnectionCanvas; height: defaultHeight + createEthernetConnectionRect.height + NodoSystem.nodoTopMargin*2 + NodoSystem.nodoItemHeight }
+            PropertyChanges { target: createNewConnectionCanvas; height: defaultHeight + createEthernetConnectionRect.height + NodoSystem.cardTopMargin*2 + NodoSystem.nodoItemHeight }
         },
         State {
             name: ""
-            PropertyChanges { target: createNewConnectionCanvas; height: -15 }
+            PropertyChanges { target: createNewConnectionCanvas; height: -20 }
         },
         State {
             name: "showAdvancedConfigRect"
-            PropertyChanges { target: createNewConnectionCanvas; height: defaultHeight + createEthernetConnectionRect.height + advancedSettingsRect.height + NodoSystem.nodoTopMargin*2 + NodoSystem.nodoItemHeight }
+            PropertyChanges { target: createNewConnectionCanvas; height: defaultHeight + createEthernetConnectionRect.height + advancedSettingsRect.height + NodoSystem.cardTopMargin*2 + NodoSystem.nodoItemHeight }
         }
     ]
 

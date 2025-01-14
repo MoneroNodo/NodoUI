@@ -8,8 +8,7 @@ import NodoCanvas 1.0
 
 Item {
     id: wifiNetworkScreen
-    width: parent.width
-    height: parent.height
+    anchors.fill: parent
     property bool isWirelessEnabled
 
     function updateWifiDeviceStatus() {

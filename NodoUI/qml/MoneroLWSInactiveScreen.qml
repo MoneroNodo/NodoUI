@@ -37,10 +37,9 @@ Item {
         anchors.top: moneroLWSInactiveScreen.top
         anchors.left: moneroLWSInactiveScreen.left
         anchors.bottom: moneroLWSInactiveScreen.bottom
-        anchors.leftMargin: NodoSystem.padding
         model: inactiveListModel
         visible: true
-        width: 1880
+        width: parent.width
         clip: true
 
         delegate: MoneroLWSInactiveScreenDelegate {
@@ -49,7 +48,7 @@ Item {
             scanHeight: model.scanHeight
             width: inactiveList.width
         }
-        spacing: 15
+        spacing: NodoSystem.nodoTopMargin
     }
     ListModel {
         id: inactiveListModel

@@ -7,14 +7,13 @@ import NodoCanvas 1.0
 
 NodoCanvas {
     id: mainRect
-    width: 1900
 
     property int ethConnIndex
     property int networkDelegateItemHeight: NodoSystem.nodoItemHeight
     property int labelSize: 200
     property bool showConnected: true
     property int buttonSize: 320
-    property int defaultHeight: NodoSystem.nodoItemHeight + (NodoSystem.nodoTopMargin*2)
+    property int defaultHeight: NodoSystem.nodoItemHeight + (NodoSystem.cardTopMargin*2)
     property int spacing: 1
 
     height: defaultHeight
@@ -29,7 +28,7 @@ NodoCanvas {
         anchors.top: mainRect.top
         anchors.left: mainRect.left
         anchors.topMargin: (ethConnLabel.paintedHeight)/2
-        anchors.leftMargin: 20
+        anchors.leftMargin: NodoSystem.cardLeftMargin*2
         font.pixelSize: NodoSystem.buttonTextFontSize
         font.family: NodoSystem.fontInter.name
         height: 40
@@ -41,8 +40,8 @@ NodoCanvas {
         id: connectButton
         anchors.top: mainRect.top
         anchors.right: mainRect.right
-        anchors.topMargin: NodoSystem.nodoTopMargin
-        anchors.rightMargin: NodoSystem.nodoTopMargin
+        anchors.topMargin: NodoSystem.cardTopMargin
+        anchors.rightMargin: NodoSystem.cardTopMargin
         width: mainRect.buttonSize
         height: networkDelegateItemHeight
         font.family: NodoSystem.fontInter.name
@@ -65,8 +64,8 @@ NodoCanvas {
         id: forgetButton
         anchors.top: mainRect.top
         anchors.right: connectButton.left
-        anchors.topMargin: NodoSystem.nodoTopMargin
-        anchors.rightMargin: 20
+        anchors.topMargin: NodoSystem.cardTopMargin
+        anchors.rightMargin: 25
         width: mainRect.buttonSize
         height: networkDelegateItemHeight
         font.family: NodoSystem.fontInter.name
