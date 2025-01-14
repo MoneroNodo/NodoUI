@@ -14,7 +14,6 @@ Item {
     property string torOnionAddress
     property bool torSwitchStatus
     property bool torRouteSwitchStatus
-    property bool torPortFieldReadOnly: false
 
     property bool isRPCEnabled
     property int port
@@ -48,7 +47,6 @@ Item {
         nodoConfig.updateRequested()
         onCalculateMaximumTextLabelLength()
         var enabled = !nodoControl.isComponentEnabled();
-        torPortFieldReadOnly = enabled
     }
 
     function onCalculateMaximumTextLabelLength() {
@@ -66,7 +64,7 @@ Item {
         target: nodoConfig
         function onConfigParserReady() {
             nodeTorScreen.torSwitchStatus = nodoConfig.getStringValueFromKey("config", "tor_enabled") === "TRUE" ? true : false
-            nodeTorScreen.torRouteSwitchStatus = nodoConfig.istorProxyEnabled();
+            nodeTorScreen.torRouteSwitchStatus = nodoControl.istorProxyEnabled();
             nodeTorScreen.torOnionAddress = nodoConfig.getStringValueFromKey("config", "tor_address")
             nodeTorScreen.torPort = nodoConfig.getIntValueFromKey("config", "monero_rpc_port")
 
@@ -88,7 +86,6 @@ Item {
 
         function onComponentEnabledStatusChanged() {
             var enabled = !nodoControl.isComponentEnabled();
-            torPortFieldReadOnly = enabled
         }
     }
 
