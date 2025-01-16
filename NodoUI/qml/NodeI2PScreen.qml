@@ -115,6 +115,7 @@ Item {
             width: 2*i2pSwitchRect.height
             display: AbstractButton.IconOnly
             checked: nodeI2PScreen.i2pSwitchStatus
+            onCheckedChanged: nodoControl.setI2PEnabled(i2pSwitch.checked);
         }
     }
 

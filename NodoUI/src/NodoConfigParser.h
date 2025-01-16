@@ -40,10 +40,16 @@ public:
     void setTheme(bool theme);
     bool getTheme(void);
 
+    void setClearnetEnabled(bool);
+    void setTorEnabled(bool);
+    void setI2PEnabled(bool);
+
     bool getBanlistEnabled(void);
     void setBanlistEnabled(bool);
     bool getBanlistsListEnabled(QString);
     void setBanlistsListEnabled(QString, bool);
+
+    QString getSoftwareVersion(QString);
 
     void setClearnetPort(QString port);
     void setTorPort(QString port);

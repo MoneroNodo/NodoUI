@@ -7,8 +7,9 @@ NodoConfigParser::NodoConfigParser(QObject *parent) : QObject(parent)
 {
     readFile();
     m_timer = new QTimer(this);
+    QFileSystemWatcher *watcher = new QFileSystemWatcher(this);
+    connect(watcher, SIGNAL(fileChanged(LOCKFILE)), this, SLOT(checkLock()));
     connect(m_timer, SIGNAL(timeout()), this, SLOT(updateStatus()));
-    connect(this, SIGNAL(fileChanged()), this, SLOT(checkLock()));
     m_timer->start(0);
 }
 
@@ -447,4 +448,32 @@ void NodoConfigParser::setUpdateStatus(QString moduleName, bool newStatus)
 
     m_autoupdateObj.insert(moduleName, stat);
     writeJson();
+}
+
+void NodoConfigParser::setClearnetEnabled(bool enabled)
+{
+    m_configObj.insert("clearnet_enabled", enabled ? "TRUE" : "FALSE");
+    writeJson();
+}
+
+void NodoConfigParser::setTorEnabled(bool enabled)
+{
+    m_configObj.insert("tor_enabled", enabled ? "TRUE" : "FALSE");
+    writeJson();
+}
+
+void NodoConfigParser::setI2PEnabled(bool enabled)
+{
+    m_configObj.insert("i2p_enabled", enabled ? "TRUE" : "FALSE");
+    writeJson();
+}
+
+QString NodoConfigParser::getSoftwareVersion(QString name)
+{
+    auto it = m_versionsObj.find("names");
+    if (it->isObject())
+    {
+        return it->toObject().value(name).toString("<unknown>");
+    }
+    return "<unknown>";
 }

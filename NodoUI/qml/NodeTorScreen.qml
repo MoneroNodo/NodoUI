@@ -114,6 +114,7 @@ Item {
             width: 2*torSwitchRect.height
             display: AbstractButton.IconOnly
             checked: nodeTorScreen.torSwitchStatus
+            onCheckedChanged: nodoControl.setTorEnabled(torSwitch.checked);
         }
     }
 

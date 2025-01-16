@@ -123,7 +123,7 @@ Item {
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.descriptionTextFontSize
             color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
-            text: qsTr("Nodo v NodoUI v")
+            text: nodoControl.getSoftwareVersion("nodo")
         }
     }
 
@@ -166,7 +166,7 @@ Item {
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.descriptionTextFontSize
             color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
-            text: nodoSystemStatus.getIntValueFromKey("version")
+            text: nodoControl.getSoftwareVersion("monero")
         }
     }
 
@@ -209,7 +209,7 @@ Item {
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.descriptionTextFontSize
             color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
-            text: qsTr("Monero LWS v")
+            text: nodoControl.getSoftwareVersion("lws")
         }
     }
 }

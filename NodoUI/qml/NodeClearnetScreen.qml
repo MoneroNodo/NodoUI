@@ -12,6 +12,7 @@ Item {
     property int clearnetPort
     property bool clearnetSwitchStatus
 
+    property bool isClearnetEnabled
     property bool isRPCEnabled
     property int port
     property string rpcUser
@@ -60,7 +61,7 @@ Item {
     Connections {
         target: nodoConfig
         function onConfigParserReady() {
-            //nodeClearnetScreen.clearnetSwitchStatus = nodoControl.isClearnetEnabled();
+            nodeClearnetScreen.clearnet = nodoConfig.getStringValueFromKey("config", "clearnet_enabled") === "TRUE" ? true : false
             nodeClearnetScreen.clearnetPort = nodoConfig.getIntValueFromKey("config", "monero_rpc_port")
             updateParams()
         }
@@ -134,6 +135,7 @@ Item {
             width: 2*clearnetSwitchRect.height
             display: AbstractButton.IconOnly
             checked: nodeClearnetScreen.clearnetSwitchStatus
+            onCheckedChanged: nodoControl.setClearnetEnabled(clearnetSwitch.checked);
         }
     }
 

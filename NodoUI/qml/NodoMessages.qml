@@ -36,6 +36,7 @@ Item {
         Address,
         Port,
         Loading,
+        NewPINSet,
         PINCodesDoNotMatch,
         FailedToChangePassword,
         PasswordChangedSuccessfully,
@@ -84,7 +85,8 @@ Item {
         qsTr("Address"),
         qsTr("Port"),
         qsTr("Loading"),
-        qsTr("PIN codes do not match"),
+        qsTr("New PIN is set"),
+        qsTr("PIN codes do not match."),
         qsTr("Failed to change password"),
         qsTr("Password changed successfully"),
         qsTr("Input field can't be empty!"),
@@ -123,7 +125,7 @@ Item {
         qsTr("No network device found!"),
         qsTr("Cable disconnected!"),
         qsTr("Something is wrong!"),
-        qsTr("New PIN is set successfully!"),
+        qsTr("New PIN is set."),
         qsTr("Password doesn't meet requirements."),
         qsTr("Passwords do not match.")
     ]

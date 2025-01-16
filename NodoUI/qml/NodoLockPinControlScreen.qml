@@ -9,7 +9,7 @@ import NodoCanvas 1.0
 Item {
     id: lockPinScreen
     property int labelSize: 0
-    property int inputFieldWidth: 640
+    property int inputFieldWidth: 700
     property bool pinFieldReadOnly: false
     property bool isLockPinEnabled: false
 
@@ -32,8 +32,8 @@ Item {
     }
 
     function onCalculateMaximumTextLabelLength() {
-        if(lockPinControlLockAfterField.labelRectRoundSize > labelSize)
-            labelSize = lockPinControlLockAfterField.labelRectRoundSize
+        //if(lockPinControlLockAfterField.labelRectRoundSize > labelSize)
+        //    labelSize = lockPinControlLockAfterField.labelRectRoundSize
 
         if(lockPinControlNewPinField.labelRectRoundSize > labelSize)
             labelSize = lockPinControlNewPinField.labelRectRoundSize
@@ -60,7 +60,7 @@ Item {
         height: NodoSystem.nodoItemHeight
         color: "black"
 
-        NodoLabel{
+        NodoLabel {
             id: lockPinSwitchText
             height: lockPinSwitchRect.height
             anchors.left: lockPinSwitchRect.left
@@ -96,7 +96,7 @@ Item {
         anchors.right: lockPinScreen.right
         anchors.top: lockPinSwitchRect.bottom
         height: lockPinControlSetNewPin.height + lockPinControlSetNewPin.y
-        anchors.topMargin: 20
+        anchors.topMargin: NodoSystem.nodoTopMargin
         color: "black"
         visible:  lockPinScreen.state === "pinControlEnabled" ? true : false
 
@@ -104,9 +104,9 @@ Item {
             id: lockPinControlLockAfterField
             anchors.left: lockPinControlRect.left
             anchors.top: lockPinControlRect.top
-            width: inputFieldWidth
+            width: lockPinControlLockAfterField.labelRectRoundSize + lockPinSwitch.width
             height: NodoSystem.nodoItemHeight
-            itemSize: labelSize
+            //itemSize: lockPinSwitchText.itemSize
             itemText: qsTr("Lock after")
             textFlag: Qt.ImhDigitsOnly
             validator: RegularExpressionValidator {
@@ -131,7 +131,7 @@ Item {
             id: lockPinControlLockAfterTimeRect
             anchors.left: lockPinControlLockAfterField.right
             anchors.top: lockPinControlLockAfterField.top
-            anchors.leftMargin: 8
+            anchors.leftMargin: 10
             color: "black"
 
             Text {
@@ -207,6 +207,11 @@ Item {
                 if(newPin === newPin2)
                 {
                     nodoControl.setLockPin(newPin);
+                    nodoLockPinControlPopup.commandID = -1;
+                    nodoLockPinControlPopup.popupMessageText = systemMessages.messages[NodoMessages.Message.NewPINSet]
+                    nodoLockPinControlPopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Close]
+                    nodoLockPinControlPopup.open();
+                    //{ pageLoader.source = "NodoLockPinControlScreen.qml" } //If PIN set, stay on same page
                     //{ pageLoader.source = "DevicePinScreen.qml" } //If PIN set, goto Main PIN screen
                 }
                 else
@@ -232,4 +237,3 @@ Item {
         }
     }
 }
-

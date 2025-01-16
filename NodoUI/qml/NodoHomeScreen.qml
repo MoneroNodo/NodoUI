@@ -221,6 +221,7 @@ Item {
             anchors.top: rightMenu.bottom
             anchors.topMargin: NodoSystem.subMenuTopMargin + 42//40
             color: "black"
+            visible: nodoControl.isTickerEnabled()
             
             Text {
                 id: exchangeNameText

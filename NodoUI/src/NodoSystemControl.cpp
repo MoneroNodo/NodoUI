@@ -58,6 +58,24 @@ bool NodoSystemControl::getAppTheme(void)
     return m_appTheme;
 }
 
+void NodoSystemControl::setClearnetEnabled(bool enabled)
+{
+    m_configParser->setClearnetEnabled(enabled);
+}
+void NodoSystemControl::setTorEnabled(bool enabled)
+{
+    m_configParser->setTorEnabled(enabled);
+}
+void NodoSystemControl::setI2PEnabled(bool enabled)
+{
+    m_configParser->setI2PEnabled(enabled);
+}
+
+QString NodoSystemControl::getSoftwareVersion(QString name)
+{
+    return m_configParser->getSoftwareVersion(name);
+}
+
 void NodoSystemControl::setAppTheme(bool appTheme)
 {
     m_appTheme = appTheme;
