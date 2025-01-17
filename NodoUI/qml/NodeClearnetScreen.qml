@@ -61,7 +61,7 @@ Item {
     Connections {
         target: nodoConfig
         function onConfigParserReady() {
-            nodeClearnetScreen.clearnet = nodoConfig.getStringValueFromKey("config", "clearnet_enabled") === "TRUE" ? true : false
+            nodeClearnetScreen.isClearnetEnabled = nodoConfig.getStringValueFromKey("config", "clearnet_enabled") === "TRUE" ? true : false
             nodeClearnetScreen.clearnetPort = nodoConfig.getIntValueFromKey("config", "monero_rpc_port")
             updateParams()
         }
@@ -112,8 +112,8 @@ Item {
 
     Rectangle {
         id: clearnetSwitchRect
-        anchors.left: nodeTorScreen.left
-        anchors.top: nodeTorScreen.top
+        anchors.left: nodeClearnetScreen.left
+        anchors.top: nodeClearnetScreen.top
         height: NodoSystem.nodoItemHeight
         color: "black"
         width: clearnetSwitchText.width + clearnetSwitch.width
