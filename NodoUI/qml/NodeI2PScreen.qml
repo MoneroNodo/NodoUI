@@ -137,7 +137,7 @@ Item {
         anchors.left: nodeI2PScreen.left
         anchors.top: i2pAddressField.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
-        width: labelSize + 150
+        width: labelSize + i2pSwitch.width
         height: NodoSystem.nodoItemHeight
         itemSize: labelSize
         itemText: systemMessages.messages[NodoMessages.Message.Port] //qsTr("Port")

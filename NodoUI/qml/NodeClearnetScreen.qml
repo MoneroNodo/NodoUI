@@ -156,7 +156,7 @@ Item {
         anchors.left: nodeClearnetScreen.left
         anchors.top: clearnetAddressField.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
-        width: labelSize + 150
+        width: labelSize + clearnetSwitch.width
         height: NodoSystem.nodoItemHeight
         itemSize: labelSize
         itemText: systemMessages.messages[NodoMessages.Message.Port]
