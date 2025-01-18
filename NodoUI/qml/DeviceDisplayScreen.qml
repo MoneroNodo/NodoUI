@@ -17,6 +17,7 @@ Item {
     Component.onCompleted: {
         deviceDisplayCurrencyComboBox.currentIndex = priceTicker.getCurrentCurrencyIndex()
         deviceDisplaySlider.value = nodoControl.getBacklightLevel()
+        screenSaverStartAfterInput.valueText = nodoControl.getScreenSaverTimeout()
     }
 
     Rectangle {
@@ -107,7 +108,12 @@ Item {
             validator: RegularExpressionValidator {
                 regularExpression: /^([1-9][0-9]+|[1-9])$/
             }
-            onTextEditFinished: {}            
+            onTextEditFinished: {
+                if("" !== screenSaverStartAfterInput.valueText)
+                {
+                nodoControl.setScreenSaverTimeout(screenSaverStartAfterInput.valueText)
+                }
+            }            
         }
 
         Rectangle {
