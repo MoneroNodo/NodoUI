@@ -18,6 +18,13 @@ Page {
         busyIndicator.running = false
     }
 
+    Connections {
+        target: nodoControl
+        function onFeedsEnabledChanged(enabled) {
+            pageLoader.source = "DeviceMainScreen.qml"
+        }
+    }
+
     function getNewsPageList() {
         newsListModel.clear()
         var sourceCount = feedsControl.getNumOfRSSSource()

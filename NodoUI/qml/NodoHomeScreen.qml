@@ -215,6 +215,16 @@ Item {
             }
         }
 
+        Connections {
+            target: nodoControl
+            function onTickerEnabledChanged(enabled) {
+                priceTickerRect.visible = enabled;
+            }
+            function onFeedsEnabledChanged(enabled) {
+                newsButton.visible = enabled;
+            }
+        }
+
         Rectangle {
             id: priceTickerRect
             anchors.right: mainAppWindowRectangle.right

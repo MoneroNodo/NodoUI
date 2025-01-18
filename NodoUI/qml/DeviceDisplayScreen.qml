@@ -340,7 +340,7 @@ Item {
             anchors.left: deviceDisplayPricetickerSwitchRect.left
             anchors.top: deviceDisplayPricetickerSwitchRect.top
             width: labelSize
-            text: qsTr("Priceticker")
+            text: qsTr("Price Ticker")
         }
 
         NodoSwitch {
@@ -350,17 +350,8 @@ Item {
             height: deviceDisplayPricetickerSwitchRect.height
             width: 2*deviceDisplayPricetickerSwitchRect.height
             display: AbstractButton.IconOnly
-            
-            onCheckedChanged: {
-                if(checked)
-                {
-                    nodoControl.setTickerEnabled = true
-                }
-                else
-                {
-                    nodoControl.setTickerEnabled = false
-                }
-            }
+            checked: nodoControl.isTickerEnabled()
+            onCheckedChanged: nodoControl.setTickerEnabled(deviceDisplayPricetickerSwitch.checked)
         }
     }
 
@@ -445,21 +436,8 @@ Item {
             height: deviceDisplayFeedsSwitchRect.height
             width: 2*deviceDisplayFeedsSwitchRect.height
             display: AbstractButton.IconOnly
-            
-            onCheckedChanged: {
-                if(checked === true)
-                    {
-                        nodoControl.setFeedsEnabled = "true"
-                        //newsButton.visible = "true"
-                        //deviceDisplayManageFeedsButton.visible = "true"
-                    }
-                    else
-                    {
-                        nodoControl.setFeedsEnabled = "false"
-                        //newsButton.visible = "false"
-                        //deviceDisplayManageFeedsButton.visible = false
-                    }
-            }
+            checked: nodoControl.isFeedsEnabled()
+            onCheckedChanged: nodoControl.setFeedsEnabled(deviceDisplayFeedsSwitch.checked)
         }
 
         NodoButton  {

@@ -462,11 +462,13 @@ void NodoSystemControl::settorProxyEnabled(bool enabled)
 void NodoSystemControl::setTickerEnabled(bool enabled)
 {
     m_uiSystemParser->setTickerEnabled(enabled);
+    emit tickerEnabledChanged(enabled);
 }
 
 void NodoSystemControl::setFeedsEnabled(bool enabled)
 {
     m_uiSystemParser->setFeedsEnabled(enabled);
+    emit feedsEnabledChanged(enabled);
 }
 
 void NodoSystemControl::setTorPort(QString port)

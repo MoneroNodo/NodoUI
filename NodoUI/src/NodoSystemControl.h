@@ -147,6 +147,8 @@ signals:
     void componentEnabledStatusChanged(void);
     void closePopupRequested(void);
     void passwordChangeStatus(int status);
+    void feedsEnabledChanged(bool);
+    void tickerEnabledChanged(bool);
 
     void factoryResetStarted(void);
     void factoryResetRequested(void);
