@@ -60,6 +60,8 @@ Item {
         anchors.top: deviceDisplayBrightnessRect.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         height: NodoSystem.nodoItemHeight
+        color: "black"
+        width: screenSaverLabel.width + screenSaverComboBox.width
 
         NodoLabel {
             id: screenSaverLabel
@@ -75,12 +77,56 @@ Item {
             anchors.left: screenSaverLabel.right
             anchors.leftMargin: NodoSystem.padding
             anchors.top: screenSaverRect.top
-            width: dropdownLength
+            width: 25 + deviceDisplayNightModeSwitch.width + deviceDisplayFlipOrientationSwitch.x + deviceDisplayFlipOrientationSwitch.width //dropdownLength
             height: screenSaverRect.height
             currentIndex: nodoControl.getScreenSaverType()
             model: [qsTr("News"), qsTr("Analog Clock"), qsTr("Digital Clock"), qsTr("Display Off"), qsTr("None")]
             onCurrentIndexChanged: {
                 nodoControl.setScreenSaverType(currentIndex)
+            }
+        }
+    }
+
+    Rectangle {
+        id: screenSaverStartAfterRect
+        anchors.left: screenSaverRect.right
+        anchors.top: deviceDisplayBrightnessRect.bottom
+        anchors.topMargin: NodoSystem.nodoTopMargin
+        anchors.leftMargin: 25
+        height: NodoSystem.nodoItemHeight
+
+        NodoInputField {
+            id: screenSaverStartAfterInput
+            anchors.left: screenSaverStartAfterRect.left
+            anchors.top: screenSaverStartAfterRect.top
+            height: NodoSystem.nodoItemHeight
+            width: itemSize + deviceDisplayNightModeSwitch.width
+            itemSize: labelSize - 20
+            itemText: qsTr("Start after")
+            textFlag: Qt.ImhDigitsOnly
+            validator: RegularExpressionValidator {
+                regularExpression: /^([1-9][0-9]+|[1-9])$/
+            }
+            onTextEditFinished: {}            
+        }
+
+        Rectangle {
+            id: screenSaverStartAfterMinutesRect
+            anchors.left: screenSaverStartAfterInput.right
+            anchors.top: screenSaverStartAfterInput.top
+            anchors.leftMargin: 10
+            color: "black"
+
+            Text {
+                id: screenSaverStartAfterMinutes
+                anchors.left: screenSaverStartAfterMinutesRect.left
+                anchors.top: screenSaverStartAfterMinutesRect.top
+                text: qsTr("minutes")
+                height: NodoSystem.nodoItemHeight
+                verticalAlignment: Text.AlignVCenter
+                font.family: NodoSystem.fontInter.name
+                font.pixelSize: NodoSystem.inputFieldValueFontSize
+                color: nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn : NodoSystem.dataFieldTextColorNightModeOff
             }
         }
     }
