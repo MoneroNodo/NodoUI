@@ -174,8 +174,6 @@ void NodoConfigParser::setCurrencyName(QString currency)
 
 void NodoConfigParser::writeJson(void)
 {
-    QMutexLocker locker(&m_mutex);
-    QFile file;
     QFile lockfile(m_json_lock_file_name);
     int counter = 0;
 
@@ -189,6 +187,8 @@ void NodoConfigParser::writeJson(void)
         }
     }
 
+    QMutexLocker locker(&m_mutex);
+    QFile file;
     lockfile.open(QFile::WriteOnly | QFile::Text);
     lockfile.write(" ");
     lockfile.close();
@@ -453,19 +453,16 @@ void NodoConfigParser::setUpdateStatus(QString moduleName, bool newStatus)
 void NodoConfigParser::setClearnetEnabled(bool enabled)
 {
     m_configObj.insert("clearnet_enabled", enabled ? "TRUE" : "FALSE");
-    writeJson();
 }
 
 void NodoConfigParser::setTorEnabled(bool enabled)
 {
     m_configObj.insert("tor_enabled", enabled ? "TRUE" : "FALSE");
-    writeJson();
 }
 
 void NodoConfigParser::setI2PEnabled(bool enabled)
 {
     m_configObj.insert("i2p_enabled", enabled ? "TRUE" : "FALSE");
-    writeJson();
 }
 
 QString NodoConfigParser::getSoftwareVersion(QString name)
