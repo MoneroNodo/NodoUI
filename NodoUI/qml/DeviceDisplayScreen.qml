@@ -102,8 +102,21 @@ Item {
         target: nodoControl
         function onFeedsEnabledChanged(enabled) {
             deviceDisplayManageFeedsButton.enabled = enabled;
+            if (enabled && nodoControl.getScreenSaverType() === 1)
+                nodoControl.setScreenSaverType(0);
             if (!enabled && nodoControl.getScreenSaverType() === 0)
                 nodoControl.setScreenSaverType(1);
+            var ss = nodoControl.getScreenSaverType();
+            if (enabled)
+            {
+                screenSaverComboBox.model = [qsTr("News"), qsTr("Analog Clock"), qsTr("Digital Clock"), qsTr("Display Off"), qsTr("None")];
+                screenSaverComboBox.currentIndex = ss + 1;
+            }
+            else
+            {
+                screenSaverComboBox.model = [qsTr("Analog Clock"), qsTr("Digital Clock"), qsTr("Display Off"), qsTr("None")];
+                screenSaverComboBox.currentIndex = ss - 1;
+            }
         }
     }
 
