@@ -175,6 +175,7 @@ Item {
                     pageLoader.source = "NewsMainScreen.qml"
                     pageLoader.anchors.topMargin = NodoSystem.subMenuTopMargin + 62//60
                 }
+                visible: nodoControl.isFeedsEnabled()
             }
         }
 

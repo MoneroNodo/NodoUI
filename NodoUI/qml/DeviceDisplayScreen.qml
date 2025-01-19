@@ -81,10 +81,29 @@ Item {
             width: 25 + deviceDisplayNightModeSwitch.width + deviceDisplayFlipOrientationSwitch.x + deviceDisplayFlipOrientationSwitch.width //dropdownLength
             height: screenSaverRect.height
             currentIndex: nodoControl.getScreenSaverType()
-            model: [qsTr("News"), qsTr("Analog Clock"), qsTr("Digital Clock"), qsTr("Display Off"), qsTr("None")]
+            model:
+            {
+                if (nodoControl.isFeedsEnabled())
+                {
+                    [qsTr("News"), qsTr("Analog Clock"), qsTr("Digital Clock"), qsTr("Display Off"), qsTr("None")]
+                }
+                else
+                {
+                    [qsTr("Analog Clock"), qsTr("Digital Clock"), qsTr("Display Off"), qsTr("None")]
+                }
+            }
             onCurrentIndexChanged: {
                 nodoControl.setScreenSaverType(currentIndex)
             }
+        }
+    }
+
+    Connections {
+        target: nodoControl
+        function onFeedsEnabledChanged(enabled) {
+            deviceDisplayManageFeedsButton.enabled = enabled;
+            if (!enabled && nodoControl.getScreenSaverType() === 0)
+                nodoControl.setScreenSaverType(1);
         }
     }
 
