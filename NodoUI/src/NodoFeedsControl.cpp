@@ -163,7 +163,11 @@ void NodoFeedsControl::downloadFinished(QNetworkReply *reply)
             std::string name = n.name();
             if(name == m_feeds_str.at(index).image_tag.toStdString().c_str())
             {
-                parser.imgPath = QString::fromStdString(n.attribute(m_feeds_str.at(index).image_attr_tag.toStdString().c_str()).value());
+                std::string tag = m_feeds_str.at(index).image_attr_tag.toStdString();
+                if (tag.empty())
+                    parser.imgPath = QString::fromStdString(n.text().as_string());
+                else
+                    parser.imgPath = QString::fromStdString(n.attribute(m_feeds_str.at(index).image_attr_tag.toStdString().c_str()).value());
             }
         }
 
