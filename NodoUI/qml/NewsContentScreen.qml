@@ -53,6 +53,8 @@ Rectangle {
                 anchors.left: feedTitle.left
                 anchors.top: feedTitle.bottom
                 anchors.topMargin: 5
+                anchors.bottomMargin: 5
+								color: "black"
                 height: feedChannel.height
                 width: root.width - 2*feedTitle.x
                 
@@ -71,10 +73,9 @@ Rectangle {
                 Label {
                     id: feedChannel
                     anchors.left: middleSection.left
-                    anchors.top: middleSection.top
+                    anchors.bottom: middleSection.bottom
                     anchors.leftMargin: 10
                     width: feedChannel.paintedWidth
-                    height: paintedHeight
                     text: channelStr
                     color: nodoControl.appTheme ? NodoSystem.highlightedColorNightModeOn : NodoSystem.highlightedColorNightModeOff
                     font.family: NodoSystem.fontInter.name
@@ -84,10 +85,9 @@ Rectangle {
                 Label {
                     id: feedTimestamp
                     anchors.left: feedChannel.right
-                    anchors.top: middleSection.top
+                    anchors.bottom: middleSection.bottom
                     anchors.leftMargin: 20
                     width: feedTimestamp.paintedWidth
-                    height: feedChannel.paintedHeight
                     text: dataTimestampStr
                     color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
                     font.family: NodoSystem.fontInter.name
