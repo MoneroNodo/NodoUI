@@ -32,7 +32,7 @@ Rectangle {
         Item {
             id: feedItem
             width: parent.width
-            height: feedTitle.y + feedTitle.height + middleSection.anchors.topMargin + middleSection.height + feedBody.anchors.topMargin + feedBody.height
+            height: feedTitle.y + feedTitle.height + middleSection.anchors.topMargin + middleSection.anchors.bottomMargin + middleSection.height + feedBody.anchors.topMargin + feedBody.height
             implicitHeight: height
             Label { // TITLE
                 id: feedTitle
@@ -54,7 +54,7 @@ Rectangle {
                 anchors.top: feedTitle.bottom
                 anchors.topMargin: 5
                 anchors.bottomMargin: 5
-								color: "black"
+                color: "black"
                 height: feedChannel.height
                 width: root.width - 2*feedTitle.x
                 
@@ -87,12 +87,11 @@ Rectangle {
                     anchors.left: feedChannel.right
                     anchors.bottom: middleSection.bottom
                     anchors.leftMargin: 20
+                    anchors.bottomMargin: 2
                     width: feedTimestamp.paintedWidth
                     text: dataTimestampStr
                     color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
                     font.family: NodoSystem.fontInter.name
-                    //verticalAlignment: Text.AlignVCenter
-                    //verticalAlignment: Text.AlignTop
                     font.pixelSize: 40
                 }
             }
@@ -101,8 +100,8 @@ Rectangle {
                 id: feedBody
                 anchors.left: middleSection.left
                 anchors.top: middleSection.bottom
-                anchors.topMargin: 10//NodoSystem.subMenuTopMargin + 64//100
-                height: paintedHeight
+                anchors.topMargin: 15//NodoSystem.subMenuTopMargin + 64//100
+                height: paintedHeight + 20
                 width: root.width - 2*feedBody.x
                 wrapMode: Text.WordWrap
                 textFormat: Text.RichText

@@ -45,6 +45,17 @@
             "visible": true
         },
         "feed_4": {
+            "description_tag": "content:encoded",
+            "image_attr": "",
+            "image_tag": "",
+            "name": "Escape the Technocracy",
+            "num_of_feeds_to_show": 3,
+            "pub_date_tag": "pubDate",
+            "selected": true,
+            "uri": "https://escapethetechnocracy.com/feed/",
+            "visible": true   
+        },
+        "feed_5": {
             "description_tag": "description",
             "image_attr": "",
             "image_tag": "",
@@ -55,7 +66,7 @@
             "uri": "https://xmrbazaar.com/rss",
             "visible": true
         },
-        "feed_5": {
+        "feed_6": {
             "description_tag": "description",
             "image_attr": "",
             "image_tag": "url",
@@ -65,17 +76,6 @@
             "selected": true,
             "uri": "https://monerica.com/rss/feed.xml",
             "visible": true
-        },
-        "feed_6": {
-            "description_tag": "",
-            "image_attr": "",
-            "image_tag": "",
-            "name": "",
-            "num_of_feeds_to_show": 0,
-            "pub_date_tag": "",
-            "selected": false,
-            "uri": "",
-            "visible": false
         },
         "feed_7": {
             "description_tag": "",
