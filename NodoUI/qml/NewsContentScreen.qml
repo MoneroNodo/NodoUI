@@ -53,7 +53,10 @@ Rectangle {
                 anchors.left: feedTitle.left
                 anchors.top: feedTitle.bottom
                 anchors.topMargin: 5
-                Label {
+                height: feedChannel.height
+                width: root.width - 2*feedTitle.x
+                
+/*                Label {
                     id: feedAuth
                     anchors.left: middleSection.left
                     anchors.top: middleSection.top
@@ -62,21 +65,19 @@ Rectangle {
                     text: headerAuthStr
                     color: nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn : NodoSystem.dataFieldTextColorNightModeOff
                     font.family: NodoSystem.fontInter.name
-                    //verticalAlignment: Text.AlignVCenter
                     font.pixelSize: 48
-                }
+                }*/
 
                 Label {
                     id: feedChannel
-                    anchors.left: feedAuth.right
+                    anchors.left: middleSection.left
                     anchors.top: middleSection.top
                     anchors.leftMargin: 10
                     width: feedChannel.paintedWidth
-                    height: 20
+                    height: paintedHeight
                     text: channelStr
                     color: nodoControl.appTheme ? NodoSystem.highlightedColorNightModeOn : NodoSystem.highlightedColorNightModeOff
                     font.family: NodoSystem.fontInter.name
-                    //verticalAlignment: Text.AlignVCenter
                     font.pixelSize: 48
                 }
 
@@ -84,15 +85,15 @@ Rectangle {
                     id: feedTimestamp
                     anchors.left: feedChannel.right
                     anchors.top: middleSection.top
-                    anchors.leftMargin: 15
+                    anchors.leftMargin: 20
                     width: feedTimestamp.paintedWidth
-                    height: 20
+                    height: feedChannel.paintedHeight
                     text: dataTimestampStr
                     color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
                     font.family: NodoSystem.fontInter.name
                     //verticalAlignment: Text.AlignVCenter
-                    //verticalAlignment: Text.AlignBottom
-                    font.pixelSize: 42
+                    //verticalAlignment: Text.AlignTop
+                    font.pixelSize: 40
                 }
             }
 
@@ -100,12 +101,14 @@ Rectangle {
                 id: feedBody
                 anchors.left: middleSection.left
                 anchors.top: middleSection.bottom
-                anchors.topMargin: NodoSystem.subMenuTopMargin + 64//100
+                anchors.topMargin: 10//NodoSystem.subMenuTopMargin + 64//100
+                height: paintedHeight
                 width: root.width - 2*feedBody.x
                 wrapMode: Text.WordWrap
                 textFormat: Text.RichText
                 readOnly: true
                 selectByMouse: false
+                color: nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn : NodoSystem.dataFieldTextColorNightModeOff
             }
         }
     }
