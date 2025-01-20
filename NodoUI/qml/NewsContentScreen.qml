@@ -142,6 +142,7 @@ Rectangle {
     }
 
     Component.onCompleted: {
-        feedBody.text = dataTextStr
+    	var re = RegExp("#F5F5F5", "g")
+        feedBody.text = dataTextStr.replace(re, nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn : NodoSystem.dataFieldTextColorNightModeOff)
     }
 }
