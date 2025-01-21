@@ -50,7 +50,7 @@ NodoCanvas {
         connectButton.text = systemMessages.messages[NodoMessages.Message.Disconnect]
         connectButton.update()
 
-        forgetButton.isActive = true
+        //forgetButton.isActive = true
     }
 
     function onCalculateMaximumTextLabelLength() {
@@ -102,7 +102,7 @@ NodoCanvas {
         }
     }
 
-    NodoButton {
+/*    NodoButton {
         id: forgetButton
         anchors.top: mainRect.top
         anchors.right: connectButton.left
@@ -122,11 +122,11 @@ NodoCanvas {
             networkManager.forgetWiredNetwork(mainRect.connectionPath)
             mainRect.state = "" //Added later
         }
-    }
+    }*/
 
     Rectangle {
         id: showDetailsRect
-        anchors.top: forgetButton.bottom
+        anchors.top: connectButton.bottom
         anchors.left: mainRect.left
         anchors.right: mainRect.right
         anchors.leftMargin: NodoSystem.cardTopMargin
