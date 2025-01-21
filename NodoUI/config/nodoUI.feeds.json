@@ -68,8 +68,8 @@
         },
         "feed_6": {
             "description_tag": "description",
-            "image_attr": "",
-            "image_tag": "url",
+            "image_attr": "url",
+            "image_tag": "image",
             "name": "Monerica",
             "num_of_feeds_to_show": 2,
             "pub_date_tag": "pubDate",
