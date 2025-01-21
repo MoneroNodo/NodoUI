@@ -215,7 +215,7 @@ ApplicationWindow {
         function displayScreenSaver()
         {
             if(mainAppWindow.screenSaverActive === false){
-                var screenSaverType = nodoControl.getScreenSaverType()
+                var screenSaverType = nodoControl.getScreenSaverType() + (nodoControl.isFeedsEnabled() ? 1 : 0)
 
                 if(0 === screenSaverType) {
                     mainAppStackView.push("NodoNewsScreensaver.qml")
