@@ -146,6 +146,21 @@ Item {
             }
         }
 
+        Text {
+            id: changeLockPINTitle
+            height: 30
+            width: parent.width
+            anchors.top: lockPinControlLockAfterField.bottom
+            anchors.left: lockPinScreen.left
+            anchors.leftMargin: NodoSystem.cardLeftMargin
+            anchors.topMargin: NodoSystem.nodoTopMargin*3
+            verticalAlignment: Text.AlignVCenter
+            font.family: NodoSystem.fontInter.name
+            font.pixelSize: NodoSystem.descriptionTitleFontSize
+            color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
+            text: qsTr("CHANGE LOCK PIN")
+        }
+
         NodoInputField {
             id: lockPinControlNewPinField
             anchors.left: lockPinControlRect.left
@@ -211,7 +226,7 @@ Item {
                     nodoLockPinControlPopup.popupMessageText = systemMessages.messages[NodoMessages.Message.NewPINSet]
                     nodoLockPinControlPopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Close]
                     nodoLockPinControlPopup.open();
-                    //{ pageLoader.source = "NodoLockPinControlScreen.qml" } //If PIN set, stay on same page
+                    { pageLoader.source = "NodoLockPinControlScreen.qml" } //If PIN set, stay on same page
                     //{ pageLoader.source = "DevicePinScreen.qml" } //If PIN set, goto Main PIN screen
                 }
                 else
