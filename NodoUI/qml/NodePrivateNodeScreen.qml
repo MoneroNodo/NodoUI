@@ -64,6 +64,7 @@ Item {
         anchors.left: nodePrivateNodeScreen.left
         anchors.top: nodePrivateNodeScreen.top
         height: NodoSystem.nodoItemHeight
+        width: privateNodeSwitchText.width + privateNodeSwitch.width
         color: "black"
 
         NodoLabel{
@@ -88,12 +89,11 @@ Item {
     }
 
     Text {
-        id: privateNodeSwitchRectDescription
+        id: privateNodeSwitchDescription
         height: NodoSystem.nodoItemHeight
-        width: parent.width - privateNodeSwitchRect.width
+        anchors.top: nodePrivateNodeScreen.top
         anchors.left: privateNodeSwitchRect.right
         anchors.leftMargin: 25
-        anchors.top: nodePrivateNodeScreen.top
         //anchors.topMargin: NodoSystem.nodoTopMargin
         verticalAlignment: Text.AlignVCenter
         font.family: NodoSystem.fontInter.name
