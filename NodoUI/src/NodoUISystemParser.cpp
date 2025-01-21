@@ -379,6 +379,11 @@ bool NodoUISystemParser::isFeedsEnabled(void)
     return m_rootObj.value("feeds_enabled").toBool(true);
 }
 
+bool NodoUISystemParser::is24hEnabled(void)
+{
+    return m_rootObj.value("24h_enabled").toBool(false);
+}
+
 bool NodoUISystemParser::isTickerEnabled(void)
 {
     return m_rootObj.value("ticker_enabled").toBool(true);
@@ -387,6 +392,12 @@ bool NodoUISystemParser::isTickerEnabled(void)
 void NodoUISystemParser::setFeedsEnabled(bool enabled)
 {
     m_rootObj.insert("feeds_enabled", enabled);
+    writeJson();
+}
+
+void NodoUISystemParser::set24hEnabled(bool enabled)
+{
+    m_rootObj.insert("24h_enabled", enabled);
     writeJson();
 }
 
