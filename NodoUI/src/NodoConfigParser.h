@@ -58,6 +58,8 @@ public:
     void setNodeBandwidthParameters(QString in_peers, QString out_peers, QString limit_rate_up, QString limit_rate_down);
     void setrpcEnabledStatus(bool status);
     void setrpcPort(QString port);
+    void setrpcUser(QString);
+    void setrpcPassword(QString);
 
     void setMoneroPayParameters(QString address);
     QString getMoneroPayAddress(void);

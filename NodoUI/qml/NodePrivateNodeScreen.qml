@@ -83,13 +83,7 @@ Item {
             height: privateNodeSwitchRect.height
             display: AbstractButton.IconOnly
             checked: nodePrivateNodeScreen.isRPCEnabled
-            onCheckedChanged: {
-                if(checked !== nodePrivateNodeScreen.isRPCEnabled)
-                {
-                    nodePrivateNodeScreen.isRPCEnabled = checked
-                    nodoControl.setrpcEnabledStatus(nodePrivateNodeScreen.isRPCEnabled)
-                }
-            }
+            onCheckedChanged: privateNodeApplyButton.enabled = true
         }
     }
 
@@ -128,7 +122,7 @@ Item {
         height: NodoSystem.nodoItemHeight
         itemSize: labelSize
         itemText: qsTr("Username")
-        valueText: "nodo"
+        valueText: nodoControl.getrpcUser();
     }
 
     NodoInputField {
@@ -140,6 +134,7 @@ Item {
         height: NodoSystem.nodoItemHeight
         itemSize: labelSize
         itemText: qsTr("Password")
+        valueText: nodoControl.getrpcPassword();
         passwordInput: true
     }
 
@@ -152,6 +147,17 @@ Item {
         height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
+        onPressed:
+        {
+            if (privateNodeSwitch.checked)
+            {
+                nodoControl.setrpcUser(privateNodeUserNameField.valueText);
+                if (privateNodeUserNameField.valueText != "")
+                    nodoControl.setrpcPassword(privateNodePasswordField.valueText);
+            }
+            nodePrivateNodeScreen.isRPCEnabled = privateNodeSwitch.checked;
+            nodoControl.setrpcEnabledStatus(privateNodeSwitch.checked);
+        }
     }
 
 /*

@@ -97,6 +97,8 @@ public:
     Q_INVOKABLE void setrpcPort(QString port);
     Q_INVOKABLE QString getrpcUser(void);
     Q_INVOKABLE QString getrpcPassword(void);
+    Q_INVOKABLE void setrpcUser(QString);
+    Q_INVOKABLE void setrpcPassword(QString);
     Q_INVOKABLE bool istorProxyEnabled(void);
     Q_INVOKABLE bool isTickerEnabled(void);
     Q_INVOKABLE bool isFeedsEnabled(void);

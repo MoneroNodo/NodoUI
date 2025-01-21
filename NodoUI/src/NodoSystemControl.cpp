@@ -555,6 +555,15 @@ QString NodoSystemControl::getrpcPassword(void)
     return m_configParser->getStringValueFromKey("config", "rpcp");
 }
 
+void NodoSystemControl::setrpcUser(QString user)
+{
+    m_configParser->setrpcUser(user);
+}
+void NodoSystemControl::setrpcPassword(QString pass)
+{
+    m_configParser->setrpcPassword(pass);
+}
+
 void NodoSystemControl::setNodeBandwidthParameters(QString in_peers, QString out_peers, QString limit_rate_up, QString limit_rate_down)
 {
     enableComponent(false);

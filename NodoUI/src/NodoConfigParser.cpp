@@ -488,3 +488,11 @@ QString NodoConfigParser::getSoftwareVersion(QString name)
     }
     return "";
 }
+void NodoConfigParser::setrpcUser(QString user)
+{
+    m_configObj.insert("rpcu", user);
+}
+void NodoConfigParser::setrpcPassword(QString pass)
+{
+    m_configObj.insert("rpcp", pass);
+}
