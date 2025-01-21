@@ -87,6 +87,21 @@ Item {
         }
     }
 
+    Text {
+        id: privateNodeSwitchRectDescription
+        height: NodoSystem.nodoItemHeight
+        width: parent.width - privateNodeSwitchRect.width
+        anchors.left: privateNodeSwitch.right
+        anchors.leftMargin: 25
+        anchors.top: nodePrivateNodeScreen.top
+        //anchors.topMargin: NodoSystem.nodoTopMargin
+        verticalAlignment: Text.AlignVCenter
+        font.family: NodoSystem.fontInter.name
+        font.pixelSize: NodoSystem.descriptionTextFontSize
+        color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
+        text: qsTr("Require wallets to enter the username and password to use this node")
+    }
+
     NodoInfoField {
         id: privateNodePortField
         anchors.left: nodePrivateNodeScreen.left
@@ -161,6 +176,21 @@ Item {
             privateNodeApplyButton.enabled = false;
         }
     }
+
+    Text {
+        id: privateNodeApplyButtonText
+        height: NodoSystem.nodoItemHeight
+        width: parent.width - privateNodeApplyButton.width
+        anchors.left: privateNodeApplyButton.right
+        anchors.leftMargin: 25
+        anchors.top: privateNodePasswordField.bottom
+        anchors.topMargin: NodoSystem.nodoTopMargin
+        verticalAlignment: Text.AlignVCenter
+        font.family: NodoSystem.fontInter.name
+        font.pixelSize: NodoSystem.descriptionTextFontSize
+        color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
+        text: qsTr("Monero Daemon will restart to apply changes")
+    } 
 
 /*
     When enter pressed, privateNodePortField doesn't lose its focus and keyboard is displayed again.
