@@ -81,6 +81,7 @@ public:
     Q_INVOKABLE void settorProxyEnabled(bool enabled);
     Q_INVOKABLE void setTickerEnabled(bool enabled);
     Q_INVOKABLE void setFeedsEnabled(bool enabled);
+    Q_INVOKABLE void set24hEnabled(bool enabled);
 
     Q_INVOKABLE int getErrorCode(void);
 
@@ -102,6 +103,8 @@ public:
     Q_INVOKABLE bool istorProxyEnabled(void);
     Q_INVOKABLE bool isTickerEnabled(void);
     Q_INVOKABLE bool isFeedsEnabled(void);
+    Q_INVOKABLE bool is24hEnabled(void);
+
 
     Q_INVOKABLE bool isLockPinEnabled(void);
     Q_INVOKABLE bool verifyLockPinCode(QString pin);
@@ -151,6 +154,7 @@ signals:
     void passwordChangeStatus(int status);
     void feedsEnabledChanged(bool);
     void tickerEnabledChanged(bool);
+    void _24hEnabledChanged(bool);
 
     void factoryResetStarted(void);
     void factoryResetRequested(void);

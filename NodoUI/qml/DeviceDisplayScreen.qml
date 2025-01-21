@@ -352,17 +352,8 @@ Item {
             height: deviceDisplay24hTimeSwitchRect.height
             width: 2*deviceDisplay24hTimeSwitchRect.height
             display: AbstractButton.IconOnly
-            
-            /*onCheckedChanged: {
-                if(checked)
-                {
-                    //24h time = true
-                }
-                else
-                {
-                    //24h time = false
-                }
-            }*/
+            onCheckedChanged:
+                nodoControl.set24hEnabled(deviceDisplay24hTimeSwitch.checked);
         }
     }
 

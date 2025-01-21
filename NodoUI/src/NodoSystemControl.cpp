@@ -454,6 +454,11 @@ bool NodoSystemControl::isFeedsEnabled()
     return m_uiSystemParser->isFeedsEnabled();
 }
 
+bool NodoSystemControl::is24hEnabled()
+{
+    return m_uiSystemParser->is24hEnabled();
+}
+
 void NodoSystemControl::settorProxyEnabled(bool enabled)
 {
     m_configParser->setProperty("tor_global_enabled", enabled ? "TRUE" : "FALSE");
@@ -469,6 +474,12 @@ void NodoSystemControl::setFeedsEnabled(bool enabled)
 {
     m_uiSystemParser->setFeedsEnabled(enabled);
     emit feedsEnabledChanged(enabled);
+}
+
+void NodoSystemControl::set24hEnabled(bool enabled)
+{
+    m_uiSystemParser->set24hEnabled(enabled);
+    emit _24hEnabledChanged(enabled);
 }
 
 void NodoSystemControl::setTorPort(QString port)

@@ -24,7 +24,7 @@ Item {
 
         minutes =  date.getMinutes()
         hours = date.getHours()
-        if(hours > 12)
+        if(nodoControl.is24hEnabled() && hours > 12)
         {
             hours = hours - 12
         }

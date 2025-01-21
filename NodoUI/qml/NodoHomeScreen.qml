@@ -40,7 +40,10 @@ Item {
                 var m_month = Qt.formatDateTime(dateTime, "MMM")
 
                 dateText.text = m_daystr.toUpperCase() + " " +m_day + " "  + m_month.toUpperCase()
-                timeText.text = Qt.formatDateTime(nodoControl.getChangedDateTime(), "h:mm AP")
+                if (nodoControl.is24hEnabled())
+                    timeText.text = Qt.formatDateTime(nodoControl.getChangedDateTime(), "hh:mm")
+                else
+                    timeText.text = Qt.formatDateTime(nodoControl.getChangedDateTime(), "h:mm AP")
             }
         }
 

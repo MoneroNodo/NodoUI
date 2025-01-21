@@ -79,8 +79,10 @@ public:
     void setLockAfterTime(int newTime);
     bool isFeedsEnabled(void);
     bool isTickerEnabled(void);
+    bool is24hEnabled(void);
 
     void setFeedsEnabled(bool enabled);
+    void set24hEnabled(bool enabled);
     void setTickerEnabled(bool enabled);
 
     int readKeyboardLayoutType(void);
