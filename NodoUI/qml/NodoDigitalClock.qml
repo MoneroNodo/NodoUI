@@ -29,7 +29,7 @@ Item {
             hours = hours - 12
         }
 
-        digitalClockDate.text = Qt.formatDateTime(date, "dddd, d MMMM yyyy")
+        digitalClockDate.text = Qt.formatDateTime(date, "dddd, d MMMM")
     }
 
     Timer {
@@ -126,17 +126,12 @@ Item {
 
         Text {
             id: digitalClockDate
-            //anchors.left: digitalClockBackground.left
             anchors.top: digitalClockDateBackground.bottom
             anchors.horizontalCenter: digitalClockBackground.horizontalCenter
-            //anchors.leftMargin: 50
-            width: 800
-            height: 200
-            text: Qt.formatDateTime(nodoControl.getChangedDateTime(), "dddd, d MMMM yyyy")
-            font.pixelSize: 70
+            text: Qt.formatDateTime(nodoControl.getChangedDateTime(), "dddd, d MMMM")
+            font.pixelSize: 110
             color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
             font.family: NodoSystem.fontInter.name
         }
     }
-
 }
