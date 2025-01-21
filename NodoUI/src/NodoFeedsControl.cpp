@@ -1,8 +1,8 @@
 #include "NodoFeedsControl.h"
 #include "NodoSystemControl.h"
 
-const QString html_start = "<!DOCTYPE html> <html> <head> <style> body { background-color: rgba(255,255,255,0.0); font-family: 'Inter Display'; font-size: 46px;  color: ";
-const QString html_part_1 = ";} * { font-family: 'Inter Display'; color: ";
+const QString html_start = "<!DOCTYPE html> <html> <head> <style> * { background-color: rgba(255,255,255,0.0); font-family: 'Inter Display'; font-size: 46px;  color: ";
+const QString html_part_1 = ";} a { color: ";
 const QString html_part_2 = "; text-decoration: none; } </style> </head> <body>";
 const QString html_end = "</body> </html>";
 
