@@ -470,7 +470,16 @@ QString NodoConfigParser::getSoftwareVersion(QString name)
     auto it = m_versionsObj.find("names");
     if (it->isObject())
     {
-        return it->toObject().value(name).toString("<unknown>");
+        return it->toObject().value(name).toString("");
     }
-    return "<unknown>";
+    else {
+        it = m_versionsObj.find("versions");
+        if (it->isObject())
+        {
+            QString str = it->toObject().value(name).toString("");
+            str.truncate(6);
+            return str;
+        }
+    }
+    return "";
 }
