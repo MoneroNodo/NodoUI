@@ -17,7 +17,7 @@ Item {
     Component.onCompleted: {
         deviceDisplayCurrencyComboBox.currentIndex = priceTicker.getCurrentCurrencyIndex()
         deviceDisplaySlider.value = nodoControl.getBacklightLevel()
-        screenSaverStartAfterInput.valueText = nodoControl.getScreenSaverTimeout()
+        screenSaverStartAfterInput.valueText = Math.round(nodoControl.getScreenSaverTimeout() / 1000 / 60);
     }
 
     Rectangle {
@@ -137,15 +137,10 @@ Item {
             itemSize: labelSize - 20
             itemText: qsTr("Start after")
             textFlag: Qt.ImhDigitsOnly
-            validator: RegularExpressionValidator {
-                regularExpression: /^([1-9][0-9]+|[1-9])$/
-            }
+            validator: IntValidator { bottom: 1; top: 60; }
             onTextEditFinished: {
-                if("" !== screenSaverStartAfterInput.valueText)
-                {
-                nodoControl.setScreenSaverTimeout(screenSaverStartAfterInput.valueText)
-                }
-            }            
+                nodoControl.setScreenSaverTimeout(screenSaverStartAfterInput.valueText * 60)
+            }
         }
 
         Rectangle {
