@@ -24,7 +24,7 @@ Item {
 
         minutes =  date.getMinutes()
         hours = date.getHours()
-        if(nodoControl.is24hEnabled() && hours > 12)
+        if(!nodoControl.is24hEnabled() && hours > 12)
         {
             hours = hours - 12
         }
@@ -89,7 +89,7 @@ Item {
                 anchors.top: digitalClockDateBackground.top
                 anchors.left: digitalClockDateBackground.left
                 anchors.topMargin: clockTopMargin
-                text: hours == 0 ? "12" : hours
+                text: !nodoControl.is24hEnabled() && hours == 0 ? "12" : hours
                 font.pixelSize: NodoSystem.digitalClockPixelSize
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
