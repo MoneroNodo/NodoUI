@@ -147,6 +147,7 @@ Item {
         height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
+        enabled: false
         onPressed:
         {
             if (privateNodeSwitch.checked)
@@ -157,6 +158,7 @@ Item {
             }
             nodePrivateNodeScreen.isRPCEnabled = privateNodeSwitch.checked;
             nodoControl.setrpcEnabledStatus(privateNodeSwitch.checked);
+            privateNodeApplyButton.enabled = false;
         }
     }
 

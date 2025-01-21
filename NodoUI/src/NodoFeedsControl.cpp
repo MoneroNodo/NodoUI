@@ -157,17 +157,46 @@ void NodoFeedsControl::downloadFinished(QNetworkReply *reply)
             .append(desc)
             .append(html_end);
 
+        const QString tag = m_feeds_str.at(index).image_tag;
+        const QString attr = m_feeds_str.at(index).image_attr_tag;
         //search for image
         for (pugi::xml_node n : xn.node().children())
         {
             std::string name = n.name();
-            if(name == m_feeds_str.at(index).image_tag.toStdString().c_str())
+            if(name == tag.toStdString().c_str())
             {
-                std::string tag = m_feeds_str.at(index).image_attr_tag.toStdString();
+                std::string tag = attr.toStdString();
                 if (tag.empty())
                     parser.imgPath = QString::fromStdString(n.text().as_string());
                 else
-                    parser.imgPath = QString::fromStdString(n.attribute(m_feeds_str.at(index).image_attr_tag.toStdString().c_str()).value());
+                    parser.imgPath = QString::fromStdString(n.attribute(attr.toStdString().c_str()).value());
+            }
+        }
+        qDebug() << "imgPath: " << parser.imgPath;
+        qDebug() << "tag: " << tag << ", attr: " << attr;
+        if (parser.imgPath == "")
+        {
+            QString search = "./rss/channel";
+            if (tag != "")
+                search.append("/").append(tag);
+            else
+                search.append("/*");
+            auto nodes = doc.select_nodes(search.toStdString().c_str());
+            qDebug() << "search: " << search << ", nodes.size: " << nodes.size();
+            if (nodes.size() > 0)
+            {
+                for (pugi::xpath_node xn : nodes)
+                {
+                    qDebug() << "xn.name: " << xn.node().name();
+                    if (xn.node().name() == tag)
+                    {
+                        if (attr != "")
+                            parser.imgPath = QString::fromStdString(xn.node().attribute(attr.toStdString().c_str()).as_string(""));
+                        else
+                            parser.imgPath = QString::fromStdString(nodes.begin()->node().text().as_string(""));
+                        break;
+                    }
+                }
             }
         }
 
