@@ -91,7 +91,7 @@ Item {
         id: privateNodeSwitchRectDescription
         height: NodoSystem.nodoItemHeight
         width: parent.width - privateNodeSwitchRect.width
-        anchors.left: privateNodeSwitch.right
+        anchors.left: privateNodeSwitchRect.right
         anchors.leftMargin: 25
         anchors.top: nodePrivateNodeScreen.top
         //anchors.topMargin: NodoSystem.nodoTopMargin
