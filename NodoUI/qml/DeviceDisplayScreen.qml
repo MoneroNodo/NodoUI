@@ -102,10 +102,6 @@ Item {
         target: nodoControl
         function onFeedsEnabledChanged(enabled) {
             deviceDisplayManageFeedsButton.enabled = enabled;
-            if (enabled && nodoControl.getScreenSaverType() === 1)
-                nodoControl.setScreenSaverType(0);
-            if (!enabled && nodoControl.getScreenSaverType() === 0)
-                nodoControl.setScreenSaverType(1);
             var ss = nodoControl.getScreenSaverType();
             if (enabled)
             {
