@@ -146,7 +146,7 @@ Item {
         anchors.top: deviceSSHSwitchRect.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         width: labelSize + deviceSSHSwitchRectSwitch.width
-        itemSize: labelSize
+        //itemSize: labelSize
         height: NodoSystem.nodoItemHeight
         itemText: qsTr("Username")
         valueText: "nodo"
@@ -158,6 +158,7 @@ Item {
         width: parent.width
         anchors.top: deviceSSHUserNameField.bottom
         anchors.left: deviceSSHScreen.left
+        anchors.leftMargin: NodoSystem.cardLeftMargin
         anchors.topMargin: NodoSystem.nodoTopMargin*2
         verticalAlignment: Text.AlignVCenter
         font.family: NodoSystem.fontInter.name
@@ -170,7 +171,7 @@ Item {
         id: deviceSSHOldPasswordField
         anchors.left: deviceSSHScreen.left
         anchors.top: changeAdminPasswordTitle.bottom
-        anchors.topMargin: NodoSystem.nodoTopMargin
+        anchors.topMargin: NodoSystem.cardTopMargin
         width: inputFieldWidth
         height: NodoSystem.nodoItemHeight
         itemSize: labelSize
@@ -182,7 +183,6 @@ Item {
             oldPassword = valueText
         }
     }
-
 
     NodoInputField {
         id: deviceSSHPasswordField
