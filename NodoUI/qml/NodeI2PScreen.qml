@@ -115,7 +115,16 @@ Item {
             width: 2*i2pSwitchRect.height
             display: AbstractButton.IconOnly
             checked: nodeI2PScreen.i2pSwitchStatus
-            onCheckedChanged: nodoControl.setI2PEnabled(i2pSwitch.checked);
+            onCheckedChanged:
+            {
+                var cur = nodeI2PScreen.i2pSwitchStatus;
+                if (cur != i2pSwitch.checked)
+                {
+                    nodoControl.setI2PEnabled(i2pSwitch.checked);
+                    nodeI2PScreen.i2pSwitchStatus = i2pSwitch.checked;
+                    nodoControl.sendUpdate();
+                }
+            }
         }
     }
 

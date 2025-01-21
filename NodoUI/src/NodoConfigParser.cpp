@@ -26,7 +26,7 @@ void NodoConfigParser::readFile(void)
 
     while(true == lockfile.exists())
     {
-        QThread::msleep(100);
+        QThread::msleep(10);
         counter++;
         if(counter > 10)
         {
@@ -57,14 +57,16 @@ void NodoConfigParser::readFile(void)
         m_autoupdateObj = m_configObj[autoupdateObjName].toObject();
         m_banlistsObj = m_configObj[banlistsObjName].toObject();
 
+        locker.unlock();
+        lockfile.remove();
         emit configParserReady();
     }
     else
     {
         qDebug() << "couldn't open config file " + m_json_file_name;
+        lockfile.remove();
     }
 
-    lockfile.remove();
 }
 
 QString NodoConfigParser::getStringValueFromKey(QString object, QString key)
@@ -174,12 +176,13 @@ void NodoConfigParser::setCurrencyName(QString currency)
 
 void NodoConfigParser::writeJson(void)
 {
+    QMutexLocker locker(&m_mutex);
     QFile lockfile(m_json_lock_file_name);
     int counter = 0;
 
     while(true == lockfile.exists())
     {
-        QThread::msleep(100);
+        QThread::msleep(10);
         counter++;
         if(counter > 10)
         {
@@ -187,7 +190,6 @@ void NodoConfigParser::writeJson(void)
         }
     }
 
-    QMutexLocker locker(&m_mutex);
     QFile file;
     lockfile.open(QFile::WriteOnly | QFile::Text);
     lockfile.write(" ");
@@ -453,16 +455,19 @@ void NodoConfigParser::setUpdateStatus(QString moduleName, bool newStatus)
 void NodoConfigParser::setClearnetEnabled(bool enabled)
 {
     m_configObj.insert("clearnet_enabled", enabled ? "TRUE" : "FALSE");
+    writeJson();
 }
 
 void NodoConfigParser::setTorEnabled(bool enabled)
 {
     m_configObj.insert("tor_enabled", enabled ? "TRUE" : "FALSE");
+    writeJson();
 }
 
 void NodoConfigParser::setI2PEnabled(bool enabled)
 {
     m_configObj.insert("i2p_enabled", enabled ? "TRUE" : "FALSE");
+    writeJson();
 }
 
 QString NodoConfigParser::getSoftwareVersion(QString name)

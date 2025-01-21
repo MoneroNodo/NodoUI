@@ -114,7 +114,16 @@ Item {
             width: 2*torSwitchRect.height
             display: AbstractButton.IconOnly
             checked: nodeTorScreen.torSwitchStatus
-            onCheckedChanged: nodoControl.setTorEnabled(torSwitch.checked);
+            onCheckedChanged:
+            {
+                var cur = nodeTorScreen.torSwitchStatus;
+                if (cur != torSwitch.checked)
+                {
+                    nodoControl.setTorEnabled(torSwitch.checked);
+                    nodeTorScreen.torSwitchStatus = torSwitch.checked;
+                    nodoControl.sendUpdate();
+                }
+            }
         }
     }
 
