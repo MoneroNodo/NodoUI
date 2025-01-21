@@ -164,7 +164,7 @@ Item {
         NodoInputField {
             id: lockPinControlNewPinField
             anchors.left: lockPinControlRect.left
-            anchors.top: lockPinControlLockAfterField.bottom
+            anchors.top: changeLockPINTitle.bottom
             anchors.topMargin: NodoSystem.nodoTopMargin//anchors.topMargin: 30
             width: inputFieldWidth
             height: NodoSystem.nodoItemHeight
