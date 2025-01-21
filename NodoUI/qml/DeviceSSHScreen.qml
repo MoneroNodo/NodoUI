@@ -145,8 +145,7 @@ Item {
         anchors.left: deviceSSHScreen.left
         anchors.top: deviceSSHSwitchRect.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
-        width: labelSize + deviceSSHSwitchRectSwitch.width
-        //itemSize: labelSize
+        width: deviceSSHSwitchText.width + deviceSSHSwitchRectSwitch.width
         height: NodoSystem.nodoItemHeight
         itemText: qsTr("Username")
         valueText: "nodo"
@@ -154,12 +153,12 @@ Item {
 
     Text {
         id: changeAdminPasswordTitle
-        height: NodoSystem.nodoItemHeight
+        height: 30
         width: parent.width
         anchors.top: deviceSSHUserNameField.bottom
         anchors.left: deviceSSHScreen.left
         anchors.leftMargin: NodoSystem.cardLeftMargin
-        anchors.topMargin: NodoSystem.nodoTopMargin*2
+        anchors.topMargin: NodoSystem.nodoTopMargin*3
         verticalAlignment: Text.AlignVCenter
         font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.descriptionTitleFontSize
@@ -171,7 +170,7 @@ Item {
         id: deviceSSHOldPasswordField
         anchors.left: deviceSSHScreen.left
         anchors.top: changeAdminPasswordTitle.bottom
-        anchors.topMargin: NodoSystem.cardTopMargin
+        anchors.topMargin: NodoSystem.nodoTopMargin
         width: inputFieldWidth
         height: NodoSystem.nodoItemHeight
         itemSize: labelSize
