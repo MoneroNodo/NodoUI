@@ -126,7 +126,7 @@ Item {
         qsTr("Cable disconnected!"),
         qsTr("Something is wrong!"),
         qsTr("New PIN is set."),
-        qsTr("Password doesn't meet requirements."),
+        qsTr("Password does not meet requirements."),
         qsTr("Passwords do not match.")
     ]
 
