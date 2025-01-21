@@ -24,7 +24,13 @@ Item
     property color descriptionTextFontColorNightModeOff: "#A5A5A5" //RGB 165
     property color descriptionTextFontColorNightModeOn: "#8A0000" //R138
 
+    property int descriptionTitleFontSize: textFontSize - 8
+    
     property int topMenuTextTopPadding: 0
+
+    property color red: "F50000"    //R245
+    property color amber: "#FF9F0A" //255,159,10
+    property color green: "#48B400" //R72,G180,B0
 
     property color cardBackgroundColor: "#242424" //RGB 36
     property int cardLeftMargin: 10
