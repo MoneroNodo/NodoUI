@@ -11,7 +11,7 @@ Item {
     anchors.leftMargin: 20
 
     property int labelSize: 0
-    property int inputFieldWidth: 640
+    property int inputFieldWidth: 700
     property bool inputFieldReadOnly: false
     signal openNextScreen(int screenID)
 
@@ -60,10 +60,11 @@ Item {
             anchors.top: lockPinRect.top
             anchors.left: lockPinRect.left
             anchors.right: lockPinRect.right
-            height: 180
+            anchors.topMargin: NodoSystem.nodoTopMargin
+            height: banner.paintedHeight
             color: "black"
             Text {
-                text: qsTr("Please set your 6 digit Lock PIN.\nThe Lock PIN is used to unlock the device.\nIt can be changed later on DEVICE > SYSTEM > PIN Settings")
+                text: qsTr("Please set your 6 digit Lock PIN.\nThe Lock PIN is used to unlock the device.\nIt can be changed later on DEVICE > SYSTEM > PIN Settings.")
                 font.family: NodoSystem.fontInter.name
                 font.pixelSize: NodoSystem.textFontSize
                 verticalAlignment: Text.AlignVCenter
@@ -77,6 +78,7 @@ Item {
             id: lockPINField
             anchors.left: lockPinRect.left
             anchors.top: banner.bottom
+            anchors.topMargin: NodoSystem.nodoTopMargin
             width: inputFieldWidth
             height: NodoSystem.nodoItemHeight
             itemSize: labelSize
