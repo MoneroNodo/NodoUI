@@ -59,7 +59,7 @@ Item {
         id: moneroLWSClearnetAddress
         anchors.left: moneroLWSAddAccountScreen.left
 		anchors.top: moneroLWSTitle.bottom
-		anchors.topMargin: NodoSystem.nodoTopMargin
+		anchors.topMargin: NodoSystem.cardTopMargin
         width: infoFieldSize
         height: NodoSystem.nodoItemHeight
 		itemSize: labelSize
@@ -95,17 +95,18 @@ Item {
 
     Text {
         id: moneroLWSDescription
-            height: 30
+            height: moneroLWSDescription.paintedHeight
             width: parent.width
             anchors.top: moneroLWSI2PAddress.bottom
             anchors.left: moneroLWSAddAccountScreen.left
             anchors.leftMargin: NodoSystem.cardLeftMargin
-            anchors.topMargin: NodoSystem.cardTopMargin
+            anchors.topMargin: NodoSystem.cardLeftMargin
             verticalAlignment: Text.AlignVCenter
+            wrapMode: Text.WordWrap
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.descriptionTextFontSize
             color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
-            text: qsTr("On your Light Wallet, enter the URL as Server Address. If your Light Wallet does not support wallet creation requests, manually add it below.")
+            text: qsTr("On your Light Wallet, enter a URL as Server Address. If your Light Wallet does not support wallet creation requests, manually add it below.")
     }
 
     Text {
@@ -127,7 +128,7 @@ Item {
         id: moneroLWSMainAddressInput
 		anchors.left: moneroLWSAddAccountScreen.left
         anchors.top: moneroLWSAddWalletTitle.bottom
-        anchors.topMargin: NodoSystem.nodoTopMargin
+        anchors.topMargin: NodoSystem.cardTopMargin
         width: infoFieldSize
         itemSize: labelSize
         itemText: systemMessages.messages[NodoMessages.Message.Address]  //LABEL "Address"
