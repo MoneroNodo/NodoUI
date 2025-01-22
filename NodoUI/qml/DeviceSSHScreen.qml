@@ -170,7 +170,7 @@ Item {
         id: deviceSSHOldPasswordField
         anchors.left: deviceSSHScreen.left
         anchors.top: changeAdminPasswordTitle.bottom
-        anchors.topMargin: NodoSystem.nodoTopMargin
+        anchors.topMargin: NodoSystem.cardTopMargin
         width: inputFieldWidth
         height: NodoSystem.nodoItemHeight
         itemSize: labelSize
