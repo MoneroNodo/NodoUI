@@ -143,7 +143,7 @@ Item {
         anchors.top: applyBanlistButton.bottom
         anchors.left: nodeBanlistScreen.left
         anchors.leftMargin: NodoSystem.cardLeftMargin
-        anchors.topMargin: NodoSystem.cardLeftMargin
+        anchors.topMargin: NodoSystem.nodoTopMargin
         verticalAlignment: Text.AlignVCenter
         wrapMode: Text.WordWrap
         font.family: NodoSystem.fontInter.name
@@ -153,7 +153,6 @@ Item {
 
 Blocking the IP addresses by default is technically possible, but it would set a precedent of blocking IP addresses by a decision making process that is not decentralized. MRL has decided to ask node operators to block these IP addresses voluntarily instead of by default. We recommend enabling both banlists until a more permanent solution can be found.
 
-More info on this issue and FAQs can be found on Monero's Offical Repo:
-https://github.com/monero-project/meta/issues/1124")
+More info on this issue and FAQs can be found on Monero's Offical Repo: https://github.com/monero-project/meta/issues/1124")
     }
 }
