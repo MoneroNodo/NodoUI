@@ -63,7 +63,7 @@ Item {
             height: 180
             color: "black"
             Text {
-                text: qsTr("Please set your 6 digit Lock PIN.\nThe Lock PIN is used to unlock the device.\nIt can be changed later on DEVICE->PIN")
+                text: qsTr("Please set your 6 digit Lock PIN.\nThe Lock PIN is used to unlock the device.\nIt can be changed later on DEVICE > SYSTEM > PIN Settings")
                 font.family: NodoSystem.fontInter.name
                 font.pixelSize: NodoSystem.textFontSize
                 verticalAlignment: Text.AlignVCenter
