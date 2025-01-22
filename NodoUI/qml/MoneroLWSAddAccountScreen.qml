@@ -42,17 +42,17 @@ Item {
 
     Text {
         id: moneroLWSTitle
-            height: 30
-            width: parent.width
-            anchors.top: moneroLWSAddAccountScreen.top
-            anchors.left: moneroLWSAddAccountScreen.left
-            anchors.leftMargin: NodoSystem.cardLeftMargin
-            //anchors.topMargin: NodoSystem.nodoTopMargin*3
-            verticalAlignment: Text.AlignVCenter
-            font.family: NodoSystem.fontInter.name
-            font.pixelSize: NodoSystem.descriptionTitleFontSize
-            color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
-            text: qsTr("LIGHT WALLET SERVER ADDRESS")
+        height: 30
+        width: parent.width
+        anchors.top: moneroLWSAddAccountScreen.top
+        anchors.left: moneroLWSAddAccountScreen.left
+        anchors.leftMargin: NodoSystem.cardLeftMargin
+        //anchors.topMargin: NodoSystem.nodoTopMargin*3
+        verticalAlignment: Text.AlignVCenter
+        font.family: NodoSystem.fontInter.name
+        font.pixelSize: NodoSystem.descriptionTitleFontSize
+        color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
+        text: qsTr("LIGHT WALLET SERVER ADDRESS")
     }
     
     NodoInfoField {
@@ -95,33 +95,33 @@ Item {
 
     Text {
         id: moneroLWSDescription
-            height: moneroLWSDescription.paintedHeight
-            width: parent.width
-            anchors.top: moneroLWSI2PAddress.bottom
-            anchors.left: moneroLWSAddAccountScreen.left
-            anchors.leftMargin: NodoSystem.cardLeftMargin
-            anchors.topMargin: NodoSystem.cardLeftMargin
-            verticalAlignment: Text.AlignVCenter
-            wrapMode: Text.WordWrap
-            font.family: NodoSystem.fontInter.name
-            font.pixelSize: NodoSystem.descriptionTextFontSize
-            color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
-            text: qsTr("On your Light Wallet, enter a URL as Server Address. If your Light Wallet does not support wallet creation requests, manually add it below.")
+        height: moneroLWSDescription.paintedHeight
+        width: parent.width
+        anchors.top: moneroLWSI2PAddress.bottom
+        anchors.left: moneroLWSAddAccountScreen.left
+        anchors.leftMargin: NodoSystem.cardLeftMargin
+        anchors.topMargin: NodoSystem.cardLeftMargin
+        verticalAlignment: Text.AlignVCenter
+        wrapMode: Text.WordWrap
+        font.family: NodoSystem.fontInter.name
+        font.pixelSize: NodoSystem.descriptionTextFontSize
+        color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
+        text: qsTr("On your Light Wallet, enter a URL as Server Address. If your Light Wallet does not support wallet creation requests, manually add it below.")
     }
 
     Text {
         id: moneroLWSAddWalletTitle
-            height: 30
-            width: parent.width
-            anchors.top: moneroLWSDescription.bottom
-            anchors.left: moneroLWSAddAccountScreen.left
-            anchors.leftMargin: NodoSystem.cardLeftMargin
-            anchors.topMargin: NodoSystem.nodoTopMargin*3
-            verticalAlignment: Text.AlignVCenter
-            font.family: NodoSystem.fontInter.name
-            font.pixelSize: NodoSystem.descriptionTitleFontSize
-            color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
-            text: qsTr("ADD WALLET")
+        height: 30
+        width: parent.width
+        anchors.top: moneroLWSDescription.bottom
+        anchors.left: moneroLWSAddAccountScreen.left
+        anchors.leftMargin: NodoSystem.cardLeftMargin
+        anchors.topMargin: NodoSystem.nodoTopMargin*3
+        verticalAlignment: Text.AlignVCenter
+        font.family: NodoSystem.fontInter.name
+        font.pixelSize: NodoSystem.descriptionTitleFontSize
+        color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
+        text: qsTr("ADD WALLET")
     }
 
     NodoInputField {
