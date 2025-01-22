@@ -40,10 +40,79 @@ Item {
         }
     }
 
+    Text {
+        id: moneroLWSTitle
+            height: 30
+            width: parent.width
+            anchors.top: moneroLWSAddAccountScreen.top
+            anchors.left: moneroLWSAddAccountScreen.left
+            anchors.leftMargin: NodoSystem.cardLeftMargin
+            //anchors.topMargin: NodoSystem.nodoTopMargin*3
+            verticalAlignment: Text.AlignVCenter
+            font.family: NodoSystem.fontInter.name
+            font.pixelSize: NodoSystem.descriptionTitleFontSize
+            color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
+            text: qsTr("LIGHT WALLET SERVER ADDRESS")
+    }
+    
+    NodoInfoField {
+        id: moneroLWSClearnetAddress
+        anchors.left: moneroLWSAddAccountScreen.left
+		anchors.top: moneroLWSTitle.bottom
+		anchors.topMargin: NodoSystem.nodoTopMargin
+        width: infoFieldSize
+        height: NodoSystem.nodoItemHeight
+		itemSize: labelSize
+		itemText: qsTr("LWS Address")
+        valueText: "http://" + networkManager.getNetworkIP() + ":18086/basic"        
+	}	
+	
+	NodoInfoField {
+        id: moneroLWSTorAddress
+        anchors.left: moneroLWSAddAccountScreen.left
+		anchors.top: moneroLWSClearnetAddress.bottom
+        anchors.topMargin: NodoSystem.nodoTopMargin
+	    width: infoFieldSize
+        height: NodoSystem.nodoItemHeight
+		itemSize: labelSize
+		itemText: qsTr("LWS Tor Address")   
+        valueText: "http://" + nodoConfig.getStringValueFromKey("config", "tor_address") + ":18086/basic"
+        valueFontSize: 38
+    }
+	
+    NodoInfoField {
+        id: moneroLWSI2PAddress
+        anchors.left: moneroLWSAddAccountScreen.left
+		anchors.top: moneroLWSTorAddress.bottom
+        anchors.topMargin: NodoSystem.nodoTopMargin
+	    width: infoFieldSize
+        height: NodoSystem.nodoItemHeight
+		itemSize: labelSize
+		itemText: qsTr("LWS I2P Address") 
+        valueText: "http://" + nodoConfig.getStringValueFromKey("config", "i2p_b32_addr_lws") + ":18086/basic"
+        valueFontSize: 38
+    }	
+
+    Text {
+        id: moneroLWSAddWalletTitle
+            height: 30
+            width: parent.width
+            anchors.top: moneroLWSI2PAddress.bottom
+            anchors.left: moneroLWSAddAccountScreen.left
+            anchors.leftMargin: NodoSystem.cardLeftMargin
+            anchors.topMargin: NodoSystem.nodoTopMargin*3
+            verticalAlignment: Text.AlignVCenter
+            font.family: NodoSystem.fontInter.name
+            font.pixelSize: NodoSystem.descriptionTitleFontSize
+            color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
+            text: qsTr("ADD WALLET TO LIGHT WALLET SERVER")
+    }
+
     NodoInputField {
         id: moneroLWSMainAddressInput
 		anchors.left: moneroLWSAddAccountScreen.left
-        anchors.top: moneroLWSAddAccountScreen.top
+        anchors.top: moneroLWSAddWalletTitle.bottom
+        anchors.topMargin: NodoSystem.nodoTopMargin
         width: infoFieldSize
         itemSize: labelSize
         itemText: systemMessages.messages[NodoMessages.Message.Address]  //LABEL "Address"
@@ -85,43 +154,4 @@ Item {
             moneroLWS.addAccount(moneroLWSMainAddressInput.valueText, moneroLWSPrivateViewkeyLabel.valueText)
         }
     }
-	
-    NodoInfoField {
-        id: moneroLWSClearnetAddress
-        anchors.left: moneroLWSAddAccountScreen.left
-		anchors.top: moneroLWSAddAccountButton.bottom
-		anchors.topMargin: 80
-        width: infoFieldSize
-        height: NodoSystem.nodoItemHeight
-		itemSize: labelSize
-		itemText: qsTr("LWS Address")
-        valueText: "http://" + networkManager.getNetworkIP() + ":18086/basic"
-        
-	}	
-	
-	NodoInfoField {
-        id: moneroLWSTorAddress
-        anchors.left: moneroLWSAddAccountScreen.left
-		anchors.top: moneroLWSClearnetAddress.bottom
-        anchors.topMargin: NodoSystem.nodoTopMargin
-	    width: infoFieldSize
-        height: NodoSystem.nodoItemHeight
-		itemSize: labelSize
-		itemText: qsTr("LWS Tor Address")   
-        valueText: "http://" + nodoConfig.getStringValueFromKey("config", "tor_address") + ":18086/basic"
-        valueFontSize: 38
-    }
-	
-    NodoInfoField {
-        id: moneroLWSI2PAddress
-        anchors.left: moneroLWSAddAccountScreen.left
-		anchors.top: moneroLWSTorAddress.bottom
-        anchors.topMargin: NodoSystem.nodoTopMargin
-	    width: infoFieldSize
-        height: NodoSystem.nodoItemHeight
-		itemSize: labelSize
-		itemText: qsTr("LWS I2P Address") 
-        valueText: "http://" + nodoConfig.getStringValueFromKey("config", "i2p_address") + ":18086/basic"
-        valueFontSize: 38
-    }	
 }
