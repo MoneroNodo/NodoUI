@@ -24,10 +24,26 @@ Item {
         labelSize = nodeBanlistScreenIndex2Text.labelRectRoundSize
     }
 
-    Rectangle {
-        id: nodeBanlistScreenIndex1
+    Text {
+        id: nodeBanlistScreenTitle
+        height: 30
+        width: parent.width
         anchors.top: nodeBanlistScreen.top
         anchors.left: nodeBanlistScreen.left
+        anchors.leftMargin: NodoSystem.cardLeftMargin
+        //anchors.topMargin: NodoSystem.nodoTopMargin*3
+        verticalAlignment: Text.AlignVCenter
+        font.family: NodoSystem.fontInter.name
+        font.pixelSize: NodoSystem.descriptionTitleFontSize
+        color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
+        text: qsTr("NODE IP BANLIST")
+    }
+
+    Rectangle {
+        id: nodeBanlistScreenIndex1
+        anchors.top: nodeBanlistScreenTitle.bottom
+        anchors.left: nodeBanlistScreen.left
+        anchors.topMargin: NodoSystem.cardTopMargin
         height: NodoSystem.nodoItemHeight
         color: "black"
 
@@ -120,4 +136,24 @@ Item {
         }
     }
 
+    Text {
+        id: nodeBanlistScreenDescription
+        height: nodeBanlistScreenDescription.paintedHeight
+        width: parent.width
+        anchors.top: applyBanlistButton.bottom
+        anchors.left: nodeBanlistScreen.left
+        anchors.leftMargin: NodoSystem.cardLeftMargin
+        anchors.topMargin: NodoSystem.cardLeftMargin
+        verticalAlignment: Text.AlignVCenter
+        wrapMode: Text.WordWrap
+        font.family: NodoSystem.fontInter.name
+        font.pixelSize: NodoSystem.descriptionTextFontSize
+        color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
+        text: qsTr("The Monero Research Lab (MRL) has decided to recommend that all Monero node operators enable a ban list of suspected spy node IP addresses. The spy nodes can reduce the privacy of Monero users.
+
+Blocking the IP addresses by default is technically possible, but it would set a precedent of blocking IP addresses by a decision making process that is not decentralized. MRL has decided to ask node operators to block these IP addresses voluntarily instead of by default. We recommend enabling both banlists until a more permanent solution can be found.
+
+More info on this issue and FAQs can be found on Monero's Offical Repo:
+https://github.com/monero-project/meta/issues/1124")
+    }
 }
