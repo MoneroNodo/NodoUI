@@ -94,10 +94,25 @@ Item {
     }	
 
     Text {
-        id: moneroLWSAddWalletTitle
+        id: moneroLWSDescription
             height: 30
             width: parent.width
             anchors.top: moneroLWSI2PAddress.bottom
+            anchors.left: moneroLWSAddAccountScreen.left
+            anchors.leftMargin: NodoSystem.cardLeftMargin
+            anchors.topMargin: NodoSystem.cardTopMargin
+            verticalAlignment: Text.AlignVCenter
+            font.family: NodoSystem.fontInter.name
+            font.pixelSize: NodoSystem.descriptionTextFontSize
+            color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
+            text: qsTr("On your Light Wallet, enter the URL as Server Address. If your Light Wallet does not support wallet creation requests, manually add it below.")
+    }
+
+    Text {
+        id: moneroLWSAddWalletTitle
+            height: 30
+            width: parent.width
+            anchors.top: moneroLWSDescription.bottom
             anchors.left: moneroLWSAddAccountScreen.left
             anchors.leftMargin: NodoSystem.cardLeftMargin
             anchors.topMargin: NodoSystem.nodoTopMargin*3
@@ -105,7 +120,7 @@ Item {
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.descriptionTitleFontSize
             color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
-            text: qsTr("ADD WALLET TO LIGHT WALLET SERVER")
+            text: qsTr("ADD WALLET")
     }
 
     NodoInputField {
