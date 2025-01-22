@@ -112,7 +112,7 @@ ApplicationWindow {
                 console.log("onPowerButtonPressDetected")
                 mainScreenPopup.notificationOnly = true
                 mainScreenPopup.commandID = -1;
-                mainScreenPopup.popupMessageText = qsTr("The device will shutdown in 3 seconds. Release the power button to cancel.")
+                mainScreenPopup.popupMessageText = qsTr("Shutdown in 5 seconds.\nRelease to Cancel.")
                 mainScreenPopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Accept]
                 mainScreenPopup.open();
             }

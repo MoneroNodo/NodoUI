@@ -48,7 +48,7 @@ void PowerKeyThread::powerKeyListener(void)
 
         if(1 == ev.value)
         {
-            m_timer->start(3000);
+            m_timer->start(4000);
             emit buttonPressDetected();
         }
         else
