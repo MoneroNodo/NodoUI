@@ -143,7 +143,6 @@ Item {
         anchors.left: clearBanlistButton.right
         anchors.leftMargin: 25
         anchors.top: applyBanlistButton.top
-        anchors.topMargin: NodoSystem.nodoTopMargin
         verticalAlignment: Text.AlignVCenter
         font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.descriptionTextFontSize
@@ -158,7 +157,7 @@ Item {
         anchors.top: applyBanlistButton.bottom
         anchors.left: nodeBanlistScreen.left
         anchors.leftMargin: NodoSystem.cardLeftMargin
-        anchors.topMargin: NodoSystem.cardTopMargin*2
+        anchors.topMargin: NodoSystem.nodoTopMargin +2
         verticalAlignment: Text.AlignVCenter
         wrapMode: Text.WordWrap
         font.family: NodoSystem.fontInter.name
