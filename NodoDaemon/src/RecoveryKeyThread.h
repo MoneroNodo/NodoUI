@@ -70,7 +70,7 @@ private:
 
 private slots:
     void recoveryKeyListener(void);
-    void finaliseRevocery(void);
+    void finalizeRecovery(void);
 
 signals:
     void factoryResetRequested(void);

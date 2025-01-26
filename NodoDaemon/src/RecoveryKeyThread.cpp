@@ -195,10 +195,10 @@ void RecoveryKeyThread::recover(void)
     file.close();
 
     emit factoryResetCompleted();
-    QTimer::singleShot(2000, this, SLOT(finaliseRevocery()));
+    QTimer::singleShot(2000, this, SLOT(finalizeRecovery()));
 }
 
-void RecoveryKeyThread::finaliseRevocery(void)
+void RecoveryKeyThread::finalizeRecovery(void)
 {
     factoryReset();
     restartDevice();
@@ -317,7 +317,7 @@ void RecoveryKeyThread::factoryReset()
 
 void RecoveryKeyThread::serviceControl(QString command)
 {
-    const static QStringList services = {"monerod", "monero-lws", "webui"};
+    const static QStringList services = {"monerod", "monero-lws"};
 
     QString program = "/usr/bin/systemctl";
 
