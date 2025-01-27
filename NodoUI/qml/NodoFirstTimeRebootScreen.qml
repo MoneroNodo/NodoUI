@@ -27,10 +27,10 @@ Item {
             anchors.top: rebootRect.top
             anchors.left: rebootRect.left
             anchors.right: rebootRect.right
-            height: 180
+            height: 140
             color: "black"
             Text {
-                text: qsTr("The system will now reboot.")
+                text: qsTr("Nodo will now reboot.")
                 font.family: NodoSystem.fontInter.name
                 font.pixelSize: NodoSystem.textFontSize
                 verticalAlignment: Text.AlignVCenter

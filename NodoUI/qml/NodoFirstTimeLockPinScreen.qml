@@ -61,7 +61,7 @@ Item {
             anchors.left: lockPinRect.left
             anchors.right: lockPinRect.right
             anchors.topMargin: NodoSystem.nodoTopMargin
-            height: banner.paintedHeight
+            height: 140
             color: "black"
             Text {
                 text: qsTr("Please set your 6 digit Lock PIN.\nThe Lock PIN is used to unlock the device.\nIt can be changed later on DEVICE > SYSTEM > PIN Settings.")
