@@ -172,8 +172,6 @@ void NodoFeedsControl::downloadFinished(QNetworkReply *reply)
                     parser.imgPath = QString::fromStdString(n.attribute(attr.toStdString().c_str()).value());
             }
         }
-        qDebug() << "imgPath: " << parser.imgPath;
-        qDebug() << "tag: " << tag << ", attr: " << attr;
         if (parser.imgPath == "")
         {
             QString search = "./rss/channel";
@@ -182,12 +180,10 @@ void NodoFeedsControl::downloadFinished(QNetworkReply *reply)
             else
                 search.append("/*");
             auto nodes = doc.select_nodes(search.toStdString().c_str());
-            qDebug() << "search: " << search << ", nodes.size: " << nodes.size();
             if (nodes.size() > 0)
             {
                 for (pugi::xpath_node xn : nodes)
                 {
-                    qDebug() << "xn.name: " << xn.node().name();
                     if (xn.node().name() == tag)
                     {
                         if (attr != "")
