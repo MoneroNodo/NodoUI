@@ -139,7 +139,7 @@ Item {
                 var cur = nodeClearnetScreen.clearnetSwitchStatus;
                 if (cur != clearnetSwitch.checked)
                 {
-                    nodoControl.setClearnetEnabled(clearnetSwitch.checked);
+                    nodoControl.setHiddenRPCEnabled(clearnetSwitch.checked);
                     nodeClearnetScreen.clearnetSwitchStatus = clearnetSwitch.checked;
                     nodoControl.sendUpdate();
                 }

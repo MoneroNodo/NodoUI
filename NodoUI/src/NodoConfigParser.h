@@ -40,7 +40,7 @@ public:
     void setTheme(bool theme);
     bool getTheme(void);
 
-    void setClearnetEnabled(bool);
+    void setHiddenRPCEnabled(bool);
     void setTorEnabled(bool);
     void setI2PEnabled(bool);
 

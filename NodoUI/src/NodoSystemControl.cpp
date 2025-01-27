@@ -58,9 +58,9 @@ bool NodoSystemControl::getAppTheme(void)
     return m_appTheme;
 }
 
-void NodoSystemControl::setClearnetEnabled(bool enabled)
+void NodoSystemControl::setHiddenRPCEnabled(bool enabled)
 {
-    m_configParser->setClearnetEnabled(enabled);
+    m_configParser->setHiddenRPCEnabled(enabled);
 }
 void NodoSystemControl::setTorEnabled(bool enabled)
 {

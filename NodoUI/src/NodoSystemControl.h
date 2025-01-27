@@ -117,7 +117,7 @@ public:
     Q_INVOKABLE void stopLockScreenTimer(void);
     Q_INVOKABLE void closePopup(void);
 
-    Q_INVOKABLE void setClearnetEnabled(bool);
+    Q_INVOKABLE void setHiddenRPCEnabled(bool);
     Q_INVOKABLE void setTorEnabled(bool);
     Q_INVOKABLE void setI2PEnabled(bool);
 

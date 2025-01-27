@@ -452,9 +452,9 @@ void NodoConfigParser::setUpdateStatus(QString moduleName, bool newStatus)
     writeJson();
 }
 
-void NodoConfigParser::setClearnetEnabled(bool enabled)
+void NodoConfigParser::setHiddenRPCEnabled(bool enabled)
 {
-    m_configObj.insert("clearnet_enabled", enabled ? "TRUE" : "FALSE");
+    m_configObj.insert("anon_rpc", enabled ? "TRUE" : "FALSE");
     writeJson();
 }
 
