@@ -104,8 +104,7 @@ Item {
             anchors.top: adminPasswordRect.top
             anchors.left: adminPasswordRect.left
             anchors.right: adminPasswordRect.right
-            anchors.topmargin: NodoSystem.nodoTopMargin
-            height: banner.paintedHeight//180
+            height: banner.paintedHeight
             color: "black"
             Text {
                 text: qsTr("Please set your Admin Password. The Admin Password should be at least 8 characters, with uppercase and lowercase letters, number and a special character.\nThe Admin Password is used to connect to Nodo remotely via SSH. It can be changed later on DEVICE > SYSTEM > Admin & SSH.")
