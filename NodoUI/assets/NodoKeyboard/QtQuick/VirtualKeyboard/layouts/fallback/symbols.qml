@@ -18,49 +18,9 @@ KeyboardLayoutLoader {
             readonly property real functionKeyWidth: mapFromItem(normalKey, normalKey.width / 2, 0).x
             KeyboardRow {
                 Key {
-
-                    key: Qt.Key_AsciiTilde
-                    text: "~"
+                    key: Qt.Key_Exclam
+                    text: "!"
                 }
-                Key {
-                    id: normalKey
-                    key: Qt.Key_Agrave
-                    text: "`"
-                }
-                Key {
-                    key: Qt.Key_AsciiCircum
-                    text: "^"
-                }
-                Key {
-                    key: Qt.Key_Equal
-                    text: "="
-                }
-                Key {
-                    key: Qt.Key_Semicolon
-                    text: ";"
-                }
-                Key {
-                    key: Qt.Key_BraceLeft
-                    text: "{"
-                }
-                Key {
-                    key: Qt.Key_BraceRight
-                    text: "}"
-                }
-                Key {
-                    key: Qt.Key_BracketLeft
-                    text: "["
-                }
-                Key {
-                    key: Qt.Key_BracketRight
-                    text: "]"
-                }
-                Key {
-                    key: Qt.Key_Backslash
-                    text: "\\"
-                }
-            }
-            KeyboardRow {
                 Key {
                     key: Qt.Key_At
                     text: "@"
@@ -69,9 +29,17 @@ KeyboardLayoutLoader {
                     key: Qt.Key_NumberSign
                     text: "#"
                 }
+				Key {
+                    key: Qt.Key_Dollar
+                    text: "$"
+                }
                 Key {
                     key:  Qt.Key_Percent
                     text: "%"
+                }
+                Key {
+                    key: Qt.Key_AsciiCircum
+                    text: "^"
                 }
                 Key {
                     key: Qt.Key_Ampersand
@@ -80,18 +48,6 @@ KeyboardLayoutLoader {
                 Key {
                     key: Qt.Key_Asterisk
                     text: "*"
-                }
-                Key {
-                    key: Qt.Key_Underscore
-                    text: "_"
-                }
-                Key {
-                    key: Qt.Key_Minus
-                    text: "-"
-                }
-                Key {
-                    key: Qt.Key_Plus
-                    text: "+"
                 }
                 Key {
                     key: Qt.Key_ParenLeft
@@ -104,9 +60,48 @@ KeyboardLayoutLoader {
             }
             KeyboardRow {
                 Key {
+                    key: Qt.Key_AsciiTilde
+                    text: "~"
+                }
+                Key {
+                    id: normalKey
+                    key: Qt.Key_Agrave
+                    text: "`"
+                }
+                Key {
+                    key: Qt.Key_Minus
+                    text: "-"
+                }
+                Key {
+                    key: Qt.Key_Plus
+                    text: "+"
+                }
+                Key {
+                    key: Qt.Key_Colon
+                    text: ":"
+                }
+                Key {
                     key:  Qt.Key_QuoteDbl
                     text: '"'
                 }
+                Key {
+                    key: Qt.Key_Backslash
+                    text: "\\"
+                }
+                Key {
+                    key: Qt.Key_Question
+                    text: "?"
+                }
+                Key {
+                    key: Qt.Key_BraceLeft
+                    text: "{"
+                }
+                Key {
+                    key: Qt.Key_BraceRight
+                    text: "}"
+                }
+            }
+            KeyboardRow {
                 Key {
                     key: Qt.Key_Less
                     text: "<"
@@ -116,24 +111,28 @@ KeyboardLayoutLoader {
                     text: ">"
                 }
                 Key {
-                    key: Qt.Key_Comma
-                    text: ","
+                    key: Qt.Key_Underscore
+                    text: "_"
                 }
                 Key {
-                    key: Qt.Key_Colon
-                    text: ":"
+                    key: Qt.Key_Equal
+                    text: "="
+                }
+                Key {
+                    key: Qt.Key_Semicolon
+                    text: ";"
+                }
+                Key {
+                    key: Qt.Key_Comma
+                    text: ","
+                }				
+                Key {
+                    key: Qt.Key_Period
+                    text: "."
                 }
                 Key {
                     key: Qt.Key_Slash
                     text: "/"
-                }
-                Key {
-                    key: Qt.Key_Exclam
-                    text: "!"
-                }
-                Key {
-                    key: Qt.Key_Question
-                    text: "?"
                 }
                 BackspaceKey {
                     weight: functionKeyWidth
@@ -149,13 +148,6 @@ KeyboardLayoutLoader {
                 Key {
                     text: " "
                     displayText: "\u2015\u2015" //"\u2423"
-                    highlighted: true
-                }
-                Key {
-                    key: Qt.Key_Period
-                    weight: normalKeyWidth
-                    Layout.fillWidth: false
-                    text: "."
                     highlighted: true
                 }
                 HideKeyboardKey {

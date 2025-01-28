@@ -187,13 +187,6 @@ KeyboardLayout {
             displayText: "\u2015\u2015" //"\u2423"
             highlighted: true
         }
-        Key {
-            key: Qt.Key_Period
-            weight: normalKeyWidth
-            Layout.fillWidth: false
-            text: "."
-            highlighted: true
-        }
         HideKeyboardKey {
             weight: normalKeyWidth
             Layout.fillWidth: false
