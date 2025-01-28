@@ -517,7 +517,7 @@ Item {
             text: qsTr("Manage Feeds")
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.buttonTextFontSize
-
+            enabled: nodoControl.isFeedsEnabled()
             onClicked: { pageLoader.source = "DeviceNewsFeedsScreen.qml" }
         }
     }
