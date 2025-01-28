@@ -101,7 +101,7 @@ Item {
     Connections {
         target: nodoControl
         function onFeedsEnabledChanged(enabled) {
-            deviceDisplayManageFeedsButton.enabled = enabled;
+            deviceDisplayManageFeedsButton.isActive = enabled;
             var ss = nodoControl.getScreenSaverType();
             if (enabled)
             {
@@ -517,7 +517,7 @@ Item {
             text: qsTr("Manage Feeds")
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.buttonTextFontSize
-            enabled: nodoControl.isFeedsEnabled()
+            isActive: nodoControl.isFeedsEnabled()
             onClicked: { pageLoader.source = "DeviceNewsFeedsScreen.qml" }
         }
     }
