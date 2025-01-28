@@ -161,10 +161,25 @@ Item {
         }
     }
 
+    Text {
+        id: hiddenRPCSwitchDescription2
+        height: hiddenRPCSwitchDescription2.paintedHeight
+        width: parent.width
+        anchors.top: hiddenRPCSwitchRect.bottom
+        anchors.left: nodeClearnetScreen.left
+        anchors.leftMargin: NodoSystem.cardLeftMargin
+        anchors.topMargin: NodoSystem.cardLeftMargin
+        verticalAlignment: Text.AlignVCenter
+        wrapMode: Text.WordWrap
+        font.family: NodoSystem.fontInter.name
+        font.pixelSize: NodoSystem.descriptionTextFontSize
+        color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
+        text: qsTr("Enable Hidden RPC with Tor > Route All Through Tor to fully anonymize the Monero Daemon.")
+
     NodoInfoField {
         id: clearnetAddressField
         anchors.left: nodeClearnetScreen.left
-        anchors.top: hiddenRPCSwitchRect.bottom
+        anchors.top: hiddenRPCSwitchDescription2.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         width: labelSize + 300
         height: NodoSystem.nodoItemHeight

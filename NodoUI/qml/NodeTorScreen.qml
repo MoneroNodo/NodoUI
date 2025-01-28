@@ -102,7 +102,7 @@ Item {
             height: torSwitchRect.height
             anchors.left: torSwitchRect.left
             anchors.top: torSwitchRect.top
-            itemSize: labelSize
+            //itemSize: labelSize
             text: qsTr("Tor")
         }
 
@@ -137,7 +137,7 @@ Item {
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.descriptionTextFontSize
             color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
-            text: qsTr("Transactions will be broadcast and received over Tor")
+            text: qsTr("Broadcast and receive transactions through Tor")
         }
     }
 
@@ -154,7 +154,7 @@ Item {
             height: torRouteSwitchRect.height
             anchors.left: torRouteSwitchRect.left
             anchors.top: torRouteSwitchRect.top
-            text: qsTr("Route All Over Tor")
+            text: qsTr("Route All Through Tor")
         }
 
         NodoSwitch {
@@ -178,30 +178,14 @@ Item {
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.descriptionTextFontSize
             color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
-            text: qsTr("Blockchain sync over Tor, includes Updates, News and Price Ticker")
+            text: qsTr("Sync blockchain over Tor, includes Updates, News and Price Ticker")
         }
-    }
-
-    Text {
-        id: torRouteSwitchDescription2
-        height: torRouteSwitchDescription2.paintedHeight
-        width: parent.width
-        anchors.top: torRouteSwitchRect.bottom
-        anchors.left: nodeTorScreen.left
-        anchors.leftMargin: NodoSystem.cardLeftMargin
-        anchors.topMargin: NodoSystem.cardLeftMargin
-        verticalAlignment: Text.AlignVCenter
-        wrapMode: Text.WordWrap
-        font.family: NodoSystem.fontInter.name
-        font.pixelSize: NodoSystem.descriptionTextFontSize
-        color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
-        text: qsTr("Use with Clearnet > Hidden RPC to fully anonymize the Monero Daemon.")
     }
 
     NodoInfoField {
         id: torOnionAddressField
         anchors.left: nodeTorScreen.left
-        anchors.top: torRouteSwitchDescription2.bottom
+        anchors.top: torRouteSwitchRect.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         width: infoFieldWidth
         height: NodoSystem.nodoItemHeight

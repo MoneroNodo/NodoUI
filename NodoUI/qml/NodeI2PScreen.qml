@@ -138,7 +138,7 @@ Item {
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.descriptionTextFontSize
             color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
-            text: qsTr("Transactions will be broadcast and received over I2P")
+            text: qsTr("Broadcast and receive transactions through I2P")
         }
     }
 
