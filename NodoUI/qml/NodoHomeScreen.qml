@@ -146,6 +146,7 @@ Item {
                 width: nodeButton.width
                 font.family: NodoSystem.fontInter.name
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
+                enabled: syncInfo.getSyncPercentage() == 100
                 onClicked: {
                     pageLoader.source = "MoneroLWSMainScreen.qml"
                     pageLoader.anchors.topMargin = 0
@@ -216,6 +217,13 @@ Item {
                 verticalAlignment: Text.AlignVCenter
                 font.family: NodoSystem.fontInter.name
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
+            }
+        }
+
+        Connections {
+            target: syncInfo
+            function onSyncDone() {
+                moneroLWSButton.enabled = true
             }
         }
 

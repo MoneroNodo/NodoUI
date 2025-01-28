@@ -19,22 +19,22 @@ Item {
             moneroLWS.listAccounts()
             moneroLWS.listRequests()
         }
-        if(100 === syncInfo.getSyncPercentage())
-        {
-            addAccountButton.enabled = true
-        }
-        else
-        {
-            addAccountButton.enabled = false
-        }
+        // if(100 === syncInfo.getSyncPercentage())
+        // {
+        //     addAccountButton.enabled = true
+        // }
+        // else
+        // {
+        //     addAccountButton.enabled = false
+        // }
     }
 
-    Connections {
-        target: syncInfo
-        function onSyncDone() {
-            addAccountButton.enabled = true
-        }
-    }
+    // Connections {
+    //     target: syncInfo
+    //     function onSyncDone() {
+    //         addAccountButton.enabled = true
+    //     }
+    // }
 
     Connections {
         target: moneroLWS
