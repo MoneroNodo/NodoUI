@@ -10,7 +10,7 @@ Item {
     id: nodeClearnetScreen
     property int labelSize: 0
     property int clearnetPort
-    property bool clearnetSwitchStatus
+    property bool hiddenRPCSwitchStatus
 
     property bool isRPCEnabled
     property int port
@@ -60,7 +60,7 @@ Item {
     Connections {
         target: nodoConfig
         function onConfigParserReady() {
-            nodeClearnetScreen.clearnetSwitchStatus = nodoConfig.getStringValueFromKey("config", "clearnet_enabled") === "TRUE" ? true : false
+            nodeClearnetScreen.hiddenRPCSwitchStatus = nodoConfig.getStringValueFromKey("config", "anon_rpc") === "TRUE" ? true : false
             nodeClearnetScreen.clearnetPort = nodoConfig.getIntValueFromKey("config", "monero_rpc_port")
             updateParams()
         }
@@ -110,47 +110,61 @@ Item {
     }
 
     Rectangle {
-        id: clearnetSwitchRect
+        id: hiddenRPCSwitchRect
         anchors.left: nodeClearnetScreen.left
         anchors.top: nodeClearnetScreen.top
         height: NodoSystem.nodoItemHeight
-        color: "black"
-        width: clearnetSwitchText.width + clearnetSwitch.width
+        //color: "black"
+        //width: hiddenRPCText.width + hiddenRPCSwitch.width
 
         NodoLabel {
-            id: clearnetSwitchText
-            height: clearnetSwitchRect.height
-            anchors.left: clearnetSwitchRect.left
-            anchors.top: clearnetSwitchRect.top
+            id: hiddenRPCSwitchText
+            height: hiddenRPCSwitchRect.height
+            anchors.left: hiddenRPCSwitchRect.left
+            anchors.top: hiddenRPCSwitchRect.top
             itemSize: labelSize
-            text: qsTr("Clearnet")
+            text: qsTr("Hidden RPC")
         }
 
         NodoSwitch {
-            id: clearnetSwitch
-            anchors.left: clearnetSwitchText.right
+            id: hiddenRPCSwitch
+            anchors.left: hiddenRPCSwitchText.right
             anchors.leftMargin: NodoSystem.padding
-            height: clearnetSwitchRect.height
-            width: 2*clearnetSwitchRect.height
+            height: hiddenRPCSwitchRect.height
+            width: 2*hiddenRPCSwitchRect.height
             display: AbstractButton.IconOnly
-            checked: nodeClearnetScreen.clearnetSwitchStatus
+            checked: nodeClearnetScreen.hiddenRPCSwitchStatus
             onCheckedChanged:
             {
-                var cur = nodeClearnetScreen.clearnetSwitchStatus;
-                if (cur != clearnetSwitch.checked)
+                var cur = nodeClearnetScreen.hiddenRPCSwitchStatus;
+                if (cur != hiddenRPCSwitch.checked)
                 {
-                    nodoControl.setHiddenRPCEnabled(clearnetSwitch.checked);
-                    nodeClearnetScreen.clearnetSwitchStatus = clearnetSwitch.checked;
+                    nodoControl.setHiddenRPCEnabled(hiddenRPCSwitch.checked);
+                    nodeClearnetScreen.hiddenRPCSwitchStatus = hiddenRPCSwitch.checked;
                     nodoControl.sendUpdate();
                 }
             }
+        }
+
+        Text {
+            id: hiddenRPCSwitchDescription
+            height: NodoSystem.nodoItemHeight
+            width: parent.width - hiddenRPCSwitchRect.width
+            anchors.left: hiddenRPCSwitch.right
+            anchors.leftMargin: 25
+            anchors.top: hiddenRPCSwitch.top
+            verticalAlignment: Text.AlignVCenter
+            font.family: NodoSystem.fontInter.name
+            font.pixelSize: NodoSystem.descriptionTextFontSize
+            color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
+            text: qsTr("Only allow wallets to connect over Tor and I2P, enable on untrusted networks.")
         }
     }
 
     NodoInfoField {
         id: clearnetAddressField
         anchors.left: nodeClearnetScreen.left
-        anchors.top: clearnetSwitchRect.bottom
+        anchors.top: hiddenRPCSwitchRect.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         width: labelSize + 300
         height: NodoSystem.nodoItemHeight
@@ -164,7 +178,7 @@ Item {
         anchors.left: nodeClearnetScreen.left
         anchors.top: clearnetAddressField.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
-        width: labelSize + clearnetSwitch.width
+        width: labelSize + hiddenRPCSwitch.width
         height: NodoSystem.nodoItemHeight
         itemSize: labelSize
         itemText: systemMessages.messages[NodoMessages.Message.Port]

@@ -94,8 +94,8 @@ Item {
         anchors.left: nodeTorScreen.left
         anchors.top: nodeTorScreen.top
         height: NodoSystem.nodoItemHeight
-        color: "black"
-        width: torSwitchText.width + torSwitch.width
+        //color: "black"
+        //width: torSwitchText.width + torSwitch.width
 
         NodoLabel {
             id: torSwitchText
@@ -125,14 +125,28 @@ Item {
                 }
             }
         }
+
+        Text {
+            id: torSwitchDescription
+            height: NodoSystem.nodoItemHeight
+            width: parent.width - torSwitchRect.width
+            anchors.left: torSwitch.right
+            anchors.leftMargin: 25
+            anchors.top: torSwitch.top
+            verticalAlignment: Text.AlignVCenter
+            font.family: NodoSystem.fontInter.name
+            font.pixelSize: NodoSystem.descriptionTextFontSize
+            color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
+            text: qsTr("Transactions will be broadcast and received over Tor")
+        }
     }
 
     Rectangle {
         id: torRouteSwitchRect
-        anchors.left: torSwitchRect.right
-        anchors.top: nodeTorScreen.top
-        anchors.leftMargin: 30
-        //anchors.topMargin: NodoSystem.nodoTopMargin
+        anchors.left: nodeTorScreen.left
+        anchors.top: torSwitchRect.bottom
+        //anchors.leftMargin: 30
+        anchors.topMargin: NodoSystem.nodoTopMargin
         height: NodoSystem.nodoItemHeight
 
         NodoLabel {
@@ -140,7 +154,7 @@ Item {
             height: torRouteSwitchRect.height
             anchors.left: torRouteSwitchRect.left
             anchors.top: torRouteSwitchRect.top
-            text: qsTr("Route All Connections Through Tor")
+            text: qsTr("Route All Over Tor")
         }
 
         NodoSwitch {
@@ -152,12 +166,42 @@ Item {
             display: AbstractButton.IconOnly
             checked: nodeTorScreen.torRouteSwitchStatus
         }
+
+        Text {
+            id: torRouteSwitchDescription
+            height: NodoSystem.nodoItemHeight
+            width: parent.width - torRouteSwitchRect.width
+            anchors.left: torRouteSwitch.right
+            anchors.leftMargin: 25
+            anchors.top: torRouteSwitch.top
+            verticalAlignment: Text.AlignVCenter
+            font.family: NodoSystem.fontInter.name
+            font.pixelSize: NodoSystem.descriptionTextFontSize
+            color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
+            text: qsTr("Blockchain sync over Tor, includes Updates, News and Price Ticker")
+        }
+    }
+
+    Text {
+        id: torRouteSwitchDescription2
+        height: torRouteSwitchDescription2.paintedHeight
+        width: parent.width
+        anchors.top: torRouteSwitchRect.bottom
+        anchors.left: nodeTorScreen.left
+        anchors.leftMargin: NodoSystem.cardLeftMargin
+        anchors.topMargin: NodoSystem.cardLeftMargin
+        verticalAlignment: Text.AlignVCenter
+        wrapMode: Text.WordWrap
+        font.family: NodoSystem.fontInter.name
+        font.pixelSize: NodoSystem.descriptionTextFontSize
+        color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
+        text: qsTr("Use with Clearnet > Hidden RPC to fully anonymize the Monero Daemon.")
     }
 
     NodoInfoField {
         id: torOnionAddressField
         anchors.left: nodeTorScreen.left
-        anchors.top: torSwitchRect.bottom
+        anchors.top: torRouteSwitchDescription2.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         width: infoFieldWidth
         height: NodoSystem.nodoItemHeight
