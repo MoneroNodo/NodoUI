@@ -441,7 +441,7 @@ void NodoSystemControl::setClearnetPort(QString port)
 
 bool NodoSystemControl::istorProxyEnabled()
 {
-    return m_configParser->getStringValueFromKey("config", "tor_global_enabled") == "TRUE";
+    return m_configParser->getStringValueFromKey("config", "torproxy_enabled") == "TRUE";
 }
 
 bool NodoSystemControl::isTickerEnabled()
@@ -461,7 +461,7 @@ bool NodoSystemControl::is24hEnabled()
 
 void NodoSystemControl::settorProxyEnabled(bool enabled)
 {
-    m_configParser->setProperty("tor_global_enabled", enabled ? "TRUE" : "FALSE");
+    m_configParser->setProperty("torproxy_enabled", enabled ? "TRUE" : "FALSE");
 }
 
 void NodoSystemControl::setTickerEnabled(bool enabled)
