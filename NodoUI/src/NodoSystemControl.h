@@ -155,6 +155,7 @@ signals:
     void feedsEnabledChanged(bool);
     void tickerEnabledChanged(bool);
     void _24hEnabledChanged(bool);
+    void torProxyEnabledChanged(bool);
 
     void factoryResetStarted(void);
     void factoryResetRequested(void);

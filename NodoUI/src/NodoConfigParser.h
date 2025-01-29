@@ -49,6 +49,8 @@ public:
     bool getBanlistsListEnabled(QString);
     void setBanlistsListEnabled(QString, bool);
 
+    bool istorProxyEnabled();
+
     QString getSoftwareVersion(QString);
 
     void setClearnetPort(QString port);
@@ -60,6 +62,7 @@ public:
     void setrpcPort(QString port);
     void setrpcUser(QString);
     void setrpcPassword(QString);
+    void settorProxyEnabled(bool);
 
     void setMoneroPayParameters(QString address);
     QString getMoneroPayAddress(void);

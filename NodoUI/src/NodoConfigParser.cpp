@@ -340,6 +340,17 @@ void NodoConfigParser::setI2pPort(QString port)
     writeJson();
 }
 
+bool NodoConfigParser::istorProxyEnabled()
+{
+    return m_configObj.value("torproxy_enabled").toString("FALSE") == "TRUE";
+}
+
+void NodoConfigParser::settorProxyEnabled(bool enabled)
+{
+    m_configObj.insert("torproxy_enabled", enabled ? "TRUE" : "FALSE");
+    writeJson();
+}
+
 void NodoConfigParser::setrpcEnabledStatus(bool status)
 {
     QString stat;
