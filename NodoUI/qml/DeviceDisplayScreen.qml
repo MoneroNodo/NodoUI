@@ -56,114 +56,9 @@ Item {
     }
 
     Rectangle {
-        id: screenSaverRect
-        anchors.left: deviceDisplayScreen.left
-        anchors.top: deviceDisplayBrightnessRect.bottom
-        anchors.topMargin: NodoSystem.nodoTopMargin
-        height: NodoSystem.nodoItemHeight
-        color: "black"
-        width: screenSaverLabel.width + screenSaverComboBox.width
-
-        NodoLabel {
-            id: screenSaverLabel
-            height: screenSaverRect.height
-            anchors.top: screenSaverRect.top
-            anchors.left: screenSaverRect.left
-            width: labelSize
-            text: qsTr("Screensaver")
-        }
-
-        NodoComboBox {
-            id: screenSaverComboBox
-            anchors.left: screenSaverLabel.right
-            anchors.leftMargin: NodoSystem.padding
-            anchors.top: screenSaverRect.top
-            width: 25 + deviceDisplayNightModeSwitch.width + deviceDisplayFlipOrientationSwitch.x + deviceDisplayFlipOrientationSwitch.width //dropdownLength
-            height: screenSaverRect.height
-            currentIndex: nodoControl.getScreenSaverType()
-            model:
-            {
-                if (nodoControl.isFeedsEnabled())
-                {
-                    [qsTr("News"), qsTr("Analog Clock"), qsTr("Digital Clock"), qsTr("Display Off"), qsTr("None")]
-                }
-                else
-                {
-                    [qsTr("Analog Clock"), qsTr("Digital Clock"), qsTr("Display Off"), qsTr("None")]
-                }
-            }
-            onCurrentIndexChanged: {
-                nodoControl.setScreenSaverType(currentIndex)
-            }
-        }
-    }
-
-    Connections {
-        target: nodoControl
-        function onFeedsEnabledChanged(enabled) {
-            deviceDisplayManageFeedsButton.isActive = enabled;
-            var ss = nodoControl.getScreenSaverType();
-            if (enabled)
-            {
-                screenSaverComboBox.model = [qsTr("News"), qsTr("Analog Clock"), qsTr("Digital Clock"), qsTr("Display Off"), qsTr("None")];
-                screenSaverComboBox.currentIndex = ss + 1;
-            }
-            else
-            {
-                screenSaverComboBox.model = [qsTr("Analog Clock"), qsTr("Digital Clock"), qsTr("Display Off"), qsTr("None")];
-                screenSaverComboBox.currentIndex = ss - 1;
-            }
-        }
-    }
-
-    Rectangle {
-        id: screenSaverStartAfterRect
-        anchors.left: screenSaverRect.right
-        anchors.top: deviceDisplayBrightnessRect.bottom
-        anchors.topMargin: NodoSystem.nodoTopMargin
-        anchors.leftMargin: 25
-        height: NodoSystem.nodoItemHeight
-
-        NodoInputField {
-            id: screenSaverStartAfterInput
-            anchors.left: screenSaverStartAfterRect.left
-            anchors.top: screenSaverStartAfterRect.top
-            height: NodoSystem.nodoItemHeight
-            width: itemSize + deviceDisplayNightModeSwitch.width
-            itemSize: labelSize - 20
-            itemText: qsTr("Start after")
-            textFlag: Qt.ImhDigitsOnly
-            validator: IntValidator { bottom: 1; top: 60; }
-            onTextEditFinished: {
-                nodoControl.setScreenSaverTimeout(screenSaverStartAfterInput.valueText * 60)
-            }
-        }
-
-        Rectangle {
-            id: screenSaverStartAfterMinutesRect
-            anchors.left: screenSaverStartAfterInput.right
-            anchors.top: screenSaverStartAfterInput.top
-            anchors.leftMargin: 10
-            color: "black"
-
-            Text {
-                id: screenSaverStartAfterMinutes
-                anchors.left: screenSaverStartAfterMinutesRect.left
-                anchors.top: screenSaverStartAfterMinutesRect.top
-                text: qsTr("minutes")
-                height: NodoSystem.nodoItemHeight
-                verticalAlignment: Text.AlignVCenter
-                font.family: NodoSystem.fontInter.name
-                font.pixelSize: NodoSystem.inputFieldValueFontSize
-                color: nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn : NodoSystem.dataFieldTextColorNightModeOff
-            }
-        }
-    }
-
-    Rectangle {
         id: deviceDisplayNightModeSwitchRect
         anchors.left: deviceDisplayScreen.left
-        anchors.top: screenSaverRect.bottom
+        anchors.top: deviceDisplayBrightnessRect.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         height: NodoSystem.nodoItemHeight
         color: "black"
@@ -194,7 +89,7 @@ Item {
     Rectangle {
         id: deviceDisplayFlipOrientationSwitchRect
         anchors.left: deviceDisplayNightModeSwitchRect.right
-        anchors.top: screenSaverRect.bottom
+        anchors.top: deviceDisplayBrightnessRect.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         anchors.leftMargin: 25
         height: NodoSystem.nodoItemHeight
@@ -259,6 +154,110 @@ Item {
         }
     }
 
+    Rectangle {
+        id: screenSaverRect
+        anchors.left: deviceDisplayScreen.left
+        anchors.top: deviceDisplayNightModeSwitchRect.bottom
+        anchors.topMargin: NodoSystem.nodoTopMargin
+        height: NodoSystem.nodoItemHeight
+        color: "black"
+        width: screenSaverLabel.width + screenSaverComboBox.width
+
+        NodoLabel {
+            id: screenSaverLabel
+            height: screenSaverRect.height
+            anchors.top: screenSaverRect.top
+            anchors.left: screenSaverRect.left
+            width: labelSize
+            text: qsTr("Screensaver")
+        }
+
+        NodoComboBox {
+            id: screenSaverComboBox
+            anchors.left: screenSaverLabel.right
+            anchors.leftMargin: NodoSystem.padding
+            anchors.top: screenSaverRect.top
+            width: 25 + deviceDisplayNightModeSwitch.width + deviceDisplayFlipOrientationSwitch.x + deviceDisplayFlipOrientationSwitch.width //dropdownLength
+            height: screenSaverRect.height
+            currentIndex: nodoControl.getScreenSaverType()
+            model:
+            {
+                if (nodoControl.isFeedsEnabled())
+                {
+                    [qsTr("News"), qsTr("Analog Clock"), qsTr("Digital Clock"), qsTr("Display Off"), qsTr("None")]
+                }
+                else
+                {
+                    [qsTr("Analog Clock"), qsTr("Digital Clock"), qsTr("Display Off"), qsTr("None")]
+                }
+            }
+            onCurrentIndexChanged: {
+                nodoControl.setScreenSaverType(currentIndex)
+            }
+        }
+    }
+
+    Connections {
+        target: nodoControl
+        function onFeedsEnabledChanged(enabled) {
+            deviceDisplayManageFeedsButton.isActive = enabled;
+            var ss = nodoControl.getScreenSaverType();
+            if (enabled)
+            {
+                screenSaverComboBox.model = [qsTr("News"), qsTr("Analog Clock"), qsTr("Digital Clock"), qsTr("Display Off"), qsTr("None")];
+                screenSaverComboBox.currentIndex = ss + 1;
+            }
+            else
+            {
+                screenSaverComboBox.model = [qsTr("Analog Clock"), qsTr("Digital Clock"), qsTr("Display Off"), qsTr("None")];
+                screenSaverComboBox.currentIndex = ss - 1;
+            }
+        }
+    }
+
+    Rectangle {
+        id: screenSaverStartAfterRect
+        anchors.left: screenSaverRect.right
+        anchors.top: deviceDisplayNightModeSwitchRect.bottom
+        anchors.topMargin: NodoSystem.nodoTopMargin
+        anchors.leftMargin: 25
+        height: NodoSystem.nodoItemHeight
+
+        NodoInputField {
+            id: screenSaverStartAfterInput
+            anchors.left: screenSaverStartAfterRect.left
+            anchors.top: screenSaverStartAfterRect.top
+            height: NodoSystem.nodoItemHeight
+            width: itemSize + deviceDisplayNightModeSwitch.width
+            itemSize: labelSize - 20
+            itemText: qsTr("Start after")
+            textFlag: Qt.ImhDigitsOnly
+            validator: IntValidator { bottom: 1; top: 60; }
+            onTextEditFinished: {
+                nodoControl.setScreenSaverTimeout(screenSaverStartAfterInput.valueText * 60)
+            }
+        }
+
+        Rectangle {
+            id: screenSaverStartAfterMinutesRect
+            anchors.left: screenSaverStartAfterInput.right
+            anchors.top: screenSaverStartAfterInput.top
+            anchors.leftMargin: 10
+            color: "black"
+
+            Text {
+                id: screenSaverStartAfterMinutes
+                anchors.left: screenSaverStartAfterMinutesRect.left
+                anchors.top: screenSaverStartAfterMinutesRect.top
+                text: qsTr("minutes")
+                height: NodoSystem.nodoItemHeight
+                verticalAlignment: Text.AlignVCenter
+                font.family: NodoSystem.fontInter.name
+                font.pixelSize: NodoSystem.inputFieldValueFontSize
+                color: nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn : NodoSystem.dataFieldTextColorNightModeOff
+            }
+        }
+    }
 
     Rectangle {
         id: languageRect
