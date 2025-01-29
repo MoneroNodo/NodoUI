@@ -267,7 +267,6 @@ Item {
         height: NodoSystem.nodoItemHeight
         visible: false
 
-
         NodoLabel {
             id: deviceDisplayLanguageLabel
             height: languageRect.height
@@ -294,10 +293,10 @@ Item {
         }
     }
 
-        Rectangle {
+    Rectangle {
         id: keyboardLayoutRect
         anchors.left: deviceDisplayScreen.left
-        anchors.top: languageRect.bottom
+        anchors.top: screenSaverRect.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         height: NodoSystem.nodoItemHeight
 
