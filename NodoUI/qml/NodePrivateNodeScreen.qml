@@ -84,7 +84,7 @@ Item {
             height: privateNodeSwitchRect.height
             display: AbstractButton.IconOnly
             checked: nodePrivateNodeScreen.isRPCEnabled
-            onCheckedChanged: privateNodeApplyButton.enabled = true
+            onCheckedChanged: privateNodeApplyButton.isActive = true
         }
     }
 
@@ -138,6 +138,7 @@ Item {
         itemSize: labelSize
         itemText: qsTr("Username")
         valueText: nodoControl.getrpcUser();
+        onValueTextChanged: privateNodeApplyButton.isActive = true
     }
 
     NodoInputField {
@@ -151,6 +152,7 @@ Item {
         itemText: qsTr("Password")
         valueText: nodoControl.getrpcPassword();
         passwordInput: true
+        onValueTextChanged: privateNodeApplyButton.isActive = true
     }
 
     NodoButton {
@@ -162,7 +164,7 @@ Item {
         height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
-        enabled: false
+        isActive: false
         onPressed:
         {
             if (privateNodeSwitch.checked)
@@ -173,7 +175,7 @@ Item {
             }
             nodePrivateNodeScreen.isRPCEnabled = privateNodeSwitch.checked;
             nodoControl.setrpcEnabledStatus(privateNodeSwitch.checked);
-            privateNodeApplyButton.enabled = false;
+            privateNodeApplyButton.isActive = false;
         }
     }
 
