@@ -165,6 +165,16 @@ Item {
             width: 2*torRouteSwitchRect.height
             display: AbstractButton.IconOnly
             checked: nodeTorScreen.torRouteSwitchStatus
+            onCheckedChanged: {
+                var cur = nodeTorScreen.torRouteSwitchStatus
+                if (cur != torRouteSwitch.checked)
+                {
+                    nodeTorScreen.torRouteSwitchStatus = torRouteSwitch.checked;
+                    nodeControl.settorProxyEnabled(torRouteSwitch.checked);
+                    nodoControl.sendUpdate();
+                }
+
+            }
         }
 
         Text {
