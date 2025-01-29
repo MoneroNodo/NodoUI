@@ -89,7 +89,7 @@ Item {
                 anchors.top: digitalClockDateBackground.top
                 anchors.left: digitalClockDateBackground.left
                 anchors.topMargin: clockTopMargin
-                text: !nodoControl.is24hEnabled() && hours == 0 ? "12" : hours
+                text: nodoControl.is24hEnabled() && hours < 10 ? "0"+hours : (hours == 0 ? "12" : hours)
                 font.pixelSize: NodoSystem.digitalClockPixelSize
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
@@ -129,7 +129,7 @@ Item {
             anchors.top: digitalClockDateBackground.bottom
             anchors.horizontalCenter: digitalClockBackground.horizontalCenter
             text: Qt.formatDateTime(nodoControl.getChangedDateTime(), "dddd, d MMMM")
-            font.pixelSize: 110
+            font.pixelSize: 100
             color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
             font.family: NodoSystem.fontInter.name
         }

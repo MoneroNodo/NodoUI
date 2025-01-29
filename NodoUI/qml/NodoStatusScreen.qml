@@ -184,7 +184,7 @@ Rectangle {
         anchors.leftMargin: 1//cardMargin
         width: 800
         height: networkConnectionField.y + networkConnectionField.height + componentBottomMargin//683
-        color: NodoSystem.cardBackgroundColor
+        color: NodoSystem.dataFieldTextBGColorNightModeOff
 
         Connections {
             target: nodoSystemStatus
@@ -333,7 +333,7 @@ Rectangle {
         anchors.leftMargin: cardMargin
         width: 410
         height: moneroLWSField.y + moneroLWSField.height + componentBottomMargin
-        color: NodoSystem.cardBackgroundColor
+        color: NodoSystem.dataFieldTextBGColorNightModeOff
 
         Connections {
             target: nodoControl
@@ -429,7 +429,7 @@ Rectangle {
         anchors.leftMargin: cardMargin
         //anchors.rightMargin: 2//cardMargin
         height: systemStorageField.y + systemStorageField.height + componentBottomMargin
-        color: NodoSystem.cardBackgroundColor
+        color: NodoSystem.dataFieldTextBGColorNightModeOff
 
         Connections {
             target: nodoControl
