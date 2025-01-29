@@ -73,7 +73,6 @@ Item {
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: { pageLoader.source = "MoneroLWSAddAccountScreen.qml" }
-            enabled: syncInfo.getSyncPercentage() == 100 && networkManager.getNetworkConnectionStatusCode() == 1
         }
 
         NodoTabButton {
@@ -114,6 +113,6 @@ Item {
         anchors.right: moneroLWSMainScreen.right
         anchors.bottom: moneroLWSMainScreen.bottom
         anchors.topMargin: 40
-        source: "MoneroLWSActiveScreen.qml"
+        source: "MoneroLWSAddAccountScreen.qml"
     }
 }

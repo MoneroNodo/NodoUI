@@ -159,7 +159,7 @@ Item {
         anchors.left: moneroLWSAddAccountScreen.left
         anchors.top: moneroLWSPrivateViewkeyLabel.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
-        text: qsTr("Add Account")
+        text: qsTr("Add Wallet")
         height: NodoSystem.nodoItemHeight
         width: labelSize
         font.family: NodoSystem.fontInter.name
@@ -170,4 +170,19 @@ Item {
             moneroLWS.addAccount(moneroLWSMainAddressInput.valueText, moneroLWSPrivateViewkeyLabel.valueText)
         }
     }
+
+    Text {
+        id: moneroLWSAddAccountButtonDescription
+        height: NodoSystem.nodoItemHeight
+        width: parent.width - moneroLWSAddAccountButton.width
+        anchors.left: moneroLWSAddAccountButton.right
+        anchors.leftMargin: 25
+        anchors.top: moneroLWSPrivateViewkeyLabel.bottom
+        anchors.topMargin: NodoSystem.nodoTopMargin
+        verticalAlignment: Text.AlignVCenter
+        font.family: NodoSystem.fontInter.name
+        font.pixelSize: NodoSystem.descriptionTextFontSize
+        color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
+        text: qsTr("Adding wallets is not possible while the Monero Daemon is not synchronized")
+    } 
 }
