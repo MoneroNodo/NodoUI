@@ -146,7 +146,7 @@ Item {
                 width: nodeButton.width
                 font.family: NodoSystem.fontInter.name
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
-                enabled: syncInfo.getSyncPercentage() == 100
+                // enabled: syncInfo.getSyncPercentage() == 100
                 onClicked: {
                     pageLoader.source = "MoneroLWSMainScreen.qml"
                     pageLoader.anchors.topMargin = 0
