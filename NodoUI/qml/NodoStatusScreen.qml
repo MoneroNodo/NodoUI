@@ -57,6 +57,10 @@ Rectangle {
         {
             return systemMessages.serviceStatusMessages[NodoMessages.ServiceStatusMessages.Activating]
         }
+        else if(message === "deactivating")
+        {
+            return systemMessages.serviceStatusMessages[NodoMessages.ServiceStatusMessages.Deactivating]
+        }
         else {
             return message
         }

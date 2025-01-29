@@ -147,12 +147,14 @@ Item {
     enum ServiceStatusMessages {
         Active,
         Inactive,
-        Activating
+        Activating,
+        Deactivating
     }
 
     property var serviceStatusMessages: [
         qsTr("Active"),
         qsTr("Inactive"),
         qsTr("Starting"),
+        qsTr("Stopping"),
     ]
 }
