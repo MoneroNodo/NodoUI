@@ -170,7 +170,7 @@ Item {
                 if (cur != torRouteSwitch.checked)
                 {
                     nodeTorScreen.torRouteSwitchStatus = torRouteSwitch.checked;
-                    nodeControl.settorProxyEnabled(torRouteSwitch.checked);
+                    nodoControl.settorProxyEnabled(torRouteSwitch.checked);
                     nodoControl.sendUpdate();
                 }
 
