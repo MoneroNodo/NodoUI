@@ -36,6 +36,7 @@ private slots:
     void replyFinished(QNetworkReply *reply);
     void updateStatus(void);
     void updateConfigParameters(void);
+    void authenticate(QNetworkReply *reply, QAuthenticator *auth);
 };
 
 #endif /* NODO_SYSTEM_STATUS_PARSER_H */

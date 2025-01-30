@@ -1,3 +1,4 @@
+#include <QAuthenticator>
 #include <QNetworkAccessManager>
 #include "NodoSystemStatusParser.h"
 
@@ -11,6 +12,7 @@ NodoSystemStatusParser::NodoSystemStatusParser(NodoConfigParser *configParser) {
 
     m_manager = new QNetworkAccessManager(this);
     connect(m_manager, &QNetworkAccessManager::finished, this, &NodoSystemStatusParser::replyFinished);
+    connect(m_manager, &QNetworkAccessManager::authenticationRequired, this, &NodoSystemStatusParser::authenticate);
     m_manager->get(QNetworkRequest(QUrl(m_system_url)));
 
     m_configParser = configParser;
@@ -18,6 +20,11 @@ NodoSystemStatusParser::NodoSystemStatusParser(NodoConfigParser *configParser) {
     m_timer = new QTimer(this);
     connect(m_timer, SIGNAL(timeout()), this, SLOT(updateStatus()));
     connect(m_configParser, SIGNAL(configParserReady()), this, SLOT(updateConfigParameters()));
+}
+
+void NodoSystemStatusParser::authenticate(QNetworkReply *reply, QAuthenticator *auth) {
+    auth->setUser(m_configParser->getStringValueFromKey("config", "rpcu"));
+    auth->setPassword(m_configParser->getStringValueFromKey("config", "rpcp"));
 }
 
 void NodoSystemStatusParser::replyFinished(QNetworkReply *reply) {
