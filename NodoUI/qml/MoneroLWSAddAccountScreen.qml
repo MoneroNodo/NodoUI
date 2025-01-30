@@ -21,15 +21,21 @@ Item {
 
         if(moneroLWSPrivateViewkeyLabel.labelRectRoundSize > labelSize)
         labelSize = moneroLWSPrivateViewkeyLabel.labelRectRoundSize
-		
-		if(moneroLWSClearnetAddress.labelRectRoundSize > labelSize)
-		labelSize = moneroLWSClearnetAddress.labelRectRoundSize
-		
-		if(moneroLWSTorAddress.labelRectRoundSize > labelSize)
-        labelSize = moneroLWSTorAddress.labelRectRoundSize
-		
-		if(moneroLWSI2PAddress.labelRectRoundSize > labelSize)
-		labelSize = moneroLWSI2PAddress.labelRectRoundSize
+
+		if(moneroLWSClearnetAddressRect.labelRectRoundSize > labelSize)
+		labelSize = moneroLWSClearnetAddressRect.labelRectRoundSize
+
+		if(moneroLWSTorAddressRect.labelRectRoundSize > labelSize)
+        labelSize = moneroLWSTorAddressRect.labelRectRoundSize
+
+		if(moneroLWSI2PAddressRect.labelRectRoundSize > labelSize)
+		labelSize = moneroLWSI2PAddressRect.labelRectRoundSize
+    }
+
+    function walletInfoValid() {
+        return syncInfo.getSyncPercentage() == 100
+            && moneroLWSMainAddressInput.valueText.length === 95
+            && moneroLWSPrivateViewkeyLabel.valueText.length === 64
     }
 
     Connections {
@@ -37,6 +43,24 @@ Item {
         function onAccountAdded() {
             moneroLWSMainAddressInput.valueText = ""
             moneroLWSPrivateViewkeyLabel.valueText = ""
+            moneroLWSAddAccountButton.isActive = false
+        }
+    }
+
+    Connections {
+        target: syncInfo
+        function onSyncDone() {
+            moneroLWSAddAccountButton.isActive = moneroLWSAddAccountScreen.walletInfoValid()
+            moneroLWSAddAccountButtonDescription.visible = true
+        }
+    }
+
+    Connections {
+        target: networkManager
+        function networkStatusChanged() {
+
+           moneroLWSAddAccountButtonDescription.visible = syncInfo.getSyncPercentage() == 100 && networkManager.getNetworkConnectionStatus() == 1
+           moneroLWSAddAccountButton.isActive = moneroLWSAddAccountScreen.walletInfoValid()
         }
     }
 
@@ -54,50 +78,89 @@ Item {
         color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
         text: qsTr("LIGHT WALLET SERVER ADDRESS")
     }
-    
-    NodoInfoField {
-        id: moneroLWSClearnetAddress
+
+    MouseArea {
+        id: moneroLWSClearnetAddressRect
         anchors.left: moneroLWSAddAccountScreen.left
-		anchors.top: moneroLWSTitle.bottom
-		anchors.topMargin: NodoSystem.cardTopMargin
+        anchors.top: moneroLWSTitle.bottom
+        anchors.topMargin: NodoSystem.cardTopMargin
         width: infoFieldSize
         height: NodoSystem.nodoItemHeight
-		itemSize: labelSize
-		itemText: qsTr("LWS Address")
-        valueText: "http://" + networkManager.getNetworkIP() + ":18086/basic"        
-	}	
-	
-	NodoInfoField {
-        id: moneroLWSTorAddress
-        anchors.left: moneroLWSAddAccountScreen.left
-		anchors.top: moneroLWSClearnetAddress.bottom
-        anchors.topMargin: NodoSystem.nodoTopMargin
-	    width: infoFieldSize
-        height: NodoSystem.nodoItemHeight
-		itemSize: labelSize
-		itemText: qsTr("LWS Tor Address")   
-        valueText: "http://" + nodoConfig.getStringValueFromKey("config", "tor_address") + ":18086/basic"
-        valueFontSize: 38
+        NodoInfoField {
+            id: moneroLWSClearnetAddress
+            anchors.left: parent.left
+            anchors.top: parent.top
+            anchors.topMargin: 0
+            width: parent.width
+            height: parent.height
+            itemSize: labelSize
+            itemText: qsTr("Clearnet")
+            valueText: "http://" + networkManager.getNetworkIP() + ":18086/basic"
+        }
+        onClicked: {
+            mainRectPopup.qrCodeData = moneroLWSClearnetAddress.valueText
+            mainRectPopup.closeButtonText = qsTr("Close")
+            mainRectPopup.open();
+        }
     }
-	
-    NodoInfoField {
-        id: moneroLWSI2PAddress
+
+    MouseArea {
+        id: moneroLWSTorAddressRect
         anchors.left: moneroLWSAddAccountScreen.left
-		anchors.top: moneroLWSTorAddress.bottom
+        anchors.top: moneroLWSClearnetAddressRect.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
-	    width: infoFieldSize
+        width: infoFieldSize
         height: NodoSystem.nodoItemHeight
-		itemSize: labelSize
-		itemText: qsTr("LWS I2P Address") 
-        valueText: "http://" + nodoConfig.getStringValueFromKey("config", "i2p_address") + ":18086/basic"
-        valueFontSize: 38
-    }	
+        NodoInfoField {
+            id: moneroLWSTorAddress
+            anchors.left: parent.left
+            anchors.top: parent.top
+            anchors.topMargin: 0
+            width: parent.width
+            height: parent.height
+            itemSize: labelSize
+            itemText: qsTr("Tor")
+            valueText: "http://" + nodoConfig.getStringValueFromKey("config", "tor_address") + ":18086/basic"
+            valueFontSize: 38
+        }
+        onClicked: {
+            mainRectPopup.qrCodeData = moneroLWSTorAddress.valueText
+            mainRectPopup.closeButtonText = qsTr("Close")
+            mainRectPopup.open();
+        }
+    }
+
+    MouseArea {
+        id: moneroLWSI2PAddressRect
+        anchors.left: moneroLWSAddAccountScreen.left
+        anchors.top: moneroLWSTorAddressRect.bottom
+        anchors.topMargin: NodoSystem.nodoTopMargin
+        width: infoFieldSize
+        height: NodoSystem.nodoItemHeight
+        NodoInfoField {
+            id: moneroLWSI2PAddress
+            anchors.left: parent.left
+            anchors.top: parent.top
+            anchors.topMargin: 0
+            width: parent.width
+            height: parent.height
+            itemSize: labelSize
+            itemText: qsTr("I2P")
+            valueText: "http://" + nodoConfig.getStringValueFromKey("config", "i2p_address") + ":18086/basic"
+            valueFontSize: 38
+        }
+        onClicked: {
+            mainRectPopup.qrCodeData = moneroLWSI2PAddress.valueText
+            mainRectPopup.closeButtonText = qsTr("Close")
+            mainRectPopup.open();
+        }
+    }
 
     Text {
         id: moneroLWSDescription
         height: moneroLWSDescription.paintedHeight
         width: parent.width
-        anchors.top: moneroLWSI2PAddress.bottom
+        anchors.top: moneroLWSI2PAddressRect.bottom
         anchors.left: moneroLWSAddAccountScreen.left
         anchors.leftMargin: NodoSystem.cardLeftMargin
         anchors.topMargin: NodoSystem.cardLeftMargin
@@ -126,7 +189,7 @@ Item {
 
     NodoInputField {
         id: moneroLWSMainAddressInput
-		anchors.left: moneroLWSAddAccountScreen.left
+        anchors.left: moneroLWSAddAccountScreen.left
         anchors.top: moneroLWSAddWalletTitle.bottom
         anchors.topMargin: NodoSystem.cardTopMargin
         width: infoFieldSize
@@ -136,6 +199,9 @@ Item {
         height: NodoSystem.nodoItemHeight
         validator: RegularExpressionValidator {
             regularExpression: /^4[0-9A-Za-z]{94}$/
+        }
+        function editingFinished() {
+            moneroLWSAddAccountButton.isActive = moneroLWSAddAccountScreen.walletInfoValid()
         }
     }
 
@@ -152,6 +218,9 @@ Item {
         validator: RegularExpressionValidator {
             regularExpression: /^[0-9a-z]{64}$/
         }
+        function editingFinished() {
+            moneroLWSAddAccountButton.isActive = moneroLWSAddAccountScreen.walletInfoValid()
+        }
     }
 
     NodoButton {
@@ -164,7 +233,7 @@ Item {
         width: labelSize
         font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
-        isActive: moneroLWSMainAddressInput.valueText.length === 95 ? moneroLWSPrivateViewkeyLabel.valueText.length === 64 ? true : false : false
+        isActive: moneroLWSAddAccountScreen.walletInfoValid()
 
         onClicked: {
             moneroLWS.addAccount(moneroLWSMainAddressInput.valueText, moneroLWSPrivateViewkeyLabel.valueText)
@@ -183,6 +252,10 @@ Item {
         font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.descriptionTextFontSize
         color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
+        visible: syncInfo.getSyncPercentage() != 100 || networkManager.getNetworkConnectionStatus() != 1
         text: qsTr("Adding wallets is not possible while the Monero Daemon is not synchronized")
-    } 
+    }
+    NodoQRCodePopup {
+        id: mainRectPopup
+    }
 }
