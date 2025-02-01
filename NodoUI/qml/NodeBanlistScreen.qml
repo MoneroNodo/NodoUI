@@ -84,7 +84,7 @@ Item {
                 height: nodeBanlistScreenIndex2.height
                 width: height
                 anchors.left: nodeBanlistScreenIndex2.left
-                anchors.top: nodeBanlistScreenIndex1.top
+                anchors.top: nodeBanlistScreenIndex2.top
                 checked: nodoControl.getBanlistsListEnabled("gui-xmr-pm")
                 onClicked: {
                     applyBanlistButton.isActive = true

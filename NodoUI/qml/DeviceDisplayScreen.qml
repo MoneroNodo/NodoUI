@@ -470,10 +470,6 @@ Item {
         }
     }
 
-
-
-
-
     Rectangle {
         id: deviceDisplayFeedsSwitchRect
         anchors.left: deviceDisplayScreen.left
@@ -506,7 +502,7 @@ Item {
 
         NodoButton  {
             id: deviceDisplayManageFeedsButton
-            anchors.left: deviceDisplayFeedsSwitchRect.right
+            anchors.left: deviceDisplayFeedsSwitch.right
             anchors.leftMargin: 25
             anchors.top: deviceDisplayPricetickerSwitchRect.bottom
             anchors.topMargin: NodoSystem.nodoTopMargin

@@ -60,7 +60,7 @@ Item {
         anchors.left: moneroLWSMainScreen.left
         height: NodoSystem.subMenuButtonHeight
         //contentWidth: 1400
-        implicitWidth: inactiveButton.x + inactiveButton.width
+        width: inactiveButton.x + inactiveButton.width
 
         background: Rectangle {
             color: "black"
