@@ -293,34 +293,34 @@ NodoCanvas {
             anchors.topMargin: NodoSystem.nodoTopMargin
             height: NodoSystem.nodoItemHeight
 
-                NodoLabel {
-                    id: dhcpSwitchText
-                    height: dhcpSwitchRect.height
-                    anchors.left: dhcpSwitchRect.left
-                    anchors.top: dhcpSwitchRect.top
-                    itemSize: labelSize
-                    text: systemMessages.messages[NodoMessages.Message.DHCP] //qsTr("DHCP Auto")
-                }
+            NodoLabel {
+                id: dhcpSwitchText
+                height: dhcpSwitchRect.height
+                anchors.left: dhcpSwitchRect.left
+                anchors.top: dhcpSwitchRect.top
+                itemSize: labelSize
+                text: systemMessages.messages[NodoMessages.Message.DHCP] //qsTr("DHCP Auto")
+            }
 
-                NodoSwitch {
-                    id: dhcpSwitch
-                    anchors.left: dhcpSwitchText.right
-                    anchors.leftMargin: NodoSystem.padding
-                    height: dhcpSwitchRect.height
-                    width: 2*dhcpSwitchRect.height
-                    display: AbstractButton.IconOnly
-                    checked: true
-                    onCheckedChanged: {
-                        if(checked === true)
-                        {
-                            mainRect.state = "showPasswordField"
-                        }
-                        else
-                        {
+            NodoSwitch {
+                id: dhcpSwitch
+                anchors.left: dhcpSwitchText.right
+                anchors.leftMargin: NodoSystem.padding
+                height: dhcpSwitchRect.height
+                width: 2*dhcpSwitchRect.height
+                display: AbstractButton.IconOnly
+                checked: true
+                onCheckedChanged: {
+                    if(checked === true)
+                    {
+                        mainRect.state = "showPasswordField"
+                    }
+                    else
+                    {
                             mainRect.state = "showStaticConfigField"
-                        }
                     }
                 }
+            }
         }
 
         Rectangle {
@@ -336,7 +336,7 @@ NodoCanvas {
             
             NodoInputField {
                 id: wifiIPAddressField
-                anchors.top: dhcpSwitchRect.bottom
+                anchors.top: advancedSettingsRect.top
                 anchors.left: advancedSettingsRect.left
                 //anchors.topMargin: mainRect.spacing
                 width: 700//advancedSettingsRect.width

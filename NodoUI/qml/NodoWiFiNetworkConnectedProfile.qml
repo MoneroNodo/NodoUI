@@ -62,8 +62,8 @@ NodoCanvas {
         if(gatewayField.labelRectRoundSize > labelSize)
             labelSize = gatewayField.labelRectRoundSize
 
-        if(sSIDField.labelRectRoundSize > labelSize)
-            labelSize = sSIDField.labelRectRoundSize
+        //if(sSIDField.labelRectRoundSize > labelSize)
+        //    labelSize = sSIDField.labelRectRoundSize
 
         if(signalStrengthField.labelRectRoundSize > labelSize)
             labelSize = signalStrengthField.labelRectRoundSize
