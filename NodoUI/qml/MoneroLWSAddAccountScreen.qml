@@ -59,7 +59,7 @@ Item {
         target: networkManager
         function networkStatusChanged() {
 
-           moneroLWSAddAccountButtonDescription.visible = syncInfo.getSyncPercentage() == 100 && networkManager.getNetworkConnectionStatus() == 1
+           moneroLWSAddAccountButtonDescription.visible = syncInfo.getSyncPercentage() == 100 && networkManager.getNetworkConnectionStatusCode() == 1
            moneroLWSAddAccountButton.isActive = moneroLWSAddAccountScreen.walletInfoValid()
         }
     }
@@ -252,7 +252,7 @@ Item {
         font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.descriptionTextFontSize
         color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
-        visible: syncInfo.getSyncPercentage() != 100 || networkManager.getNetworkConnectionStatus() != 1
+        visible: syncInfo.getSyncPercentage() != 100 || networkManager.getNetworkConnectionStatusCode() != 1
         text: qsTr("Adding wallets is not possible while the Monero Daemon is not synchronized")
     }
     NodoQRCodePopup {
