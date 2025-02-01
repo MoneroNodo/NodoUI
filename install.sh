@@ -65,7 +65,8 @@ sudo usermod -aG input nodo
 
 sudo usermod -aG adm nodo
 sudo mkdir -p /etc/polkit-1/localauthority/50-local.d
-sudo cp $NODO_UI_PROJECT_PATH/config/nm.pkla /etc/polkit-1/localauthority/50-local.d
+#sudo cp $NODO_UI_PROJECT_PATH/config/nm.pkla /etc/polkit-1/localauthority/50-local.d
+sudo cp $NODO_UI_PROJECT_PATH/config/50-NetworkManager-nodo.rules /etc/polkit-1/rules.d/
 
 sudo systemctl enable nodo-dbus.service
 sudo systemctl start nodo-dbus.service
