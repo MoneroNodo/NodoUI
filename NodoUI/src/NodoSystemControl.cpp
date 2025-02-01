@@ -587,6 +587,7 @@ void NodoSystemControl::setNodeBandwidthParameters(QString in_peers, QString out
 
 void NodoSystemControl::processNotification(QString message)
 {
+    emit serviceManagerNotificationReceived(message);
     QStringList serviceStat = message.split(":");
 
     enableComponent(true);

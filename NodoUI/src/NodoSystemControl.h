@@ -162,6 +162,7 @@ signals:
     void factoryResetCompleted(void);
     void powerButtonPressDetected(void);
     void powerButtonReleaseDetected(void);
+    void serviceManagerNotificationReceived(QString); // delegate
 
 private:
     bool m_appTheme;
