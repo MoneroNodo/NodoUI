@@ -44,6 +44,7 @@ NodoSystemControl::NodoSystemControl(NodoUISystemParser *uiSystemParser, NodoCon
     connect(m_dbusController, SIGNAL(serviceStatusReceived(QString)), this, SLOT(updateServiceStatus(QString)));
     connect(m_dbusController, SIGNAL(hardwareStatusReadyNotification(QString)), this, SLOT(updateHardwareStatus(QString)));
     connect(m_dbusController, SIGNAL(serviceManagerNotificationReceived(QString)), this, SLOT(processNotification(QString)));
+    connect(m_dbusController, SIGNAL(serviceManagerNotificationReceived(QString)), this, SLOT(serviceManagerNotificationReceived(QString)));
     connect(m_dbusController, SIGNAL(passwordChangeStatus(int)), this, SLOT(passwordChangeStatusReceived(int)));
 
     connect(m_dbusController, SIGNAL(factoryResetStarted()), this, SIGNAL(factoryResetStarted()));
