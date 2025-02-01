@@ -84,11 +84,26 @@ Item {
         }
     }
 
-    Rectangle {
-        id: deviceUpdatesNodoSwitchRect
+    Text {
+        id: deviceUpdateAutomaticTitle
+        height: 30
+        width: parent.width
         anchors.top: deviceUpdateAllRect.bottom
         anchors.left: deviceUpdatesScreen.left
-        anchors.topMargin: NodoSystem.nodoTopMargin + 25
+        anchors.leftMargin: NodoSystem.cardLeftMargin
+        anchors.topMargin: NodoSystem.nodoTopMargin*3
+        verticalAlignment: Text.AlignVCenter
+        font.family: NodoSystem.fontInter.name
+        font.pixelSize: NodoSystem.descriptionTitleFontSize
+        color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
+        text: qsTr("AUTOMATIC UPDATES")
+    }
+
+    Rectangle {
+        id: deviceUpdatesNodoSwitchRect
+        anchors.top: deviceUpdateAutomaticTitle.bottom
+        anchors.left: deviceUpdatesScreen.left
+        anchors.topMargin: NodoSystem.cardTopMargin
         height: NodoSystem.nodoItemHeight
 
         NodoLabel {
