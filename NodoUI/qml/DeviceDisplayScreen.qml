@@ -504,10 +504,8 @@ Item {
             id: deviceDisplayManageFeedsButton
             anchors.left: deviceDisplayFeedsSwitch.right
             anchors.leftMargin: 25
-            anchors.top: deviceDisplayPricetickerSwitchRect.bottom
             anchors.topMargin: NodoSystem.nodoTopMargin
             height: NodoSystem.nodoItemHeight
-            //width: 320
             text: qsTr("Manage Feeds")
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.buttonTextFontSize

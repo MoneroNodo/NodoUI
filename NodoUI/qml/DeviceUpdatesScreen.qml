@@ -38,7 +38,7 @@ Item {
     }
 
     function updateSystemStatus() {
-        deviceUpdatesMoneroDaemonDescText.valueText = nodoSystemStatus.getStringValueFromKey("version")
+        deviceUpdatesMoneroDaemonDescText.valueText = nodoControl.getSoftwareVersion("monero")//nodoSystemStatus.getStringValueFromKey("version")
     }
 
     Rectangle {
@@ -181,7 +181,7 @@ Item {
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.descriptionTextFontSize
             color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
-            text: nodoControl.getSoftwareVersion("monero")
+            //text: nodoControl.getSoftwareVersion("monero")
         }
     }
 
