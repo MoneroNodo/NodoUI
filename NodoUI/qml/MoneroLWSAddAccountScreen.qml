@@ -51,7 +51,7 @@ Item {
         target: syncInfo
         function onSyncDone() {
             moneroLWSAddAccountButton.isActive = moneroLWSAddAccountScreen.walletInfoValid()
-            moneroLWSAddAccountButtonDescription.visible = true
+            moneroLWSAddAccountButtonDescription.visible = false
         }
     }
 
