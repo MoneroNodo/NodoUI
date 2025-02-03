@@ -110,6 +110,7 @@ public:
     Q_INVOKABLE bool verifyLockPinCode(QString pin);
     Q_INVOKABLE void setLockPin(QString newPin);
     Q_INVOKABLE void disableLockPin(void);
+    Q_INVOKABLE void enableLockPin(void);
     Q_INVOKABLE int getLockAfterTime(void);
     Q_INVOKABLE void setLockAfterTime(QString newTime);
 

@@ -27,6 +27,8 @@ NodoUISystemParser::NodoUISystemParser(QObject *parent) : QObject(parent)
         m_displaySettings.lockAfter = DEFAULT_LOCK_AFTER;
         m_displaySettings.keyboardLayout = DEFAULT_KEYBOARD_LAYOUT_LOCALE; //"en_us"
         m_displaySettings.addressPinHash = DEFAULT_ADDRESS_PIN_HASH;
+        m_displaySettings.lockPinEnabled = DEFAULT_LOCK_PIN_ENABLED;
+        m_displaySettings.addressPinEnabled = DEFAULT_ADDRESS_PIN_ENABLED;
 
 
         m_systemObj.insert(m_displayKeyList[DISPLAY_KEY_SS_TIMEOUT], m_displaySettings.screenSaverTimeoutInSec);
@@ -37,6 +39,9 @@ NodoUISystemParser::NodoUISystemParser(QObject *parent) : QObject(parent)
         m_systemObj.insert(m_displayKeyList[DISPLAY_KEY_LOCK_AFTER], m_displaySettings.lockAfter);
         m_systemObj.insert(m_displayKeyList[DISPLAY_KEY_KEYBOARD_LAYOUT], m_displaySettings.keyboardLayout);
         m_systemObj.insert(m_displayKeyList[DISPLAY_KEY_ADDRESS_PIN_HASH], m_displaySettings.addressPinHash);
+        m_systemObj.insert(m_displayKeyList[DISPLAY_KEY_LOCK_PIN_ENABLED], DEFAULT_LOCK_PIN_ENABLED);
+        m_systemObj.insert(m_displayKeyList[DISPLAY_KEY_ADDRESS_PIN_ENABLED], DEFAULT_ADDRESS_PIN_ENABLED);
+
 
         writeJson();
     }
@@ -268,7 +273,8 @@ int NodoUISystemParser::readDisplayOrientation(void)
 
 bool NodoUISystemParser::readPinEnabledStatus(void)
 {
-    return !m_displaySettings.lockPinHash.isEmpty();
+    return m_systemObj.value(m_displayKeyList[DISPLAY_KEY_LOCK_PIN_ENABLED]).toBool(true)
+        && !m_displaySettings.lockPinHash.isEmpty();
 }
 
 bool NodoUISystemParser::compareLockPinHash(QString pin)
@@ -300,6 +306,17 @@ bool NodoUISystemParser::setNewLockPin(QString newPin)
     return true;
 }
 
+void NodoUISystemParser::enableLockPin(void)
+{
+    if(m_systemObj.isEmpty())
+    {
+        return;
+    }
+
+    m_systemObj.insert(m_displayKeyList[DISPLAY_KEY_LOCK_PIN_ENABLED], true);
+    writeJson();
+}
+
 void NodoUISystemParser::disableLockPin(void)
 {
     if(m_systemObj.isEmpty())
@@ -307,8 +324,8 @@ void NodoUISystemParser::disableLockPin(void)
         return;
     }
 
-    m_systemObj.insert(m_displayKeyList[DISPLAY_KEY_LOCK_PIN_HASH], QString(""));
-
+    //m_systemObj.insert(m_displayKeyList[DISPLAY_KEY_LOCK_PIN_HASH], QString(""));
+    m_systemObj.insert(m_displayKeyList[DISPLAY_KEY_LOCK_PIN_ENABLED], false);
     writeJson();
 }
 

@@ -76,16 +76,17 @@ Item {
             width: 2*lockPinSwitchText.height
             display: AbstractButton.IconOnly
             onCheckedChanged: {
-                if(!checked)
+                if(checked)
                 {
-                    nodoControl.disableLockPin()
-                    lockPinScreen.state = ""
-                    isLockPinEnabled = nodoControl.isLockPinEnabled()
+                    nodoControl.enableLockPin()
+                    lockPinScreen.state = "pinControlEnabled"
                 }
                 else
                 {
-                    lockPinScreen.state = "pinControlEnabled"
+                    nodoControl.disableLockPin()
+                    lockPinScreen.state = ""
                 }
+                isLockPinEnabled = nodoControl.isLockPinEnabled()
             }
         }
     }

@@ -642,6 +642,12 @@ void NodoSystemControl::setLockPin(QString newPin)
     emit errorDetected();
 }
 
+void NodoSystemControl::enableLockPin(void)
+{
+    m_uiSystemParser->enableLockPin();
+    m_displaySettings = m_uiSystemParser->readDisplaySettings();
+}
+
 void NodoSystemControl::disableLockPin(void)
 {
     m_uiSystemParser->disableLockPin();
