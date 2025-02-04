@@ -60,7 +60,7 @@ Item {
         anchors.left: moneroLWSMainScreen.left
         height: NodoSystem.subMenuButtonHeight
         //contentWidth: 1400
-        width: inactiveButton.x + inactiveButton.width
+        width: 1360//inactiveButton.x + inactiveButton.width
 
         background: Rectangle {
             color: "black"
@@ -79,6 +79,7 @@ Item {
             id: accountRequestsButton
             y: (moneroLWSMenuBar.height - accountRequestsButton.height)/2
             anchors.left: addAccountButton.right
+            anchors.leftMargin: NodoSystem.nodoTopMargin
             text: qsTr("WALLET REQUESTS")
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
@@ -89,6 +90,7 @@ Item {
             id: activeButton
             y: (moneroLWSMenuBar.height - activeButton.height)/2
             anchors.left: accountRequestsButton.right
+            anchors.leftMargin: NodoSystem.nodoTopMargin
             text: qsTr("ACTIVE")
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
@@ -99,6 +101,7 @@ Item {
             id: inactiveButton
             y: (moneroLWSMenuBar.height - inactiveButton.height)/2
             anchors.left: activeButton.right
+            anchors.leftMargin: NodoSystem.nodoTopMargin
             text: qsTr("INACTIVE")
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize

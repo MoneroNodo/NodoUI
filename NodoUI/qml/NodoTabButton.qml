@@ -8,7 +8,7 @@ TabButton {
     id: control
     width: buttonText.paintedWidth + buttonText.leftPadding + buttonText.rightPadding
     implicitHeight: NodoSystem.nodoItemHeight
-    property color buttonBorderColor: "#303030" //"yellow"
+    property bool isLogo: false
 
     property string imagePath: ""
     property int textLeftPadding: 15
@@ -27,7 +27,7 @@ TabButton {
         width: control.width
         height: control.height
         color: "black"
-        borderColor: buttonBorderColor
+        borderColor: enabled ? (isLogo ? "black" : (control.checked ? (nodoControl.appTheme ? NodoSystem.highlightedColorNightModeOn : NodoSystem.highlightedColorNightModeOff) : NodoSystem.buttonBorderColor)) : NodoSystem.buttonDisabledColor //buttonBorderColor
     }
 
     contentItem: Text {

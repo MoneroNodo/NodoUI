@@ -181,7 +181,7 @@ Item {
         id: clearnetAddressField
         anchors.left: nodeClearnetScreen.left
         anchors.top: hiddenRPCSwitchDescription2.bottom
-        anchors.topMargin: NodoSystem.nodoTopMargin*3
+        anchors.topMargin: (NodoSystem.nodoTopMargin*3) + 5
         width: labelSize + 300
         height: NodoSystem.nodoItemHeight
         itemSize: labelSize

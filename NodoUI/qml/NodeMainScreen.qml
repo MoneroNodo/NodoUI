@@ -17,7 +17,7 @@ Item {
         anchors.left: nodeMainScreen.left
         height: NodoSystem.subMenuButtonHeight
         //contentWidth: 1460
-        width: banlistButton.x + banlistButton.width
+        width: 1360//banlistButton.x + banlistButton.width
 
         background: Rectangle {
             color: "black"
@@ -36,6 +36,7 @@ Item {
             id: torButton
             anchors.top: clearnetButton.top
             anchors.left: clearnetButton.right
+            anchors.leftMargin: NodoSystem.nodoTopMargin
             text: qsTr("TOR")
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
@@ -46,6 +47,7 @@ Item {
             id: i2pButton
             anchors.top: clearnetButton.top
             anchors.left: torButton.right
+            anchors.leftMargin: NodoSystem.nodoTopMargin
             width: torButton.width
             text: qsTr("I2P")
             font.family: NodoSystem.fontInter.name
@@ -57,6 +59,7 @@ Item {
             id: bandwidthButton
             anchors.top: clearnetButton.top
             anchors.left: i2pButton.right
+            anchors.leftMargin: NodoSystem.nodoTopMargin
             text: qsTr("BANDWIDTH")
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
@@ -67,6 +70,7 @@ Item {
             id: privateNodeButton
             anchors.top: clearnetButton.top
             anchors.left: bandwidthButton.right
+            anchors.leftMargin: NodoSystem.nodoTopMargin
             text: qsTr("PRIVATE") //qsTr("PRIVATE NODE")
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
@@ -77,6 +81,7 @@ Item {
             id: banlistButton
             anchors.top: clearnetButton.top
             anchors.left: privateNodeButton.right
+            anchors.leftMargin: NodoSystem.nodoTopMargin
             text: qsTr("BANLIST")
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize

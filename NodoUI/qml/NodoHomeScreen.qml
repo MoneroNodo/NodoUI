@@ -86,9 +86,9 @@ Item {
             id: mainMenuBar
             anchors.top: mainAppWindowRectangle.top
             anchors.left: mainAppWindowRectangle.left
-            anchors.leftMargin: 2
+            anchors.leftMargin: 0
             height: NodoSystem.topMenuButtonHeight
-            implicitWidth: newsButton.x + newsButton.width
+            implicitWidth: 1450//newsButton.x + newsButton.width
 
             background: Rectangle {
                 color: "black"
@@ -96,13 +96,15 @@ Item {
 
             NodoTabButton {
                 id: nodoLogoButton
+                isLogo: true
                 x: 0
-                y: (mainMenuBar.height - nodoLogoButton.height)/2
+                y: 0//(mainMenuBar.height - nodoLogoButton.height)/2
                 text: " "
-                width: 300//288
-                implicitHeight: 120//110//NodoSystem.nodoItemHeight
-                buttonBorderColor: "black"
-                imagePath: (nodoControl.appTheme ? "qrc:/Images/nodologo_title_red.png" : "qrc:/Images/nodologo_title_white.png")
+                width: NodoSystem.nodoItemHeight + 60 //300//288
+                implicitHeight: NodoSystem.nodoItemHeight //120//110
+                //height: NodoSystem.nodoItemHeight + 10
+                //buttonBorderColor: "black"
+                imagePath: (nodoControl.appTheme ? "qrc:/Images/Nodo_red.png" : "qrc:/Images/Nodo_white.png")
                 onClicked: {
                     pageLoader.source = "NodoStatusScreen.qml"
                     pageLoader.anchors.topMargin = 0
@@ -113,7 +115,7 @@ Item {
                 anchors.top: nodoLogoButton.top
                 anchors.topMargin: (nodoLogoButton.height - NodoSystem.topMenuButtonHeight)/2
                 anchors.left: nodoLogoButton.right
-                anchors.leftMargin: 25
+                anchors.leftMargin: 1
                 height: NodoSystem.topMenuButtonHeight
                 text: qsTr("DEVICE")
                 font.family: NodoSystem.fontInter.name
@@ -128,6 +130,7 @@ Item {
                 id: nodeButton
                 anchors.top: deviceButton.top
                 anchors.left: deviceButton.right
+                anchors.leftMargin: NodoSystem.nodoTopMargin
                 height: NodoSystem.topMenuButtonHeight
                 text: qsTr("NODE")
                 font.family: NodoSystem.fontInter.name
@@ -141,6 +144,7 @@ Item {
                 id: moneroLWSButton
                 anchors.top: deviceButton.top
                 anchors.left: nodeButton.right
+                anchors.leftMargin: NodoSystem.nodoTopMargin
                 height: NodoSystem.topMenuButtonHeight
                 text: qsTr("LWS")
                 width: nodeButton.width
@@ -158,6 +162,7 @@ Item {
                 anchors.top: deviceButton.top
                 anchors.left: moneroLWSButton.right
                 height: NodoSystem.topMenuButtonHeight
+                anchors.leftMargin: NodoSystem.nodoTopMargin
                 text: qsTr("MONEROPAY")
                 font.family: NodoSystem.fontInter.name
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
@@ -171,6 +176,7 @@ Item {
                 id: newsButton
                 anchors.top: deviceButton.top
                 anchors.left: moneroLWSButton.right//mPayButton.right
+                anchors.leftMargin: NodoSystem.nodoTopMargin
                 height: NodoSystem.topMenuButtonHeight
                 text: qsTr("NEWS")
                 font.family: NodoSystem.fontInter.name

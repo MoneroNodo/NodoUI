@@ -17,7 +17,7 @@ Item {
         anchors.left: deviceMainScreen.left
         height: NodoSystem.subMenuButtonHeight
         //contentWidth: 1460
-        width: displayButton.x + displayButton.width
+        width: 1360//displayButton.x + displayButton.width
 
         background: Rectangle {
             color: "black"
@@ -36,6 +36,7 @@ Item {
             id: ethernetButton
             anchors.top: wifiButton.top
             anchors.left: wifiButton.right
+            anchors.leftMargin: NodoSystem.nodoTopMargin
             text: qsTr("ETHERNET")
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
@@ -46,6 +47,7 @@ Item {
             id: systemButton
             anchors.top: wifiButton.top
             anchors.left: ethernetButton.right
+            anchors.leftMargin: NodoSystem.nodoTopMargin
             text: qsTr("SYSTEM")
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
@@ -57,6 +59,7 @@ Item {
             anchors.top: wifiButton.top
             anchors.left: systemButton.right
             text: qsTr("UPDATES")
+            anchors.leftMargin: NodoSystem.nodoTopMargin
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: { pageLoader.source = "DeviceUpdatesScreen.qml" }
@@ -67,6 +70,7 @@ Item {
             anchors.top: wifiButton.top
             anchors.left: updatesButton.right
             text: qsTr("DISPLAY")
+            anchors.leftMargin: NodoSystem.nodoTopMargin
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: { pageLoader.source = "DeviceDisplayScreen.qml" }

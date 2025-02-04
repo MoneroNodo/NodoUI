@@ -121,7 +121,7 @@ Item {
             itemSize: labelSize
             itemText: qsTr("Tor")
             valueText: "http://" + nodoConfig.getStringValueFromKey("config", "tor_address") + ":18086/basic"
-            valueFontSize: 38
+            valueFontSize: 40
         }
         onClicked: {
             mainRectPopup.qrCodeData = moneroLWSTorAddress.valueText
@@ -147,7 +147,7 @@ Item {
             itemSize: labelSize
             itemText: qsTr("I2P")
             valueText: "http://" + nodoConfig.getStringValueFromKey("config", "i2p_address") + ":18086/basic"
-            valueFontSize: 38
+            valueFontSize: 40
         }
         onClicked: {
             mainRectPopup.qrCodeData = moneroLWSI2PAddress.valueText

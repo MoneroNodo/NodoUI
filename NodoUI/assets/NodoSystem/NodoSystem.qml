@@ -69,8 +69,9 @@ Item
     property color dateTextColorNightModeOn: "#AE0000"						//NMCOLOR2 CLOCK NIGHT COLOR//
     property color dateTextColorNightModeOff: "#9D9D9D"				//ANALOG CLOCK DAY COLOR//
 
-    property color switchBackgroundColor: "#414141"	//RGB 65,65,65									//3COLOR BG//
+    property color switchBackgroundColor: "#414141"	//RGB65
     property color buttonDisabledColor: "#414141"					//BUTTON DISABLED//
+    property color buttonBorderColor: "#555555" //  RGB85
 
     property int digitalClockPixelSize: 740
 

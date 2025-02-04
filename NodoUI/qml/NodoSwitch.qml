@@ -72,7 +72,7 @@ Switch {
     ]
 
     transitions: Transition {
-        NumberAnimation { properties: "x"; easing.type: Easing.InOutQuad; duration: 250 }
-        ColorAnimation { duration: 250 }
+        NumberAnimation { properties: "x"; easing.type: Easing.InOutQuad; duration: 200 }
+        ColorAnimation { duration: 200 }
     }
 }

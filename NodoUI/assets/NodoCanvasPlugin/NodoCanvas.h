@@ -24,14 +24,14 @@ public:
 private:
     QColor m_color;
     QColor m_borderColor;
-    const double m_rectHeight = 8.0;
-    const double m_rectWidth = 11.0;
+    const double m_rectHeight = 15.0;
+    const double m_rectWidth = 15.0;
     const int m_cwidth = 300;
     const int m_cheight = 64;
 
-    const double cutCornerSize = 8;
-    const double angle = 0.610865;
-    const double dy = 11.4252;
+    const double cutCornerSize = 15;
+    const double angle = 0.785398;
+    const double dy = 15.0;
 
     // const double cutAngle = 55;
     // double angle = (90 - cutAngle) * M_PI / 180;
