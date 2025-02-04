@@ -18,7 +18,7 @@ Item
     property int textFontSize: 42
     property int buttonTextFontSize: topMenuButtonFontSize
     property int subMenuLeftMargin: 10
-    property int subMenuTopMargin: 20
+    property int subMenuTopMargin: 25
 
     property int descriptionTitleFontSize: textFontSize - 8
     property int descriptionTextFontSize: textFontSize - 2
