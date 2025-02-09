@@ -67,7 +67,7 @@ Item {
         width: privateNodeSwitchText.width + privateNodeSwitch.width
         color: "black"
 
-        NodoLabel{
+        NodoLabel {
             id: privateNodeSwitchText
             height: privateNodeSwitchRect.height
             anchors.top: privateNodeSwitchRect.top
@@ -99,7 +99,7 @@ Item {
         font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.descriptionTextFontSize
         color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
-        text: qsTr("Require wallets to enter the username and password to use this node")
+        text: qsTr("Require wallets to enter a username and password to use this node.")
     }
 
     NodoInfoField {
@@ -191,7 +191,7 @@ Item {
         font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.descriptionTextFontSize
         color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
-        text: qsTr("Monero Daemon will restart to apply changes")
+        text: qsTr("Monero Daemon will restart to apply changes.")
     } 
 
 /*
@@ -213,4 +213,3 @@ Item {
         }
     }
 }
-

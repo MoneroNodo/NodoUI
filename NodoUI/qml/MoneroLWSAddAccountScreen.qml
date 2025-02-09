@@ -86,6 +86,7 @@ Item {
         anchors.topMargin: NodoSystem.cardTopMargin
         width: infoFieldSize
         height: NodoSystem.nodoItemHeight
+        
         NodoInfoField {
             id: moneroLWSClearnetAddress
             anchors.left: parent.left
@@ -93,10 +94,11 @@ Item {
             anchors.topMargin: 0
             width: parent.width
             height: parent.height
-            itemSize: labelSize
+            itemSize: labelSize - 120
             itemText: qsTr("Clearnet")
             valueText: "http://" + networkManager.getNetworkIP() + ":18086/basic"
         }
+
         onClicked: {
             mainRectPopup.qrCodeData = moneroLWSClearnetAddress.valueText
             mainRectPopup.closeButtonText = qsTr("Close")
@@ -111,6 +113,7 @@ Item {
         anchors.topMargin: NodoSystem.nodoTopMargin
         width: infoFieldSize
         height: NodoSystem.nodoItemHeight
+        
         NodoInfoField {
             id: moneroLWSTorAddress
             anchors.left: parent.left
@@ -118,11 +121,12 @@ Item {
             anchors.topMargin: 0
             width: parent.width
             height: parent.height
-            itemSize: labelSize
+            itemSize: labelSize - 120
             itemText: qsTr("Tor")
             valueText: "http://" + nodoConfig.getStringValueFromKey("config", "tor_address") + ":18086/basic"
-            valueFontSize: 40
+            //valueFontSize: 40
         }
+        
         onClicked: {
             mainRectPopup.qrCodeData = moneroLWSTorAddress.valueText
             mainRectPopup.closeButtonText = qsTr("Close")
@@ -137,6 +141,7 @@ Item {
         anchors.topMargin: NodoSystem.nodoTopMargin
         width: infoFieldSize
         height: NodoSystem.nodoItemHeight
+        
         NodoInfoField {
             id: moneroLWSI2PAddress
             anchors.left: parent.left
@@ -144,11 +149,12 @@ Item {
             anchors.topMargin: 0
             width: parent.width
             height: parent.height
-            itemSize: labelSize
+            itemSize: labelSize - 120
             itemText: qsTr("I2P")
             valueText: "http://" + nodoConfig.getStringValueFromKey("config", "i2p_address") + ":18086/basic"
-            valueFontSize: 40
+            //valueFontSize: 40
         }
+
         onClicked: {
             mainRectPopup.qrCodeData = moneroLWSI2PAddress.valueText
             mainRectPopup.closeButtonText = qsTr("Close")
@@ -253,8 +259,9 @@ Item {
         font.pixelSize: NodoSystem.descriptionTextFontSize
         color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
         visible: syncInfo.getSyncPercentage() != 100 || networkManager.getNetworkConnectionStatusCode() != 1
-        text: qsTr("Adding wallets is not possible while the Monero Daemon is not synchronized")
+        text: qsTr("Adding wallets is not possible while the Monero Daemon is not synchronized.")
     }
+
     NodoQRCodePopup {
         id: mainRectPopup
     }

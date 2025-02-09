@@ -62,7 +62,7 @@ Item {
 
             NodoLabel {
                 id: nodeBanlistScreenIndex1Text
-                width: nodeBanlistScreen.labelSize
+                width: labelSize - 40
                 height: nodeBanlistScreenIndex1Check.height
                 anchors.left: nodeBanlistScreenIndex1Check.right
                 anchors.leftMargin: nodeBanlistScreen.checkBoxMargin
@@ -93,7 +93,7 @@ Item {
 
             NodoLabel {
                 id: nodeBanlistScreenIndex2Text
-                width: nodeBanlistScreen.labelSize
+                width: labelSize - 40
                 height: nodeBanlistScreenIndex2Check.height
                 anchors.left: nodeBanlistScreenIndex2Check.right
                 anchors.leftMargin: nodeBanlistScreen.checkBoxMargin
@@ -105,10 +105,11 @@ Item {
         id: applyBanlistButton
         anchors.left: nodeBanlistScreen.left
         anchors.top: nodeBanlistScreenIndex2.bottom
-        anchors.topMargin: NodoSystem.nodoTopMargin
+        anchors.topMargin: NodoSystem.nodoTopMargin -2
         height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
+        width: nodeBanlistScreenIndex2Check.width + nodeBanlistScreenIndex2Text.width
         text: qsTr("Apply")
         isActive: false
         onClicked: {
@@ -125,6 +126,7 @@ Item {
         anchors.top: applyBanlistButton.top
         anchors.leftMargin: 25
         height: NodoSystem.nodoItemHeight
+        width: applyBanlistButton.width
         font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         text: qsTr("Clear")
@@ -147,7 +149,7 @@ Item {
         font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.descriptionTextFontSize
         color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
-        text: qsTr("Monero Daemon will restart to apply changes")
+        text: qsTr("Monero Daemon will restart to apply changes.")
     }    
 
     Text {
@@ -157,7 +159,7 @@ Item {
         anchors.top: applyBanlistButton.bottom
         anchors.left: nodeBanlistScreen.left
         anchors.leftMargin: NodoSystem.cardLeftMargin
-        anchors.topMargin: NodoSystem.nodoTopMargin +2
+        anchors.topMargin: NodoSystem.nodoTopMargin -2
         verticalAlignment: Text.AlignVCenter
         wrapMode: Text.WordWrap
         font.family: NodoSystem.fontInter.name

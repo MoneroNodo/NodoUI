@@ -229,7 +229,6 @@ Item {
             anchors.left: rateLimitUpField.right
             anchors.top: rateLimitUpFieldRect.top
             anchors.leftMargin: 10
-
             height: NodoSystem.nodoItemHeight
             verticalAlignment: Text.AlignVCenter
             font.family: NodoSystem.fontInter.name
@@ -249,6 +248,7 @@ Item {
                 height: rateLimitUpUnlimitedSwitchRect.height
                 anchors.left: rateLimitUpUnlimitedSwitchRect.left
                 anchors.top: rateLimitUpUnlimitedSwitchRect.top
+                width: labelSize - 120
                 text: qsTr("Unlimited")
             }
 
@@ -321,7 +321,6 @@ Item {
             anchors.left: rateLimitDownField.right
             anchors.top: rateLimitDownField.top
             anchors.leftMargin: 10
-
             height: NodoSystem.nodoItemHeight
             verticalAlignment: Text.AlignVCenter
             font.family: NodoSystem.fontInter.name
@@ -336,11 +335,12 @@ Item {
             height: NodoSystem.nodoItemHeight
             anchors.leftMargin: 25
 
-            NodoLabel{
+            NodoLabel {
                 id: rateLimitDownUnlimitedSwitchText
                 height: rateLimitDownUnlimitedSwitchRect.height
                 anchors.left: rateLimitDownUnlimitedSwitchRect.left
                 anchors.top: rateLimitDownUnlimitedSwitchRect.top
+                width: labelSize - 120
                 text: qsTr("Unlimited")
             }
 
@@ -406,7 +406,7 @@ Item {
         font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.descriptionTextFontSize
         color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
-        text: qsTr("Monero Daemon will restart to apply changes")
+        text: qsTr("Monero Daemon will restart to apply changes.")
     } 
 
     NodoPopup {

@@ -36,7 +36,7 @@ Item {
         id: moneroLWSAcceptAllRequestsButton
 		anchors.left: moneroLWSAccountCreationRequestsScreen.left
         anchors.top: moneroLWSAccountCreationRequestsScreen.top
-        text: qsTr("Accept All Requests")
+        text: qsTr("Accept All")
         height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize

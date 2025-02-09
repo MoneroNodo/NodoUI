@@ -157,7 +157,7 @@ Item {
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.descriptionTextFontSize
             color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
-            text: qsTr("Only allow wallets to connect over Tor and I2P, enable on untrusted networks")
+            text: qsTr("Allow wallets to connect only through Tor and I2P, enable on untrusted networks.")
         }
     }
 
@@ -174,7 +174,7 @@ Item {
         font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.descriptionTextFontSize
         color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
-        text: qsTr("Enable Hidden RPC with Tor > Route All Through Tor to fully anonymize the Monero Daemon.")
+        text: qsTr("Enable Hidden RPC with Tor > Route All Through Tor, to fully anonymize the Monero Daemon.")
     }
 
     NodoInfoField {
