@@ -17,7 +17,7 @@ Item {
         if(true === dbusConnStat)
         {
             moneroLWS.listAccounts()
-            moneroLWS.listRequests()
+            // moneroLWS.listRequests()
         }
         // if(100 === syncInfo.getSyncPercentage())
         // {
@@ -44,7 +44,7 @@ Item {
             if(true === status)
             {
                 moneroLWS.listAccounts()
-                moneroLWS.listRequests()
+                // moneroLWS.listRequests()
             }
         }
 
@@ -75,21 +75,21 @@ Item {
             onClicked: { pageLoader.source = "MoneroLWSAddAccountScreen.qml" }
         }
 
-        NodoTabButton {
-            id: accountRequestsButton
-            y: (moneroLWSMenuBar.height - accountRequestsButton.height)/2
-            anchors.left: addAccountButton.right
-            anchors.leftMargin: NodoSystem.nodoTopMargin
-            text: qsTr("WALLET REQUESTS")
-            font.family: NodoSystem.fontInter.name
-            font.pixelSize: NodoSystem.topMenuButtonFontSize
-            onClicked: { pageLoader.source = "MoneroLWSAccountRequestsScreen.qml" }
-        }
+        // NodoTabButton {
+        //     id: accountRequestsButton
+        //     y: (moneroLWSMenuBar.height - accountRequestsButton.height)/2
+        //     anchors.left: addAccountButton.right
+        //     anchors.leftMargin: NodoSystem.nodoTopMargin
+        //     text: qsTr("WALLET REQUESTS")
+        //     font.family: NodoSystem.fontInter.name
+        //     font.pixelSize: NodoSystem.topMenuButtonFontSize
+        //     onClicked: { pageLoader.source = "MoneroLWSAccountRequestsScreen.qml" }
+        // }
 
         NodoTabButton {
             id: activeButton
             y: (moneroLWSMenuBar.height - activeButton.height)/2
-            anchors.left: accountRequestsButton.right
+            anchors.left: addAccountButton.right
             anchors.leftMargin: NodoSystem.nodoTopMargin
             text: qsTr("ACTIVE")
             font.family: NodoSystem.fontInter.name

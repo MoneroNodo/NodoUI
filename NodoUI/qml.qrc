@@ -21,7 +21,7 @@
         <file>qml/NodoInputField.qml</file>
         <file>qml/MoneroLWSInactiveScreen.qml</file>
         <file>qml/MoneroLWSAddAccountScreen.qml</file>
-        <file>qml/MoneroLWSAccountRequestsScreen.qml</file>
+        <!-- <file>qml/MoneroLWSAccountRequestsScreen.qml</file> -->
         <file>qml/NodoButton.qml</file>
         <file>qml/DeviceNewsFeedsScreen.qml</file>
         <file>qml/NodoCheckBox.qml</file>
@@ -52,7 +52,7 @@
         <file>qml/NodoLabel.qml</file>
         <file>qml/MoneroLWSActiveScreenDelegate.qml</file>
         <file>qml/MoneroLWSInactiveScreenDelegate.qml</file>
-        <file>qml/MoneroLWSAccountRequestsScreenDelegate.qml</file>
+        <!-- <file>qml/MoneroLWSAccountRequestsScreenDelegate.qml</file> -->
         <file>qml/NodoPasswordButton.qml</file>
         <file>qml/NodoInputFieldPreview.qml</file>
         <file>Images/eye-off.png</file>
