@@ -22,6 +22,9 @@ Item {
 
         if(nodeBanlistScreenIndex2Text.labelRectRoundSize > labelSize)
         labelSize = nodeBanlistScreenIndex2Text.labelRectRoundSize
+
+        if(nodeBanlistScreenIndex3Text.labelRectRoundSize > labelSize)
+        labelSize = nodeBanlistScreenIndex3Text.labelRectRoundSize
     }
 
     Text {
@@ -101,21 +104,53 @@ Item {
             }
     }
 
+    Rectangle {
+        id: nodeBanlistScreenIndex3
+        anchors.left: nodeBanlistScreen.left
+        anchors.top: nodeBanlistScreenIndex2.bottom
+        height: NodoSystem.nodoItemHeight
+        anchors.topMargin: NodoSystem.nodoTopMargin
+        color: "black"
+
+            NodoCheckBox
+            {
+                id: nodeBanlistScreenIndex3Check
+                height: nodeBanlistScreenIndex3.height
+                width: height
+                anchors.left: nodeBanlistScreenIndex3.left
+                anchors.top: nodeBanlistScreenIndex3.top
+                checked: nodoControl.getBanlistsListEnabled("dns")
+                onClicked: {
+                    applyBanlistButton.isActive = true
+                }
+            }
+
+            NodoLabel {
+                id: nodeBanlistScreenIndex3Text
+                width: labelSize - 40
+                height: nodeBanlistScreenIndex3Check.height
+                anchors.left: nodeBanlistScreenIndex3Check.right
+                anchors.leftMargin: nodeBanlistScreen.checkBoxMargin
+                text: qsTr("DNS Banlist")
+            }
+    }
+
     NodoButton {
         id: applyBanlistButton
         anchors.left: nodeBanlistScreen.left
-        anchors.top: nodeBanlistScreenIndex2.bottom
+        anchors.top: nodeBanlistScreenIndex3.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin -2
         height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
-        width: nodeBanlistScreenIndex2Check.width + nodeBanlistScreenIndex2Text.width
+        width: nodeBanlistScreenIndex3Check.width + nodeBanlistScreenIndex3Text.width
         text: qsTr("Apply")
         isActive: false
         onClicked: {
             applyBanlistButton.isActive = false
             nodoControl.setBanlistsListEnabled("boog900", nodeBanlistScreenIndex1Check.checked);
             nodoControl.setBanlistsListEnabled("gui-xmr-pm", nodeBanlistScreenIndex2Check.checked);
+            nodoControl.setBanlistsListEnabled("dns", nodeBanlistScreenIndex3Check.checked);
             nodoControl.serviceManager("restart", "monerod");
         }
     }
@@ -134,6 +169,7 @@ Item {
             applyBanlistButton.isActive = false
             nodeBanlistScreenIndex1Check.checked = false;
             nodeBanlistScreenIndex2Check.checked = false;
+            nodeBanlistScreenIndex3Check.checked = false;
             applyBanlistButton.clicked();
         }
     }
