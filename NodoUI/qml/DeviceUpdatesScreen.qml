@@ -257,6 +257,20 @@ Item {
                 nodoConfig.setUpdateStatus("pay", checked)
             }
         }
+
+        Text {
+            id: deviceUpdatesMoneroPayDescText
+            height: NodoSystem.nodoItemHeight
+            width: parent.width - deviceUpdatesMoneroPaySwitchRect.width
+            anchors.left: deviceUpdatesMoneroPaySwitch.right
+            anchors.leftMargin: 25
+            anchors.top: deviceUpdatesMoneroPaySwitch.top
+            verticalAlignment: Text.AlignVCenter
+            font.family: NodoSystem.fontInter.name
+            font.pixelSize: NodoSystem.descriptionTextFontSize
+            color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
+            text: nodoControl.getSoftwareVersion("pay")
+        }
     }
 */
 
