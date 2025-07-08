@@ -88,17 +88,17 @@
 <!--        <file>qml/DeviceAddressPinScreen.qml</file> -->
         <file>qml/NodoAddressPinControlScreen.qml</file>
         <file>qml/FactoryResetScreen.qml</file>
-<!--        <file>Images/MPAY_tick.html</file> -->
+        <file>Images/MPAY_tick.html</file>
 
-<!--        <file>qml/MoneroPaySettingsConfigScreen.qml</file> -->
-<!--        <file>qml/MoneroPayReceiveMainScreen.qml</file> -->
-<!--        <file>qml/MoneroPayPaymentsScreenDelegate.qml</file> -->
-<!--        <file>qml/MoneroPayPaymentsScreen.qml</file> -->
-<!--        <file>qml/MoneroPayMainScreen.qml</file> -->
-<!--        <file>qml/MoneroPaySettingsMainScreen.qml</file> -->
-<!--        <file>qml/MoneroPayReceivePaymentPreviewScreen.qml</file> -->
-<!--        <file>qml/MoneroPayReceivePaymentResultScreen.qml</file> -->
-<!--        <file>qml/MoneroPayReceiveRequestScreen.qml</file> -->
+        <file>qml/MoneroPaySettingsConfigScreen.qml</file>
+        <file>qml/MoneroPayReceiveMainScreen.qml</file>
+        <file>qml/MoneroPayPaymentsScreenDelegate.qml</file>
+        <file>qml/MoneroPayPaymentsScreen.qml</file>
+        <file>qml/MoneroPayMainScreen.qml</file>
+        <file>qml/MoneroPaySettingsMainScreen.qml</file>
+        <file>qml/MoneroPayReceivePaymentPreviewScreen.qml</file>
+        <file>qml/MoneroPayReceivePaymentResultScreen.qml</file>
+        <file>qml/MoneroPayReceiveRequestScreen.qml</file>
 
         <file>qml/NodoQRCodePopup.qml</file>
         <file>qml/DeviceUpdatesScreen.qml</file>

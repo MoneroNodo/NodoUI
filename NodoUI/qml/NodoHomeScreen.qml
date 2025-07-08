@@ -156,7 +156,6 @@ Item {
                     pageLoader.anchors.topMargin = 0
                 }
             }
-/*
             NodoTabButton {
                 id: mPayButton
                 anchors.top: deviceButton.top
@@ -171,7 +170,6 @@ Item {
                     pageLoader.anchors.topMargin = 0
                 }
             }
-*/
             NodoTabButton {
                 id: newsButton
                 anchors.top: deviceButton.top
