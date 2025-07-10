@@ -71,7 +71,7 @@ Item {
         anchors.top: moneroPayMainScreen.top
         anchors.left: moneroPayMainScreen.left
         height: NodoSystem.subMenuButtonHeight
-        contentWidth: 1400
+        width: 1360
 
         background: Rectangle {
             color: "black"
@@ -95,7 +95,8 @@ Item {
         }
         NodoTabButton {
             id: paymentsButton
-            anchors.top: receiveButton.top
+            y: receiveButton.y
+            anchors.leftMargin: NodoSystem.nodoTopMargin
             anchors.left: receiveButton.right
             text: qsTr("PAYMENTS")
             font.family: NodoSystem.fontInter.name
@@ -104,7 +105,8 @@ Item {
         }
         NodoTabButton {
             id: settingsButton
-            anchors.top: receiveButton.top
+            y: receiveButton.y
+            anchors.leftMargin: NodoSystem.nodoTopMargin
             anchors.left: paymentsButton.right
             text: qsTr("SETTINGS")
             font.family: NodoSystem.fontInter.name
@@ -123,4 +125,3 @@ Item {
         source: "MoneroPayPaymentsScreen.qml"
     }
 }
-
