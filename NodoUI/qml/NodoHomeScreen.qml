@@ -173,7 +173,7 @@ Item {
             NodoTabButton {
                 id: newsButton
                 anchors.top: deviceButton.top
-                anchors.left: moneroLWSButton.right//mPayButton.right
+                anchors.left: mPayButton.right//moneroLWSButton.right
                 anchors.leftMargin: NodoSystem.nodoTopMargin
                 height: NodoSystem.topMenuButtonHeight
                 text: qsTr("NEWS")
