@@ -1,11 +1,15 @@
 #include "MoneroPay.h"
 #include <algorithm>
 
+#define MWRPC_URL "http://localhost:34512/json_rpc"
+
 MoneroPay::MoneroPay(NodoConfigParser *configParser)
 {
     m_configParser = configParser;
     m_dbManager = new MoneroPayDbManager();
     m_mpayConnection = new MoneroPayConnection();
+    m_networkAccessManager = new QNetworkAccessManager();
+    connect(m_networkAccessManager, &QNetworkAccessManager::finished, this, &MoneroPay::replyFinished);
     connect(m_dbManager, SIGNAL(dbEntriesReady()), this, SLOT(getPreviousPaymentResults()));
 
     m_lastPayment.paymentStatus = PAYMENT_STATUS_NONE;
@@ -21,6 +25,44 @@ MoneroPay::MoneroPay(NodoConfigParser *configParser)
     m_lastPayment.dateTime = date;
     if (m_configParser->getMoneroPayAddress().length() == 95)
         m_isDepositAddressSet = true;
+}
+
+void MoneroPay::replyFinished(QNetworkReply *reply)
+{
+    if (reply->error() == QNetworkReply::NoError)
+    {
+        QByteArray response = reply->readAll();
+        QJsonDocument doc = QJsonDocument::fromJson(response);
+        QJsonObject object = doc.object();
+        if (object.contains("result")) {
+            QJsonObject valid = object.value("result").toObject();
+            emit isAddressValid(valid.value("valid").toBool(false));
+        }
+        else {
+            emit isAddressValid(false);
+        }
+    }
+}
+
+void MoneroPay::validateAddress(QString address)
+{
+    const QUrl url(MWRPC_URL);
+    QNetworkRequest request(url);
+
+    QJsonObject params;
+    params.insert("address", address);
+    params.insert("any_net_type", false);
+    params.insert("allow_openalias", false);
+
+    QJsonObject object;
+    object.insert("jsonrpc", "2.0");
+    object.insert("id", "0");
+    object.insert("method", "validate_address");
+    object.insert("params", params);
+
+    QJsonDocument doc(object);
+    request.setHeader(QNetworkRequest::KnownHeaders::ContentTypeHeader, "application/json");
+    m_networkAccessManager->post(request, doc.toJson(QJsonDocument::Compact));
 }
 
 bool compareByDate(payment_t left, payment_t right)
@@ -325,9 +367,6 @@ void MoneroPay::enableComponent(bool enabled)
 
 void MoneroPay::setDepositAddress(QString address)
 {
-    QFile::remove(m_mpayFile);
-    QFile::remove(m_mpayKeyFile);
-
     m_configParser->setMoneroPayParameters(address);
     emit depositAddressSet(address);
 }

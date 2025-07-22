@@ -14,6 +14,7 @@ Item {
     property bool inputFieldReadOnly: false
     property bool clearButtonActive: false
     property bool setButtonActive: true
+    property bool address: false;
     signal deleteMe(int screenID)
 
 
@@ -49,6 +50,10 @@ Item {
     Connections {
         target: moneroPay
 
+        function isAddressValid(valid) {
+            address = valid;
+        }
+
         function onComponentEnabledStatusChanged()
         {
             inputFieldReadOnly = !nodoControl.isComponentEnabled();
@@ -77,6 +82,9 @@ Item {
             validator: RegularExpressionValidator {
                 regularExpression: /^4[1-9A-HJ-NP-Za-km-z]{94}$/
             }
+            onTextEditFinished: {
+                validateAddress(valueText);
+            }
         }
     }
 
@@ -89,13 +97,15 @@ Item {
         height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
-        isActive: (setButtonActive === true) && (moneroPaySettingsAddressInput.valueText.length === 95)
+        isActive: (address && setButtonActive)
         onClicked: {
-            moneroPay.setDepositAddress(moneroPaySettingsAddressInput.valueText)
-            inputFieldReadOnly = true;
-            clearButtonActive = true
-            setButtonActive = false
-            moneroPayMainScreen.setButtonState(true)
+            if (address) {
+                moneroPay.setDepositAddress(moneroPaySettingsAddressInput.valueText)
+                inputFieldReadOnly = true;
+                clearButtonActive = true
+                setButtonActive = false
+                moneroPayMainScreen.setButtonState(true)
+            }
         }
     }
 

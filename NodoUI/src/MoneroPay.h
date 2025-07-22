@@ -16,6 +16,8 @@ class MoneroPay : public QObject
 public:
     explicit MoneroPay(NodoConfigParser *configParser = Q_NULLPTR);
 
+    Q_INVOKABLE void validateAddress(QString address);
+
     Q_INVOKABLE bool isComponentEnabled(void);
     Q_INVOKABLE void clearAllPayments(void);
 
@@ -56,8 +58,6 @@ public:
 
 
 private:
-    const QString m_mpayFile = "/home/nodo/mpay";
-    const QString m_mpayKeyFile = "/home/nodo/mpay.keys";
     bool m_componentEnabled = true;
     int m_paymentID = 0;
     const int m_defaultBlockConfirmations = 10;
@@ -66,6 +66,7 @@ private:
     NodoConfigParser *m_configParser;
     MoneroPayDbManager *m_dbManager;
 
+    QNetworkAccessManager *m_networkAccessManager;
     payment_t m_lastPayment;
     QList < payment_t > m_displayResults;
     QList < payment_t > m_payments;
@@ -94,10 +95,13 @@ signals:
     void newPaymentRequested(void);
     void openViewPaymentsScreenRequested(void);
 
+    void replyFinished(QNetworkReply *reply);
+
 private slots:
     void paymentStatusReceived(void);
     void updateDepositAddress(void);
     void getPreviousPaymentResults(void);
+    void isAddressValid(bool);
 };
 
 

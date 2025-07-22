@@ -12,7 +12,7 @@
 #include "MoneroLWS.h"
 #include "NodoNetworkManager.h"
 #include "NodoSyncInfo.h"
-//#include "MoneroPay.h"
+#include "MoneroPay.h"
 #include "NodoDBusController.h"
 
 
@@ -39,7 +39,7 @@ int main(int argc, char *argv[]) {
     NodoSystemControl *systemControl = new NodoSystemControl(uiSystemParser, configParser, dbusController);
     NodoSyncInfo *syncInfo = new NodoSyncInfo(systemStatusParser);
     Translator *translator = new Translator(configParser, &engine);
-    //MoneroPay *moneroPay = new MoneroPay(configParser);
+    MoneroPay *moneroPay = new MoneroPay(configParser);
     NodoPriceTicker *priceTicker = new NodoPriceTicker(configParser, networkManager, systemControl);
     NodoFeedsControl *feedsControl = new NodoFeedsControl(networkManager, systemControl);
 
@@ -51,7 +51,7 @@ int main(int argc, char *argv[]) {
     engine.rootContext()->setContextProperty("feedsControl", feedsControl);
     engine.rootContext()->setContextProperty("nodoSystemStatus", systemStatusParser);
     engine.rootContext()->setContextProperty("networkManager", networkManager);
-    //engine.rootContext()->setContextProperty("moneroPay", moneroPay);
+    engine.rootContext()->setContextProperty("moneroPay", moneroPay);
     engine.rootContext()->setContextProperty("syncInfo", syncInfo);
 
     engine.load(QUrl(QStringLiteral("qrc:/qml/main.qml")));
