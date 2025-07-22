@@ -44,10 +44,9 @@ SOURCES += \
         src/NodoTranslator.cpp \
         src/NodoDBusController.cpp \
         src/NodoPriceTicker.cpp \
-
-#        src/MoneroPay.cpp \
-#        src/MoneroPayConnection.cpp \
-#        src/MoneroPayDbManager.cpp \
+        src/MoneroPay.cpp \
+        src/MoneroPayConnection.cpp \
+        src/MoneroPayDbManager.cpp \
 
 HEADERS += \
         src/MoneroLWS.h \
@@ -68,10 +67,9 @@ HEADERS += \
         src/NodoTranslator.h \
         src/NodoDBusController.h \
         src/NodoPriceTicker.h \
-
-#        src/MoneroPay.h \
-#        src/MoneroPayConnection.h \
-#        src/MoneroPayDbManager.h \
+        src/MoneroPay.h \
+        src/MoneroPayConnection.h \
+        src/MoneroPayDbManager.h \
 
 RESOURCES += qml.qrc
 
