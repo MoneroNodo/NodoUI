@@ -1,7 +1,8 @@
 #include "MoneroPay.h"
+#include "NodoConfigParser.h"
 #include <algorithm>
 
-#define MWRPC_URL "http://localhost:34512/json_rpc"
+#define MWRPC_URL "http://127.0.0.1:34512/json_rpc"
 
 MoneroPay::MoneroPay(NodoConfigParser *configParser)
 {

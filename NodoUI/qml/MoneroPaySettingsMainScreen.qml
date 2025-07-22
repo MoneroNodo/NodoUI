@@ -10,7 +10,7 @@ Item {
     anchors.fill: parent
 
     Component.onCompleted: {
-        moneroPaySettingsMainStackView.push("NodoLockScreen.qml", {parentID: 1})
+        moneroPaySettingsMainStackView.push("NodoLockScreen.qml", {parentID: 0})
     }
 
     Connections{

@@ -95,13 +95,13 @@ signals:
     void newPaymentRequested(void);
     void openViewPaymentsScreenRequested(void);
 
-    void replyFinished(QNetworkReply *reply);
+    void isAddressValid(bool);
 
 private slots:
     void paymentStatusReceived(void);
     void updateDepositAddress(void);
     void getPreviousPaymentResults(void);
-    void isAddressValid(bool);
+    void replyFinished(QNetworkReply *reply);
 };
 
 

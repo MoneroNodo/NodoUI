@@ -50,8 +50,9 @@ Item {
     Connections {
         target: moneroPay
 
-        function isAddressValid(valid) {
+        function onIsAddressValid(valid) {
             address = valid;
+            clearButtonActive = valid;
         }
 
         function onComponentEnabledStatusChanged()
@@ -69,21 +70,24 @@ Item {
     }
 
     Rectangle {
+        id: moneroPaySettingsAddressInput
+        anchors.left: moneroPaySettingsConfigScreen.left
+        anchors.top: moneroPaySettingsConfigScreen.top
+        height: NodoSystem.nodoItemHeight
         NodoInputField {
-            id: moneroPaySettingsAddressInput
-            anchors.left: moneroPaySettingsConfigScreen.left
-            anchors.top: moneroPaySettingsConfigScreen.top
             width: infoFieldSize
+            height: NodoSystem.nodoItemHeight
             itemSize: labelSize
             itemText: qsTr("Deposit Address")
             readOnlyFlag: inputFieldReadOnly
             height: NodoSystem.nodoItemHeight
             valueFontSize: 26
             validator: RegularExpressionValidator {
-                regularExpression: /^4[1-9A-HJ-NP-Za-km-z]{94}$/
+                regularExpression: /^(4|8)[1-9A-HJ-NP-Za-km-z]{94}$/
             }
             onTextEditFinished: {
-                validateAddress(valueText);
+				clearButtonActive = false;
+                moneroPay.validateAddress(valueText);
             }
         }
     }
