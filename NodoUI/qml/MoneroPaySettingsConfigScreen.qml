@@ -53,6 +53,7 @@ Item {
         function onIsAddressValid(valid) {
             address = valid;
             clearButtonActive = valid;
+            moneroPaySettingsAddressValidStatusText.text = valid ? "" : "Address is not a valid Monero address.";
         }
 
         function onComponentEnabledStatusChanged()
@@ -62,6 +63,7 @@ Item {
 
         function onDepositAddressCleared()
         {
+            moneroPaySettingsAddressValidStatusText.text = "";
             moneroPaySettingsAddressInput.valueText = moneroPay.getMoneroPayAddress()
             clearButtonActive = false
             setButtonActive = true
@@ -70,24 +72,28 @@ Item {
     }
 
     Rectangle {
-        id: moneroPaySettingsAddressInput
+        id: moneroPaySettingsAddressRectangle
         anchors.left: moneroPaySettingsConfigScreen.left
         anchors.top: moneroPaySettingsConfigScreen.top
         height: NodoSystem.nodoItemHeight
         NodoInputField {
+            id: moneroPaySettingsAddressInput
             width: infoFieldSize
             height: NodoSystem.nodoItemHeight
             itemSize: labelSize
             itemText: qsTr("Deposit Address")
             readOnlyFlag: inputFieldReadOnly
-            height: NodoSystem.nodoItemHeight
             valueFontSize: 26
             validator: RegularExpressionValidator {
                 regularExpression: /^(4|8)[1-9A-HJ-NP-Za-km-z]{94}$/
             }
             onTextEditFinished: {
-				clearButtonActive = false;
-                moneroPay.validateAddress(valueText);
+                moneroPaySettingsAddressValidStatusText.text = "";
+                clearButtonActive = false;
+                setButtonActive = false;
+                if (moneroPaySettingsAddressInput.valueText.length === 95) {
+                    moneroPay.validateAddress(valueText);
+                }
             }
         }
     }
@@ -95,7 +101,7 @@ Item {
     NodoButton {
         id: moneroPaySettingsSetDepositAddressButton
         //anchors.left: moneroPaySettingsAddressInput.left
-        anchors.top: moneroPaySettingsAddressInput.bottom
+        anchors.top: moneroPaySettingsAddressRectangle.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         text: qsTr("Set Deposit Address")
         height: NodoSystem.nodoItemHeight
@@ -116,17 +122,17 @@ Item {
     NodoButton {
         id: moneroPaySettingsClearAddressButton
         anchors.left: moneroPaySettingsSetDepositAddressButton.right
-        anchors.top: moneroPaySettingsAddressInput.bottom
+        anchors.top: moneroPaySettingsAddressRectangle.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
 		anchors.leftMargin: 25
-        text: qsTr("Clear Deposit Address")
+        text: qsTr("Reset Deposit Address")
         height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         isActive: clearButtonActive
         onClicked: {
             moneroPaySettingsScreenPopup.commandID = 0;
-            moneroPaySettingsScreenPopup.applyButtonText = qsTr("Clear")
+            moneroPaySettingsScreenPopup.applyButtonText = qsTr("Reset")
             moneroPaySettingsScreenPopup.open();
             moneroPaySettingsAddressInput.valueText = ""
             moneroPaySettingsViewkeyLabel.valueText = ""
@@ -134,17 +140,31 @@ Item {
     }
 
     Text {
-    id: moneroPaySettingsAddressDescriptionText
-	anchors.left: moneroPaySettingsConfigScreen.left
-    anchors.top: moneroPaySettingsSetDepositAddressButton.bottom
-	anchors.topMargin: NodoSystem.nodoTopMargin
-    width: 1800
-    height: 38
-    text: qsTr("Received transactions will periodically be sweeped to this address")
-    font.pixelSize: NodoSystem.infoFieldItemFontSize
-    verticalAlignment: Text.AlignVCenter
-    color: nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn : NodoSystem.dataFieldTextColorNightModeOff
-    font.family: NodoSystem.fontInter.name
+        id: moneroPaySettingsAddressDescriptionText
+        anchors.left: moneroPaySettingsConfigScreen.left
+        anchors.top: moneroPaySettingsSetDepositAddressButton.bottom
+        anchors.topMargin: NodoSystem.nodoTopMargin
+        width: 1800
+        height: 38
+        text: qsTr("Received transactions will periodically be sent to this address.")
+        font.pixelSize: NodoSystem.infoFieldItemFontSize
+        verticalAlignment: Text.AlignVCenter
+        color: nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn : NodoSystem.dataFieldTextColorNightModeOff
+        font.family: NodoSystem.fontInter.name
+    }
+
+    Text {
+        id: moneroPaySettingsAddressValidStatusText
+        anchors.left: moneroPaySettingsConfigScreen.left
+        anchors.top: moneroPaySettingsAddressDescriptionText.bottom
+        anchors.topMargin: NodoSystem.nodoTopMargin
+        width: 1800
+        height: 38
+        text: ""
+        font.pixelSize: NodoSystem.infoFieldItemFontSize
+        verticalAlignment: Text.AlignVCenter
+        color: nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn : NodoSystem.dataFieldTextColorNightModeOff
+        font.family: NodoSystem.fontInter.name
     }
 
     NodoPopup {
