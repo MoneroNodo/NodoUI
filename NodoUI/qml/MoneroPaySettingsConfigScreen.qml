@@ -52,7 +52,7 @@ Item {
 
         function onIsAddressValid(valid) {
             address = valid;
-            clearButtonActive = valid;
+            setButtonActive = valid;
             moneroPaySettingsAddressValidStatusText.text = valid ? "" : "Address is not a valid Monero address.";
         }
 
