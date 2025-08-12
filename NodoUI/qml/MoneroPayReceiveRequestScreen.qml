@@ -10,9 +10,9 @@ import QtWebView
 Item {
     id: moneroPayReceiveRequestScreen
 
-    property int labelSize: 310
-    property int inputFieldWidth: 1890
-    property int addressFieldWidth: 1890
+    property int labelSize: 320
+    property int inputFieldWidth: width - NodoSystem.subMenuLeftMargin
+    property int addressFieldWidth: width - NodoSystem.subMenuLeftMargin
     property double exchangeRate
     property string exchangeName
     property double xmrAmount
@@ -52,7 +52,7 @@ Item {
         anchors.top: moneroPayReceiveRequestScreen.top
         anchors.left: moneroPayReceiveRequestScreen.left
         width: 1900
-        height: 135*2 + NodoSystem.nodoTopMargin
+        height: 270 + NodoSystem.nodoTopMargin
         color: "black"
 
         NodoInputField {
@@ -142,7 +142,7 @@ Item {
         id: descriptionInputfield
         anchors.top: requestCurrenciesRect.bottom
         anchors.left: moneroPayReceiveRequestScreen.left
-        anchors.topMargin: 2*(NodoSystem.nodoTopMargin)
+        anchors.topMargin: 3*(NodoSystem.nodoTopMargin)
         width: addressFieldWidth
         height: NodoSystem.nodoItemHeight
         itemSize: labelSize
@@ -164,7 +164,7 @@ Item {
             anchors.left: blockConfirmationsRect.left
             anchors.top: blockConfirmationsRect.top
             height: blockConfirmationsRect.height
-            itemSize: labelSize + 55
+            itemSize: labelSize + 70
             width: labelSize + 155
             itemText: qsTr("Block Confirmations")
             valueText: "10"
@@ -193,9 +193,9 @@ Item {
             anchors.left: blockConfirmationsField.right
             anchors.top: blockConfirmationsField.top
             height: blockConfirmationsRect.height
-            anchors.leftMargin: 25
+            anchors.leftMargin: NodoSystem.subMenuTopMargin
 
-            NodoLabel{
+            NodoLabel {
                 id: zeroConfirmationSwitchText
                 height: zeroConfirmationSwitchRect.height
                 anchors.left: zeroConfirmationSwitchRect.left
@@ -220,7 +220,7 @@ Item {
         anchors.top: blockConfirmationsRect.bottom
         anchors.left: moneroPayReceiveRequestScreen.left
         anchors.topMargin: 2*(NodoSystem.nodoTopMargin)
-        text: qsTr("Receive Payment")
+        text: qsTr("Start Receive")
         height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
