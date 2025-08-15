@@ -10,8 +10,8 @@ import QtWebView
 Item {
     id: moneroPayReceivePaymentPreviewScreen
 
-    property int labelSize: 300
-    property int addressFieldWidth: width - NodoSystem.subMenuLeftMargin
+    property int labelSize: 240
+    property int addressFieldWidth: 1240//width - NodoSystem.subMenuLeftMargin
     property double exchangeRate
     property string exchangeName
     property double xmrAmount
@@ -50,7 +50,7 @@ Item {
         anchors.top: moneroPayReceivePaymentPreviewScreen.top
         anchors.left: moneroPayReceivePaymentPreviewScreen.left
         width: 1900
-        height: 270 + NodoSystem.nodoTopMargin
+        height: 220 + NodoSystem.nodoTopMargin
         color: "black"
 
         NodoInfoField {
@@ -58,9 +58,10 @@ Item {
             anchors.top: currenciesRect.top
             anchors.left: currenciesRect.left
             width: addressFieldWidth
-            height: 135
-            itemFontSize: 120
-            valueFontSize: 120
+            itemSize: labelSize
+            height: 110
+            itemFontSize: 95
+            valueFontSize: 95
             itemText: qsTr("XMR")
         }
 
@@ -70,9 +71,10 @@ Item {
             anchors.left: currenciesRect.left
             anchors.topMargin: NodoSystem.nodoTopMargin
             width: addressFieldWidth
-            height: 135
-            itemFontSize: 120
-            valueFontSize: 120
+            itemSize: labelSize
+            height: 110
+            itemFontSize: 95
+            valueFontSize: 95
             itemText: exchangeName
         }
     }
@@ -96,8 +98,8 @@ Item {
         anchors.left: moneroPayReceivePaymentPreviewScreen.left
         anchors.topMargin: NodoSystem.nodoTopMargin
         height: NodoSystem.nodoItemHeight
-        itemSize: labelSize - 60
-        width: 800
+        itemSize: labelSize
+        width: 740
         visible: true
         itemText: qsTr("Timestamp")
         valueText: ""
@@ -134,13 +136,12 @@ Item {
 
     Rectangle {
         id: qrCodeRect
-        anchors.bottom: moneroPayReceivePaymentPreviewScreen.bottom
+        anchors.top: moneroPayReceivePaymentPreviewScreen.top
         anchors.right: moneroPayReceivePaymentPreviewScreen.right
-        anchors.rightMargin: 10
-        anchors.bottomMargin: NodoSystem.nodoItemHeight + NodoSystem.nodoTopMargin 
+        anchors.rightMargin: 10 
         color: "black"
-        width: 512
-        height: 512
+        width: 640
+        height: 640
 
         QtQuick2QREncode {
             id: qr
@@ -161,11 +162,11 @@ Item {
         anchors.top: qrCodeRect.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         anchors.left: moneroPayReceivePaymentPreviewScreen.left
-        width: addressFieldWidth
+        width: parent.width - NodoSystem.subMenuLeftMargin
         itemSize: labelSize - 120
         itemText: qsTr("Address")
         height: NodoSystem.nodoItemHeight
-        valueFontSize: 31
+        valueFontSize: 30
     }
 
     NodoPopup {
