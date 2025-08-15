@@ -163,7 +163,7 @@ Item {
         anchors.topMargin: NodoSystem.nodoTopMargin
         anchors.left: moneroPayReceivePaymentPreviewScreen.left
         width: parent.width - NodoSystem.subMenuLeftMargin
-        itemSize: labelSize - 120
+        itemSize: labelSize - 60
         itemText: qsTr("Address")
         height: NodoSystem.nodoItemHeight
         valueFontSize: 30
