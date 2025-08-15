@@ -10,8 +10,8 @@ import QtWebView
 Item {
     id: moneroPayReceivePaymentResultScreen
 
-    property int labelSize: 300
-    property int addressFieldWidth: 1900
+    property int labelSize: 240
+    property int addressFieldWidth: 1240
     property double exchangeRate
     property string exchangeName
     property double xmrAmount
@@ -35,47 +35,22 @@ Item {
     }
 
     Rectangle {
-        id: paymentSuccess
-        anchors.top: moneroPayReceivePaymentResultScreen.top
-        anchors.horizontalCenter: moneroPayReceivePaymentResultScreen.horizontalCenter
-        width: 512
-        height: 512
-        color: "black"
-
-        WebView {
-            id: paymentSuccessAnim
-            anchors.fill: parent
-            enabled: false
-            url: "qrc:/Images/MPAY_tick.html"
-        }
-    }
-
-    Rectangle {
         id: currenciesTransferredRect
-        anchors.top: paymentSuccess.bottom
-        anchors.topMargin: 2*(NodoSystem.nodoTopMargin)
+        anchors.top: moneroPayReceivePaymentResultScreen.top
         anchors.left: moneroPayReceivePaymentResultScreen.left
-        width: receivedTimestampField.x + receivedTimestampField.width
-        height: receivedTimestampField.height
+        width: 1900
+        height: 220 + NodoSystem.nodoTopMargin
         color: "black"
-
-        NodoLabel {
-            id: completeLabel
-            anchors.top: currenciesTransferredRect.top
-            anchors.left: currenciesTransferredRect.left
-            horizontalAlignment: Text.AlignLeft
-            text: qsTr("Payment Received")
-            height: NodoSystem.nodoItemHeight
-        }
 
         NodoInfoField {
             id: xmrTransferredfield
             anchors.top: currenciesTransferredRect.top
-            anchors.left: completeLabel.right
-            anchors.leftMargin: 15
-            itemSize: 120
-            width: 510
-            height: NodoSystem.nodoItemHeight
+            anchors.left: currenciesTransferredRect.left
+            height: 110
+            itemSize: labelSize
+            width: addressFieldWidth
+            itemFontSize: 95
+            valueFontSize: 95
             itemText: qsTr("XMR")
             valueText: ""
         }
@@ -83,15 +58,16 @@ Item {
         NodoInfoField {
             id: fiatTransferredfield
             anchors.top: currenciesTransferredRect.top
-            anchors.left: xmrTransferredfield.right
-            anchors.leftMargin: 5
-            itemSize: 120
-            width: 340
-            height: NodoSystem.nodoItemHeight
+            anchors.left: currenciesTransferredRect.left
+            anchors.topMargin: NodoSystem.nodoTopMargin
+            height: 110
+            itemSize: labelSize
+            width: addressFieldWidth
+            itemFontSize: 95
+            valueFontSize: 95
             itemText: exchangeName
             valueText: ""
         }
-
 
         NodoInfoField {
             id: receivedTimestampField
@@ -108,31 +84,9 @@ Item {
     }
 
     NodoInfoField {
-        id: receivedDepositAddressField
-        anchors.top: currenciesTransferredRect.bottom
-        anchors.topMargin: NodoSystem.nodoTopMargin
-        height: NodoSystem.nodoItemHeight
-        itemSize: 230
-        width: addressFieldWidth
-        itemText: qsTr("Subaddress")
-        valueText: ""
-        valueFontSize: 28
-    }
-
-    NodoInfoField {
-        id: transactionIDTransferredField
-        anchors.top: receivedDepositAddressField.bottom
-        anchors.topMargin: NodoSystem.nodoTopMargin
-        height: NodoSystem.nodoItemHeight
-        width: addressFieldWidth
-        itemSize: labelSize
-        itemText: qsTr("Transaction ID")
-        valueText: ""
-    }
-
-    NodoInfoField {
         id: descriptionTransferredfield
-        anchors.top: transactionIDTransferredField.bottom
+        anchors.top: currenciesTransferredRect.bottom
+        anchors.left: moneroPayReceivePaymentResultScreen.left
         anchors.topMargin: NodoSystem.nodoTopMargin
         width: addressFieldWidth
         height: NodoSystem.nodoItemHeight
@@ -143,20 +97,32 @@ Item {
 
     Rectangle {
         id: tmpRect
-        anchors.top: moneroPayReceivePaymentResultScreen.top
+        anchors.top: currenciesTransferredRect.bottom
         anchors.left: moneroPayReceivePaymentResultScreen.left
         //anchors.horizontalCenter: moneroPayReceivePaymentResultScreen.horizontalCenter
-        //anchors.topMargin: NodoSystem.nodoTopMargin
-        width: gotoViewPaymentsButton.x + gotoViewPaymentsButton.width
+        anchors.topMargin: NodoSystem.nodoTopMargin
+        height: NodoSystem.nodoItemHeight
+        width: 1240
         height: gotoViewPaymentsButton.height
         color: "black"
+
+        NodoLabel {
+            id: paymentSuccessLabel
+            anchors.top: tmpRect.top
+            anchors.left: tmpRect.left
+            anchors.topMargin: NodoSystem.nodoTopMargin
+            horizontalAlignment: Text.AlignLeft
+            text: qsTr("Payment Received")
+            height: NodoSystem.nodoItemHeight
+            font.pixelSize: NodoSystem.buttonTextFontSize
+        }
 
         NodoButton {
             id: gotoNewPaymentButton
             anchors.top: tmpRect.top
-            anchors.left: tmpRect.left
+            anchors.left: paymentSuccessLabel.right
+            anchors.leftMargin: NodoSystem.subMenuLeftMargin
             text: qsTr("New Payment")
-            height: NodoSystem.nodoItemHeight
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.buttonTextFontSize
             isActive: true
@@ -169,14 +135,11 @@ Item {
 
         NodoButton {
             id: gotoViewPaymentsButton
-            //anchors.top: tmpRect.top
-            //anchors.left: gotoNewPaymentButton.right
-            //anchors.leftMargin: 25
-            anchors.top: gotoNewPaymentButton.bottom
-            anchors.left: tmpRect.left
+            anchors.top: tmpRect.top
+            anchors.left: gotoNewPaymentButton.right
+            anchors.leftMargin: NodoSystem.subMenuLeftMargin
             anchors.topMargin: NodoSystem.nodoTopMargin
             text: qsTr("View Payments")
-            height: NodoSystem.nodoItemHeight
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.buttonTextFontSize
             isActive: true
@@ -186,6 +149,48 @@ Item {
                 receivedPaymentPopup.open()
             }
         }
+    }
+
+    Rectangle {
+        id: paymentSuccess
+        anchors.top: moneroPayReceivePaymentResultScreen.top
+        anchors.right: moneroPayReceivePaymentResultScreen.right
+        anchors.rightMargin: 10
+        width: 600
+        height: 600
+        color: "black"
+
+        WebView {
+            id: paymentSuccessAnim
+            anchors.fill: parent
+            enabled: false
+            url: "qrc:/Images/MPAY_tick.html"
+        }
+    }
+
+    NodoInfoField {
+        id: transactionIDTransferredField
+        anchors.bottom: receivedDepositAddressField.top
+        anchors.topMargin: NodoSystem.nodoTopMargin
+        anchors.left: moneroPayReceivePaymentResultScreen.left
+        height: NodoSystem.nodoItemHeight
+        width: addressFieldWidth
+        itemSize: labelSize
+        itemText: qsTr("Transaction ID")
+        valueText: ""
+    }
+
+    NodoInfoField {
+        id: receivedDepositAddressField
+        anchors.top: moneroPayReceivePaymentResultScreen.bottom
+        anchors.left: moneroPayReceivePaymentResultScreen.left
+        //anchors.topMargin: NodoSystem.nodoTopMargin
+        height: NodoSystem.nodoItemHeight
+        itemSize: 230
+        width: addressFieldWidth
+        itemText: qsTr("Address")
+        valueText: ""
+        valueFontSize: 30
     }
 
     NodoPopup {
