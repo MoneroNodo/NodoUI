@@ -158,14 +158,14 @@ Item {
 
     NodoInfoField {
         id: moneroPayDepositAddressField
-        anchors.top: moneroPayReceivePaymentPreviewScreen.bottom
-        //anchors.topMargin: NodoSystem.nodoTopMargin
+        anchors.top: qrCodeRect.bottom
+        anchors.topMargin: NodoSystem.nodoTopMargin
         anchors.left: moneroPayReceivePaymentPreviewScreen.left
         width: addressFieldWidth
-        itemSize: labelSize - 60
+        itemSize: labelSize - 120
         itemText: qsTr("Address")
         height: NodoSystem.nodoItemHeight
-        valueFontSize: NodoSystem.descriptionTextFontSize - 2
+        valueFontSize: 31
     }
 
     NodoPopup {
