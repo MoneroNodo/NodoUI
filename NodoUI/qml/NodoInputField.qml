@@ -24,7 +24,9 @@ Item {
     property bool passwordInput: false
     property alias inputMask: valueLabel.inputMask
     property alias validator: valueLabel.validator
+    property alias valueFocus: valueLabel.focus
     signal textEditFinished()
+    signal textFocusChanged()
 
     function returnPressedAction()
     {
@@ -35,6 +37,12 @@ Item {
         }
         root.textEditFinished()
     }
+
+		function tappedAction()
+		{
+
+			root.textFocusChanged();
+		}
 
     NodoCanvas {
         id: labelCanvas
@@ -87,6 +95,7 @@ Item {
             selectionColor: "transparent"
 
             onFocusChanged:{
+								tappedAction();
                 if(focus)
                 {
                     selectAll()
@@ -139,6 +148,7 @@ Item {
                 }
             }
         }
+
 
 
 

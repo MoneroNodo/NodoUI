@@ -11,6 +11,7 @@ Item {
     id: moneroPayReceiveRequestScreen
 
     property int labelSize: 320
+    property int xmrPrecision: 12
     property int inputFieldWidth: width - NodoSystem.subMenuLeftMargin
     property int addressFieldWidth: width - NodoSystem.subMenuLeftMargin
     property double exchangeRate
@@ -45,6 +46,7 @@ Item {
         {
             fiatRequestfield.readOnlyFlag = false
         }
+        xmrRequestfield.valueText = (0).toFixed(xmrPrecision);
     }
 
     Rectangle {
@@ -63,34 +65,34 @@ Item {
             width: inputFieldWidth
             height: 135
             itemText: qsTr("XMR")
-            valueText: "0.0000"
+            valueText: "0"
             textFlag: Qt.ImhDigitsOnly
             itemFontSize: 120
             valueFontSize: 120
-			
-            onFocusChanged: {
-                if(focus && valueText === "0.0000")
-                {
-                    valueText: ""
-                }
-                else if (!focus && valueText == "")
-                {
-                    valueText = "0.0000"
-                }
+
+            onTextFocusChanged: {
+                var f = parseFloat(valueText);
+                var nan = (valueText == "" || f == 0 || f == NaN || Math.abs(f) == Infinity);
+                if (valueFocus && nan)
+                    valueText = "";
+                else if (!valueFocus && nan)
+                    valueText = (0).toFixed(xmrPrecision);
+
             }
 
             onTextEditFinished: {
-
+                if (valueText == "")
+                    return;
                 xmrAmount = parseFloat(xmrRequestfield.valueText)
 
-                if(xmrAmount > 9000000)
+                if(xmrAmount > 9000000 || xmrAmount == NaN)
                 {
                     xmrAmount = 0.0
                     paymentsPopup.commandID = -1
                     paymentsPopup.applyButtonText = qsTr("Value out of range")
                     paymentsPopup.open()
                 }
-                if(-1 !== exchangeRate)
+                if(-1 !== exchangeRate && xmrAmount != NaN)
                 {
                     fiatRequestfield.valueText = (xmrAmount*exchangeRate).toFixed(2)
                 }
@@ -111,21 +113,21 @@ Item {
             itemFontSize: 120
             valueFontSize: 120
 
-            onFocusChanged: {
-                if(focus && valueText === "0.00")
-                {
-                    valueText: ""
-                }
-                else if (!focus && valueText == "")
-                {
-                    valueText = "0.00"
-                }
+            onTextFocusChanged: {
+                var f = parseFloat(valueText);
+                var nan = (valueText == "" || f == 0 || f == NaN || Math.abs(f) == Infinity);
+                if (valueFocus && nan)
+                    valueText = "";
+                else if (!valueFocus && nan)
+                    valueText = "0.00";
             }
 
             onTextEditFinished: {
-                xmrAmount = (parseFloat(fiatRequestfield.valueText)/exchangeRate)
+                if (valueText == "")
+                    return;
+                xmrAmount = parseFloat(fiatRequestfield.valueText)/exchangeRate
 
-                if(xmrAmount > 9000000)
+                if(xmrAmount > 9000000 || xmrAmount == NaN)
                 {
                     xmrAmount = 0.0
                     paymentsPopup.commandID = -1
@@ -133,7 +135,8 @@ Item {
                     paymentsPopup.open()
                 }
 
-                xmrRequestfield.valueText = xmrAmount.toFixed(12)
+                if (xmrAmount != NaN)
+                    xmrRequestfield.valueText = xmrAmount.toFixed(xmrPrecision)
             }
         }
     }
@@ -177,11 +180,11 @@ Item {
             readOnlyFlag: zeroConfirmationSwitch.checked
 
             onFocusChanged: {
-                if(focus && valueText === "10")
+                if(valueFocus && valueText === "10")
                 {
                     valueText: ""
                 }
-                else if (!focus && valueText == "")
+                else if (!valueFocus && valueText == "")
                 {
                     valueText = "10"
                 }
