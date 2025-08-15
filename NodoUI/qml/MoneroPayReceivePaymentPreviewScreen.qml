@@ -11,7 +11,7 @@ Item {
     id: moneroPayReceivePaymentPreviewScreen
 
     property int labelSize: 300
-    property int addressFieldWidth: 1900
+    property int addressFieldWidth: width - NodoSystem.subMenuLeftMargin
     property double exchangeRate
     property string exchangeName
     property double xmrAmount
@@ -40,12 +40,108 @@ Item {
         }
     }
 
-
-    Rectangle{
-        id: qrCodeRect
+    Rectangle {
+        id: currenciesRect
         anchors.top: moneroPayReceivePaymentPreviewScreen.top
-        //anchors.topMargin: 1
-        anchors.horizontalCenter: moneroPayReceivePaymentPreviewScreen.horizontalCenter
+        anchors.left: moneroPayReceivePaymentPreviewScreen.left
+        width: 1900
+        height: 270 + NodoSystem.nodoTopMargin
+        color: "black"
+
+        NodoInfoField {
+            id: xmrPreviewfield
+            anchors.top: currenciesRect.top
+            anchors.left: currenciesRect.left
+            width: addressFieldWidth
+            height: 135
+            itemFontSize: 120
+            valueFontSize: 120
+            itemText: qsTr("XMR")
+        }
+
+        NodoInfoField {
+            id: fiatPreviewfield
+            anchors.top: xmrPreviewfield.bottom
+            anchors.left: currenciesRect.left
+            width: addressFieldWidth
+            height: 135
+            itemFontSize: 120
+            valueFontSize: 120
+            itemText: exchangeName
+        }
+    }
+
+    NodoInfoField {
+        id: moneroPayDepositAddressField
+        anchors.top: currenciesRect.bottom
+        anchors.topMargin: NodoSystem.nodoTopMargin
+        anchors.left: moneroPayReceivePaymentPreviewScreen.left
+        width: addressFieldWidth
+        //itemSize: 230
+        itemText: qsTr("Address")
+        height: NodoSystem.nodoItemHeight
+        valueFontSize: NodoSystem.descriptionTextFontSize
+    }
+
+    NodoInfoField {
+        id: descriptionPreviewField
+        anchors.top: moneroPayDepositAddressField.bottom
+        anchors.topMargin: visible === true ? NodoSystem.nodoTopMargin : 0
+        anchors.left: moneroPayReceivePaymentPreviewScreen.left
+        width: addressFieldWidth
+        height: visible === true ? NodoSystem.nodoItemHeight : 0
+        itemSize: labelSize
+        itemText: qsTr("Note")
+        visible: description === "" ? false : true
+        valueText: description
+    }
+
+    NodoInfoField {
+        id: timestampField
+        anchors.top: descriptionPreviewField.bottom
+        anchors.left: moneroPayReceivePaymentPreviewScreen.left
+        anchors.topMargin: NodoSystem.nodoTopMargin
+        height: NodoSystem.nodoItemHeight
+        itemSize: labelSize
+        width: 460
+        visible: true
+        itemText: qsTr("Timestamp")
+        valueText: ""
+    }
+
+
+    NodoLabel {
+        id: sendPaymentLabel
+        anchors.top: currenciesRect.top
+        anchors.left: currenciesRect.left
+        horizontalAlignment: Text.AlignLeft
+        text: qsTr("Awaiting Payment")
+        height: NodoSystem.nodoItemHeight
+    }
+    
+    NodoButton {
+        id: newPaymentButton
+        anchors.top: timestampField.bottom //anchors.top: descriptionPreviewField.top
+        anchors.left: moneroPayReceivePaymentPreviewScreen.left
+        anchors.topMargin: NodoSystem.nodoTopMargin
+        text: qsTr("New Payment")
+        height: NodoSystem.nodoItemHeight
+        font.family: NodoSystem.fontInter.name
+        font.pixelSize: NodoSystem.buttonTextFontSize
+        isActive: true
+        onClicked: {
+            paymentPreviewPopup.commandID = 1
+            paymentPreviewPopup.applyButtonText = newPaymentButton.text
+            paymentPreviewPopup.open()
+        }
+    }
+
+    Rectangle {
+        id: qrCodeRect
+        anchors.bottom: moneroPayReceivePaymentPreviewScreen.bottom
+        anchors.right: moneroPayReceivePaymentPreviewScreen.right
+        anchors.rightMargin: 10
+        anchors.bottomMargin: 10
         color: "black"
         width: 512
         height: 512
@@ -64,103 +160,6 @@ Item {
         }
     }
 
-    Rectangle {
-        id: currenciesRect
-        anchors.top: qrCodeRect.bottom
-        anchors.topMargin: 2*(NodoSystem.nodoTopMargin) //+ 10
-        anchors.left: moneroPayReceivePaymentPreviewScreen.left
-        width: timestampField.x + timestampField.width
-        height: timestampField.height
-        color: "black"
-
-        NodoLabel {
-            id: sendPaymentLabel
-            anchors.top: currenciesRect.top
-            anchors.left: currenciesRect.left
-            horizontalAlignment: Text.AlignLeft
-            text: qsTr("Awaiting Payment")
-            height: NodoSystem.nodoItemHeight
-        }
-
-        NodoInfoField {
-            id: xmrPreviewfield
-            anchors.top: currenciesRect.top
-            anchors.left: sendPaymentLabel.right
-            anchors.leftMargin: 15
-            itemSize: 120
-            width: 510
-            height: NodoSystem.nodoItemHeight
-            itemText: qsTr("XMR")
-        }
-
-        NodoInfoField {
-            id: fiatPreviewfield
-            anchors.top: currenciesRect.top
-            anchors.left: xmrPreviewfield.right
-            anchors.leftMargin: 5
-            itemSize: 120
-            width: 340
-            height: NodoSystem.nodoItemHeight
-            itemText: exchangeName
-        }
-
-        NodoInfoField {
-            id: timestampField
-            anchors.top: currenciesRect.top
-            anchors.left: fiatPreviewfield.right
-            anchors.leftMargin: 5
-            height: NodoSystem.nodoItemHeight
-            itemSize: 220
-            width: 460
-            visible: true
-            itemText: qsTr("Timestamp")
-            valueText: ""
-        }
-    }
-
-    NodoInfoField {
-        id: moneroPayDepositAddressField
-        anchors.top: currenciesRect.bottom
-        anchors.topMargin: NodoSystem.nodoTopMargin
-        anchors.left: moneroPayReceivePaymentPreviewScreen.left
-        width: addressFieldWidth
-        itemSize: 230
-        itemText: qsTr("Subaddress")
-        height: NodoSystem.nodoItemHeight
-        valueFontSize: 28
-    }
-
-    NodoInfoField {
-        id: descriptionPreviewField
-        anchors.top: moneroPayDepositAddressField.bottom
-        anchors.topMargin: visible === true ? NodoSystem.nodoTopMargin : 0
-        anchors.left: moneroPayReceivePaymentPreviewScreen.left
-        width: addressFieldWidth
-        height: visible === true ? NodoSystem.nodoItemHeight : 0
-        itemSize: labelSize
-        itemText: qsTr("Note")
-        visible: description === "" ? false : true
-        valueText: description
-    }
-
-    NodoButton {
-        id: newPaymentButton
-        anchors.top: moneroPayReceivePaymentPreviewScreen.top //anchors.top: descriptionPreviewField.top
-        anchors.left: moneroPayReceivePaymentPreviewScreen.left
-        //anchors.horizontalCenter: moneroPayReceivePaymentPreviewScreen.horizontalCenter
-        //anchors.topMargin: NodoSystem.nodoTopMargin
-        text: qsTr("New Payment")
-        height: NodoSystem.nodoItemHeight
-        font.family: NodoSystem.fontInter.name
-        font.pixelSize: NodoSystem.buttonTextFontSize
-        isActive: true
-        onClicked: {
-            paymentPreviewPopup.commandID = 1
-            paymentPreviewPopup.applyButtonText = newPaymentButton.text
-            paymentPreviewPopup.open()
-        }
-    }
-
     NodoPopup {
         id: paymentPreviewPopup
         onApplyClicked: {
@@ -172,5 +171,4 @@ Item {
             }
         }
     }
-
 }
