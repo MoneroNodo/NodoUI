@@ -11,7 +11,7 @@ Item {
     id: moneroPayReceiveRequestScreen
 
     property int labelSize: 320
-    property int xmrPrecision: 4
+    property int xmrPrecision: 12
     property int inputFieldWidth: width - NodoSystem.subMenuLeftMargin
     property int addressFieldWidth: width - NodoSystem.subMenuLeftMargin
     property double exchangeRate

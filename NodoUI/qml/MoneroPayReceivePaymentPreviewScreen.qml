@@ -26,7 +26,12 @@ Item {
         fiatAmount = moneroPay.getLastFiatAmount()
         description = moneroPay.getLastDescription();
         moneroPayDepositAddressField.valueText = moneroPay.getLastDepositAddress()
-        timestampField.valueText = moneroPay.getLastTimestamp()
+        var dateTime;
+        if (nodoControl.is24hEnabled())
+            dateTime = Qt.formatDateTime(moneroPay.getLastTimestamp(), "d MMM hh:mm") + " UTC"
+        else
+            dateTime = Qt.formatDateTime(moneroPay.getLastTimestamp(), "d MMM h:mm AP") + " UTC"
+        timestampField.valueText = dateTime;
         xmrPreviewfield.valueText = xmrAmount.toFixed(12)
         fiatPreviewfield.valueText = fiatAmount.toFixed(2)
 
