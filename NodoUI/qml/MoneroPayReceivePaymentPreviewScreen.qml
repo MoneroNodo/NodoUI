@@ -63,6 +63,7 @@ Item {
             id: fiatPreviewfield
             anchors.top: xmrPreviewfield.bottom
             anchors.left: currenciesRect.left
+            anchors.topMargin: NodoSystem.nodoTopMargin
             width: addressFieldWidth
             height: 135
             itemFontSize: 120
@@ -72,20 +73,8 @@ Item {
     }
 
     NodoInfoField {
-        id: moneroPayDepositAddressField
-        anchors.top: currenciesRect.bottom
-        anchors.topMargin: NodoSystem.nodoTopMargin
-        anchors.left: moneroPayReceivePaymentPreviewScreen.left
-        width: addressFieldWidth
-        //itemSize: 230
-        itemText: qsTr("Address")
-        height: NodoSystem.nodoItemHeight
-        valueFontSize: NodoSystem.descriptionTextFontSize
-    }
-
-    NodoInfoField {
         id: descriptionPreviewField
-        anchors.top: moneroPayDepositAddressField.bottom
+        anchors.top: currenciesRect.bottom
         anchors.topMargin: visible === true ? NodoSystem.nodoTopMargin : 0
         anchors.left: moneroPayReceivePaymentPreviewScreen.left
         width: addressFieldWidth
@@ -102,28 +91,30 @@ Item {
         anchors.left: moneroPayReceivePaymentPreviewScreen.left
         anchors.topMargin: NodoSystem.nodoTopMargin
         height: NodoSystem.nodoItemHeight
-        itemSize: labelSize
-        width: 460
+        itemSize: labelSize - 60
+        width: 800
         visible: true
         itemText: qsTr("Timestamp")
         valueText: ""
     }
 
-
     NodoLabel {
         id: sendPaymentLabel
-        anchors.top: currenciesRect.top
+        anchors.top: timestampField.bottom
         anchors.left: currenciesRect.left
+        anchors.topMargin: NodoSystem.nodoTopMargin
         horizontalAlignment: Text.AlignLeft
         text: qsTr("Awaiting Payment")
         height: NodoSystem.nodoItemHeight
+        font.pixelSize: NodoSystem.buttonTextFontSize
     }
-    
+
     NodoButton {
         id: newPaymentButton
-        anchors.top: timestampField.bottom //anchors.top: descriptionPreviewField.top
-        anchors.left: moneroPayReceivePaymentPreviewScreen.left
+        anchors.top: timestampField.bottom
+        anchors.left: sendPaymentLabel.right
         anchors.topMargin: NodoSystem.nodoTopMargin
+        anchors.leftMargin: NodoSystem.subMenuLeftMargin
         text: qsTr("New Payment")
         height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontInter.name
@@ -141,7 +132,7 @@ Item {
         anchors.bottom: moneroPayReceivePaymentPreviewScreen.bottom
         anchors.right: moneroPayReceivePaymentPreviewScreen.right
         anchors.rightMargin: 10
-        anchors.bottomMargin: 10
+        anchors.bottomMargin: NodoSystem.nodoItemHeight + NodoSystem.nodoTopMargin 
         color: "black"
         width: 512
         height: 512
@@ -158,6 +149,18 @@ Item {
             qrMode: QtQuick2QREncode.MODE_8    //encode model
             qrLevel: QtQuick2QREncode.LEVEL_Q // encode level
         }
+    }
+
+    NodoInfoField {
+        id: moneroPayDepositAddressField
+        anchors.top: moneroPayReceivePaymentPreviewScreen.bottom
+        //anchors.topMargin: NodoSystem.nodoTopMargin
+        anchors.left: moneroPayReceivePaymentPreviewScreen.left
+        width: addressFieldWidth
+        itemSize: labelSize - 60
+        itemText: qsTr("Address")
+        height: NodoSystem.nodoItemHeight
+        valueFontSize: NodoSystem.descriptionTextFontSize - 2
     }
 
     NodoPopup {
