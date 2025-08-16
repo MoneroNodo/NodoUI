@@ -68,8 +68,8 @@ NodoCanvas {
         id: moneroPayReceivedPaymentStatusField
         anchors.top: mainRect.top
         anchors.left: mainRect.left
-        anchors.topMargin: 15
-        anchors.leftMargin: 8
+        anchors.topMargin: NodoSystem.cardTopMargin
+        anchors.leftMargin: NodoSystem.cardLeftMargin
         height: NodoSystem.nodoItemHeight
         itemSize: 150
         width: 420
@@ -194,7 +194,7 @@ NodoCanvas {
         id: moneroPayReceivedQRCodeButton
         anchors.left: moneroPayReceivedRemovePaymentButton.right
         anchors.top: moneroPayReceivedRemovePaymentButton.top
-        anchors.leftMargin: 25
+        anchors.leftMargin: NodoSystem.subMenuLeftMargin
         text: qsTr("View QR")
         height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontInter.name
