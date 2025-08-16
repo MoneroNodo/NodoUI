@@ -72,7 +72,7 @@ NodoCanvas {
         anchors.leftMargin: 8
         height: NodoSystem.nodoItemHeight
         itemSize: 150
-        width: 400
+        width: 420
         itemText: qsTr("Status")
         valueText: {
             switch (paymentStatus)
@@ -96,10 +96,10 @@ NodoCanvas {
         id: moneroPayReceivedXMRValueField
         anchors.left: moneroPayReceivedPaymentStatusField.right
         anchors.top: moneroPayReceivedPaymentStatusField.top
-        anchors.leftMargin: 5
+        anchors.leftMargin: 25
         height: NodoSystem.nodoItemHeight
         itemSize: 120
-        width: 510
+        width: 520
         itemText: "XMR"
         valueText: xmrAmount.toFixed(12)
     }
@@ -108,24 +108,12 @@ NodoCanvas {
         id: moneroPayReceivedFiatValueField
         anchors.left: moneroPayReceivedXMRValueField.right
         anchors.top: moneroPayReceivedPaymentStatusField.top
-        anchors.leftMargin: 5
+        anchors.leftMargin: 25
         height: NodoSystem.nodoItemHeight
         itemSize: 120
-        width: 340
+        width: 350
         itemText: exchangeName
         valueText: fiatValue.toFixed(2)
-    }
-
-    NodoInfoField {
-        id: moneroPayReceivedTimestampField
-        anchors.left: moneroPayReceivedFiatValueField.right
-        anchors.top: moneroPayReceivedPaymentStatusField.top
-        anchors.leftMargin: 5
-        height: NodoSystem.nodoItemHeight
-        itemSize: 220
-        width: 460
-        itemText: qsTr("Timestamp")
-        valueText: timestamp
     }
 
     NodoInfoField {
@@ -134,11 +122,11 @@ NodoCanvas {
         anchors.top: moneroPayReceivedPaymentStatusField.bottom
         anchors.topMargin: fieldTopMargin
         height: NodoSystem.nodoItemHeight
-        itemSize: 230
+        itemSize: 180
         width: 1880
-        itemText: qsTr("Subaddress")
+        itemText: qsTr("Address")
         valueText: depositAddress
-        valueFontSize: 27
+        valueFontSize: 30
     }
 
     NodoCanvas {
@@ -222,6 +210,18 @@ NodoCanvas {
             mainRectPopup.closeButtonText = qsTr("Close")
             mainRectPopup.open();
         }
+    }
+
+    NodoInfoField {
+        id: moneroPayReceivedTimestampField
+        anchors.left: moneroPayReceivedQRCodeButton.right
+        anchors.top: moneroPayReceivedQRCodeButton.top
+        anchors.leftMargin: NodoSystem.subMenuLeftMargin
+        height: NodoSystem.nodoItemHeight
+        itemSize: 240
+        width: 740
+        itemText: qsTr("Timestamp")
+        valueText: timestamp
     }
 
     ListModel {
