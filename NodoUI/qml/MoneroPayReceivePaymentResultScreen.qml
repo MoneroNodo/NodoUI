@@ -103,7 +103,6 @@ Item {
         anchors.topMargin: NodoSystem.nodoTopMargin
         height: NodoSystem.nodoItemHeight
         width: 1240
-        height: gotoViewPaymentsButton.height
         color: "black"
 
         NodoLabel {
