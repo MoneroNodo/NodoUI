@@ -39,8 +39,7 @@ Item {
         anchors.left: moneroPayPaymentsScreen.left
         anchors.right: moneroPayPaymentsScreen.right
         anchors.bottom: moneroPayPaymentsScreen.bottom
-        anchors.topMargin: NodoSystem.nodoTopMargin
-        //anchors.bottomMargin: 30
+        //anchors.bottomMargin: 85
         color: "black"
         clip: true
 
@@ -58,22 +57,22 @@ Item {
 
             spacing: NodoSystem.nodoTopMargin
         }
-    }
 
-    NodoButton {
-        id: clearAllPaymentsButton
-        anchors.top: paymentsCanvas.bottom
-        anchors.left: moneroPayPaymentsScreen.left
-        anchors.topMargin: NodoSystem.nodoTopMargin
-        text: qsTr("Clear All Payments")
-        height: NodoSystem.nodoItemHeight
-        font.family: NodoSystem.fontInter.name
-        font.pixelSize: NodoSystem.buttonTextFontSize
-        isActive: paymentsListModel.count > 0 ? true : false
-        onClicked: {
-            paymentsPopup.commandID = 0
-            paymentsPopup.applyButtonText = "Apply"
-            paymentsPopup.open()
+        NodoButton {
+            id: clearAllPaymentsButton
+            anchors.top: paymentsCanvas.bottom
+            anchors.left: moneroPayPaymentsScreen.left
+            anchors.topMargin: 5
+            text: qsTr("Clear All Payments")
+            height: NodoSystem.nodoItemHeight
+            font.family: NodoSystem.fontInter.name
+            font.pixelSize: NodoSystem.buttonTextFontSize
+            isActive: paymentsListModel.count > 0 ? true : false
+            onClicked: {
+                paymentsPopup.commandID = 0
+                paymentsPopup.applyButtonText = "Apply"
+                paymentsPopup.open()
+            }
         }
     }
 
