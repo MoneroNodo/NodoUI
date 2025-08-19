@@ -71,8 +71,8 @@ NodoCanvas {
         anchors.topMargin: NodoSystem.cardTopMargin
         anchors.leftMargin: NodoSystem.cardLeftMargin
         height: NodoSystem.nodoItemHeight
-        itemSize: 150
-        width: 420
+        itemSize: 180
+        width: 440
         itemText: qsTr("Status")
         valueText: {
             switch (paymentStatus)
@@ -96,10 +96,10 @@ NodoCanvas {
         id: moneroPayReceivedXMRValueField
         anchors.left: moneroPayReceivedPaymentStatusField.right
         anchors.top: moneroPayReceivedPaymentStatusField.top
-        anchors.leftMargin: 25
+        anchors.leftMargin: NodoSystem.subMenuTopMargin
         height: NodoSystem.nodoItemHeight
         itemSize: 120
-        width: 520
+        width: 540
         itemText: "XMR"
         valueText: xmrAmount.toFixed(12)
     }
@@ -108,10 +108,10 @@ NodoCanvas {
         id: moneroPayReceivedFiatValueField
         anchors.left: moneroPayReceivedXMRValueField.right
         anchors.top: moneroPayReceivedPaymentStatusField.top
-        anchors.leftMargin: 25
+        anchors.leftMargin: NodoSystem.subMenuTopMargin
         height: NodoSystem.nodoItemHeight
         itemSize: 120
-        width: 350
+        width: 540
         itemText: exchangeName
         valueText: fiatValue.toFixed(2)
     }
@@ -123,7 +123,7 @@ NodoCanvas {
         anchors.topMargin: fieldTopMargin
         height: NodoSystem.nodoItemHeight
         itemSize: 180
-        width: 1880
+        width: 1890
         itemText: qsTr("Address")
         valueText: depositAddress
         valueFontSize: 30
@@ -133,7 +133,7 @@ NodoCanvas {
         id: moneroPayReceivedTransactionIDField
         anchors.top: moneroPayReceivedDepositAddressField.bottom
         anchors.left: moneroPayReceivedPaymentStatusField.left
-        width: 1880
+        width: 1890
         height: paymentsList.contentHeight
         anchors.topMargin: fieldTopMargin
         anchors.bottomMargin: 30
@@ -169,8 +169,8 @@ NodoCanvas {
         anchors.top: moneroPayReceivedTransactionIDField.bottom
         anchors.topMargin: visible === true ? fieldTopMargin : 0
         height: visible === true ? NodoSystem.nodoItemHeight : 0
-        itemSize: labelSize
-        width: 1880
+        itemSize: 180
+        width: 1890
         visible: description.length > 0 ? true : false
         itemText: qsTr("Note")
         valueText: description
@@ -194,7 +194,7 @@ NodoCanvas {
         id: moneroPayReceivedQRCodeButton
         anchors.left: moneroPayReceivedRemovePaymentButton.right
         anchors.top: moneroPayReceivedRemovePaymentButton.top
-        anchors.leftMargin: NodoSystem.subMenuLeftMargin
+        anchors.leftMargin: NodoSystem.subMenuTopMargin
         text: qsTr("View QR")
         height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontInter.name
@@ -216,7 +216,7 @@ NodoCanvas {
         id: moneroPayReceivedTimestampField
         anchors.left: moneroPayReceivedQRCodeButton.right
         anchors.top: moneroPayReceivedQRCodeButton.top
-        anchors.leftMargin: NodoSystem.subMenuLeftMargin
+        anchors.leftMargin: NodoSystem.subMenuTopMargin
         height: NodoSystem.nodoItemHeight
         itemSize: 240
         width: 740
