@@ -10,7 +10,7 @@ Item {
 
     property int labelSize: 0
     property int buttonWidth: 0
-    property int infoFieldSize: 1880
+    property int infoFieldSize: width - NodoSystem.subMenuLeftMargin
     property bool inputFieldReadOnly: false
     property bool clearButtonActive: false
     property bool setButtonActive: true
@@ -83,9 +83,9 @@ Item {
             itemSize: labelSize
             itemText: qsTr("Deposit Address")
             readOnlyFlag: inputFieldReadOnly
-            valueFontSize: 26
+            valueFontSize: NodoSystem.descriptionTitleFontSize
             validator: RegularExpressionValidator {
-                regularExpression: /^(4|8)[1-9A-HJ-NP-Za-km-z]{94}$/
+                regularExpression: /^4[0-9A-Za-z]{94}$/
             }
             onTextEditFinished: {
                 moneroPaySettingsAddressValidStatusText.text = "";
@@ -103,7 +103,7 @@ Item {
         //anchors.left: moneroPaySettingsAddressInput.left
         anchors.top: moneroPaySettingsAddressRectangle.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
-        text: qsTr("Set Deposit Address")
+        text: qsTr("Set Address")
         height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
@@ -125,7 +125,7 @@ Item {
         anchors.top: moneroPaySettingsAddressRectangle.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
 		anchors.leftMargin: 25
-        text: qsTr("Reset Deposit Address")
+        text: qsTr("Clear Address")
         height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
@@ -143,14 +143,15 @@ Item {
         id: moneroPaySettingsAddressDescriptionText
         anchors.left: moneroPaySettingsConfigScreen.left
         anchors.top: moneroPaySettingsSetDepositAddressButton.bottom
-        anchors.topMargin: NodoSystem.nodoTopMargin
-        width: 1800
-        height: 38
+        anchors.leftMargin: NodoSystem.cardLeftMargin
+        anchors.topMargin: NodoSystem.cardLeftMargin
+        width: parent.width
+        height: moneroPaySettingsAddressDescriptionText.paintedHeight
         text: qsTr("Received transactions will periodically be sent to this address.")
-        font.pixelSize: NodoSystem.infoFieldItemFontSize
-        verticalAlignment: Text.AlignVCenter
-        color: nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn : NodoSystem.dataFieldTextColorNightModeOff
+         verticalAlignment: Text.AlignVCenter
         font.family: NodoSystem.fontInter.name
+        font.pixelSize: NodoSystem.descriptionTitleFontSize
+        color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
     }
 
     Text {
@@ -158,8 +159,8 @@ Item {
         anchors.left: moneroPaySettingsConfigScreen.left
         anchors.top: moneroPaySettingsAddressDescriptionText.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
-        width: 1800
-        height: 38
+        width: parent.width
+        height: moneroPaySettingsAddressValidStatusText.paintedHeight
         text: ""
         font.pixelSize: NodoSystem.infoFieldItemFontSize
         verticalAlignment: Text.AlignVCenter
