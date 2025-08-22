@@ -71,7 +71,7 @@ Rectangle {
         torServiceField.valueText = getServiceStatusText(nodoControl.getServiceStatus("tor"))
         i2pServiceField.valueText = getServiceStatusText(nodoControl.getServiceStatus("i2pd"))
         moneroLWSField.valueText = getServiceStatusText(nodoControl.getServiceStatus("monero-lws"))
-        //moneroPayField.valueText = getServiceStatusText(nodoControl.getServiceStatus("moneropay"))
+        moneroPayField.valueText = getServiceStatusText(nodoControl.getServiceStatus("moneropay"))
     }
 
     function updateHardwareStatus() {
