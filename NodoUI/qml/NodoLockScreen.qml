@@ -11,12 +11,12 @@ Item {
     property int pinLeftRightPadding: NodoSystem.lockPinDiameter*1.5
     property int pinMiddlePaddings: NodoSystem.lockPinDiameter/2
 
-    property int leftAndRightSpaces: NodoSystem.lockButtonWidth/3
-    property int topAndBottomSpaces: NodoSystem.lockButtonHeight/3
-    property int horizontalSpaceBetweenButtons: NodoSystem.lockButtonWidth/2
-    property int verticalSpaceBetweenButtons: NodoSystem.lockButtonHeight/2
+    property int leftAndRightSpaces: NodoSystem.lockButtonWidth/5
+    property int topAndBottomSpaces: NodoSystem.lockButtonHeight/5
+    property int horizontalSpaceBetweenButtons: NodoSystem.lockButtonWidth/8
+    property int verticalSpaceBetweenButtons: NodoSystem.lockButtonHeight/8
 
-    property int buttonPadHeight: (NodoSystem.lockButtonHeight*4) + (topAndBottomSpaces*2) + (verticalSpaceBetweenButtons*3)
+    property int buttonPadHeight: (NodoSystem.lockButtonHeight*4) + (topAndBottomSpaces*2) + (verticalSpaceBetweenButtons*2)
     property int buttonPadWidth: (NodoSystem.lockButtonWidth*3) + (leftAndRightSpaces*2) + (horizontalSpaceBetweenButtons*2)
 
     property int buttonImageMargins: NodoSystem.lockButtonHeight/4
@@ -86,7 +86,7 @@ Item {
         id: lockScreenMainRect
         anchors.top: lockScreen.top
         anchors.left: lockScreen.left
-        anchors.topMargin: (lockScreen.height - height)/2
+        anchors.topMargin: 2//(lockScreen.height - height)/2
         width: lockScreen.width
         color: "black"
 
@@ -94,11 +94,11 @@ Item {
         id: enterPINTextRect
         anchors.top: lockScreenMainRect.top
         anchors.left: lockScreenMainRect.left
-        anchors.topMargin: 8
+        anchors.topMargin: 1
         anchors.leftMargin: (lockScreenMainRect.width - enterPINTextRect.width)/2
         width: enterPINText.paintedWidth
         height:enterPINText.paintedHeight
-        color: "#000000"
+        color: "black"
 
         Text {
             id: enterPINText
@@ -117,15 +117,15 @@ Item {
         height: NodoSystem.lockPinDiameter*2
         anchors.top: enterPINTextRect.bottom
         anchors.left: lockScreenMainRect.left
-        anchors.topMargin: 8
+        anchors.topMargin: NodoSystem.cardTopMargin//8
         anchors.leftMargin: (lockScreenMainRect.width - width)/2
-        color: "#000000"
+        color: "black"
 
         NodoCanvas {
             id: pinIndicatorField
             width: pinIndicatorFieldRect.width
             height: pinIndicatorFieldRect.height
-            color: "#000000"
+            color: "black"
 
             Rectangle{
                 id: pin0
@@ -211,11 +211,11 @@ Item {
         id: buttonPadRect
         anchors.top: pinIndicatorFieldRect.bottom
         anchors.left: lockScreenMainRect.left
-        anchors.topMargin: 24
+        anchors.topMargin: 2
         anchors.leftMargin: (lockScreenMainRect.width - width)/2
         width: lockScreen.buttonPadWidth
         height: lockScreen.buttonPadHeight
-        color: "#000000"
+        color: "black"
 
         NodoButton {
             id: button1
@@ -224,7 +224,7 @@ Item {
             height: NodoSystem.lockButtonHeight
             anchors.top: buttonPadRect.top
             anchors.left: buttonPadRect.left
-            anchors.topMargin: topAndBottomSpaces
+            anchors.topMargin: NodoSystem.cardTopMargin //topAndBottomSpaces
             anchors.leftMargin: leftAndRightSpaces
             isActive: buttonsActive
             backgroundColor: NodoSystem.lockButtonColor

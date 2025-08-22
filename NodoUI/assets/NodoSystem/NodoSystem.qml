@@ -96,8 +96,8 @@ Item
     property color lockButtonColor: dataFieldTextBGColorNightModeOff//"#232323"												//3COLOR BG//
     property color lockButtonTextColor: "#F5F5F5"						//1TEXT FONT//
     property int lockButtonTextSize: 55
-    property int lockButtonWidth: 130
-    property int lockButtonHeight: 130
+    property int lockButtonWidth: 160
+    property int lockButtonHeight: 160
     property int lockPinDiameter: 33
 
 
