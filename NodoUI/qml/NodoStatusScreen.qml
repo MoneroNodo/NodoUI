@@ -415,7 +415,7 @@ Rectangle {
             anchors.left: moneroNodeField.left
             anchors.top: moneroLWSField.bottom
             anchors.topMargin: fieldTopMargin
-            width: labelSize
+            width: parent.width - (componentLeftMargin*2)
             height: statusScreenInfoFieldHeight
             itemSize: labelSize - 80
             itemText: qsTr("MoneroPay")
