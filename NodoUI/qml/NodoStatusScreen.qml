@@ -335,8 +335,8 @@ Rectangle {
         anchors.top: statusScreen.top
         anchors.topMargin: 42
         anchors.leftMargin: cardMargin
-        width: 410
-        height: moneroLWSField.y + moneroLWSField.height + componentBottomMargin
+        width: 440
+        height: moneroPayField.y + moneroPayField.height + componentBottomMargin
         color: NodoSystem.dataFieldTextBGColorNightModeOff
 
         Connections {
@@ -369,7 +369,7 @@ Rectangle {
             anchors.topMargin: fieldTopMargin
             width: parent.width - (componentLeftMargin*2)
             height: statusScreenInfoFieldHeight
-            itemSize: labelSize - 120
+            itemSize: labelSize - 80
             itemText: qsTr("Daemon")
             valueText: ""
         }
@@ -381,7 +381,7 @@ Rectangle {
             anchors.topMargin: fieldTopMargin
             width: parent.width - (componentLeftMargin*2)
             height: statusScreenInfoFieldHeight
-            itemSize: labelSize - 120
+            itemSize: labelSize - 80
             itemText: qsTr("Tor")
             valueText: ""
         }
@@ -393,7 +393,7 @@ Rectangle {
             anchors.topMargin: fieldTopMargin
             width: parent.width - (componentLeftMargin*2)
             height: statusScreenInfoFieldHeight
-            itemSize: labelSize - 120
+            itemSize: labelSize - 80
             itemText: qsTr("I2P")
             valueText: ""
         }
@@ -405,11 +405,11 @@ Rectangle {
             anchors.topMargin: fieldTopMargin
             width: parent.width - (componentLeftMargin*2)
             height: statusScreenInfoFieldHeight
-            itemSize: labelSize - 120
+            itemSize: labelSize - 80
             itemText: qsTr("LWS")
             valueText: ""
         }
-/*
+
         NodoInfoField {
             id: moneroPayField
             anchors.left: moneroNodeField.left
@@ -417,11 +417,10 @@ Rectangle {
             anchors.topMargin: fieldTopMargin
             width: labelSize
             height: statusScreenInfoFieldHeight
-            itemSize: labelSize - 40
+            itemSize: labelSize - 80
             itemText: qsTr("MoneroPay")
             valueText: ""
         }
-*/
     }
 
     NodoCanvas {
@@ -429,7 +428,7 @@ Rectangle {
         anchors.left: systemStatus.right
         anchors.top: statusScreen.top
         anchors.topMargin: 42
-        width: 660
+        width: 630
         anchors.leftMargin: cardMargin
         //anchors.rightMargin: 2//cardMargin
         height: systemStorageField.y + systemStorageField.height + componentBottomMargin
