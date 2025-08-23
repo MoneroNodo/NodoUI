@@ -76,12 +76,31 @@ Item {
         anchors.left: moneroPaySettingsConfigScreen.left
         anchors.top: moneroPaySettingsConfigScreen.top
         height: NodoSystem.nodoItemHeight
+
+        Text {
+            id: moneroPaySettingsTitle
+            height: 30
+            width: parent.width
+            anchors.top: moneroPaySettingsAddressRectangle.top
+            anchors.left: moneroLWSAddAccountScreen.left
+            anchors.leftMargin: NodoSystem.cardLeftMargin
+            //anchors.topMargin: NodoSystem.nodoTopMargin*3
+            verticalAlignment: Text.AlignVCenter
+            font.family: NodoSystem.fontInter.name
+            font.pixelSize: NodoSystem.descriptionTitleFontSize
+            color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
+            text: qsTr("MONEROPAY DEPOSIT ADDRESS")
+        }
+
         NodoInputField {
             id: moneroPaySettingsAddressInput
+            anchors.top: moneroPaySettingsTitle.bottom
+            anchors.left: moneroPaySettingsConfigScreen.left
+            anchors.topMargin: NodoSystem.cardTopMargin
             width: infoFieldSize
             height: NodoSystem.nodoItemHeight
             itemSize: labelSize
-            itemText: qsTr("Deposit Address")
+            itemText: qsTr("Address")
             readOnlyFlag: inputFieldReadOnly
             valueFontSize: NodoSystem.descriptionTitleFontSize
             validator: RegularExpressionValidator {
