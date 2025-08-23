@@ -145,6 +145,7 @@ NodoCanvas {
             anchors.top: moneroPayReceivedTransactionIDField.top
             anchors.right: moneroPayReceivedTransactionIDField.right
             anchors.bottom: moneroPayReceivedTransactionIDField.bottom
+            anchors.topMargin: fieldTopMargin
             model: transactionIDListModel
             delegate: Component {
                 NodoInfoField {
