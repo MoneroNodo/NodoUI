@@ -75,7 +75,7 @@ Item {
         id: moneroPaySettingsAddressRectangle
         anchors.left: moneroPaySettingsConfigScreen.left
         anchors.top: moneroPaySettingsConfigScreen.top
-        height: NodoSystem.nodoItemHeight
+        height: moneroPaySettingsAddressInput.y + moneroPaySettingsAddressInput.height
 
         Text {
             id: moneroPaySettingsTitle
@@ -99,10 +99,10 @@ Item {
             anchors.topMargin: NodoSystem.cardTopMargin
             width: infoFieldSize
             height: NodoSystem.nodoItemHeight
-            itemSize: labelSize
+            itemSize: 180
             itemText: qsTr("Address")
             readOnlyFlag: inputFieldReadOnly
-            valueFontSize: NodoSystem.descriptionTitleFontSize
+            valueFontSize: NodoSystem.descriptionTitleFontSize - 4
             validator: RegularExpressionValidator {
                 regularExpression: /^4[0-9A-Za-z]{94}$/
             }
