@@ -72,7 +72,7 @@ NodoCanvas {
         anchors.leftMargin: NodoSystem.cardLeftMargin
         height: NodoSystem.nodoItemHeight
         itemSize: 180
-        width: 440
+        width: 450
         itemText: qsTr("Status")
         valueText: {
             switch (paymentStatus)
@@ -111,7 +111,7 @@ NodoCanvas {
         anchors.leftMargin: NodoSystem.subMenuTopMargin
         height: NodoSystem.nodoItemHeight
         itemSize: 120
-        width: 540
+        width: 370
         itemText: exchangeName
         valueText: fiatValue.toFixed(2)
     }
@@ -126,7 +126,7 @@ NodoCanvas {
         width: 1890
         itemText: qsTr("Address")
         valueText: depositAddress
-        valueFontSize: 30
+        valueFontSize: 29
     }
 
     NodoCanvas {
@@ -135,7 +135,6 @@ NodoCanvas {
         anchors.left: moneroPayReceivedPaymentStatusField.left
         width: 1890
         height: paymentsList.contentHeight
-        anchors.topMargin: fieldTopMargin
         anchors.bottomMargin: 30
         color: "#1F1F1F"
         clip: true
@@ -146,6 +145,7 @@ NodoCanvas {
             anchors.top: moneroPayReceivedTransactionIDField.top
             anchors.right: moneroPayReceivedTransactionIDField.right
             anchors.bottom: moneroPayReceivedTransactionIDField.bottom
+            anchors.topMargin: fieldTopMargin
             model: transactionIDListModel
             delegate: Component {
                 NodoInfoField {
