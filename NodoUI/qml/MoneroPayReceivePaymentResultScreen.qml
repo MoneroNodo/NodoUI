@@ -98,7 +98,7 @@ Item {
 
     Rectangle {
         id: tmpRect
-        anchors.top: currenciesTransferredRect.bottom
+        anchors.top: receivedTimestampField.bottom
         anchors.left: moneroPayReceivePaymentResultScreen.left
         //anchors.horizontalCenter: moneroPayReceivePaymentResultScreen.horizontalCenter
         anchors.topMargin: NodoSystem.nodoTopMargin
@@ -176,7 +176,7 @@ Item {
         anchors.topMargin: NodoSystem.nodoTopMargin
         anchors.left: moneroPayReceivePaymentResultScreen.left
         height: NodoSystem.nodoItemHeight
-        width: addressFieldWidth
+        width: parent.width - NodoSystem.subMenuLeftMargin
         itemSize: labelSize + 20
         itemText: qsTr("Transaction ID")
         valueText: ""
@@ -188,8 +188,8 @@ Item {
         anchors.left: moneroPayReceivePaymentResultScreen.left
         anchors.topMargin: NodoSystem.nodoTopMargin
         height: NodoSystem.nodoItemHeight
-        itemSize: 230
-        width: addressFieldWidth
+        itemSize: labelSize - 60
+        width: parent.width - NodoSystem.subMenuLeftMargin
         itemText: qsTr("Address")
         valueText: ""
         valueFontSize: 30
@@ -210,4 +210,3 @@ Item {
         }
     }
 }
-
