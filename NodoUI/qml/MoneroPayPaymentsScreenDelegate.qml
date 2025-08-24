@@ -47,6 +47,7 @@ NodoCanvas {
         else
             dateTime = Qt.formatDateTime(moneroPay.getPaymentTimestamp(paymentIndex), "d MMM h:mm AP") + " UTC"
         timestamp = dateTime.toUpperCase()
+        moneroPayReceivedTimestampField.valueText = timestamp;
         depositAddress = moneroPay.getPaymentDepositAddress(paymentIndex)
         description = moneroPay.getPaymentDescription(paymentIndex)
         descriptionHTMLEncoded = moneroPay.getDescriptionHTMLEncoded(paymentIndex)
