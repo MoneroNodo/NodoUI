@@ -71,25 +71,33 @@ void MoneroPayConnection::parseReceiveAddress(QByteArray replyMessage)
     QJsonArray transactionsArray;
 
     document = QJsonDocument::fromJson(replyMessage);
+    // qDebug() << document;
 
     if(document.isEmpty())
     {
+        qDebug() << "received empty reply!";
         return;
     }
 
     rootObj = document.object();
+    QString createdAt = rootObj["created_at"].toString();
+    createdAt = createdAt.left(19);
+    m_payment.dateTime = QDateTime::fromString(createdAt,"yyyy-MM-ddThh:mm:ss");
+    // qDebug() << createdAt;
     amountObj = rootObj["amount"].toObject();
     amountCoveredObj = amountObj["covered"].toObject();
     transactionsArray = rootObj["transactions"].toArray();
 
     QJsonValue tmp = amountObj.value("expected");
     long int amountExpected = (long int)tmp.toInteger();
+    m_payment.xmrAmountInPico  = amountExpected;
 
     tmp = amountCoveredObj.value("total");
     long int amountCoveredTotal = (long int)tmp.toInteger();
 
     tmp = amountCoveredObj.value("unlocked");
     long int amountCoveredUnlocked = (long int)tmp.toInteger();
+
 
     if(transactionsArray.size() > 0)
     {
@@ -157,8 +165,7 @@ void MoneroPayConnection::parseReceiveAddress(QByteArray replyMessage)
 
     if(PAYMENT_STATUS_RECEIVED == m_payment.paymentStatus)
     {
-        m_payment.xmrAmountInPico  = amountExpected;
-        QString createdAt = rootObj["created_at"].toString();
+        createdAt = rootObj["created_at"].toString();
         createdAt = createdAt.left(19);
         m_payment.dateTime = QDateTime::fromString(createdAt,"yyyy-MM-ddThh:mm:ss");
         m_payment.description = rootObj["description"].toString();
@@ -222,7 +229,7 @@ void MoneroPayConnection::requestPayment(void)
 
 void MoneroPayConnection::replyFinished(QNetworkReply *reply) {
     QByteArray answer = reply->readAll();
-    // qDebug() << "reply: " << answer;
+    //qDebug() << "reply: " << answer;
 
     if(reply->url().toString().contains(RECEIVE_URL))
     {
@@ -292,4 +299,6 @@ void MoneroPayConnection::checkHealth(void)
     QNetworkRequest request(url);
     m_networkAccessManager->get(request);
 }
+
+
 
