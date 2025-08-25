@@ -184,11 +184,11 @@ Item {
             {
                 if (nodoControl.isFeedsEnabled())
                 {
-                    [qsTr("News"), qsTr("Analog Clock"), qsTr("Digital Clock"), qsTr("Display Off"), qsTr("None")]
+                    [qsTr("News"), qsTr("Analog Clock Classic"), qsTr("Analog Clock Modern"), qsTr("Digital Clock"), qsTr("Display Off"), qsTr("None")]
                 }
                 else
                 {
-                    [qsTr("Analog Clock"), qsTr("Digital Clock"), qsTr("Display Off"), qsTr("None")]
+                    [qsTr("Analog Clock Classic"), qsTr("Analog Clock Modern"), qsTr("Digital Clock"), qsTr("Display Off"), qsTr("None")]
                 }
             }
             onCurrentIndexChanged: {

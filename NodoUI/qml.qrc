@@ -36,10 +36,13 @@
         <file>qml/NodoNewsScreensaver.qml</file>
         <file>qml/NodoHomeScreen.qml</file>
         <file>qml/NodoAnalogClock.qml</file>
+        <file>qml/NodoAnalogClassic.qml</file>
         <file>qml/NodoDisplayOff.qml</file>
         <file>qml/NodoTabButton.qml</file>
         <file>Images/Nodo_ClockFace_Red.png</file>
         <file>Images/Nodo_ClockFace_White.png</file>
+        <file>Images/Nodo_AnalogClassic_Red.png</file>
+        <file>Images/Nodo_AnalogClassic_White.png</file>
         <file>Images/HourHand_Red.png</file>
         <file>Images/HourHand_White.png</file>
         <file>Images/MinuteHand_Red.png</file>
