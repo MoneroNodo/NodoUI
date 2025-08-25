@@ -25,13 +25,19 @@ Item {
         exchangeRate = priceTicker.getCurrency()
         xmrAmount = moneroPay.getLastXMRAmount()
         fiatAmount = moneroPay.getLastFiatAmount()
+        description = moneroPay.getLastDescription()
         xmrTransferredfield.valueText = xmrAmount.toFixed(12)
         fiatTransferredfield.valueText = fiatAmount.toFixed(2)
 
         receivedDepositAddressField.valueText = moneroPay.getLastDepositAddress()
         transactionIDTransferredField.valueText = moneroPay.getLastTransactionID()
         descriptionTransferredfield.valueText = moneroPay.getLastDescription()
-        receivedTimestampField.valueText = moneroPay.getLastTimestamp()
+        var dateTime;
+        if (nodoControl.is24hEnabled())
+            dateTime = Qt.formatDateTime(moneroPay.getLastTimestamp(), "d MMM hh:mm") + " UTC"
+        else
+            dateTime = Qt.formatDateTime(moneroPay.getLastTimestamp(), "d MMM h:mm AP") + " UTC"
+        receivedTimestampField.valueText = dateTime;
     }
 
     Rectangle {
@@ -188,7 +194,7 @@ Item {
         anchors.left: moneroPayReceivePaymentResultScreen.left
         height: NodoSystem.nodoItemHeight
         width: parent.width - NodoSystem.subMenuLeftMargin
-        itemSize: 280
+        itemSize: 290
         itemText: qsTr("Transaction ID")
         valueText: ""
     }
