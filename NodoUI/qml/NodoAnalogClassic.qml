@@ -52,14 +52,14 @@ Item {
 
     Timer {
         interval: 25; running: true; repeat: true;
-        onTriggered: clock.timeChanged()
+        onTriggered: analogClockClassic.timeChanged()
     }
 
     Rectangle {
         id: background;
         anchors.centerIn: parent
-        width: clock.width
-        height: clock.height
+        width: analogClockClassic.width
+        height: analogClockClassic.height
         color: "black"
 
         Component.onCompleted: {
@@ -91,7 +91,7 @@ Item {
                 id: hourRotation
                 origin.x: hour_center_x_position
                 origin.y: hour_center_y_position
-                angle: clock.hourAngle
+                angle: analogClockClassic.hourAngle
             }
         }
 
@@ -107,7 +107,7 @@ Item {
                 id: minuteRotation
                 origin.x: minute_center_x_position
                 origin.y: minute_center_y_position
-                angle: clock.minuteAngle
+                angle: analogClockClassic.minuteAngle
             }
         }
 
@@ -123,7 +123,7 @@ Item {
                 id: secondRotation
                 origin.x: second_center_x_position
                 origin.y: second_center_y_position
-                angle: clock.secondAngle
+                angle: analogClockClassic.secondAngle
             }
         }
     }
