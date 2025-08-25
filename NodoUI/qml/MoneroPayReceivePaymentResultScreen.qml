@@ -79,15 +79,15 @@ Item {
         height: visible === true ? NodoSystem.nodoItemHeight : 0
         itemSize: labelSize
         itemText: qsTr("Note")
-        visible: description === "" ? false : true
-        valueText: description
+        visible: parent.description !== ""
+        valueText: parent.description
     }
 
     NodoInfoField {
         id: receivedTimestampField
         anchors.top: descriptionTransferredfield.bottom
         anchors.left: moneroPayReceivePaymentResultScreen.left
-        anchors.TopMargin: NodoSystem.nodoTopMargin
+        anchors.topMargin: NodoSystem.nodoTopMargin
         height: NodoSystem.nodoItemHeight
         itemSize: labelSize
         width: 740
