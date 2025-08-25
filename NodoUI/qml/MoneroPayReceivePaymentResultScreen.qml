@@ -110,7 +110,6 @@ Item {
             id: paymentSuccessLabel
             anchors.top: tmpRect.top
             anchors.left: tmpRect.left
-            anchors.topMargin: NodoSystem.nodoTopMargin
             horizontalAlignment: Text.AlignLeft
             text: qsTr("Payment Received")
             height: NodoSystem.nodoItemHeight
@@ -139,7 +138,6 @@ Item {
             anchors.top: tmpRect.top
             anchors.left: gotoNewPaymentButton.right
             anchors.leftMargin: NodoSystem.subMenuLeftMargin
-            anchors.topMargin: NodoSystem.nodoTopMargin
             height: NodoSystem.nodoItemHeight
             text: qsTr("View Payments")
             font.family: NodoSystem.fontInter.name
@@ -171,20 +169,8 @@ Item {
     }
 
     NodoInfoField {
-        id: transactionIDTransferredField
-        anchors.top: paymentSuccess.bottom
-        anchors.topMargin: NodoSystem.nodoTopMargin
-        anchors.left: moneroPayReceivePaymentResultScreen.left
-        height: NodoSystem.nodoItemHeight
-        width: parent.width - NodoSystem.subMenuLeftMargin
-        itemSize: labelSize + 20
-        itemText: qsTr("Transaction ID")
-        valueText: ""
-    }
-
-    NodoInfoField {
         id: receivedDepositAddressField
-        anchors.top: transactionIDTransferredField.bottom
+        anchors.top: paymentSuccess.bottom
         anchors.left: moneroPayReceivePaymentResultScreen.left
         anchors.topMargin: NodoSystem.nodoTopMargin
         height: NodoSystem.nodoItemHeight
@@ -193,6 +179,18 @@ Item {
         itemText: qsTr("Address")
         valueText: ""
         valueFontSize: 30
+    }
+
+        NodoInfoField {
+        id: transactionIDTransferredField
+        anchors.top: receivedDepositAddressField.bottom
+        anchors.topMargin: NodoSystem.nodoTopMargin
+        anchors.left: moneroPayReceivePaymentResultScreen.left
+        height: NodoSystem.nodoItemHeight
+        width: parent.width - NodoSystem.subMenuLeftMargin
+        itemSize: 260
+        itemText: qsTr("Transaction ID")
+        valueText: ""
     }
 
     NodoPopup {
