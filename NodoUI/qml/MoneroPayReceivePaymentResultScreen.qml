@@ -194,7 +194,7 @@ Item {
         anchors.left: moneroPayReceivePaymentResultScreen.left
         height: NodoSystem.nodoItemHeight
         width: parent.width - NodoSystem.subMenuLeftMargin
-        itemSize: 280
+        itemSize: 290
         itemText: qsTr("Transaction ID")
         valueText: ""
     }
