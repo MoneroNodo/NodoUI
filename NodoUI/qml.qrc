@@ -37,6 +37,7 @@
         <file>qml/NodoHomeScreen.qml</file>
         <file>qml/NodoAnalogClock.qml</file>
         <file>qml/NodoAnalogClassic.qml</file>
+        <file>qml/NodoPricetickerScreensaver.qml</file>
         <file>qml/NodoDisplayOff.qml</file>
         <file>qml/NodoTabButton.qml</file>
         <file>Images/Nodo_ClockFace_Red.png</file>
