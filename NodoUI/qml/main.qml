@@ -222,17 +222,21 @@ ApplicationWindow {
                 }
                 else if(1 === screenSaverType)
                 {
-                    mainAppStackView.push("NodoAnalogClassic.qml")
+                    mainAppStackView.push("NodoPricetickerScreensaver.qml")
                 }
                 else if(2 === screenSaverType)
                 {
-                    mainAppStackView.push("NodoAnalogClock.qml")
+                    mainAppStackView.push("NodoAnalogClassic.qml")
                 }
                 else if(3 === screenSaverType)
                 {
-                    mainAppStackView.push("NodoDigitalClock.qml")
+                    mainAppStackView.push("NodoAnalogClock.qml")
                 }
                 else if(4 === screenSaverType)
+                {
+                    mainAppStackView.push("NodoDigitalClock.qml")
+                }
+                else if(5 === screenSaverType)
                 {
                     mainAppStackView.push("NodoDisplayOff.qml")
                 }
