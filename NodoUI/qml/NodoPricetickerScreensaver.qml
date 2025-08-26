@@ -6,7 +6,7 @@ import NodoSystem 1.1
 import NodoCanvas 1.0
 
 Item {
-    id: pricetickerScreensaver
+    id: priceTickerScreensaver
     width: 1920
     height: 1080
 
@@ -16,32 +16,32 @@ Item {
         target: priceTickerScreensaver
         function findCurrencyIndex()
         {
-            var currentCurrencyCode = priceTicker.getCurrentCurrencyCode();
+            var currentCurrencyCode = priceTickerScreensaver.getCurrentCurrencyCode();
             for (var i = 0; i < nodoCurrencies.currencyNames.length; i++) {
                 if(currentCurrencyCode === nodoCurrencies.currencyCodes[i])
                 {
-                    priceTicker.setCurrentCurrencyIndex(i)
+                    priceTickerScreensaver.setCurrentCurrencyIndex(i)
                     return;
                 }
             }
         }
 		
         function onCurrencyIndexChanged() {
-            exchangeNameText.text =  nodoCurrencies.currencyCodes[priceTicker.getCurrentCurrencyIndex()]
-            exchangeSymbolText.text = nodoCurrencies.currencySymbols[priceTicker.getCurrentCurrencyIndex()]
+            exchangeNameText.text =  nodoCurrencies.currencyCodes[priceTickerScreensaver.getCurrentCurrencyIndex()]
+            exchangeSymbolText.text = nodoCurrencies.currencySymbols[priceTickerScreensaver.getCurrentCurrencyIndex()]
             exchangeRateText.text = "---.--"
 
-            var currencyRate = priceTicker.getCurrency()
-            if((true === priceTicker.isCurrencyReceived()) && (-1 !== currencyRate))
+            var currencyRate = priceTickerScreensaver.getCurrency()
+            if((true === priceTickerScreensaver.isCurrencyReceived()) && (-1 !== currencyRate))
             {
-                exchangeSymbolText.text = nodoCurrencies.currencySymbols[priceTicker.getCurrentCurrencyIndex()]
-                exchangeRateText.text = priceTicker.getCurrencyString()
+                exchangeSymbolText.text = nodoCurrencies.currencySymbols[priceTickerScreensaver.getCurrentCurrencyIndex()]
+                exchangeRateText.text = priceTickerScreensaver.getCurrencyString()
             }
         }
 
         function onCurrencyReceived() {
-            exchangeSymbolText.text = nodoCurrencies.currencySymbols[priceTicker.getCurrentCurrencyIndex()]
-            exchangeRateText.text = priceTicker.getCurrencyString()
+            exchangeSymbolText.text = nodoCurrencies.currencySymbols[priceTickerScreensaver.getCurrentCurrencyIndex()]
+            exchangeRateText.text = priceTickerScreensaver.getCurrencyString()
         }
     }
 
@@ -53,8 +53,8 @@ Item {
     Rectangle {
         id: currenciesRect
         color: "black"
-		anchors.top: pricetickerScreensaver.top
-		anchors.left: pricetickerScreensaver.left
+		anchors.top: priceTickerScreensaver.top
+		anchors.left: priceTickerScreensaver.left
 		anchors.topMargin: 50
 		font.family: NodoSystem.fontInter.name
 		color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
@@ -86,14 +86,14 @@ Item {
 			anchors.topMargin: NodoSystem.nodoTopMargin
 			verticalAlignment: Text.AlignVCenter
 			font.pixelSize: 120
-			text: nodoCurrencies.currencyCodes[priceTicker.getCurrentCurrencyIndex()]
+			text: nodoCurrencies.currencyCodes[priceTickerScreensaver.getCurrentCurrencyIndex()]
 		}
 	}
 	
     Rectangle {
         id: valuesRect
         color: "black"
-		anchors.top: pricetickerScreensaver.top
+		anchors.top: priceTickerScreensaver.top
 		anchors.left: currenciesRect.right
 		anchors.leftMargin: NodoSystem.cardLeftMargin
 		anchors.topMargin: 50
@@ -108,7 +108,7 @@ Item {
 			anchors.topMargin: NodoSystem.nodoTopMargin
 			verticalAlignment: Text.AlignVCenter
 			font.pixelSize: 120
-			text: nodoCurrencies.currencySymbols[priceTicker.getCurrentCurrencyIndex()]
+			text: nodoCurrencies.currencySymbols[pricetickerScreensaver.getCurrentCurrencyIndex()]
 		}
 		
 		Text {
@@ -124,8 +124,8 @@ Item {
 	
     Rectangle {
         id: rightMenu
-        anchors.top: pricetickerScreensaver.top
-		anchors.left: pricetickerScreensaver.right
+        anchors.top: priceTickerScreensaver.top
+		anchors.left: priceTickerScreensaver.right
 		color: "black"
 		
 		Text {
