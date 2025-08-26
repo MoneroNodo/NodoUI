@@ -6,7 +6,7 @@ import NodoSystem 1.1
 import NodoCanvas 1.0
 
 Item {
-    id: priceTickerScreensaverScreensaver
+    id: priceTickerScreensaver
     width: 1920
     height: 1080
 
