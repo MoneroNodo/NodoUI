@@ -204,12 +204,12 @@ Item {
             var ss = nodoControl.getScreenSaverType();
             if (enabled)
             {
-                screenSaverComboBox.model = [qsTr("News"), qsTr("Analog Clock Classic"), qsTr("Analog Clock Modern"), qsTr("Digital Clock"), qsTr("Display Off"), qsTr("None")];
+                screenSaverComboBox.model = [qsTr("News"), qsTr("Price Ticker"), qsTr("Analog Clock Classic"), qsTr("Analog Clock Modern"), qsTr("Digital Clock"), qsTr("Display Off"), qsTr("None")];
                 screenSaverComboBox.currentIndex = ss + 1;
             }
             else
             {
-                screenSaverComboBox.model = [qsTr("Analog Clock Classic"), qsTr("Analog Clock Modern"), qsTr("Digital Clock"), qsTr("Display Off"), qsTr("None")];
+                screenSaverComboBox.model = [qsTr("Price Ticker"), qsTr("Analog Clock Classic"), qsTr("Analog Clock Modern"), qsTr("Digital Clock"), qsTr("Display Off"), qsTr("None")];
                 screenSaverComboBox.currentIndex = ss - 1;
             }
         }
