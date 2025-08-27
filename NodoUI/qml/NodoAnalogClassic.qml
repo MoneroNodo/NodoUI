@@ -15,10 +15,9 @@ Item {
     property real seconds: 30
     property real miliseconds: 0
 
-
-    property real hourAngle_classic
-    property real minuteAngle_classic
-    property real secondAngle_classic
+    property real hourAngle
+    property real minuteAngle
+    property real secondAngle
 
     property real hour_center_x_position: 23 // image width/2
     property real hour_center_y_position: 310 // rotational center of the handle
@@ -85,7 +84,7 @@ Item {
                 id: hourRotation
                 origin.x: hour_center_x_position
                 origin.y: hour_center_y_position
-                angle: analogClockClassic.hourAngle_classic
+                angle: analogClockClassic.hourAngle
             }
         }
 
@@ -101,7 +100,7 @@ Item {
                 id: minuteRotation
                 origin.x: minute_center_x_position
                 origin.y: minute_center_y_position
-                angle: analogClockClassic.minuteAngle_classic
+                angle: analogClockClassic.minuteAngle
             }
         }
 
@@ -117,7 +116,7 @@ Item {
                 id: secondRotation
                 origin.x: second_center_x_position
                 origin.y: second_center_y_position
-                angle: analogClockClassic.secondAngle_classic
+                angle: analogClockClassic.secondAngle
             }
         }
     }
