@@ -13,35 +13,35 @@ Item {
     signal deleteMe(int screenID)
 
     Connections {
-        target: priceTickerScreensaver
+        target: priceTicker
         function findCurrencyIndex()
         {
-            var currentCurrencyCode = priceTickerScreensaver.getCurrentCurrencyCode();
+            var currentCurrencyCode = priceTicker.getCurrentCurrencyCode();
             for (var i = 0; i < nodoCurrencies.currencyNames.length; i++) {
                 if(currentCurrencyCode === nodoCurrencies.currencyCodes[i])
                 {
-                    priceTickerScreensaver.setCurrentCurrencyIndex(i)
+                    priceTicker.setCurrentCurrencyIndex(i)
                     return;
                 }
             }
         }
 		
         function onCurrencyIndexChanged() {
-            exchangeNameText.text =  nodoCurrencies.currencyCodes[priceTickerScreensaver.getCurrentCurrencyIndex()]
-            exchangeSymbolText.text = nodoCurrencies.currencySymbols[priceTickerScreensaver.getCurrentCurrencyIndex()]
+            exchangeNameText.text =  nodoCurrencies.currencyCodes[priceTicker.getCurrentCurrencyIndex()]
+            exchangeSymbolText.text = nodoCurrencies.currencySymbols[priceTicker.getCurrentCurrencyIndex()]
             exchangeRateText.text = "---.--"
 
             var currencyRate = priceTickerScreensaver.getCurrency()
-            if((true === priceTickerScreensaver.isCurrencyReceived()) && (-1 !== currencyRate))
+            if((true === priceTicker.isCurrencyReceived()) && (-1 !== currencyRate))
             {
-                exchangeSymbolText.text = nodoCurrencies.currencySymbols[priceTickerScreensaver.getCurrentCurrencyIndex()]
-                exchangeRateText.text = priceTickerScreensaver.getCurrencyString()
+                exchangeSymbolText.text = nodoCurrencies.currencySymbols[priceTicker.getCurrentCurrencyIndex()]
+                exchangeRateText.text = priceTicker.getCurrencyString()
             }
         }
 
         function onCurrencyReceived() {
-            exchangeSymbolText.text = nodoCurrencies.currencySymbols[priceTickerScreensaver.getCurrentCurrencyIndex()]
-            exchangeRateText.text = priceTickerScreensaver.getCurrencyString()
+            exchangeSymbolText.text = nodoCurrencies.currencySymbols[priceTicker.getCurrentCurrencyIndex()]
+            exchangeRateText.text = priceTicker.getCurrencyString()
         }
     }
 
@@ -87,7 +87,7 @@ Item {
 			verticalAlignment: Text.AlignVCenter
 			font.pixelSize: 120
 			color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
-			text: nodoCurrencies.currencyCodes[priceTickerScreensaver.getCurrentCurrencyIndex()]
+			text: nodoCurrencies.currencyCodes[priceTicker.getCurrentCurrencyIndex()]
 		}
 	}
 	
@@ -109,7 +109,7 @@ Item {
 			verticalAlignment: Text.AlignVCenter
 			font.pixelSize: 120
 			color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
-			text: nodoCurrencies.currencySymbols[pricetickerScreensaver.getCurrentCurrencyIndex()]
+			text: nodoCurrencies.currencySymbols[priceTicker.getCurrentCurrencyIndex()]
 		}
 		
 		Text {
