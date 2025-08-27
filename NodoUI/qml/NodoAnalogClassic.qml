@@ -16,12 +16,9 @@ Item {
     property real miliseconds: 0
 
 
-    property real hourAngle
-    property real minuteAngle
-    property real secondAngle
-
-    property string dateString
-    property string dayString
+    property real hourAngle_classic
+    property real minuteAngle_classic
+    property real secondAngle_classic
 
     property real hour_center_x_position: 23 // image width/2
     property real hour_center_y_position: 310 // rotational center of the handle
@@ -42,12 +39,9 @@ Item {
         minutes =  date.getMinutes() + (seconds/60)
         hours = (date.getHours()) + (minutes/60)
 
-        hourAngle = (hours * 30)
-        minuteAngle = (minutes*6)
-        secondAngle = seconds*6
-
-        dayString = Qt.formatDateTime(nodoControl.getChangedDateTime(), "ddd ")
-        dateString = Qt.formatDateTime(nodoControl.getChangedDateTime(), "d")
+        hourAngle_classic = (hours * 30)
+        minuteAngle_classic = (minutes*6)
+        secondAngle_classic = seconds*6
     }
 
     Timer {
@@ -56,7 +50,7 @@ Item {
     }
 
     Rectangle {
-        id: background;
+        id: background_classic;
         anchors.centerIn: parent
         width: analogClockClassic.width
         height: analogClockClassic.height
@@ -67,7 +61,7 @@ Item {
         }
 
         Image {
-            id: clock_face_image
+            id: clock_face_image_classic
             x: 0
             y: 0
             width: parent.width
@@ -80,7 +74,7 @@ Item {
 
 
         Image {
-            id: hour_image
+            id: hour_image_classic
             x: (background.width/2) - (hour_center_x_position)
             y:  (background.height/2) - (hour_center_y_position);
             z: 1
@@ -91,12 +85,12 @@ Item {
                 id: hourRotation
                 origin.x: hour_center_x_position
                 origin.y: hour_center_y_position
-                angle: analogClockClassic.hourAngle
+                angle: analogClockClassic.hourAngle_classic
             }
         }
 
         Image {
-            id: minute_image
+            id: minute_image_classic
             x: (background.width/2) - (minute_center_x_position)
             y:  (background.height/2) - (minute_center_y_position);
             z: 5
@@ -107,12 +101,12 @@ Item {
                 id: minuteRotation
                 origin.x: minute_center_x_position
                 origin.y: minute_center_y_position
-                angle: analogClockClassic.minuteAngle
+                angle: analogClockClassic.minuteAngle_classic
             }
         }
 
         Image {
-            id: second_image
+            id: second_image_classic
             x: (background.width/2) - (second_center_x_position)
             y:  (background.height/2) - (second_center_y_position);
             z: 10
@@ -123,7 +117,7 @@ Item {
                 id: secondRotation
                 origin.x: second_center_x_position
                 origin.y: second_center_y_position
-                angle: analogClockClassic.secondAngle
+                angle: analogClockClassic.secondAngle_classic
             }
         }
     }
