@@ -57,7 +57,6 @@ Item {
 		anchors.left: priceTickerScreensaver.left
 		anchors.topMargin: 50
 		font.family: NodoSystem.fontInter.name
-		color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
 		width: 400
 		
 		Text {
@@ -66,6 +65,7 @@ Item {
 			anchors.left: currenciesRect.left
 			verticalAlignment: Text.AlignVCenter
 			font.pixelSize: 120
+			color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
 			text: "XMR"
 		}
 		
@@ -86,6 +86,7 @@ Item {
 			anchors.topMargin: NodoSystem.nodoTopMargin
 			verticalAlignment: Text.AlignVCenter
 			font.pixelSize: 120
+			color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
 			text: nodoCurrencies.currencyCodes[priceTickerScreensaver.getCurrentCurrencyIndex()]
 		}
 	}
@@ -98,7 +99,6 @@ Item {
 		anchors.leftMargin: NodoSystem.cardLeftMargin
 		anchors.topMargin: 50
 		font.family: NodoSystem.fontInter.name
-		color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
 		width: parent.width - currenciesRect.width
 		
 		Text {
@@ -108,6 +108,7 @@ Item {
 			anchors.topMargin: NodoSystem.nodoTopMargin
 			verticalAlignment: Text.AlignVCenter
 			font.pixelSize: 120
+			color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
 			text: nodoCurrencies.currencySymbols[pricetickerScreensaver.getCurrentCurrencyIndex()]
 		}
 		
@@ -118,6 +119,7 @@ Item {
 			anchors.leftMargin: NodoSystem.cardLeftMargin
 			verticalAlignment: Text.AlignVCenter
 			font.pixelSize: 120
+			color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
 			text: "---.--"
 		}
     }
