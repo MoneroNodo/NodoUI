@@ -12,36 +12,41 @@ Item {
 
     signal deleteMe(int screenID)
 
+	property int currencyFontSize: 120
+	property int rateFontSize: 300
+	property int currencyTopMargin: 300
+	property int rateTopMargin: 350
+
     Connections {
-        target: priceTickerScreensaver
+        target: priceTicker
         function findCurrencyIndex()
         {
-            var currentCurrencyCode = priceTickerScreensaver.getCurrentCurrencyCode();
+            var currentCurrencyCode = priceTicker.getCurrentCurrencyCode();
             for (var i = 0; i < nodoCurrencies.currencyNames.length; i++) {
                 if(currentCurrencyCode === nodoCurrencies.currencyCodes[i])
                 {
-                    priceTickerScreensaver.setCurrentCurrencyIndex(i)
+                    priceTicker.setCurrentCurrencyIndex(i)
                     return;
                 }
             }
         }
 		
         function onCurrencyIndexChanged() {
-            exchangeNameText.text =  nodoCurrencies.currencyCodes[priceTickerScreensaver.getCurrentCurrencyIndex()]
-            exchangeSymbolText.text = nodoCurrencies.currencySymbols[priceTickerScreensaver.getCurrentCurrencyIndex()]
+            exchangeNameText.text =  nodoCurrencies.currencyCodes[priceTicker.getCurrentCurrencyIndex()]
+            exchangeSymbolText.text = nodoCurrencies.currencySymbols[priceTicker.getCurrentCurrencyIndex()]
             exchangeRateText.text = "---.--"
 
-            var currencyRate = priceTickerScreensaver.getCurrency()
-            if((true === priceTickerScreensaver.isCurrencyReceived()) && (-1 !== currencyRate))
+            var currencyRate = priceTicker.getCurrency()
+            if((true === priceTicker.isCurrencyReceived()) && (-1 !== currencyRate))
             {
-                exchangeSymbolText.text = nodoCurrencies.currencySymbols[priceTickerScreensaver.getCurrentCurrencyIndex()]
-                exchangeRateText.text = priceTickerScreensaver.getCurrencyString()
+                exchangeSymbolText.text = nodoCurrencies.currencySymbols[priceTicker.getCurrentCurrencyIndex()]
+                exchangeRateText.text = priceTicker.getCurrencyString()
             }
         }
 
         function onCurrencyReceived() {
-            exchangeSymbolText.text = nodoCurrencies.currencySymbols[priceTickerScreensaver.getCurrentCurrencyIndex()]
-            exchangeRateText.text = priceTickerScreensaver.getCurrencyString()
+            exchangeSymbolText.text = nodoCurrencies.currencySymbols[priceTicker.getCurrentCurrencyIndex()]
+            exchangeRateText.text = priceTicker.getCurrencyString()
         }
     }
 
@@ -55,8 +60,7 @@ Item {
         color: "black"
 		anchors.top: priceTickerScreensaver.top
 		anchors.left: priceTickerScreensaver.left
-		anchors.topMargin: 50
-		font.family: NodoSystem.fontInter.name
+		anchors.topMargin: currencyTopMargin
 		width: 400
 		
 		Text {
@@ -64,7 +68,8 @@ Item {
 			anchors.top: currenciesRect.top
 			anchors.left: currenciesRect.left
 			verticalAlignment: Text.AlignVCenter
-			font.pixelSize: 120
+			font.family: NodoSystem.fontInter.name
+			font.pixelSize: currencyFontSize
 			color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
 			text: "XMR"
 		}
@@ -85,9 +90,10 @@ Item {
 			anchors.left: currenciesRect.left
 			anchors.topMargin: NodoSystem.nodoTopMargin
 			verticalAlignment: Text.AlignVCenter
-			font.pixelSize: 120
+			font.family: NodoSystem.fontInter.name
+			font.pixelSize: currencyFontSize
 			color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
-			text: nodoCurrencies.currencyCodes[priceTickerScreensaver.getCurrentCurrencyIndex()]
+			text: nodoCurrencies.currencyCodes[priceTicker.getCurrentCurrencyIndex()]
 		}
 	}
 	
@@ -97,19 +103,18 @@ Item {
 		anchors.top: priceTickerScreensaver.top
 		anchors.left: currenciesRect.right
 		anchors.leftMargin: NodoSystem.cardLeftMargin
-		anchors.topMargin: 50
-		font.family: NodoSystem.fontInter.name
+		anchors.topMargin: rateTopMargin
 		width: parent.width - currenciesRect.width
 		
 		Text {
 			id: exchangeSymbolText
 			anchors.top: valuesRect.top
 			anchors.left: currenciesRect.left
-			anchors.topMargin: NodoSystem.nodoTopMargin
 			verticalAlignment: Text.AlignVCenter
-			font.pixelSize: 120
+			font.family: NodoSystem.fontInter.name
+			font.pixelSize: rateFontSize
 			color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
-			text: nodoCurrencies.currencySymbols[pricetickerScreensaver.getCurrentCurrencyIndex()]
+			text: nodoCurrencies.currencySymbols[priceTicker.getCurrentCurrencyIndex()]
 		}
 		
 		Text {
@@ -118,7 +123,8 @@ Item {
 			anchors.left: exchangeSymbolText.right
 			anchors.leftMargin: NodoSystem.cardLeftMargin
 			verticalAlignment: Text.AlignVCenter
-			font.pixelSize: 120
+			font.family: NodoSystem.fontInter.name
+			font.pixelSize: rateFontSize
 			color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
 			text: "---.--"
 		}
