@@ -74,7 +74,7 @@ void Daemon::startRecovery(int recoverFS, int rsyncBlockchain)
 {
     qDebug() << QString("received recovery request").append("recoverFS: ").append(QString::number(recoverFS).append(" rsyncBlockchain: ").append(QString::number(rsyncBlockchain)));
 
-    QString program = "/home/nodo/recovery.sh";
+    QString program = "/root/nodo/recovery.sh";
     QStringList arguments;
 
     if(1 == recoverFS)
@@ -121,7 +121,7 @@ void Daemon::update(void)
     QString program = "/usr/bin/bash";
 
     QStringList arguments;
-    arguments << "/home/nodo/update-all.sh" << "0";
+    arguments << "/root/nodo/update-all.sh" << "0";
 
     QProcess process;
 
@@ -577,7 +577,7 @@ void Daemon::setupDomains(void)
         program.clear();
         arguments.clear();
         program = "/usr/bin/bash";
-        arguments << "/home/nodo/setup-domains.sh";
+        arguments << "/root/nodo/setup-domains.sh";
         process.start(program, arguments);
         process.waitForFinished(-1);
 
