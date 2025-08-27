@@ -31,7 +31,7 @@ Item {
             exchangeSymbolText.text = nodoCurrencies.currencySymbols[priceTicker.getCurrentCurrencyIndex()]
             exchangeRateText.text = "---.--"
 
-            var currencyRate = priceTickerScreensaver.getCurrency()
+            var currencyRate = priceTicker.getCurrency()
             if((true === priceTicker.isCurrencyReceived()) && (-1 !== currencyRate))
             {
                 exchangeSymbolText.text = nodoCurrencies.currencySymbols[priceTicker.getCurrentCurrencyIndex()]
