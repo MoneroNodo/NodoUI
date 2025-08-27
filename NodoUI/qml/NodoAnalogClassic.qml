@@ -49,7 +49,7 @@ Item {
     }
 
     Rectangle {
-        id: background_classic;
+        id: background
         anchors.centerIn: parent
         width: analogClockClassic.width
         height: analogClockClassic.height
