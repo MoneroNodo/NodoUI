@@ -38,9 +38,9 @@ Item {
         minutes =  date.getMinutes() + (seconds/60)
         hours = (date.getHours()) + (minutes/60)
 
-        hourAngle_classic = (hours * 30)
-        minuteAngle_classic = (minutes*6)
-        secondAngle_classic = seconds*6
+        hourAngle = (hours * 30)
+        minuteAngle = (minutes*6)
+        secondAngle = seconds*6
     }
 
     Timer {
@@ -73,7 +73,7 @@ Item {
 
 
         Image {
-            id: hour_image_classic
+            id: hour_image
             x: (background.width/2) - (hour_center_x_position)
             y:  (background.height/2) - (hour_center_y_position);
             z: 1
@@ -89,7 +89,7 @@ Item {
         }
 
         Image {
-            id: minute_image_classic
+            id: minute_image
             x: (background.width/2) - (minute_center_x_position)
             y:  (background.height/2) - (minute_center_y_position);
             z: 5
@@ -105,7 +105,7 @@ Item {
         }
 
         Image {
-            id: second_image_classic
+            id: second_image
             x: (background.width/2) - (second_center_x_position)
             y:  (background.height/2) - (second_center_y_position);
             z: 10
