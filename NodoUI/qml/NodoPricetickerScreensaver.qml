@@ -12,6 +12,11 @@ Item {
 
     signal deleteMe(int screenID)
 
+	property int currencyFontSize: 120
+	property int rateFontSize: 300
+	property int currencyTopMargin: 300
+	property int rateTopMargin: 350
+
     Connections {
         target: priceTicker
         function findCurrencyIndex()
@@ -55,7 +60,7 @@ Item {
         color: "black"
 		anchors.top: priceTickerScreensaver.top
 		anchors.left: priceTickerScreensaver.left
-		anchors.topMargin: 50
+		anchors.topMargin: currencyTopMargin
 		width: 400
 		
 		Text {
@@ -64,7 +69,7 @@ Item {
 			anchors.left: currenciesRect.left
 			verticalAlignment: Text.AlignVCenter
 			font.family: NodoSystem.fontInter.name
-			font.pixelSize: 120
+			font.pixelSize: currencyFontSize
 			color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
 			text: "XMR"
 		}
@@ -86,7 +91,7 @@ Item {
 			anchors.topMargin: NodoSystem.nodoTopMargin
 			verticalAlignment: Text.AlignVCenter
 			font.family: NodoSystem.fontInter.name
-			font.pixelSize: 120
+			font.pixelSize: currencyFontSize
 			color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
 			text: nodoCurrencies.currencyCodes[priceTicker.getCurrentCurrencyIndex()]
 		}
@@ -98,17 +103,16 @@ Item {
 		anchors.top: priceTickerScreensaver.top
 		anchors.left: currenciesRect.right
 		anchors.leftMargin: NodoSystem.cardLeftMargin
-		anchors.topMargin: 50
+		anchors.topMargin: rateTopMargin
 		width: parent.width - currenciesRect.width
 		
 		Text {
 			id: exchangeSymbolText
 			anchors.top: valuesRect.top
 			anchors.left: currenciesRect.left
-			anchors.topMargin: NodoSystem.nodoTopMargin
 			verticalAlignment: Text.AlignVCenter
 			font.family: NodoSystem.fontInter.name
-			font.pixelSize: 120
+			font.pixelSize: rateFontSize
 			color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
 			text: nodoCurrencies.currencySymbols[priceTicker.getCurrentCurrencyIndex()]
 		}
@@ -120,7 +124,7 @@ Item {
 			anchors.leftMargin: NodoSystem.cardLeftMargin
 			verticalAlignment: Text.AlignVCenter
 			font.family: NodoSystem.fontInter.name
-			font.pixelSize: 120
+			font.pixelSize: rateFontSize
 			color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
 			text: "---.--"
 		}
