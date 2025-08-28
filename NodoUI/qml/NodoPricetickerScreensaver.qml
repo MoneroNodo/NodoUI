@@ -49,6 +49,7 @@ Item {
             exchangeRateText.text = priceTicker.getCurrencyString()
         }
 
+    }
         Timer {
             id: dateTimer
             interval: 1000
@@ -68,7 +69,6 @@ Item {
                     timeText.text = Qt.formatDateTime(nodoControl.getChangedDateTime(), "h:mm AP")
             }
         }
-    }
 
 	Component.onCompleted: {
 		findCurrencyIndex()
