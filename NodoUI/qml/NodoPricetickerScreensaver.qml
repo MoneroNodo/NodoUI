@@ -13,9 +13,9 @@ Item {
     signal deleteMe(int screenID)
 
 	property int currencyFontSize: 120
-	property int rateFontSize: 300
-	property int currencyTopMargin: 300
-	property int rateTopMargin: 350
+	property int rateFontSize: 305
+	property int currencyTopMargin: 350
+	property int rateTopMargin: 330
 
     Connections {
         target: priceTicker
@@ -48,6 +48,26 @@ Item {
             exchangeSymbolText.text = nodoCurrencies.currencySymbols[priceTicker.getCurrentCurrencyIndex()]
             exchangeRateText.text = priceTicker.getCurrencyString()
         }
+
+        Timer {
+            id: dateTimer
+            interval: 1000
+            running: false
+            repeat: true
+            triggeredOnStart: true
+            onTriggered: {
+                var dateTime = nodoControl.getChangedDateTime()
+                var m_daystr = Qt.formatDateTime(dateTime, "ddd")
+                var m_day = Qt.formatDateTime(dateTime, "d")
+                var m_month = Qt.formatDateTime(dateTime, "MMM")
+
+                dateText.text = m_daystr.toUpperCase() + " " +m_day + " "  + m_month.toUpperCase()
+                if (nodoControl.is24hEnabled())
+                    timeText.text = Qt.formatDateTime(nodoControl.getChangedDateTime(), "hh:mm")
+                else
+                    timeText.text = Qt.formatDateTime(nodoControl.getChangedDateTime(), "h:mm AP")
+            }
+        }
     }
 
 	Component.onCompleted: {
@@ -61,7 +81,7 @@ Item {
 		anchors.top: priceTickerScreensaver.top
 		anchors.left: priceTickerScreensaver.left
 		anchors.topMargin: currencyTopMargin
-		width: 400
+		width: 280
 		
 		Text {
 			id: xmrText
@@ -70,29 +90,31 @@ Item {
 			verticalAlignment: Text.AlignVCenter
 			font.family: NodoSystem.fontInter.name
 			font.pixelSize: currencyFontSize
-			color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
+			color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
 			text: "XMR"
 		}
 		
-		Label {
+		NodoCanvas {
 			id: currencySeparator
 			anchors.top: xmrText.bottom
 			anchors.left: currenciesRect.left
-			anchors.topMargin: NodoSystem.nodoTopMargin
-			anchors.leftMargin: NodoSystem.cardLeftMargin
+			anchors.topMargin: NodoSystem.cardLeftMargin
+			anchors.leftMargin: 2
 			width: currenciesRect.width - 2*(NodoSystem.cardLeftMargin)
-			height: NodoSystem.nodoItemHeight / 2
+			height: 24
+			color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
 		}
 		
 		Text {
 			id: exchangeNameText
 			anchors.top: currencySeparator.bottom
 			anchors.left: currenciesRect.left
-			anchors.topMargin: NodoSystem.nodoTopMargin
+			anchors.leftMargin: NodoSystem.cardLeftMargin
+			anchors.topMargin: NodoSystem.cardLeftMargin
 			verticalAlignment: Text.AlignVCenter
 			font.family: NodoSystem.fontInter.name
 			font.pixelSize: currencyFontSize
-			color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
+			color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
 			text: nodoCurrencies.currencyCodes[priceTicker.getCurrentCurrencyIndex()]
 		}
 	}
@@ -133,7 +155,7 @@ Item {
     Rectangle {
         id: rightMenu
         anchors.top: priceTickerScreensaver.top
-		anchors.left: priceTickerScreensaver.right
+		anchors.right: priceTickerScreensaver.right
 		color: "black"
 		
 		Text {
