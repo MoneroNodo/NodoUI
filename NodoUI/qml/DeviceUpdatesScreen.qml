@@ -38,7 +38,7 @@ Item {
     }
 
     function updateSystemStatus() {
-        deviceUpdatesMoneroDaemonDescText.valueText = nodoControl.getSoftwareVersion("monero")//nodoSystemStatus.getStringValueFromKey("version")
+        deviceUpdatesMoneroDaemonDescText.text = nodoControl.getSoftwareVersion("monero")//nodoSystemStatus.getStringValueFromKey("version")
     }
 
     Rectangle {
