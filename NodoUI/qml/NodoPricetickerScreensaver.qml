@@ -15,7 +15,7 @@ Item {
 	property int currencyFontSize: 120
 	property int rateFontSize: 305
 	property int currencyTopMargin: 350
-	property int rateTopMargin: 330
+	property int rateTopMargin: currencyTopMargin - 20
 
     Connections {
         target: priceTicker
@@ -48,27 +48,27 @@ Item {
             exchangeSymbolText.text = nodoCurrencies.currencySymbols[priceTicker.getCurrentCurrencyIndex()]
             exchangeRateText.text = priceTicker.getCurrencyString()
         }
-
     }
-        Timer {
-            id: dateTimer
-            interval: 1000
-            running: false
-            repeat: true
-            triggeredOnStart: true
-            onTriggered: {
-                var dateTime = nodoControl.getChangedDateTime()
-                var m_daystr = Qt.formatDateTime(dateTime, "ddd")
-                var m_day = Qt.formatDateTime(dateTime, "d")
-                var m_month = Qt.formatDateTime(dateTime, "MMM")
 
-                dateText.text = m_daystr.toUpperCase() + " " +m_day + " "  + m_month.toUpperCase()
-                if (nodoControl.is24hEnabled())
-                    timeText.text = Qt.formatDateTime(nodoControl.getChangedDateTime(), "hh:mm")
-                else
-                    timeText.text = Qt.formatDateTime(nodoControl.getChangedDateTime(), "h:mm AP")
-            }
+    Timer {
+        id: dateTimer
+        interval: 1000
+        running: false
+        repeat: true
+        triggeredOnStart: true
+        onTriggered: {
+            var dateTime = nodoControl.getChangedDateTime()
+            var m_daystr = Qt.formatDateTime(dateTime, "ddd")
+            var m_day = Qt.formatDateTime(dateTime, "d")
+            var m_month = Qt.formatDateTime(dateTime, "MMM")
+
+            dateText.text = m_daystr.toUpperCase() + " " +m_day + " "  + m_month.toUpperCase()
+            if (nodoControl.is24hEnabled())
+                timeText.text = Qt.formatDateTime(nodoControl.getChangedDateTime(), "hh:mm")
+            else
+                timeText.text = Qt.formatDateTime(nodoControl.getChangedDateTime(), "h:mm AP")
         }
+    }
 
 	Component.onCompleted: {
 		findCurrencyIndex()
@@ -87,6 +87,7 @@ Item {
 			id: xmrText
 			anchors.top: currenciesRect.top
 			anchors.left: currenciesRect.left
+			anchors.leftMargin: 12
 			verticalAlignment: Text.AlignVCenter
 			font.family: NodoSystem.fontInter.name
 			font.pixelSize: currencyFontSize
@@ -100,7 +101,7 @@ Item {
 			anchors.left: currenciesRect.left
 			anchors.topMargin: NodoSystem.cardLeftMargin
 			anchors.leftMargin: 2
-			width: currenciesRect.width - 2*(NodoSystem.cardLeftMargin)
+			width: 278//currenciesRect.width - 2*(NodoSystem.cardLeftMargin)
 			height: 24
 			color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
 		}
@@ -108,10 +109,8 @@ Item {
 		Text {
 			id: exchangeNameText
 			anchors.top: currencySeparator.bottom
-			anchors.left: currenciesRect.left
-			anchors.leftMargin: NodoSystem.cardLeftMargin
 			anchors.topMargin: NodoSystem.cardLeftMargin
-			verticalAlignment: Text.AlignVCenter
+			anchors.horizontalCenter: currenciesRect.horizontalCenter
 			font.family: NodoSystem.fontInter.name
 			font.pixelSize: currencyFontSize
 			color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
