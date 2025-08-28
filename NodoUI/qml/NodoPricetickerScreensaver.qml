@@ -87,6 +87,7 @@ Item {
 			id: xmrText
 			anchors.top: currenciesRect.top
 			anchors.left: currenciesRect.left
+			anchors.leftMargin: 12
 			verticalAlignment: Text.AlignVCenter
 			font.family: NodoSystem.fontInter.name
 			font.pixelSize: currencyFontSize
@@ -100,7 +101,7 @@ Item {
 			anchors.left: currenciesRect.left
 			anchors.topMargin: NodoSystem.cardLeftMargin
 			anchors.leftMargin: 2
-			width: currenciesRect.width - 2*(NodoSystem.cardLeftMargin)
+			width: 278//currenciesRect.width - 2*(NodoSystem.cardLeftMargin)
 			height: 24
 			color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
 		}
