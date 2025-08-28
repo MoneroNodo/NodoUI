@@ -110,7 +110,7 @@ Item {
     ]
 
     property var currencySymbols:[
-        "د.إ",
+        "درهم",
         "$",
         "$",
         "BCH",
