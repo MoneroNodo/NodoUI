@@ -130,7 +130,7 @@ Item {
             anchors.horizontalCenter: digitalClockBackground.horizontalCenter
             text: Qt.formatDateTime(nodoControl.getChangedDateTime(), "dddd, d MMMM")
             font.pixelSize: 100
-            color: nodoControl.appTheme ? NodoSystem.descriptionFontTextColorNightModeOn : NodoSystem.descriptionFontTextColorNightModeOff
+            color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
             font.family: NodoSystem.fontInter.name
         }
     }
