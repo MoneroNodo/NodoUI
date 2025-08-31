@@ -213,14 +213,29 @@ Item {
                 id: timeText
                 anchors.top: rightMenu.top
                 anchors.bottom: rightMenu.bottom
-                anchors.right: rightMenu.right
-                anchors.rightMargin: 2
+                anchors.right: syncDot.right
+                anchors.rightMargin: 45
                 color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
                 topPadding: NodoSystem.topMenuTextTopPadding
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
                 font.family: NodoSystem.fontInter.name
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
+            }
+
+            Text {
+                id: syncDot
+                anchors.top: rightMenu.top
+                anchors.bottom: rightMeny.bottom
+                anchors.right: rightMenu.right
+                anchors.rightMargin: 2
+                topPadding: NodoSystem.topMenuTextTopPadding
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+                font.family: NodoSystem.fontInter.name
+                font.pixelSize: NodoSystem.descriptionTextFontSize
+                text: NodoSystem.syncDot     
+                color: NodoSystem.green      
             }
         }
 

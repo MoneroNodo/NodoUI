@@ -31,6 +31,7 @@ Item
     property color red: "#F50000"    //R245
     property color amber: "#FF9F0A" //255,159,10
     property color green: "#48B400" //R72,G180,B0
+    property string syncDot: "●"
 
     property color cardBackgroundColor: "#272727" //RGB 39
     property int cardLeftMargin: 10
