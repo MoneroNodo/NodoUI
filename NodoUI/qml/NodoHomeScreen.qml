@@ -226,7 +226,7 @@ Item {
             Text {
                 id: syncDot
                 anchors.top: rightMenu.top
-                anchors.bottom: rightMeny.bottom
+                anchors.bottom: rightMenu.bottom
                 anchors.right: rightMenu.right
                 anchors.rightMargin: 2
                 topPadding: NodoSystem.topMenuTextTopPadding
@@ -235,7 +235,9 @@ Item {
                 font.family: NodoSystem.fontInter.name
                 font.pixelSize: NodoSystem.descriptionTextFontSize
                 text: NodoSystem.syncDot     
-                color: NodoSystem.green      
+                color: (syncPercentage === 100) ? NodoSystem.green :
+                   (syncPercentage >= 0) ? NodoSystem.amber : 
+                   NodoSystem.red      
             }
         }
 
