@@ -213,8 +213,8 @@ Item {
                 id: timeText
                 anchors.top: rightMenu.top
                 anchors.bottom: rightMenu.bottom
-                anchors.right: syncDot.right
-                anchors.rightMargin: 45
+                anchors.right: rightMenu.right
+                anchors.rightMargin: 2 //45
                 color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
                 topPadding: NodoSystem.topMenuTextTopPadding
                 horizontalAlignment: Text.AlignHCenter
@@ -223,7 +223,7 @@ Item {
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
             }
 
-            Text {
+/*            Text {
                 id: syncDot
                 anchors.top: rightMenu.top
                 anchors.bottom: rightMenu.bottom
@@ -239,7 +239,7 @@ Item {
                    (syncPercentage >= 0) ? NodoSystem.amber : 
                    NodoSystem.red      
             }
-        }
+        }*/
 
         Connections {
             target: syncInfo
