@@ -214,7 +214,7 @@ Item {
                 anchors.top: rightMenu.top
                 anchors.bottom: rightMenu.bottom
                 anchors.right: rightMenu.right
-                anchors.rightMargin: 2 //45
+                anchors.rightMargin: 2//45
                 color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
                 topPadding: NodoSystem.topMenuTextTopPadding
                 horizontalAlignment: Text.AlignHCenter
