@@ -238,8 +238,8 @@ Item {
                 color: (syncPercentage === 100) ? NodoSystem.green :
                    (syncPercentage >= 0) ? NodoSystem.amber : 
                    NodoSystem.red      
-            }
-        }*/
+            }*/
+        }
 
         Connections {
             target: syncInfo
