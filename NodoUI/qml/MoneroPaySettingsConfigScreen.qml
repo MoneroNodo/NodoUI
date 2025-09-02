@@ -71,10 +71,39 @@ Item {
         }
     }
 
+/*    Rectangle {
+        id: moneroPaySwitchRect
+        anchors.left: moneroPaySettingsConfigScreen.left
+        anchors.top: moneroPaySettingsConfigScreen.top
+        height: NodoSystem.nodoItemHeight
+        color: "black"
+        width: moneroPaySwitchText.width + moneroPaySwitch.width
+
+        NodoLabel {
+            id: moneroPaySwitchText
+            height: moneroPaySwitchRect.height
+            anchors.left: moneroPaySwitchRect.left
+            anchors.top: moneroPaySwitchRect.top
+            width: labelSize
+            text: qsTr("MoneroPay")
+        }
+
+        NodoSwitch {
+            id: moneroPaySwitch
+            anchors.left: moneroPaySwitchText.right
+            anchors.leftMargin: NodoSystem.padding
+            height: moneroPaySwitchRect.height
+            width: 2*moneroPaySwitchRect.height
+            display: AbstractButton.IconOnly
+            //onCheckedChanged: 
+        }
+    }*/
+
     Rectangle {
         id: moneroPaySettingsAddressRectangle
         anchors.left: moneroPaySettingsConfigScreen.left
-        anchors.top: moneroPaySettingsConfigScreen.top
+        anchors.top: moneroPaySettingsConfigScreen.top//moneroPaySwitchRect.bottom
+        //anchors.topMargin: NodoSystem.nodoTopMargin
         height: moneroPaySettingsAddressInput.y + moneroPaySettingsAddressInput.height
 
         Text {
