@@ -125,7 +125,7 @@ Item {
 		anchors.left: currenciesRect.right
 		anchors.leftMargin: NodoSystem.cardLeftMargin
 		anchors.topMargin: rateTopMargin
-		width: parent.width - currenciesRect.width
+		width: width - currenciesRect.width
 		
 		Text {
 			id: exchangeSymbolText
