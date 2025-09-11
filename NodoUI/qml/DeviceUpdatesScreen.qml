@@ -227,9 +227,7 @@ Item {
             text: nodoControl.getSoftwareVersion("lws")
         }
     }
-}
-    
-/*
+
     Rectangle {
         id: deviceUpdatesMoneroPaySwitchRect
         anchors.left: deviceUpdatesScreen.left
@@ -272,5 +270,5 @@ Item {
             text: nodoControl.getSoftwareVersion("pay")
         }
     }
-*/
+}
 
