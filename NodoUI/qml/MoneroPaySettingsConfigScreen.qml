@@ -75,15 +75,34 @@ Item {
         id: moneroPaySettingsAddressRectangle
         anchors.left: moneroPaySettingsConfigScreen.left
         anchors.top: moneroPaySettingsConfigScreen.top
-        height: NodoSystem.nodoItemHeight
+        height: moneroPaySettingsAddressInput.y + moneroPaySettingsAddressInput.height
+
+        Text {
+            id: moneroPaySettingsTitle
+            height: 30
+            width: parent.width
+            anchors.top: moneroPaySettingsAddressRectangle.top
+            anchors.left: moneroLWSAddAccountScreen.left
+            anchors.leftMargin: NodoSystem.cardLeftMargin
+            //anchors.topMargin: NodoSystem.nodoTopMargin*3
+            verticalAlignment: Text.AlignVCenter
+            font.family: NodoSystem.fontInter.name
+            font.pixelSize: NodoSystem.descriptionTitleFontSize
+            color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
+            text: qsTr("MONEROPAY DEPOSIT ADDRESS")
+        }
+
         NodoInputField {
             id: moneroPaySettingsAddressInput
+            anchors.top: moneroPaySettingsTitle.bottom
+            anchors.left: moneroPaySettingsConfigScreen.left
+            anchors.topMargin: NodoSystem.cardTopMargin
             width: infoFieldSize
             height: NodoSystem.nodoItemHeight
-            itemSize: labelSize
-            itemText: qsTr("Deposit Address")
+            itemSize: 180
+            itemText: qsTr("Address")
             readOnlyFlag: inputFieldReadOnly
-            valueFontSize: NodoSystem.descriptionTitleFontSize
+            valueFontSize: NodoSystem.descriptionTitleFontSize - 4
             validator: RegularExpressionValidator {
                 regularExpression: /^4[0-9A-Za-z]{94}$/
             }

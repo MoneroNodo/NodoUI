@@ -133,10 +133,11 @@ NodoCanvas {
         id: moneroPayReceivedTransactionIDField
         anchors.top: moneroPayReceivedDepositAddressField.bottom
         anchors.left: moneroPayReceivedPaymentStatusField.left
+        anchors.topMargin: fieldTopMargin
         width: 1890
         height: paymentsList.contentHeight
         anchors.bottomMargin: 30
-        color: "#1F1F1F"
+        color: parent.color
         clip: true
 
         ListView {
@@ -144,8 +145,7 @@ NodoCanvas {
             anchors.left: moneroPayReceivedTransactionIDField.left
             anchors.top: moneroPayReceivedTransactionIDField.top
             anchors.right: moneroPayReceivedTransactionIDField.right
-            anchors.bottom: moneroPayReceivedTransactionIDField.bottom
-            anchors.topMargin: fieldTopMargin
+            anchors.bottom: moneroPayReceivedTransactionIDField.bottom            
             model: transactionIDListModel
             delegate: Component {
                 NodoInfoField {
