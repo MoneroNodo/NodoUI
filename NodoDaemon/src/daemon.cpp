@@ -577,7 +577,7 @@ void Daemon::setupDomains(void)
         program.clear();
         arguments.clear();
         program = "/usr/bin/bash";
-        arguments << "/root/nodo/setup-domains.sh";
+        arguments << "/root/nodo/home/nodo/setup-domains.sh";
         process.start(program, arguments);
         process.waitForFinished(-1);
 
