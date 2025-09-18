@@ -566,29 +566,24 @@ void Daemon::setupDomains(void)
     QStringList status = retVal.split("\n", Qt::SkipEmptyParts);
 
 
-    if(2 != status.size())
+    if("inactive" == status.at(0) || "inactive" == status.at(1) || 2 != status.size())
     {
-        m_setupDomainsTimer->start(3000);
+        m_setupDomainsTimer->start(1000);
         return;
     }
 
-    if(("active" == status.at(0)) && ("active" == status.at(1)))
-    {
-        program.clear();
-        arguments.clear();
-        program = "/usr/bin/bash";
-        arguments << "/root/nodo/home/nodo/setup-domains.sh";
-        process.start(program, arguments);
-        process.waitForFinished(-1);
+    program.clear();
+    arguments.clear();
+    program = "/usr/bin/bash";
+    arguments << "/root/nodo/home/nodo/setup-domains.sh";
+    process.start(program, arguments);
+    process.waitForFinished(-1);
 
-        QFile file(m_firstBootFileName);
-        file.open(QIODevice::ReadWrite | QIODevice::Text);
-        file.close();
+    QFile file(m_firstBootFileName);
+    file.open(QIODevice::ReadWrite | QIODevice::Text);
+    file.close();
 
-        return;
-    }
-
-    m_setupDomainsTimer->start(3000);
+    return;
 }
 
 void Daemon::changePassword(QString oldPassword, QString newPassword)
