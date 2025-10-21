@@ -57,6 +57,8 @@ public slots:
     QString moneroLWSGetAccountList(void);
     QString moneroLWSGetRequestList(void);
 
+    QString getUptime(void);
+
     void moneroLWSListAccounts(void);
     void moneroLWSListRequests(void);
 
