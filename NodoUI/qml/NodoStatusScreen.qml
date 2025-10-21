@@ -432,7 +432,7 @@ Rectangle {
         width: 630
         anchors.leftMargin: cardMargin
         //anchors.rightMargin: 2//cardMargin
-        height: systemStorageField.y + systemStorageField.height + componentBottomMargin
+        height: uptimeField.y + uptimeField.height + componentBottomMargin
         color: NodoSystem.dataFieldTextBGColorNightModeOff
 
         Connections {
