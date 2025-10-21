@@ -76,6 +76,7 @@ Rectangle {
 
     function updateHardwareStatus() {
         cpuField.valueText = nodoControl.getCPUUsage()
+        uptimeField.valueText = nodoControl.getUptime()
         cpuTemperatureField.valueText = nodoControl.getTemperature()
         ramField.valueText = nodoControl.getRAMUsage()
         blockchainStorageField.valueText = nodoControl.getBlockChainStorageUsage()
@@ -516,5 +517,18 @@ Rectangle {
             itemText: qsTr("Storage")
             valueText: systemMessages.messages[NodoMessages.Message.Loading]
         }
+
+        NodoInfoField {
+            id: uptimeField
+            anchors.left: hardwareStatusTabName.left
+            anchors.top: systemStorageField.bottom
+            anchors.topMargin: fieldTopMargin
+            width: parent.width - (componentLeftMargin*2)
+            height: statusScreenInfoFieldHeight
+            itemSize: labelSize - 50
+            itemText: qsTr("Uptime")
+            valueText: systemMessages.messages[NodoMessages.Message.Loading]
+        }
+
     }
 }

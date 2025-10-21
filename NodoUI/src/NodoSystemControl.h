@@ -57,6 +57,7 @@ public:
 
     Q_INVOKABLE QString getServiceStatus(QString serviceName);
 
+    Q_INVOKABLE QString getUptime(void);
     Q_INVOKABLE QString getCPUUsage(void);
     Q_INVOKABLE QString getTemperature(void);
     Q_INVOKABLE QString getRAMUsage(void);
@@ -187,6 +188,7 @@ private:
     bool m_firstBootDone = false;
     QString m_firstBootFileName = "/home/nodo/variables/firstboot";
 
+    QString m_uptime;
     QString m_CPUUsage;
     QString m_Temperature;
     QString m_RAMUsage;
