@@ -196,8 +196,7 @@ QString Daemon::getUptime(void)
     process.waitForFinished(-1);
     QString retVal = process.readAll();
     int comma = retVal.indexOf(",", 0);
-
-    return uptime.mid(3, comma);
+    return retVal.mid(3, comma - 3);
 }
 
 int Daemon::getBacklightLevel(void)
