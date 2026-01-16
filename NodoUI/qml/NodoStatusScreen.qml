@@ -76,6 +76,7 @@ Rectangle {
 
     function updateHardwareStatus() {
         cpuField.valueText = nodoControl.getCPUUsage()
+        uptimeField.valueText = nodoControl.getUptime()
         cpuTemperatureField.valueText = nodoControl.getTemperature()
         ramField.valueText = nodoControl.getRAMUsage()
         blockchainStorageField.valueText = nodoControl.getBlockChainStorageUsage()
@@ -431,7 +432,7 @@ Rectangle {
         width: 630
         anchors.leftMargin: cardMargin
         //anchors.rightMargin: 2//cardMargin
-        height: systemStorageField.y + systemStorageField.height + componentBottomMargin
+        height: uptimeField.y + uptimeField.height + componentBottomMargin
         color: NodoSystem.dataFieldTextBGColorNightModeOff
 
         Connections {
@@ -516,5 +517,18 @@ Rectangle {
             itemText: qsTr("Storage")
             valueText: systemMessages.messages[NodoMessages.Message.Loading]
         }
+
+        NodoInfoField {
+            id: uptimeField
+            anchors.left: hardwareStatusTabName.left
+            anchors.top: systemStorageField.bottom
+            anchors.topMargin: fieldTopMargin
+            width: parent.width - (componentLeftMargin*2)
+            height: statusScreenInfoFieldHeight
+            itemSize: labelSize - 50
+            itemText: qsTr("Uptime")
+            valueText: systemMessages.messages[NodoMessages.Message.Loading]
+        }
+
     }
 }

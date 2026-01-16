@@ -185,6 +185,20 @@ void Daemon::setBacklightLevel(int backlightLevel)
     file.close();
 }
 
+QString Daemon::getUptime(void)
+{
+    QProcess process;
+    QString program = "/usr/bin/uptime";
+    QStringList arguments;
+    arguments << "-p";
+
+    process.start(program, arguments);
+    process.waitForFinished(-1);
+    QString retVal = process.readAll();
+    int comma = retVal.indexOf(",", 0);
+    return retVal.mid(3, comma - 3);
+}
+
 int Daemon::getBacklightLevel(void)
 {
     int retVal = BRIGHTNESS_RANGE_MAX/2;
@@ -248,7 +262,6 @@ void Daemon::updateHardwareStatus(void)
     readAverageCPUFreq();
     readCPUTemperature();
     readRAMUsage();
-    readCPUTemperature();
     readBlockchainStorageUsage();
     readSystemStorageUsage();
 
@@ -261,7 +274,8 @@ void Daemon::updateHardwareStatus(void)
         .append(QString::number(m_blockChainStorageUsed)).append("\n")
         .append(QString::number(m_blockChainStorageTotal)).append("\n")
         .append(QString::number(m_systemStorageUsed)).append("\n")
-        .append(QString::number(m_systemStorageTotal)).append("\n");
+        .append(QString::number(m_systemStorageTotal)).append("\n")
+        .append(getUptime()).append("\n");
 
     emit hardwareStatusReadyNotification(m_hardwareStatus);
     m_hardwareStatusTimer->start(5000);

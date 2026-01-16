@@ -290,7 +290,7 @@ void NodoSystemControl::updateHardwareStatus(QString message)
     {
         return;
     }
-    if(statusList.size() != 9)
+    if(statusList.size() < 9)
     {
         return;
     }
@@ -304,6 +304,7 @@ void NodoSystemControl::updateHardwareStatus(QString message)
     double blockChainStorageTotal = statusList[6].toDouble();
     double systemStorageUsed      = statusList[7].toDouble();
     double systemStorageTotal     = statusList[8].toDouble();
+    QString uptime                = statusList[9];
 
     QString RAMUsedStr, RAMTotalStr, blockChainStorageUsedStr, blockChainStorageTotalStr, systemStorageUsedStr, systemStorageTotalStr;
 
@@ -316,6 +317,7 @@ void NodoSystemControl::updateHardwareStatus(QString message)
     systemStorageUsedStr = variableFormat(systemStorageUsed);
     systemStorageTotalStr = QString::number(systemStorageTotal, 'f', 0);
 
+    m_uptime = uptime;
     m_CPUUsage = QString("%1").arg(averageCPUFreq, 0, 'f', 2).append(" GHz (").append(QString("%1").arg(CPUUsage, 0, 'f', 0)).append("%)");
     m_Temperature = QString("%1").arg(CPUTemperature, 0, 'f', 0).append("°C");
 	m_RAMUsage = RAMUsedStr + " / " + RAMTotalStr + " GB (" + QString("%1").arg((RAMUsed/RAMTotal)*100, 0, 'f', 0).append("%)");
@@ -327,6 +329,11 @@ void NodoSystemControl::updateHardwareStatus(QString message)
 QString NodoSystemControl::getTemperature(void)
 {
     return m_Temperature;
+}
+
+QString NodoSystemControl::getUptime(void)
+{
+    return m_uptime;
 }
 
 QString NodoSystemControl::getCPUUsage(void)
