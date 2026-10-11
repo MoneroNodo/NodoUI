@@ -15,6 +15,35 @@ ApplicationWindow {
     modality: Qt.WindowModal
     property int displayRotation: nodoControl.getOrientation()
 
+    function updateSyncDotEnabled(enabled)
+    {
+        mainScreenSyncDot.visible = enabled;
+        syncInfo.syncDotEnabled(enabled);
+    }
+
+    function updateSyncDot(statusCode, syncPercentage)
+    {
+        var enabled = nodoControl.getSyncDot();
+        updateSyncDotEnabled(enabled);
+        if (!enabled) {
+            return;
+        }
+        mainScreenSyncDot.height = 24;
+        if (statusCode !== 1) {
+            mainScreenSyncDot.color = "#FF4438";
+            return;
+        }
+        if (syncPercentage === 100) {
+            mainScreenSyncDot.color = "#34FF40";
+        }
+        else if (syncPercentage >= 0) {
+            mainScreenSyncDot.color = "#FFED40";
+        }
+        else {
+            mainScreenSyncDot.color = "#FF4438";
+        }
+    }
+
     contentOrientation: displayRotation == -90 ? Qt.InvertedLandscapeOrientation : displayRotation == 90 ? Qt.LandscapeOrientation : displayRotation == 0 ? Qt.PortraitOrientation : Qt.InvertedPortraitOrientation
 
     width: displayRotation == 0 || displayRotation == 180 ? 1920 : 1080
@@ -77,6 +106,7 @@ ApplicationWindow {
 
         Connections {
             target: nodoControl
+
             function onOrientationChanged()
             {
                 var orientation = nodoControl.getOrientation()
@@ -321,6 +351,16 @@ ApplicationWindow {
                 close()
             }
         }
+    }
+    Rectangle {
+        id: mainScreenSyncDot
+        parent: Overlay.overlay
+        height: 0
+        width: height
+        radius: height * 0.5
+        color: "black"
+        x: parent.width - height - 8
+        y: 8
     }
 }
 

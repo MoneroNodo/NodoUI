@@ -44,6 +44,9 @@ public:
     void setTorEnabled(bool);
     void setI2PEnabled(bool);
 
+    bool getSyncDotEnabled(void);
+    void setSyncDotEnabled(bool);
+
     bool getBanlistEnabled(void);
     void setBanlistEnabled(bool);
     bool getBanlistsListEnabled(QString);

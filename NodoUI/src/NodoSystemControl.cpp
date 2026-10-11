@@ -84,6 +84,17 @@ void NodoSystemControl::setAppTheme(bool appTheme)
     emit appThemeChanged(m_appTheme);
 }
 
+void NodoSystemControl::setSyncDot(bool state)
+{
+    m_configParser->setSyncDotEnabled(state);
+}
+
+
+bool NodoSystemControl::getSyncDot(void)
+{
+    return m_configParser->getSyncDotEnabled();
+}
+
 void NodoSystemControl::setScreenSaverType(int state)
 {
     m_uiSystemParser->writeScreenSaverType(state);

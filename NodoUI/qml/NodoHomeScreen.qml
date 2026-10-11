@@ -63,6 +63,7 @@ Item {
 
         Connections {
             target: priceTicker
+
             function onCurrencyIndexChanged() {
                 exchangeNameText.text =  "XMR-" + nodoCurrencies.currencyCodes[priceTicker.getCurrentCurrencyIndex()] + ":"
                 exchangeSymbolText.text = nodoCurrencies.currencySymbols[priceTicker.getCurrentCurrencyIndex()]
@@ -243,6 +244,9 @@ Item {
 
         Connections {
             target: syncInfo
+            function onSyncDotEnabled(enabled) {
+                rightMenu.anchors.rightMargin = enabled ? 64 : 0
+            }
             function onSyncDone() {
                 moneroLWSButton.enabled = true
             }

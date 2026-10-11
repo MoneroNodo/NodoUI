@@ -28,6 +28,7 @@ private:
 signals:
     void syncStatusReady(void);
     emit void syncDone(void);
+    emit void syncDotEnabled(bool);
 
 private slots:
     void updateStatus(void);

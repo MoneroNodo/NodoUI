@@ -93,6 +93,8 @@ Item {
         anchors.topMargin: NodoSystem.nodoTopMargin
         anchors.leftMargin: 25
         height: NodoSystem.nodoItemHeight
+        color: "black"
+        width: deviceDisplayFlipOrientationSwitchText.width + deviceDisplayFlipOrientationSwitch.width
 
         NodoLabel {
             id: deviceDisplayFlipOrientationSwitchText
@@ -150,6 +152,40 @@ Item {
 
                 }
                 nodoControl.setOrientation(displayRotation)
+            }
+        }
+    }
+
+    Rectangle {
+        id: deviceDisplaySyncDotSwitchRect
+        anchors.left: deviceDisplayFlipOrientationSwitchRect.right
+        anchors.top: deviceDisplayBrightnessRect.bottom
+        anchors.topMargin: NodoSystem.nodoTopMargin
+        anchors.leftMargin: 25
+        height: NodoSystem.nodoItemHeight
+        color: "black"
+        width: deviceDisplaySyncDotSwitchText.width + deviceDisplaySyncDotSwitch.width
+
+        NodoLabel {
+            id: deviceDisplaySyncDotSwitchText
+            height: deviceDisplaySyncDotSwitchRect.height
+            anchors.left: deviceDisplaySyncDotSwitchRect.left
+            anchors.top: deviceDisplaySyncDotSwitchRect.top
+            width: labelSize - 20
+            text: qsTr("Sync Dot")
+        }
+
+        NodoSwitch {
+            id: deviceDisplaySyncDotSwitch
+            anchors.left: deviceDisplaySyncDotSwitchText.right
+            anchors.leftMargin: NodoSystem.padding
+            height: deviceDisplaySyncDotSwitchRect.height
+            width: 2*deviceDisplaySyncDotSwitchRect.height
+            display: AbstractButton.IconOnly
+            checked: nodoControl.getSyncDot()
+            onCheckedChanged: {
+                nodoControl.setSyncDot(checked)
+                mainAppWindow.updateSyncDotEnabled(checked)
             }
         }
     }

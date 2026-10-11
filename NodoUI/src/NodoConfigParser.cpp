@@ -300,6 +300,17 @@ bool NodoConfigParser::getTheme(void)
     return jsonValue.toBool();
 }
 
+bool NodoConfigParser::getSyncDotEnabled(void)
+{
+    return m_configObj.value("syncdot") == "TRUE";
+}
+
+void NodoConfigParser::setSyncDotEnabled(bool enabled)
+{
+    m_configObj.insert("syncdot", enabled ? "TRUE" : "FALSE");
+    writeJson();
+}
+
 bool NodoConfigParser::getBanlistEnabled(void)
 {
     return m_configObj.value("banlist") == "TRUE";

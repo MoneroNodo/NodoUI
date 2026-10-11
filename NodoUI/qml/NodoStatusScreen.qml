@@ -84,7 +84,9 @@ Rectangle {
     }
 
     function updateSystemStatus() {
-        updateSyncPercentage()
+        var syncPercentage = syncInfo.getSyncPercentage()
+        var statusCode = networkManager.getNetworkConnectionStatusCode()
+        updateSyncPercentage(statusCode, syncPercentage)
         currentBlockHeightField.valueText = nodoSystemStatus.getIntValueFromKey("height")
         moneroVersionField.valueText = nodoSystemStatus.getStringValueFromKey("version")
         outgoingConnectionsField.valueText = nodoSystemStatus.getIntValueFromKey("outgoing_connections_count")
@@ -94,9 +96,8 @@ Rectangle {
         updateAvailableField.valueText = (true === nodoSystemStatus.getBoolValueFromKey("update_available")) ? qsTr("Update available") : qsTr("Up to date")
     }
 
-    function updateSyncPercentage() {
-        var syncPercentage = syncInfo.getSyncPercentage()
-        if (networkManager.getNetworkConnectionStatusCode() !== 1 /*not connected*/)
+    function updateSyncPercentage(statusCode, syncPercentage) {
+        if (statusCode !== 1 /*not connected*/)
         {
             syncStatusField.itemText = qsTr("Disconnected")
             return
@@ -194,14 +195,17 @@ Rectangle {
         Connections {
             target: nodoSystemStatus
             function onSystemStatusReady() {
-            updateSystemStatus()
+                updateSystemStatus()
             }
         }
 
         Connections {
             target: syncInfo
             function onSyncStatusReady() {
-                updateSyncPercentage()
+                var syncPercentage = syncInfo.getSyncPercentage()
+                var statusCode = networkManager.getNetworkConnectionStatusCode()
+                updateSyncPercentage(statusCode, syncPercentage)
+                mainAppWindow.updateSyncDot(statusCode, syncPercentage)
             }
         }
 
