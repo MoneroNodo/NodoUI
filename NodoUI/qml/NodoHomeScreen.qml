@@ -223,29 +223,12 @@ Item {
                 font.family: NodoSystem.fontInter.name
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
             }
-
-/*            Text {
-                id: syncDot
-                anchors.top: rightMenu.top
-                anchors.bottom: rightMenu.bottom
-                anchors.right: rightMenu.right
-                anchors.rightMargin: 2
-                topPadding: NodoSystem.topMenuTextTopPadding
-                horizontalAlignment: Text.AlignHCenter
-                verticalAlignment: Text.AlignVCenter
-                font.family: NodoSystem.fontInter.name
-                font.pixelSize: NodoSystem.descriptionTextFontSize
-                text: NodoSystem.syncDot     
-                color: (syncPercentage === 100) ? NodoSystem.green :
-                   (syncPercentage >= 0) ? NodoSystem.amber : 
-                   NodoSystem.red      
-            }*/
         }
 
         Connections {
             target: syncInfo
             function onSyncDotEnabled(enabled) {
-                rightMenu.anchors.rightMargin = enabled ? 64 : 0
+                rightMenu.anchors.rightMargin = enabled ? 45 : 0
             }
             function onSyncDone() {
                 moneroLWSButton.enabled = true

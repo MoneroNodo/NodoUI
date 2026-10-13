@@ -28,19 +28,19 @@ ApplicationWindow {
         if (!enabled) {
             return;
         }
-        mainScreenSyncDot.height = 24;
+        mainScreenSyncDot.height = NodoSystem.topMenuButtonHeight;
         if (statusCode !== 1) {
-            mainScreenSyncDot.color = "#FF4438";
+            mainScreenSyncDot.color = NodoSystem.red;
             return;
         }
         if (syncPercentage === 100) {
-            mainScreenSyncDot.color = "#34FF40";
+            mainScreenSyncDot.color = NodoSystem.green;
         }
         else if (syncPercentage >= 0) {
-            mainScreenSyncDot.color = "#FFED40";
+            mainScreenSyncDot.color = NodoSystem.amber;
         }
         else {
-            mainScreenSyncDot.color = "#FF4438";
+            mainScreenSyncDot.color = NodoSystem.red;
         }
     }
 
@@ -352,6 +352,7 @@ ApplicationWindow {
             }
         }
     }
+
     Rectangle {
         id: mainScreenSyncDot
         parent: Overlay.overlay
@@ -359,8 +360,7 @@ ApplicationWindow {
         width: height
         radius: height * 0.5
         color: "black"
-        x: parent.width - height - 8
-        y: 8
+        x: parent.width - width - 2
+        y: height + 6
     }
 }
-
