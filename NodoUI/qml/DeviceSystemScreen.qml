@@ -85,7 +85,6 @@ Rectangle {
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.buttonTextFontSize
             onClicked: { pageLoader.source = "DeviceLogsScreen.qml" }
-            }
         }
 
         Text {
