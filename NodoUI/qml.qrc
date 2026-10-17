@@ -16,6 +16,7 @@
         <file>qml/NodoComboBox.qml</file>
         <file>qml/DeviceEthernetScreen.qml</file>
         <file>qml/DeviceSystemScreen.qml</file>
+        <file>qml/DeviceLogsScreen.qml</file>
         <file>qml/MoneroLWSMainScreen.qml</file>
         <file>qml/MoneroLWSActiveScreen.qml</file>
         <file>qml/NodoInputField.qml</file>
