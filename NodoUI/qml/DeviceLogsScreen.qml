@@ -25,7 +25,7 @@ Item {
 
         NodoTabButton {
             id: moneroLogButton
-            y: (deviceMainMenuBar.height - moneroLogButton.height)
+            y: deviceMainMenuBar.height - moneroLogButton.height - (moneroLogButton.height/2)
             text: qsTr("MONERO")
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
@@ -74,4 +74,5 @@ Item {
         anchors.topMargin: 40
         //source: "DeviceWifiScreen.qml"
     }
+}
 }
