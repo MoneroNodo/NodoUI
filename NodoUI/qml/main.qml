@@ -28,7 +28,7 @@ ApplicationWindow {
         if (!enabled) {
             return;
         }
-        mainScreenSyncDot.height = NodoSystem.topMenuButtonHeight;
+        mainScreenSyncDot.height = 24;
         if (statusCode !== 1) {
             mainScreenSyncDot.color = NodoSystem.red;
             return;
