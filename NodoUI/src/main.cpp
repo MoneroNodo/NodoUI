@@ -14,6 +14,7 @@
 #include "NodoSyncInfo.h"
 #include "MoneroPay.h"
 #include "NodoDBusController.h"
+#include "src/NodoLogView.h"
 
 
 int main(int argc, char *argv[]) {
@@ -42,6 +43,7 @@ int main(int argc, char *argv[]) {
     MoneroPay *moneroPay = new MoneroPay(configParser);
     NodoPriceTicker *priceTicker = new NodoPriceTicker(configParser, networkManager, systemControl);
     NodoFeedsControl *feedsControl = new NodoFeedsControl(networkManager, systemControl);
+    LogViewModel *logViewModel = new LogViewModel();
 
     engine.rootContext()->setContextProperty("moneroLWS", moneroLWS);
     engine.rootContext()->setContextProperty("priceTicker", priceTicker);
@@ -53,6 +55,7 @@ int main(int argc, char *argv[]) {
     engine.rootContext()->setContextProperty("networkManager", networkManager);
     engine.rootContext()->setContextProperty("moneroPay", moneroPay);
     engine.rootContext()->setContextProperty("syncInfo", syncInfo);
+    engine.rootContext()->setContextProperty("logViewModel", logViewModel);
 
     engine.load(QUrl(QStringLiteral("qrc:/qml/main.qml")));
     if (engine.rootObjects().isEmpty())
