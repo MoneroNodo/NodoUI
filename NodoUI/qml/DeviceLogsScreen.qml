@@ -29,7 +29,9 @@ Item {
             text: qsTr("MONERO")
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
-            //onClicked: 
+            onClicked: {
+                logModel.unit = "monerod.service"
+            }
         }
 
         NodoTabButton {
@@ -40,7 +42,9 @@ Item {
             text: qsTr("NODOUI")
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
-            //onClicked: 
+            onClicked: {
+                logModel.unit = "nodoUI.service"
+            }
         }
 
         NodoTabButton {
@@ -51,7 +55,9 @@ Item {
             text: qsTr("SSH")
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
-            //onClicked: 
+            onClicked: {
+                logModel.unit = "sshd.service"
+            }
         }
 
         NodoTabButton {
@@ -62,17 +68,21 @@ Item {
             anchors.leftMargin: NodoSystem.nodoTopMargin
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
-            //onClicked: 
+            onClicked: {
+                logModel.unit = "kernel"
+            }
         }
-
-    Loader {
-        id: pageLoader
-        anchors.top: deviceMainMenuBar.bottom
-        anchors.left: deviceMainScreen.left
-        anchors.right: deviceMainScreen.right
-        anchors.bottom: deviceMainScreen.bottom
-        anchors.topMargin: 40
-        //source: "DeviceWifiScreen.qml"
     }
-}
+    ListView {
+        model: logModel
+        property bool end: false;
+        onCountChanged: {
+            if (end)
+                Qt.callLater(positionViewAtEnd)
+        }
+        onContentYChanged: {
+            end = contentY + height > contentHeight - 2
+        }
+        delegate: Text { text: message }
+    }
 }

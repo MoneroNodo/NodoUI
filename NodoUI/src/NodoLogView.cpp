@@ -83,10 +83,15 @@ void LogViewModel::journalOpen() {
     return;
   }
 
-  const QByteArray match =
-      QStringLiteral("_SYSTEMD_UNIT=%1").arg(m_unit).toUtf8();
-  r = sd_journal_add_match(m_journal, match.constData(),
-                           static_cast<size_t>(match.size()));
+  if (m_unit == "kernel") {
+    sd_journal_add_match(m_journal, "_TRANSPORT=kernel",
+                         strlen("_TRANSPORT=kernel"));
+  } else {
+    const QByteArray match =
+        QStringLiteral("_SYSTEMD_UNIT=%1").arg(m_unit).toUtf8();
+    r = sd_journal_add_match(m_journal, match.constData(),
+                             static_cast<size_t>(match.size()));
+  }
 
   if (r < 0) {
     qDebug() << "sd_journal_add_match: " << strerror(-r);
