@@ -44,6 +44,7 @@ int main(int argc, char *argv[]) {
     NodoPriceTicker *priceTicker = new NodoPriceTicker(configParser, networkManager, systemControl);
     NodoFeedsControl *feedsControl = new NodoFeedsControl(networkManager, systemControl);
     LogViewModel *logViewModel = new LogViewModel();
+    logViewModel->setUnit("monerod.service");
 
     engine.rootContext()->setContextProperty("moneroLWS", moneroLWS);
     engine.rootContext()->setContextProperty("priceTicker", priceTicker);
