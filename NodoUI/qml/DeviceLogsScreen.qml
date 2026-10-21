@@ -48,22 +48,22 @@ Item {
         }
 
         NodoTabButton {
-            id: sshLogsButton
+            id: lwsLogsButton
             anchors.top: moneroLogButton.top
             anchors.left: nodoUILogButton.right
             anchors.leftMargin: NodoSystem.nodoTopMargin
-            text: qsTr("SSH")
+            text: qsTr("LWS")
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: {
-                logViewModel.unit = "sshd.service"
+                logViewModel.unit = "monero-lws.service"
             }
         }
 
         NodoTabButton {
             id: updatesButton
             anchors.top: moneroLogButton.top
-            anchors.left: sshLogsButton.right
+            anchors.left: lwsLogsButton.right
             text: qsTr("KERNEL")
             anchors.leftMargin: NodoSystem.nodoTopMargin
             font.family: NodoSystem.fontInter.name
@@ -92,9 +92,40 @@ Item {
         onContentYChanged: {
             end = contentY + height > contentHeight - 2
         }
-        delegate: Text {
-        text: message
-        color: "white"
-     }
+        delegate: Rectangle {
+            width: logView.width
+            height: msgText.height + unitRow.height + 16
+            color: index % 2 === 0 ? "#101010" : "#000000"
+
+            Column {
+                anchors.fill: parent
+                anchors.margins: 8
+                spacing: 4
+
+                Row {
+                    id: unitRow
+                    spacing: 10
+
+                    Text {
+                        text: timestamp.toLocaleTimeString(Qt.locale())
+                        color: "#f5f5f5"
+                        font.family: "monospace"
+                    }
+
+                Text {
+                    id: msgText
+                    width: parent.width
+                    text: message
+                    color: "white"
+                    font.family: "monospace"
+                    wrapMode: Text.Wrap
+                    lineHeight: 1.1
+                }
+                }
+
+            }
+        }
     }
 }
+
+
