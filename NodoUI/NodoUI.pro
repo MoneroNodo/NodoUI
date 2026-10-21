@@ -39,6 +39,7 @@ SOURCES += \
         src/NodoWiredController.cpp \
         src/NodoWirelessController.cpp \
         src/main.cpp \
+        src/NodoLogView.cpp \
         src/NodoFeedParser.cpp \
         src/NodoSystemControl.cpp \
         src/pugixml.cpp \
@@ -59,6 +60,7 @@ HEADERS += \
         src/NodoSyncInfo.h \
         src/NodoSystemStatusParser.h \
         src/NodoFeedParser.h \
+        src/NodoLogView.h \
         src/NodoSystemControl.h \
         src/NodoUISystemParser.h \
         src/NodoWiredController.h \
