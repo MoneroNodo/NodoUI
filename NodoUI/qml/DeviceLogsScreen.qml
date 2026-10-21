@@ -16,8 +16,7 @@ Item {
         anchors.top: deviceLogsScreen.top
         anchors.left: deviceLogsScreen.left
         height: NodoSystem.subMenuButtonHeight
-        //contentWidth: 1460
-        width: 1360 //displayButton.x + displayButton.width
+        width: 1360
 
         background: Rectangle {
             color: "black"
@@ -78,6 +77,7 @@ Item {
     id: logView
         model: logViewModel
         anchors.fill: parent
+        anchors.topMargin: 50
         clip: true
 
         property bool end: false;
@@ -108,7 +108,7 @@ Item {
 
                     Text {
                         text: timestamp.toLocaleTimeString(Qt.locale())
-                        color: "#f5f5f5"
+                        color: NodoSystem.defaultColorNightModeOff
                         font.family: "monospace"
                     }
 
@@ -116,16 +116,13 @@ Item {
                     id: msgText
                     width: parent.width
                     text: message
-                    color: "white"
+                    color: NodoSystem.defaultColorNightModeOff
                     font.family: "monospace"
                     wrapMode: Text.Wrap
                     lineHeight: 1.1
                 }
                 }
-
             }
         }
     }
 }
-
-
