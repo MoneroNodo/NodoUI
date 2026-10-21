@@ -9,4 +9,4 @@ while true; do
 		break
 	fi
 	/opt/nodo/NodoUI -platform eglfs && break
-done &> /home/nodo/log.txt
+done
