@@ -21,7 +21,7 @@
 class LogViewModel : public QAbstractListModel {
 
   Q_OBJECT
-  Q_PROPERTY(QStringList unit READ unit WRITE setUnit NOTIFY unitChanged)
+  Q_PROPERTY(QString unit READ unit WRITE setUnit NOTIFY unitChanged)
   Q_PROPERTY(int scrollback READ scrollback WRITE setScrollback NOTIFY
                  scrollbackChanged)
 
@@ -41,7 +41,8 @@ public:
   QVariant data(const QModelIndex &index, int role) const override;
   QHash<int, QByteArray> roleNames() const override;
 
-  QString getUnit() const { return m_unit; }
+  QString unit() const { return m_unit; }
+  int scrollback() const { return m_scrollback; }
   void setUnit(const QString &unit);
   void setScrollback(const int &scrollback);
 

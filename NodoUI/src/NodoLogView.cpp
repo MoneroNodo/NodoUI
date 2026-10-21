@@ -9,7 +9,11 @@
 #include "qstringliteral.h"
 #include "qvariant.h"
 #include <cstring>
+#if __has_include("systemd/sd-journal.h") // I don't have systemd on here
+#include <systemd/sd-journal.h>
+#elif __has_include("elogind/sd-journal.h")
 #include <elogind/sd-journal.h>
+#endif
 #include <strings.h>
 
 LogViewModel::LogViewModel(QObject *parent) : QAbstractListModel(parent) {}
