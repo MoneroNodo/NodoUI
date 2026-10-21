@@ -5,12 +5,12 @@ QT += sql
 
 TEMPLATE = app
 CONFIG += c++17
-PKGCONFIG += libsystemd
 
 QT_FOR_CONFIG += virtualkeyboard
 #QT += svg
 QTPLUGIN += qtvirtualkeyboardplugin
 
+LIBS += -lsystemd
 
 TARGET = NodoUI
 
