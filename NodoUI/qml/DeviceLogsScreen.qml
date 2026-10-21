@@ -77,7 +77,7 @@ Item {
     id: logView
         model: logViewModel
         anchors.fill: parent
-        anchors.topMargin: 50
+        anchors.topMargin: 60
         clip: true
 
         property bool end: false;
