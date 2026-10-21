@@ -73,16 +73,28 @@ Item {
             }
         }
     }
+
     ListView {
+    id: logView
         model: logViewModel
+        anchors.fill: parent
+        clip: true
+
         property bool end: false;
         onCountChanged: {
             if (end)
                 Qt.callLater(positionViewAtEnd)
         }
+       Connections {
+        target: logViewModel
+        function onLogLoaded() { logView.positionViewAtEnd() }
+        }
         onContentYChanged: {
             end = contentY + height > contentHeight - 2
         }
-        delegate: Text { text: message }
+        delegate: Text {
+        text: message
+        color: "white"
+     }
     }
 }

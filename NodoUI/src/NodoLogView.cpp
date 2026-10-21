@@ -76,11 +76,12 @@ QDateTime LogViewModel::fromUsec(const QString &s) {
 
 void LogViewModel::journalOpen() {
   journalClose();
+  clear();
   if (m_unit.isEmpty())
     return;
 
   int r;
-  r = sd_journal_open(&m_journal, SD_JOURNAL_LOCAL_ONLY | SD_JOURNAL_SYSTEM);
+  r = sd_journal_open(&m_journal, SD_JOURNAL_LOCAL_ONLY);
 
   if (r < 0) {
     qDebug() << "sd_journal_open: " << strerror(-r);
@@ -88,8 +89,8 @@ void LogViewModel::journalOpen() {
   }
 
   if (m_unit == "kernel") {
-    sd_journal_add_match(m_journal, "_TRANSPORT=kernel",
-                         strlen("_TRANSPORT=kernel"));
+    r = sd_journal_add_match(m_journal, "_TRANSPORT=kernel",
+                             strlen("_TRANSPORT=kernel"));
   } else {
     const QByteArray match =
         QStringLiteral("_SYSTEMD_UNIT=%1").arg(m_unit).toUtf8();
@@ -120,6 +121,7 @@ void LogViewModel::journalOpen() {
     else if (ret == SD_JOURNAL_INVALIDATE)
       journalOpen();
   });
+  emit logLoaded();
 }
 
 void LogViewModel::journalClose() {
@@ -205,6 +207,12 @@ void LogViewModel::appendEntry(Entry &&e) {
   beginInsertRows(QModelIndex(), m_entries.size(), m_entries.size());
   m_entries.append(std::move(e));
   endInsertRows();
+}
+
+void LogViewModel::clear() {
+  beginRemoveRows(QModelIndex(), 0, m_entries.size() - 1);
+  m_entries.clear();
+  endRemoveRows();
 }
 
 void LogViewModel::setScrollback(const int &scrollback) {

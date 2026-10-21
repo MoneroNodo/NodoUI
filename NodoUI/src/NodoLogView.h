@@ -49,6 +49,7 @@ public:
 signals:
   void unitChanged();
   void scrollbackChanged();
+  void logLoaded();
 
 private:
   struct Entry {
@@ -66,6 +67,7 @@ private:
   void journalOpen();
   void journalClose();
   void drain();
+  void clear();
   void appendEntry(Entry &&e);
   Entry readEntry() const;
   void loadScrollback();
