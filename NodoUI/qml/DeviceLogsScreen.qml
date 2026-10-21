@@ -13,8 +13,8 @@ Item {
 
     TabBar {
         id: deviceMainMenuBar
-        anchors.top: deviceMainScreen.top
-        anchors.left: deviceMainScreen.left
+        anchors.top: deviceLogsScreen.top
+        anchors.left: deviceLogsScreen.left
         height: NodoSystem.subMenuButtonHeight
         //contentWidth: 1460
         width: 1360 //displayButton.x + displayButton.width
@@ -30,7 +30,7 @@ Item {
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: {
-                logModel.unit = "monerod.service"
+                logViewModel.unit = "monerod.service"
             }
         }
 
@@ -43,7 +43,7 @@ Item {
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: {
-                logModel.unit = "nodoUI.service"
+                logViewModel.unit = "nodoUI.service"
             }
         }
 
@@ -56,7 +56,7 @@ Item {
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: {
-                logModel.unit = "sshd.service"
+                logViewModel.unit = "sshd.service"
             }
         }
 
@@ -69,12 +69,12 @@ Item {
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: {
-                logModel.unit = "kernel"
+                logViewModel.unit = "kernel"
             }
         }
     }
     ListView {
-        model: logModel
+        model: logViewModel
         property bool end: false;
         onCountChanged: {
             if (end)
