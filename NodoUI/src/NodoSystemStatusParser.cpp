@@ -44,6 +44,11 @@ void NodoSystemStatusParser::replyFinished(QNetworkReply *reply) {
     m_timer->start(5000);
 }
 
+void NodoSystemStatusParser::updateStatusNow() {
+    m_timer->stop();
+    m_timer->start(100);
+}
+
 QString NodoSystemStatusParser::getStringValueFromKey(QString key)
 {
     if(m_rootObj.isEmpty())

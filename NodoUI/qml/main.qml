@@ -28,7 +28,10 @@ ApplicationWindow {
         if (!enabled) {
             return;
         }
-        mainScreenSyncDot.height = 24;
+        if (mainScreenSyncDot.height !== 24) {
+            mainScreenSyncDot.height = 24;
+            systemStatusParser.updateStatusNow();
+        }
         if (statusCode !== 1) {
             mainScreenSyncDot.color = NodoSystem.red;
             return;
