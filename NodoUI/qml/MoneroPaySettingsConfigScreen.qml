@@ -205,6 +205,7 @@ Item {
     Text {
         id: moneroPaySettingsAddressValidStatusText
         anchors.left: moneroPaySettingsConfigScreen.left
+        anchors.leftMargin: 10
         anchors.top: moneroPaySettingsAddressDescriptionText.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         width: parent.width
