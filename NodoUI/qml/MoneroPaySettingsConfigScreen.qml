@@ -198,7 +198,7 @@ Item {
         text: qsTr("Received transactions will periodically be sent to this address.")
          verticalAlignment: Text.AlignVCenter
         font.family: NodoSystem.fontInter.name
-        font.pixelSize: NodoSystem.descriptionTitleFontSize
+        font.pixelSize: NodoSystem.descriptionTextFontSize
         color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
     }
 
