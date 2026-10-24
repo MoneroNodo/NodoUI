@@ -174,7 +174,7 @@ Item {
         font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.descriptionTextFontSize
         color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
-        text: qsTr("Enable Hidden RPC with Tor > Route All Through Tor, to fully anonymize the Monero Daemon.")
+        text: qsTr("Enable Hidden RPC with NODE > TOR > Route All Through Tor, to fully anonymize the Monero Daemon.")
     }
 
     NodoInfoField {
