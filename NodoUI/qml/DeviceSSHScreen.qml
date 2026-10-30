@@ -188,7 +188,7 @@ Item {
         anchors.top: changeAdminPasswordTitle.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin*1.5
         anchors.left: deviceSSHOldPasswordField.right
-        anchors.left: 25
+        anchors.leftMargin: 25
         verticalAlignment: Text.AlignVCenter
         font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.descriptionTextFontSize
