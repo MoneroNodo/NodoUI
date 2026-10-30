@@ -60,7 +60,7 @@ NodoCanvas {
         anchors.rightMargin: NodoSystem.cardTopMargin
         anchors.bottom: mainRect.bottom
         anchors.bottomMargin: NodoSystem.cardTopMargin
-        text: qsTr("Accept")
+        text: qsTr("ACCEPT")
         height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
@@ -75,7 +75,7 @@ NodoCanvas {
         anchors.rightMargin: 25
         anchors.bottom: mainRect.bottom
         anchors.bottomMargin: NodoSystem.cardTopMargin
-        text: qsTr("Reject")
+        text: qsTr("REJECT")
         height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize

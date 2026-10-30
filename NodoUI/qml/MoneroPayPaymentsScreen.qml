@@ -63,7 +63,7 @@ Item {
             anchors.top: paymentsCanvas.bottom
             anchors.left: moneroPayPaymentsScreen.left
             anchors.topMargin: 5
-            text: qsTr("Clear All Payments")
+            text: qsTr("CLEAR ALL PAYMENTS")
             height: NodoSystem.nodoItemHeight
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.buttonTextFontSize

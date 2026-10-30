@@ -122,7 +122,7 @@ Item {
         anchors.left: sendPaymentLabel.right
         anchors.topMargin: NodoSystem.nodoTopMargin
         anchors.leftMargin: NodoSystem.subMenuLeftMargin
-        text: qsTr("New Payment")
+        text: qsTr("NEW PAYMENT")
         height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize

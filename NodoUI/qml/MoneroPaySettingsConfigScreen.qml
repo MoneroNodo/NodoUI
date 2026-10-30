@@ -151,7 +151,7 @@ Item {
         //anchors.left: moneroPaySettingsAddressInput.left
         anchors.top: moneroPaySettingsAddressRectangle.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
-        text: qsTr("Set Address")
+        text: qsTr("SET ADDRESS")
         height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
@@ -173,7 +173,7 @@ Item {
         anchors.top: moneroPaySettingsAddressRectangle.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
 		anchors.leftMargin: 25
-        text: qsTr("Clear Address")
+        text: qsTr("CLEAR ADDRESS")
         height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize

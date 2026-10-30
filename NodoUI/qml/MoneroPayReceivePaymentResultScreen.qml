@@ -128,7 +128,7 @@ Item {
             anchors.left: paymentSuccessLabel.right
             anchors.leftMargin: NodoSystem.subMenuLeftMargin
             height: NodoSystem.nodoItemHeight
-            text: qsTr("New Payment")
+            text: qsTr("NEW PAYMENT")
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.buttonTextFontSize
             isActive: true
@@ -145,7 +145,7 @@ Item {
             anchors.left: gotoNewPaymentButton.right
             anchors.leftMargin: NodoSystem.subMenuLeftMargin
             height: NodoSystem.nodoItemHeight
-            text: qsTr("View Payments")
+            text: qsTr("VIEW PAYMENTS")
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.buttonTextFontSize
             isActive: true

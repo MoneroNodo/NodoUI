@@ -284,7 +284,7 @@ Item {
                 width: ethernetNetworkScreen.buttonSize
                 font.pixelSize: NodoSystem.buttonTextFontSize
                 font.family: NodoSystem.fontInter.name
-                text: systemMessages.messages[NodoMessages.Message.Add] //qsTr("Connect")
+                text: systemMessages.messages[NodoMessages.Message.Add] //qsTr("CONNECT")
                 visible: createNewConnectionRect.visible
                 isActive: false
                 fitMinimal: false

@@ -55,7 +55,7 @@ Item {
             width: labelSize
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.buttonTextFontSize
-            text: qsTr("Update All")
+            text: qsTr("UPDATE ALL")
             onClicked: {
                 deviceUpdateAllButton.isActive = false
                 nodoControl.updateDevice()

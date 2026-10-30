@@ -23,7 +23,7 @@ Rectangle {
             id: deviceLockPinSettingsButton
             anchors.left: deviceSystemScreen.left
             anchors.top: deviceSystemScreen.top
-            text: qsTr("PIN Settings")
+            text: qsTr("PIN SETTINGS")
             height: NodoSystem.nodoItemHeight
             width: deviceSystemScreen.buttonSize
             font.family: NodoSystem.fontInter.name
@@ -51,7 +51,7 @@ Rectangle {
             anchors.left: deviceSystemScreen.left
             anchors.top: deviceLockPinSettingsButton.bottom
             anchors.topMargin: deviceSystemScreen.buttonTopMargin
-            text: qsTr("Admin & SSH")
+            text: qsTr("ADMIN & SSH")
             width: deviceSystemScreen.buttonSize
             height: NodoSystem.nodoItemHeight
             font.family: NodoSystem.fontInter.name
@@ -79,7 +79,7 @@ Rectangle {
             anchors.left: deviceSystemScreen.left
             anchors.top: deviceSSHButton.bottom
             anchors.topMargin: deviceSystemScreen.buttonTopMargin
-            text: qsTr("Logs")
+            text: qsTr("LOGS")
             height: NodoSystem.nodoItemHeight
             width: deviceSystemScreen.buttonSize
             font.family: NodoSystem.fontInter.name
@@ -106,7 +106,7 @@ Rectangle {
             anchors.left: deviceSystemScreen.left
             anchors.top: deviceLogsButton.bottom
             anchors.topMargin: deviceSystemScreen.buttonTopMargin + 30
-            text: qsTr("Reboot")
+            text: qsTr("RESTART")
             height: NodoSystem.nodoItemHeight
             width: deviceSystemScreen.buttonSize
             font.family: NodoSystem.fontInter.name
@@ -130,7 +130,7 @@ Rectangle {
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.descriptionTextFontSize
             color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
-            text: qsTr("Safe Reboot")
+            text: qsTr("Safe Restart")
         }
 
         NodoButton {
@@ -138,7 +138,7 @@ Rectangle {
             anchors.left: deviceSystemScreen.left
             anchors.top: systemResetButton.bottom
             anchors.topMargin: deviceSystemScreen.buttonTopMargin
-            text: qsTr("Shutdown")
+            text: qsTr("SHUTDOWN")
             height: NodoSystem.nodoItemHeight
             width: deviceSystemScreen.buttonSize
             font.family: NodoSystem.fontInter.name
@@ -170,7 +170,7 @@ Rectangle {
             anchors.left: deviceSystemScreen.left
             anchors.top: systemShutdownButton.bottom
             anchors.topMargin: deviceSystemScreen.buttonTopMargin + 30
-            text: qsTr("Recovery")
+            text: qsTr("RECOVERY")
             height: NodoSystem.nodoItemHeight
             width: deviceSystemScreen.buttonSize
             font.family: NodoSystem.fontInter.name
@@ -281,13 +281,13 @@ Rectangle {
                 anchors.left: deviceSystemRecoveryScreen.left
                 anchors.top: deviceSystemRecoveryResyncBlockchainRect.bottom
                 anchors.topMargin: 80
-                text: qsTr("Start")
+                text: qsTr("START")
                 height: NodoSystem.nodoItemHeight
                 font.family: NodoSystem.fontInter.name
                 font.pixelSize: NodoSystem.buttonTextFontSize
                 onClicked: {
                     deviceSystemPopup.commandID = 2;
-                    deviceSystemPopup.applyButtonText = qsTr("Start Recovery")
+                    deviceSystemPopup.applyButtonText = qsTr("START RECOVERY")
                     deviceSystemPopup.open();
                 }
             }

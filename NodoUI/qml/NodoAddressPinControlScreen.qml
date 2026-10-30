@@ -83,7 +83,7 @@ Item {
         anchors.left: addressPinControlScreen.left
         anchors.top: addressPinControlReEnterNewPinField.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
-        text: qsTr("Change Address PIN")
+        text: qsTr("CHANGE ADDRESS PIN")
         height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize

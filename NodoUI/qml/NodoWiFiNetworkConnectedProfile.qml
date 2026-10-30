@@ -104,7 +104,7 @@ NodoCanvas {
         fitMinimal: true
         onClicked: {
             connectButton.isActive = false
-            connectButton.text = systemMessages.messages[NodoMessages.Message.Disconnecting] //qsTr("Disconnecting")
+            connectButton.text = systemMessages.messages[NodoMessages.Message.Disconnecting] //qsTr("DISCONNECTING")
             connectButton.update()
             networkManager.disconnectFromWiFi()
             mainRect.state = "" //Added later

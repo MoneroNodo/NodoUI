@@ -234,7 +234,7 @@ Item {
         anchors.left: moneroLWSAddAccountScreen.left
         anchors.top: moneroLWSPrivateViewkeyLabel.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
-        text: qsTr("Add Wallet")
+        text: qsTr("ADD WALLET")
         height: NodoSystem.nodoItemHeight
         width: labelSize
         font.family: NodoSystem.fontInter.name

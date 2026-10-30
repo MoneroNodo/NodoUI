@@ -144,7 +144,7 @@ Item {
         font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         width: nodeBanlistScreenIndex3Check.width + nodeBanlistScreenIndex3Text.width
-        text: qsTr("Apply")
+        text: qsTr("APPLY")
         isActive: false
         onClicked: {
             applyBanlistButton.isActive = false
@@ -164,7 +164,7 @@ Item {
         width: applyBanlistButton.width
         font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
-        text: qsTr("Clear")
+        text: qsTr("CLEAR")
         onClicked: {
             applyBanlistButton.isActive = false
             nodeBanlistScreenIndex1Check.checked = false;

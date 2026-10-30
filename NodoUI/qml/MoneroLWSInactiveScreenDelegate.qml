@@ -63,7 +63,7 @@ NodoCanvas {
         //anchors.left: moneroLWSinactiveHeightField.right
         //anchors.top: moneroLWSinactiveHeightField.top
         //anchors.leftMargin: 25
-        text: qsTr("Reactivate")
+        text: qsTr("REACTIVATE")
         height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
@@ -80,7 +80,7 @@ NodoCanvas {
         anchors.bottomMargin: NodoSystem.cardTopMargin
         //anchors.top: moneroLWSinactiveHeightField.top
         //anchors.leftMargin: 25
-        text: qsTr("Delete")
+        text: qsTr("DELETE")
         height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize

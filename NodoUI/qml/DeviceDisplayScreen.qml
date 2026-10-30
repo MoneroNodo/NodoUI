@@ -544,7 +544,7 @@ Item {
             anchors.leftMargin: 25
             anchors.topMargin: NodoSystem.nodoTopMargin
             height: NodoSystem.nodoItemHeight
-            text: qsTr("Manage")
+            text: qsTr("MANAGE")
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.buttonTextFontSize
             isActive: nodoControl.isFeedsEnabled()

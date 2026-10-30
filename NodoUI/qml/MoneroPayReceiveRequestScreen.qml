@@ -223,7 +223,7 @@ Item {
         anchors.top: blockConfirmationsRect.bottom
         anchors.left: moneroPayReceiveRequestScreen.left
         anchors.topMargin: 2*(NodoSystem.nodoTopMargin)
-        text: qsTr("Start Receive")
+        text: qsTr("START RECEIVE")
         height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
