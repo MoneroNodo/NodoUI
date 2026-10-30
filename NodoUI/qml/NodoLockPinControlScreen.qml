@@ -209,7 +209,7 @@ Item {
             anchors.left: lockPinControlRect.left
             anchors.top: lockPinControlReEnterNewPinField.bottom
             anchors.topMargin: NodoSystem.nodoTopMargin
-            text: systemMessages.messages[NodoMessages.Message.Apply]
+            text: qsTr("APPLY")
             height: NodoSystem.nodoItemHeight
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.buttonTextFontSize
