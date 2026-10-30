@@ -28,7 +28,7 @@ Item
 
     property int topMenuTextTopPadding: 0
 
-    property color red: "#C80000"    //R245
+    property color red: "#C80000"    //R200
     property color amber: "#FF9F0A" //255,159,10
     property color green: "#48B400" //R72,G180,B0
     property string syncDot: "●"
@@ -84,7 +84,7 @@ Item
 
     property int comboboxFontSize: 25
 
-    property color comboBoxHighlightedItemBGColorNightModeOff: //highlightedColorNightModeOff "#FA5501" 	//1COLOR BG//
+    property color comboBoxHighlightedItemBGColorNightModeOff: highlightedColorNightModeOff //"#FA5501" 	//1COLOR BG//
     property color comboBoxHighlightedItemBGColorNightModeOn: highlightedColorNightModeOn //"#F50000"		//NMCOLOR1 BG//
 
     property color comboBoxTextColor: defaultColorNightModeOff //"#F5F5F5"							//1TEXT FONT//
