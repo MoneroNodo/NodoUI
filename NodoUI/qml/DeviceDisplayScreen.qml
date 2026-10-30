@@ -301,7 +301,8 @@ Item {
         anchors.top: screenSaverRect.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         height: NodoSystem.nodoItemHeight
-        visible: false
+        width: deviceDisplayLanguageLabel.width + deviceDisplayLanguageComboBox.width
+        color: "black"
 
         NodoLabel {
             id: deviceDisplayLanguageLabel
@@ -313,13 +314,12 @@ Item {
             text: qsTr("Language")
         }
 
-        NodoComboBox
-        {
+        NodoComboBox {
             id: deviceDisplayLanguageComboBox
             anchors.left: deviceDisplayLanguageLabel.right
             anchors.leftMargin: NodoSystem.padding
             anchors.top: deviceDisplayLanguageLabel.top
-            width: dropdownLength
+            width: dropdownLength - ( deviceDisplayLanguageLabel.width * 3 ) + 10
             height: languageRect.height
             currentIndex: translator.getLanguageIndex()
             model: translator.languages
@@ -331,9 +331,10 @@ Item {
 
     Rectangle {
         id: keyboardLayoutRect
-        anchors.left: deviceDisplayScreen.left
+        anchors.left: languageRect.right
         anchors.top: screenSaverRect.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
+        anchors.leftMargin: 25
         height: NodoSystem.nodoItemHeight
 
         NodoLabel {
@@ -350,7 +351,8 @@ Item {
             anchors.left: keyboardLayoutLabel.right
             anchors.leftMargin: NodoSystem.padding
             anchors.top: keyboardLayoutRect.top
-            width: dropdownLength
+            height: keyboardLayoutRect.height
+            width: ( keyboardLayoutLabel * 1.9 ) - 8
             height: keyboardLayoutRect.height
             currentIndex: nodoControl.getKeyboardLayoutType()
             model: [qsTr("QWERTY"), qsTr("QWERTZ"), qsTr("AZERTY")]
@@ -522,7 +524,7 @@ Item {
             anchors.left: deviceDisplayFeedsSwitchRect.left
             anchors.top: deviceDisplayFeedsSwitchRect.top
             width: labelSize
-            text: qsTr("News Feeds")
+            text: qsTr("News")
         }
 
         NodoSwitch {
@@ -542,7 +544,7 @@ Item {
             anchors.leftMargin: 25
             anchors.topMargin: NodoSystem.nodoTopMargin
             height: NodoSystem.nodoItemHeight
-            text: qsTr("Manage Feeds")
+            text: qsTr("Manage")
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.buttonTextFontSize
             isActive: nodoControl.isFeedsEnabled()
