@@ -352,7 +352,7 @@ Item {
             anchors.leftMargin: NodoSystem.padding
             anchors.top: keyboardLayoutRect.top
             height: keyboardLayoutRect.height
-            width: ( keyboardLayoutLabel * 1.9 ) - 8
+            width: ( keyboardLayoutLabel.width * 1.9 ) - 8
             height: keyboardLayoutRect.height
             currentIndex: nodoControl.getKeyboardLayoutType()
             model: [qsTr("QWERTY"), qsTr("QWERTZ"), qsTr("AZERTY")]
