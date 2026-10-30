@@ -9,7 +9,7 @@ Item {
     id: deviceSSHScreen
     anchors.fill: parent
     property int labelSize: 0
-    property int inputFieldWidth: 900
+    property int inputFieldWidth: 1200
     property bool inputFieldReadOnly: false
     property bool isPasswordValid: false
     property string oldPassword
