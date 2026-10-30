@@ -183,6 +183,37 @@ Item {
         }
     }
 
+    Text {
+        id: orText
+        anchors.top: changeAdminPasswordTitle.bottom
+        anchors.topMargin: NodoSystem.nodoTopMargin*1.5
+        anchors.left: deviceSSHOldPasswordField.right
+        anchors.left: 25
+        verticalAlignment: Text.AlignVCenter
+        font.family: NodoSystem.fontInter.name
+        font.pixelSize: NodoSystem.descriptionTextFontSize
+        color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
+        text: qsTr("or")
+    }
+
+    NodoInputField {
+        id: deviceSSHOldPinField
+        anchors.top: changeAdminPasswordTitle.bottom
+        anchors.topMargin: NodoSystem.cardTopMargin
+        anchors.left: orText.right
+        anchors.leftMargin: 25
+        width: 380
+        height: NodoSystem.nodoItemHeight
+        itemSize: 120
+        itemText: qsTr("PIN")
+        valueText: ""
+        readOnlyFlag: deviceSSHScreen.inputFieldReadOnly
+        passwordInput: true
+        onTextEditFinished: {
+            oldPIN = valueText
+        }
+    }
+
     NodoInputField {
         id: deviceSSHPasswordField
         anchors.left: deviceSSHScreen.left
@@ -237,7 +268,6 @@ Item {
             showPasswordCheckError(deviceSSHReenterPasswordField.valueText, deviceSSHPasswordField.valueText)
         }
     }
-
 
     NodoButton {
         id: deviceSSHApplyButton
