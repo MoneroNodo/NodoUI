@@ -16,7 +16,7 @@ Item
     property int subMenuButtonHeight: nodoItemHeight
     property int subMenuButtonFontSize: topMenuButtonFontSize
     property int textFontSize: 42
-    property int buttonTextFontSize: topMenuButtonFontSize
+    property int buttonTextFontSize: topMenuButtonFontSize - 8 
     property int subMenuLeftMargin: 10
     property int subMenuTopMargin: 25
 
@@ -28,7 +28,7 @@ Item
 
     property int topMenuTextTopPadding: 0
 
-    property color red: "#F50000"    //R245
+    property color red: "#C80000"    //R245
     property color amber: "#FF9F0A" //255,159,10
     property color green: "#48B400" //R72,G180,B0
     property string syncDot: "●"
@@ -40,8 +40,8 @@ Item
     property color defaultColorNightModeOff: "#F5F5F5"				//1TEXT FONT//
 	property color defaultColorNightModeOn: "#AE0000"							//NMCOLOR2//
     
-	property color highlightedColorNightModeOff: "#FA5501"			//1COLOR BG//
-    property color highlightedColorNightModeOn: "#F50000"			//NMCOLOR1 BG//
+	property color highlightedColorNightModeOff: "#F86F2A"			//1COLOR BG//
+    property color highlightedColorNightModeOn: red //"#F50000"			//NMCOLOR1 BG//
 
     property int infoFieldItemFontSize: textFontSize
     property int infoFieldValueFontSize: textFontSize
@@ -49,8 +49,8 @@ Item
     property int inputFieldItemFontSize: textFontSize
     property int inputFieldValueFontSize: textFontSize
 
-    property color dataFieldTextColorNightModeOn: "#AE0000"						//NMCOLOR2//
-    property color dataFieldTextColorNightModeOff: "#F5F5F5"		//1TEXT FONT//
+    property color dataFieldTextColorNightModeOn: defaultColorNightModeOn //"#AE0000"						//NMCOLOR2//
+    property color dataFieldTextColorNightModeOff: defaultColorNightModeOff //"#F5F5F5"		//1TEXT FONT//
 
     property color dataFieldTitleBGColorNightModeOn: "#2F2F2F" //RGB 47
     property color dataFieldTitleBGColorNightModeOff: "#2F2F2F"
@@ -58,16 +58,16 @@ Item
     property color dataFieldTextBGColorNightModeOn: "#212121" //RGB 33
     property color dataFieldTextBGColorNightModeOff: "#212121"
 
-    property color buttonTextColorNightModeOn: "#F5F5F5"			//1TEXT FONT//
-    property color buttonBGColorNightModeOn: "#AE0000"							//NMCOLOR2//			
+    property color buttonTextColorNightModeOn: defaultColorNightModeOff //"#F5F5F5"			//1TEXT FONT//
+    property color buttonBGColorNightModeOn: defaultColorNightModeOn //"#AE0000"							//NMCOLOR2//			
 
-    property color buttonTextColorNightModeOff: "#F5F5F5"			//1TEXT FONT//
-    property color buttonBGColorNightModeOff: "#FA5501"				//1COLOR BG//
+    property color buttonTextColorNightModeOff: defaultColorNightModeOff //"#F5F5F5"			//1TEXT FONT//
+    property color buttonBGColorNightModeOff: highlightedColorNightModeOff //"#FA5501"				//1COLOR BG//
 
-    property color dayTextColorNightModeOn: "#F50000"				//NMCOLOR1 BG//
+    property color dayTextColorNightModeOn: highlightedColorNightModeOn //"#F50000"				//NMCOLOR1 BG//
     property color dayTextColorNightModeOff: "#CFCFCF"				//ANALOG CLOCK DAY COLOR//
 
-    property color dateTextColorNightModeOn: "#AE0000"						//NMCOLOR2 CLOCK NIGHT COLOR//
+    property color dateTextColorNightModeOn: defaultColorNightModeOn //"#AE0000"						//NMCOLOR2 CLOCK NIGHT COLOR//
     property color dateTextColorNightModeOff: "#9D9D9D"				//ANALOG CLOCK DAY COLOR//
 
     property color switchBackgroundColor: "#414141"	//RGB65
@@ -84,18 +84,18 @@ Item
 
     property int comboboxFontSize: 25
 
-    property color comboBoxHighlightedItemBGColorNightModeOff: "#FA5501" 	//1COLOR BG//
-    property color comboBoxHighlightedItemBGColorNightModeOn: "#F50000"		//NMCOLOR1 BG//
+    property color comboBoxHighlightedItemBGColorNightModeOff: //highlightedColorNightModeOff "#FA5501" 	//1COLOR BG//
+    property color comboBoxHighlightedItemBGColorNightModeOn: highlightedColorNightModeOn //"#F50000"		//NMCOLOR1 BG//
 
-    property color comboBoxTextColor: "#F5F5F5"							//1TEXT FONT//
+    property color comboBoxTextColor: defaultColorNightModeOff //"#F5F5F5"							//1TEXT FONT//
 
-    //property color lockIndicatorBorderColorNightModeOn: "#F50000"
-    //property color lockIndicatorFilledColorNightModeOn: "#F50000"
-    property color lockIndicatorBorderColor: "#FA5501"						//1COLOR BG//
-    property color lockIndicatorFilledColor: "#FA5501"						//1COLOR BG//
+    //property color lockIndicatorBorderColorNightModeOn: highlightedColorNightModeOn //"#F50000"
+    //property color lockIndicatorFilledColorNightModeOn: highlightedColorNightModeOn //"#F50000"
+    property color lockIndicatorBorderColor: highlightedColorNightModeOff //"#FA5501"						//1COLOR BG//
+    property color lockIndicatorFilledColor: highlightedColorNightModeOff //"#FA5501"						//1COLOR BG//
     property color lockIndicatorEmptyColor: "black"
     property color lockButtonColor: dataFieldTextBGColorNightModeOff//"#232323"												//3COLOR BG//
-    property color lockButtonTextColor: "#F5F5F5"						//1TEXT FONT//
+    property color lockButtonTextColor: defaultColorNightModeOff //"#F5F5F5"						//1TEXT FONT//
     property int lockButtonTextSize: 55
     property int lockButtonWidth: 160
     property int lockButtonHeight: 160
@@ -105,11 +105,11 @@ Item
     property color keyboardButtonUnpressed: dataFieldTextBGColorNightModeOff//"#282828"
     property color keyboardButtonPressed: switchBackgroundColor//"#323232"						//KBONPRESS//
     property color keyboardBackgroundColor: "black"
-    property color textColorOnUnpressedButton: "#F5F5F5"				//1TEXT FONT//
-    property color capsLockOnColor: "#FA5501"							//1COLOR BG//
+    property color textColorOnUnpressedButton: defaultColorNightModeOff //"#F5F5F5"				//1TEXT FONT//
+    property color capsLockOnColor: highlightedColorNightModeOff //"#FA5501"							//1COLOR BG//
 
     property color inputPreviewBackgroundColor: keyboardButtonUnpressed						//3COLOR BG//
-    property color inputPreviewTextColor: "#F5F5F5"						//1TEXT FONT//
+    property color inputPreviewTextColor: defaultColorNightModeOff //"#F5F5F5"						//1TEXT FONT//
 
     property color popupBackgroundColor: dataFieldTitleBGColorNightModeOff//"#232323"								//2COLOR BG//
 }
