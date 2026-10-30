@@ -41,7 +41,7 @@ Item
 	property color defaultColorNightModeOn: "#AE0000"							//NMCOLOR2//
     
 	property color highlightedColorNightModeOff: "#F86F2A"			//1COLOR BG//
-    property color highlightedColorNightModeOn: red //"#F50000"			//NMCOLOR1 BG//
+    property color highlightedColorNightModeOn: "#C80000"			//NMCOLOR1 BG//
 
     property int infoFieldItemFontSize: textFontSize
     property int infoFieldValueFontSize: textFontSize
