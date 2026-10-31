@@ -248,7 +248,6 @@ void Daemon::updateServiceStatus(void)
     m_serviceStatusTimer->start(5000);
 }
 
-
 void Daemon::updateHardwareStatus(void)
 {
     m_hardwareStatusTimer->stop();
@@ -415,11 +414,6 @@ void Daemon::setPassword(QString pw)
     sh.waitForFinished( -1 );
     qDebug() << "setPassword exit code: " << sh.exitCode();
     emit passwordChangeStatus(sh.exitCode());
-}
-
-int Daemon::getBlockchainStorageStatus(void)
-{
-    return recoveryKeyThread->getBlockchainStorageStatus();
 }
 
 void Daemon::moneroLWSAddAccount(QString address, QString privateKey)

@@ -40,7 +40,6 @@ public slots:
 
     void setPassword(QString pw);
     void changePassword(QString oldPassword, QString newPassword);
-    int getBlockchainStorageStatus(void);
 
     void moneroLWSAddAccount(QString address, QString privateKey);
     void moneroLWSDeleteAccount(QString address);
@@ -121,6 +120,7 @@ private:
     void readCurrentGPUSpeed(void);
     void readBlockchainStorageUsage(void);
     void readSystemStorageUsage(void);
+    void readSystemStorageStatus(void);
 
 private slots:
     void updateHardwareStatus(void);

@@ -136,8 +136,6 @@ public:
     Q_INVOKABLE void setAddressPin(QString newPIN);
     Q_INVOKABLE bool verifyAddressPinCode(QString pin);
 
-    Q_INVOKABLE int getBlockchainStorageStatus(void);
-
     Q_INVOKABLE bool isPasswordValid(QString password);
     Q_INVOKABLE void sendUpdate(void);
 

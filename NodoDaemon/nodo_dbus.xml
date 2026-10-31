@@ -31,10 +31,6 @@
             <arg name="pw" type="s" direction="in"/>
         </method>
 
-        <method name="getBlockchainStorageStatus">
-            <arg name="status" type="i" direction="out"/>
-        </method>
-
         <signal name="startRecoveryNotification">
                 <arg name="message" type="s" direction="out"/>
         </signal>

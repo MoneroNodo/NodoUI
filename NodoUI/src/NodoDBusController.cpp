@@ -126,15 +126,6 @@ void NodoDBusController::changePassword(QString oldPassword, QString newPassword
     nodo->changePassword(oldPassword, newPassword);
 }
 
-int NodoDBusController::getBlockchainStorageStatus(void)
-{
-    if(false == m_dbusAdapterConnectionStatus)
-    {
-        return 0;
-    }
-    return nodo->getBlockchainStorageStatus();
-}
-
 void NodoDBusController::moneroLWSAddAccount(QString address, QString privateKey)
 {
     if(false == m_dbusAdapterConnectionStatus)

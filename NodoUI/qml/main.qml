@@ -82,19 +82,6 @@ ApplicationWindow {
             nodoControl.restartLockScreenTimer();
         }
 
-        var bcDiskStatus = nodoControl.getBlockchainStorageStatus()
-        if(1 === bcDiskStatus)
-        {
-            mainScreenPopup.commandID = -1;
-            mainScreenPopup.popupMessageText = systemMessages.messages[NodoMessages.Message.NoStorageFound]
-            mainScreenPopup.open();
-        }
-        else if(2 === bcDiskStatus)
-        {
-            mainScreenPopup.commandID = -1;
-            mainScreenPopup.popupMessageText = systemMessages.messages[NodoMessages.Message.NewBlockChainStorageFound]
-            mainScreenPopup.open();
-        }
     }
 
     Rectangle {
