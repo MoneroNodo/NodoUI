@@ -64,7 +64,7 @@ Daemon::Daemon()
     m_setupDomainsTimer->start(100);
 }
 
-void Daemon::startRecovery(int recoverFS, int rsyncBlockchain)
+void Daemon::startRecovery(int deviceReset, int recoverFS, int rsyncBlockchain)
 {
     qDebug() << QString("received recovery request").append("recoverFS: ").append(QString::number(recoverFS).append(" rsyncBlockchain: ").append(QString::number(rsyncBlockchain)));
 

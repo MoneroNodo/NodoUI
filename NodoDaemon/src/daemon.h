@@ -30,7 +30,7 @@ public:
     Daemon();
 
 public slots:
-    void startRecovery(int recoverFS, int rsyncBlockchain);
+    void startRecovery(int deviceReset, int recoverFS, int rsyncBlockchain);
     void changeServiceStatus(QString operation, QString service);
     void restart(void);
     void update(void);

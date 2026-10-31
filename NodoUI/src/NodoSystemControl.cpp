@@ -170,9 +170,9 @@ void NodoSystemControl::shutdownDevice()
     m_dbusController->shutdown();
 }
 
-void NodoSystemControl::systemRecovery(int recoverFS, int rsyncBlockchain)
+void NodoSystemControl::systemRecovery(int deviceReset, int recoverFS, int rsyncBlockchain)
 {
-    m_dbusController->startRecovery(recoverFS, rsyncBlockchain);
+    m_dbusController->startRecovery(deviceReset, recoverFS, rsyncBlockchain);
 }
 
 void NodoSystemControl::setTimeZoneIndex(int tz_id)
