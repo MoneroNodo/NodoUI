@@ -7,7 +7,6 @@
 #include <QHostAddress>
 #include <QNetworkInterface>
 #include "PowerKeyThread.h"
-#include "RecoveryKeyThread.h"
 #include "ServiceManagerThread.h"
 #include "MoneroLWSND.h"
 #include "UserAuthentication.h"
@@ -42,7 +41,6 @@ public slots:
     void setPassword(QString pw);
     void changePassword(QString oldPassword, QString newPassword);
     int getBlockchainStorageStatus(void);
-    void factoryResetApproved(void);
 
     void moneroLWSAddAccount(QString address, QString privateKey);
     void moneroLWSDeleteAccount(QString address);
@@ -73,9 +71,6 @@ signals:
     void updateRequested(void);
     void updateStarted(void);
     void updateCompleted(void);
-    void factoryResetStarted(void);
-    void factoryResetRequested(void);
-    void factoryResetCompleted(void);
     void powerButtonPressDetected(void);
     void powerButtonReleaseDetected(void);
     void hardwareStatusReadyNotification(const QString &message);
@@ -108,7 +103,6 @@ private:
     QTimer *m_serviceStatusTimer;
 
     PowerKeyThread *powerKeyThread;
-    RecoveryKeyThread *recoveryKeyThread;
     MoneroLWS *moneroLWS;
 
     QTimer *m_pingTimer;

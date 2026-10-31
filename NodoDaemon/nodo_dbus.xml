@@ -3,6 +3,7 @@
 <node>
     <interface name="com.moneronodo.embeddedInterface">
         <method name="startRecovery">
+            <arg name="deviceReset" type="i" direction="in"/>
             <arg name="recoverFS" type="i" direction="in"/>
             <arg name="rsyncBlockchain" type="i" direction="in"/>
         </method>
@@ -30,12 +31,9 @@
             <arg name="pw" type="s" direction="in"/>
         </method>
 
-        <method name="factoryResetApproved"/>
-
         <method name="getBlockchainStorageStatus">
             <arg name="status" type="i" direction="out"/>
         </method>
-
 
         <signal name="startRecoveryNotification">
                 <arg name="message" type="s" direction="out"/>
@@ -57,17 +55,9 @@
                 <arg name="status" type="i" direction="out"/>
         </signal>
 
-        <signal name="factoryResetStarted"/>
-
-        <signal name="factoryResetCompleted"/>
-
-        <signal name="factoryResetRequested"/>
-
         <signal name="powerButtonPressDetected"/>
 
         <signal name="powerButtonReleaseDetected"/>
-
-
 
         <method name="moneroLWSAddAccount">
                 <arg name="address" type="s" direction="in"/>

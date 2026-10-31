@@ -136,7 +136,6 @@ public:
     Q_INVOKABLE void setAddressPin(QString newPIN);
     Q_INVOKABLE bool verifyAddressPinCode(QString pin);
 
-    Q_INVOKABLE void factoryResetApproved(void);
     Q_INVOKABLE int getBlockchainStorageStatus(void);
 
     Q_INVOKABLE bool isPasswordValid(QString password);
@@ -162,9 +161,6 @@ signals:
     void _24hEnabledChanged(bool);
     void torProxyEnabledChanged(bool);
 
-    void factoryResetStarted(void);
-    void factoryResetRequested(void);
-    void factoryResetCompleted(void);
     void powerButtonPressDetected(void);
     void powerButtonReleaseDetected(void);
     void serviceManagerNotificationReceived(QString); // delegate

@@ -131,15 +131,6 @@ ApplicationWindow {
                 }
             }
 
-            function onFactoryResetRequested()
-            {
-                console.log("FactoryResetRequested")
-                mainScreenPopup.commandID = 0;
-                mainScreenPopup.popupMessageText = systemMessages.messages[NodoMessages.Message.FactoryResetApprove]
-                mainScreenPopup.applyButtonText = systemMessages.messages[NodoMessages.Message.Accept]
-                mainScreenPopup.open();
-            }
-
             function onPowerButtonPressDetected()
             {
                 console.log("onPowerButtonPressDetected")
@@ -343,17 +334,6 @@ ApplicationWindow {
             }
         }
 
-        NodoPopup {
-            id: mainScreenPopup
-            onApplyClicked: {
-                if(commandID === 0)
-                {
-                    nodoControl.factoryResetApproved();
-                    mainAppStackView.push("FactoryResetScreen.qml")
-                }
-                close()
-            }
-        }
     }
 
     Rectangle {

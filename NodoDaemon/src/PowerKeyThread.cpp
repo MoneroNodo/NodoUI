@@ -27,7 +27,6 @@ void PowerKeyThread::startListening(void)
 void PowerKeyThread::doWork(void)
 {
     m_timer->stop();
-    qDebug() << "factoryResetRequested";
     emit poweroffRequested();
 }
 

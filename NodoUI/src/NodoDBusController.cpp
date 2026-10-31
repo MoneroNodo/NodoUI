@@ -8,9 +8,6 @@ NodoDBusController::NodoDBusController(QObject *parent) : QObject{parent}
     connect(nodo, SIGNAL(hardwareStatusReadyNotification(QString)), this, SIGNAL(hardwareStatusReadyNotification(QString)));
     connect(nodo, SIGNAL(serviceStatusReadyNotification(QString)), this, SIGNAL(serviceStatusReceived(QString)));
     connect(nodo, SIGNAL(passwordChangeStatus(int)), this, SIGNAL(passwordChangeStatus(int)));
-    connect(nodo, SIGNAL(factoryResetStarted()), this, SIGNAL(factoryResetStarted()));
-    connect(nodo, SIGNAL(factoryResetCompleted()), this, SIGNAL(factoryResetCompleted()));
-    connect(nodo, SIGNAL(factoryResetRequested()), this, SIGNAL(factoryResetRequested()));
     connect(nodo, SIGNAL(powerButtonPressDetected()), this, SIGNAL(powerButtonPressDetected()));
     connect(nodo, SIGNAL(powerButtonReleaseDetected()), this, SIGNAL(powerButtonReleaseDetected()));
 
@@ -127,15 +124,6 @@ void NodoDBusController::changePassword(QString oldPassword, QString newPassword
         return;
     }
     nodo->changePassword(oldPassword, newPassword);
-}
-
-void NodoDBusController::factoryResetApproved(void)
-{
-    if(false == m_dbusAdapterConnectionStatus)
-    {
-        return;
-    }
-    nodo->factoryResetApproved();
 }
 
 int NodoDBusController::getBlockchainStorageStatus(void)

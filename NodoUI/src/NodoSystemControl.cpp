@@ -47,9 +47,6 @@ NodoSystemControl::NodoSystemControl(NodoUISystemParser *uiSystemParser, NodoCon
     connect(m_dbusController, SIGNAL(serviceManagerNotificationReceived(QString)), this, SLOT(serviceManagerNotificationReceived(QString)));
     connect(m_dbusController, SIGNAL(passwordChangeStatus(int)), this, SLOT(passwordChangeStatusReceived(int)));
 
-    connect(m_dbusController, SIGNAL(factoryResetStarted()), this, SIGNAL(factoryResetStarted()));
-    connect(m_dbusController, SIGNAL(factoryResetCompleted()), this, SIGNAL(factoryResetCompleted()));
-    connect(m_dbusController, SIGNAL(factoryResetRequested()), this, SIGNAL(factoryResetRequested()));
     connect(m_dbusController, SIGNAL(powerButtonPressDetected()), this, SIGNAL(powerButtonPressDetected()));
     connect(m_dbusController, SIGNAL(powerButtonReleaseDetected()), this, SIGNAL(powerButtonReleaseDetected()));
 }
@@ -762,11 +759,6 @@ void NodoSystemControl::passwordChangeStatusReceived(int status)
 {
     enableComponent(true);
     emit passwordChangeStatus(status);
-}
-
-void NodoSystemControl::factoryResetApproved(void)
-{
-    m_dbusController->factoryResetApproved();
 }
 
 int NodoSystemControl::getBlockchainStorageStatus(void)

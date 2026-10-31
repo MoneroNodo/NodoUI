@@ -41,10 +41,10 @@ Item {
         FailedToChangePassword,
         PasswordChangedSuccessfully,
         InputFieldCantBeEmpty,
-        FactoryResetApprove,
+        RecoveryApprove,
         Accept,
-        FactoryResetStarted,
-        FactoryResetCompleted,
+        RecoveryStarted,
+        RecoveryCompleted,
         NoStorageFound,
         NewBlockChainStorageFound,
         OldPasswordIsWrong

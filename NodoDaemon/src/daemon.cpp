@@ -49,12 +49,6 @@ Daemon::Daemon()
     powerKeyThread->startListening();
 
 
-    recoveryKeyThread = new RecoveryKeyThread();
-    connect(recoveryKeyThread, SIGNAL(factoryResetRequested()), this, SIGNAL(factoryResetRequested()));
-    connect(recoveryKeyThread, SIGNAL(factoryResetStarted()), this, SIGNAL(factoryResetStarted()));
-    connect(recoveryKeyThread, SIGNAL(factoryResetCompleted()), this, SIGNAL(factoryResetCompleted()));
-    recoveryKeyThread->startListening();
-
     moneroLWS = new MoneroLWS();
     connect(moneroLWS, SIGNAL(listAccountsCompleted()), this, SIGNAL(moneroLWSListAccountsCompleted()));
     connect(moneroLWS, SIGNAL(listRequestsCompleted()), this, SIGNAL(moneroLWSListRequestsCompleted()));
@@ -426,11 +420,6 @@ void Daemon::setPassword(QString pw)
 int Daemon::getBlockchainStorageStatus(void)
 {
     return recoveryKeyThread->getBlockchainStorageStatus();
-}
-
-void Daemon::factoryResetApproved(void)
-{
-    recoveryKeyThread->recover();
 }
 
 void Daemon::moneroLWSAddAccount(QString address, QString privateKey)

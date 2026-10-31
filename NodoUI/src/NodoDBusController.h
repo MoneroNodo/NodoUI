@@ -22,7 +22,6 @@ public:
     int getBacklightLevel(void);
     void setPassword(QString pw);
     void changePassword(QString oldPassword, QString newPassword);
-    void factoryResetApproved(void);
     int getBlockchainStorageStatus(void);
 
     void moneroLWSAddAccount(QString address, QString privateKey);
@@ -57,9 +56,6 @@ signals:
     void hardwareStatusReadyNotification(const QString &message);
     void passwordChangeStatus(int status);
 
-    void factoryResetStarted(void);
-    void factoryResetRequested(void);
-    void factoryResetCompleted(void);
     void powerButtonPressDetected(void);
     void powerButtonReleaseDetected(void);
 
