@@ -186,6 +186,7 @@ Item {
             onCheckedChanged: {
                 nodoControl.setSyncDot(checked)
                 mainAppWindow.updateSyncDotEnabled(checked)
+                systemStatusParser.updateStatusNow();
             }
         }
     }

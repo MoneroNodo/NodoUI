@@ -39,21 +39,6 @@ Item {
         }
     }
 
-    NodoButton {
-        id: deviceAddressPinSettingsButton
-        anchors.left: devicePinScreen.left
-        anchors.top: deviceLockPinSettingsButton.bottom
-        anchors.topMargin: devicePinScreen.buttonTopMargin
-        text: qsTr("Address PIN Settings")
-        height: NodoSystem.nodoItemHeight
-        font.family: NodoSystem.fontInter.name
-        font.pixelSize: NodoSystem.buttonTextFontSize
-        width: labelSize
-        onClicked: {
-            onClicked: { pageLoader.source = "DeviceAddressPinScreen.qml" }
-        }
-    }
-
     Loader {
         id: pageLoader
         anchors.top: devicePinScreen.top
