@@ -91,7 +91,7 @@
         <file>qml/NodoFirstTimeLockPinScreen.qml</file>
         <file>qml/DeviceLockPinScreen.qml</file>
 <!--        <file>qml/DeviceAddressPinScreen.qml</file> -->
-        <file>qml/NodoAddressPinControlScreen.qml</file>
+<!--        <file>qml/NodoAddressPinControlScreen.qml</file> -->
         <file>Images/MPAY_tick.html</file>
 
         <file>qml/MoneroPaySettingsConfigScreen.qml</file>
