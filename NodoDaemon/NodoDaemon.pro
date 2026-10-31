@@ -19,7 +19,6 @@ SOURCES += \
     src/main.cpp \
     src/daemon.cpp \
     src/PowerKeyThread.cpp \
-    src/RecoveryKeyThread.cpp \
 
 HEADERS += \
     src/MoneroLWSND.h \
@@ -27,7 +26,6 @@ HEADERS += \
     src/UserAuthentication.h \
     src/daemon.h \
     src/PowerKeyThread.h \
-    src/RecoveryKeyThread.h
 
 
 CONFIG(debug, debug|release) {

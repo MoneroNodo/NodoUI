@@ -37,7 +37,7 @@ public:
     Q_INVOKABLE void restartDevice();
     Q_INVOKABLE void shutdownDevice();
     Q_INVOKABLE void updateDevice();
-    Q_INVOKABLE void systemRecovery(int recoverFS, int rsyncBlockchain);
+    Q_INVOKABLE void systemRecovery(int deviceReset, int recoverFS, int rsyncBlockchain);
 
     Q_INVOKABLE void setTimeZoneIndex(int tz_id);
     Q_INVOKABLE QDateTime getChangedDateTime(void);

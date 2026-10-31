@@ -45,13 +45,13 @@ bool NodoDBusController::isConnected()
     return m_dbusAdapterConnectionStatus;
 }
 
-void NodoDBusController::startRecovery(int recoverFS, int rsyncBlockchain)
+void NodoDBusController::startRecovery(int deviceReset, int recoverFS, int rsyncBlockchain)
 {
     if(false == m_dbusAdapterConnectionStatus)
     {
         return;
     }
-    nodo->startRecovery(recoverFS, rsyncBlockchain);
+    nodo->startRecovery(deviceReset, recoverFS, rsyncBlockchain);
 }
 
 void NodoDBusController::serviceManager(QString operation, QString service)

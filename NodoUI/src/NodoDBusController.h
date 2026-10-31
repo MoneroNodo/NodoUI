@@ -13,7 +13,7 @@ class NodoDBusController : public QObject
 public:
     explicit NodoDBusController(QObject *parent = nullptr);
     bool isConnected(void);
-    void startRecovery(int recoverFS, int rsyncBlockchain);
+    void startRecovery(int deviceReset, int recoverFS, int rsyncBlockchain);
     void serviceManager(QString operation, QString service);
     void update(void);
     void restart(void);

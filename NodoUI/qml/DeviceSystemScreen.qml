@@ -320,8 +320,8 @@ Rectangle {
                 nodoControl.shutdownDevice();
             }
             else if(commandID === 2)
-            {
-                nodoControl.systemRecovery(deviceSystemRecoveryRecoverFS.checked, deviceSystemRecoveryResyncBlockchain.checked);
+            { // TODO:
+                nodoControl.systemRecovery(0, deviceSystemRecoveryRecoverFS.checked, deviceSystemRecoveryResyncBlockchain.checked);
             }
             close()
         }
