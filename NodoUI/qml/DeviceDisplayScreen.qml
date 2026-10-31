@@ -11,7 +11,7 @@ Item {
     anchors.fill: parent
     property alias themeMode: deviceDisplayNightModeSwitch
     themeMode.checked: nodoControl.appTheme
-    property int labelSize: 260
+    property int labelSize: 300
     property int dropdownLength: width - labelSize - NodoSystem.subMenuLeftMargin
 
     Component.onCompleted: {
@@ -320,7 +320,7 @@ Item {
             anchors.left: deviceDisplayLanguageLabel.right
             anchors.leftMargin: NodoSystem.padding
             anchors.top: deviceDisplayLanguageLabel.top
-            width: dropdownLength - ( deviceDisplayLanguageLabel.width * 3 ) + 10
+            width: dropdownLength - 650
             height: languageRect.height
             currentIndex: translator.getLanguageIndex()
             model: translator.languages
@@ -353,7 +353,7 @@ Item {
             anchors.leftMargin: NodoSystem.padding
             anchors.top: keyboardLayoutRect.top
             height: keyboardLayoutRect.height
-            width: ( keyboardLayoutLabel.width * 1.9 ) - 8
+            width: 325
             currentIndex: nodoControl.getKeyboardLayoutType()
             model: [qsTr("QWERTY"), qsTr("QWERTZ"), qsTr("AZERTY")]
             onCurrentIndexChanged: {

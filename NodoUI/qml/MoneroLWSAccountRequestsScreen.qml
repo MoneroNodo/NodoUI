@@ -8,6 +8,7 @@ import NodoCanvas 1.0
 Item {
     id: moneroLWSAccountCreationRequestsScreen
 	anchors.fill: parent
+    property int buttonWidth: 380
 
     function createRequestListModels() {
         requestListModel.clear()
@@ -38,6 +39,7 @@ Item {
         anchors.top: moneroLWSAccountCreationRequestsScreen.top
         text: qsTr("ACCEPT ALL")
         height: NodoSystem.nodoItemHeight
+        width: buttonWidth
         font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         isActive: requestListModel.count > 0 ? true : false

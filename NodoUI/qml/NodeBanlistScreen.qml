@@ -11,6 +11,7 @@ Item {
 
     property int labelSize: 0
     property int checkBoxMargin: 0
+    property int buttonWidth: 380
 
     Component.onCompleted: {
         onCalculateMaximumTextLabelLength()
@@ -143,7 +144,7 @@ Item {
         height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
-        width: nodeBanlistScreenIndex3Check.width + nodeBanlistScreenIndex3Text.width
+        width: buttonWidth //nodeBanlistScreenIndex3Check.width + nodeBanlistScreenIndex3Text.width
         text: qsTr("APPLY")
         isActive: false
         onClicked: {

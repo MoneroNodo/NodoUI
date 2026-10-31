@@ -8,7 +8,7 @@ import NodoCanvas 1.0
 Item {
     id: nodeBandwidthScreen
     property int labelSize: 0
-    property int inputFieldWidth: 600
+    property int inputFieldWidth: 550
     property bool inputFieldReadOnly: false
     property bool switchCheckable: true
     property int incomingPeersLimit
@@ -129,16 +129,16 @@ Item {
 
     function onCalculateMaximumTextLabelLength() {
         if(incomingPeersLimitField.labelRectRoundSize > labelSize)
-            labelSize = incomingPeersLimitField.labelRectRoundSize
+            labelSize = incomingPeersLimitField.labelRectRoundSize + 10
 
         if(outgoingPeersLimitField.labelRectRoundSize > labelSize)
-            labelSize = outgoingPeersLimitField.labelRectRoundSize
+            labelSize = outgoingPeersLimitField.labelRectRoundSize + 10
 
         if(rateLimitUpField.labelRectRoundSize > labelSize)
-            labelSize = rateLimitUpField.labelRectRoundSize
+            labelSize = rateLimitUpField.labelRectRoundSize + 10
 
         if(rateLimitDownField.labelRectRoundSize > labelSize)
-            labelSize = rateLimitDownField.labelRectRoundSize
+            labelSize = rateLimitDownField.labelRectRoundSize + 10
     }
 
     NodoInputField {
@@ -248,7 +248,7 @@ Item {
                 height: rateLimitUpUnlimitedSwitchRect.height
                 anchors.left: rateLimitUpUnlimitedSwitchRect.left
                 anchors.top: rateLimitUpUnlimitedSwitchRect.top
-                width: labelSize - 120
+                width: labelSize - 60
                 text: qsTr("Unlimited")
             }
 
@@ -340,7 +340,7 @@ Item {
                 height: rateLimitDownUnlimitedSwitchRect.height
                 anchors.left: rateLimitDownUnlimitedSwitchRect.left
                 anchors.top: rateLimitDownUnlimitedSwitchRect.top
-                width: labelSize - 120
+                width: labelSize - 60
                 text: qsTr("Unlimited")
             }
 

@@ -8,7 +8,7 @@ import NodoCanvas 1.0
 Item {
     id: nodePrivateNodeScreen
     property int labelSize: 0
-    property int inputFieldWidth: 900
+    property int inputFieldWidth: 1200
     property bool isRPCEnabled
     property int rpcPort
 
@@ -20,6 +20,8 @@ Item {
     }
 
     function onCalculateMaximumTextLabelLength() {
+
+
         if(privateNodePortField.labelRectRoundSize > labelSize)
         labelSize = privateNodePortField.labelRectRoundSize
 
@@ -149,7 +151,7 @@ Item {
         width: inputFieldWidth
         height: NodoSystem.nodoItemHeight
         itemSize: labelSize
-        itemText: qsTr("Password")
+        itemText: qsTr("")
         valueText: nodoControl.getrpcPassword();
         passwordInput: true
         onValueTextChanged: privateNodeApplyButton.isActive = true
@@ -162,6 +164,7 @@ Item {
         anchors.topMargin: NodoSystem.nodoTopMargin
         text: systemMessages.messages[NodoMessages.Message.Apply]
         height: NodoSystem.nodoItemHeight
+        width: 380
         font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         isActive: false

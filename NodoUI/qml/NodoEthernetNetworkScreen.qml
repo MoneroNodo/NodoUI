@@ -9,11 +9,11 @@ import NodoCanvas 1.0
 Item {
     id: ethernetNetworkScreen
     anchors.fill: parent
-    property int labelSize: 300
+    property int labelSize: 380
     property bool isEthernetEnabled
     property int networkDelegateItemHeight: NodoSystem.nodoItemHeight
 
-    property int buttonSize: 320
+    property int buttonSize: 380
     property int defaultHeight: NodoSystem.nodoItemHeight + (NodoSystem.nodoTopMargin*2)
     property int spacing: 1
 

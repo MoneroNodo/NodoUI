@@ -236,7 +236,7 @@ Item {
         anchors.topMargin: NodoSystem.nodoTopMargin
         text: qsTr("ADD WALLET")
         height: NodoSystem.nodoItemHeight
-        width: labelSize
+        width: 380 //labelSize
         font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         isActive: moneroLWSAddAccountScreen.walletInfoValid()

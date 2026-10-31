@@ -13,6 +13,7 @@ NodoCanvas {
     property string inactiveAddress: ""
     property int scanHeight: 0
     property int labelSize: 0
+    property int buttonWidth: 380
 
     Component.onCompleted: {
         onCalculateMaximumTextLabelLength()
@@ -65,6 +66,7 @@ NodoCanvas {
         //anchors.leftMargin: 25
         text: qsTr("REACTIVATE")
         height: NodoSystem.nodoItemHeight
+        width: buttonWidth
         font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         onClicked: {
@@ -82,6 +84,7 @@ NodoCanvas {
         //anchors.leftMargin: 25
         text: qsTr("DELETE")
         height: NodoSystem.nodoItemHeight
+        width: buttonWidth
         font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         onClicked: {

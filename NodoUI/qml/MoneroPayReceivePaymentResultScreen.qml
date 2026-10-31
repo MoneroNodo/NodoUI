@@ -12,6 +12,7 @@ Item {
 
     property int labelSize: 240
     property int addressFieldWidth: 1240
+    property int buttonWidth: 380
     property double exchangeRate
     property string exchangeName
     property double xmrAmount
@@ -128,6 +129,7 @@ Item {
             anchors.left: paymentSuccessLabel.right
             anchors.leftMargin: NodoSystem.subMenuLeftMargin
             height: NodoSystem.nodoItemHeight
+            width: buttonWidth
             text: qsTr("NEW PAYMENT")
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.buttonTextFontSize
@@ -145,6 +147,7 @@ Item {
             anchors.left: gotoNewPaymentButton.right
             anchors.leftMargin: NodoSystem.subMenuLeftMargin
             height: NodoSystem.nodoItemHeight
+            width: buttonWidth
             text: qsTr("VIEW PAYMENTS")
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.buttonTextFontSize

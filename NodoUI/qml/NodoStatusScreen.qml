@@ -188,7 +188,7 @@ Rectangle {
         anchors.top: statusScreen.top
         anchors.topMargin: 42
         anchors.leftMargin: 1//cardMargin
-        width: 800
+        width: 700
         height: networkConnectionField.y + networkConnectionField.height + componentBottomMargin//683
         color: NodoSystem.dataFieldTextBGColorNightModeOff
 
@@ -217,11 +217,11 @@ Rectangle {
             anchors.leftMargin: componentLeftMargin
             width: syncStatusTabName.paintedWidth
             height: 15
-            text: qsTr("Monero Daemon")
+            text: qsTr("MONERO DAEMON")
             verticalAlignment: Text.AlignBottom
             horizontalAlignment: Text.AlignHCenter
-            font.pixelSize: NodoSystem.topMenuButtonFontSize +2
-            color: nodoControl.appTheme ? NodoSystem.highlightedColorNightModeOn : NodoSystem.highlightedColorNightModeOff
+            font.pixelSize: NodoSystem.descriptionTitleFontSize
+            color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
             font.family: NodoSystem.fontInter.name
         }
 
@@ -244,7 +244,7 @@ Rectangle {
             anchors.topMargin: fieldTopMargin
             width: parent.width - (componentLeftMargin*2)
             height: statusScreenInfoFieldHeight
-            itemSize: labelSize
+            itemSize: labelSize + 40
             itemText: qsTr("Block Height")
             valueText: nodoSystemStatus.getIntValueFromKey("height")
         }
@@ -256,7 +256,7 @@ Rectangle {
             anchors.topMargin: fieldTopMargin
             width: parent.width - (componentLeftMargin*2)
             height: statusScreenInfoFieldHeight
-            itemSize: labelSize
+            itemSize: labelSize + 40
             itemText: qsTr("Version")
             valueText: nodoSystemStatus.getIntValueFromKey("version")
         }
@@ -268,7 +268,7 @@ Rectangle {
             anchors.topMargin: fieldTopMargin
             width: parent.width - (componentLeftMargin*2)
             height: statusScreenInfoFieldHeight
-            itemSize: labelSize
+            itemSize: labelSize + 40
             itemText: qsTr("Outgoing Peers")
             valueText: nodoSystemStatus.getIntValueFromKey("outgoing_connections_count")
         }
@@ -280,7 +280,7 @@ Rectangle {
             anchors.topMargin: fieldTopMargin
             width: parent.width - (componentLeftMargin*2)
             height: statusScreenInfoFieldHeight
-            itemSize: labelSize
+            itemSize: labelSize + 40
             itemText: qsTr("Incoming Peers")
             valueText: nodoSystemStatus.getIntValueFromKey("incoming_connections_count")
         }
@@ -292,7 +292,7 @@ Rectangle {
             anchors.topMargin: fieldTopMargin
             width: componentWidth
             height: statusScreenInfoFieldHeight
-            itemSize: labelSize
+            itemSize: labelSize + 40
             itemText: qsTr("White Peerlist")
             valueText: nodoSystemStatus.getIntValueFromKey("white_peerlist_size")
         }
@@ -304,7 +304,7 @@ Rectangle {
             anchors.topMargin: fieldTopMargin
             width: parent.width - (componentLeftMargin*2)
             height: statusScreenInfoFieldHeight
-            itemSize: labelSize
+            itemSize: labelSize + 40
             itemText: qsTr("Grey Peerlist")
             valueText: nodoSystemStatus.getIntValueFromKey("grey_peerlist_size")
         }
@@ -316,7 +316,7 @@ Rectangle {
             anchors.topMargin: fieldTopMargin
             width: parent.width - (componentLeftMargin*2)
             height: statusScreenInfoFieldHeight
-            itemSize: labelSize
+            itemSize: labelSize + 40
             itemText: qsTr("Update")
             valueText: (true === nodoSystemStatus.getBoolValueFromKey("update_available")) ? qsTr("Update available") : qsTr("Up to date")
         }
@@ -328,7 +328,7 @@ Rectangle {
             anchors.topMargin: fieldTopMargin
             width: parent.width - (componentLeftMargin*2)
             height: statusScreenInfoFieldHeight
-            itemSize: labelSize
+            itemSize: labelSize + 40
             itemText: qsTr("Network")
         }
     }
@@ -340,7 +340,7 @@ Rectangle {
         anchors.top: statusScreen.top
         anchors.topMargin: 42
         anchors.leftMargin: cardMargin
-        width: 440
+        width: 460
         height: moneroPayField.y + moneroPayField.height + componentBottomMargin
         color: NodoSystem.dataFieldTextBGColorNightModeOff
 
@@ -359,11 +359,11 @@ Rectangle {
             anchors.leftMargin: componentLeftMargin
             width: systemStatusTabName.paintedWidth
             height: 15
-            text: qsTr("Services")
+            text: qsTr("SERVICES")
             verticalAlignment: Text.AlignBottom
             horizontalAlignment: Text.AlignHCenter
-            font.pixelSize: NodoSystem.topMenuButtonFontSize +2
-            color: nodoControl.appTheme ? NodoSystem.highlightedColorNightModeOn : NodoSystem.highlightedColorNightModeOff
+            font.pixelSize: NodoSystem.descriptionTitleFontSize
+            color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
             font.family: NodoSystem.fontInter.name
         }
 
@@ -374,7 +374,7 @@ Rectangle {
             anchors.topMargin: fieldTopMargin
             width: parent.width - (componentLeftMargin*2)
             height: statusScreenInfoFieldHeight
-            itemSize: labelSize - 80
+            itemSize: labelSize - 60
             itemText: qsTr("Daemon")
             valueText: ""
         }
@@ -386,7 +386,7 @@ Rectangle {
             anchors.topMargin: fieldTopMargin
             width: parent.width - (componentLeftMargin*2)
             height: statusScreenInfoFieldHeight
-            itemSize: labelSize - 80
+            itemSize: labelSize - 60
             itemText: qsTr("Tor")
             valueText: ""
         }
@@ -398,7 +398,7 @@ Rectangle {
             anchors.topMargin: fieldTopMargin
             width: parent.width - (componentLeftMargin*2)
             height: statusScreenInfoFieldHeight
-            itemSize: labelSize - 80
+            itemSize: labelSize - 60
             itemText: qsTr("I2P")
             valueText: ""
         }
@@ -410,7 +410,7 @@ Rectangle {
             anchors.topMargin: fieldTopMargin
             width: parent.width - (componentLeftMargin*2)
             height: statusScreenInfoFieldHeight
-            itemSize: labelSize - 80
+            itemSize: labelSize - 60
             itemText: qsTr("LWS")
             valueText: ""
         }
@@ -422,7 +422,7 @@ Rectangle {
             anchors.topMargin: fieldTopMargin
             width: parent.width - (componentLeftMargin*2)
             height: statusScreenInfoFieldHeight
-            itemSize: labelSize - 80
+            itemSize: labelSize - 60
             itemText: qsTr("MoneroPay")
             valueText: ""
         }
@@ -433,7 +433,7 @@ Rectangle {
         anchors.left: systemStatus.right
         anchors.top: statusScreen.top
         anchors.topMargin: 42
-        width: 630
+        width: 710
         anchors.leftMargin: cardMargin
         //anchors.rightMargin: 2//cardMargin
         height: uptimeField.y + uptimeField.height + componentBottomMargin
@@ -454,11 +454,11 @@ Rectangle {
             anchors.leftMargin: componentLeftMargin
             width: hardwareStatusTabName.paintedWidth
             height: 15
-            text: qsTr("System")
+            text: qsTr("SYSTEM")
             verticalAlignment: Text.AlignBottom
             horizontalAlignment: Text.AlignHCenter
-            font.pixelSize: NodoSystem.topMenuButtonFontSize +2
-            color: nodoControl.appTheme ? NodoSystem.highlightedColorNightModeOn : NodoSystem.highlightedColorNightModeOff
+            font.pixelSize: NodoSystem.descriptionTitleFontSize
+            color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
             font.family: NodoSystem.fontInter.name
         }
 
@@ -469,7 +469,7 @@ Rectangle {
             anchors.topMargin: fieldTopMargin
             width: parent.width - (componentLeftMargin*2)
             height: statusScreenInfoFieldHeight
-            itemSize: labelSize - 50
+            itemSize: labelSize + 20
             itemText: qsTr("CPU")
             valueText: systemMessages.messages[NodoMessages.Message.Loading]
         }
@@ -481,7 +481,7 @@ Rectangle {
             anchors.topMargin: fieldTopMargin
             width: parent.width - (componentLeftMargin*2)
             height: statusScreenInfoFieldHeight
-            itemSize: labelSize - 50
+            itemSize: labelSize + 20
             itemText: qsTr("Temperature")
             valueText: systemMessages.messages[NodoMessages.Message.Loading]
         }
@@ -493,7 +493,7 @@ Rectangle {
             anchors.topMargin: fieldTopMargin
             width: parent.width - (componentLeftMargin*2)
             height: statusScreenInfoFieldHeight
-            itemSize: labelSize - 50
+            itemSize: labelSize + 20
             itemText: qsTr("RAM")
             valueText: systemMessages.messages[NodoMessages.Message.Loading]
         }
@@ -505,7 +505,7 @@ Rectangle {
             anchors.topMargin: fieldTopMargin
             width: parent.width - (componentLeftMargin*2)
             height: statusScreenInfoFieldHeight
-            itemSize: labelSize - 50
+            itemSize: labelSize + 20
             itemText: qsTr("Blockchain")
             valueText: systemMessages.messages[NodoMessages.Message.Loading]
         }
@@ -517,7 +517,7 @@ Rectangle {
             anchors.topMargin: fieldTopMargin
             width: parent.width - (componentLeftMargin*2)
             height: statusScreenInfoFieldHeight
-            itemSize: labelSize - 50
+            itemSize: labelSize + 20
             itemText: qsTr("Storage")
             valueText: systemMessages.messages[NodoMessages.Message.Loading]
         }
@@ -529,7 +529,7 @@ Rectangle {
             anchors.topMargin: fieldTopMargin
             width: parent.width - (componentLeftMargin*2)
             height: statusScreenInfoFieldHeight
-            itemSize: labelSize - 50
+            itemSize: labelSize + 20
             itemText: qsTr("Uptime")
             valueText: systemMessages.messages[NodoMessages.Message.Loading]
         }

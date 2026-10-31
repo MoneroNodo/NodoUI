@@ -9,6 +9,7 @@ Item {
     id: moneroPayPaymentsScreen
     anchors.fill: parent
     property int labelSize: 0
+    property int buttonWidth: 380
 
     function createListModels() {
         paymentsListModel.clear()
@@ -65,6 +66,7 @@ Item {
             anchors.topMargin: 5
             text: qsTr("CLEAR ALL PAYMENTS")
             height: NodoSystem.nodoItemHeight
+            width: buttonWidth
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.buttonTextFontSize
             isActive: paymentsListModel.count > 0 ? true : false

@@ -14,7 +14,7 @@ Rectangle {
         id: deviceSystemScreen
         anchors.fill: parent
 
-        property int buttonSize: 320
+        property int buttonSize: 380
         property int buttonTopMargin: 40
         color: "black"
         visible: true
@@ -287,7 +287,7 @@ Rectangle {
                 font.pixelSize: NodoSystem.buttonTextFontSize
                 onClicked: {
                     deviceSystemPopup.commandID = 2;
-                    deviceSystemPopup.applyButtonText = qsTr("START RECOVERY")
+                    deviceSystemPopup.applyButtonText = qsTr("START")
                     deviceSystemPopup.open();
                 }
             }

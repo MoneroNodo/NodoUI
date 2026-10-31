@@ -10,9 +10,9 @@ NodoCanvas {
 
     property int ethConnIndex
     property int networkDelegateItemHeight: NodoSystem.nodoItemHeight
-    property int labelSize: 200
+    property int labelSize: 380
     property bool showConnected: true
-    property int buttonSize: 320
+    property int buttonSize: 380
     property int defaultHeight: NodoSystem.nodoItemHeight + (NodoSystem.cardTopMargin*2)
     property int spacing: 1
 

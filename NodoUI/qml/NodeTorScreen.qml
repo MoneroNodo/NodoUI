@@ -51,13 +51,13 @@ Item {
 
     function onCalculateMaximumTextLabelLength() {
         if(torSwitchText.labelRectRoundSize > labelSize)
-            labelSize = torSwitchText.labelRectRoundSize
+            labelSize = torSwitchText.labelRectRoundSize + 10
 
         if(torOnionAddressField.labelRectRoundSize > labelSize)
-            labelSize = torOnionAddressField.labelRectRoundSize
+            labelSize = torOnionAddressField.labelRectRoundSize + 10
 
         if(torPortField.labelRectRoundSize > labelSize)
-            labelSize = torPortField.labelRectRoundSize
+            labelSize = torPortField.labelRectRoundSize + 10
     }
 
     Connections {

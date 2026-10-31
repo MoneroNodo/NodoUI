@@ -12,6 +12,7 @@ Item {
 
     property int labelSize: 240
     property int addressFieldWidth: 1240//width - NodoSystem.subMenuLeftMargin
+    property int buttonWidth: 380
     property double exchangeRate
     property string exchangeName
     property double xmrAmount
@@ -124,6 +125,7 @@ Item {
         anchors.leftMargin: NodoSystem.subMenuLeftMargin
         text: qsTr("NEW PAYMENT")
         height: NodoSystem.nodoItemHeight
+        width: buttonWidth
         font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         isActive: true

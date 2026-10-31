@@ -9,7 +9,7 @@ Item {
     id: moneroPaySettingsConfigScreen
 
     property int labelSize: 0
-    property int buttonWidth: 0
+    property int buttonWidth: 380
     property int infoFieldSize: width - NodoSystem.subMenuLeftMargin
     property bool inputFieldReadOnly: false
     property bool clearButtonActive: false
@@ -153,6 +153,7 @@ Item {
         anchors.topMargin: NodoSystem.nodoTopMargin
         text: qsTr("SET ADDRESS")
         height: NodoSystem.nodoItemHeight
+        width: buttonWidth
         font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         isActive: (address && setButtonActive)
@@ -175,6 +176,7 @@ Item {
 		anchors.leftMargin: 25
         text: qsTr("CLEAR ADDRESS")
         height: NodoSystem.nodoItemHeight
+        width: buttonWidth
         font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         isActive: clearButtonActive

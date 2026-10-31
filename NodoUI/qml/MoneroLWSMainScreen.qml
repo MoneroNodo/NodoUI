@@ -8,6 +8,7 @@ import NodoCanvas 1.0
 Item {
     id: moneroLWSMainScreen
     anchors.fill: parent
+    property int buttonWidth: 380
     anchors.leftMargin: NodoSystem.subMenuLeftMargin
     anchors.topMargin: NodoSystem.subMenuTopMargin
 
@@ -69,6 +70,7 @@ Item {
         NodoTabButton {
             id: addAccountButton
             y: (moneroLWSMenuBar.height - addAccountButton.height)/2
+            width: buttonWidth
             text: qsTr("ADD WALLET")
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
@@ -91,6 +93,7 @@ Item {
             y: (moneroLWSMenuBar.height - activeButton.height)/2
             anchors.left: addAccountButton.right
             anchors.leftMargin: NodoSystem.nodoTopMargin
+            width: buttonWidth
             text: qsTr("ACTIVE")
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
@@ -102,6 +105,7 @@ Item {
             y: (moneroLWSMenuBar.height - inactiveButton.height)/2
             anchors.left: activeButton.right
             anchors.leftMargin: NodoSystem.nodoTopMargin
+            width: buttonWidth
             text: qsTr("INACTIVE")
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize

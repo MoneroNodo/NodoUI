@@ -25,16 +25,16 @@ Item {
 
     function onCalculateMaximumTextLabelLength() {
         if(deviceUpdatesNodoSwitchText.labelRectRoundSize > labelSize)
-            labelSize = deviceUpdatesNodoSwitchText.labelRectRoundSize
+            labelSize = deviceUpdatesNodoSwitchText.labelRectRoundSize + 10
 
         if(deviceUpdatesMoneroDaemonSwitchText.labelRectRoundSize > labelSize)
-            labelSize = deviceUpdatesMoneroDaemonSwitchText.labelRectRoundSize
+            labelSize = deviceUpdatesMoneroDaemonSwitchText.labelRectRoundSize + 10
 
         if(deviceUpdatesMoneroLWSSwitchText.labelRectRoundSize > labelSize)
-            labelSize = deviceUpdatesMoneroLWSSwitchText.labelRectRoundSize
+            labelSize = deviceUpdatesMoneroLWSSwitchText.labelRectRoundSize + 10
 
         if(deviceUpdatesMoneroPaySwitchText.labelRectRoundSize > labelSize)
-            labelSize = deviceUpdatesMoneroPaySwitchText.labelRectRoundSize
+            labelSize = deviceUpdatesMoneroPaySwitchText.labelRectRoundSize + 10
     }
 
     function updateSystemStatus() {
@@ -52,7 +52,7 @@ Item {
             anchors.top: deviceUpdateAllRect.top
             anchors.left: deviceUpdateAllRect.left
             height: NodoSystem.nodoItemHeight
-            width: labelSize
+            width: 380 //labelSize
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.buttonTextFontSize
             text: qsTr("UPDATE ALL")

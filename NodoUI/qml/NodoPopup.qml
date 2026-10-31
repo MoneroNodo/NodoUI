@@ -9,7 +9,7 @@ Popup {
     id: systemPopup
     x: (parent.width - width)/2
     y: (parent.height - height)/2
-    implicitWidth: 655
+    implicitWidth: 816
     height: 80 + NodoSystem.nodoItemHeight + popupMessage.paintedHeight
     modal: true
     property string applyButtonText: ""
@@ -70,6 +70,7 @@ Popup {
             anchors.topMargin: 30
             anchors.leftMargin: systemPopup.commandID > -1 ? 12 : (systemPopup.width - applyButton.width)/2
             height: NodoSystem.nodoItemHeight
+            width: 380
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.buttonTextFontSize
             visible: !systemPopup.notificationOnly
@@ -86,6 +87,7 @@ Popup {
             anchors.left: applyButton.right
             anchors.leftMargin: 16
             height: NodoSystem.nodoItemHeight
+            width: 380
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.buttonTextFontSize
             visible: systemPopup.commandID === -1 ? false : true

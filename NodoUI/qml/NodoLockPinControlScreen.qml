@@ -211,6 +211,7 @@ Item {
             anchors.topMargin: NodoSystem.nodoTopMargin
             text: qsTr("APPLY")
             height: NodoSystem.nodoItemHeight
+            width: labelSize
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.buttonTextFontSize
             isActive: false

@@ -214,6 +214,7 @@ Item {
             anchors.topMargin: NodoSystem.nodoTopMargin
             text: systemMessages.messages[NodoMessages.Message.Apply]
             height: NodoSystem.nodoItemHeight
+            width: 380
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.buttonTextFontSize
             isActive: (adminPasswordScreen.isPasswordValid) && (adminPasswordField.valueText.length >= 8) && (adminPasswordField.valueText === adminPasswordReenterField.valueText) ? true : false

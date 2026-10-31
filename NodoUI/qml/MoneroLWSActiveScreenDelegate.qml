@@ -13,6 +13,7 @@ NodoCanvas {
     property string activeAddress: ""
     property int scanHeight: 0
     property int labelSize: 0
+    property int buttonWidth: 380
 
     Component.onCompleted: {
         onCalculateMaximumTextLabelLength()
@@ -73,6 +74,7 @@ NodoCanvas {
         anchors.leftMargin: 25
         text: qsTr("RESCAN")
         height: NodoSystem.nodoItemHeight
+        width: buttonWidth
         font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         isActive: moneroLWSRescanHeightInput.valueText.length > 0 ? true : false
@@ -99,6 +101,7 @@ NodoCanvas {
         //anchors.leftMargin: 25
         text: qsTr("DEACTIVATE")
         height: NodoSystem.nodoItemHeight
+        width: buttonWidth
         font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         onClicked: {

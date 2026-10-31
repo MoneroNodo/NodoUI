@@ -11,7 +11,7 @@ Item {
     anchors.leftMargin: 20
 
     property int labelSize: 0
-    property int inputFieldWidth: 700
+    property int inputFieldWidth: 640
     property bool inputFieldReadOnly: false
     signal openNextScreen(int screenID)
 
@@ -118,6 +118,7 @@ Item {
             anchors.topMargin: NodoSystem.nodoTopMargin
             text: systemMessages.messages[NodoMessages.Message.Apply]
             height: NodoSystem.nodoItemHeight
+            width: 380
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.buttonTextFontSize
             isActive: (lockPINField.valueText.length >= 6) && (lockPINReenterField.valueText === lockPINField.valueText) ? true : false

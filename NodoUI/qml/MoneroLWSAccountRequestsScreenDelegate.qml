@@ -13,6 +13,7 @@ NodoCanvas {
     property string requestAddress: ""
     property int scanHeight: 0
     property int labelSize: 0
+    property int buttonWidth: 380
 
     Component.onCompleted: {
         onCalculateMaximumTextLabelLength()
@@ -62,6 +63,7 @@ NodoCanvas {
         anchors.bottomMargin: NodoSystem.cardTopMargin
         text: qsTr("ACCEPT")
         height: NodoSystem.nodoItemHeight
+        width: buttonWidth
         font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         onClicked: {
@@ -77,6 +79,7 @@ NodoCanvas {
         anchors.bottomMargin: NodoSystem.cardTopMargin
         text: qsTr("REJECT")
         height: NodoSystem.nodoItemHeight
+        width: buttonWidth
         font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         onClicked: {
