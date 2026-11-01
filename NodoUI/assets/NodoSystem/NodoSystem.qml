@@ -89,8 +89,8 @@ Item
 
     property color comboBoxTextColor: defaultColorNightModeOff //"#F5F5F5"							//1TEXT FONT//
 
-    //property color lockIndicatorBorderColorNightModeOn: highlightedColorNightModeOn //"#F50000"
-    //property color lockIndicatorFilledColorNightModeOn: highlightedColorNightModeOn //"#F50000"
+    property color lockIndicatorBorderColorNightModeOn: highlightedColorNightModeOn //"#F50000"
+    property color lockIndicatorFilledColorNightModeOn: highlightedColorNightModeOn //"#F50000"
     property color lockIndicatorBorderColor: highlightedColorNightModeOff //"#FA5501"						//1COLOR BG//
     property color lockIndicatorFilledColor: highlightedColorNightModeOff //"#FA5501"						//1COLOR BG//
     property color lockIndicatorEmptyColor: "black"

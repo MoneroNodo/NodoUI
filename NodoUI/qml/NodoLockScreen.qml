@@ -136,8 +136,8 @@ Item {
                 anchors.top: pinIndicatorField.top
                 anchors.topMargin: NodoSystem.lockPinDiameter/2
                 anchors.rightMargin: pinLeftRightPadding
-                border.color: NodoSystem.lockIndicatorBorderColor
-                color: pinIndex > 5 ? NodoSystem.lockIndicatorFilledColor : NodoSystem.lockIndicatorEmptyColor
+                border.color: nodoControl.appTheme ? NodoSystem.lockIndicatorBorderColorNightModeOn : NodoSystem.lockIndicatorBorderColor
+                color: pinIndex > 5 ? (nodoControl.appTheme ? NodoSystem.lockIndicatorFilledColorNightModeOn : NodoSystem.lockIndicatorFilledColor) : NodoSystem.lockIndicatorEmptyColor
             }
 
             Rectangle{
@@ -149,8 +149,8 @@ Item {
                 anchors.top: pinIndicatorField.top
                 anchors.topMargin: NodoSystem.lockPinDiameter/2
                 anchors.rightMargin: pinMiddlePaddings
-                border.color: NodoSystem.lockIndicatorBorderColor
-                color: pinIndex > 4 ? NodoSystem.lockIndicatorFilledColor : NodoSystem.lockIndicatorEmptyColor
+                border.color: nodoControl.appTheme ? NodoSystem.lockIndicatorBorderColorNightModeOn : NodoSystem.lockIndicatorBorderColor
+                color: pinIndex > 4 ? (nodoControl.appTheme ? NodoSystem.lockIndicatorFilledColorNightModeOn : NodoSystem.lockIndicatorFilledColor) : NodoSystem.lockIndicatorEmptyColor
             }
 
             Rectangle{
@@ -162,8 +162,8 @@ Item {
                 anchors.top: pinIndicatorField.top
                 anchors.topMargin: NodoSystem.lockPinDiameter/2
                 anchors.rightMargin: pinMiddlePaddings
-                border.color: NodoSystem.lockIndicatorBorderColor
-                color: pinIndex > 3 ? NodoSystem.lockIndicatorFilledColor : NodoSystem.lockIndicatorEmptyColor
+                border.color: nodoControl.appTheme ? NodoSystem.lockIndicatorBorderColorNightModeOn : NodoSystem.lockIndicatorBorderColor
+                color: pinIndex > 3 ? (nodoControl.appTheme ? NodoSystem.lockIndicatorFilledColorNightModeOn : NodoSystem.lockIndicatorFilledColor) : NodoSystem.lockIndicatorEmptyColor
             }
 
             Rectangle{
@@ -175,8 +175,8 @@ Item {
                 anchors.top: pinIndicatorField.top
                 anchors.topMargin: NodoSystem.lockPinDiameter/2
                 anchors.rightMargin: pinMiddlePaddings
-                border.color: NodoSystem.lockIndicatorBorderColor
-                color: pinIndex > 2 ? NodoSystem.lockIndicatorFilledColor : NodoSystem.lockIndicatorEmptyColor
+                border.color: nodoControl.appTheme ? NodoSystem.lockIndicatorBorderColorNightModeOn : NodoSystem.lockIndicatorBorderColor
+                color: pinIndex > 2 ? (nodoControl.appTheme ? NodoSystem.lockIndicatorFilledColorNightModeOn : NodoSystem.lockIndicatorFilledColor) : NodoSystem.lockIndicatorEmptyColor
             }
 
             Rectangle{
@@ -188,8 +188,8 @@ Item {
                 anchors.top: pinIndicatorField.top
                 anchors.topMargin: NodoSystem.lockPinDiameter/2
                 anchors.rightMargin: pinMiddlePaddings
-                border.color: NodoSystem.lockIndicatorBorderColor
-                color: pinIndex > 1 ? NodoSystem.lockIndicatorFilledColor : NodoSystem.lockIndicatorEmptyColor
+                border.color: nodoControl.appTheme ? NodoSystem.lockIndicatorBorderColorNightModeOn : NodoSystem.lockIndicatorBorderColor
+                color: pinIndex > 1 ? (nodoControl.appTheme ? NodoSystem.lockIndicatorFilledColorNightModeOn : NodoSystem.lockIndicatorFilledColor) : NodoSystem.lockIndicatorEmptyColor
             }
 
             Rectangle{
@@ -201,8 +201,8 @@ Item {
                 anchors.top: pinIndicatorField.top
                 anchors.topMargin: NodoSystem.lockPinDiameter/2
                 anchors.rightMargin: pinMiddlePaddings
-                border.color: NodoSystem.lockIndicatorBorderColor
-                color: pinIndex > 0 ? NodoSystem.lockIndicatorFilledColor : NodoSystem.lockIndicatorEmptyColor
+                border.color: nodoControl.appTheme ? NodoSystem.lockIndicatorBorderColorNightModeOn : NodoSystem.lockIndicatorBorderColor
+                color: pinIndex > 0 ? (nodoControl.appTheme ? NodoSystem.lockIndicatorFilledColorNightModeOn : NodoSystem.lockIndicatorFilledColor) : NodoSystem.lockIndicatorEmptyColor
             }
         }
     }
