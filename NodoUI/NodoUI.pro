@@ -108,8 +108,9 @@ TRANSLATIONS += \
     i18n/NodoUI_ja_JP.ts \
     i18n/NodoUI_ka_GE.ts \
     i18n/NodoUI_kl_GL.ts \
+    i18n/NodoUI_ko_KR.ts \
+    i18n/NodoUI_nb_NO.ts \
     i18n/NodoUI_nl_NL.ts \
-    i18n/NodoUI_nn_NO.ts \
     i18n/NodoUI_pl_PL.ts \
     i18n/NodoUI_pt_BR.ts \
     i18n/NodoUI_ro_RO.ts \
@@ -120,6 +121,7 @@ TRANSLATIONS += \
     i18n/NodoUI_sv_SE.ts \
     i18n/NodoUI_th_TH.ts \
     i18n/NodoUI_tr_TR.ts \
+    i18n/NodoUI_uk_UA.ts \
     i18n/NodoUI_ur_PK.ts \
     i18n/NodoUI_uz_UZ.ts \
     i18n/NodoUI_vi_VN.ts \
