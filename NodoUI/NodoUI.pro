@@ -126,7 +126,6 @@ TRANSLATIONS += \
     i18n/NodoUI_zh_CN.ts \
     i18n/NodoUI_zh_Hant.ts \
     i18n/NodoUI_zh_HK.ts \
-    i18n/NodoUI_zh_MO.ts \
     i18n/NodoUI_zh_TW.ts \
 
 DISTFILES += \
