@@ -153,7 +153,7 @@ Item {
         width: inputFieldWidth
         height: NodoSystem.nodoItemHeight
         itemSize: buttonWidth
-        itemText: qsTr("")
+        itemText: qsTr("Password")
         valueText: nodoControl.getrpcPassword();
         passwordInput: true
         onValueTextChanged: privateNodeApplyButton.isActive = true
