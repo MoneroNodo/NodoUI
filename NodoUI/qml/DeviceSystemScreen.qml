@@ -10,6 +10,8 @@ Rectangle {
     anchors.fill: parent
     color: "black"
 
+    property int buttonWidth: 380
+
     Rectangle {
         id: deviceSystemScreen
         anchors.fill: parent
@@ -283,6 +285,7 @@ Rectangle {
                 anchors.topMargin: 80
                 text: qsTr("START")
                 height: NodoSystem.nodoItemHeight
+                width: buttonWidth
                 font.family: NodoSystem.fontInter.name
                 font.pixelSize: NodoSystem.buttonTextFontSize
                 onClicked: {
@@ -299,6 +302,7 @@ Rectangle {
                 anchors.leftMargin: 16
                 text: systemMessages.messages[NodoMessages.Message.Cancel]
                 height: NodoSystem.nodoItemHeight
+                width: buttonWidth
                 font.family: NodoSystem.fontInter.name
                 font.pixelSize: NodoSystem.buttonTextFontSize
                 onClicked: {

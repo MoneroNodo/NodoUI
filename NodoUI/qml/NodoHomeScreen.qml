@@ -148,7 +148,7 @@ Item {
                 anchors.leftMargin: NodoSystem.nodoTopMargin
                 height: NodoSystem.topMenuButtonHeight
                 text: qsTr("LWS")
-                width: nodeButton.width
+                width: 150//nodeButton.width
                 font.family: NodoSystem.fontInter.name
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
                 // enabled: syncInfo.getSyncPercentage() == 100

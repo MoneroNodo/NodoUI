@@ -13,6 +13,7 @@ Item {
     themeMode.checked: nodoControl.appTheme
     property int labelSize: 300
     property int dropdownLength: width - labelSize - NodoSystem.subMenuLeftMargin
+    property int buttonWidth: 380
 
     Component.onCompleted: {
         deviceDisplayCurrencyComboBox.currentIndex = priceTicker.getCurrentCurrencyIndex()
@@ -544,6 +545,7 @@ Item {
             anchors.leftMargin: 25
             anchors.topMargin: NodoSystem.nodoTopMargin
             height: NodoSystem.nodoItemHeight
+            width: buttonWidth
             text: qsTr("MANAGE")
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.buttonTextFontSize

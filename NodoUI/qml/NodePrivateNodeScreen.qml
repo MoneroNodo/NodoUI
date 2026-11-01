@@ -9,6 +9,7 @@ Item {
     id: nodePrivateNodeScreen
     property int labelSize: 0
     property int inputFieldWidth: 1200
+    property int buttonWidth: 380
     property bool isRPCEnabled
     property int rpcPort
 
@@ -74,6 +75,7 @@ Item {
             height: privateNodeSwitchRect.height
             anchors.top: privateNodeSwitchRect.top
             anchors.left: privateNodeSwitchRect.left
+            itemSize: buttonWidth
             text: qsTr("Private Node")
         }
 
@@ -111,7 +113,7 @@ Item {
         anchors.topMargin: NodoSystem.nodoTopMargin
         height: NodoSystem.nodoItemHeight
         width: labelSize + privateNodeSwitch.width//labelSize + 150//inputFieldWidth
-        //itemSize: labelSize
+        itemSize: buttonWidth
         itemText: systemMessages.messages[NodoMessages.Message.Port]
         valueText: nodePrivateNodeScreen.rpcPort
         /*textFlag: Qt.ImhDigitsOnly
@@ -137,7 +139,7 @@ Item {
         anchors.topMargin: NodoSystem.nodoTopMargin
         width: inputFieldWidth
         height: NodoSystem.nodoItemHeight
-        itemSize: labelSize
+        itemSize: buttonWidth
         itemText: qsTr("Username")
         valueText: nodoControl.getrpcUser();
         onValueTextChanged: privateNodeApplyButton.isActive = true
@@ -150,7 +152,7 @@ Item {
         anchors.topMargin: NodoSystem.nodoTopMargin
         width: inputFieldWidth
         height: NodoSystem.nodoItemHeight
-        itemSize: labelSize
+        itemSize: buttonWidth
         itemText: qsTr("")
         valueText: nodoControl.getrpcPassword();
         passwordInput: true

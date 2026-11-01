@@ -102,6 +102,7 @@ Item {
         {
             if(ethernetNetworkScreen.state === "")
             {
+                width = buttonWidth
                 addEthernetConnectionButton.text = systemMessages.messages[NodoMessages.Message.Cancel]
                 ethernetNetworkScreen.state = "createNewConnectionRect"
             }
@@ -281,7 +282,7 @@ Item {
                 anchors.top: createEthernetConnectionRect.top
                 anchors.left: createEthernetConnectionRect.left
                 height: createEthernetConnectionRect.height
-                width: ethernetNetworkScreen.buttonSize
+                width: buttonSize
                 font.pixelSize: NodoSystem.buttonTextFontSize
                 font.family: NodoSystem.fontInter.name
                 text: systemMessages.messages[NodoMessages.Message.Add] //qsTr("CONNECT")

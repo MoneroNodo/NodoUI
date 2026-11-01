@@ -10,6 +10,7 @@ Item {
     id: lockPinScreen
     property int labelSize: 0
     property int inputFieldWidth: 700
+    property int buttonWidth: 380
     property bool pinFieldReadOnly: false
     property bool isLockPinEnabled: false
 
@@ -65,6 +66,7 @@ Item {
             height: lockPinSwitchRect.height
             anchors.left: lockPinSwitchRect.left
             anchors.top: lockPinSwitchRect.top
+            width: buttonWidth
             text: qsTr("Lock with PIN")
         }
 
@@ -73,7 +75,7 @@ Item {
             anchors.left: lockPinSwitchText.right
             anchors.leftMargin: NodoSystem.padding
             height: lockPinSwitchText.height
-            width: 2*lockPinSwitchText.height
+            width: buttonWidth//2*lockPinSwitchText.height
             display: AbstractButton.IconOnly
             onCheckedChanged: {
                 if(checked)
@@ -169,7 +171,7 @@ Item {
             anchors.topMargin: NodoSystem.cardTopMargin//anchors.topMargin: 30
             width: inputFieldWidth
             height: NodoSystem.nodoItemHeight
-            itemSize: labelSize
+            itemSize: buttonWidth
             itemText: qsTr("New Lock PIN")
             textFlag: Qt.ImhDigitsOnly
             valueText: ""
@@ -190,7 +192,7 @@ Item {
             anchors.topMargin: NodoSystem.nodoTopMargin
             width: inputFieldWidth
             height: NodoSystem.nodoItemHeight
-            itemSize: labelSize
+            itemSize: buttonWidth
             itemText: qsTr("Re-enter New PIN")
             textFlag: Qt.ImhDigitsOnly
             valueText: ""
@@ -211,7 +213,7 @@ Item {
             anchors.topMargin: NodoSystem.nodoTopMargin
             text: qsTr("APPLY")
             height: NodoSystem.nodoItemHeight
-            width: labelSize
+            width: buttonWidth
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.buttonTextFontSize
             isActive: false

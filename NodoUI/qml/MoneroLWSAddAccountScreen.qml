@@ -94,7 +94,7 @@ Item {
             anchors.topMargin: 0
             width: parent.width
             height: parent.height
-            itemSize: labelSize - 120
+            itemSize: 200 //labelSize - 120
             itemText: qsTr("Clearnet")
             valueText: "http://" + networkManager.getNetworkIP() + ":18086/basic"
         }
@@ -121,7 +121,7 @@ Item {
             anchors.topMargin: 0
             width: parent.width
             height: parent.height
-            itemSize: labelSize - 120
+            itemSize: 200 //labelSize - 120
             itemText: qsTr("Tor")
             valueText: "http://" + nodoConfig.getStringValueFromKey("config", "tor_address") + ":18086/basic"
             //valueFontSize: 40
@@ -149,7 +149,7 @@ Item {
             anchors.topMargin: 0
             width: parent.width
             height: parent.height
-            itemSize: labelSize - 120
+            itemSize: 200 //labelSize - 120
             itemText: qsTr("I2P")
             valueText: "http://" + nodoConfig.getStringValueFromKey("config", "i2p_address") + ":18086/basic"
             //valueFontSize: 40
@@ -199,10 +199,11 @@ Item {
         anchors.top: moneroLWSAddWalletTitle.bottom
         anchors.topMargin: NodoSystem.cardTopMargin
         width: infoFieldSize
-        itemSize: labelSize
+        itemSize: 200
         itemText: systemMessages.messages[NodoMessages.Message.Address]  //LABEL "Address"
         valueText: ""
         height: NodoSystem.nodoItemHeight
+        valueFontSize: NodoSystem.descriptionTitleFontSize - 4
         validator: RegularExpressionValidator {
             regularExpression: /^4[0-9A-Za-z]{94}$/
         }
@@ -216,8 +217,8 @@ Item {
         anchors.left: moneroLWSAddAccountScreen.left
         anchors.top: moneroLWSMainAddressInput.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
-        width: infoFieldSize
-        itemSize: labelSize
+        width: buttonWidth
+        itemSize: labelSize + 1
         itemText: qsTr("Private Viewkey")
         valueText: ""
         height: NodoSystem.nodoItemHeight

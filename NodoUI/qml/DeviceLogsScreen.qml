@@ -51,6 +51,7 @@ Item {
             anchors.top: moneroLogButton.top
             anchors.left: nodoUILogButton.right
             anchors.leftMargin: NodoSystem.nodoTopMargin
+            width: 150
             text: qsTr("LWS")
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize

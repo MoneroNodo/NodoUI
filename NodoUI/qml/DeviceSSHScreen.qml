@@ -10,6 +10,7 @@ Item {
     anchors.fill: parent
     property int labelSize: 0
     property int inputFieldWidth: 1200
+    property int buttonWidth: 380
     property bool inputFieldReadOnly: false
     property bool isPasswordValid: false
     property string oldPassword
@@ -114,7 +115,7 @@ Item {
             height: deviceSSHSwitchRect.height
             anchors.left: deviceSSHSwitchRect.left
             anchors.top: deviceSSHSwitchRect.top
-            // itemSize: labelSize
+            itemSize: buttonWidth
             text: qsTr("SSH")
         }
 
@@ -145,6 +146,7 @@ Item {
         anchors.left: deviceSSHScreen.left
         anchors.top: deviceSSHSwitchRect.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
+        itemSize: buttonWidth
         width: deviceSSHSwitchText.width + deviceSSHSwitchRectSwitch.width
         height: NodoSystem.nodoItemHeight
         itemText: qsTr("Username")
@@ -204,7 +206,7 @@ Item {
         anchors.leftMargin: 25
         width: 450
         height: NodoSystem.nodoItemHeight
-        itemSize: 120
+        itemSize: buttonWidth
         itemText: qsTr("PIN")
         valueText: ""
         readOnlyFlag: deviceSSHScreen.inputFieldReadOnly
@@ -221,7 +223,7 @@ Item {
         anchors.topMargin: NodoSystem.nodoTopMargin
         width: inputFieldWidth
         height: NodoSystem.nodoItemHeight
-        itemSize: labelSize
+        itemSize: buttonWidth
         itemText: qsTr("New Password")
         valueText: ""
         readOnlyFlag: deviceSSHScreen.inputFieldReadOnly
@@ -276,7 +278,7 @@ Item {
         anchors.topMargin: NodoSystem.nodoTopMargin
         text: systemMessages.messages[NodoMessages.Message.Apply]
         height: NodoSystem.nodoItemHeight
-        width: 380
+        width: buttonWidth
         font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         isActive: (deviceSSHOldPasswordField.valueText !== "") && (deviceSSHScreen.isPasswordValid) && (deviceSSHPasswordField.valueText.length >= 8) && (deviceSSHReenterPasswordField.valueText === deviceSSHPasswordField.valueText) ? true : false

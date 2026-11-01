@@ -12,17 +12,6 @@
             "visible": true
         },
         "feed_1": {
-            "description_tag": "content:encoded",
-            "image_attr": "href",
-            "image_tag": "itunes:image",
-            "name": "Monero Talk",
-            "num_of_feeds_to_show": 3,
-            "pub_date_tag": "pubDate",
-            "selected": true,
-            "uri": "https://feeds.fireside.fm/monerotalk/rss",
-            "visible": true
-        },
-        "feed_2": {
             "description_tag": "description",
             "image_attr": "",
             "image_tag": "",
@@ -33,7 +22,7 @@
             "uri": "https://monero.observer/feed.xml",
             "visible": true
         },
-        "feed_3": {
+        "feed_2": {
             "description_tag": "content:encoded",
             "image_attr": "url",
             "image_tag": "enclosure",
@@ -44,7 +33,7 @@
             "uri": "https://www.themoneromoon.com/feed",
             "visible": true
         },
-        "feed_4": {
+        "feed_3": {
             "description_tag": "content:encoded",
             "image_attr": "",
             "image_tag": "",
@@ -54,6 +43,17 @@
             "selected": true,
             "uri": "https://escapethetechnocracy.com/feed/",
             "visible": true   
+        },
+        "feed_4": {
+            "description_tag": "content:encoded",
+            "image_attr": "href",
+            "image_tag": "itunes:image",
+            "name": "Monero Talk",
+            "num_of_feeds_to_show": 3,
+            "pub_date_tag": "pubDate",
+            "selected": true,
+            "uri": "https://feeds.fireside.fm/monerotalk/rss",
+            "visible": true
         },
         "feed_5": {
             "description_tag": "description",

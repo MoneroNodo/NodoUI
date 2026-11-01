@@ -66,7 +66,7 @@ Item {
 
             NodoLabel {
                 id: nodeBanlistScreenIndex1Text
-                width: labelSize - 40
+                width: buttonWidth - nodeBanlistScreenIndex1Check.width
                 height: nodeBanlistScreenIndex1Check.height
                 anchors.left: nodeBanlistScreenIndex1Check.right
                 anchors.leftMargin: nodeBanlistScreen.checkBoxMargin
@@ -97,7 +97,7 @@ Item {
 
             NodoLabel {
                 id: nodeBanlistScreenIndex2Text
-                width: labelSize - 40
+                width: buttonWidth - nodeBanlistScreenIndex2Check.width
                 height: nodeBanlistScreenIndex2Check.height
                 anchors.left: nodeBanlistScreenIndex2Check.right
                 anchors.leftMargin: nodeBanlistScreen.checkBoxMargin
@@ -128,7 +128,7 @@ Item {
 
             NodoLabel {
                 id: nodeBanlistScreenIndex3Text
-                width: labelSize - 40
+                width: buttonWidth - nodeBanlistScreenIndex3Check.width
                 height: nodeBanlistScreenIndex3Check.height
                 anchors.left: nodeBanlistScreenIndex3Check.right
                 anchors.leftMargin: nodeBanlistScreen.checkBoxMargin
@@ -144,7 +144,7 @@ Item {
         height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
-        width: buttonWidth //nodeBanlistScreenIndex3Check.width + nodeBanlistScreenIndex3Text.width
+        width: 380 //nodeBanlistScreenIndex3Check.width + nodeBanlistScreenIndex3Text.width
         text: qsTr("APPLY")
         isActive: false
         onClicked: {
@@ -162,7 +162,7 @@ Item {
         anchors.top: applyBanlistButton.top
         anchors.leftMargin: 25
         height: NodoSystem.nodoItemHeight
-        width: applyBanlistButton.width
+        width: 380
         font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         text: qsTr("CLEAR")

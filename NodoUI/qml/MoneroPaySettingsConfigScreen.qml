@@ -128,7 +128,7 @@ Item {
             anchors.topMargin: NodoSystem.cardTopMargin
             width: infoFieldSize
             height: NodoSystem.nodoItemHeight
-            itemSize: 180
+            itemSize: 200
             itemText: qsTr("Address")
             readOnlyFlag: inputFieldReadOnly
             valueFontSize: NodoSystem.descriptionTitleFontSize - 4
