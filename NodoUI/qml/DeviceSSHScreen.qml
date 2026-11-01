@@ -175,7 +175,7 @@ Item {
         anchors.topMargin: NodoSystem.cardTopMargin
         width: inputFieldWidth
         height: NodoSystem.nodoItemHeight
-        itemSize: labelSize
+        itemSize: buttonWidth
         itemText: qsTr("Old Password")
         valueText: ""
         readOnlyFlag: deviceSSHScreen.inputFieldReadOnly
