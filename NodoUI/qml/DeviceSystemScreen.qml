@@ -285,7 +285,7 @@ Rectangle {
                 anchors.topMargin: 80
                 text: qsTr("START")
                 height: NodoSystem.nodoItemHeight
-                width: buttonWidth
+                width: 380
                 font.family: NodoSystem.fontInter.name
                 font.pixelSize: NodoSystem.buttonTextFontSize
                 onClicked: {
@@ -302,7 +302,7 @@ Rectangle {
                 anchors.leftMargin: 16
                 text: systemMessages.messages[NodoMessages.Message.Cancel]
                 height: NodoSystem.nodoItemHeight
-                width: buttonWidth
+                width: 380
                 font.family: NodoSystem.fontInter.name
                 font.pixelSize: NodoSystem.buttonTextFontSize
                 onClicked: {

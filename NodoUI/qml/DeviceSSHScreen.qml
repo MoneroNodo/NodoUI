@@ -206,7 +206,7 @@ Item {
         anchors.leftMargin: 25
         width: 450
         height: NodoSystem.nodoItemHeight
-        itemSize: buttonWidth
+        itemSize: 120
         itemText: qsTr("PIN")
         valueText: ""
         readOnlyFlag: deviceSSHScreen.inputFieldReadOnly
@@ -278,7 +278,7 @@ Item {
         anchors.topMargin: NodoSystem.nodoTopMargin
         text: systemMessages.messages[NodoMessages.Message.Apply]
         height: NodoSystem.nodoItemHeight
-        width: buttonWidth
+        width: 380
         font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         isActive: (deviceSSHOldPasswordField.valueText !== "") && (deviceSSHScreen.isPasswordValid) && (deviceSSHPasswordField.valueText.length >= 8) && (deviceSSHReenterPasswordField.valueText === deviceSSHPasswordField.valueText) ? true : false

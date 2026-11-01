@@ -75,7 +75,7 @@ Item {
             anchors.left: lockPinSwitchText.right
             anchors.leftMargin: NodoSystem.padding
             height: lockPinSwitchText.height
-            width: buttonWidth//2*lockPinSwitchText.height
+            width: 2*lockPinSwitchText.height
             display: AbstractButton.IconOnly
             onCheckedChanged: {
                 if(checked)
@@ -107,9 +107,9 @@ Item {
             id: lockPinControlLockAfterField
             anchors.left: lockPinControlRect.left
             anchors.top: lockPinControlRect.top
-            width: lockPinControlLockAfterField.labelRectRoundSize + lockPinSwitch.width
+            width: buttonWidth + lockPinSwitch.width
             height: NodoSystem.nodoItemHeight
-            //itemSize: lockPinSwitchText.itemSize
+            itemSize: buttonWidth
             itemText: qsTr("Lock after")
             textFlag: Qt.ImhDigitsOnly
             validator: RegularExpressionValidator {
@@ -213,7 +213,7 @@ Item {
             anchors.topMargin: NodoSystem.nodoTopMargin
             text: qsTr("APPLY")
             height: NodoSystem.nodoItemHeight
-            width: buttonWidth
+            width: 380
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.buttonTextFontSize
             isActive: false

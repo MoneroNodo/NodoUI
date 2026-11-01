@@ -9,6 +9,7 @@ Item {
     id: nodeBandwidthScreen
     property int labelSize: 0
     property int inputFieldWidth: 550
+    property int buttonWidth: 380
     property bool inputFieldReadOnly: false
     property bool switchCheckable: true
     property int incomingPeersLimit
@@ -147,7 +148,7 @@ Item {
         anchors.top: nodeBandwidthScreen.top
         width: inputFieldWidth
         height: NodoSystem.nodoItemHeight
-        itemSize: labelSize
+        itemSize: buttonWidth
         itemText: qsTr("Outgoing Peers")
         valueText: outgoingPeersLimit
         textFlag: Qt.ImhDigitsOnly
@@ -174,7 +175,7 @@ Item {
         anchors.topMargin: NodoSystem.nodoTopMargin
         width: inputFieldWidth
         height: NodoSystem.nodoItemHeight
-        itemSize: labelSize
+        itemSize: buttonWidth
         itemText: qsTr("Incoming Peers")
         valueText: incomingPeersLimit
         textFlag: Qt.ImhDigitsOnly
@@ -205,7 +206,7 @@ Item {
             id: rateLimitUpField
             width: inputFieldWidth
             height: NodoSystem.nodoItemHeight
-            itemSize: labelSize
+            itemSize: buttonWidth
             itemText: qsTr("Upload Speed")
             textFlag: Qt.ImhDigitsOnly
             validator: IntValidator{bottom: 0}
@@ -248,7 +249,7 @@ Item {
                 height: rateLimitUpUnlimitedSwitchRect.height
                 anchors.left: rateLimitUpUnlimitedSwitchRect.left
                 anchors.top: rateLimitUpUnlimitedSwitchRect.top
-                width: labelSize - 60
+                width: buttonWidth - 80
                 text: qsTr("Unlimited")
             }
 
@@ -297,7 +298,7 @@ Item {
             anchors.top: rateLimitDownFieldRect.top
             width: inputFieldWidth
             height: NodoSystem.nodoItemHeight
-            itemSize: labelSize
+            itemSize: buttonWidth
             itemText: qsTr("Download Speed")
             textFlag: Qt.ImhDigitsOnly
             validator: IntValidator{bottom: 0}
@@ -340,7 +341,7 @@ Item {
                 height: rateLimitDownUnlimitedSwitchRect.height
                 anchors.left: rateLimitDownUnlimitedSwitchRect.left
                 anchors.top: rateLimitDownUnlimitedSwitchRect.top
-                width: labelSize - 60
+                width: buttonWidth - 80
                 text: qsTr("Unlimited")
             }
 
@@ -381,7 +382,7 @@ Item {
         anchors.left: nodeBandwidthScreen.left
         anchors.top: rateLimitDownFieldRect.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
-        width: labelSize
+        width: 380
         text: systemMessages.messages[NodoMessages.Message.Apply]
         height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontInter.name

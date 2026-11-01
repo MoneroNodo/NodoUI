@@ -217,8 +217,8 @@ Item {
         anchors.left: moneroLWSAddAccountScreen.left
         anchors.top: moneroLWSMainAddressInput.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
-        width: buttonWidth
-        itemSize: labelSize + 1
+        width: infoFieldSize
+        itemSize: buttonWidth
         itemText: qsTr("Private Viewkey")
         valueText: ""
         height: NodoSystem.nodoItemHeight
