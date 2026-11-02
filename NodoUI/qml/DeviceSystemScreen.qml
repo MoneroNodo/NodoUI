@@ -177,7 +177,7 @@ Rectangle {
             width: deviceSystemScreen.buttonSize
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.buttonTextFontSize
-            backgroundColor:  nodoControl.appTheme ? "#F50000" : "#F50000"
+            backgroundColor:  highlightedColorNightModeOn
             onClicked: {
                 deviceSystemScreen.visible = false
                 deviceSystemRecoveryMainScreen.visible = true
