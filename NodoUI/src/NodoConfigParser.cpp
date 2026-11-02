@@ -9,7 +9,7 @@ NodoConfigParser::NodoConfigParser(QObject *parent) : QObject(parent)
     m_timer = new QTimer(this);
     QFileSystemWatcher *watcher = new QFileSystemWatcher(this);
     connect(watcher, SIGNAL(fileChanged(LOCKFILE)), this, SLOT(checkLock()));
-    connect(m_timer, SIGNAL(timeout()), this, SLOT(updateStatus()));
+    connect(m_timer, SIGNAL(timeout()), this, SLOT(updateConfigStatus()));
     m_timer->start(0);
 }
 
@@ -147,7 +147,7 @@ void NodoConfigParser::checkLock(void)
     }
 }
 
-void NodoConfigParser::updateStatus(void)
+void NodoConfigParser::updateConfigStatus(void)
 {
     m_timer->stop();
     readFile();

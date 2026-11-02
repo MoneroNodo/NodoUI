@@ -31,6 +31,6 @@ signals:
     emit void syncDotEnabled(bool);
 
 private slots:
-    void updateStatus(void);
+    void updateSyncStatus(void);
 };
 #endif // NODOSYNCINFO_H

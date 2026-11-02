@@ -2,10 +2,10 @@
 
 NodoSyncInfo::NodoSyncInfo(NodoSystemStatusParser *systemStatusParser) {
     m_statusParser = systemStatusParser;
-    connect(m_statusParser, SIGNAL(systemStatusReady()), this, SLOT(updateStatus()));
+    connect(m_statusParser, SIGNAL(systemStatusReady()), this, SLOT(updateSyncStatus()));
 }
 
-void NodoSyncInfo::updateStatus(void)
+void NodoSyncInfo::updateSyncStatus(void)
 {
     if(!m_statusParser->isResponseValid())
     {

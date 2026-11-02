@@ -108,7 +108,7 @@ private:
     void writeJson(void);
 
 private slots:
-    void updateStatus(void);
+    void updateConfigStatus(void);
     void checkLock(void);
 };
 
