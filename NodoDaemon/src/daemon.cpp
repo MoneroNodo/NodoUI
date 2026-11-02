@@ -81,6 +81,11 @@ void Daemon::startRecovery(int deviceReset, int recoverFS, int rsyncBlockchain)
         arguments << "-purge";
     }
 
+    if(1 == deviceReset)
+    {
+        arguments << "-devicereset";
+    }
+
     QProcess process;
     process.start(program, arguments);
     process.waitForFinished(-1);
