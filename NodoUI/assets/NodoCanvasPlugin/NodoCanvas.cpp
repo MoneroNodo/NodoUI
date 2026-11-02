@@ -24,7 +24,6 @@ void NodoCanvas::paint(QPainter *painter)
 
     int width = itemSize.width();
     int height = itemSize.height();
-    int borderThickness=itemSize.borderThickness();
 
 #if 0
     QPointF points[8] = {
