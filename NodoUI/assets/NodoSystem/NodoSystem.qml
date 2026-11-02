@@ -37,8 +37,9 @@ Item
     property int cardLeftMargin: 10
     property int cardTopMargin: 15
 
-    property color defaultColorNightModeOff: "#F5F5F5"				//1TEXT FONT//
+    property color defaultColorNightModeOff: "#F5F5F5"				//RGB245 //1TEXT FONT//
 	property color defaultColorNightModeOn: "#AE0000"							//NMCOLOR2//
+    property color textColorNightModeOn: "#E1E1E1"                  //RGB225
     
 	property color highlightedColorNightModeOff: "#F86F2A"			//1COLOR BG//
     property color highlightedColorNightModeOn: "#C80000"			//NMCOLOR1 BG//
@@ -73,8 +74,8 @@ Item
     property color switchBackgroundColor: "#414141"	//RGB65
     property color buttonDisabledColor: "#414141"					//BUTTON DISABLED//
     
-    property color buttonBorderColorNightModeOn: "#555555" //RGB85
-    property color buttonBorderColorNightModeOff: descriptionTextFontColorNightModeOff //"#A0A0A0" //RGB160
+    property color buttonBorderColorNightModeOn: "#949494"  //RGB148
+    property color buttonBorderColorNightModeOff: "#A8A8A8" //RGB168
 
     property int digitalClockPixelSize: 740
 

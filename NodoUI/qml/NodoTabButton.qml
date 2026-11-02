@@ -27,15 +27,16 @@ TabButton {
         width: control.width
         height: control.height
         color: "black"
-        borderColor: enabled ? (isLogo ? "black" : (control.checked ? (nodoControl.appTheme ? NodoSystem.highlightedColorNightModeOn : NodoSystem.highlightedColorNightModeOff) : (nodoControl.appTheme ? buttonBorderColorNightModeOn : NodoSystem.buttonBorderColorNightModeOff))) : NodoSystem.buttonDisabledColor //buttonBorderColor
+        borderColor: enabled ? (isLogo ? "black" : (control.checked ? (nodoControl.appTheme ? "#EF0000" : NodoSystem.highlightedColorNightModeOff) : 
+                                                    (nodoControl.appTheme ? NodoSystem.buttonBorderColorNightModeOn : NodoSystem.buttonBorderColorNightModeOff))) : NodoSystem.buttonDisabledColor //buttonBorderColor
     }
 
     contentItem: Text {
         id: buttonText
         text: control.text
         font: control.font
-        color: enabled ? (control.checked ? (nodoControl.appTheme ? NodoSystem.highlightedColorNightModeOn : NodoSystem.highlightedColorNightModeOff) :
-                                 (nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff)) : NodoSystem.buttonDisabledColor
+        color: enabled ? (control.checked ? (nodoControl.appTheme ? "#EF0000" : NodoSystem.highlightedColorNightModeOff) :
+                                 (nodoControl.appTheme ? NodoSystem.textColorNightModeOn : NodoSystem.defaultColorNightModeOff)) : NodoSystem.buttonDisabledColor
 
         // topPadding: NodoSystem.topMenuTextTopPadding
         horizontalAlignment: Text.AlignHCenter
