@@ -28,10 +28,7 @@ ApplicationWindow {
         if (!enabled) {
             return;
         }
-        if (mainScreenSyncDot.height !== 24) {
-            mainScreenSyncDot.height = 24;
-            systemStatusParser.updateStatusNow();
-        }
+        mainScreenSyncDot.height = 24;
         if (statusCode !== 1) {
             mainScreenSyncDot.color = NodoSystem.red;
             return;
@@ -94,6 +91,15 @@ ApplicationWindow {
         width: displayRotation == 0 || displayRotation == 180 ? mainAppWindow.width : mainAppWindow.height
         height: displayRotation == 0 || displayRotation == 180 ? mainAppWindow.height : mainAppWindow.width
 
+        Connections {
+            target: syncInfo
+            function onSyncStatusReady() {
+                var syncPercentage = syncInfo.getSyncPercentage()
+                var statusCode = networkManager.getNetworkConnectionStatusCode()
+                statusScreen.updateSyncPercentage(statusCode, syncPercentage)
+                updateSyncDot(statusCode, syncPercentage)
+            }
+        }
         Connections {
             target: nodoControl
 

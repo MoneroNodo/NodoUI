@@ -205,7 +205,6 @@ Rectangle {
                 var syncPercentage = syncInfo.getSyncPercentage()
                 var statusCode = networkManager.getNetworkConnectionStatusCode()
                 updateSyncPercentage(statusCode, syncPercentage)
-                mainAppWindow.updateSyncDot(statusCode, syncPercentage)
             }
         }
 
