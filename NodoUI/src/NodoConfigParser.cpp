@@ -1,14 +1,14 @@
 #include "NodoConfigParser.h"
 #include <QFileSystemWatcher>
 
-#define LOCKFILE "/home/nodo/variables/updatelock"
+const QString LOCKFILE("/home/nodo/variables/updatelock");
 
 NodoConfigParser::NodoConfigParser(QObject *parent) : QObject(parent)
 {
     readFile();
     m_timer = new QTimer(this);
     QFileSystemWatcher *watcher = new QFileSystemWatcher(this);
-    connect(watcher, SIGNAL(fileChanged(LOCKFILE)), this, SLOT(checkLock()));
+    connect(watcher, &QFileSystemWatcher::fileChanged, this, &NodoConfigParser::checkLock);
     connect(m_timer, SIGNAL(timeout()), this, SLOT(updateConfigStatus()));
     m_timer->start(0);
 }
