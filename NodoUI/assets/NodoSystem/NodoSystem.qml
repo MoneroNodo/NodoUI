@@ -72,7 +72,9 @@ Item
 
     property color switchBackgroundColor: "#414141"	//RGB65
     property color buttonDisabledColor: "#414141"					//BUTTON DISABLED//
-    property color buttonBorderColor: "#555555" //  RGB85
+    
+    property color buttonBorderColorNightModeOn: "#555555" //RGB85
+    property color buttonBorderColorNightModeOff: descriptionTextFontColorNightModeOff //"#A0A0A0" //RGB160
 
     property int digitalClockPixelSize: 740
 
