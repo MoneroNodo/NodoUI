@@ -338,5 +338,11 @@ ApplicationWindow {
         color: "black"
         x: parent.width - width - 2
         y: height + 6
+        Behavior on color {
+            ColorAnimation {
+                duration: 500
+                easing.type: Easing.InOutQuad
+            }
+        }
     }
 }
