@@ -2,7 +2,7 @@
 #include <QDebug>
 
 NodoCanvas::NodoCanvas(QQuickItem *parent)
-    : QQuickPaintedItem(parent)
+    : QQuickPaintedItem(parent), m_borderThickness(2.0)
 {
     m_color = Qt::gray;
     m_borderColor = "#1E1E1E";
@@ -14,7 +14,7 @@ NodoCanvas::NodoCanvas(QQuickItem *parent)
 void NodoCanvas::paint(QPainter *painter)
 {
     QPen pen;
-    pen.setWidth(2);
+    pen.setWidth(2.5);
     pen.setColor(m_borderColor);
     painter->setPen(pen);
     QBrush brush((QColor(m_color)));
@@ -24,6 +24,7 @@ void NodoCanvas::paint(QPainter *painter)
 
     int width = itemSize.width();
     int height = itemSize.height();
+    int borderThickness=itemSize.borderThickness();
 
 #if 0
     QPointF points[8] = {
@@ -73,3 +74,8 @@ void NodoCanvas::setColor(const QColor &color)
     update();
 }
 
+void NodoCanvas::setBorderThickness(constant int &borderThickness)
+{
+    m_borderThickness = borderThickness;
+    update();
+}
