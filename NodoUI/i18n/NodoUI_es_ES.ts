@@ -14,15 +14,15 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/DeviceDisplayScreen.qml" line="208"/>
+        <location filename="../qml/DeviceDisplayScreen.qml" line="209"/>
         <source>Screensaver</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/DeviceDisplayScreen.qml" line="223"/>
-        <location filename="../qml/DeviceDisplayScreen.qml" line="227"/>
-        <location filename="../qml/DeviceDisplayScreen.qml" line="243"/>
-        <location filename="../qml/DeviceDisplayScreen.qml" line="248"/>
+        <location filename="../qml/DeviceDisplayScreen.qml" line="224"/>
+        <location filename="../qml/DeviceDisplayScreen.qml" line="228"/>
+        <location filename="../qml/DeviceDisplayScreen.qml" line="244"/>
+        <location filename="../qml/DeviceDisplayScreen.qml" line="249"/>
         <source>Digital Clock</source>
         <translation type="unfinished"></translation>
     </message>
@@ -37,109 +37,105 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/DeviceDisplayScreen.qml" line="223"/>
-        <location filename="../qml/DeviceDisplayScreen.qml" line="243"/>
+        <location filename="../qml/DeviceDisplayScreen.qml" line="224"/>
+        <location filename="../qml/DeviceDisplayScreen.qml" line="244"/>
+        <location filename="../qml/DeviceDisplayScreen.qml" line="527"/>
         <source>News</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/DeviceDisplayScreen.qml" line="223"/>
-        <location filename="../qml/DeviceDisplayScreen.qml" line="227"/>
-        <location filename="../qml/DeviceDisplayScreen.qml" line="243"/>
-        <location filename="../qml/DeviceDisplayScreen.qml" line="248"/>
-        <location filename="../qml/DeviceDisplayScreen.qml" line="443"/>
+        <location filename="../qml/DeviceDisplayScreen.qml" line="224"/>
+        <location filename="../qml/DeviceDisplayScreen.qml" line="228"/>
+        <location filename="../qml/DeviceDisplayScreen.qml" line="244"/>
+        <location filename="../qml/DeviceDisplayScreen.qml" line="249"/>
+        <location filename="../qml/DeviceDisplayScreen.qml" line="445"/>
         <source>Price Ticker</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/DeviceDisplayScreen.qml" line="223"/>
-        <location filename="../qml/DeviceDisplayScreen.qml" line="227"/>
-        <location filename="../qml/DeviceDisplayScreen.qml" line="243"/>
-        <location filename="../qml/DeviceDisplayScreen.qml" line="248"/>
+        <location filename="../qml/DeviceDisplayScreen.qml" line="224"/>
+        <location filename="../qml/DeviceDisplayScreen.qml" line="228"/>
+        <location filename="../qml/DeviceDisplayScreen.qml" line="244"/>
+        <location filename="../qml/DeviceDisplayScreen.qml" line="249"/>
         <source>Analog Clock Classic</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/DeviceDisplayScreen.qml" line="223"/>
-        <location filename="../qml/DeviceDisplayScreen.qml" line="227"/>
-        <location filename="../qml/DeviceDisplayScreen.qml" line="243"/>
-        <location filename="../qml/DeviceDisplayScreen.qml" line="248"/>
+        <location filename="../qml/DeviceDisplayScreen.qml" line="224"/>
+        <location filename="../qml/DeviceDisplayScreen.qml" line="228"/>
+        <location filename="../qml/DeviceDisplayScreen.qml" line="244"/>
+        <location filename="../qml/DeviceDisplayScreen.qml" line="249"/>
         <source>Analog Clock Modern</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/DeviceDisplayScreen.qml" line="223"/>
-        <location filename="../qml/DeviceDisplayScreen.qml" line="227"/>
-        <location filename="../qml/DeviceDisplayScreen.qml" line="243"/>
-        <location filename="../qml/DeviceDisplayScreen.qml" line="248"/>
+        <location filename="../qml/DeviceDisplayScreen.qml" line="224"/>
+        <location filename="../qml/DeviceDisplayScreen.qml" line="228"/>
+        <location filename="../qml/DeviceDisplayScreen.qml" line="244"/>
+        <location filename="../qml/DeviceDisplayScreen.qml" line="249"/>
         <source>Display Off</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/DeviceDisplayScreen.qml" line="223"/>
-        <location filename="../qml/DeviceDisplayScreen.qml" line="227"/>
-        <location filename="../qml/DeviceDisplayScreen.qml" line="243"/>
-        <location filename="../qml/DeviceDisplayScreen.qml" line="248"/>
+        <location filename="../qml/DeviceDisplayScreen.qml" line="224"/>
+        <location filename="../qml/DeviceDisplayScreen.qml" line="228"/>
+        <location filename="../qml/DeviceDisplayScreen.qml" line="244"/>
+        <location filename="../qml/DeviceDisplayScreen.qml" line="249"/>
         <source>None</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/DeviceDisplayScreen.qml" line="269"/>
+        <location filename="../qml/DeviceDisplayScreen.qml" line="270"/>
         <source>Start after</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/DeviceDisplayScreen.qml" line="288"/>
+        <location filename="../qml/DeviceDisplayScreen.qml" line="289"/>
         <source>minutes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/DeviceDisplayScreen.qml" line="313"/>
+        <location filename="../qml/DeviceDisplayScreen.qml" line="315"/>
         <source>Language</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/DeviceDisplayScreen.qml" line="345"/>
+        <location filename="../qml/DeviceDisplayScreen.qml" line="347"/>
         <source>Keyboard</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/DeviceDisplayScreen.qml" line="379"/>
+        <location filename="../qml/DeviceDisplayScreen.qml" line="381"/>
         <source>24h Time</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/DeviceDisplayScreen.qml" line="409"/>
+        <location filename="../qml/DeviceDisplayScreen.qml" line="411"/>
         <source>Time Zone</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/DeviceDisplayScreen.qml" line="473"/>
+        <location filename="../qml/DeviceDisplayScreen.qml" line="475"/>
         <source>Currency</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/DeviceDisplayScreen.qml" line="525"/>
-        <source>News Feeds</source>
+        <location filename="../qml/DeviceDisplayScreen.qml" line="548"/>
+        <source>MANAGE</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/DeviceDisplayScreen.qml" line="545"/>
-        <source>Manage Feeds</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/DeviceDisplayScreen.qml" line="356"/>
+        <location filename="../qml/DeviceDisplayScreen.qml" line="358"/>
         <source>QWERTY</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/DeviceDisplayScreen.qml" line="356"/>
+        <location filename="../qml/DeviceDisplayScreen.qml" line="358"/>
         <source>QWERTZ</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/DeviceDisplayScreen.qml" line="356"/>
+        <location filename="../qml/DeviceDisplayScreen.qml" line="358"/>
         <source>AZERTY</source>
         <translation type="unfinished"></translation>
     </message>
@@ -147,12 +143,12 @@
 <context>
     <name>DeviceLogsScreen</name>
     <message>
-        <location filename="../qml/DeviceLogsScreen.qml" line="29"/>
+        <location filename="../qml/DeviceLogsScreen.qml" line="28"/>
         <source>MONERO</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/DeviceLogsScreen.qml" line="42"/>
+        <location filename="../qml/DeviceLogsScreen.qml" line="41"/>
         <source>NODOUI</source>
         <translation type="unfinished"></translation>
     </message>
@@ -202,41 +198,46 @@
         <source>Lock PIN Settings</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <location filename="../qml/DevicePinScreen.qml" line="47"/>
-        <source>Address PIN Settings</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>DeviceSSHScreen</name>
     <message>
-        <location filename="../qml/DeviceSSHScreen.qml" line="118"/>
+        <location filename="../qml/DeviceSSHScreen.qml" line="119"/>
         <source>SSH</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/DeviceSSHScreen.qml" line="150"/>
+        <location filename="../qml/DeviceSSHScreen.qml" line="152"/>
         <source>Username</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/DeviceSSHScreen.qml" line="166"/>
+        <location filename="../qml/DeviceSSHScreen.qml" line="168"/>
         <source>CHANGE ADMIN PASSWORD</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/DeviceSSHScreen.qml" line="177"/>
+        <location filename="../qml/DeviceSSHScreen.qml" line="179"/>
         <source>Old Password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/DeviceSSHScreen.qml" line="194"/>
+        <location filename="../qml/DeviceSSHScreen.qml" line="198"/>
+        <source>or</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/DeviceSSHScreen.qml" line="210"/>
+        <source>PIN</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/DeviceSSHScreen.qml" line="227"/>
         <source>New Password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/DeviceSSHScreen.qml" line="232"/>
+        <location filename="../qml/DeviceSSHScreen.qml" line="265"/>
         <source>Re-enter New Password</source>
         <translation type="unfinished"></translation>
     </message>
@@ -244,83 +245,79 @@
 <context>
     <name>DeviceSystemScreen</name>
     <message>
-        <location filename="../qml/DeviceSystemScreen.qml" line="26"/>
-        <source>PIN Settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/DeviceSystemScreen.qml" line="46"/>
+        <location filename="../qml/DeviceSystemScreen.qml" line="48"/>
         <source>Change PIN and toggle device lock using PIN</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/DeviceSystemScreen.qml" line="54"/>
-        <source>Admin &amp; SSH</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/DeviceSystemScreen.qml" line="74"/>
+        <location filename="../qml/DeviceSystemScreen.qml" line="76"/>
         <source>Change Admin Password and toggle SSH for remote access</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/DeviceSystemScreen.qml" line="82"/>
-        <source>Logs</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/DeviceSystemScreen.qml" line="101"/>
+        <location filename="../qml/DeviceSystemScreen.qml" line="103"/>
         <source>View Logs for Monero Daemon, NodoUI, SSH and Kernel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/DeviceSystemScreen.qml" line="109"/>
-        <source>Reboot</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/DeviceSystemScreen.qml" line="133"/>
-        <source>Safe Reboot</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/DeviceSystemScreen.qml" line="141"/>
-        <source>Shutdown</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/DeviceSystemScreen.qml" line="165"/>
+        <location filename="../qml/DeviceSystemScreen.qml" line="167"/>
         <source>Safe Shutdown</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/DeviceSystemScreen.qml" line="173"/>
-        <source>Recovery</source>
+        <location filename="../qml/DeviceSystemScreen.qml" line="28"/>
+        <source>PIN SETTINGS</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/DeviceSystemScreen.qml" line="197"/>
+        <location filename="../qml/DeviceSystemScreen.qml" line="56"/>
+        <source>ADMIN &amp; SSH</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/DeviceSystemScreen.qml" line="84"/>
+        <source>LOGS</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/DeviceSystemScreen.qml" line="111"/>
+        <source>RESTART</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/DeviceSystemScreen.qml" line="135"/>
+        <source>Safe Restart</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/DeviceSystemScreen.qml" line="143"/>
+        <source>SHUTDOWN</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/DeviceSystemScreen.qml" line="175"/>
+        <source>RECOVERY</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/DeviceSystemScreen.qml" line="199"/>
         <source>Access recovery options</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/DeviceSystemScreen.qml" line="248"/>
+        <location filename="../qml/DeviceSystemScreen.qml" line="250"/>
         <source>Attempt to recover filesystem</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/DeviceSystemScreen.qml" line="275"/>
+        <location filename="../qml/DeviceSystemScreen.qml" line="277"/>
         <source>Purge and resync blockchain</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/DeviceSystemScreen.qml" line="284"/>
-        <source>Start</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/DeviceSystemScreen.qml" line="290"/>
-        <source>Start Recovery</source>
+        <location filename="../qml/DeviceSystemScreen.qml" line="286"/>
+        <location filename="../qml/DeviceSystemScreen.qml" line="293"/>
+        <source>START</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -328,7 +325,7 @@
     <name>DeviceUpdatesScreen</name>
     <message>
         <location filename="../qml/DeviceUpdatesScreen.qml" line="58"/>
-        <source>Update All</source>
+        <source>UPDATE ALL</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -365,23 +362,23 @@
 <context>
     <name>MoneroLWSActiveScreenDelegate</name>
     <message>
-        <location filename="../qml/MoneroLWSActiveScreenDelegate.qml" line="53"/>
+        <location filename="../qml/MoneroLWSActiveScreenDelegate.qml" line="54"/>
         <source>Height</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/MoneroLWSActiveScreenDelegate.qml" line="100"/>
-        <source>Deactivate</source>
+        <location filename="../qml/MoneroLWSActiveScreenDelegate.qml" line="75"/>
+        <source>RESCAN</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/MoneroLWSActiveScreenDelegate.qml" line="64"/>
+        <location filename="../qml/MoneroLWSActiveScreenDelegate.qml" line="102"/>
+        <source>DEACTIVATE</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/MoneroLWSActiveScreenDelegate.qml" line="65"/>
         <source>Rescan Height</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/MoneroLWSActiveScreenDelegate.qml" line="74"/>
-        <source>Rescan</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -421,21 +418,17 @@
     </message>
     <message>
         <location filename="../qml/MoneroLWSAddAccountScreen.qml" line="193"/>
+        <location filename="../qml/MoneroLWSAddAccountScreen.qml" line="238"/>
         <source>ADD WALLET</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/MoneroLWSAddAccountScreen.qml" line="221"/>
+        <location filename="../qml/MoneroLWSAddAccountScreen.qml" line="222"/>
         <source>Private Viewkey</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/MoneroLWSAddAccountScreen.qml" line="237"/>
-        <source>Add Wallet</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/MoneroLWSAddAccountScreen.qml" line="262"/>
+        <location filename="../qml/MoneroLWSAddAccountScreen.qml" line="263"/>
         <source>Adding wallets is not possible while the Monero Daemon is not synchronized.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -443,18 +436,18 @@
 <context>
     <name>MoneroLWSInactiveScreenDelegate</name>
     <message>
-        <location filename="../qml/MoneroLWSInactiveScreenDelegate.qml" line="53"/>
+        <location filename="../qml/MoneroLWSInactiveScreenDelegate.qml" line="54"/>
         <source>Height</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/MoneroLWSInactiveScreenDelegate.qml" line="66"/>
-        <source>Reactivate</source>
+        <location filename="../qml/MoneroLWSInactiveScreenDelegate.qml" line="67"/>
+        <source>REACTIVATE</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/MoneroLWSInactiveScreenDelegate.qml" line="83"/>
-        <source>Delete</source>
+        <location filename="../qml/MoneroLWSInactiveScreenDelegate.qml" line="85"/>
+        <source>DELETE</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -497,146 +490,146 @@
 <context>
     <name>MoneroPayPaymentsScreen</name>
     <message>
-        <location filename="../qml/MoneroPayPaymentsScreen.qml" line="66"/>
-        <source>Clear All Payments</source>
+        <location filename="../qml/MoneroPayPaymentsScreen.qml" line="67"/>
+        <source>CLEAR ALL PAYMENTS</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>MoneroPayPaymentsScreenDelegate</name>
     <message>
-        <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="77"/>
+        <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="78"/>
         <source>Status</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="82"/>
+        <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="83"/>
         <source>Received</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="85"/>
+        <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="86"/>
         <source>Confirming</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="88"/>
+        <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="89"/>
         <source>Not Received</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="91"/>
+        <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="92"/>
         <source>Waiting</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="128"/>
+        <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="129"/>
         <source>Address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="211"/>
+        <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="186"/>
+        <source>CLEAR PAYMENT</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="201"/>
+        <source>VIEW QR</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="214"/>
         <source>Close</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="224"/>
+        <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="227"/>
         <source>Timestamp</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="157"/>
+        <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="158"/>
         <source>Transaction ID</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="176"/>
+        <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="177"/>
         <source>Note</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="185"/>
-        <source>Clear Payment</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="199"/>
-        <source>View QR</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>MoneroPayReceivePaymentPreviewScreen</name>
     <message>
-        <location filename="../qml/MoneroPayReceivePaymentPreviewScreen.qml" line="114"/>
+        <location filename="../qml/MoneroPayReceivePaymentPreviewScreen.qml" line="115"/>
         <source>Awaiting Payment</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/MoneroPayReceivePaymentPreviewScreen.qml" line="65"/>
+        <location filename="../qml/MoneroPayReceivePaymentPreviewScreen.qml" line="66"/>
         <source>XMR</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/MoneroPayReceivePaymentPreviewScreen.qml" line="104"/>
+        <location filename="../qml/MoneroPayReceivePaymentPreviewScreen.qml" line="105"/>
         <source>Timestamp</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/MoneroPayReceivePaymentPreviewScreen.qml" line="167"/>
+        <location filename="../qml/MoneroPayReceivePaymentPreviewScreen.qml" line="126"/>
+        <source>NEW PAYMENT</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/MoneroPayReceivePaymentPreviewScreen.qml" line="169"/>
         <source>Address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/MoneroPayReceivePaymentPreviewScreen.qml" line="90"/>
+        <location filename="../qml/MoneroPayReceivePaymentPreviewScreen.qml" line="91"/>
         <source>Note</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/MoneroPayReceivePaymentPreviewScreen.qml" line="125"/>
-        <source>New Payment</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>MoneroPayReceivePaymentResultScreen</name>
     <message>
-        <location filename="../qml/MoneroPayReceivePaymentResultScreen.qml" line="120"/>
+        <location filename="../qml/MoneroPayReceivePaymentResultScreen.qml" line="121"/>
         <source>Payment Received</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/MoneroPayReceivePaymentResultScreen.qml" line="60"/>
+        <location filename="../qml/MoneroPayReceivePaymentResultScreen.qml" line="61"/>
         <source>XMR</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/MoneroPayReceivePaymentResultScreen.qml" line="101"/>
+        <location filename="../qml/MoneroPayReceivePaymentResultScreen.qml" line="102"/>
         <source>Timestamp</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/MoneroPayReceivePaymentResultScreen.qml" line="198"/>
+        <location filename="../qml/MoneroPayReceivePaymentResultScreen.qml" line="133"/>
+        <source>NEW PAYMENT</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/MoneroPayReceivePaymentResultScreen.qml" line="151"/>
+        <source>VIEW PAYMENTS</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/MoneroPayReceivePaymentResultScreen.qml" line="201"/>
         <source>Transaction ID</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/MoneroPayReceivePaymentResultScreen.qml" line="87"/>
+        <location filename="../qml/MoneroPayReceivePaymentResultScreen.qml" line="88"/>
         <source>Note</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/MoneroPayReceivePaymentResultScreen.qml" line="131"/>
-        <source>New Payment</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/MoneroPayReceivePaymentResultScreen.qml" line="148"/>
-        <source>View Payments</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/MoneroPayReceivePaymentResultScreen.qml" line="185"/>
+        <location filename="../qml/MoneroPayReceivePaymentResultScreen.qml" line="188"/>
         <source>Address</source>
         <translation type="unfinished"></translation>
     </message>
@@ -671,7 +664,7 @@
     </message>
     <message>
         <location filename="../qml/MoneroPayReceiveRequestScreen.qml" line="226"/>
-        <source>Start Receive</source>
+        <source>RECEIVE</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -689,21 +682,21 @@
     </message>
     <message>
         <location filename="../qml/MoneroPaySettingsConfigScreen.qml" line="154"/>
-        <source>Set Address</source>
+        <source>SET ADDRESS</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/MoneroPaySettingsConfigScreen.qml" line="176"/>
-        <source>Clear Address</source>
+        <location filename="../qml/MoneroPaySettingsConfigScreen.qml" line="177"/>
+        <source>CLEAR ADDRESS</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/MoneroPaySettingsConfigScreen.qml" line="183"/>
+        <location filename="../qml/MoneroPaySettingsConfigScreen.qml" line="185"/>
         <source>Reset</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/MoneroPaySettingsConfigScreen.qml" line="198"/>
+        <location filename="../qml/MoneroPaySettingsConfigScreen.qml" line="200"/>
         <source>Received transactions will periodically be sent to this address.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -719,38 +712,38 @@
 <context>
     <name>NodeBandwidthScreen</name>
     <message>
-        <location filename="../qml/NodeBandwidthScreen.qml" line="18"/>
+        <location filename="../qml/NodeBandwidthScreen.qml" line="19"/>
         <source>kB/s</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodeBandwidthScreen.qml" line="151"/>
+        <location filename="../qml/NodeBandwidthScreen.qml" line="152"/>
         <source>Outgoing Peers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodeBandwidthScreen.qml" line="178"/>
+        <location filename="../qml/NodeBandwidthScreen.qml" line="179"/>
         <source>Incoming Peers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodeBandwidthScreen.qml" line="209"/>
+        <location filename="../qml/NodeBandwidthScreen.qml" line="210"/>
         <source>Upload Speed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodeBandwidthScreen.qml" line="301"/>
+        <location filename="../qml/NodeBandwidthScreen.qml" line="302"/>
         <source>Download Speed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodeBandwidthScreen.qml" line="409"/>
+        <location filename="../qml/NodeBandwidthScreen.qml" line="410"/>
         <source>Monero Daemon will restart to apply changes.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodeBandwidthScreen.qml" line="252"/>
-        <location filename="../qml/NodeBandwidthScreen.qml" line="344"/>
+        <location filename="../qml/NodeBandwidthScreen.qml" line="253"/>
+        <location filename="../qml/NodeBandwidthScreen.qml" line="345"/>
         <source>Unlimited</source>
         <translation type="unfinished"></translation>
     </message>
@@ -758,42 +751,42 @@
 <context>
     <name>NodeBanlistScreen</name>
     <message>
-        <location filename="../qml/NodeBanlistScreen.qml" line="42"/>
+        <location filename="../qml/NodeBanlistScreen.qml" line="43"/>
         <source>NODE IP BANLIST</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodeBanlistScreen.qml" line="72"/>
+        <location filename="../qml/NodeBanlistScreen.qml" line="73"/>
         <source>Boog900</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodeBanlistScreen.qml" line="103"/>
+        <location filename="../qml/NodeBanlistScreen.qml" line="104"/>
         <source>gui.xmr.pm</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodeBanlistScreen.qml" line="134"/>
+        <location filename="../qml/NodeBanlistScreen.qml" line="135"/>
         <source>DNS Banlist</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodeBanlistScreen.qml" line="147"/>
-        <source>Apply</source>
+        <location filename="../qml/NodeBanlistScreen.qml" line="148"/>
+        <source>APPLY</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodeBanlistScreen.qml" line="167"/>
-        <source>Clear</source>
+        <location filename="../qml/NodeBanlistScreen.qml" line="168"/>
+        <source>CLEAR</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodeBanlistScreen.qml" line="188"/>
+        <location filename="../qml/NodeBanlistScreen.qml" line="189"/>
         <source>Monero Daemon will restart to apply changes.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodeBanlistScreen.qml" line="204"/>
+        <location filename="../qml/NodeBanlistScreen.qml" line="205"/>
         <source>The Monero Research Lab (MRL) has decided to recommend that all Monero node operators enable a ban list of suspected spy node IP addresses. The spy nodes can reduce the privacy of Monero users.
 
 Blocking the IP addresses by default is technically possible, but it would set a precedent of blocking IP addresses by a decision making process that is not decentralized. MRL has decided to ask node operators to block these IP addresses voluntarily instead of by default. We recommend enabling all banlists until a more permanent solution can be found.
@@ -817,7 +810,7 @@ https://github.com/monero-project/meta/issues/1124</source>
     </message>
     <message>
         <location filename="../qml/NodeClearnetScreen.qml" line="177"/>
-        <source>Enable Hidden RPC with Tor &gt; Route All Through Tor, to fully anonymize the Monero Daemon.</source>
+        <source>Enable Hidden RPC with NODE &gt; TOR &gt; Route All Through Tor, to fully anonymize the Monero Daemon.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -875,27 +868,27 @@ https://github.com/monero-project/meta/issues/1124</source>
 <context>
     <name>NodePrivateNodeScreen</name>
     <message>
-        <location filename="../qml/NodePrivateNodeScreen.qml" line="75"/>
+        <location filename="../qml/NodePrivateNodeScreen.qml" line="79"/>
         <source>Private Node</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodePrivateNodeScreen.qml" line="102"/>
+        <location filename="../qml/NodePrivateNodeScreen.qml" line="106"/>
         <source>Require wallets to enter a username and password to use this node.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodePrivateNodeScreen.qml" line="139"/>
+        <location filename="../qml/NodePrivateNodeScreen.qml" line="143"/>
         <source>Username</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodePrivateNodeScreen.qml" line="152"/>
+        <location filename="../qml/NodePrivateNodeScreen.qml" line="156"/>
         <source>Password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodePrivateNodeScreen.qml" line="194"/>
+        <location filename="../qml/NodePrivateNodeScreen.qml" line="199"/>
         <source>Monero Daemon will restart to apply changes.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -925,24 +918,6 @@ https://github.com/monero-project/meta/issues/1124</source>
     <message>
         <location filename="../qml/NodeTorScreen.qml" line="203"/>
         <source>Onion Address</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>NodoAddressPinControlScreen</name>
-    <message>
-        <location filename="../qml/NodoAddressPinControlScreen.qml" line="47"/>
-        <source>New Address PIN</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/NodoAddressPinControlScreen.qml" line="68"/>
-        <source>Re-enter New PIN</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/NodoAddressPinControlScreen.qml" line="86"/>
-        <source>Change Address PIN</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1462,18 +1437,23 @@ https://github.com/monero-project/meta/issues/1124</source>
 <context>
     <name>NodoFirstTimeAdminPasswordScreen</name>
     <message>
-        <location filename="../qml/NodoFirstTimeAdminPasswordScreen.qml" line="109"/>
+        <location filename="../qml/NodoFirstTimeAdminPasswordScreen.qml" line="112"/>
+        <source>Language</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/NodoFirstTimeAdminPasswordScreen.qml" line="145"/>
         <source>Please set your Admin Password. The Admin Password should be at least 8 characters, with uppercase and lowercase letters, number and a special character.
 The Admin Password is used to connect to Nodo remotely via SSH. It can be changed later on DEVICE &gt; SYSTEM &gt; Admin &amp; SSH.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoFirstTimeAdminPasswordScreen.qml" line="127"/>
+        <location filename="../qml/NodoFirstTimeAdminPasswordScreen.qml" line="163"/>
         <source>New Admin Password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoFirstTimeAdminPasswordScreen.qml" line="165"/>
+        <location filename="../qml/NodoFirstTimeAdminPasswordScreen.qml" line="201"/>
         <source>Re-enter Admin Password</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1537,37 +1517,37 @@ It can be changed later on DEVICE &gt; SYSTEM &gt; PIN Settings.</source>
 <context>
     <name>NodoLockPinControlScreen</name>
     <message>
-        <location filename="../qml/NodoLockPinControlScreen.qml" line="68"/>
+        <location filename="../qml/NodoLockPinControlScreen.qml" line="70"/>
         <source>Lock with PIN</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoLockPinControlScreen.qml" line="111"/>
+        <location filename="../qml/NodoLockPinControlScreen.qml" line="113"/>
         <source>Lock after</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoLockPinControlScreen.qml" line="140"/>
+        <location filename="../qml/NodoLockPinControlScreen.qml" line="142"/>
         <source>minutes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoLockPinControlScreen.qml" line="162"/>
+        <location filename="../qml/NodoLockPinControlScreen.qml" line="164"/>
         <source>CHANGE LOCK PIN</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoLockPinControlScreen.qml" line="173"/>
+        <location filename="../qml/NodoLockPinControlScreen.qml" line="175"/>
         <source>New Lock PIN</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoLockPinControlScreen.qml" line="212"/>
-        <source>Apply</source>
+        <location filename="../qml/NodoLockPinControlScreen.qml" line="214"/>
+        <source>APPLY</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoLockPinControlScreen.qml" line="194"/>
+        <location filename="../qml/NodoLockPinControlScreen.qml" line="196"/>
         <source>Re-enter New PIN</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1589,54 +1569,54 @@ It can be changed later on DEVICE &gt; SYSTEM &gt; PIN Settings.</source>
     <name>NodoMessages</name>
     <message>
         <location filename="../qml/NodoMessages.qml" line="54"/>
-        <source>Close</source>
+        <source>CLOSE</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="55"/>
-        <source>Cancel</source>
+        <source>CANCEL</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoMessages.qml" line="59"/>
-        <source>Apply</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/NodoMessages.qml" line="60"/>
-        <source>Apply Port</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/NodoMessages.qml" line="61"/>
-        <source>Forget</source>
+        <location filename="../qml/NodoMessages.qml" line="56"/>
+        <source>NEW CONNECTION</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="57"/>
         <location filename="../qml/NodoMessages.qml" line="62"/>
-        <source>Connect</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/NodoMessages.qml" line="56"/>
-        <source>New Connection</source>
+        <source>CONNECT</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="58"/>
         <location filename="../qml/NodoMessages.qml" line="63"/>
-        <source>Connecting</source>
+        <source>CONNECTING</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/NodoMessages.qml" line="59"/>
+        <source>APPLY</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/NodoMessages.qml" line="60"/>
+        <source>APPLY PORT</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/NodoMessages.qml" line="61"/>
+        <source>FORGET</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="64"/>
-        <source>Disconnect</source>
+        <source>DISCONNECT</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="65"/>
-        <source>Disconnecting</source>
+        <source>DISCONNECTING</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1721,6 +1701,11 @@ It can be changed later on DEVICE &gt; SYSTEM &gt; PIN Settings.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../qml/NodoMessages.qml" line="82"/>
+        <source>ADVANCED</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../qml/NodoMessages.qml" line="84"/>
         <location filename="../qml/NodoMessages.qml" line="126"/>
         <source>Ethernet cable disconnected!</source>
@@ -1757,6 +1742,11 @@ It can be changed later on DEVICE &gt; SYSTEM &gt; PIN Settings.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../qml/NodoMessages.qml" line="94"/>
+        <source>ACCEPT</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../qml/NodoMessages.qml" line="99"/>
         <source>Old password is incorrect!</source>
         <translation type="unfinished"></translation>
@@ -1782,11 +1772,6 @@ It can be changed later on DEVICE &gt; SYSTEM &gt; PIN Settings.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoMessages.qml" line="82"/>
-        <source>Advanced</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../qml/NodoMessages.qml" line="83"/>
         <location filename="../qml/NodoMessages.qml" line="125"/>
         <source>No network device found!</source>
@@ -1800,11 +1785,6 @@ It can be changed later on DEVICE &gt; SYSTEM &gt; PIN Settings.</source>
     <message>
         <location filename="../qml/NodoMessages.qml" line="93"/>
         <source>This process will reset Nodo to factory defaults. All settings and user info will be lost. Begin factory reset?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/NodoMessages.qml" line="94"/>
-        <source>Accept</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1981,13 +1961,18 @@ It can be changed later on DEVICE &gt; SYSTEM &gt; PIN Settings.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../qml/NodoStatusScreen.qml" line="220"/>
+        <source>MONERO DAEMON</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../qml/NodoStatusScreen.qml" line="332"/>
         <source>Network</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/NodoStatusScreen.qml" line="362"/>
-        <source>Services</source>
+        <source>SERVICES</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2011,6 +1996,11 @@ It can be changed later on DEVICE &gt; SYSTEM &gt; PIN Settings.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../qml/NodoStatusScreen.qml" line="457"/>
+        <source>SYSTEM</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../qml/NodoStatusScreen.qml" line="509"/>
         <source>Blockchain</source>
         <translation type="unfinished"></translation>
@@ -2026,18 +2016,8 @@ It can be changed later on DEVICE &gt; SYSTEM &gt; PIN Settings.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="220"/>
-        <source>Monero Daemon</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../qml/NodoStatusScreen.qml" line="426"/>
         <source>MoneroPay</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="457"/>
-        <source>System</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2053,6 +2033,15 @@ It can be changed later on DEVICE &gt; SYSTEM &gt; PIN Settings.</source>
     <message>
         <location filename="../qml/NodoStatusScreen.qml" line="497"/>
         <source>RAM</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>NodoSystemControl</name>
+    <message>
+        <location filename="../src/NodoSystemControl.cpp" line="333"/>
+        <location filename="../src/NodoSystemControl.cpp" line="338"/>
+        <source>error</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2267,12 +2256,12 @@ It can be changed later on DEVICE &gt; SYSTEM &gt; PIN Settings.</source>
 <context>
     <name>main</name>
     <message>
-        <location filename="../qml/main.qml" line="53"/>
+        <location filename="../qml/main.qml" line="56"/>
         <source>NodoUI</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="145"/>
+        <location filename="../qml/main.qml" line="126"/>
         <source>Shutdown in 5 seconds.
 Release to Cancel.</source>
         <translation type="unfinished"></translation>
