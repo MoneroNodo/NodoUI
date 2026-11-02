@@ -218,7 +218,7 @@ Item {
         anchors.top: moneroLWSMainAddressInput.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         width: infoFieldSize
-        itemSize: buttonWidth
+        itemSize: 380
         itemText: qsTr("Private Viewkey")
         valueText: ""
         height: NodoSystem.nodoItemHeight
