@@ -2,7 +2,7 @@
 #include <QDebug>
 
 NodoCanvas::NodoCanvas(QQuickItem *parent)
-    : QQuickPaintedItem(parent), m_borderThickness(2.0)
+    : QQuickPaintedItem(parent)
 {
     m_color = Qt::gray;
     m_borderColor = "#1E1E1E";
@@ -74,8 +74,3 @@ void NodoCanvas::setColor(const QColor &color)
     update();
 }
 
-void NodoCanvas::setBorderThickness(constant int &borderThickness)
-{
-    m_borderThickness = borderThickness;
-    update();
-}
