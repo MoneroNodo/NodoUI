@@ -330,12 +330,12 @@ void NodoSystemControl::updateHardwareStatus(QString message)
     m_Temperature = QString("%1").arg(CPUTemperature, 0, 'f', 0).append("°C");
 	m_RAMUsage = RAMUsedStr + " / " + RAMTotalStr + " GB (" + QString("%1").arg((RAMUsed/RAMTotal)*100, 0, 'f', 0).append("%)");
 	if (blockChainStorageTotal == 0 || blockChainStorageTotal == NAN) {
-        m_blockchainStorage = tr("error");
+        m_blockchainStorage = tr("Error");
     } else {
         m_blockchainStorage = blockChainStorageUsedStr + " / " + blockChainStorageTotalStr + " TB (" + QString("%1").arg((blockChainStorageUsed/blockChainStorageTotal)*100, 0, 'f', 0).append("%)");
     }
 	if (systemStorageTotal == 0 || systemStorageTotal == NAN) {
-        m_systemStorage = tr("error");
+        m_systemStorage = tr("Error");
     } else {
         m_systemStorage = systemStorageUsedStr + " / " + systemStorageTotalStr + " GB (" + QString("%1").arg((systemStorageUsed/systemStorageTotal)*100, 0, 'f', 0).append("%)");
     }
