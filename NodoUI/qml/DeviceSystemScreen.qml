@@ -46,8 +46,8 @@ Rectangle {
             font.pixelSize: NodoSystem.descriptionTextFontSize
             color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
             text: qsTr("Change PIN and toggle device lock using PIN")
-        }   
-        
+        }
+
         NodoButton {
             id: deviceSSHButton
             anchors.left: deviceSystemScreen.left
@@ -74,7 +74,7 @@ Rectangle {
             font.pixelSize: NodoSystem.descriptionTextFontSize
             color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
             text: qsTr("Change Admin Password and toggle SSH for remote access")
-        }        
+        }
 
         NodoButton {
             id: deviceLogsButton
@@ -274,10 +274,36 @@ Rectangle {
                     height: deviceSystemRecoveryResyncBlockchain.height
                     anchors.left: deviceSystemRecoveryResyncBlockchain.right
                     anchors.leftMargin: deviceSystemRecoveryMainScreen.checkBoxMargin
-                    text: qsTr("Purge and resync blockchain")
+                    text: qsTr("Delete and resync blockchain")
                 }
             }
 
+            Rectangle {
+                id: deviceSystemRecoveryDeviceResetRect
+                anchors.left: deviceSystemRecoveryScreen.left
+                anchors.top: deviceSystemRecoveryResyncBlockchain.bottom
+                anchors.topMargin: NodoSystem.nodoTopMargin
+                height: NodoSystem.nodoItemHeight
+                color: "black"
+
+                NodoCheckBox
+                {
+                    id: deviceSystemRecoveryDeviceReset
+                    height: deviceSystemRecoveryResyncBlockchainRect.height
+                    width: height
+                    anchors.left: deviceSystemRecoveryResyncBlockchainRect.left
+                    anchors.top: deviceSystemRecoveryResyncBlockchainRect.top
+                }
+
+                NodoLabel {
+                    id: deviceSystemRecoveryDeviceResetText
+                    width: deviceSystemRecoveryMainScreen.labelSize
+                    height: deviceSystemRecoveryResyncBlockchain.height
+                    anchors.left: deviceSystemRecoveryResyncBlockchain.right
+                    anchors.leftMargin: deviceSystemRecoveryMainScreen.checkBoxMargin
+                    text: qsTr("Reset device to factory defaults")
+                }
+            }
             NodoButton {
                 id: systemRecoveryStartButton
                 anchors.left: deviceSystemRecoveryScreen.left
@@ -324,8 +350,8 @@ Rectangle {
                 nodoControl.shutdownDevice();
             }
             else if(commandID === 2)
-            { // TODO:
-                nodoControl.systemRecovery(0, deviceSystemRecoveryRecoverFS.checked, deviceSystemRecoveryResyncBlockchain.checked);
+            {
+                nodoControl.systemRecovery(0, deviceSystemRecoveryDeviceReset.checked, deviceSystemRecoveryRecoverFS.checked, deviceSystemRecoveryResyncBlockchain.checked);
             }
             close()
         }
