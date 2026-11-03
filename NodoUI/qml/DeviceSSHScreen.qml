@@ -13,7 +13,7 @@ Item {
     property int buttonWidth: 380
     property bool inputFieldReadOnly: false
     property bool isPasswordValid: false
-    property string oldPassword
+    // property string oldPassword
 
     // Component.onCompleted: {
     //     onCalculateMaximumTextLabelLength()
@@ -168,7 +168,7 @@ Item {
         text: qsTr("CHANGE ADMIN PASSWORD")
     }
 
-    NodoInputField {
+/*    NodoInputField {
         id: deviceSSHOldPasswordField
         anchors.left: deviceSSHScreen.left
         anchors.top: changeAdminPasswordTitle.bottom
@@ -215,12 +215,12 @@ Item {
             oldPIN = valueText
         }
     }
-
+*/
     NodoInputField {
         id: deviceSSHPasswordField
         anchors.left: deviceSSHScreen.left
-        anchors.top: deviceSSHOldPasswordField.bottom
-        anchors.topMargin: NodoSystem.nodoTopMargin
+        anchors.top: changeAdminPasswordTitle.bottom
+        anchors.topMargin: NodoSystem.cardTopMargin
         width: inputFieldWidth
         height: NodoSystem.nodoItemHeight
         itemSize: buttonWidth
@@ -281,7 +281,7 @@ Item {
         width: 380
         font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
-        isActive: (deviceSSHOldPasswordField.valueText !== "") && (deviceSSHScreen.isPasswordValid) && (deviceSSHPasswordField.valueText.length >= 8) && (deviceSSHReenterPasswordField.valueText === deviceSSHPasswordField.valueText) ? true : false
+        isActive: /*(deviceSSHOldPasswordField.valueText !== "") &&*/ (deviceSSHScreen.isPasswordValid) && (deviceSSHPasswordField.valueText.length >= 8) && (deviceSSHReenterPasswordField.valueText === deviceSSHPasswordField.valueText) ? true : false
         onClicked: {
             deviceSSHScreen.inputFieldReadOnly = true
             deviceSSHScreen.isPasswordValid = false
