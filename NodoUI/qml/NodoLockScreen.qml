@@ -454,19 +454,29 @@ Item {
             }
         }
 
-            HideKeyboardKey {
-            visible: true
+        NodoButton {
+            id: hideKeyBoardKeyLockScreen
             buttonWidth: NodoSystem.lockButtonWidth
             fitMinimal: true
             height: NodoSystem.lockButtonHeight
-            anchors.top: button7.bottom
+            anchors.top: buttonDelete.top
             anchors.left: buttonPadRect.left
             anchors.leftMargin: leftAndRightSpaces
             isActive: buttonsActive
             backgroundColor: NodoSystem.lockButtonColor
 
+            Image {
+
+            anchors.fill: parent
+            anchors.topMargin: buttonImageMargins
+            anchors.leftMargin: buttonImageMargins
+            anchors.bottomMargin: buttonImageMargins
+            anchors.rightMargin: buttonImageMargins
+            source: "qrc:/assets/NodoKeyboard/QtQuick/VirtualKeyboard/Styles/nodo/images/hidekeyboard-fcfcfc.svg"    
+            }
+
             onClicked: {
-                close()
+                //close()
             }
         }
 
