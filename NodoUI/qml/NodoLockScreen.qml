@@ -472,7 +472,7 @@ Item {
             anchors.leftMargin: buttonImageMargins
             anchors.bottomMargin: buttonImageMargins
             anchors.rightMargin: buttonImageMargins
-            source: "qrc:/assets/NodoKeyboard/QtQuick/VirtualKeyboard/Styles/nodo/images/hidekeyboard-fcfcfc.svg"    
+            source: "qrc:/Images/hidekeyboard-fcfcfc.png"    
             }
 
             onClicked: {
