@@ -454,6 +454,22 @@ Item {
             }
         }
 
+            HideKeyboardKey {
+            visible: true
+            buttonWidth: NodoSystem.lockButtonWidth
+            fitMinimal: true
+            height: NodoSystem.lockButtonHeight
+            anchors.top: button7.bottom
+            anchors.left: buttonPadRect.left
+            anchors.leftMargin: leftAndRightSpaces
+            isActive: buttonsActive
+            backgroundColor: NodoSystem.lockButtonColor
+
+            onClicked: {
+                close()
+            }
+        }
+
         NodoButton {
             id: button0
             buttonWidth: NodoSystem.lockButtonWidth
