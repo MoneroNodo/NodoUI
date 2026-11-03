@@ -1889,49 +1889,49 @@ It can be changed later on DEVICE &gt; SYSTEM &gt; PIN Settings.</source>
 <context>
     <name>NodoStatusScreen</name>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="237"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="236"/>
         <source>Synchronized</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="237"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="236"/>
         <source>Synchronizing</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/NodoStatusScreen.qml" line="96"/>
-        <location filename="../qml/NodoStatusScreen.qml" line="321"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="320"/>
         <source>Update available</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="248"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="247"/>
         <source>Block Height</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="260"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="259"/>
         <source>Version</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="272"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="271"/>
         <source>Outgoing Peers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="284"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="283"/>
         <source>Incoming Peers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="320"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="319"/>
         <source>Update</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/NodoStatusScreen.qml" line="96"/>
-        <location filename="../qml/NodoStatusScreen.qml" line="321"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="320"/>
         <source>Up to date</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1961,77 +1961,77 @@ It can be changed later on DEVICE &gt; SYSTEM &gt; PIN Settings.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="220"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="219"/>
         <source>MONERO DAEMON</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="332"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="331"/>
         <source>Network</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="362"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="361"/>
         <source>SERVICES</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="378"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="377"/>
         <source>Daemon</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="390"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="389"/>
         <source>Tor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="402"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="401"/>
         <source>I2P</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="414"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="413"/>
         <source>LWS</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="457"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="456"/>
         <source>SYSTEM</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="509"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="508"/>
         <source>Blockchain</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="521"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="520"/>
         <source>Storage</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="533"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="532"/>
         <source>Uptime</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="426"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="425"/>
         <source>MoneroPay</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="473"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="472"/>
         <source>CPU</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="485"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="484"/>
         <source>Temperature</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/NodoStatusScreen.qml" line="497"/>
+        <location filename="../qml/NodoStatusScreen.qml" line="496"/>
         <source>RAM</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2256,12 +2256,12 @@ It can be changed later on DEVICE &gt; SYSTEM &gt; PIN Settings.</source>
 <context>
     <name>main</name>
     <message>
-        <location filename="../qml/main.qml" line="56"/>
+        <location filename="../qml/main.qml" line="53"/>
         <source>NodoUI</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="126"/>
+        <location filename="../qml/main.qml" line="132"/>
         <source>Shutdown in 5 seconds.
 Release to Cancel.</source>
         <translation type="unfinished"></translation>
