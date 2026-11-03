@@ -100,7 +100,7 @@ Rectangle {
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.descriptionTextFontSize
             color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
-            text: qsTr("View Logs for Monero Daemon, NodoUI, SSH and Kernel")
+            text: qsTr("View Logs for Monero Daemon, NodoUI, LWS and Kernel")
         } 
 
         NodoButton {
