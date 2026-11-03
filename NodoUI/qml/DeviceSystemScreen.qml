@@ -219,12 +219,30 @@ Rectangle {
 
             if(deviceSystemRecoveryResyncBlockchainText.labelRectRoundSize > labelSize)
             labelSize = deviceSystemRecoveryResyncBlockchainText.labelRectRoundSize
+
+            if(deviceSystemRecoveryDeviceResetText.labelRectRoundSize > labelSize)
+            labelSize = deviceSystemRecoveryDeviceResetText.labelRectRoundSize
         }
 
         Rectangle {
             id: deviceSystemRecoveryScreen
             color: "black"
             anchors.fill: parent
+
+        Text {
+            id: recoveryScreenTitle
+            height: 30
+            width: parent.width
+            anchors.top: deviceSystemRecoveryScreen.top
+            anchors.left: deviceSystemRecoveryScreen.left
+            anchors.leftMargin: NodoSystem.cardLeftMargin
+            verticalAlignment: Text.AlignVCenter
+            font.family: NodoSystem.fontInter.name
+            font.pixelSize: NodoSystem.descriptionTitleFontSize
+            color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
+            text: qsTr("RECOVERY")
+    }
+
             Rectangle {
                 id: deviceSystemRecoveryScreenRect
                 anchors.left: deviceSystemRecoveryScreen.left
@@ -232,8 +250,7 @@ Rectangle {
                 height: NodoSystem.nodoItemHeight
                 color: "black"
 
-                NodoCheckBox
-                {
+                NodoCheckBox {
                     id: deviceSystemRecoveryRecoverFS
                     height: deviceSystemRecoveryScreenRect.height
                     width: height
@@ -259,8 +276,7 @@ Rectangle {
                 height: NodoSystem.nodoItemHeight
                 color: "black"
 
-                NodoCheckBox
-                {
+                NodoCheckBox {
                     id: deviceSystemRecoveryResyncBlockchain
                     height: deviceSystemRecoveryResyncBlockchainRect.height
                     width: height
@@ -281,33 +297,33 @@ Rectangle {
             Rectangle {
                 id: deviceSystemRecoveryDeviceResetRect
                 anchors.left: deviceSystemRecoveryScreen.left
-                anchors.top: deviceSystemRecoveryResyncBlockchain.bottom
+                anchors.top: deviceSystemRecoveryResyncBlockchainRect.bottom
                 anchors.topMargin: NodoSystem.nodoTopMargin
                 height: NodoSystem.nodoItemHeight
                 color: "black"
 
-                NodoCheckBox
-                {
+                NodoCheckBox {
                     id: deviceSystemRecoveryDeviceReset
-                    height: deviceSystemRecoveryResyncBlockchainRect.height
+                    height: deviceSystemRecoveryDeviceResetRect.height
                     width: height
-                    anchors.left: deviceSystemRecoveryResyncBlockchainRect.left
-                    anchors.top: deviceSystemRecoveryResyncBlockchainRect.top
+                    anchors.left: deviceSystemRecoveryDeviceResetRect.left
+                    anchors.top: deviceSystemRecoveryDeviceResetRect.top
                 }
 
                 NodoLabel {
                     id: deviceSystemRecoveryDeviceResetText
                     width: deviceSystemRecoveryMainScreen.labelSize
-                    height: deviceSystemRecoveryResyncBlockchain.height
-                    anchors.left: deviceSystemRecoveryResyncBlockchain.right
+                    height: deviceSystemRecoveryDeviceReset.height
+                    anchors.left: deviceSystemRecoveryDeviceReset.right
                     anchors.leftMargin: deviceSystemRecoveryMainScreen.checkBoxMargin
                     text: qsTr("Reset device to factory defaults")
                 }
             }
+
             NodoButton {
                 id: systemRecoveryStartButton
                 anchors.left: deviceSystemRecoveryScreen.left
-                anchors.top: deviceSystemRecoveryResyncBlockchainRect.bottom
+                anchors.top: deviceSystemRecoveryDeviceResetRect.bottom
                 anchors.topMargin: 80
                 text: qsTr("START")
                 height: NodoSystem.nodoItemHeight
@@ -338,6 +354,7 @@ Rectangle {
             }
         }
     }
+    
     NodoPopup {
         id: deviceSystemPopup
         onApplyClicked: {
