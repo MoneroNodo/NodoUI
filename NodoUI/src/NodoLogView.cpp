@@ -32,7 +32,7 @@ QVariant LogViewModel::data(const QModelIndex &index, int role) const {
 
   switch (role) {
   case IdRole:
-    return e.id;
+    return e.logId;
   case MessageRole:
     return e.message;
   case TimestampRole:
@@ -49,6 +49,7 @@ QHash<int, QByteArray> LogViewModel::roleNames() const {
   roles[MessageRole] = "message";
   roles[TimestampRole] = "timestamp";
   roles[PriorityRole] = "priority";
+  roles[IdRole] = "logId";
   return roles;
 }
 
@@ -139,7 +140,7 @@ void LogViewModel::journalClose() {
   }
 }
 
-LogViewModel::Entry LogViewModel::readEntry(int id) const {
+LogViewModel::Entry LogViewModel::readEntry(int logId) const {
   Entry e;
   if (!m_journal)
     return e;
@@ -162,7 +163,7 @@ LogViewModel::Entry LogViewModel::readEntry(int id) const {
                                  &len) >= 0) {
     e.timestamp = fromUsec(fieldValue(data, len));
   }
-  e.id = id;
+  e.logId = logId;
   return e;
 }
 

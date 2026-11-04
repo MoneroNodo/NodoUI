@@ -101,9 +101,9 @@ Item {
         }
 
         delegate: Rectangle {
-            width: parent.width
+            width: ListView.view.width
             height: msgText.height + unitRow.height + 16
-            color: id % 2 === 0 ? "#101010" : "#000000"
+            color: logId % 2 === 0 ? "#101010" : "#000000"
 
             Column {
                 anchors.fill: parent
@@ -125,9 +125,7 @@ Item {
 
                     Text {
                         id: msgText
-
-                        anchors.left: parent.left
-                        anchors.right: parent.right
+                        width: parent.width - x
                         text: message
                         color: NodoSystem.defaultColorNightModeOff
                         font.family: "monospace"

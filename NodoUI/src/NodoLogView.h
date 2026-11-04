@@ -57,7 +57,7 @@ private:
     QString message;
     QDateTime timestamp;
     int priority;
-    int id;
+    int logId;
   };
 
   sd_journal *m_journal = nullptr;
@@ -72,7 +72,7 @@ private:
   void drain();
   void clear();
   void appendEntry(Entry &&e);
-  Entry readEntry(int id) const;
+  Entry readEntry(int logId) const;
   void loadScrollback();
 
   static QString fieldValue(const char *data, size_t len);
