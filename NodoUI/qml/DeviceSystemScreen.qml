@@ -317,7 +317,7 @@ Rectangle {
                     height: deviceSystemRecoveryDeviceReset.height
                     anchors.left: deviceSystemRecoveryDeviceReset.right
                     anchors.leftMargin: deviceSystemRecoveryMainScreen.checkBoxMargin
-                    text: qsTr("Reset device to factory defaults")
+                    text: qsTr("Factory Reset")
                 }
             }
 
