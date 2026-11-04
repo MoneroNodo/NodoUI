@@ -325,7 +325,7 @@ Rectangle {
                 id: systemRecoveryStartButton
                 anchors.left: deviceSystemRecoveryScreen.left
                 anchors.top: deviceSystemRecoveryDeviceResetRect.bottom
-                anchors.topMargin: 80
+                anchors.topMargin: NodoSystem.nodoTopMargin
                 text: qsTr("START")
                 height: NodoSystem.nodoItemHeight
                 width: 380
