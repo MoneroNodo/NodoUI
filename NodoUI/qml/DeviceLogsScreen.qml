@@ -102,10 +102,11 @@ Item {
 
         delegate: Rectangle {
             width: ListView.view.width
-            height: msgText.height + unitRow.height + 16
+            height: logViewContentColumn.implicitHeight + 16
             color: logId % 2 === 0 ? "#101010" : "#000000"
 
             Column {
+                id: logViewContentColumn
                 anchors.fill: parent
                 anchors.margins: 8
                 spacing: 4
