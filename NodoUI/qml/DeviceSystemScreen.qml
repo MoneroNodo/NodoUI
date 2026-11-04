@@ -246,7 +246,8 @@ Rectangle {
             Rectangle {
                 id: deviceSystemRecoveryScreenRect
                 anchors.left: deviceSystemRecoveryScreen.left
-                anchors.top: deviceSystemRecoveryScreen.top
+                anchors.top: recoveryScreenTitle.bottom
+                anchors.topMargin: NodoSystem.cardTopMargin
                 height: NodoSystem.nodoItemHeight
                 color: "black"
 
@@ -354,7 +355,7 @@ Rectangle {
             }
         }
     }
-    
+
     NodoPopup {
         id: deviceSystemPopup
         onApplyClicked: {
