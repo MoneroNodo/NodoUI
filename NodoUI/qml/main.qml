@@ -96,7 +96,6 @@ ApplicationWindow {
             function onSyncStatusReady() {
                 var syncPercentage = syncInfo.getSyncPercentage()
                 var statusCode = networkManager.getNetworkConnectionStatusCode()
-                statusScreen.updateSyncPercentage(statusCode, syncPercentage)
                 updateSyncDot(statusCode, syncPercentage)
             }
         }
