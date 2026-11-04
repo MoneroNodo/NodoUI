@@ -31,6 +31,8 @@ QVariant LogViewModel::data(const QModelIndex &index, int role) const {
   const Entry &e = m_entries.at(index.row());
 
   switch (role) {
+  case IdRole:
+    return e.id;
   case MessageRole:
     return e.message;
   case TimestampRole:
@@ -137,7 +139,7 @@ void LogViewModel::journalClose() {
   }
 }
 
-LogViewModel::Entry LogViewModel::readEntry() const {
+LogViewModel::Entry LogViewModel::readEntry(int id) const {
   Entry e;
   if (!m_journal)
     return e;
@@ -160,6 +162,7 @@ LogViewModel::Entry LogViewModel::readEntry() const {
                                  &len) >= 0) {
     e.timestamp = fromUsec(fieldValue(data, len));
   }
+  e.id = id;
   return e;
 }
 
@@ -191,7 +194,7 @@ void LogViewModel::drain() {
     return;
   int r;
   while ((r = sd_journal_next(m_journal)) > 0) {
-    appendEntry(readEntry());
+    appendEntry(readEntry(m_idCounter++));
   }
   if (r < 0) {
     qDebug() << "sd_journal_next: " << strerror(-r);

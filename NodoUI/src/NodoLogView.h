@@ -28,6 +28,7 @@ class LogViewModel : public QAbstractListModel {
 public:
   enum Roles {
     MessageRole = Qt::UserRole + 1,
+    IdRole,
     TimestampRole,
     PriorityRole,
   };
@@ -56,6 +57,7 @@ private:
     QString message;
     QDateTime timestamp;
     int priority;
+    int id;
   };
 
   sd_journal *m_journal = nullptr;
@@ -63,13 +65,14 @@ private:
   QString m_unit;
   QList<Entry> m_entries;
   int m_scrollback;
+  int m_idCounter;
 
   void journalOpen();
   void journalClose();
   void drain();
   void clear();
   void appendEntry(Entry &&e);
-  Entry readEntry() const;
+  Entry readEntry(int id) const;
   void loadScrollback();
 
   static QString fieldValue(const char *data, size_t len);

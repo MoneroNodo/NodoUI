@@ -75,28 +75,35 @@ Item {
     }
 
     ListView {
-    id: logView
+        id: logView
+
+        property bool end: false
+
         model: logViewModel
         anchors.fill: parent
         anchors.topMargin: 60
         clip: true
-
-        property bool end: false;
         onCountChanged: {
             if (end)
-                Qt.callLater(positionViewAtEnd)
-        }
-       Connections {
-        target: logViewModel
-        function onLogLoaded() { logView.positionViewAtEnd() }
+                Qt.callLater(positionViewAtEnd);
+
         }
         onContentYChanged: {
-            end = contentY + height > contentHeight - 2
+            end = contentY + height > contentHeight - 2;
         }
+
+        Connections {
+            function onLogLoaded() {
+                logView.positionViewAtEnd();
+            }
+
+            target: logViewModel
+        }
+
         delegate: Rectangle {
-            width: logView.width
+            width: parent.width
             height: msgText.height + unitRow.height + 16
-            color: index % 2 === 0 ? "#101010" : "#000000"
+            color: id % 2 === 0 ? "#101010" : "#000000"
 
             Column {
                 anchors.fill: parent
@@ -105,6 +112,9 @@ Item {
 
                 Row {
                     id: unitRow
+
+                    anchors.left: parent.left
+                    anchors.right: parent.right
                     spacing: 10
 
                     Text {
@@ -113,17 +123,24 @@ Item {
                         font.family: "monospace"
                     }
 
-                Text {
-                    id: msgText
-                    width: parent.width
-                    text: message
-                    color: NodoSystem.defaultColorNightModeOff
-                    font.family: "monospace"
-                    wrapMode: Text.Wrap
-                    lineHeight: 1.1
+                    Text {
+                        id: msgText
+
+                        anchors.left: parent.left
+                        anchors.right: parent.right
+                        text: message
+                        color: NodoSystem.defaultColorNightModeOff
+                        font.family: "monospace"
+                        wrapMode: Text.Wrap
+                        lineHeight: 1.1
+                    }
+
                 }
-                }
+
             }
+
         }
+
     }
+
 }
