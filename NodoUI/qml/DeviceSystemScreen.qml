@@ -215,13 +215,13 @@ Rectangle {
 
         function onCalculateMaximumTextLabelLength() {
             if(deviceSystemRecoveryRecoverFSText.labelRectRoundSize > labelSize)
-            labelSize = deviceSystemRecoveryRecoverFSText.labelRectRoundSize
+            labelSize = deviceSystemRecoveryRecoverFSText.labelRectRoundSize + 1
 
             if(deviceSystemRecoveryResyncBlockchainText.labelRectRoundSize > labelSize)
-            labelSize = deviceSystemRecoveryResyncBlockchainText.labelRectRoundSize
+            labelSize = deviceSystemRecoveryResyncBlockchainText.labelRectRoundSize + 1
 
             if(deviceSystemRecoveryDeviceResetText.labelRectRoundSize > labelSize)
-            labelSize = deviceSystemRecoveryDeviceResetText.labelRectRoundSize
+            labelSize = deviceSystemRecoveryDeviceResetText.labelRectRoundSize + 1
         }
 
         Rectangle {
