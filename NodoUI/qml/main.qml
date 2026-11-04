@@ -328,6 +328,19 @@ ApplicationWindow {
 
     }
 
+
+    NodoPopup {
+        id: mainScreenPopup
+        onApplyClicked: {
+            if(commandID === 0)
+            {
+                nodoControl.factoryResetApproved();
+                mainAppStackView.push("FactoryResetScreen.qml")
+            }
+            close()
+        }
+    }
+
     Rectangle {
         id: mainScreenSyncDot
         parent: Overlay.overlay
