@@ -200,7 +200,7 @@ Item {
         verticalAlignment: Text.AlignVCenter
         wrapMode: Text.WordWrap
         font.family: NodoSystem.fontInter.name
-        font.pixelSize: NodoSystem.descriptionTextFontSize
+        font.pixelSize: NodoSystem.descriptionTextFontSize - 8
         color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
         text: qsTr("The Monero Research Lab (MRL) has decided to recommend that all Monero node operators enable a ban list of suspected spy node IP addresses. The spy nodes can reduce the privacy of Monero users.
 
