@@ -76,7 +76,7 @@ ApplicationWindow {
 
         if(nodoControl.isLockPinEnabled())
         {
-            nodoControl.restartLockScreenTimer();
+            nodoControl.lockScreen();
         }
 
     }
