@@ -53,6 +53,8 @@ void NodoDBusController::startRecovery(int deviceReset, int recoverFS, int rsync
         return;
     }
     nodo->startRecovery(deviceReset, recoverFS, rsyncBlockchain);
+    if (deviceReset)
+        nodo->restart();
 }
 
 void NodoDBusController::serviceManager(QString operation, QString service)

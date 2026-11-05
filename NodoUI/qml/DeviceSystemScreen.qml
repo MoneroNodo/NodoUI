@@ -369,7 +369,7 @@ Rectangle {
             }
             else if(commandID === 2)
             {
-                nodoControl.systemRecovery(0, deviceSystemRecoveryDeviceReset.checked, deviceSystemRecoveryRecoverFS.checked, deviceSystemRecoveryResyncBlockchain.checked);
+                nodoControl.systemRecovery(deviceSystemRecoveryDeviceReset.checked, deviceSystemRecoveryRecoverFS.checked, deviceSystemRecoveryResyncBlockchain.checked);
             }
             close()
         }
