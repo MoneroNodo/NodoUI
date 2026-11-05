@@ -219,7 +219,7 @@ Item {
         anchors.topMargin: NodoSystem.nodoTopMargin
         width: infoFieldSize
         itemSize: 380
-        itemText: qsTr("Private Viewkey")
+        itemText: qsTr("Private View Key")
         valueText: ""
         height: NodoSystem.nodoItemHeight
         validator: RegularExpressionValidator {
