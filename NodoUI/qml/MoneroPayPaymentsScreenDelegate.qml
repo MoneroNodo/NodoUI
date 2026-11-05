@@ -211,7 +211,7 @@ NodoCanvas {
                 mainRectPopup.qrCodeData = mainRectPopup.qrCodeData + "&tx_description=" + descriptionHTMLEncoded
             }
 
-            mainRectPopup.closeButtonText = qsTr("Close")
+            mainRectPopup.closeButtonText = qsTr("CLOSE")
             mainRectPopup.open();
         }
     }
