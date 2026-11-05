@@ -112,6 +112,7 @@
         <file alias="qmldir">assets/NodoSystem/qmldir</file>
         <file alias="NodoSystem.qml">assets/NodoSystem/NodoSystem.qml</file>
         <file alias="InterDisplay.ttf">assets/NodoSystem/InterDisplay.ttf</file>
+        <file alias="JetBrainsMono.ttf">assets/NodoSystem/JetBrainsMono.ttf</file>
     </qresource>
     <qresource prefix="/layout">
         <file>assets/NodoKeyboard/QtQuick/VirtualKeyboard/layouts/en_US/dialpad.fallback</file>
