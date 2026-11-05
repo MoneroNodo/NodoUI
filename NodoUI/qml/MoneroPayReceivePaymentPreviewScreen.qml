@@ -99,8 +99,8 @@ Item {
         anchors.left: moneroPayReceivePaymentPreviewScreen.left
         anchors.topMargin: NodoSystem.nodoTopMargin
         height: NodoSystem.nodoItemHeight
-        itemSize: labelSize
-        width: 740
+        itemSize: 420
+        width: 865
         visible: true
         itemText: qsTr("Timestamp")
         valueText: ""
@@ -111,8 +111,9 @@ Item {
         anchors.top: timestampField.bottom
         anchors.left: currenciesRect.left
         anchors.topMargin: NodoSystem.nodoTopMargin
-        horizontalAlignment: Text.AlignLeft
-        text: qsTr("Awaiting Payment")
+        horizontalAlignment: Text.AlignHCenter
+        width: 420
+        text: qsTr("AWAITING PAYMENT")
         height: NodoSystem.nodoItemHeight
         font.pixelSize: NodoSystem.buttonTextFontSize
     }
@@ -122,10 +123,10 @@ Item {
         anchors.top: timestampField.bottom
         anchors.left: sendPaymentLabel.right
         anchors.topMargin: NodoSystem.nodoTopMargin
-        anchors.leftMargin: NodoSystem.subMenuLeftMargin
+        anchors.leftMargin: 25
         text: qsTr("NEW PAYMENT")
         height: NodoSystem.nodoItemHeight
-        width: buttonWidth
+        width: 420
         font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         isActive: true

@@ -96,8 +96,8 @@ Item {
         anchors.left: moneroPayReceivePaymentResultScreen.left
         anchors.topMargin: NodoSystem.nodoTopMargin
         height: NodoSystem.nodoItemHeight
-        itemSize: labelSize
-        width: 740
+        itemSize: 420
+        width: 865
         visible: true
         itemText: qsTr("Timestamp")
         valueText: ""
@@ -117,8 +117,9 @@ Item {
             id: paymentSuccessLabel
             anchors.top: tmpRect.top
             anchors.left: tmpRect.left
-            horizontalAlignment: Text.AlignLeft
-            text: qsTr("Payment Received")
+            horizontalAlignment: Text.AlignHCenter
+            width: 420
+            text: qsTr("PAYMENT RECEIVED")
             height: NodoSystem.nodoItemHeight
             font.pixelSize: NodoSystem.buttonTextFontSize
         }
@@ -127,9 +128,9 @@ Item {
             id: gotoNewPaymentButton
             anchors.top: tmpRect.top
             anchors.left: paymentSuccessLabel.right
-            anchors.leftMargin: NodoSystem.subMenuLeftMargin
+            anchors.leftMargin: 25
             height: NodoSystem.nodoItemHeight
-            width: buttonWidth
+            width: 420
             text: qsTr("NEW PAYMENT")
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.buttonTextFontSize
@@ -145,9 +146,9 @@ Item {
             id: gotoViewPaymentsButton
             anchors.top: tmpRect.top
             anchors.left: gotoNewPaymentButton.right
-            anchors.leftMargin: NodoSystem.subMenuLeftMargin
+            anchors.leftMargin: 25
             height: NodoSystem.nodoItemHeight
-            width: buttonWidth
+            width: 380
             text: qsTr("VIEW PAYMENTS")
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.buttonTextFontSize

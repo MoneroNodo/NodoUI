@@ -148,7 +148,7 @@ Item {
         anchors.topMargin: 3*(NodoSystem.nodoTopMargin)
         width: addressFieldWidth
         height: NodoSystem.nodoItemHeight
-        itemSize: labelSize + 120
+        itemSize: 420
         itemText: qsTr("Note (optional)")
         valueText: ""
     }
@@ -167,8 +167,8 @@ Item {
             anchors.left: blockConfirmationsRect.left
             anchors.top: blockConfirmationsRect.top
             height: blockConfirmationsRect.height
-            itemSize: labelSize + 120
-            width: labelSize + 155
+            itemSize: 420
+            width: labelSize + 200
             itemText: qsTr("Block Confirmations")
             valueText: "10"
             textFlag: Qt.ImhDigitsOnly
@@ -203,7 +203,7 @@ Item {
                 height: zeroConfirmationSwitchRect.height
                 anchors.left: zeroConfirmationSwitchRect.left
                 anchors.top: zeroConfirmationSwitchRect.top
-                itemSize: LabelSize + 120
+                itemSize: 420
                 text: qsTr("0 Confirmations")
             }
 
@@ -226,7 +226,7 @@ Item {
         anchors.topMargin: 2*(NodoSystem.nodoTopMargin)
         text: qsTr("RECEIVE")
         height: NodoSystem.nodoItemHeight
-        width: LabelSize + 120
+        width: 420
         font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         isActive: xmrAmount === 0 ? false : true
