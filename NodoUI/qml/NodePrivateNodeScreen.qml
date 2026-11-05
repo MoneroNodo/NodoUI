@@ -112,7 +112,7 @@ Item {
         anchors.top: privateNodeSwitchRect.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         height: NodoSystem.nodoItemHeight
-        width: labelSize + privateNodeSwitch.width//labelSize + 150//inputFieldWidth
+        width: buttonWidth + privateNodeSwitch.width 
         itemSize: buttonWidth
         itemText: systemMessages.messages[NodoMessages.Message.Port]
         valueText: nodePrivateNodeScreen.rpcPort
