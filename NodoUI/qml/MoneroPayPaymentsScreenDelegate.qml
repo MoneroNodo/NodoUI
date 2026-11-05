@@ -108,7 +108,7 @@ NodoCanvas {
 
     NodoInfoField {
         id: moneroPayReceivedFiatValueField
-        anchors.left: mainRect.right
+        anchors.right: mainRect.right
         anchors.top: moneroPayReceivedPaymentStatusField.top
         anchors.rightMargin: 10
         height: NodoSystem.nodoItemHeight
