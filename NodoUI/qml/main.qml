@@ -76,7 +76,9 @@ ApplicationWindow {
 
         if(nodoControl.isLockPinEnabled())
         {
-            nodoControl.lockScreen();
+            nodoControl.closePopup()
+            mainAppStackView.push("NodoLockScreen.qml")
+            mainAppWindow.screenLocked = true
         }
 
     }
