@@ -379,10 +379,10 @@ void NodoSystemControl::setPassword(QString pw)
     m_dbusController->setPassword(pw);
 }
 
-void NodoSystemControl::changePassword(QString oldPassword, QString newPassword)
+void NodoSystemControl::changePassword(QString newPassword)
 {
     enableComponent(false);
-    m_dbusController->changePassword(oldPassword, newPassword);
+    m_dbusController->changePassword(newPassword);
 }
 
 void NodoSystemControl::serviceManager(QString operation, QString service)

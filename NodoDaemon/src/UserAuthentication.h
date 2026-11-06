@@ -17,11 +17,10 @@ public:
     ~UserAuthentication();
 
     void run() Q_DECL_OVERRIDE;
-    void setUsernamePassword(QString oldPassword, QString newPassword);
+    void setUsernamePassword(QString newPassword);
 
 private:
     QString m_username = "nodo";
-    QString m_oldPassword;
     QString m_newPassword;
 
 signals:

@@ -21,7 +21,7 @@ public:
     void setBacklightLevel(int backlightLevel);
     int getBacklightLevel(void);
     void setPassword(QString pw);
-    void changePassword(QString oldPassword, QString newPassword);
+    void changePassword(QString newPassword);
 
     void moneroLWSAddAccount(QString address, QString privateKey);
     void moneroLWSDeleteAccount(QString address);

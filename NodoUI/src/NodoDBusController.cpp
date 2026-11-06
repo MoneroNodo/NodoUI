@@ -118,13 +118,13 @@ void NodoDBusController::setPassword(QString pw)
     nodo->setPassword(pw);
 }
 
-void NodoDBusController::changePassword(QString oldPassword, QString newPassword)
+void NodoDBusController::changePassword(QString newPassword)
 {
     if(false == m_dbusAdapterConnectionStatus)
     {
         return;
     }
-    nodo->changePassword(oldPassword, newPassword);
+    nodo->changePassword(newPassword);
 }
 
 void NodoDBusController::moneroLWSAddAccount(QString address, QString privateKey)
