@@ -24,11 +24,15 @@ Item {
     property int pinIndex: 0
     property string pinCode: ""
 
+    property string banner: qsTr("Enter PIN")
+
     property bool buttonsActive: true
     property int parentID
 
 
     signal deleteMe(int screenID)
+    signal pinCorrect()
+    signal pinCancel()
 
     function setPINValue(buttonID)
     {
@@ -73,6 +77,7 @@ Item {
             }
             else
             {
+                lockScreen.pinCorrect()
                 lockScreen.deleteMe(-1)
             }
         }
@@ -102,7 +107,7 @@ Item {
 
         Text {
             id: enterPINText
-            text: qsTr("Enter PIN")
+            text: lockScreen.banner
             font.pixelSize: 32
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignHCenter
@@ -476,7 +481,8 @@ Item {
             }
 
             onClicked: {
-                //close()
+                lockScreen.pinCancel()
+                lockScreen.deleteMe(-1)
             }
         }
 

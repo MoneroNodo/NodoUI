@@ -285,7 +285,13 @@ Item {
         onClicked: {
             deviceSSHScreen.inputFieldReadOnly = true
             deviceSSHScreen.isPasswordValid = false
-            nodoControl.changePassword(deviceSSHOldPasswordField.valueText, deviceSSHPasswordField.valueText)
+            let pin = mainAppStackView.push("NodoLockScreen.qml", {
+                parentID: 0,
+                banner: qsTr("Confirm with PIN to change the password")
+            })
+            pin.pinCorrect.connect(() => {
+                nodoControl.changePassword(deviceSSHOldPasswordField.valueText, deviceSSHPasswordField.valueText);
+            })
         }
     }
 
