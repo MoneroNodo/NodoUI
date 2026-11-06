@@ -273,7 +273,7 @@ Rectangle {
                     height: NodoSystem.nodoItemHeight
                     width: parent.width
                     anchors.left: deviceSystemRecoveryRecoverFSText.right
-                    anchors.leftMargin: NodoSystem.cardLeftMargin
+                    anchors.leftMargin: 25
                     anchors.top: deviceLogsButton.top
                     verticalAlignment: Text.AlignVCenter
                     font.family: NodoSystem.fontInter.name
@@ -312,7 +312,7 @@ Rectangle {
                     height: NodoSystem.nodoItemHeight
                     width: parent.width
                     anchors.left: deviceSystemRecoveryResyncBlockchainText.right
-                    anchors.leftMargin: NodoSystem.cardLeftMargin
+                    anchors.leftMargin: 25
                     anchors.top: deviceLogsButton.top
                     verticalAlignment: Text.AlignVCenter
                     font.family: NodoSystem.fontInter.name
@@ -351,7 +351,7 @@ Rectangle {
                     height: NodoSystem.nodoItemHeight
                     width: parent.width
                     anchors.left: deviceSystemRecoveryDeviceResetText.right
-                    anchors.leftMargin: 40
+                    anchors.leftMargin: 25
                     anchors.top: deviceLogsButton.top
                     verticalAlignment: Text.AlignVCenter
                     font.family: NodoSystem.fontInter.name
