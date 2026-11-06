@@ -268,6 +268,19 @@ Rectangle {
                     anchors.leftMargin: deviceSystemRecoveryMainScreen.checkBoxMargin
                     text: qsTr("Attempt to recover filesystem")
                 }
+                Text {
+                    id: deviceSystemRecoveryRecoverFSWarning
+                    height: NodoSystem.nodoItemHeight
+                    width: parent.width
+                    anchors.left: deviceSystemRecoveryDeviceResetText.right
+                    anchors.leftMargin: 40
+                    anchors.top: deviceLogsButton.top
+                    verticalAlignment: Text.AlignVCenter
+                    font.family: NodoSystem.fontInter.name
+                    font.pixelSize: NodoSystem.descriptionTextFontSize
+                    color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
+                    text: qsTr("Try to fix filesystem errors without deleting data.")
+                }
             }
 
             Rectangle {
@@ -293,6 +306,19 @@ Rectangle {
                     anchors.left: deviceSystemRecoveryResyncBlockchain.right
                     anchors.leftMargin: deviceSystemRecoveryMainScreen.checkBoxMargin
                     text: qsTr("Delete and resync blockchain")
+                }
+                Text {
+                    id: deviceSystemRecoveryResyncBlockchainWarning
+                    height: NodoSystem.nodoItemHeight
+                    width: parent.width
+                    anchors.left: deviceSystemRecoveryDeviceResetText.right
+                    anchors.leftMargin: 40
+                    anchors.top: deviceLogsButton.top
+                    verticalAlignment: Text.AlignVCenter
+                    font.family: NodoSystem.fontInter.name
+                    font.pixelSize: NodoSystem.descriptionTextFontSize
+                    color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
+                    text: qsTr("This will also delete all LWS data.")
                 }
             }
 
@@ -331,7 +357,7 @@ Rectangle {
                     font.family: NodoSystem.fontInter.name
                     font.pixelSize: NodoSystem.descriptionTextFontSize
                     color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
-                    text: qsTr("This will wipe all Nodo settings and configuration!")
+                    text: qsTr("Reset all settings back to Factory defaults.")
                 }
 
             }
