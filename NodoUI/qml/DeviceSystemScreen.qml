@@ -272,14 +272,14 @@ Rectangle {
                     id: deviceSystemRecoveryRecoverFSWarning
                     height: NodoSystem.nodoItemHeight
                     width: parent.width
-                    anchors.left: deviceSystemRecoveryDeviceResetText.right
-                    anchors.leftMargin: 40
+                    anchors.left: deviceSystemRecoveryRecoverFSText.right
+                    anchors.leftMargin: NodoSystem.cardLeftMargin
                     anchors.top: deviceLogsButton.top
                     verticalAlignment: Text.AlignVCenter
                     font.family: NodoSystem.fontInter.name
                     font.pixelSize: NodoSystem.descriptionTextFontSize
                     color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
-                    text: qsTr("Try to fix filesystem errors without deleting data.")
+                    text: qsTr("Attempts to fix filesystem errors without deleting data.")
                 }
             }
 
@@ -311,14 +311,14 @@ Rectangle {
                     id: deviceSystemRecoveryResyncBlockchainWarning
                     height: NodoSystem.nodoItemHeight
                     width: parent.width
-                    anchors.left: deviceSystemRecoveryDeviceResetText.right
-                    anchors.leftMargin: 40
+                    anchors.left: deviceSystemRecoveryResyncBlockchainText.right
+                    anchors.leftMargin: NodoSystem.cardLeftMargin
                     anchors.top: deviceLogsButton.top
                     verticalAlignment: Text.AlignVCenter
                     font.family: NodoSystem.fontInter.name
                     font.pixelSize: NodoSystem.descriptionTextFontSize
                     color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
-                    text: qsTr("This will also delete all LWS data.")
+                    text: qsTr("Also deletes all LWS data.")
                 }
             }
 
