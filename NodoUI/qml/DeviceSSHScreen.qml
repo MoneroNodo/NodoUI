@@ -79,7 +79,7 @@ Item {
         target: nodoControl
 
         function onPasswordChangeStatus(status) {
-            deviceSSHOldPasswordField.valueText = ""
+            // deviceSSHOldPasswordField.valueText = ""
             deviceSSHPasswordField.valueText = ""
             deviceSSHReenterPasswordField.valueText = ""
             if(0 === status)

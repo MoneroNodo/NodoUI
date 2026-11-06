@@ -399,7 +399,7 @@ Rectangle {
 
     Connections {
         target: nodoControl
-        function onSystemRecoveryNotification(str) {
+        function onStartRecoveryNotification(str) {
             if (deviceSystemMainScreen.shouldReboot)
                 nodoControl.restartDevice()
         }
