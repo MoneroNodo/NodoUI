@@ -20,7 +20,12 @@ Item {
                 devicePinScreenStackView.push("NodoFirstTimeLockPinScreen.qml")
                 break
 
-            case 2: //3:
+            case 2:
+                nodoControl.setFirstBootConfigDone()
+                devicePinScreenStackView.push("NodoFirstTimeBanlistScreen.qml")
+                break
+
+            case 3:
                 nodoControl.setFirstBootConfigDone()
                 devicePinScreenStackView.push("NodoFirstTimeRebootScreen.qml")
                 break
