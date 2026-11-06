@@ -588,11 +588,11 @@ void Daemon::setupDomains(void)
     return;
 }
 
-void Daemon::changePassword(QString oldPassword, QString newPassword)
+void Daemon::changePassword(QString newPassword)
 {
     UserAuthentication *auth = new UserAuthentication();
     auth->setAutoDelete(true);
-    auth->setUsernamePassword(oldPassword, newPassword);
+    auth->setUsernamePassword(newPassword);
     connect(auth, SIGNAL(authenticationStatusReady(int)), this, SLOT(passwordChangeStatusReceived(int)), Qt::QueuedConnection);
     QThreadPool::globalInstance()->start(auth);
 }

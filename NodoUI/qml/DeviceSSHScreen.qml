@@ -290,7 +290,7 @@ Item {
                 banner: qsTr("Confirm with PIN to change the password")
             })
             pin.pinCorrect.connect(() => {
-                nodoControl.changePassword(deviceSSHOldPasswordField.valueText, deviceSSHPasswordField.valueText);
+                nodoControl.changePassword(deviceSSHPasswordField.valueText);
             })
         }
     }
