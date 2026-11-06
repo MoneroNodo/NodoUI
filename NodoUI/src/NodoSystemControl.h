@@ -68,7 +68,7 @@ public:
     Q_INVOKABLE QString getSystemStorageUsage(void);
 
     Q_INVOKABLE void setPassword(QString pw);
-    Q_INVOKABLE void changePassword(QString oldPassword, QString newPassword);
+    Q_INVOKABLE void changePassword(QString newPassword);
     Q_INVOKABLE void serviceManager(QString operation, QString service);
 
     Q_INVOKABLE void restartScreenSaverTimer(void);
