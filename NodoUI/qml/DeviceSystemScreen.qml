@@ -11,6 +11,7 @@ Rectangle {
     color: "black"
 
     property int buttonWidth: 380
+    property bool shouldReboot: false
 
     Rectangle {
         id: deviceSystemScreen
@@ -370,6 +371,14 @@ Rectangle {
         }
     }
 
+    Connections {
+        target: nodoControl
+        function onSystemRecoveryNotification(str) {
+            if (deviceSystemMainScreen.shouldReboot)
+                nodoControl.restartDevice()
+        }
+    }
+
     NodoPopup {
         id: deviceSystemPopup
         onApplyClicked: {
@@ -383,6 +392,7 @@ Rectangle {
             }
             else if(commandID === 2)
             {
+                deviceSystemMainScreen.shouldReboot = deviceSystemRecoveryDeviceReset.checked
                 nodoControl.systemRecovery(deviceSystemRecoveryDeviceReset.checked, deviceSystemRecoveryRecoverFS.checked, deviceSystemRecoveryResyncBlockchain.checked);
             }
             close()
