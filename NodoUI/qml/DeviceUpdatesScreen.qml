@@ -270,4 +270,47 @@ Item {
             text: nodoControl.getSoftwareVersion("pay")
         }
     }
+
+    Rectangle {
+        id: deviceUpdatesDebianSwitchRect
+        anchors.left: deviceUpdatesScreen.left
+        anchors.top: deviceUpdatesMoneroPaySwitchRect.bottom
+        anchors.topMargin: NodoSystem.nodoTopMargin
+        height: NodoSystem.nodoItemHeight
+
+        NodoLabel {
+            id: deviceUpdatesDebianSwitchText
+            height: deviceUpdatesDebianSwitchRect.height
+            anchors.left: deviceUpdatesDebianSwitchRect.left
+            anchors.top: deviceUpdatesDebianSwitchRect.top
+            itemSize: labelSize
+            text: qsTr("Linux System")
+        }
+
+        NodoSwitch {
+            id: deviceUpdatesDebianSwitch
+            anchors.left: deviceUpdatesDebianSwitchText.right
+            anchors.leftMargin: NodoSystem.padding
+            height: deviceUpdatesDebianSwitchRect.height
+            width: 2*deviceUpdatesDebianSwitchRect.height
+            display: AbstractButton.IconOnly
+            onCheckedChanged: {
+                nodoConfig.setUpdateStatus("debian", checked)
+            }
+        }
+
+        Text {
+            id: deviceUpdatesDebianDescText
+            height: NodoSystem.nodoItemHeight
+            width: parent.width - deviceUpdatesDebianSwitchRect.width
+            anchors.left: deviceUpdatesDebianSwitch.right
+            anchors.leftMargin: 25
+            anchors.top: deviceUpdatesDebianSwitch.top
+            verticalAlignment: Text.AlignVCenter
+            font.family: NodoSystem.fontInter.name
+            font.pixelSize: NodoSystem.descriptionTextFontSize
+            color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
+            text: nodoControl.getSoftwareVersion("debian")
+        }
+    }
 }
