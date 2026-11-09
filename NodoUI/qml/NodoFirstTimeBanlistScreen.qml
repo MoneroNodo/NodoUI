@@ -13,20 +13,7 @@ Item {
     property int checkBoxMargin: 0
     property int buttonWidth: 380
 
-    Component.onCompleted: {
-        onCalculateMaximumTextLabelLength()
-    }
-
-    function onCalculateMaximumTextLabelLength() {
-        if(nodeBanlistScreenIndex1Text.labelRectRoundSize > labelSize)
-        labelSize = nodeBanlistScreenIndex1Text.labelRectRoundSize
-
-        if(nodeBanlistScreenIndex2Text.labelRectRoundSize > labelSize)
-        labelSize = nodeBanlistScreenIndex2Text.labelRectRoundSize
-
-        if(nodeBanlistScreenIndex3Text.labelRectRoundSize > labelSize)
-        labelSize = nodeBanlistScreenIndex3Text.labelRectRoundSize
-    }
+    signal openNextScreen(int screenID)
 
     Rectangle {
         id: nodoFirstTimeBanlistRect
@@ -52,16 +39,8 @@ Item {
 				height: nodoFirstTimeBanlistRect.height
 				width: 2*nodoFirstTimeBanlistRect.height
 				display: AbstractButton.IconOnly
-				checked: NodoFirstTimeBanlistScreen.enableAllBanlistsSwitchStatus
-			/*	onCheckChanged: {
-					var cur = NodoFirstTimeBanlistScreen.enableAllBanlistsSwitchStatus;
-					if (cur != enableAllBanlistsSwitchStatus.checked)
-					{
-						nodoControl.setEnableAllBanlistsEnabled(enableAllBanlistsSwitch.checked);
-						nodoFirstTimeBanlistScreen.enableAllBanlistsSwitchStatus = enableAllBanlistsSwitch.checked;
-						nodoControl.sendUpdate();					
-				}
-			}
+				checked: false
+            }
 			
 			Text {
 				id: enableAllBanlistsDesc
@@ -76,42 +55,26 @@ Item {
 				color: NodoSystem.descriptionTextFontColorNightModeOff
 				text: qsTr("Boog900, gui.xmr.pm, DNS Banlist")
 			}
-
-    NodoButton {
-        id: applyFirstTimeBanlistButton
-        anchors.left: nodeBanlistScreen.left
-        anchors.top: nodoFirstTimeBanlistRect.bottom
-        anchors.topMargin: NodoSystem.nodoTopMargin
-        height: NodoSystem.nodoItemHeight
-        font.family: NodoSystem.fontInter.name
-        font.pixelSize: NodoSystem.buttonTextFontSize
-        width: 380
-        text: qsTr("APPLY")
-        isActive: false
-        onClicked: {
-            applyBanlistButton.isActive = false
-            nodoControl.setBanlistsListEnabled("boog900", nodeBanlistScreenIndex1Check.checked);
-            nodoControl.setBanlistsListEnabled("gui-xmr-pm", nodeBanlistScreenIndex2Check.checked);
-            nodoControl.setBanlistsListEnabled("dns", nodeBanlistScreenIndex3Check.checked);
-            nodoControl.serviceManager("restart", "monerod");
-        }
     }
 
     NodoButton {
-        id: nextButton
-        anchors.left: applyBanlistButton.right
-        anchors.top: applyBanlistButton.top
-        anchors.leftMargin: 25
+        id: applyBanlistButton
+        anchors.left: nodeBanlistScreen.left
+        anchors.top: nodeBanlistScreenIndex3.bottom
+        anchors.topMargin: NodoSystem.nodoTopMargin -2
         height: NodoSystem.nodoItemHeight
-        width: 380
         font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
-        text: qsTr("FINISH")
+        width: 380 //nodeBanlistScreenIndex3Check.width + nodeBanlistScreenIndex3Text.width
+        text: qsTr("APPLY")
+        isActive: false
         onClicked: {
-			close()
+            nodoControl.setBanlistsListEnabled("boog900", enableAllBanlistsSwitch.checked);
+            nodoControl.setBanlistsListEnabled("gui-xmr-pm", enableAllBanlistsSwitch.checked);
+            nodoControl.setBanlistsListEnabled("dns", enableAllBanlistsSwitch.checked);
+            openNextScreen(3)
         }
-    }   
-
+    }
     Text {
         id: nodeBanlistScreenDescription
         height: nodeBanlistScreenDescription.paintedHeight
