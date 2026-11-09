@@ -313,4 +313,18 @@ Item {
             text: nodoControl.getSoftwareVersion("debian")
         }
     }
+    Text {
+        id: deviceUpdatesUpdateWarning
+        height: NodoSystem.nodoItemHeight
+        width: parent.width - deviceUpdatesDebianSwitchRect.width
+        anchors.left: deviceUpdatesDebianSwitchRect.left
+        anchors.leftMargin: 25
+        anchors.top: deviceUpdatesDebianSwitchRect.bottom
+        anchors.topMargin: 25
+        verticalAlignment: Text.AlignVCenter
+        font.family: NodoSystem.fontInter.name
+        font.pixelSize: NodoSystem.descriptionTextFontSize
+        color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
+        text: qsTr("In order to update Monreo, MoneroPay, and LWS, package upgrades will be performed regardless of this setting.")
+    }
 }
