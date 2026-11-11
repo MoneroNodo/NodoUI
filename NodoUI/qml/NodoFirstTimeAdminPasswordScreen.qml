@@ -94,42 +94,45 @@ Item {
 
     Rectangle {
         id: firstBootLanguageRect
-        anchors.fill: parent
+        anchors.top: parent.top
+        anchors.left: parent.left
+        anchors.right: parent.right
         anchors.leftMargin: 20
         color: "black"
-        height: NodoSystem.nodoItemHeight
-        width: firstBootLanguageLabel.width + firstBootLanguageComboBox.width
+        height: NodoSystem.nodoItemHeight * 3
 
-        Rectangle {
-            id: firstBootLanguageLabel //languageFirstBootDropdown
-            anchors.top: firstBootLanguageRect.top
-            anchors.left: firstBootLanguageRect.left
-            anchors.right: firstBootLanguageRect.right
-			anchors.rightMargin: NodoSystem.padding
-            color: "black"
-            height: firstBootLanguageRect.height
-            width: labelSize
-			text: qsTr("Language")
-		}
-
-		NodoComboBox {
-			id: firstBootLanguageComboBox
-			anchors.top: firstBootLanguageLabel.top
-			anchors.left: firstBootLanguageLabel.right
-			anchors.leftMargin: NodoSystem.padding
-			height: firstBootLanguageRect.height
-			width: parent.width - firstBootLanguageLabel.width - 10
-            currentIndex: translator.getLanguageIndex()
-            model: translator.languages
-            onCurrentIndexChanged: {
-                translator.setLanguageIndex(currentIndex)
+            Text {
+            id: firstBootLanguageLabel
+                text: qsTr("Language")
+                font.family: NodoSystem.fontInter.name
+                font.pixelSize: NodoSystem.textFontSize
+                verticalAlignment: Text.AlignVCenter
+                wrapMode: Text.WordWrap
+                width: labelSize
+                height: NodoSystem.nodoItemHeight
+                color: nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn  : NodoSystem.dataFieldTextColorNightModeOff
             }
-        }
+
+            NodoComboBox {
+                id: firstBootLanguageComboBox
+                anchors.top: firstBootLanguageLabel.bottom
+                anchors.left: firstBootLanguageLabel.left
+                anchors.topMargin: NodoSystem.padding
+                height: NodoSystem.nodoItemHeight
+                width: parent.width - firstBootLanguageLabel.width - 10
+                currentIndex: translator.getLanguageIndex()
+                model: translator.languages
+                onCurrentIndexChanged: {
+                    translator.setLanguageIndex(currentIndex)
+            }
+		}
 	}
          
     Rectangle {
         id: adminPasswordRect 
-		anchors.fill: parent
+		anchors.bottom: parent.bottom
+		anchors.left: parent.left
+		anchors.right: parent.right
 		anchors.top: firstBootLanguageRect.bottom
         anchors.leftMargin: 20
 		color: "black"
