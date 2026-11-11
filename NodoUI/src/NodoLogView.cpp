@@ -197,9 +197,9 @@ void LogViewModel::drain() {
   while ((r = sd_journal_next(m_journal)) > 0) {
     appendEntry(readEntry(m_idCounter++));
   }
-  if (r < 0) {
-    qDebug() << "sd_journal_next: " << strerror(-r);
-  }
+  // if (r < 0) {
+  //   qDebug() << "sd_journal_next: " << strerror(-r);
+  // }
 }
 
 void LogViewModel::appendEntry(Entry &&e) {
