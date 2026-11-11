@@ -11,7 +11,7 @@ Item {
     anchors.leftMargin: 20
 
     property int labelSize: 0
-    property int inputFieldWidth: 640
+    property int inputFieldWidth: 700
     property bool inputFieldReadOnly: false
     signal openNextScreen(int screenID)
 
@@ -21,10 +21,10 @@ Item {
 
     function onCalculateMaximumTextLabelLength() {
         if(lockPINField.labelRectRoundSize > labelSize)
-            labelSize = lockPINField.labelRectRoundSize
+            labelSize = lockPINField.labelRectRoundSize + 1
 
         if(lockPINReenterField.labelRectRoundSize > labelSize)
-            labelSize = lockPINReenterField.labelRectRoundSize
+            labelSize = lockPINReenterField.labelRectRoundSize + 1
 
         if(lockPinApplyButton.labelRectRoundSize > labelSize)
             labelSize = lockPinApplyButton.labelRectRoundSize
@@ -64,7 +64,7 @@ Item {
             height: 140
             color: "black"
             Text {
-                text: qsTr("Please set your 6 digit Lock PIN.\nThe Lock PIN is used to unlock the device.\nIt can be changed later on DEVICE > SYSTEM > PIN Settings.")
+                text: qsTr("Please set your 6 digit Lock PIN.\nThe Lock PIN is used to unlock the device.\nIt can be changed later on DEVICE > SYSTEM > PIN SETTINGS.")
                 font.family: NodoSystem.fontInter.name
                 font.pixelSize: NodoSystem.textFontSize
                 verticalAlignment: Text.AlignVCenter
@@ -81,7 +81,7 @@ Item {
             anchors.topMargin: NodoSystem.nodoTopMargin
             width: inputFieldWidth
             height: NodoSystem.nodoItemHeight
-            itemSize: labelSize
+            itemSize: 380
             itemText: qsTr("New Lock PIN")
             valueText: ""
             passwordInput: true
@@ -99,7 +99,7 @@ Item {
             anchors.topMargin: NodoSystem.nodoTopMargin
             width: inputFieldWidth
             height: NodoSystem.nodoItemHeight
-            itemSize: labelSize
+            itemSize: 380
             itemText: qsTr("Re-enter Lock PIN")
             valueText: ""
             passwordInput: true

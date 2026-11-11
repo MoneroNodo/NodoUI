@@ -39,7 +39,9 @@ Item {
         anchors.left: firstTimeSetupScreen.left
         anchors.topMargin: 3
         anchors.leftMargin: 10
-        source: (nodoControl.appTheme ? "qrc:/Images/nodologo_title_red.png" : "qrc:/Images/nodologo_title_white.png")
+        width: NodoSystem.nodoItemHeight + 60
+        height: NodoSystem.nodoItemHeight
+        source: (nodoControl.appTheme ? "qrc:/Images/Nodo_red.png" : "qrc:/Images/Nodo_white.png")
         fillMode: Image.PreserveAspectFit
     }
 
@@ -47,7 +49,7 @@ Item {
     Rectangle {
         id: firstTimeSetupRect
         anchors.fill: parent
-        anchors.topMargin: 170
+        anchors.topMargin: 150
         color: "black"
         StackView {
             id: devicePinScreenStackView

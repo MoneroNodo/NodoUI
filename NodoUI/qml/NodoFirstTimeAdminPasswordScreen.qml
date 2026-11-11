@@ -61,13 +61,13 @@ Item {
 
     function onCalculateMaximumTextLabelLength() {
         if(adminPasswordField.labelRectRoundSize > labelSize)
-            labelSize = adminPasswordField.labelRectRoundSize
+            labelSize = adminPasswordField.labelRectRoundSize + 1
 
         if(adminPasswordReenterField.labelRectRoundSize > labelSize)
-            labelSize = adminPasswordReenterField.labelRectRoundSize
+            labelSize = adminPasswordReenterField.labelRectRoundSize + 1
 
-        if(passwordApplyButton.labelRectRoundSize > labelSize)
-            labelSize = passwordApplyButton.labelRectRoundSize
+        //if(passwordApplyButton.labelRectRoundSize > labelSize)
+        //    labelSize = passwordApplyButton.labelRectRoundSize
     }
 
     Connections {
@@ -99,24 +99,24 @@ Item {
         anchors.right: parent.right
         anchors.leftMargin: 20
         color: "black"
-        height: NodoSystem.nodoItemHeight * 3
+        height: NodoSystem.nodoItemHeight * 2
 
-            Text {
-            id: firstBootLanguageLabel
+            NodoLabel {
+                id: firstBootLanguageLabel
                 text: qsTr("Language")
                 font.family: NodoSystem.fontInter.name
                 font.pixelSize: NodoSystem.textFontSize
                 verticalAlignment: Text.AlignVCenter
                 wrapMode: Text.WordWrap
-                width: labelSize
+                width: 380
                 height: NodoSystem.nodoItemHeight
                 color: nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn  : NodoSystem.dataFieldTextColorNightModeOff
             }
 
             NodoComboBox {
                 id: firstBootLanguageComboBox
-                anchors.top: firstBootLanguageLabel.bottom
-                anchors.left: firstBootLanguageLabel.left
+                anchors.top: firstBootLanguageLabel.top
+                anchors.left: firstBootLanguageLabel.right
                 anchors.topMargin: NodoSystem.padding
                 height: NodoSystem.nodoItemHeight
                 width: parent.width - firstBootLanguageLabel.width - 10
@@ -142,10 +142,10 @@ Item {
             anchors.top: adminPasswordRect.top
             anchors.left: adminPasswordRect.left
             anchors.right: adminPasswordRect.right
-            height: 200
+            height: 260
             color: "black"
             Text {
-                text: qsTr("Please set your Admin Password. The Admin Password should be at least 8 characters, with uppercase and lowercase letters, number and a special character.\nThe Admin Password is used to connect to Nodo remotely via SSH. It can be changed later on DEVICE > SYSTEM > Admin & SSH.")
+                text: qsTr("Please set your Admin Password. The Admin Password should be at least 8 characters, with uppercase and lowercase letters, number and a special character.\n\nThe Admin Password is used to connect to Nodo remotely via SSH. It can be changed later on DEVICE > SYSTEM > ADMIN & SSH.")
                 font.family: NodoSystem.fontInter.name
                 font.pixelSize: NodoSystem.textFontSize
                 verticalAlignment: Text.AlignVCenter
