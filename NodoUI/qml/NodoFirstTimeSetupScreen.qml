@@ -21,7 +21,6 @@ Item {
                 break
 
             case 2:
-                nodoControl.setFirstBootConfigDone()
                 devicePinScreenStackView.push("NodoFirstTimeBanlistScreen.qml")
                 break
 
