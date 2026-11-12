@@ -206,12 +206,7 @@ ApplicationWindow {
                                    mainAppStackView.pop();
                                }
 
-                               if(mainAppWindow.screenLocked === true)
-                               {
-                                   mainAppWindow.screenLocked = false
-                                   mainAppStackView.push("NodoLockScreen.qml")
-                                   nodoControl.stopLockScreenTimer()
-                               }
+                               mainAppWindow.lockScreen();
                                mainAppWindow.screenSaverActive = false
                            }
                            else
