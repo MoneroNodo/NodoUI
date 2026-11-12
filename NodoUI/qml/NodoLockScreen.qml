@@ -477,7 +477,7 @@ Item {
             anchors.leftMargin: buttonImageMargins
             anchors.bottomMargin: buttonImageMargins
             anchors.rightMargin: buttonImageMargins
-            source: "qrc:/Images/hidekeyboard-fcfcfc.png"    
+            source: "qrc:/Images/hidekeyboard-fcfcfc.svg"
             }
 
             onClicked: {
