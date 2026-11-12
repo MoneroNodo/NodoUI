@@ -145,7 +145,9 @@ Item {
             height: 260
             color: "black"
             Text {
-                text: qsTr("Please set your Admin Password. The Admin Password should be at least 8 characters, with uppercase and lowercase letters, number and a special character.\n\nThe Admin Password is used to connect to Nodo remotely via SSH. It can be changed later on DEVICE > SYSTEM > ADMIN & SSH.")
+                text: qsTr(`Please set your Admin Password. The Admin Password should be at least 8 characters, with uppercase and lowercase letters, number and a special character.
+
+The Admin Password is used to connect to Nodo remotely via SSH. It can be changed later on DEVICE > SYSTEM > ADMIN & SSH.`)
                 font.family: NodoSystem.fontInter.name
                 font.pixelSize: NodoSystem.textFontSize
                 verticalAlignment: Text.AlignVCenter
