@@ -87,6 +87,7 @@
         <file>qml/NodoPopup.qml</file>
         <file>qml/NodoFirstTimeSetupScreen.qml</file>
         <file>qml/NodoFirstTimeAdminPasswordScreen.qml</file>
+        <file>qml/NodoFirstTimeBanlistScreen.qml</file>
 <!--        <file>qml/NodoFirstTimeAddressPinScreen.qml</file> -->
         <file>qml/NodoFirstTimeLockPinScreen.qml</file>
         <file>qml/DeviceLockPinScreen.qml</file>
