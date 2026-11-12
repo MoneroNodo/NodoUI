@@ -735,26 +735,6 @@ bool NodoSystemControl::isFirstBootConfigDone(void)
     return m_firstBootDone;
 }
 
-void NodoSystemControl::setAddressPin(QString newPIN)
-{
-    if (false == m_uiSystemParser->setNewAddressPin(newPIN))
-    {
-        m_errorCode = SOMETHING_IS_WRONG;
-    }
-    else
-    {
-        m_errorCode = NEW_PIN_IS_SET;
-    }
-
-    m_displaySettings = m_uiSystemParser->readDisplaySettings();
-    emit errorDetected();
-}
-
-bool NodoSystemControl::verifyAddressPinCode(QString pin)
-{
-    return m_uiSystemParser->compareAddressPinHash(pin);
-}
-
 void NodoSystemControl::setFirstBootConfigDone(void)
 {
     QFile file(m_firstBootFileName);

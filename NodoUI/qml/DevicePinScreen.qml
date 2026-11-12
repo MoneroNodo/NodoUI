@@ -20,9 +20,6 @@ Item {
     function onCalculateMaximumTextLabelLength() {
         if(deviceLockPinSettingsButton.buttonWidth > labelSize)
             labelSize = deviceLockPinSettingsButton.buttonWidth
-
-        if(deviceAddressPinSettingsButton.buttonWidth > labelSize)
-            labelSize = deviceAddressPinSettingsButton.buttonWidth
     }
 
     NodoButton {

@@ -133,8 +133,6 @@ public:
 
     Q_INVOKABLE bool isFirstBootConfigDone(void);
     Q_INVOKABLE void setFirstBootConfigDone(void);
-    Q_INVOKABLE void setAddressPin(QString newPIN);
-    Q_INVOKABLE bool verifyAddressPinCode(QString pin);
 
     Q_INVOKABLE bool isPasswordValid(QString password);
     Q_INVOKABLE void sendUpdate(void);

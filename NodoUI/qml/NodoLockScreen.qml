@@ -63,10 +63,6 @@ Item {
             {
                 retval = nodoControl.verifyLockPinCode(pinCode)
             }
-            else if(1 === parentID)
-            {
-                retval = nodoControl.verifyAddressPinCode(pinCode)
-            }
 
             if(false === retval)
             {

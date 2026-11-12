@@ -17,9 +17,7 @@
 #define DEFAULT_LOCK_PIN_HASH ""
 #define DEFAULT_LOCK_AFTER 3
 #define DEFAULT_KEYBOARD_LAYOUT_LOCALE 0
-#define DEFAULT_ADDRESS_PIN_HASH ""
 #define DEFAULT_LOCK_PIN_ENABLED true
-#define DEFAULT_ADDRESS_PIN_ENABLED false
 
 #define MINIMUM_SCREENSAVER_TIMEOUT 60
 #define MINIMUM_SCREENSAVER_ITEM_CHANGE_TIMEOUT 60
@@ -36,9 +34,7 @@ typedef enum {
     DISPLAY_KEY_LOCK_PIN_HASH,
     DISPLAY_KEY_LOCK_AFTER,
     DISPLAY_KEY_KEYBOARD_LAYOUT,
-    DISPLAY_KEY_ADDRESS_PIN_HASH,
     DISPLAY_KEY_LOCK_PIN_ENABLED,
-    DISPLAY_KEY_ADDRESS_PIN_ENABLED,
 }display_keys_t;
 
 
@@ -48,11 +44,9 @@ typedef struct {
     int screenSaverType;
     int displayOrientation;
     QString lockPinHash;
-    QString addressPinHash;
     int lockAfter;
     int keyboardLayout;
     bool lockPinEnabled;
-    bool addressPinEnabled;
 }display_settings_t;
 
 
@@ -94,9 +88,6 @@ public:
     int readKeyboardLayoutType(void);
     void writeKeyboardLayoutType(int kbLayout);
 
-    bool compareAddressPinHash(QString pin);
-    bool setNewAddressPin(QString newPin);
-
 private:
     int m_feedCount = 0;
     QJsonDocument m_document;
@@ -105,7 +96,7 @@ private:
 
     display_settings_t m_displaySettings;
 
-    const QStringList m_displayKeyList = {"screensaver_timeout_in_sec", "screensaver_item_change_timeout_in_sec", "screensaver_type", "display_orientation", "lock_pin_hash", "lock_after_in_min", "keyboard_layout", "address_pin_hash", "lock_pin_enabled", "address_pin_enabled"};
+    const QStringList m_displayKeyList = {"screensaver_timeout_in_sec", "screensaver_item_change_timeout_in_sec", "screensaver_type", "display_orientation", "lock_pin_hash", "lock_after_in_min", "keyboard_layout", "lock_pin_enabled"};
     const QString systemObjName = "system";
     const QString m_json_file_name = "/home/nodo/variables/nodoUI.system.json";
 

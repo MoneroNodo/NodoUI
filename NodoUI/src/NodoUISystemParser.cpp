@@ -26,9 +26,7 @@ NodoUISystemParser::NodoUISystemParser(QObject *parent) : QObject(parent)
         m_displaySettings.lockPinHash = DEFAULT_LOCK_PIN_HASH;
         m_displaySettings.lockAfter = DEFAULT_LOCK_AFTER;
         m_displaySettings.keyboardLayout = DEFAULT_KEYBOARD_LAYOUT_LOCALE; //"en_us"
-        m_displaySettings.addressPinHash = DEFAULT_ADDRESS_PIN_HASH;
         m_displaySettings.lockPinEnabled = DEFAULT_LOCK_PIN_ENABLED;
-        m_displaySettings.addressPinEnabled = DEFAULT_ADDRESS_PIN_ENABLED;
 
 
         m_systemObj.insert(m_displayKeyList[DISPLAY_KEY_SS_TIMEOUT], m_displaySettings.screenSaverTimeoutInSec);
@@ -38,7 +36,6 @@ NodoUISystemParser::NodoUISystemParser(QObject *parent) : QObject(parent)
         m_systemObj.insert(m_displayKeyList[DISPLAY_KEY_LOCK_PIN_HASH], m_displaySettings.lockPinHash);
         m_systemObj.insert(m_displayKeyList[DISPLAY_KEY_LOCK_AFTER], m_displaySettings.lockAfter);
         m_systemObj.insert(m_displayKeyList[DISPLAY_KEY_KEYBOARD_LAYOUT], m_displaySettings.keyboardLayout);
-        m_systemObj.insert(m_displayKeyList[DISPLAY_KEY_ADDRESS_PIN_HASH], m_displaySettings.addressPinHash);
         m_systemObj.insert(m_displayKeyList[DISPLAY_KEY_LOCK_PIN_ENABLED], DEFAULT_LOCK_PIN_ENABLED);
         m_systemObj.insert(m_displayKeyList[DISPLAY_KEY_ADDRESS_PIN_ENABLED], DEFAULT_ADDRESS_PIN_ENABLED);
 
@@ -164,7 +161,6 @@ display_settings_t NodoUISystemParser::readDisplaySettings(void)
     }
 
     jsonValue = m_systemObj.value(m_displayKeyList[DISPLAY_KEY_ADDRESS_PIN_HASH]);
-    m_displaySettings.addressPinHash = jsonValue.toString();
 
     jsonValue = m_systemObj.value(m_displayKeyList[DISPLAY_KEY_KEYBOARD_LAYOUT]);
 
@@ -360,36 +356,6 @@ void NodoUISystemParser::writeKeyboardLayoutType(int kbLayout)
     m_systemObj.insert(m_displayKeyList[DISPLAY_KEY_KEYBOARD_LAYOUT], kbLayout);
     writeJson();
 }
-
-bool NodoUISystemParser::compareAddressPinHash(QString pin)
-{
-    QByteArrayView pinHash = QCryptographicHash::hash(pin.toUtf8(), QCryptographicHash::Sha384);
-    QByteArray hashText = QByteArray(pinHash.toByteArray(), pinHash.size()).toHex().constData();
-    if(hashText == m_displaySettings.addressPinHash.toUtf8())
-    {
-        return true;
-    }
-
-    return false;
-}
-
-bool NodoUISystemParser::setNewAddressPin(QString newPin)
-{
-    if(m_systemObj.isEmpty())
-    {
-        return false;
-    }
-
-    QByteArrayView pinHash = QCryptographicHash::hash(newPin.toUtf8(), QCryptographicHash::Sha384);
-    QByteArray hashText = QByteArray(pinHash.toByteArray(), pinHash.size()).toHex().constData();
-
-    m_systemObj.insert(m_displayKeyList[DISPLAY_KEY_ADDRESS_PIN_HASH], QString(hashText));
-
-    writeJson();
-
-    return true;
-}
-
 
 bool NodoUISystemParser::isFeedsEnabled(void)
 {
