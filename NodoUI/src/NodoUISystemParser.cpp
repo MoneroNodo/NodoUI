@@ -37,7 +37,6 @@ NodoUISystemParser::NodoUISystemParser(QObject *parent) : QObject(parent)
         m_systemObj.insert(m_displayKeyList[DISPLAY_KEY_LOCK_AFTER], m_displaySettings.lockAfter);
         m_systemObj.insert(m_displayKeyList[DISPLAY_KEY_KEYBOARD_LAYOUT], m_displaySettings.keyboardLayout);
         m_systemObj.insert(m_displayKeyList[DISPLAY_KEY_LOCK_PIN_ENABLED], DEFAULT_LOCK_PIN_ENABLED);
-        m_systemObj.insert(m_displayKeyList[DISPLAY_KEY_ADDRESS_PIN_ENABLED], DEFAULT_ADDRESS_PIN_ENABLED);
 
 
         writeJson();
@@ -90,13 +89,6 @@ NodoUISystemParser::NodoUISystemParser(QObject *parent) : QObject(parent)
     if(jsonValue.isUndefined() || jsonValue.isNull())
     {
         m_systemObj.insert(m_displayKeyList[DISPLAY_KEY_KEYBOARD_LAYOUT], DEFAULT_KEYBOARD_LAYOUT_LOCALE);
-        updateFile = true;
-    }
-
-    jsonValue = m_systemObj.value(m_displayKeyList[DISPLAY_KEY_ADDRESS_PIN_HASH]);
-    if(jsonValue.isUndefined() || jsonValue.isNull())
-    {
-        m_systemObj.insert(m_displayKeyList[DISPLAY_KEY_ADDRESS_PIN_HASH], DEFAULT_ADDRESS_PIN_HASH);
         updateFile = true;
     }
 
@@ -159,8 +151,6 @@ display_settings_t NodoUISystemParser::readDisplaySettings(void)
         m_displaySettings.lockAfter = DEFAULT_LOCK_AFTER;
         updateFile = true;
     }
-
-    jsonValue = m_systemObj.value(m_displayKeyList[DISPLAY_KEY_ADDRESS_PIN_HASH]);
 
     jsonValue = m_systemObj.value(m_displayKeyList[DISPLAY_KEY_KEYBOARD_LAYOUT]);
 
