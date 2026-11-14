@@ -182,7 +182,7 @@ Item {
             onFocusChanged: {
                 if(valueFocus && valueText === "10")
                 {
-                    valueText: ""
+                    valueText = ""
                 }
                 else if (!valueFocus && valueText == "")
                 {
@@ -214,7 +214,7 @@ Item {
                 height: zeroConfirmationSwitchRect.height
                 width: 2*zeroConfirmationSwitch.height
                 display: AbstractButton.IconOnly
-                checked: true
+                checked: false
             }
         }
     }
