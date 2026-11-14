@@ -66,7 +66,7 @@ Item {
         font.pixelSize: NodoSystem.buttonTextFontSize
         width: 380 //nodoFirstTimeBanlistScreenIndex3Check.width + nodoFirstTimeBanlistScreenIndex3Text.width
         text: qsTr("APPLY")
-        isActive: false
+        isActive: true
         onClicked: {
             nodoControl.setBanlistsListEnabled("boog900", enableAllBanlistsSwitch.checked);
             nodoControl.setBanlistsListEnabled("gui-xmr-pm", enableAllBanlistsSwitch.checked);
