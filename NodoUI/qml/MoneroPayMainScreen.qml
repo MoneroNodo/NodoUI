@@ -14,32 +14,34 @@ Item {
     
     signal setButtonState(bool state)
 
-    function updateButtons()
+    function updateButtons(click)
     {
         settingsButton.enabled = true
 		if(100 === syncInfo.getSyncPercentage() && moneroPay.isDepositAddressSet())
         {
             receiveButton.enabled = true
             paymentsButton.enabled = true
-            receiveButton.clicked()
+            if (click)
+                receiveButton.clicked()
         }
         else
         {
             receiveButton.enabled = false
             paymentsButton.enabled = false
-            paymentsButton.clicked()
+            if (click)
+                settingsButton.clicked()
         }
     }
 
     Component.onCompleted: {
-        updateButtons();
+        updateButtons(true);
     }
 
     Connections {
         target: syncInfo
         function onSyncDone() {
             moneroPayMainScreen.setButtonState(true);
-            updateButtons();
+            updateButtons(false);
         }
     }
 
