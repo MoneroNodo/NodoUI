@@ -111,7 +111,7 @@ Item {
             height: 30
             width: parent.width
             anchors.top: moneroPaySettingsAddressRectangle.top
-            anchors.left: moneroLWSAddAccountScreen.left
+            anchors.left: moneroPaySettingsConfigScreen.left
             anchors.leftMargin: NodoSystem.cardLeftMargin
             //anchors.topMargin: NodoSystem.nodoTopMargin*3
             verticalAlignment: Text.AlignVCenter
