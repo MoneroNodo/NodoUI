@@ -79,7 +79,7 @@ Item {
             id: lockPINField
             anchors.left: lockPinRect.left
             anchors.top: banner.bottom
-            anchors.topMargin: NodoSystem.nodoTopMargin
+            anchors.topMargin: NodoSystem.nodoTopMargin * 2
             width: inputFieldWidth
             height: NodoSystem.nodoItemHeight
             itemSize: 380
