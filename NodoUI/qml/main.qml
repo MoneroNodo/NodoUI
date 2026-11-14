@@ -121,7 +121,7 @@ ApplicationWindow {
             {
                 if(nodoControl.isLockPinEnabled())
                 {
-                    mainAppWindowMainRect.lockScreen();
+                    mainAppWindowMainRect.doScreenLock();
                 }
             }
 
@@ -206,7 +206,7 @@ ApplicationWindow {
                                    mainAppStackView.pop();
                                }
 
-                               mainAppWindow.lockScreen();
+                               mainAppWindowMainRect.doScreenLock();
                                mainAppWindow.screenSaverActive = false
                            }
                            else
@@ -259,7 +259,7 @@ ApplicationWindow {
             }
         }
 
-        function lockScreen()
+        function doScreenLock()
         {
             if(mainAppWindow.screenLocked === false)
             {
