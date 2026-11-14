@@ -206,8 +206,8 @@ ApplicationWindow {
                                    mainAppStackView.pop();
                                }
 
-                               mainAppWindowMainRect.doScreenLock();
                                mainAppWindow.screenSaverActive = false
+                               mainAppWindowMainRect.doScreenLock();
                            }
                            else
                            {
