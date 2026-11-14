@@ -17,8 +17,7 @@ Item {
 
     Rectangle {
         id: nodoFirstTimeBanlistRect
-		anchors.fill: parent
-		anchors.leftMargin: 20
+        anchors.leftMargin: 20
         anchors.topMargin: NodoSystem.nodoTopMargin
         height: NodoSystem.nodoItemHeight
         color: "black"
@@ -59,13 +58,13 @@ Item {
 
     NodoButton {
         id: applyBanlistButton
-        anchors.left: nodeBanlistScreen.left
-        anchors.top: nodeBanlistScreenIndex3.bottom
-        anchors.topMargin: NodoSystem.nodoTopMargin -2
+        anchors.left: nodoFirstTimeBanlistScreen.left
+        anchors.top: nodoFirstTimeBanlistRect.bottom
+        anchors.topMargin: NodoSystem.nodoTopMargin
         height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
-        width: 380 //nodeBanlistScreenIndex3Check.width + nodeBanlistScreenIndex3Text.width
+        width: 380 //nodoFirstTimeBanlistScreenIndex3Check.width + nodoFirstTimeBanlistScreenIndex3Text.width
         text: qsTr("APPLY")
         isActive: false
         onClicked: {
@@ -76,8 +75,8 @@ Item {
         }
     }
     Text {
-        id: nodeBanlistScreenDescription
-        height: nodeBanlistScreenDescription.paintedHeight
+        id: nodoFirstTimeBanlistScreenDescription
+        height: nodoFirstTimeBanlistScreenDescription.paintedHeight
         width: parent.width
         anchors.top: applyBanlistButton.bottom
         anchors.left: nodoFirstTimeBanlistScreen.left
