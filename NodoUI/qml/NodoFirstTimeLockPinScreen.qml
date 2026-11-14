@@ -53,7 +53,7 @@ Item {
         id: lockPinRect
         anchors.fill: parent
         color: "black"
-        anchors.leftMargin: 20
+        
 
         Rectangle {
             id: banner
@@ -61,10 +61,11 @@ Item {
             anchors.left: lockPinRect.left
             anchors.right: lockPinRect.right
             anchors.topMargin: NodoSystem.nodoTopMargin
+            anchors.leftMargin: 20
             height: 140
             color: "black"
             Text {
-                text: qsTr("Please set your 6 digit Lock PIN.\nThe Lock PIN is used to unlock the device.\nIt can be changed later on DEVICE > SYSTEM > PIN SETTINGS.")
+                text: qsTr("Please set your 6 digit Lock PIN. The Lock PIN is used to unlock the device.\n\nIt can be changed later on DEVICE > SYSTEM > PIN SETTINGS.")
                 font.family: NodoSystem.fontInter.name
                 font.pixelSize: NodoSystem.textFontSize
                 verticalAlignment: Text.AlignVCenter
