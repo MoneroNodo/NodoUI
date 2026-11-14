@@ -445,7 +445,7 @@ bool NodoConfigParser::getUpdateStatus(QString moduleName)
 
     if(jsonValue.isNull())
     {
-        m_autoupdateObj.insert(moduleName, "FALSE");
+        m_autoupdateObj.insert(moduleName, "TRUE");
         writeJson();
         return false;
     }
