@@ -261,7 +261,7 @@ ApplicationWindow {
 
         function doScreenLock()
         {
-            if(mainAppWindow.screenLocked === false)
+            if(nodoControl.isLockPinEnabled() && mainAppWindow.screenLocked === false)
             {
                 nodoControl.stopLockScreenTimer();
                 mainAppWindow.screenLocked = true
