@@ -170,7 +170,7 @@ Item {
             itemSize: 420
             width: labelSize + 200
             itemText: qsTr("Block Confirmations")
-            valueText: "10"
+            valueText: "1"
             textFlag: Qt.ImhDigitsOnly
             validator: RegularExpressionValidator {
                 regularExpression: /^[1-9]$|^1[0-9]$|^20$/
@@ -180,13 +180,13 @@ Item {
             readOnlyFlag: zeroConfirmationSwitch.checked
 
             onFocusChanged: {
-                if(valueFocus && valueText === "10")
+                if(valueFocus && valueText === "1")
                 {
                     valueText = ""
                 }
                 else if (!valueFocus && valueText == "")
                 {
-                    valueText = "10"
+                    valueText = "1"
                 }
             }
         }
