@@ -74,7 +74,7 @@ ApplicationWindow {
 
         nodoControl.restartScreenSaverTimer();
 
-        if(nodoControl.isLockPinEnabled())
+        if(nodoControl.isLockPinEnabled() && nodoControl.isFirstBootConfigDone())
         {
             nodoControl.closePopup()
             mainAppStackView.push("NodoLockScreen.qml")
