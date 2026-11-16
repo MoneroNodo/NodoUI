@@ -41,10 +41,7 @@ Item {
         FailedToChangePassword,
         PasswordChangedSuccessfully,
         InputFieldCantBeEmpty,
-        RecoveryApprove,
         Accept,
-        RecoveryStarted,
-        RecoveryCompleted,
         NoStorageFound,
         NewBlockChainStorageFound,
         OldPasswordIsWrong
@@ -90,10 +87,7 @@ Item {
         qsTr("Failed to change password"),
         qsTr("Password changed successfully"),
         qsTr("Input field can't be empty!"),
-        qsTr("This process will reset Nodo to factory defaults. All settings and user info will be lost. Begin factory reset?"),
         qsTr("ACCEPT"),
-        qsTr("Restoring Nodo to factory defaults..."),
-        qsTr("Completed factory reset, now rebooting..."),
         qsTr("Blockchain storage not found!"),
         qsTr("New blockchain storage found!"),
         qsTr("Old password is incorrect!")
