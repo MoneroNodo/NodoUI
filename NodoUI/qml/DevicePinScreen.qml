@@ -26,7 +26,7 @@ Item {
         id: deviceLockPinSettingsButton
         anchors.left: devicePinScreen.left
         anchors.top: devicePinScreen.top
-        text: qsTr("Lock PIN Settings")
+        text: qsTr("PIN SETTINGS")
         height: NodoSystem.nodoItemHeight
         font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
