@@ -227,7 +227,7 @@
     </message>
     <message>
         <location filename="../qml/DevicePinScreen.qml" line="29"/>
-        <source>Lock PIN Settings</source>
+        <source>PIN SETTINGS</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
