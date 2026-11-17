@@ -435,8 +435,8 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/DeviceUpdatesScreen.qml" line="328"/>
-        <source>In order to update Monreo, MoneroPay, and LWS, package upgrades will be performed regardless of this setting.</source>
+        <location filename="../qml/DeviceUpdatesScreen.qml" line="313"/>
+        <source>Updates will still run for Monero, MoneroPay, and Monero LWS.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
