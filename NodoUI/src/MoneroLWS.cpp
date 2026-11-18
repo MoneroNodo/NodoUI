@@ -117,6 +117,7 @@ void MoneroLWS::parseAccounts(void)
 
     if(accounts.isEmpty())
     {
+        emit listAccountsCompleted();
         return;
     }
 

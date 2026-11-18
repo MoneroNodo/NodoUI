@@ -11,10 +11,14 @@ Item {
 
     function createListModels() {
         inactiveListModel.clear()
+        let size = moneroLWS.getInactiveAccountSize();
 
         for (var index = 0; index < moneroLWS.getInactiveAccountSize(); index++) {
             var accountParams = { "inactiveAddress": moneroLWS.getInactiveAccountAddress(index), "scanHeight": moneroLWS.getInactiveAccountScanHeight(index)}
             inactiveListModel.append(accountParams)
+        }
+        if (size === 0) {
+            listEmptyRect.visible = true;
         }
     }
 
@@ -29,6 +33,29 @@ Item {
         target: moneroLWS
         function onListAccountsCompleted() {
             createListModels()
+        }
+    }
+
+    Rectangle {
+        id: listEmptyRect
+        anchors.left: moneroLWSInactiveScreen.left
+        anchors.top: moneroLWSInactiveScreen.top
+        anchors.topMargin: NodoSystem.nodoTopMargin
+        height: NodoSystem.nodoItemHeight
+        visible: false
+
+        Text {
+            id: listEmptyText
+            height: NodoSystem.nodoItemHeight
+            width: parent.width - listEmptyRect.width
+            anchors.left: moneroLWSInactiveScreen.right
+            anchors.leftMargin: 25
+            anchors.top: moneroLWSInactiveScreen.top
+            verticalAlignment: Text.AlignVCenter
+            font.family: NodoSystem.fontInter.name
+            font.pixelSize: NodoSystem.descriptionTextFontSize
+            color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
+            text: qsTr("None")
         }
     }
 
