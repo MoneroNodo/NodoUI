@@ -27,6 +27,7 @@ Item {
     property string banner: qsTr("Enter PIN")
 
     property bool buttonsActive: true
+    property bool canCancel: false
     property int parentID
 
 
@@ -459,6 +460,7 @@ Item {
             id: hideKeyBoardKeyLockScreen
             buttonWidth: NodoSystem.lockButtonWidth
             fitMinimal: true
+            visible: lockScreen.canCancel
             height: NodoSystem.lockButtonHeight
             anchors.top: buttonDelete.top
             anchors.left: buttonPadRect.left
@@ -477,8 +479,10 @@ Item {
             }
 
             onClicked: {
-                lockScreen.pinCancel()
-                lockScreen.deleteMe(-1)
+                if (lockScreen.canCancel) {
+                    lockScreen.pinCancel()
+                    lockScreen.deleteMe(-1)
+                }
             }
         }
 

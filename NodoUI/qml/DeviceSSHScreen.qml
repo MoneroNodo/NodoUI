@@ -287,6 +287,7 @@ Item {
             deviceSSHScreen.isPasswordValid = false
             let pin = mainAppStackView.push("NodoLockScreen.qml", {
                 parentID: 0,
+                canCancel: true,
                 banner: qsTr("Confirm with PIN to change the password")
             })
             pin.pinCorrect.connect(() => {
