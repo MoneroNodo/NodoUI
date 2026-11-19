@@ -274,7 +274,7 @@ Rectangle {
                     width: parent.width
                     anchors.left: deviceSystemRecoveryRecoverFSText.right
                     anchors.leftMargin: 25
-                    anchors.top: deviceLogsButton.top
+                    anchors.top: parent.top
                     verticalAlignment: Text.AlignVCenter
                     font.family: NodoSystem.fontInter.name
                     font.pixelSize: NodoSystem.descriptionTextFontSize
@@ -313,7 +313,7 @@ Rectangle {
                     width: parent.width
                     anchors.left: deviceSystemRecoveryResyncBlockchainText.right
                     anchors.leftMargin: 25
-                    anchors.top: deviceLogsButton.top
+                    anchors.top: parent.top
                     verticalAlignment: Text.AlignVCenter
                     font.family: NodoSystem.fontInter.name
                     font.pixelSize: NodoSystem.descriptionTextFontSize
@@ -352,7 +352,7 @@ Rectangle {
                     width: parent.width
                     anchors.left: deviceSystemRecoveryDeviceResetText.right
                     anchors.leftMargin: 25
-                    anchors.top: deviceLogsButton.top
+                    anchors.top: parent.top
                     verticalAlignment: Text.AlignVCenter
                     font.family: NodoSystem.fontInter.name
                     font.pixelSize: NodoSystem.descriptionTextFontSize
