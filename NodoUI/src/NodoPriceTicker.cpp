@@ -192,7 +192,7 @@ void NodoPriceTicker::sslErrors(const QList<QSslError> &sslErrors)
 {
 #ifndef QT_NO_SSL
     foreach (const QSslError &error, sslErrors){
-        if(error == QSslError::CertificateNotYetValid)
+        if(error.error() == QSslError::CertificateNotYetValid)
         {
             qDebug() << "not yet valid error";
             m_timer->start(2000);
