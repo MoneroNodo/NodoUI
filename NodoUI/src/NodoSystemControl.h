@@ -160,7 +160,7 @@ signals:
     void powerButtonPressDetected(void);
     void powerButtonReleaseDetected(void);
     void serviceManagerNotificationReceived(QString); // delegate
-    void startRecoveryNotification(void);
+    void startRecoveryNotification(QString);
 
 private:
     bool m_appTheme;

@@ -63,7 +63,7 @@ signals:
     void moneroLWSAccountAdded(void);
 
     void networkConnectionStatusChanged(void);
-    void startRecoveryNotification(void);
+    void startRecoveryNotification(QString);
 };
 
 #endif // NODODBUSCONTROLLER_H
