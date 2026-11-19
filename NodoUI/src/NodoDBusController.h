@@ -51,7 +51,8 @@ private:
 signals:
     void dbusConnectionStatusChanged(void);
     void serviceStatusReceived(QString statusMessage);
-    void serviceManagerNotificationReceived(QString message);
+    void serviceManagerNotificationReceived(const QString &message);
+    void serviceManagerNotification(const QString &message);
     void hardwareStatusReadyNotification(const QString &message);
     void passwordChangeStatus(int status);
 

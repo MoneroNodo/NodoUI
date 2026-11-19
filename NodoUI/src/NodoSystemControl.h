@@ -159,8 +159,8 @@ signals:
 
     void powerButtonPressDetected(void);
     void powerButtonReleaseDetected(void);
-    void serviceManagerNotificationReceived(QString); // delegate
-    void startRecoveryNotification(QString);
+    void serviceManagerNotificationReceived(const QString &message); // delegate
+    void startRecoveryNotification(const QString &message);
 
 private:
     bool m_appTheme;
