@@ -113,7 +113,7 @@ ApplicationWindow {
 
             function onLockScreenTimedout()
             {
-                if(nodoControl.isLockPinEnabled())
+                if(nodoControl.isLockPinEnabled() && mainAppWindow.screenSaverActive === false)
                 {
                     mainAppWindowMainRect.doScreenLock();
                 }
