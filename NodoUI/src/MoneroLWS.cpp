@@ -117,6 +117,7 @@ void MoneroLWS::parseAccounts(void)
 
     if(accounts.isEmpty())
     {
+        m_listAccountsStatus = true;
         emit listAccountsCompleted();
         return;
     }
@@ -163,6 +164,8 @@ void MoneroLWS::parseRequests(void)
 
     if(requests.isEmpty())
     {
+        m_listRequestsStatus = true;
+        emit listRequestsCompleted();
         return;
     }
 
