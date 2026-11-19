@@ -5,7 +5,8 @@ NodoDBusController::NodoDBusController(QObject *parent) : QObject{parent}
     m_dbusAdapterConnectionStatus = false;
     nodo = new com::moneronodo::embeddedInterface("com.monero.nodo", "/com/monero/nodo", QDBusConnection::systemBus(), this);
     // TODO ?
-    //connect(nodo, SIGNAL(serviceManagerNotification(QString)), this, SIGNAL(serviceManagerNotificationReceived(QString)));
+    connect(nodo, SIGNAL(startRecoveryNotification(void)), this, SIGNAL(startRecoveryNotification(void)));
+    connect(nodo, SIGNAL(serviceManagerNotification(QString)), this, SIGNAL(serviceManagerNotificationReceived(QString)));
     connect(nodo, SIGNAL(hardwareStatusReadyNotification(QString)), this, SIGNAL(hardwareStatusReadyNotification(QString)));
     connect(nodo, SIGNAL(serviceStatusReadyNotification(QString)), this, SIGNAL(serviceStatusReceived(QString)));
     connect(nodo, SIGNAL(passwordChangeStatus(int)), this, SIGNAL(passwordChangeStatus(int)));
