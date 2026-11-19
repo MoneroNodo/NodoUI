@@ -74,12 +74,6 @@ ApplicationWindow {
 
         nodoControl.restartScreenSaverTimer();
 
-        if(nodoControl.isLockPinEnabled() && nodoControl.isFirstBootConfigDone())
-        {
-            nodoControl.closePopup()
-            mainAppStackView.push("NodoLockScreen.qml")
-            mainAppWindow.screenLocked = true
-        }
 
     }
 
@@ -158,7 +152,15 @@ ApplicationWindow {
         StackView {
             id: mainAppStackView
             anchors.fill: parent
-            initialItem: nodoControl.isFirstBootConfigDone() === true ? "NodoHomeScreen.qml" : "NodoFirstTimeSetupScreen.qml"
+            Component.onCompleted: {
+                mainAppStackView.push(nodoControl.isFirstBootConfigDone() ? "NodoHomeScreen.qml" : "NodoFirstTimeSetupScreen.qml")
+                if(nodoControl.isLockPinEnabled()) {
+                    nodoControl.closePopup()
+                    mainAppWindow.screenLocked = true
+                    mainAppStackView.push("NodoLockScreen.qml");
+                }
+
+            }
             pushEnter: Transition {
                 PropertyAnimation {
                     property: "opacity"
@@ -261,7 +263,8 @@ ApplicationWindow {
 
         function doScreenLock()
         {
-            if(nodoControl.isLockPinEnabled() && mainAppWindow.screenLocked === false)
+            if(nodoControl.isLockPinEnabled() &&
+            (mainAppWindow.screenLocked === false || mainAppWindow.screenSaverActive === false))
             {
                 nodoControl.stopLockScreenTimer();
                 mainAppWindow.screenLocked = true
