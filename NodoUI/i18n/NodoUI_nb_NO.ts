@@ -217,7 +217,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/DeviceSSHScreen.qml" line="290"/>
+        <location filename="../qml/DeviceSSHScreen.qml" line="291"/>
         <source>Confirm with PIN to change the password</source>
         <translation type="unfinished"></translation>
     </message>
@@ -381,6 +381,14 @@
     </message>
 </context>
 <context>
+    <name>MoneroLWSActiveScreen</name>
+    <message>
+        <location filename="../qml/MoneroLWSActiveScreen.qml" line="59"/>
+        <source>None</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>MoneroLWSActiveScreenDelegate</name>
     <message>
         <location filename="../qml/MoneroLWSActiveScreenDelegate.qml" line="54"/>
@@ -451,6 +459,14 @@
     <message>
         <location filename="../qml/MoneroLWSAddAccountScreen.qml" line="263"/>
         <source>Adding wallets is not possible while the Monero Daemon is not synchronized.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>MoneroLWSInactiveScreen</name>
+    <message>
+        <location filename="../qml/MoneroLWSInactiveScreen.qml" line="58"/>
+        <source>None</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -804,6 +820,16 @@
     <message>
         <location filename="../qml/NodeBanlistScreen.qml" line="189"/>
         <source>Monero Daemon will restart to apply changes.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/NodeBanlistScreen.qml" line="205"/>
+        <source>The Monero Research Lab (MRL) has decided to recommend that all Monero node operators enable a ban list of suspected spy node IP addresses. The spy nodes can reduce the privacy of Monero users.
+
+Blocking the IP addresses by default is technically possible, but it would set a precedent of blocking IP addresses by a decision making process that is not decentralized. MRL has decided to ask node operators to block these IP addresses voluntarily instead of by default. We recommend enabling all banlists until a more permanent solution can be found.
+
+More info on this issue and FAQs can be found on Monero&apos;s Official Repo:
+https://github.com/monero-project/meta/issues/1124</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1453,6 +1479,13 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../qml/NodoFirstTimeAdminPasswordScreen.qml" line="148"/>
+        <source>Please set your Admin Password. The Admin Password should be at least 8 characters, with uppercase and lowercase letters, number and a special character.
+
+The Admin Password is used to connect to Nodo remotely via SSH. It can be changed later on DEVICE &gt; SYSTEM &gt; ADMIN &amp; SSH.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../qml/NodoFirstTimeAdminPasswordScreen.qml" line="168"/>
         <source>New Admin Password</source>
         <translation type="unfinished"></translation>
@@ -1478,6 +1511,16 @@
     <message>
         <location filename="../qml/NodoFirstTimeBanlistScreen.qml" line="68"/>
         <source>APPLY</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/NodoFirstTimeBanlistScreen.qml" line="90"/>
+        <source>The Monero Research Lab (MRL) has decided to recommend that all Monero node operators enable a ban list of suspected spy node IP addresses. The spy nodes can reduce the privacy of Monero users.
+
+Blocking the IP addresses by default is technically possible, but it would set a precedent of blocking IP addresses by a decision making process that is not decentralized. MRL has decided to ask node operators to block these IP addresses voluntarily instead of by default. We recommend enabling all banlists until a more permanent solution can be found.
+
+More info on this issue and FAQs can be found on Monero&apos;s Official Repo:
+https://github.com/monero-project/meta/issues/1124</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1578,7 +1621,7 @@ It can be changed later on DEVICE &gt; SYSTEM &gt; PIN SETTINGS.</source>
 <context>
     <name>NodoLockScreen</name>
     <message>
-        <location filename="../qml/NodoLockScreen.qml" line="72"/>
+        <location filename="../qml/NodoLockScreen.qml" line="73"/>
         <source>Incorrect PIN</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2047,8 +2090,8 @@ It can be changed later on DEVICE &gt; SYSTEM &gt; PIN SETTINGS.</source>
 <context>
     <name>NodoSystemControl</name>
     <message>
-        <location filename="../src/NodoSystemControl.cpp" line="333"/>
-        <location filename="../src/NodoSystemControl.cpp" line="338"/>
+        <location filename="../src/NodoSystemControl.cpp" line="332"/>
+        <location filename="../src/NodoSystemControl.cpp" line="337"/>
         <source>Error</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2269,7 +2312,7 @@ It can be changed later on DEVICE &gt; SYSTEM &gt; PIN SETTINGS.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="133"/>
+        <location filename="../qml/main.qml" line="127"/>
         <source>Shutdown in 5 seconds.
 Release to Cancel.</source>
         <translation type="unfinished"></translation>
