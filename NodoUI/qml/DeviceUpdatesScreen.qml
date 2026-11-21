@@ -310,7 +310,7 @@ Item {
             font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.descriptionTextFontSize
             color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
-            text: qsTr("Updates will still run for Monero, MoneroPay, and Monero LWS.")
+            text: qsTr("Updates will still run for Monero, LWS and MoneroPay.")
         }
     }
 }
