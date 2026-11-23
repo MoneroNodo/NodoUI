@@ -376,7 +376,7 @@
     </message>
     <message>
         <location filename="../qml/DeviceUpdatesScreen.qml" line="313"/>
-        <source>Updates will still run for Monero, MoneroPay, and Monero LWS.</source>
+        <source>Updates will still run for Monero, LWS and MoneroPay.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

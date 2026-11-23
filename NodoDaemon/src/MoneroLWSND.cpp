@@ -8,10 +8,14 @@ MoneroLWS::MoneroLWS(QObject *parent) : QObject(parent)
 
 QString MoneroLWS::callCommand(QStringList arguments)
 {
+    const QString user = "monero";
     QProcess process;
-    process.start(program, arguments);
+    process.setProgram("/usr/bin/setpriv");
+    QStringList a{"--reuid", user, "--regid", user, "--init-groups", "--", program};
+    a += arguments;
+    process.setArguments(a);
     process.waitForFinished(10000);
-    return QString(process.readAll());
+    return QString(process.readAll().trimmed());
 }
 
 void MoneroLWS::listAccounts(void)
