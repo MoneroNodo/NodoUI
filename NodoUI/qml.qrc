@@ -112,6 +112,11 @@
         <file alias="NodoSystem.qml">assets/NodoSystem/NodoSystem.qml</file>
         <file alias="InterDisplay.ttf">assets/NodoSystem/InterDisplay.ttf</file>
         <file alias="JetBrainsMono.ttf">assets/NodoSystem/JetBrainsMono.ttf</file>
+        <file alias="InterDisplay.ttf">assets/NodoSystem/InterDisplay.ttf</file>
+        <file alias="NotoSans-Regular.ttf">assets/NodoSystem/NotoSans-Regular.ttf</file>
+        <file alias="NotoRashiHebrew-Regular.ttf">assets/NodoSystem/NotoRashiHebrew-Regular.ttf</file>
+        <file alias="NotoNaskhArabic-Regular.ttf">assets/NodoSystem/NotoNaskhArabic-Regular.ttf</file>
+        <file alias="NotoSansCJK-Regular.ttc">assets/NodoSystem/NotoSansCJK-Regular.ttc</file>
     </qresource>
     <qresource prefix="/layout">
         <file>assets/NodoKeyboard/QtQuick/VirtualKeyboard/layouts/en_US/dialpad.fallback</file>
