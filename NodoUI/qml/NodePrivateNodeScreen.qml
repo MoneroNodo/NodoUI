@@ -100,7 +100,6 @@ Item {
         anchors.leftMargin: 25
         //anchors.topMargin: NodoSystem.nodoTopMargin
         verticalAlignment: Text.AlignVCenter
-        font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.descriptionTextFontSize
         color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
         text: qsTr("Require wallets to enter a username and password to use this node.")
@@ -167,7 +166,6 @@ Item {
         text: systemMessages.messages[NodoMessages.Message.Apply]
         height: NodoSystem.nodoItemHeight
         width: 380
-        font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         isActive: false
         onPressed:
@@ -193,7 +191,6 @@ Item {
         anchors.top: privateNodePasswordField.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         verticalAlignment: Text.AlignVCenter
-        font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.descriptionTextFontSize
         color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
         text: qsTr("Monero Daemon will restart to apply changes.")

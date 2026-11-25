@@ -127,7 +127,6 @@ Item {
         text: qsTr("NEW PAYMENT")
         height: NodoSystem.nodoItemHeight
         width: 420
-        font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         isActive: true
         onClicked: {

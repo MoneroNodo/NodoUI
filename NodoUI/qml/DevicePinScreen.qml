@@ -28,7 +28,6 @@ Item {
         anchors.top: devicePinScreen.top
         text: qsTr("PIN SETTINGS")
         height: NodoSystem.nodoItemHeight
-        font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         width: labelSize
         onClicked: {

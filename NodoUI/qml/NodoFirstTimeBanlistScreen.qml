@@ -49,7 +49,6 @@ Item {
 				anchors.left: enableAllBanlistsSwitch.right
 				anchors.leftMargin: 25
 				verticalAlignment: Text.AlignVCenter
-				font.family: NodoSystem.fontInter.name
 				font.pixelSize: NodoSystem.descriptionTextFontSize
 				color: NodoSystem.descriptionTextFontColorNightModeOff
 				text: qsTr("Boog900, gui.xmr.pm, DNS Banlist")
@@ -62,7 +61,6 @@ Item {
         anchors.top: nodoFirstTimeBanlistRect.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         height: NodoSystem.nodoItemHeight
-        font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         width: 380 //nodoFirstTimeBanlistScreenIndex3Check.width + nodoFirstTimeBanlistScreenIndex3Text.width
         text: qsTr("APPLY")
@@ -84,7 +82,6 @@ Item {
         anchors.topMargin: NodoSystem.nodoTopMargin -2
         verticalAlignment: Text.AlignVCenter
         wrapMode: Text.WordWrap
-        font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.descriptionTextFontSize - 8
         color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
         text: qsTr("The Monero Research Lab (MRL) has decided to recommend that all Monero node operators enable a ban list of suspected spy node IP addresses. The spy nodes can reduce the privacy of Monero users.\n"+

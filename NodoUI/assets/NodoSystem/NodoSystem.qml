@@ -3,7 +3,6 @@ import QtQuick 2.15
 
 Item
 {
-    readonly property FontLoader fontInter: FontLoader { source: "qrc:/NodoSystem/InterDisplay.ttf"; id: fontInter }
     readonly property FontLoader fontJetBrainsMono: FontLoader { source: "qrc:/NodoSystem/JetBrainsMono.ttf"; id: fontJetBrainsMono }
 
     property int nodoItemHeight: 85

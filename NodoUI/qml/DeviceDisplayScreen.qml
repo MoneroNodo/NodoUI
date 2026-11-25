@@ -289,7 +289,6 @@ Item {
                 text: qsTr("minutes")
                 height: NodoSystem.nodoItemHeight
                 verticalAlignment: Text.AlignVCenter
-                font.family: NodoSystem.fontInter.name
                 font.pixelSize: NodoSystem.inputFieldValueFontSize
                 color: nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn : NodoSystem.dataFieldTextColorNightModeOff
             }
@@ -546,7 +545,6 @@ Item {
             height: NodoSystem.nodoItemHeight
             width: 380
             text: qsTr("MANAGE")
-            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.buttonTextFontSize
             isActive: nodoControl.isFeedsEnabled()
             onClicked: { pageLoader.source = "DeviceNewsFeedsScreen.qml" }

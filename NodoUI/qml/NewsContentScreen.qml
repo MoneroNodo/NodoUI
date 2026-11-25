@@ -43,7 +43,6 @@ Rectangle {
                 text: headerTextStr
                 textFormat: Text.RichText
                 color: nodoControl.appTheme ? NodoSystem.highlightedColorNightModeOn : NodoSystem.highlightedColorNightModeOff
-                font.family: NodoSystem.fontInter.name
                 font.pixelSize: 96
                 wrapMode: Text.WordWrap
             }
@@ -66,7 +65,6 @@ Rectangle {
                     height: 20
                     text: headerAuthStr
                     color: nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn : NodoSystem.dataFieldTextColorNightModeOff
-                    font.family: NodoSystem.fontInter.name
                     font.pixelSize: 48
                 }*/
 
@@ -78,7 +76,6 @@ Rectangle {
                     width: feedChannel.paintedWidth
                     text: channelStr
                     color: nodoControl.appTheme ? NodoSystem.highlightedColorNightModeOn : NodoSystem.highlightedColorNightModeOff
-                    font.family: NodoSystem.fontInter.name
                     font.pixelSize: 48
                 }
 
@@ -91,7 +88,6 @@ Rectangle {
                     width: feedTimestamp.paintedWidth
                     text: dataTimestampStr
                     color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
-                    font.family: NodoSystem.fontInter.name
                     font.pixelSize: 40
                 }
             }

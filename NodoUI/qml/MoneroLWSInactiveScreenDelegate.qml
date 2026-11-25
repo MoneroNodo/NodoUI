@@ -67,7 +67,6 @@ NodoCanvas {
         text: qsTr("REACTIVATE")
         height: NodoSystem.nodoItemHeight
         width: 380 //buttonWidth
-        font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         onClicked: {
             moneroLWS.reactivateAccount(moneroLWSinactiveAddressField.valueText)
@@ -83,7 +82,6 @@ NodoCanvas {
         text: qsTr("DELETE")
         height: NodoSystem.nodoItemHeight
         width: 380 //buttonWidth
-        font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         onClicked: {
             moneroLWS.deleteAccount(moneroLWSinactiveAddressField.valueText)

@@ -2,6 +2,7 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include <Qt>
+#include <QFontDatabase>
 #include "NodoUISystemParser.h"
 #include "NodoConfigParser.h"
 #include "NodoFeedsControl.h"
@@ -14,8 +15,20 @@
 #include "NodoSyncInfo.h"
 #include "MoneroPay.h"
 #include "NodoDBusController.h"
+#include "qglobal.h"
+#include "qlist.h"
+#include "qobject.h"
 #include "src/NodoLogView.h"
 
+
+static QString loadFont(const QString &fontPath) {
+    const int font = QFontDatabase::addApplicationFont(fontPath);
+    if (font < 0) {
+        qDebug() << "Couldn't load font " << fontPath;
+        return QString();
+    }
+    return QFontDatabase::applicationFontFamilies(font).value(0);
+}
 
 int main(int argc, char *argv[]) {
     qputenv("QT_IM_MODULE", QByteArray("qtvirtualkeyboard"));
@@ -30,6 +43,13 @@ int main(int argc, char *argv[]) {
     engine.addImportPath("qrc:/style/assets/NodoKeyboard");
     qputenv("QT_VIRTUALKEYBOARD_LAYOUT_PATH", QByteArray("qrc:layout/assets/NodoKeyboard/QtQuick/VirtualKeyboard/layouts"));
 
+    const QString base = loadFont(":/NodoSystem/InterDisplay.ttf");
+    const QString noto = loadFont(":/NodoSystem/NotoSans-Regular.ttf");
+    const QString hebr = loadFont(":/NodoSystem/NotoRashiHebrew-Regular.ttf");
+    const QString arab = loadFont(":/NodoSystem/NotoNaskhArabic-Regular.ttf");
+    const QString cjk = loadFont(":/NodoSystem/NotoSansCJK-Regular.ttc");
+
+    QApplication::setFont(QFont({base, noto, arab, hebr, cjk}));
     NodoUISystemParser *uiSystemParser = new NodoUISystemParser();
     NodoDBusController *dbusController = new NodoDBusController();
     NodoConfigParser *configParser = new NodoConfigParser();

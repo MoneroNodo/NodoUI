@@ -53,7 +53,6 @@ Item {
             anchors.left: deviceUpdateAllRect.left
             height: NodoSystem.nodoItemHeight
             width: 380 //labelSize
-            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.buttonTextFontSize
             text: qsTr("UPDATE ALL")
             onClicked: {
@@ -77,7 +76,6 @@ Item {
             anchors.leftMargin: 25
             anchors.top: deviceUpdateAllButton.top
             verticalAlignment: Text.AlignVCenter
-            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.descriptionTextFontSize
             color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
             text: qsTr("Force Updates, if found, this button will stay greyed out during the update process.")
@@ -93,7 +91,6 @@ Item {
         anchors.leftMargin: NodoSystem.cardLeftMargin
         anchors.topMargin: NodoSystem.nodoTopMargin*3
         verticalAlignment: Text.AlignVCenter
-        font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.descriptionTitleFontSize
         color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
         text: qsTr("AUTOMATIC UPDATES")
@@ -135,7 +132,6 @@ Item {
             anchors.leftMargin: 25
             anchors.top: deviceUpdatesNodoSwitchSwitch.top
             verticalAlignment: Text.AlignVCenter
-            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.descriptionTextFontSize
             color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
             text: nodoControl.getSoftwareVersion("nodo")
@@ -178,7 +174,6 @@ Item {
             anchors.leftMargin: 25
             anchors.top: deviceUpdatesMoneroDaemonSwitch.top
             verticalAlignment: Text.AlignVCenter
-            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.descriptionTextFontSize
             color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
             text: nodoControl.getSoftwareVersion("monero")
@@ -221,7 +216,6 @@ Item {
             anchors.leftMargin: 25
             anchors.top: deviceUpdatesMoneroLWSSwitch.top
             verticalAlignment: Text.AlignVCenter
-            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.descriptionTextFontSize
             color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
             text: nodoControl.getSoftwareVersion("lws")
@@ -264,7 +258,6 @@ Item {
             anchors.leftMargin: 25
             anchors.top: deviceUpdatesMoneroPaySwitch.top
             verticalAlignment: Text.AlignVCenter
-            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.descriptionTextFontSize
             color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
             text: nodoControl.getSoftwareVersion("pay")
@@ -307,7 +300,6 @@ Item {
             anchors.leftMargin: 25
             anchors.top: deviceUpdatesDebianSwitch.top
             verticalAlignment: Text.AlignVCenter
-            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.descriptionTextFontSize
             color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
             text: qsTr("Updates will still run for Monero, LWS and MoneroPay.")

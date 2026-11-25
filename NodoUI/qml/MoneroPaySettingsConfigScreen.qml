@@ -115,7 +115,6 @@ Item {
             anchors.leftMargin: NodoSystem.cardLeftMargin
             //anchors.topMargin: NodoSystem.nodoTopMargin*3
             verticalAlignment: Text.AlignVCenter
-            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.descriptionTitleFontSize
             color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
             text: qsTr("MONEROPAY DEPOSIT ADDRESS")
@@ -154,7 +153,6 @@ Item {
         text: qsTr("SET ADDRESS")
         height: NodoSystem.nodoItemHeight
         width: buttonWidth
-        font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         isActive: (address && setButtonActive)
         onClicked: {
@@ -177,7 +175,6 @@ Item {
         text: qsTr("CLEAR ADDRESS")
         height: NodoSystem.nodoItemHeight
         width: buttonWidth
-        font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         isActive: clearButtonActive
         onClicked: {
@@ -199,7 +196,6 @@ Item {
         height: moneroPaySettingsAddressDescriptionText.paintedHeight
         text: qsTr("Received transactions will periodically be sent to this address.")
          verticalAlignment: Text.AlignVCenter
-        font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.descriptionTextFontSize
         color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
     }
@@ -216,7 +212,6 @@ Item {
         font.pixelSize: NodoSystem.infoFieldItemFontSize
         verticalAlignment: Text.AlignVCenter
         color: nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn : NodoSystem.dataFieldTextColorNightModeOff
-        font.family: NodoSystem.fontInter.name
     }
 
     NodoPopup {

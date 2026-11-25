@@ -29,7 +29,6 @@ Rectangle {
             text: qsTr("PIN SETTINGS")
             height: NodoSystem.nodoItemHeight
             width: deviceSystemScreen.buttonSize
-            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.buttonTextFontSize
             onClicked: { pageLoader.source = "DeviceLockPinScreen.qml" }
         }
@@ -43,7 +42,6 @@ Rectangle {
             anchors.top: deviceLockPinSettingsButton.top
             //anchors.topMargin: NodoSystem.nodoTopMargin
             verticalAlignment: Text.AlignVCenter
-            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.descriptionTextFontSize
             color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
             text: qsTr("Change PIN and toggle device lock using PIN")
@@ -57,7 +55,6 @@ Rectangle {
             text: qsTr("ADMIN & SSH")
             width: deviceSystemScreen.buttonSize
             height: NodoSystem.nodoItemHeight
-            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.buttonTextFontSize
             onClicked: { pageLoader.source = "DeviceSSHScreen.qml" }
         }
@@ -71,7 +68,6 @@ Rectangle {
             anchors.top: deviceSSHButton.top
             //anchors.topMargin: NodoSystem.nodoTopMargin
             verticalAlignment: Text.AlignVCenter
-            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.descriptionTextFontSize
             color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
             text: qsTr("Change Admin Password and toggle SSH for remote access")
@@ -85,7 +81,6 @@ Rectangle {
             text: qsTr("LOGS")
             height: NodoSystem.nodoItemHeight
             width: deviceSystemScreen.buttonSize
-            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.buttonTextFontSize
             onClicked: { pageLoader.source = "DeviceLogsScreen.qml" }
         }
@@ -98,7 +93,6 @@ Rectangle {
             anchors.leftMargin: 25
             anchors.top: deviceLogsButton.top
             verticalAlignment: Text.AlignVCenter
-            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.descriptionTextFontSize
             color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
             text: qsTr("View Logs for Monero Daemon, NodoUI, LWS and Kernel")
@@ -112,7 +106,6 @@ Rectangle {
             text: qsTr("RESTART")
             height: NodoSystem.nodoItemHeight
             width: deviceSystemScreen.buttonSize
-            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.buttonTextFontSize
             onClicked: {
                 deviceSystemPopup.commandID = 0;
@@ -130,7 +123,6 @@ Rectangle {
             anchors.top: systemResetButton.top
             //anchors.topMargin: NodoSystem.nodoTopMargin
             verticalAlignment: Text.AlignVCenter
-            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.descriptionTextFontSize
             color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
             text: qsTr("Safe Restart")
@@ -144,7 +136,6 @@ Rectangle {
             text: qsTr("SHUTDOWN")
             height: NodoSystem.nodoItemHeight
             width: deviceSystemScreen.buttonSize
-            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.buttonTextFontSize
             onClicked: {
                 deviceSystemPopup.commandID = 1;
@@ -162,7 +153,6 @@ Rectangle {
             anchors.top: systemShutdownButton.top
             //anchors.topMargin: NodoSystem.nodoTopMargin
             verticalAlignment: Text.AlignVCenter
-            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.descriptionTextFontSize
             color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
             text: qsTr("Safe Shutdown")
@@ -176,7 +166,6 @@ Rectangle {
             text: qsTr("RECOVERY")
             height: NodoSystem.nodoItemHeight
             width: deviceSystemScreen.buttonSize
-            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.buttonTextFontSize
             backgroundColor:  NodoSystem.highlightedColorNightModeOn
             onClicked: {
@@ -194,7 +183,6 @@ Rectangle {
             anchors.top: systemRecoveryButton.top
             //anchors.topMargin: NodoSystem.nodoTopMargin
             verticalAlignment: Text.AlignVCenter
-            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.descriptionTextFontSize
             color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
             text: qsTr("Access recovery options")
@@ -238,7 +226,6 @@ Rectangle {
             anchors.left: deviceSystemRecoveryScreen.left
             anchors.leftMargin: NodoSystem.cardLeftMargin
             verticalAlignment: Text.AlignVCenter
-            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.descriptionTitleFontSize
             color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
             text: qsTr("RECOVERY")
@@ -276,7 +263,6 @@ Rectangle {
                     anchors.leftMargin: 25
                     anchors.top: parent.top
                     verticalAlignment: Text.AlignVCenter
-                    font.family: NodoSystem.fontInter.name
                     font.pixelSize: NodoSystem.descriptionTextFontSize
                     color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
                     text: qsTr("Attempts to fix filesystem errors without deleting data.")
@@ -315,7 +301,6 @@ Rectangle {
                     anchors.leftMargin: 25
                     anchors.top: parent.top
                     verticalAlignment: Text.AlignVCenter
-                    font.family: NodoSystem.fontInter.name
                     font.pixelSize: NodoSystem.descriptionTextFontSize
                     color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
                     text: qsTr("Also deletes all LWS data.")
@@ -354,7 +339,6 @@ Rectangle {
                     anchors.leftMargin: 25
                     anchors.top: parent.top
                     verticalAlignment: Text.AlignVCenter
-                    font.family: NodoSystem.fontInter.name
                     font.pixelSize: NodoSystem.descriptionTextFontSize
                     color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
                     text: qsTr("Reset all settings back to Factory defaults.")
@@ -370,7 +354,6 @@ Rectangle {
                 text: qsTr("START")
                 height: NodoSystem.nodoItemHeight
                 width: 380
-                font.family: NodoSystem.fontInter.name
                 font.pixelSize: NodoSystem.buttonTextFontSize
                 onClicked: {
                     deviceSystemPopup.commandID = 2;
@@ -387,7 +370,6 @@ Rectangle {
                 text: systemMessages.messages[NodoMessages.Message.Cancel]
                 height: NodoSystem.nodoItemHeight
                 width: 380
-                font.family: NodoSystem.fontInter.name
                 font.pixelSize: NodoSystem.buttonTextFontSize
                 onClicked: {
                     deviceSystemScreen.visible = true

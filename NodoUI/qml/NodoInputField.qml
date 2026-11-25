@@ -58,7 +58,6 @@ Item {
             leftPadding: textLeftPadding
             rightPadding: textRightPadding
             verticalAlignment: Text.AlignVCenter
-            font.family: NodoSystem.fontInter.name
             font.pixelSize: itemFontSize
             color: nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn  : NodoSystem.dataFieldTextColorNightModeOff
         }
@@ -84,7 +83,6 @@ Item {
             text: valueText
             rightPadding: textRightPadding
             verticalAlignment: Text.AlignVCenter
-            font.family: NodoSystem.fontInter.name
             font.pixelSize: valueFontSize
             clip: true
             color: (readOnlyFlag === true) ? NodoSystem.buttonDisabledColor : nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn : NodoSystem.dataFieldTextColorNightModeOff

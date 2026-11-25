@@ -22,7 +22,6 @@ NodoCanvas {
         text: inputPreview.text
         rightPadding: textRightPadding
         verticalAlignment: Text.AlignVCenter
-        font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.inputFieldValueFontSize * 1.5
         clip: true
         readOnly: true

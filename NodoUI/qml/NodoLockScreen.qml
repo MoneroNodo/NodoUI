@@ -109,7 +109,6 @@ Item {
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignHCenter
             color: "#F5F5F5"
-            font.family: NodoSystem.fontInter.name
         }
     }
 
@@ -238,7 +237,6 @@ Item {
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
                 color: NodoSystem.lockButtonTextColor
-                font.family: NodoSystem.fontInter.name
             }
 
             onClicked: {
@@ -264,7 +262,6 @@ Item {
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
                 color: NodoSystem.lockButtonTextColor
-                font.family: NodoSystem.fontInter.name
             }
 
             onClicked: {
@@ -290,7 +287,6 @@ Item {
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
                 color: NodoSystem.lockButtonTextColor
-                font.family: NodoSystem.fontInter.name
             }
 
             onClicked: {
@@ -317,7 +313,6 @@ Item {
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
                 color: NodoSystem.lockButtonTextColor
-                font.family: NodoSystem.fontInter.name
             }
 
             onClicked: {
@@ -343,7 +338,6 @@ Item {
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
                 color: NodoSystem.lockButtonTextColor
-                font.family: NodoSystem.fontInter.name
             }
 
             onClicked: {
@@ -369,7 +363,6 @@ Item {
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
                 color: NodoSystem.lockButtonTextColor
-                font.family: NodoSystem.fontInter.name
             }
 
             onClicked: {
@@ -396,7 +389,6 @@ Item {
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
                 color: NodoSystem.lockButtonTextColor
-                font.family: NodoSystem.fontInter.name
             }
 
             onClicked: {
@@ -422,7 +414,6 @@ Item {
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
                 color: NodoSystem.lockButtonTextColor
-                font.family: NodoSystem.fontInter.name
             }
 
             onClicked: {
@@ -448,7 +439,6 @@ Item {
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
                 color: NodoSystem.lockButtonTextColor
-                font.family: NodoSystem.fontInter.name
             }
 
             onClicked: {
@@ -503,7 +493,6 @@ Item {
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
                 color: NodoSystem.lockButtonTextColor
-                font.family: NodoSystem.fontInter.name
             }
 
             onClicked: {

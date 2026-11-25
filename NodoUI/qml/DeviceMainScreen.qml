@@ -27,7 +27,6 @@ Item {
             id: wifiButton
             y: (deviceMainMenuBar.height - wifiButton.height)/2
             text: qsTr("WI-FI")
-            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: { pageLoader.source = "DeviceWifiScreen.qml" }
         }
@@ -38,7 +37,6 @@ Item {
             anchors.left: wifiButton.right
             anchors.leftMargin: NodoSystem.nodoTopMargin
             text: qsTr("ETHERNET")
-            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: { pageLoader.source = "DeviceEthernetScreen.qml" }
         }
@@ -49,7 +47,6 @@ Item {
             anchors.left: ethernetButton.right
             anchors.leftMargin: NodoSystem.nodoTopMargin
             text: qsTr("SYSTEM")
-            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: { pageLoader.source = "DeviceSystemScreen.qml" }
         }
@@ -60,7 +57,6 @@ Item {
             anchors.left: systemButton.right
             text: qsTr("UPDATES")
             anchors.leftMargin: NodoSystem.nodoTopMargin
-            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: { pageLoader.source = "DeviceUpdatesScreen.qml" }
         }
@@ -71,7 +67,6 @@ Item {
             anchors.left: updatesButton.right
             text: qsTr("DISPLAY")
             anchors.leftMargin: NodoSystem.nodoTopMargin
-            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: { pageLoader.source = "DeviceDisplayScreen.qml" }
         }

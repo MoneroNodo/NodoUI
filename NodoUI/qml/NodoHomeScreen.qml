@@ -110,7 +110,6 @@ Item {
                 anchors.leftMargin: 1
                 height: NodoSystem.topMenuButtonHeight
                 text: qsTr("DEVICE")
-                font.family: NodoSystem.fontInter.name
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
                 onClicked: {
                     pageLoader.source = "DeviceMainScreen.qml"
@@ -125,7 +124,6 @@ Item {
                 anchors.leftMargin: NodoSystem.nodoTopMargin
                 height: NodoSystem.topMenuButtonHeight
                 text: qsTr("NODE")
-                font.family: NodoSystem.fontInter.name
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
                 onClicked: {
                     pageLoader.source = "NodeMainScreen.qml"
@@ -140,7 +138,6 @@ Item {
                 height: NodoSystem.topMenuButtonHeight
                 text: qsTr("LWS")
                 width: 150//nodeButton.width
-                font.family: NodoSystem.fontInter.name
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
                 // enabled: syncInfo.getSyncPercentage() == 100
                 onClicked: {
@@ -155,7 +152,6 @@ Item {
                 height: NodoSystem.topMenuButtonHeight
                 anchors.leftMargin: NodoSystem.nodoTopMargin
                 text: qsTr("MONEROPAY")
-                font.family: NodoSystem.fontInter.name
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
                 onClicked: {
                     pageLoader.source = "MoneroPayMainScreen.qml"
@@ -169,7 +165,6 @@ Item {
                 anchors.leftMargin: NodoSystem.nodoTopMargin
                 height: NodoSystem.topMenuButtonHeight
                 text: qsTr("NEWS")
-                font.family: NodoSystem.fontInter.name
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
                 onClicked: {
                     pageLoader.source = "NewsMainScreen.qml"
@@ -197,7 +192,6 @@ Item {
                 topPadding: NodoSystem.topMenuTextTopPadding
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
-                font.family: NodoSystem.fontInter.name
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
             }
 
@@ -211,7 +205,6 @@ Item {
                 topPadding: NodoSystem.topMenuTextTopPadding
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
-                font.family: NodoSystem.fontInter.name
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
             }
         }
@@ -253,7 +246,6 @@ Item {
                 color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
                 text: "XMR-" + nodoCurrencies.currencyCodes[priceTicker.getCurrentCurrencyIndex()] + ":"
                 topPadding: NodoSystem.topMenuTextTopPadding
-                font.family: NodoSystem.fontInter.name
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignRight
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
@@ -268,7 +260,6 @@ Item {
                 color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
                 text: nodoCurrencies.currencySymbols[priceTicker.getCurrentCurrencyIndex()]
                 topPadding: NodoSystem.topMenuTextTopPadding
-                font.family: NodoSystem.fontInter.name
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignRight
                 font.pixelSize: NodoSystem.topMenuButtonFontSize
@@ -283,7 +274,6 @@ Item {
                 color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
                 text: "---.--"
                 topPadding: NodoSystem.topMenuTextTopPadding
-                font.family: NodoSystem.fontInter.name
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
                 font.pixelSize: NodoSystem.topMenuButtonFontSize

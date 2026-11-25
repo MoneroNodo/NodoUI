@@ -16,7 +16,6 @@ Label {
     property int labelRectRoundSize: labelWidth > NodoSystem.nodoItemWidth ? labelWidth : NodoSystem.nodoItemWidth
     width: itemSize > 0 ? itemSize : labelRectRoundSize
 
-    font.family: NodoSystem.fontInter.name
     font.pixelSize: NodoSystem.infoFieldItemFontSize
     verticalAlignment: Text.AlignVCenter
     color: nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn  : NodoSystem.dataFieldTextColorNightModeOff

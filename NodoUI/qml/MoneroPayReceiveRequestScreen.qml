@@ -227,7 +227,6 @@ Item {
         text: qsTr("RECEIVE")
         height: NodoSystem.nodoItemHeight
         width: 420
-        font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         isActive: xmrAmount === 0 ? false : true
         onClicked: {

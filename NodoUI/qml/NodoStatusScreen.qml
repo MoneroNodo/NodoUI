@@ -221,7 +221,6 @@ Rectangle {
             horizontalAlignment: Text.AlignHCenter
             font.pixelSize: NodoSystem.descriptionTitleFontSize
             color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
-            font.family: NodoSystem.fontInter.name
         }
 
         NodoInfoField {
@@ -363,7 +362,6 @@ Rectangle {
             horizontalAlignment: Text.AlignHCenter
             font.pixelSize: NodoSystem.descriptionTitleFontSize
             color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
-            font.family: NodoSystem.fontInter.name
         }
 
         NodoInfoField {
@@ -458,7 +456,6 @@ Rectangle {
             horizontalAlignment: Text.AlignHCenter
             font.pixelSize: NodoSystem.descriptionTitleFontSize
             color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
-            font.family: NodoSystem.fontInter.name
         }
 
         NodoInfoField {

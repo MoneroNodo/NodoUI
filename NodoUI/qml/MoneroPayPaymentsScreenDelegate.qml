@@ -186,7 +186,6 @@ NodoCanvas {
         text: qsTr("CLEAR PAYMENT")
         height: NodoSystem.nodoItemHeight
         width: 380
-        font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         onClicked: {
             moneroPay.deletePayment(depositAddress)
@@ -201,7 +200,6 @@ NodoCanvas {
         text: qsTr("VIEW QR")
         height: NodoSystem.nodoItemHeight
         width: 380
-        font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         onClicked: {
             mainRectPopup.qrCodeData = "monero:" + depositAddress + "?tx_amount=" + (xmrAmount)

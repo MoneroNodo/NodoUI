@@ -67,7 +67,6 @@ Item {
             text: qsTr("CLEAR ALL PAYMENTS")
             height: NodoSystem.nodoItemHeight
             width: buttonWidth
-            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.buttonTextFontSize
             isActive: paymentsListModel.count > 0 ? true : false
             onClicked: {

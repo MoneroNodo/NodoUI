@@ -70,7 +70,6 @@ Item {
             id: addAccountButton
             y: (moneroLWSMenuBar.height - addAccountButton.height)/2
             text: qsTr("ADD WALLET")
-            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: { pageLoader.source = "MoneroLWSAddAccountScreen.qml" }
         }
@@ -81,7 +80,6 @@ Item {
         //     anchors.left: addAccountButton.right
         //     anchors.leftMargin: NodoSystem.nodoTopMargin
         //     text: qsTr("WALLET REQUESTS")
-        //     font.family: NodoSystem.fontInter.name
         //     font.pixelSize: NodoSystem.topMenuButtonFontSize
         //     onClicked: { pageLoader.source = "MoneroLWSAccountRequestsScreen.qml" }
         // }
@@ -92,7 +90,6 @@ Item {
             anchors.left: addAccountButton.right
             anchors.leftMargin: NodoSystem.nodoTopMargin
             text: qsTr("ACTIVE")
-            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: { pageLoader.source = "MoneroLWSActiveScreen.qml" }
         }
@@ -103,7 +100,6 @@ Item {
             anchors.left: activeButton.right
             anchors.leftMargin: NodoSystem.nodoTopMargin
             text: qsTr("INACTIVE")
-            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: { pageLoader.source = "MoneroLWSInactiveScreen.qml" }
         }

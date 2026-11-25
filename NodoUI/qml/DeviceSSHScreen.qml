@@ -162,7 +162,6 @@ Item {
         anchors.leftMargin: NodoSystem.cardLeftMargin
         anchors.topMargin: NodoSystem.nodoTopMargin*3
         verticalAlignment: Text.AlignVCenter
-        font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.descriptionTitleFontSize
         color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
         text: qsTr("CHANGE ADMIN PASSWORD")
@@ -192,7 +191,6 @@ Item {
         anchors.left: deviceSSHOldPasswordField.right
         anchors.leftMargin: 25
         verticalAlignment: Text.AlignVCenter
-        font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.descriptionTextFontSize
         color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
         text: qsTr("or")
@@ -246,7 +244,6 @@ Item {
         Text {
             id: passwordWarningText
             anchors.fill: passwordWarningRect
-            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.textFontSize
             verticalAlignment: Text.AlignVCenter
             wrapMode: Text.WordWrap
@@ -279,7 +276,6 @@ Item {
         text: systemMessages.messages[NodoMessages.Message.Apply]
         height: NodoSystem.nodoItemHeight
         width: 380
-        font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         isActive: /*(deviceSSHOldPasswordField.valueText !== "") &&*/ (deviceSSHScreen.isPasswordValid) && (deviceSSHPasswordField.valueText.length >= 8) && (deviceSSHReenterPasswordField.valueText === deviceSSHPasswordField.valueText) ? true : false
         onClicked: {

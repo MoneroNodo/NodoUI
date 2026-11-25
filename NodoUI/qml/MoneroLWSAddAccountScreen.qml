@@ -73,7 +73,6 @@ Item {
         anchors.leftMargin: NodoSystem.cardLeftMargin
         //anchors.topMargin: NodoSystem.nodoTopMargin*3
         verticalAlignment: Text.AlignVCenter
-        font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.descriptionTitleFontSize
         color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
         text: qsTr("LIGHT WALLET SERVER ADDRESS")
@@ -172,7 +171,6 @@ Item {
         anchors.topMargin: NodoSystem.cardLeftMargin
         verticalAlignment: Text.AlignVCenter
         wrapMode: Text.WordWrap
-        font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.descriptionTextFontSize
         color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
         text: qsTr("On your Light Wallet, enter a URL as Server Address. If your Light Wallet does not support wallet creation requests, manually add it below.")
@@ -187,7 +185,6 @@ Item {
         anchors.leftMargin: NodoSystem.cardLeftMargin
         anchors.topMargin: NodoSystem.nodoTopMargin*3
         verticalAlignment: Text.AlignVCenter
-        font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.descriptionTitleFontSize
         color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
         text: qsTr("ADD WALLET")
@@ -238,7 +235,6 @@ Item {
         text: qsTr("ADD WALLET")
         height: NodoSystem.nodoItemHeight
         width: 380 //labelSize
-        font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         isActive: moneroLWSAddAccountScreen.walletInfoValid()
 
@@ -256,7 +252,6 @@ Item {
         anchors.top: moneroLWSPrivateViewkeyLabel.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         verticalAlignment: Text.AlignVCenter
-        font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.descriptionTextFontSize
         color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
         visible: syncInfo.getSyncPercentage() != 100 || networkManager.getNetworkConnectionStatusCode() != 1

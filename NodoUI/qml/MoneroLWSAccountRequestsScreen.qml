@@ -40,7 +40,6 @@ Item {
         text: qsTr("ACCEPT ALL")
         height: NodoSystem.nodoItemHeight
         width: buttonWidth
-        font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         isActive: requestListModel.count > 0 ? true : false
         onClicked: {

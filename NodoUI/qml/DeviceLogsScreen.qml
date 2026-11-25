@@ -26,7 +26,6 @@ Item {
             id: moneroLogButton
             y: deviceMainMenuBar.height - moneroLogButton.height - (moneroLogButton.height/2)
             text: qsTr("MONERO")
-            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: {
                 logViewModel.unit = "monerod.service"
@@ -39,7 +38,6 @@ Item {
             anchors.left: moneroLogButton.right
             anchors.leftMargin: NodoSystem.nodoTopMargin
             text: qsTr("NODOUI")
-            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: {
                 logViewModel.unit = "nodoUI.service"
@@ -53,7 +51,6 @@ Item {
             anchors.leftMargin: NodoSystem.nodoTopMargin
             width: 150
             text: qsTr("LWS")
-            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: {
                 logViewModel.unit = "monero-lws.service"
@@ -66,7 +63,6 @@ Item {
             anchors.left: lwsLogsButton.right
             text: qsTr("KERNEL")
             anchors.leftMargin: NodoSystem.nodoTopMargin
-            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: {
                 logViewModel.unit = "kernel"

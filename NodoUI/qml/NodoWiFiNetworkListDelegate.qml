@@ -65,7 +65,6 @@ NodoCanvas {
         anchors.topMargin: (ssidNameLabel.paintedHeight)/2
         anchors.leftMargin: NodoSystem.cardLeftMargin*2
         font.pixelSize: NodoSystem.buttonTextFontSize
-        font.family: NodoSystem.fontInter.name
         height: 40
         text: mainRect.ssidName
         color: nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn  : NodoSystem.dataFieldTextColorNightModeOff
@@ -79,7 +78,6 @@ NodoCanvas {
         anchors.rightMargin: NodoSystem.cardTopMargin
         width: mainRect.buttonSize
         height: networkDelegateItemHeight
-        font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         text: systemMessages.messages[NodoMessages.Message.Connect]
         visible: true
@@ -130,7 +128,6 @@ NodoCanvas {
         anchors.rightMargin: 25
         width: mainRect.buttonSize
         height: networkDelegateItemHeight
-        font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         text: systemMessages.messages[NodoMessages.Message.Forget]
         visible: networkManager.isWiFiConnectedBefore(ssidIndex)

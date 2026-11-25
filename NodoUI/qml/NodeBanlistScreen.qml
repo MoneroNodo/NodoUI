@@ -37,7 +37,6 @@ Item {
         anchors.leftMargin: NodoSystem.cardLeftMargin
         //anchors.topMargin: NodoSystem.nodoTopMargin*3
         verticalAlignment: Text.AlignVCenter
-        font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.descriptionTitleFontSize
         color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
         text: qsTr("NODE IP BANLIST")
@@ -142,7 +141,6 @@ Item {
         anchors.top: nodeBanlistScreenIndex3.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin -2
         height: NodoSystem.nodoItemHeight
-        font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         width: 380 //nodeBanlistScreenIndex3Check.width + nodeBanlistScreenIndex3Text.width
         text: qsTr("APPLY")
@@ -163,7 +161,6 @@ Item {
         anchors.leftMargin: 25
         height: NodoSystem.nodoItemHeight
         width: 380
-        font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         text: qsTr("CLEAR")
         onClicked: {
@@ -183,7 +180,6 @@ Item {
         anchors.leftMargin: 25
         anchors.top: applyBanlistButton.top
         verticalAlignment: Text.AlignVCenter
-        font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.descriptionTextFontSize
         color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
         text: qsTr("Monero Daemon will restart to apply changes.")
@@ -199,7 +195,6 @@ Item {
         anchors.topMargin: NodoSystem.nodoTopMargin -2
         verticalAlignment: Text.AlignVCenter
         wrapMode: Text.WordWrap
-        font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.descriptionTextFontSize - 8
         color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
         text: qsTr("The Monero Research Lab (MRL) has decided to recommend that all Monero node operators enable a ban list of suspected spy node IP addresses. The spy nodes can reduce the privacy of Monero users.\n"+

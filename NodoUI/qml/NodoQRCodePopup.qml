@@ -72,7 +72,6 @@ Popup {
             anchors.topMargin: 25
             anchors.horizontalCenter: popupContent.horizontalCenter
             height: NodoSystem.nodoItemHeight
-            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.buttonTextFontSize
             visible: true
             onClicked: {

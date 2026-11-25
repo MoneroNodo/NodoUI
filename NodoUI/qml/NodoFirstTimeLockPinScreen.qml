@@ -66,7 +66,6 @@ Item {
             color: "black"
             Text {
                 text: qsTr("Please set your 6 digit Lock PIN. The Lock PIN is used to unlock the device.\n\nIt can be changed later on DEVICE > SYSTEM > PIN SETTINGS.")
-                font.family: NodoSystem.fontInter.name
                 font.pixelSize: NodoSystem.textFontSize
                 verticalAlignment: Text.AlignVCenter
                 wrapMode: Text.WordWrap
@@ -120,7 +119,6 @@ Item {
             text: systemMessages.messages[NodoMessages.Message.Apply]
             height: NodoSystem.nodoItemHeight
             width: 380
-            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.buttonTextFontSize
             isActive: (lockPINField.valueText.length >= 6) && (lockPINReenterField.valueText === lockPINField.valueText) ? true : false
             onClicked: {

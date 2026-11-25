@@ -89,7 +89,6 @@ Item {
 			anchors.left: currenciesRect.left
 			anchors.leftMargin: 12
 			verticalAlignment: Text.AlignVCenter
-			font.family: NodoSystem.fontInter.name
 			font.pixelSize: currencyFontSize
 			color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
 			text: "XMR"
@@ -111,7 +110,6 @@ Item {
 			anchors.top: currencySeparator.bottom
 			anchors.topMargin: NodoSystem.cardLeftMargin
 			anchors.horizontalCenter: currenciesRect.horizontalCenter
-			font.family: NodoSystem.fontInter.name
 			font.pixelSize: currencyFontSize
 			color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
 			text: nodoCurrencies.currencyCodes[priceTicker.getCurrentCurrencyIndex()]
@@ -132,7 +130,6 @@ Item {
 			anchors.top: valuesRect.top
 			anchors.left: currenciesRect.left
 			verticalAlignment: Text.AlignVCenter
-			font.family: NodoSystem.fontInter.name
 			font.pixelSize: rateFontSize
 			color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
 			text: nodoCurrencies.currencySymbols[priceTicker.getCurrentCurrencyIndex()]
@@ -144,7 +141,6 @@ Item {
 			anchors.left: exchangeSymbolText.right
 			anchors.leftMargin: NodoSystem.cardLeftMargin
 			verticalAlignment: Text.AlignVCenter
-			font.family: NodoSystem.fontInter.name
 			font.pixelSize: rateFontSize
 			color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
 			text: "---.--"
@@ -167,7 +163,6 @@ Item {
 			topPadding: NodoSystem.topMenuTextTopPadding
 			horizontalAlignment: Text.AlignHCenter
 			verticalAlignment: Text.AlignVCenter
-			font.family: NodoSystem.fontInter.name
 			font.pixelSize: NodoSystem.topMenuButtonFontSize
 		}
 		
@@ -181,7 +176,6 @@ Item {
 			topPadding: NodoSystem.topMenuTextTopPadding
 			horizontalAlignment: Text.AlignHCenter
 			verticalAlignment: Text.AlignVCenter
-			font.family: NodoSystem.fontInter.name
 			font.pixelSize: NodoSystem.topMenuButtonFontSize
         }
     }

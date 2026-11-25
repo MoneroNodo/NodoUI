@@ -94,7 +94,6 @@ Item {
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
                 color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
-                font.family: NodoSystem.fontInter.name
             }
 
             Text {
@@ -107,7 +106,6 @@ Item {
                 font.pixelSize: NodoSystem.digitalClockPixelSize
                 verticalAlignment: Text.AlignTop
                 color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
-                font.family: NodoSystem.fontInter.name
             }
 
             Text {
@@ -120,7 +118,6 @@ Item {
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
                 color: nodoControl.appTheme ? NodoSystem.defaultColorNightModeOn : NodoSystem.defaultColorNightModeOff
-                font.family: NodoSystem.fontInter.name
             }
         }
 
@@ -131,7 +128,6 @@ Item {
             text: Qt.formatDateTime(nodoControl.getChangedDateTime(), "dddd, d MMMM")
             font.pixelSize: 100
             color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
-            font.family: NodoSystem.fontInter.name
         }
     }
 }

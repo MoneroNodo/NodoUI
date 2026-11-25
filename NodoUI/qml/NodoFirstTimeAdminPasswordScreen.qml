@@ -104,7 +104,6 @@ Item {
             NodoLabel {
                 id: firstBootLanguageLabel
                 text: qsTr("Language")
-                font.family: NodoSystem.fontInter.name
                 font.pixelSize: NodoSystem.textFontSize
                 verticalAlignment: Text.AlignVCenter
                 wrapMode: Text.WordWrap
@@ -148,7 +147,6 @@ Item {
                 text: qsTr("Please set your Admin Password. The Admin Password should be at least 8 characters, with uppercase and lowercase letters, number and a special character.\n"+
 "\n"+
 "The Admin Password is used to connect to Nodo remotely via SSH. It can be changed later on DEVICE > SYSTEM > ADMIN & SSH.")
-                font.family: NodoSystem.fontInter.name
                 font.pixelSize: NodoSystem.textFontSize
                 verticalAlignment: Text.AlignVCenter
                 wrapMode: Text.WordWrap
@@ -187,7 +185,6 @@ Item {
             Text {
                 id: passwordWarningText
                 anchors.fill: passwordWarningRect
-                font.family: NodoSystem.fontInter.name
                 font.pixelSize: NodoSystem.textFontSize
                 verticalAlignment: Text.AlignVCenter
                 wrapMode: Text.WordWrap
@@ -220,7 +217,6 @@ Item {
             text: systemMessages.messages[NodoMessages.Message.Apply]
             height: NodoSystem.nodoItemHeight
             width: 380
-            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.buttonTextFontSize
             isActive: (adminPasswordScreen.isPasswordValid) && (adminPasswordField.valueText.length >= 8) && (adminPasswordField.valueText === adminPasswordReenterField.valueText) ? true : false
             onClicked: {

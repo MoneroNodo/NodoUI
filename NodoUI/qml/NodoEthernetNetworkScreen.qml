@@ -93,7 +93,6 @@ Item {
         anchors.top: ethernetNetworkScreen.top
         height: networkDelegateItemHeight
         font.pixelSize: NodoSystem.buttonTextFontSize
-        font.family: NodoSystem.fontInter.name
         text: systemMessages.messages[NodoMessages.Message.AddNewConnection]
         visible: true
         isActive: ethernetNetworkScreen.isEthernetEnabled
@@ -284,7 +283,6 @@ Item {
                 height: createEthernetConnectionRect.height
                 width: buttonSize
                 font.pixelSize: NodoSystem.buttonTextFontSize
-                font.family: NodoSystem.fontInter.name
                 text: systemMessages.messages[NodoMessages.Message.Add] //qsTr("CONNECT")
                 visible: createNewConnectionRect.visible
                 isActive: false

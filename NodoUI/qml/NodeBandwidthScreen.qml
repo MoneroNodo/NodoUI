@@ -232,7 +232,6 @@ Item {
             anchors.leftMargin: 10
             height: NodoSystem.nodoItemHeight
             verticalAlignment: Text.AlignVCenter
-            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.inputFieldValueFontSize
             color: (nodeBandwidthScreen.inputFieldReadOnly === true) ? NodoSystem.buttonDisabledColor : nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn : NodoSystem.dataFieldTextColorNightModeOff
         }
@@ -324,7 +323,6 @@ Item {
             anchors.leftMargin: 10
             height: NodoSystem.nodoItemHeight
             verticalAlignment: Text.AlignVCenter
-            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.inputFieldValueFontSize
             color: (inputFieldReadOnly === true) ? NodoSystem.buttonDisabledColor : nodoControl.appTheme ? NodoSystem.dataFieldTextColorNightModeOn : NodoSystem.dataFieldTextColorNightModeOff
         }
@@ -385,7 +383,6 @@ Item {
         width: 380
         text: systemMessages.messages[NodoMessages.Message.Apply]
         height: NodoSystem.nodoItemHeight
-        font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.buttonTextFontSize
         isActive: false
         onClicked:
@@ -404,7 +401,6 @@ Item {
         anchors.top: rateLimitDownFieldRect.bottom
         anchors.topMargin: NodoSystem.nodoTopMargin
         verticalAlignment: Text.AlignVCenter
-        font.family: NodoSystem.fontInter.name
         font.pixelSize: NodoSystem.descriptionTextFontSize
         color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
         text: qsTr("Monero Daemon will restart to apply changes.")

@@ -7,7 +7,6 @@ import NodoCanvas 1.0
 
 ComboBox {
     id: control
-    font.family: NodoSystem.fontInter.name
     font.pixelSize: NodoSystem.infoFieldItemFontSize
 
     delegate: ItemDelegate {

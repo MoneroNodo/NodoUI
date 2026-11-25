@@ -27,7 +27,6 @@ Item {
             id: clearnetButton
             y: (nodeMenuBar.height - clearnetButton.height)/2
             text: qsTr("CLEARNET")
-            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: { pageLoader.source = "NodeClearnetScreen.qml" }
         }
@@ -38,7 +37,6 @@ Item {
             anchors.left: clearnetButton.right
             anchors.leftMargin: NodoSystem.nodoTopMargin
             text: qsTr("TOR")
-            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: { pageLoader.source = "NodeTorScreen.qml" }
         }
@@ -50,7 +48,6 @@ Item {
             anchors.leftMargin: NodoSystem.nodoTopMargin
             width: torButton.width
             text: qsTr("I2P")
-            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: { pageLoader.source = "NodeI2PScreen.qml" }
         }
@@ -61,7 +58,6 @@ Item {
             anchors.left: i2pButton.right
             anchors.leftMargin: NodoSystem.nodoTopMargin
             text: qsTr("BANDWIDTH")
-            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: { pageLoader.source = "NodeBandwidthScreen.qml" }
         }
@@ -72,7 +68,6 @@ Item {
             anchors.left: bandwidthButton.right
             anchors.leftMargin: NodoSystem.nodoTopMargin
             text: qsTr("PRIVATE") //qsTr("PRIVATE NODE")
-            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: { pageLoader.source = "NodePrivateNodeScreen.qml" }
         }
@@ -83,7 +78,6 @@ Item {
             anchors.left: privateNodeButton.right
             anchors.leftMargin: NodoSystem.nodoTopMargin
             text: qsTr("BANLIST")
-            font.family: NodoSystem.fontInter.name
             font.pixelSize: NodoSystem.topMenuButtonFontSize
             onClicked: { pageLoader.source = "NodeBanlistScreen.qml" }
         }

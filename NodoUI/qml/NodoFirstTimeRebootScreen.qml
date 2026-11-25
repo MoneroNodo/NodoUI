@@ -31,7 +31,6 @@ Item {
             color: "black"
             Text {
                 text: qsTr("Nodo will now reboot.")
-                font.family: NodoSystem.fontInter.name
                 font.pixelSize: NodoSystem.textFontSize
                 verticalAlignment: Text.AlignVCenter
                 wrapMode: Text.WordWrap
