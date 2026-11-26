@@ -10,7 +10,6 @@ import NodoCanvas 1.0
 
 KeyboardStyle {
     id: currentStyle
-    readonly property string fontFamily: NodoSystem.fontInter.name
     readonly property real keyBackgroundMargin: Math.round(8 * scaleHint)
     readonly property real keyContentMargin: Math.round(40 * scaleHint)
     readonly property real keyIconScale: scaleHint * 0.8
@@ -49,7 +48,6 @@ KeyboardStyle {
                 verticalAlignment: control.displayText.length > 0 ? Text.AlignVCenter : Text.AlignBottom
                 anchors.fill: parent
                 font {
-                    family: fontFamily
                     weight: Font.Normal
                     pixelSize: 70 * scaleHint
                     capitalization: control.uppercased ? Font.AllUppercase : Font.MixedCase
@@ -150,7 +148,6 @@ KeyboardStyle {
                 verticalAlignment: Text.AlignVCenter
                 color: keyTextColor
                 font {
-                    family: fontFamily
                     weight: Font.Normal
                     pixelSize: 70 * scaleHint
                     capitalization: Font.AllUppercase
@@ -284,7 +281,6 @@ KeyboardStyle {
                 //Behavior on opacity { PropertyAnimation { duration: 250 } }
                 anchors.centerIn: parent
                 font {
-                    family: fontFamily
                     weight: Font.Normal
                     pixelSize: 70 * scaleHint
                 }
@@ -327,7 +323,6 @@ KeyboardStyle {
                 anchors.fill: parent
                 anchors.margins: keyContentMargin
                 font {
-                    family: fontFamily
                     weight: Font.Normal
                     pixelSize: 70 * scaleHint
                     capitalization: Font.AllUppercase
@@ -401,7 +396,6 @@ KeyboardStyle {
                 anchors.top: parent.top
                 anchors.margins: keyContentMargin
                 font {
-                    family: fontFamily
                     weight: Font.Normal
                     pixelSize: 70 * scaleHint
                     capitalization: {
