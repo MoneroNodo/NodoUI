@@ -198,6 +198,7 @@ Item {
         width: infoFieldSize
         itemSize: 200
         itemText: systemMessages.messages[NodoMessages.Message.Address]  //LABEL "Address"
+        fontFamily: NodoSystem.fontJetBrainsMono.name
         valueText: ""
         height: NodoSystem.nodoItemHeight
         valueFontSize: NodoSystem.descriptionTitleFontSize - 4
@@ -217,6 +218,7 @@ Item {
         width: infoFieldSize
         itemSize: 380
         itemText: qsTr("Private View Key")
+        fontFamily: NodoSystem.fontJetBrainsMono.name
         valueText: ""
         height: NodoSystem.nodoItemHeight
         validator: RegularExpressionValidator {

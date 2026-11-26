@@ -11,6 +11,7 @@ Item {
     y: 0
     property string itemText: "item name"
     property string valueText: ""
+    property string fontFamily: "" // empty means default
     property int itemFontSize: NodoSystem.infoFieldItemFontSize
     property int valueFontSize: NodoSystem.infoFieldValueFontSize
     property int textLeftPadding: NodoSystem.textPadding
@@ -56,6 +57,11 @@ Item {
             verticalAlignment: Text.AlignVCenter
             font.pixelSize: valueFontSize
             color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn  : NodoSystem.descriptionTextFontColorNightModeOff
+            Binding on font.family {
+                when: root.fontFamily !== ""
+                value: root.fontFamily
+                restoreMode: Binding.RestoreNone
+            }
         }
     }
 }

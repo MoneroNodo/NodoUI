@@ -11,6 +11,7 @@ Item {
     y: 0
     property string itemText: ""
     property string valueText: ""
+    property string fontFamily: "" // empty means default
     property int itemFontSize: NodoSystem.inputFieldItemFontSize
     property int valueFontSize: NodoSystem.inputFieldValueFontSize
     property int textFlag: Qt.ImhNoAutoUppercase
@@ -91,6 +92,12 @@ Item {
             inputMethodHints: Qt.ImhNoPredictiveText | Qt.ImhNoTextHandles | Qt.ImhNoAutoUppercase | textFlag
             readOnly: readOnlyFlag
             selectionColor: "transparent"
+
+            Binding on font.family {
+                when: root.fontFamily !== ""
+                value: root.fontFamily
+                restoreMode: Binding.RestoreNone
+            }
 
             onFocusChanged:{
 								tappedAction();
