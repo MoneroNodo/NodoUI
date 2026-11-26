@@ -100,7 +100,7 @@ Item {
 
         onClicked: {
             mainRectPopup.qrCodeData = moneroLWSClearnetAddress.valueText
-            mainRectPopup.closeButtonText = qsTr("Close")
+            mainRectPopup.closeButtonText = qsTr("CLOSE")
             mainRectPopup.open();
         }
     }
@@ -128,7 +128,7 @@ Item {
         
         onClicked: {
             mainRectPopup.qrCodeData = moneroLWSTorAddress.valueText
-            mainRectPopup.closeButtonText = qsTr("Close")
+            mainRectPopup.closeButtonText = qsTr("CLOSE")
             mainRectPopup.open();
         }
     }
@@ -156,7 +156,7 @@ Item {
 
         onClicked: {
             mainRectPopup.qrCodeData = moneroLWSI2PAddress.valueText
-            mainRectPopup.closeButtonText = qsTr("Close")
+            mainRectPopup.closeButtonText = qsTr("CLOSE")
             mainRectPopup.open();
         }
     }
