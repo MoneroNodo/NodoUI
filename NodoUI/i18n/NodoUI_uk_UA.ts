@@ -6,17 +6,17 @@
     <message>
         <location filename="../qml/DeviceDisplayScreen.qml" line="35"/>
         <source>Brightness</source>
-        <translation type="unfinished"></translation>
+        <translation>Яскравість</translation>
     </message>
     <message>
         <location filename="../qml/DeviceDisplayScreen.qml" line="73"/>
         <source>Night Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Нічний режим</translation>
     </message>
     <message>
         <location filename="../qml/DeviceDisplayScreen.qml" line="209"/>
         <source>Screensaver</source>
-        <translation type="unfinished"></translation>
+        <translation>Заставка</translation>
     </message>
     <message>
         <location filename="../qml/DeviceDisplayScreen.qml" line="224"/>
@@ -24,24 +24,24 @@
         <location filename="../qml/DeviceDisplayScreen.qml" line="244"/>
         <location filename="../qml/DeviceDisplayScreen.qml" line="249"/>
         <source>Digital Clock</source>
-        <translation type="unfinished"></translation>
+        <translation>Цифровий годинник</translation>
     </message>
     <message>
         <location filename="../qml/DeviceDisplayScreen.qml" line="105"/>
         <source>Flip Display</source>
-        <translation type="unfinished"></translation>
+        <translation>Поворотний дисплей</translation>
     </message>
     <message>
         <location filename="../qml/DeviceDisplayScreen.qml" line="175"/>
         <source>Sync Dot</source>
-        <translation type="unfinished"></translation>
+        <translation>Sync Dot</translation>
     </message>
     <message>
         <location filename="../qml/DeviceDisplayScreen.qml" line="224"/>
         <location filename="../qml/DeviceDisplayScreen.qml" line="244"/>
         <location filename="../qml/DeviceDisplayScreen.qml" line="527"/>
         <source>News</source>
-        <translation type="unfinished"></translation>
+        <translation>Новини</translation>
     </message>
     <message>
         <location filename="../qml/DeviceDisplayScreen.qml" line="224"/>
@@ -50,7 +50,7 @@
         <location filename="../qml/DeviceDisplayScreen.qml" line="249"/>
         <location filename="../qml/DeviceDisplayScreen.qml" line="445"/>
         <source>Price Ticker</source>
-        <translation type="unfinished"></translation>
+        <translation>Тікер цін</translation>
     </message>
     <message>
         <location filename="../qml/DeviceDisplayScreen.qml" line="224"/>
@@ -58,7 +58,7 @@
         <location filename="../qml/DeviceDisplayScreen.qml" line="244"/>
         <location filename="../qml/DeviceDisplayScreen.qml" line="249"/>
         <source>Analog Clock Classic</source>
-        <translation type="unfinished"></translation>
+        <translation>Аналоговий годинник «Класика»</translation>
     </message>
     <message>
         <location filename="../qml/DeviceDisplayScreen.qml" line="224"/>
@@ -66,7 +66,7 @@
         <location filename="../qml/DeviceDisplayScreen.qml" line="244"/>
         <location filename="../qml/DeviceDisplayScreen.qml" line="249"/>
         <source>Analog Clock Modern</source>
-        <translation type="unfinished"></translation>
+        <translation>Сучасний аналоговий годинник</translation>
     </message>
     <message>
         <location filename="../qml/DeviceDisplayScreen.qml" line="224"/>
@@ -74,7 +74,7 @@
         <location filename="../qml/DeviceDisplayScreen.qml" line="244"/>
         <location filename="../qml/DeviceDisplayScreen.qml" line="249"/>
         <source>Display Off</source>
-        <translation type="unfinished"></translation>
+        <translation>Вимкнути дисплей</translation>
     </message>
     <message>
         <location filename="../qml/DeviceDisplayScreen.qml" line="224"/>
@@ -82,62 +82,62 @@
         <location filename="../qml/DeviceDisplayScreen.qml" line="244"/>
         <location filename="../qml/DeviceDisplayScreen.qml" line="249"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>Немає</translation>
     </message>
     <message>
         <location filename="../qml/DeviceDisplayScreen.qml" line="270"/>
         <source>Start after</source>
-        <translation type="unfinished"></translation>
+        <translation>Почніть після</translation>
     </message>
     <message>
         <location filename="../qml/DeviceDisplayScreen.qml" line="289"/>
         <source>minutes</source>
-        <translation type="unfinished"></translation>
+        <translation>хвилини</translation>
     </message>
     <message>
         <location filename="../qml/DeviceDisplayScreen.qml" line="315"/>
         <source>Language</source>
-        <translation type="unfinished"></translation>
+        <translation>Мова</translation>
     </message>
     <message>
         <location filename="../qml/DeviceDisplayScreen.qml" line="347"/>
         <source>Keyboard</source>
-        <translation type="unfinished"></translation>
+        <translation>Клавіатура</translation>
     </message>
     <message>
         <location filename="../qml/DeviceDisplayScreen.qml" line="381"/>
         <source>24h Time</source>
-        <translation type="unfinished"></translation>
+        <translation>24 години</translation>
     </message>
     <message>
         <location filename="../qml/DeviceDisplayScreen.qml" line="411"/>
         <source>Time Zone</source>
-        <translation type="unfinished"></translation>
+        <translation>Часовий пояс</translation>
     </message>
     <message>
         <location filename="../qml/DeviceDisplayScreen.qml" line="475"/>
         <source>Currency</source>
-        <translation type="unfinished"></translation>
+        <translation>Валюта</translation>
     </message>
     <message>
         <location filename="../qml/DeviceDisplayScreen.qml" line="548"/>
         <source>MANAGE</source>
-        <translation type="unfinished"></translation>
+        <translation>УПРАВЛІННЯ</translation>
     </message>
     <message>
         <location filename="../qml/DeviceDisplayScreen.qml" line="358"/>
         <source>QWERTY</source>
-        <translation type="unfinished"></translation>
+        <translation>QWERTY</translation>
     </message>
     <message>
         <location filename="../qml/DeviceDisplayScreen.qml" line="358"/>
         <source>QWERTZ</source>
-        <translation type="unfinished"></translation>
+        <translation>QWERTZ</translation>
     </message>
     <message>
         <location filename="../qml/DeviceDisplayScreen.qml" line="358"/>
         <source>AZERTY</source>
-        <translation type="unfinished"></translation>
+        <translation>AZERTY</translation>
     </message>
 </context>
 <context>
@@ -145,22 +145,22 @@
     <message>
         <location filename="../qml/DeviceLogsScreen.qml" line="28"/>
         <source>MONERO</source>
-        <translation type="unfinished"></translation>
+        <translation>MONERO</translation>
     </message>
     <message>
         <location filename="../qml/DeviceLogsScreen.qml" line="41"/>
         <source>NODOUI</source>
-        <translation type="unfinished"></translation>
+        <translation>NODOUI</translation>
     </message>
     <message>
         <location filename="../qml/DeviceLogsScreen.qml" line="55"/>
         <source>LWS</source>
-        <translation type="unfinished"></translation>
+        <translation>LWS</translation>
     </message>
     <message>
         <location filename="../qml/DeviceLogsScreen.qml" line="67"/>
         <source>KERNEL</source>
-        <translation type="unfinished"></translation>
+        <translation>KERNEL</translation>
     </message>
 </context>
 <context>
@@ -168,27 +168,27 @@
     <message>
         <location filename="../qml/DeviceMainScreen.qml" line="29"/>
         <source>WI-FI</source>
-        <translation type="unfinished"></translation>
+        <translation>WI-FI</translation>
     </message>
     <message>
         <location filename="../qml/DeviceMainScreen.qml" line="40"/>
         <source>ETHERNET</source>
-        <translation type="unfinished"></translation>
+        <translation>ETHERNET</translation>
     </message>
     <message>
         <location filename="../qml/DeviceMainScreen.qml" line="51"/>
         <source>SYSTEM</source>
-        <translation type="unfinished"></translation>
+        <translation>СИСТЕМА</translation>
     </message>
     <message>
         <location filename="../qml/DeviceMainScreen.qml" line="61"/>
         <source>UPDATES</source>
-        <translation type="unfinished"></translation>
+        <translation>НОВИНИ</translation>
     </message>
     <message>
         <location filename="../qml/DeviceMainScreen.qml" line="72"/>
         <source>DISPLAY</source>
-        <translation type="unfinished"></translation>
+        <translation>ДИСПЛЕЙ</translation>
     </message>
 </context>
 <context>
@@ -196,7 +196,7 @@
     <message>
         <location filename="../qml/DevicePinScreen.qml" line="29"/>
         <source>PIN SETTINGS</source>
-        <translation type="unfinished"></translation>
+        <translation>НАЛАШТУВАННЯ PIN-КОДУ</translation>
     </message>
 </context>
 <context>
@@ -204,32 +204,32 @@
     <message>
         <location filename="../qml/DeviceSSHScreen.qml" line="119"/>
         <source>SSH</source>
-        <translation type="unfinished"></translation>
+        <translation>SSH</translation>
     </message>
     <message>
         <location filename="../qml/DeviceSSHScreen.qml" line="152"/>
         <source>Username</source>
-        <translation type="unfinished"></translation>
+        <translation>Ім'я користувача</translation>
     </message>
     <message>
         <location filename="../qml/DeviceSSHScreen.qml" line="168"/>
         <source>CHANGE ADMIN PASSWORD</source>
-        <translation type="unfinished"></translation>
+        <translation>ЗМІНИТИ АДМІНІСТРАТОРСЬКИЙ ПАРОЛЬ</translation>
     </message>
     <message>
         <location filename="../qml/DeviceSSHScreen.qml" line="291"/>
         <source>Confirm with PIN to change the password</source>
-        <translation type="unfinished"></translation>
+        <translation>Підтвердьте введення PIN-коду, щоб змінити пароль</translation>
     </message>
     <message>
         <location filename="../qml/DeviceSSHScreen.qml" line="227"/>
         <source>New Password</source>
-        <translation type="unfinished"></translation>
+        <translation>Новий пароль</translation>
     </message>
     <message>
         <location filename="../qml/DeviceSSHScreen.qml" line="265"/>
         <source>Re-enter New Password</source>
-        <translation type="unfinished"></translation>
+        <translation>Введіть новий пароль ще раз</translation>
     </message>
 </context>
 <context>
@@ -237,99 +237,99 @@
     <message>
         <location filename="../qml/DeviceSystemScreen.qml" line="49"/>
         <source>Change PIN and toggle device lock using PIN</source>
-        <translation type="unfinished"></translation>
+        <translation>Змінити PIN-код та увімкнути/вимкнути блокування пристрою за допомогою PIN-коду</translation>
     </message>
     <message>
         <location filename="../qml/DeviceSystemScreen.qml" line="77"/>
         <source>Change Admin Password and toggle SSH for remote access</source>
-        <translation type="unfinished"></translation>
+        <translation>Змінити пароль адміністратора та увімкнути або вимкнути SSH для віддаленого доступу</translation>
     </message>
     <message>
         <location filename="../qml/DeviceSystemScreen.qml" line="168"/>
         <source>Safe Shutdown</source>
-        <translation type="unfinished"></translation>
+        <translation>Безпечне вимкнення</translation>
     </message>
     <message>
         <location filename="../qml/DeviceSystemScreen.qml" line="29"/>
         <source>PIN SETTINGS</source>
-        <translation type="unfinished"></translation>
+        <translation>НАЛАШТУВАННЯ PIN-КОДУ</translation>
     </message>
     <message>
         <location filename="../qml/DeviceSystemScreen.qml" line="57"/>
         <source>ADMIN &amp; SSH</source>
-        <translation type="unfinished"></translation>
+        <translation>АДМІНІСТРУВАННЯ ТА SSH</translation>
     </message>
     <message>
         <location filename="../qml/DeviceSystemScreen.qml" line="85"/>
         <source>LOGS</source>
-        <translation type="unfinished"></translation>
+        <translation>ЖУРНАЛИ</translation>
     </message>
     <message>
         <location filename="../qml/DeviceSystemScreen.qml" line="104"/>
         <source>View Logs for Monero Daemon, NodoUI, LWS and Kernel</source>
-        <translation type="unfinished"></translation>
+        <translation>Переглянути журнали для Monero Daemon, NodoUI, LWS та ядра</translation>
     </message>
     <message>
         <location filename="../qml/DeviceSystemScreen.qml" line="112"/>
         <source>RESTART</source>
-        <translation type="unfinished"></translation>
+        <translation>ПЕРЕЗАПУСТИТИ</translation>
     </message>
     <message>
         <location filename="../qml/DeviceSystemScreen.qml" line="136"/>
         <source>Safe Restart</source>
-        <translation type="unfinished"></translation>
+        <translation>Безпечний перезапуск</translation>
     </message>
     <message>
         <location filename="../qml/DeviceSystemScreen.qml" line="144"/>
         <source>SHUTDOWN</source>
-        <translation type="unfinished"></translation>
+        <translation>ВІДКЛЮЧЕННЯ</translation>
     </message>
     <message>
         <location filename="../qml/DeviceSystemScreen.qml" line="176"/>
         <location filename="../qml/DeviceSystemScreen.qml" line="244"/>
         <source>RECOVERY</source>
-        <translation type="unfinished"></translation>
+        <translation>ВІДНОВЛЕННЯ</translation>
     </message>
     <message>
         <location filename="../qml/DeviceSystemScreen.qml" line="200"/>
         <source>Access recovery options</source>
-        <translation type="unfinished"></translation>
+        <translation>Опції відновлення доступу</translation>
     </message>
     <message>
         <location filename="../qml/DeviceSystemScreen.qml" line="269"/>
         <source>Attempt to recover filesystem</source>
-        <translation type="unfinished"></translation>
+        <translation>Спроба відновлення файлової системи</translation>
     </message>
     <message>
         <location filename="../qml/DeviceSystemScreen.qml" line="282"/>
         <source>Attempts to fix filesystem errors without deleting data.</source>
-        <translation type="unfinished"></translation>
+        <translation>Спроби виправити помилки файлової системи без видалення даних.</translation>
     </message>
     <message>
         <location filename="../qml/DeviceSystemScreen.qml" line="308"/>
         <source>Delete and resync blockchain</source>
-        <translation type="unfinished"></translation>
+        <translation>Видалити та повторно синхронізувати блокчейн</translation>
     </message>
     <message>
         <location filename="../qml/DeviceSystemScreen.qml" line="321"/>
         <source>Also deletes all LWS data.</source>
-        <translation type="unfinished"></translation>
+        <translation>Також видаляє всі дані LWS.</translation>
     </message>
     <message>
         <location filename="../qml/DeviceSystemScreen.qml" line="347"/>
         <source>Factory Reset</source>
-        <translation type="unfinished"></translation>
+        <translation>Скидання до заводських налаштувань</translation>
     </message>
     <message>
         <location filename="../qml/DeviceSystemScreen.qml" line="360"/>
         <source>Reset all settings back to Factory defaults.</source>
-        <translation type="unfinished"></translation>
+        <translation>Скинути всі налаштування до заводських значень.</translation>
     </message>
     <message>
         <location filename="../qml/DeviceSystemScreen.qml" line="370"/>
         <location filename="../qml/DeviceSystemScreen.qml" line="377"/>
         <source>START</source>
-        <translation type="unfinished"></translation>
+        <translation>СТАРТ</translation>
     </message>
 </context>
 <context>
@@ -337,47 +337,47 @@
     <message>
         <location filename="../qml/DeviceUpdatesScreen.qml" line="58"/>
         <source>UPDATE ALL</source>
-        <translation type="unfinished"></translation>
+        <translation>Оновити все</translation>
     </message>
     <message>
         <location filename="../qml/DeviceUpdatesScreen.qml" line="83"/>
         <source>Force Updates, if found, this button will stay greyed out during the update process.</source>
-        <translation type="unfinished"></translation>
+        <translation>Примусове оновлення: якщо оновлення знайдено, ця кнопка залишатиметься неактивною під час процесу оновлення.</translation>
     </message>
     <message>
         <location filename="../qml/DeviceUpdatesScreen.qml" line="99"/>
         <source>AUTOMATIC UPDATES</source>
-        <translation type="unfinished"></translation>
+        <translation>АВТОМАТИЧНІ ОНОВЛЕННЯ</translation>
     </message>
     <message>
         <location filename="../qml/DeviceUpdatesScreen.qml" line="115"/>
         <source>Nodo</source>
-        <translation type="unfinished"></translation>
+        <translation>Nodo</translation>
     </message>
     <message>
         <location filename="../qml/DeviceUpdatesScreen.qml" line="158"/>
         <source>Monero Daemon</source>
-        <translation type="unfinished"></translation>
+        <translation>Демон Monero</translation>
     </message>
     <message>
         <location filename="../qml/DeviceUpdatesScreen.qml" line="201"/>
         <source>Monero LWS</source>
-        <translation type="unfinished"></translation>
+        <translation>Monero LWS</translation>
     </message>
     <message>
         <location filename="../qml/DeviceUpdatesScreen.qml" line="244"/>
         <source>MoneroPay</source>
-        <translation type="unfinished"></translation>
+        <translation>MoneroPay</translation>
     </message>
     <message>
         <location filename="../qml/DeviceUpdatesScreen.qml" line="287"/>
         <source>Linux System</source>
-        <translation type="unfinished"></translation>
+        <translation>Система Linux</translation>
     </message>
     <message>
         <location filename="../qml/DeviceUpdatesScreen.qml" line="313"/>
         <source>Updates will still run for Monero, LWS and MoneroPay.</source>
-        <translation type="unfinished"></translation>
+        <translation>Оновлення для Monero, LWS та MoneroPay будуть і надалі виконуватися.</translation>
     </message>
 </context>
 <context>
@@ -385,7 +385,7 @@
     <message>
         <location filename="../qml/MoneroLWSActiveScreen.qml" line="59"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>Немає</translation>
     </message>
 </context>
 <context>
@@ -393,22 +393,22 @@
     <message>
         <location filename="../qml/MoneroLWSActiveScreenDelegate.qml" line="54"/>
         <source>Height</source>
-        <translation type="unfinished"></translation>
+        <translation>Висота</translation>
     </message>
     <message>
         <location filename="../qml/MoneroLWSActiveScreenDelegate.qml" line="75"/>
         <source>RESCAN</source>
-        <translation type="unfinished"></translation>
+        <translation>ПОВТОРНЕ СКАНУВАННЯ</translation>
     </message>
     <message>
         <location filename="../qml/MoneroLWSActiveScreenDelegate.qml" line="102"/>
         <source>DEACTIVATE</source>
-        <translation type="unfinished"></translation>
+        <translation>ВІДКЛЮЧИТИ</translation>
     </message>
     <message>
         <location filename="../qml/MoneroLWSActiveScreenDelegate.qml" line="65"/>
         <source>Rescan Height</source>
-        <translation type="unfinished"></translation>
+        <translation>Висота повторного сканування</translation>
     </message>
 </context>
 <context>
@@ -416,50 +416,50 @@
     <message>
         <location filename="../qml/MoneroLWSAddAccountScreen.qml" line="79"/>
         <source>LIGHT WALLET SERVER ADDRESS</source>
-        <translation type="unfinished"></translation>
+        <translation>Адреса сервера LIGHT WALLET</translation>
     </message>
     <message>
         <location filename="../qml/MoneroLWSAddAccountScreen.qml" line="98"/>
         <source>Clearnet</source>
-        <translation type="unfinished"></translation>
+        <translation>Clearnet</translation>
     </message>
     <message>
         <location filename="../qml/MoneroLWSAddAccountScreen.qml" line="104"/>
         <location filename="../qml/MoneroLWSAddAccountScreen.qml" line="132"/>
         <location filename="../qml/MoneroLWSAddAccountScreen.qml" line="160"/>
         <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translation>Закрити</translation>
     </message>
     <message>
         <location filename="../qml/MoneroLWSAddAccountScreen.qml" line="125"/>
         <source>Tor</source>
-        <translation type="unfinished"></translation>
+        <translation>Tor</translation>
     </message>
     <message>
         <location filename="../qml/MoneroLWSAddAccountScreen.qml" line="153"/>
         <source>I2P</source>
-        <translation type="unfinished"></translation>
+        <translation>I2P</translation>
     </message>
     <message>
         <location filename="../qml/MoneroLWSAddAccountScreen.qml" line="178"/>
         <source>On your Light Wallet, enter a URL as Server Address. If your Light Wallet does not support wallet creation requests, manually add it below.</source>
-        <translation type="unfinished"></translation>
+        <translation>У вашому Light Wallet введіть URL-адресу в поле «Адреса сервера». Якщо ваш Light Wallet не підтримує запити на створення гаманця, додайте його вручну нижче.</translation>
     </message>
     <message>
         <location filename="../qml/MoneroLWSAddAccountScreen.qml" line="193"/>
         <location filename="../qml/MoneroLWSAddAccountScreen.qml" line="238"/>
         <source>ADD WALLET</source>
-        <translation type="unfinished"></translation>
+        <translation>ДОДАТИ ГАМАНЕЦЬ</translation>
     </message>
     <message>
         <location filename="../qml/MoneroLWSAddAccountScreen.qml" line="222"/>
         <source>Private View Key</source>
-        <translation type="unfinished"></translation>
+        <translation>Ключ до приватного перегляду</translation>
     </message>
     <message>
         <location filename="../qml/MoneroLWSAddAccountScreen.qml" line="263"/>
         <source>Adding wallets is not possible while the Monero Daemon is not synchronized.</source>
-        <translation type="unfinished"></translation>
+        <translation>Додавання гаманців неможливе, поки демон Monero не синхронізований.</translation>
     </message>
 </context>
 <context>
@@ -467,7 +467,7 @@
     <message>
         <location filename="../qml/MoneroLWSInactiveScreen.qml" line="58"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>Немає</translation>
     </message>
 </context>
 <context>
@@ -475,17 +475,17 @@
     <message>
         <location filename="../qml/MoneroLWSInactiveScreenDelegate.qml" line="54"/>
         <source>Height</source>
-        <translation type="unfinished"></translation>
+        <translation>Висота</translation>
     </message>
     <message>
         <location filename="../qml/MoneroLWSInactiveScreenDelegate.qml" line="67"/>
         <source>REACTIVATE</source>
-        <translation type="unfinished"></translation>
+        <translation>ВІДНОВИТИ</translation>
     </message>
     <message>
         <location filename="../qml/MoneroLWSInactiveScreenDelegate.qml" line="85"/>
         <source>DELETE</source>
-        <translation type="unfinished"></translation>
+        <translation>ВИДАЛИТИ</translation>
     </message>
 </context>
 <context>
@@ -493,17 +493,17 @@
     <message>
         <location filename="../qml/MoneroLWSMainScreen.qml" line="72"/>
         <source>ADD WALLET</source>
-        <translation type="unfinished"></translation>
+        <translation>ДОДАТИ ГАМАНЕЦЬ</translation>
     </message>
     <message>
         <location filename="../qml/MoneroLWSMainScreen.qml" line="94"/>
         <source>ACTIVE</source>
-        <translation type="unfinished"></translation>
+        <translation>АКТИВНИЙ</translation>
     </message>
     <message>
         <location filename="../qml/MoneroLWSMainScreen.qml" line="105"/>
         <source>INACTIVE</source>
-        <translation type="unfinished"></translation>
+        <translation>НЕАКТИВНИЙ</translation>
     </message>
 </context>
 <context>
@@ -511,17 +511,17 @@
     <message>
         <location filename="../qml/MoneroPayMainScreen.qml" line="86"/>
         <source>RECEIVE</source>
-        <translation type="unfinished"></translation>
+        <translation>ОТРИМАТИ</translation>
     </message>
     <message>
         <location filename="../qml/MoneroPayMainScreen.qml" line="103"/>
         <source>PAYMENTS</source>
-        <translation type="unfinished"></translation>
+        <translation>ОПЛАТА</translation>
     </message>
     <message>
         <location filename="../qml/MoneroPayMainScreen.qml" line="113"/>
         <source>SETTINGS</source>
-        <translation type="unfinished"></translation>
+        <translation>НАЛАШТУВАННЯ</translation>
     </message>
 </context>
 <context>
@@ -529,7 +529,7 @@
     <message>
         <location filename="../qml/MoneroPayPaymentsScreen.qml" line="67"/>
         <source>CLEAR ALL PAYMENTS</source>
-        <translation type="unfinished"></translation>
+        <translation>ОЧИСТИТИ ВСІ ПЛАТЕЖІ</translation>
     </message>
 </context>
 <context>
@@ -537,62 +537,62 @@
     <message>
         <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="78"/>
         <source>Status</source>
-        <translation type="unfinished"></translation>
+        <translation>Статус</translation>
     </message>
     <message>
         <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="83"/>
         <source>Received</source>
-        <translation type="unfinished"></translation>
+        <translation>Отримано</translation>
     </message>
     <message>
         <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="86"/>
         <source>Confirming</source>
-        <translation type="unfinished"></translation>
+        <translation>Підтвердження</translation>
     </message>
     <message>
         <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="89"/>
         <source>Not Received</source>
-        <translation type="unfinished"></translation>
+        <translation>Не отримано</translation>
     </message>
     <message>
         <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="92"/>
         <source>Waiting</source>
-        <translation type="unfinished"></translation>
+        <translation>Очікування</translation>
     </message>
     <message>
         <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="129"/>
         <source>Address</source>
-        <translation type="unfinished"></translation>
+        <translation>Адреса</translation>
     </message>
     <message>
         <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="186"/>
         <source>CLEAR PAYMENT</source>
-        <translation type="unfinished"></translation>
+        <translation>ОПЛАТА</translation>
     </message>
     <message>
         <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="201"/>
         <source>VIEW QR</source>
-        <translation type="unfinished"></translation>
+        <translation>ПЕРЕГЛЯНУТИ QR-КОД</translation>
     </message>
     <message>
         <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="214"/>
         <source>CLOSE</source>
-        <translation type="unfinished"></translation>
+        <translation>ЗАКРИТИ</translation>
     </message>
     <message>
         <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="227"/>
         <source>Timestamp</source>
-        <translation type="unfinished"></translation>
+        <translation>Часовий штамп</translation>
     </message>
     <message>
         <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="158"/>
         <source>Transaction ID</source>
-        <translation type="unfinished"></translation>
+        <translation>Ідентифікатор транзакції</translation>
     </message>
     <message>
         <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="177"/>
         <source>Note</source>
-        <translation type="unfinished"></translation>
+        <translation>Примітка</translation>
     </message>
 </context>
 <context>
@@ -600,32 +600,32 @@
     <message>
         <location filename="../qml/MoneroPayReceivePaymentPreviewScreen.qml" line="66"/>
         <source>XMR</source>
-        <translation type="unfinished"></translation>
+        <translation>XMR</translation>
     </message>
     <message>
         <location filename="../qml/MoneroPayReceivePaymentPreviewScreen.qml" line="105"/>
         <source>Timestamp</source>
-        <translation type="unfinished"></translation>
+        <translation>Часовий штамп</translation>
     </message>
     <message>
         <location filename="../qml/MoneroPayReceivePaymentPreviewScreen.qml" line="116"/>
         <source>AWAITING PAYMENT</source>
-        <translation type="unfinished"></translation>
+        <translation>ОЧІКУЄТЬСЯ ОПЛАТА</translation>
     </message>
     <message>
         <location filename="../qml/MoneroPayReceivePaymentPreviewScreen.qml" line="127"/>
         <source>NEW PAYMENT</source>
-        <translation type="unfinished"></translation>
+        <translation>НОВИЙ ПЛАТІЖ</translation>
     </message>
     <message>
         <location filename="../qml/MoneroPayReceivePaymentPreviewScreen.qml" line="170"/>
         <source>Address</source>
-        <translation type="unfinished"></translation>
+        <translation>Адреса</translation>
     </message>
     <message>
         <location filename="../qml/MoneroPayReceivePaymentPreviewScreen.qml" line="91"/>
         <source>Note</source>
-        <translation type="unfinished"></translation>
+        <translation>Примітка</translation>
     </message>
 </context>
 <context>
@@ -633,42 +633,42 @@
     <message>
         <location filename="../qml/MoneroPayReceivePaymentResultScreen.qml" line="61"/>
         <source>XMR</source>
-        <translation type="unfinished"></translation>
+        <translation>XMR</translation>
     </message>
     <message>
         <location filename="../qml/MoneroPayReceivePaymentResultScreen.qml" line="102"/>
         <source>Timestamp</source>
-        <translation type="unfinished"></translation>
+        <translation>Часовий штамп</translation>
     </message>
     <message>
         <location filename="../qml/MoneroPayReceivePaymentResultScreen.qml" line="122"/>
         <source>PAYMENT RECEIVED</source>
-        <translation type="unfinished"></translation>
+        <translation>ОПЛАТА ОТРИМАНА</translation>
     </message>
     <message>
         <location filename="../qml/MoneroPayReceivePaymentResultScreen.qml" line="134"/>
         <source>NEW PAYMENT</source>
-        <translation type="unfinished"></translation>
+        <translation>НОВИЙ ПЛАТІЖ</translation>
     </message>
     <message>
         <location filename="../qml/MoneroPayReceivePaymentResultScreen.qml" line="152"/>
         <source>VIEW PAYMENTS</source>
-        <translation type="unfinished"></translation>
+        <translation>ПЕРЕГЛЯНУТИ ПЛАТЕЖІ</translation>
     </message>
     <message>
         <location filename="../qml/MoneroPayReceivePaymentResultScreen.qml" line="202"/>
         <source>Transaction ID</source>
-        <translation type="unfinished"></translation>
+        <translation>Ідентифікатор транзакції</translation>
     </message>
     <message>
         <location filename="../qml/MoneroPayReceivePaymentResultScreen.qml" line="88"/>
         <source>Note</source>
-        <translation type="unfinished"></translation>
+        <translation>Примітка</translation>
     </message>
     <message>
         <location filename="../qml/MoneroPayReceivePaymentResultScreen.qml" line="189"/>
         <source>Address</source>
-        <translation type="unfinished"></translation>
+        <translation>Адреса</translation>
     </message>
 </context>
 <context>
@@ -676,33 +676,33 @@
     <message>
         <location filename="../qml/MoneroPayReceiveRequestScreen.qml" line="67"/>
         <source>XMR</source>
-        <translation type="unfinished"></translation>
+        <translation>XMR</translation>
     </message>
     <message>
         <location filename="../qml/MoneroPayReceiveRequestScreen.qml" line="92"/>
         <location filename="../qml/MoneroPayReceiveRequestScreen.qml" line="134"/>
         <source>Value out of range</source>
-        <translation type="unfinished"></translation>
+        <translation>Значення поза межами діапазону</translation>
     </message>
     <message>
         <location filename="../qml/MoneroPayReceiveRequestScreen.qml" line="152"/>
         <source>Note (optional)</source>
-        <translation type="unfinished"></translation>
+        <translation>Примітка (необов’язкова)</translation>
     </message>
     <message>
         <location filename="../qml/MoneroPayReceiveRequestScreen.qml" line="172"/>
         <source>Block Confirmations</source>
-        <translation type="unfinished"></translation>
+        <translation>Підтвердження блоків</translation>
     </message>
     <message>
         <location filename="../qml/MoneroPayReceiveRequestScreen.qml" line="207"/>
         <source>0 Confirmations</source>
-        <translation type="unfinished"></translation>
+        <translation>0 підтверджень</translation>
     </message>
     <message>
         <location filename="../qml/MoneroPayReceiveRequestScreen.qml" line="227"/>
         <source>RECEIVE</source>
-        <translation type="unfinished"></translation>
+        <translation>ОТРИМАТИ</translation>
     </message>
 </context>
 <context>
@@ -710,32 +710,32 @@
     <message>
         <location filename="../qml/MoneroPaySettingsConfigScreen.qml" line="121"/>
         <source>MONEROPAY DEPOSIT ADDRESS</source>
-        <translation type="unfinished"></translation>
+        <translation>АДРЕСА ДЕПОЗИТУ MONEROPAY</translation>
     </message>
     <message>
         <location filename="../qml/MoneroPaySettingsConfigScreen.qml" line="132"/>
         <source>Address</source>
-        <translation type="unfinished"></translation>
+        <translation>Адреса</translation>
     </message>
     <message>
         <location filename="../qml/MoneroPaySettingsConfigScreen.qml" line="154"/>
         <source>SET ADDRESS</source>
-        <translation type="unfinished"></translation>
+        <translation>ВСТАНОВИТИ АДРЕСУ</translation>
     </message>
     <message>
         <location filename="../qml/MoneroPaySettingsConfigScreen.qml" line="177"/>
         <source>CLEAR ADDRESS</source>
-        <translation type="unfinished"></translation>
+        <translation>ОЧИСТИТИ АДРЕСУ</translation>
     </message>
     <message>
         <location filename="../qml/MoneroPaySettingsConfigScreen.qml" line="185"/>
         <source>Reset</source>
-        <translation type="unfinished"></translation>
+        <translation>Скинути</translation>
     </message>
     <message>
         <location filename="../qml/MoneroPaySettingsConfigScreen.qml" line="200"/>
         <source>Received transactions will periodically be sent to this address.</source>
-        <translation type="unfinished"></translation>
+        <translation>Отримані транзакції періодично надсилатимуться на цю адресу.</translation>
     </message>
 </context>
 <context>
@@ -743,7 +743,7 @@
     <message>
         <location filename="../qml/NewsMainScreen.qml" line="56"/>
         <source>No feeds available</source>
-        <translation type="unfinished"></translation>
+        <translation>Канали відсутні</translation>
     </message>
 </context>
 <context>
@@ -751,38 +751,38 @@
     <message>
         <location filename="../qml/NodeBandwidthScreen.qml" line="19"/>
         <source>kB/s</source>
-        <translation type="unfinished"></translation>
+        <translation>кБ/с</translation>
     </message>
     <message>
         <location filename="../qml/NodeBandwidthScreen.qml" line="152"/>
         <source>Outgoing Peers</source>
-        <translation type="unfinished"></translation>
+        <translation>Вихідні однорангові вузли</translation>
     </message>
     <message>
         <location filename="../qml/NodeBandwidthScreen.qml" line="179"/>
         <source>Incoming Peers</source>
-        <translation type="unfinished"></translation>
+        <translation>Нові колеги</translation>
     </message>
     <message>
         <location filename="../qml/NodeBandwidthScreen.qml" line="210"/>
         <source>Upload Speed</source>
-        <translation type="unfinished"></translation>
+        <translation>Швидкість завантаження</translation>
     </message>
     <message>
         <location filename="../qml/NodeBandwidthScreen.qml" line="302"/>
         <source>Download Speed</source>
-        <translation type="unfinished"></translation>
+        <translation>Швидкість завантаження</translation>
     </message>
     <message>
         <location filename="../qml/NodeBandwidthScreen.qml" line="410"/>
         <source>Monero Daemon will restart to apply changes.</source>
-        <translation type="unfinished"></translation>
+        <translation>Демон Monero перезапуститься для застосування змін.</translation>
     </message>
     <message>
         <location filename="../qml/NodeBandwidthScreen.qml" line="253"/>
         <location filename="../qml/NodeBandwidthScreen.qml" line="345"/>
         <source>Unlimited</source>
-        <translation type="unfinished"></translation>
+        <translation>Без обмежень</translation>
     </message>
 </context>
 <context>
@@ -790,37 +790,37 @@
     <message>
         <location filename="../qml/NodeBanlistScreen.qml" line="43"/>
         <source>NODE IP BANLIST</source>
-        <translation type="unfinished"></translation>
+        <translation>СПИСОК ЗАБЛОКИРОВАНИХ IP-АДРЕС ВУЗЛІВ</translation>
     </message>
     <message>
         <location filename="../qml/NodeBanlistScreen.qml" line="73"/>
         <source>Boog900</source>
-        <translation type="unfinished"></translation>
+        <translation>Boog900</translation>
     </message>
     <message>
         <location filename="../qml/NodeBanlistScreen.qml" line="104"/>
         <source>gui.xmr.pm</source>
-        <translation type="unfinished"></translation>
+        <translation>gui.xmr.pm</translation>
     </message>
     <message>
         <location filename="../qml/NodeBanlistScreen.qml" line="135"/>
         <source>DNS Banlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Список заборонених DNS-адрес</translation>
     </message>
     <message>
         <location filename="../qml/NodeBanlistScreen.qml" line="148"/>
         <source>APPLY</source>
-        <translation type="unfinished"></translation>
+        <translation>ПОДАТИ ЗАЯВКУ</translation>
     </message>
     <message>
         <location filename="../qml/NodeBanlistScreen.qml" line="168"/>
         <source>CLEAR</source>
-        <translation type="unfinished"></translation>
+        <translation>ОЧИСТИТИ</translation>
     </message>
     <message>
         <location filename="../qml/NodeBanlistScreen.qml" line="189"/>
         <source>Monero Daemon will restart to apply changes.</source>
-        <translation type="unfinished"></translation>
+        <translation>Демон Monero перезапуститься для застосування змін.</translation>
     </message>
     <message>
         <location filename="../qml/NodeBanlistScreen.qml" line="205"/>
@@ -828,9 +828,14 @@
 
 Blocking the IP addresses by default is technically possible, but it would set a precedent of blocking IP addresses by a decision making process that is not decentralized. MRL has decided to ask node operators to block these IP addresses voluntarily instead of by default. We recommend enabling all banlists until a more permanent solution can be found.
 
-More info on this issue and FAQs can be found on Monero&apos;s Official Repo:
+More info on this issue and FAQs can be found on Monero's Official Repo:
 https://github.com/monero-project/meta/issues/1124</source>
-        <translation type="unfinished"></translation>
+        <translation>Дослідницька лабораторія Monero (MRL) вирішила рекомендувати всім операторам вузлів Monero активувати список заборонених IP-адрес вузлів, які підозрюються у шпигунстві. Такі вузли можуть знизити рівень конфіденційності користувачів Monero.
+
+Блокування IP-адрес за замовчуванням технічно можливе, але це створило б прецедент блокування IP-адрес у результаті прийняття рішення, яке не є децентралізованим. MRL вирішила попросити операторів вузлів блокувати ці IP-адреси добровільно, а не за замовчуванням. Ми рекомендуємо активувати всі списки заборонених адрес, доки не буде знайдено більш постійне рішення.
+
+Більше інформації щодо цього питання та відповіді на поширені запитання можна знайти в офіційному репозиторії Monero:
+https://github.com/monero-project/meta/issues/1124</translation>
     </message>
 </context>
 <context>
@@ -838,17 +843,17 @@ https://github.com/monero-project/meta/issues/1124</source>
     <message>
         <location filename="../qml/NodeClearnetScreen.qml" line="126"/>
         <source>Hidden RPC</source>
-        <translation type="unfinished"></translation>
+        <translation>Прихований RPC</translation>
     </message>
     <message>
         <location filename="../qml/NodeClearnetScreen.qml" line="160"/>
         <source>Allow wallets to connect only through Tor and I2P, enable on untrusted networks.</source>
-        <translation type="unfinished"></translation>
+        <translation>Дозволити гаманцям підключатися лише через Tor та I2P; увімкнути цю опцію в ненадійних мережах.</translation>
     </message>
     <message>
         <location filename="../qml/NodeClearnetScreen.qml" line="177"/>
         <source>Enable Hidden RPC with NODE &gt; TOR &gt; Route All Through Tor, to fully anonymize the Monero Daemon.</source>
-        <translation type="unfinished"></translation>
+        <translation>Увімкніть прихований RPC, вибравши «NODE &gt; TOR &gt; Route All Through Tor», щоб повністю анонімізувати демон Monero.</translation>
     </message>
 </context>
 <context>
@@ -856,17 +861,17 @@ https://github.com/monero-project/meta/issues/1124</source>
     <message>
         <location filename="../qml/NodeI2PScreen.qml" line="107"/>
         <source>I2P</source>
-        <translation type="unfinished"></translation>
+        <translation>I2P</translation>
     </message>
     <message>
         <location filename="../qml/NodeI2PScreen.qml" line="141"/>
         <source>Broadcast and receive transactions through I2P.</source>
-        <translation type="unfinished"></translation>
+        <translation>Передавати та отримувати транзакції через I2P.</translation>
     </message>
     <message>
         <location filename="../qml/NodeI2PScreen.qml" line="153"/>
         <source>I2P b32 Address</source>
-        <translation type="unfinished"></translation>
+        <translation>Адреса I2P b32</translation>
     </message>
 </context>
 <context>
@@ -874,32 +879,32 @@ https://github.com/monero-project/meta/issues/1124</source>
     <message>
         <location filename="../qml/NodeMainScreen.qml" line="29"/>
         <source>CLEARNET</source>
-        <translation type="unfinished"></translation>
+        <translation>CLEARNET</translation>
     </message>
     <message>
         <location filename="../qml/NodeMainScreen.qml" line="40"/>
         <source>TOR</source>
-        <translation type="unfinished"></translation>
+        <translation>TOR</translation>
     </message>
     <message>
         <location filename="../qml/NodeMainScreen.qml" line="52"/>
         <source>I2P</source>
-        <translation type="unfinished"></translation>
+        <translation>I2P</translation>
     </message>
     <message>
         <location filename="../qml/NodeMainScreen.qml" line="63"/>
         <source>BANDWIDTH</source>
-        <translation type="unfinished"></translation>
+        <translation>ПРОПУСКНА ЗДАТНІСТЬ</translation>
     </message>
     <message>
         <location filename="../qml/NodeMainScreen.qml" line="74"/>
         <source>PRIVATE</source>
-        <translation type="unfinished"></translation>
+        <translation>ПРИВАТНЕ</translation>
     </message>
     <message>
         <location filename="../qml/NodeMainScreen.qml" line="85"/>
         <source>BANLIST</source>
-        <translation type="unfinished"></translation>
+        <translation>СПИСОК ЗАБОРОНЕНИХ</translation>
     </message>
 </context>
 <context>
@@ -907,27 +912,27 @@ https://github.com/monero-project/meta/issues/1124</source>
     <message>
         <location filename="../qml/NodePrivateNodeScreen.qml" line="79"/>
         <source>Private Node</source>
-        <translation type="unfinished"></translation>
+        <translation>Приватний вузол</translation>
     </message>
     <message>
         <location filename="../qml/NodePrivateNodeScreen.qml" line="106"/>
         <source>Require wallets to enter a username and password to use this node.</source>
-        <translation type="unfinished"></translation>
+        <translation>Вимагати від гаманців введення імені користувача та пароля для використання цього вузла.</translation>
     </message>
     <message>
         <location filename="../qml/NodePrivateNodeScreen.qml" line="143"/>
         <source>Username</source>
-        <translation type="unfinished"></translation>
+        <translation>Ім'я користувача</translation>
     </message>
     <message>
         <location filename="../qml/NodePrivateNodeScreen.qml" line="156"/>
         <source>Password</source>
-        <translation type="unfinished"></translation>
+        <translation>Пароль</translation>
     </message>
     <message>
         <location filename="../qml/NodePrivateNodeScreen.qml" line="199"/>
         <source>Monero Daemon will restart to apply changes.</source>
-        <translation type="unfinished"></translation>
+        <translation>Демон Monero перезапуститься для застосування змін.</translation>
     </message>
 </context>
 <context>
@@ -935,27 +940,27 @@ https://github.com/monero-project/meta/issues/1124</source>
     <message>
         <location filename="../qml/NodeTorScreen.qml" line="106"/>
         <source>Tor</source>
-        <translation type="unfinished"></translation>
+        <translation>Tor</translation>
     </message>
     <message>
         <location filename="../qml/NodeTorScreen.qml" line="140"/>
         <source>Broadcast and receive transactions through Tor.</source>
-        <translation type="unfinished"></translation>
+        <translation>Передавати та отримувати транзакції через Tor.</translation>
     </message>
     <message>
         <location filename="../qml/NodeTorScreen.qml" line="157"/>
         <source>Route All Through Tor</source>
-        <translation type="unfinished"></translation>
+        <translation>Маршрут через весь Тор</translation>
     </message>
     <message>
         <location filename="../qml/NodeTorScreen.qml" line="191"/>
         <source>Blockchain sync through Tor, includes Updates, Price Ticker and News.</source>
-        <translation type="unfinished"></translation>
+        <translation>Синхронізація блокчейну через Tor, включає оновлення, стрічку цін та новини.</translation>
     </message>
     <message>
         <location filename="../qml/NodeTorScreen.qml" line="203"/>
         <source>Onion Address</source>
-        <translation type="unfinished"></translation>
+        <translation>Адреса Onion</translation>
     </message>
 </context>
 <context>
@@ -963,512 +968,512 @@ https://github.com/monero-project/meta/issues/1124</source>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="5"/>
         <source>AED</source>
-        <translation type="unfinished"></translation>
+        <translation>АЕД</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="6"/>
         <source>ARS</source>
-        <translation type="unfinished"></translation>
+        <translation>ARS</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="7"/>
         <source>AUD</source>
-        <translation type="unfinished"></translation>
+        <translation>AUD</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="8"/>
         <source>BCH</source>
-        <translation type="unfinished"></translation>
+        <translation>BCH</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="9"/>
         <source>BDT</source>
-        <translation type="unfinished"></translation>
+        <translation>BDT</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="10"/>
         <source>BHD</source>
-        <translation type="unfinished"></translation>
+        <translation>BHD</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="11"/>
         <source>BRL</source>
-        <translation type="unfinished"></translation>
+        <translation>BRL</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="12"/>
         <source>BTC</source>
-        <translation type="unfinished"></translation>
+        <translation>BTC</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="13"/>
         <source>CAD</source>
-        <translation type="unfinished"></translation>
+        <translation>CAD</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="14"/>
         <source>CHF</source>
-        <translation type="unfinished"></translation>
+        <translation>CHF</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="15"/>
         <source>CLP</source>
-        <translation type="unfinished"></translation>
+        <translation>CLP</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="16"/>
         <source>CNY</source>
-        <translation type="unfinished"></translation>
+        <translation>CNY</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="17"/>
         <source>CZK</source>
-        <translation type="unfinished"></translation>
+        <translation>CZK</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="18"/>
         <source>DKK</source>
-        <translation type="unfinished"></translation>
+        <translation>DKK</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="19"/>
         <source>ETH</source>
-        <translation type="unfinished"></translation>
+        <translation>ETH</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="20"/>
         <source>EUR</source>
-        <translation type="unfinished"></translation>
+        <translation>EUR</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="21"/>
         <source>GBP</source>
-        <translation type="unfinished"></translation>
+        <translation>GBP</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="22"/>
         <source>GEL</source>
-        <translation type="unfinished"></translation>
+        <translation>GEL</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="23"/>
         <source>HKD</source>
-        <translation type="unfinished"></translation>
+        <translation>HKD</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="24"/>
         <source>HUF</source>
-        <translation type="unfinished"></translation>
+        <translation>HUF</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="25"/>
         <source>IDR</source>
-        <translation type="unfinished"></translation>
+        <translation>IDR</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="26"/>
         <source>ILS</source>
-        <translation type="unfinished"></translation>
+        <translation>ILS</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="27"/>
         <source>INR</source>
-        <translation type="unfinished"></translation>
+        <translation>INR</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="28"/>
         <source>JPY</source>
-        <translation type="unfinished"></translation>
+        <translation>JPY</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="29"/>
         <source>KRW</source>
-        <translation type="unfinished"></translation>
+        <translation>KRW</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="30"/>
         <source>KWD</source>
-        <translation type="unfinished"></translation>
+        <translation>KWD</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="31"/>
         <source>LTC</source>
-        <translation type="unfinished"></translation>
+        <translation>LTC</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="32"/>
         <source>LKR</source>
-        <translation type="unfinished"></translation>
+        <translation>LKR</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="33"/>
         <source>MMK</source>
-        <translation type="unfinished"></translation>
+        <translation>MMK</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="34"/>
         <source>MXN</source>
-        <translation type="unfinished"></translation>
+        <translation>MXN</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="35"/>
         <source>MYR</source>
-        <translation type="unfinished"></translation>
+        <translation>MYR</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="36"/>
         <source>NGN</source>
-        <translation type="unfinished"></translation>
+        <translation>NGN</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="37"/>
         <source>NOK</source>
-        <translation type="unfinished"></translation>
+        <translation>NOK</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="38"/>
         <source>NZD</source>
-        <translation type="unfinished"></translation>
+        <translation>NZD</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="39"/>
         <source>PHP</source>
-        <translation type="unfinished"></translation>
+        <translation>PHP</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="40"/>
         <source>PKR</source>
-        <translation type="unfinished"></translation>
+        <translation>PKR</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="41"/>
         <source>PLN</source>
-        <translation type="unfinished"></translation>
+        <translation>PLN</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="42"/>
         <source>RUB</source>
-        <translation type="unfinished"></translation>
+        <translation>RUB</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="43"/>
         <source>SAR</source>
-        <translation type="unfinished"></translation>
+        <translation>SAR</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="44"/>
         <source>SEK</source>
-        <translation type="unfinished"></translation>
+        <translation>SEK</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="45"/>
         <source>SGD</source>
-        <translation type="unfinished"></translation>
+        <translation>SGD</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="46"/>
         <source>THB</source>
-        <translation type="unfinished"></translation>
+        <translation>THB</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="47"/>
         <source>TRY</source>
-        <translation type="unfinished"></translation>
+        <translation>СПРОБУЙТЕ</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="48"/>
         <source>TWD</source>
-        <translation type="unfinished"></translation>
+        <translation>TWD</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="49"/>
         <source>USD</source>
-        <translation type="unfinished"></translation>
+        <translation>долар США</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="50"/>
         <source>UAH</source>
-        <translation type="unfinished"></translation>
+        <translation>UAH</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="51"/>
         <source>VEF</source>
-        <translation type="unfinished"></translation>
+        <translation>VEF</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="52"/>
         <source>VND</source>
-        <translation type="unfinished"></translation>
+        <translation>VND</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="53"/>
         <source>XAG</source>
-        <translation type="unfinished"></translation>
+        <translation>XAG</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="54"/>
         <source>XAU</source>
-        <translation type="unfinished"></translation>
+        <translation>XAU</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="55"/>
         <source>ZAR</source>
-        <translation type="unfinished"></translation>
+        <translation>ZAR</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="59"/>
         <source>United Arab Emirates Dirham</source>
-        <translation type="unfinished"></translation>
+        <translation>Дірхам Об’єднаних Арабських Еміратів</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="60"/>
         <source>Argentine Peso</source>
-        <translation type="unfinished"></translation>
+        <translation>Аргентинське песо</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="61"/>
         <source>Australian Dollar</source>
-        <translation type="unfinished"></translation>
+        <translation>Австралійський долар</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="62"/>
         <source>Bitcoin Cash</source>
-        <translation type="unfinished"></translation>
+        <translation>Біткойн Кеш</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="63"/>
         <source>Bangladeshi Taka</source>
-        <translation type="unfinished"></translation>
+        <translation>Бангладешська така</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="64"/>
         <source>Bahraini Dinar</source>
-        <translation type="unfinished"></translation>
+        <translation>Бахрейнський динар</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="65"/>
         <source>Brazilian Real</source>
-        <translation type="unfinished"></translation>
+        <translation>Бразильський реал</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="66"/>
         <source>Bitcoin</source>
-        <translation type="unfinished"></translation>
+        <translation>Біткойн</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="67"/>
         <source>Canadian Dollar</source>
-        <translation type="unfinished"></translation>
+        <translation>Канадський долар</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="68"/>
         <source>Swiss Franc</source>
-        <translation type="unfinished"></translation>
+        <translation>Швейцарський франк</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="69"/>
         <source>Chilean Peso</source>
-        <translation type="unfinished"></translation>
+        <translation>Чилійське песо</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="70"/>
         <source>Chinese Yuan</source>
-        <translation type="unfinished"></translation>
+        <translation>Китайський юань</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="71"/>
         <source>Czech Koruna</source>
-        <translation type="unfinished"></translation>
+        <translation>Чеська крона</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="72"/>
         <source>Danish Krone</source>
-        <translation type="unfinished"></translation>
+        <translation>Данська крона</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="73"/>
         <source>Ethereum</source>
-        <translation type="unfinished"></translation>
+        <translation>Ефіріум</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="74"/>
         <source>Euro</source>
-        <translation type="unfinished"></translation>
+        <translation>Євро</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="75"/>
         <source>British Pound Sterling</source>
-        <translation type="unfinished"></translation>
+        <translation>Британський фунт стерлінгів</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="76"/>
         <source>Georgian Lari</source>
-        <translation type="unfinished"></translation>
+        <translation>Грузинський ларі</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="77"/>
         <source>Hong Kong Dollar</source>
-        <translation type="unfinished"></translation>
+        <translation>Гонконгський долар</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="78"/>
         <source>Hungarian Forint</source>
-        <translation type="unfinished"></translation>
+        <translation>Угорський форинт</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="79"/>
         <source>Indonesian Rupiah</source>
-        <translation type="unfinished"></translation>
+        <translation>Індонезійська рупія</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="80"/>
         <source>Israeli New Shekel</source>
-        <translation type="unfinished"></translation>
+        <translation>Ізраїльський новий шекель</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="81"/>
         <source>Indian Rupee</source>
-        <translation type="unfinished"></translation>
+        <translation>Індійська рупія</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="82"/>
         <source>Japanese Yen</source>
-        <translation type="unfinished"></translation>
+        <translation>Японська ієна</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="83"/>
         <source>South Korean Won</source>
-        <translation type="unfinished"></translation>
+        <translation>Південнокорейський вон</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="84"/>
         <source>Kuwaiti Dinar</source>
-        <translation type="unfinished"></translation>
+        <translation>Кувейтський динар</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="85"/>
         <source>Litecoin</source>
-        <translation type="unfinished"></translation>
+        <translation>Лайткойн</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="86"/>
         <source>Sri Lankan Rupee</source>
-        <translation type="unfinished"></translation>
+        <translation>Шрі-Ланкійська рупія</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="87"/>
         <source>Myanmar Kyat</source>
-        <translation type="unfinished"></translation>
+        <translation>М’янмарський к’ят</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="88"/>
         <source>Mexican Peso</source>
-        <translation type="unfinished"></translation>
+        <translation>Мексиканське песо</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="89"/>
         <source>Malaysian Ringgit</source>
-        <translation type="unfinished"></translation>
+        <translation>Малайзійський ринггіт</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="90"/>
         <source>Nigerian Naira</source>
-        <translation type="unfinished"></translation>
+        <translation>Нігерійська найра</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="91"/>
         <source>Norwegian Krone</source>
-        <translation type="unfinished"></translation>
+        <translation>Норвезька крона</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="92"/>
         <source>New Zealand Dollar</source>
-        <translation type="unfinished"></translation>
+        <translation>Новозеландський долар</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="93"/>
         <source>Philippine Peso</source>
-        <translation type="unfinished"></translation>
+        <translation>Філіппінське песо</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="94"/>
         <source>Pakistani Rupee</source>
-        <translation type="unfinished"></translation>
+        <translation>Пакистанська рупія</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="95"/>
         <source>Polish Zloty</source>
-        <translation type="unfinished"></translation>
+        <translation>Польський злотий</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="96"/>
         <source>Russian Ruble</source>
-        <translation type="unfinished"></translation>
+        <translation>Російський рубль</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="97"/>
         <source>Saudi Riyal</source>
-        <translation type="unfinished"></translation>
+        <translation>Саудівський ріал</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="98"/>
         <source>Swedish Krona</source>
-        <translation type="unfinished"></translation>
+        <translation>Шведська крона</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="99"/>
         <source>Singapore Dollar</source>
-        <translation type="unfinished"></translation>
+        <translation>Сінгапурський долар</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="100"/>
         <source>Thai Baht</source>
-        <translation type="unfinished"></translation>
+        <translation>Тайський бат</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="101"/>
         <source>Turkish Lira</source>
-        <translation type="unfinished"></translation>
+        <translation>Турецька ліра</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="102"/>
         <source>New Taiwan Dollar</source>
-        <translation type="unfinished"></translation>
+        <translation>Новий тайванський долар</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="103"/>
         <source>United States Dollar</source>
-        <translation type="unfinished"></translation>
+        <translation>Долар США</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="104"/>
         <source>Ukrainian Hryvnia</source>
-        <translation type="unfinished"></translation>
+        <translation>Українська гривня</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="105"/>
         <source>Venezuelan Bolívar</source>
-        <translation type="unfinished"></translation>
+        <translation>Венесуельський болівар</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="106"/>
         <source>Vietnamese Dong</source>
-        <translation type="unfinished"></translation>
+        <translation>В’єтнамський донг</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="107"/>
         <source>Silver Ounce</source>
-        <translation type="unfinished"></translation>
+        <translation>Срібна унція</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="108"/>
         <source>Gold Ounce</source>
-        <translation type="unfinished"></translation>
+        <translation>Унція золота</translation>
     </message>
     <message>
         <location filename="../qml/NodoCurrencies.qml" line="109"/>
         <source>South African Rand</source>
-        <translation type="unfinished"></translation>
+        <translation>Південноафриканський ранд</translation>
     </message>
 </context>
 <context>
@@ -1476,24 +1481,26 @@ https://github.com/monero-project/meta/issues/1124</source>
     <message>
         <location filename="../qml/NodoFirstTimeAdminPasswordScreen.qml" line="106"/>
         <source>Language</source>
-        <translation type="unfinished"></translation>
+        <translation>Мова</translation>
     </message>
     <message>
         <location filename="../qml/NodoFirstTimeAdminPasswordScreen.qml" line="148"/>
         <source>Please set your Admin Password. The Admin Password should be at least 8 characters, with uppercase and lowercase letters, number and a special character.
 
 The Admin Password is used to connect to Nodo remotely via SSH. It can be changed later on DEVICE &gt; SYSTEM &gt; ADMIN &amp; SSH.</source>
-        <translation type="unfinished"></translation>
+        <translation>Будь ласка, встановіть пароль адміністратора. Пароль адміністратора повинен містити щонайменше 8 символів, включаючи великі та малі літери, цифри та спеціальний символ.
+
+Пароль адміністратора використовується для віддаленого підключення до Nodo через SSH. Його можна змінити пізніше в меню «DEVICE» &gt; «SYSTEM» &gt; «ADMIN &amp; SSH».</translation>
     </message>
     <message>
         <location filename="../qml/NodoFirstTimeAdminPasswordScreen.qml" line="168"/>
         <source>New Admin Password</source>
-        <translation type="unfinished"></translation>
+        <translation>Новий пароль адміністратора</translation>
     </message>
     <message>
         <location filename="../qml/NodoFirstTimeAdminPasswordScreen.qml" line="206"/>
         <source>Re-enter Admin Password</source>
-        <translation type="unfinished"></translation>
+        <translation>Введіть пароль адміністратора ще раз</translation>
     </message>
 </context>
 <context>
@@ -1501,17 +1508,17 @@ The Admin Password is used to connect to Nodo remotely via SSH. It can be change
     <message>
         <location filename="../qml/NodoFirstTimeBanlistScreen.qml" line="31"/>
         <source>Enable All Banlists</source>
-        <translation type="unfinished"></translation>
+        <translation>Увімкнути всі списки заборонених</translation>
     </message>
     <message>
         <location filename="../qml/NodoFirstTimeBanlistScreen.qml" line="55"/>
         <source>Boog900, gui.xmr.pm, DNS Banlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Boog900, gui.xmr.pm, Список заборонених DNS-адрес</translation>
     </message>
     <message>
         <location filename="../qml/NodoFirstTimeBanlistScreen.qml" line="68"/>
         <source>APPLY</source>
-        <translation type="unfinished"></translation>
+        <translation>ПОДАТИ ЗАЯВКУ</translation>
     </message>
     <message>
         <location filename="../qml/NodoFirstTimeBanlistScreen.qml" line="90"/>
@@ -1519,9 +1526,14 @@ The Admin Password is used to connect to Nodo remotely via SSH. It can be change
 
 Blocking the IP addresses by default is technically possible, but it would set a precedent of blocking IP addresses by a decision making process that is not decentralized. MRL has decided to ask node operators to block these IP addresses voluntarily instead of by default. We recommend enabling all banlists until a more permanent solution can be found.
 
-More info on this issue and FAQs can be found on Monero&apos;s Official Repo:
+More info on this issue and FAQs can be found on Monero's Official Repo:
 https://github.com/monero-project/meta/issues/1124</source>
-        <translation type="unfinished"></translation>
+        <translation>Дослідницька лабораторія Monero (MRL) вирішила рекомендувати всім операторам вузлів Monero активувати список заборонених IP-адрес вузлів, які підозрюються у шпигунстві. Такі вузли можуть знизити рівень конфіденційності користувачів Monero.
+
+Блокування IP-адрес за замовчуванням технічно можливе, але це створило б прецедент блокування IP-адрес у результаті прийняття рішення, яке не є децентралізованим. MRL вирішила попросити операторів вузлів блокувати ці IP-адреси добровільно, а не за замовчуванням. Ми рекомендуємо активувати всі списки заборонених адрес, доки не буде знайдено більш постійне рішення.
+
+Більше інформації щодо цього питання та відповіді на поширені запитання можна знайти в офіційному репозиторії Monero:
+https://github.com/monero-project/meta/issues/1124</translation>
     </message>
 </context>
 <context>
@@ -1531,17 +1543,19 @@ https://github.com/monero-project/meta/issues/1124</source>
         <source>Please set your 6 digit Lock PIN. The Lock PIN is used to unlock the device.
 
 It can be changed later on DEVICE &gt; SYSTEM &gt; PIN SETTINGS.</source>
-        <translation type="unfinished"></translation>
+        <translation>Будь ласка, встановіть 6-значний PIN-код блокування. PIN-код блокування використовується для розблокування пристрою.
+
+Його можна змінити пізніше в меню «ПРИСТРІЙ» &gt; «СИСТЕМА» &gt; «НАЛАШТУВАННЯ PIN-КОДУ».</translation>
     </message>
     <message>
         <location filename="../qml/NodoFirstTimeLockPinScreen.qml" line="86"/>
         <source>New Lock PIN</source>
-        <translation type="unfinished"></translation>
+        <translation>Новий PIN-код блокування</translation>
     </message>
     <message>
         <location filename="../qml/NodoFirstTimeLockPinScreen.qml" line="104"/>
         <source>Re-enter Lock PIN</source>
-        <translation type="unfinished"></translation>
+        <translation>Введіть PIN-код блокування ще раз</translation>
     </message>
 </context>
 <context>
@@ -1549,7 +1563,7 @@ It can be changed later on DEVICE &gt; SYSTEM &gt; PIN SETTINGS.</source>
     <message>
         <location filename="../qml/NodoFirstTimeRebootScreen.qml" line="33"/>
         <source>Nodo will now reboot.</source>
-        <translation type="unfinished"></translation>
+        <translation>Тепер Nodo перезавантажиться.</translation>
     </message>
 </context>
 <context>
@@ -1557,27 +1571,27 @@ It can be changed later on DEVICE &gt; SYSTEM &gt; PIN SETTINGS.</source>
     <message>
         <location filename="../qml/NodoHomeScreen.qml" line="112"/>
         <source>DEVICE</source>
-        <translation type="unfinished"></translation>
+        <translation>ПРИСТРІЙ</translation>
     </message>
     <message>
         <location filename="../qml/NodoHomeScreen.qml" line="127"/>
         <source>NODE</source>
-        <translation type="unfinished"></translation>
+        <translation>NODE</translation>
     </message>
     <message>
         <location filename="../qml/NodoHomeScreen.qml" line="157"/>
         <source>MONEROPAY</source>
-        <translation type="unfinished"></translation>
+        <translation>MONEROPAY</translation>
     </message>
     <message>
         <location filename="../qml/NodoHomeScreen.qml" line="141"/>
         <source>LWS</source>
-        <translation type="unfinished"></translation>
+        <translation>LWS</translation>
     </message>
     <message>
         <location filename="../qml/NodoHomeScreen.qml" line="171"/>
         <source>NEWS</source>
-        <translation type="unfinished"></translation>
+        <translation>НОВИНИ</translation>
     </message>
 </context>
 <context>
@@ -1585,37 +1599,37 @@ It can be changed later on DEVICE &gt; SYSTEM &gt; PIN SETTINGS.</source>
     <message>
         <location filename="../qml/NodoLockPinControlScreen.qml" line="70"/>
         <source>Lock with PIN</source>
-        <translation type="unfinished"></translation>
+        <translation>Блокування за допомогою PIN-коду</translation>
     </message>
     <message>
         <location filename="../qml/NodoLockPinControlScreen.qml" line="113"/>
         <source>Lock after</source>
-        <translation type="unfinished"></translation>
+        <translation>Заблокувати після</translation>
     </message>
     <message>
         <location filename="../qml/NodoLockPinControlScreen.qml" line="142"/>
         <source>minutes</source>
-        <translation type="unfinished"></translation>
+        <translation>хвилини</translation>
     </message>
     <message>
         <location filename="../qml/NodoLockPinControlScreen.qml" line="164"/>
         <source>CHANGE LOCK PIN</source>
-        <translation type="unfinished"></translation>
+        <translation>ЗМІНИТИ ПІН-КОД ЗАМОКА</translation>
     </message>
     <message>
         <location filename="../qml/NodoLockPinControlScreen.qml" line="175"/>
         <source>New Lock PIN</source>
-        <translation type="unfinished"></translation>
+        <translation>Новий PIN-код замка</translation>
     </message>
     <message>
         <location filename="../qml/NodoLockPinControlScreen.qml" line="214"/>
         <source>APPLY</source>
-        <translation type="unfinished"></translation>
+        <translation>ПОДАТИ ЗАЯВКУ</translation>
     </message>
     <message>
         <location filename="../qml/NodoLockPinControlScreen.qml" line="196"/>
         <source>Re-enter New PIN</source>
-        <translation type="unfinished"></translation>
+        <translation>Введіть новий PIN-код ще раз</translation>
     </message>
 </context>
 <context>
@@ -1623,12 +1637,12 @@ It can be changed later on DEVICE &gt; SYSTEM &gt; PIN SETTINGS.</source>
     <message>
         <location filename="../qml/NodoLockScreen.qml" line="73"/>
         <source>Incorrect PIN</source>
-        <translation type="unfinished"></translation>
+        <translation>Неправильний PIN-код</translation>
     </message>
     <message>
         <location filename="../qml/NodoLockScreen.qml" line="27"/>
         <source>Enter PIN</source>
-        <translation type="unfinished"></translation>
+        <translation>Введіть PIN-код</translation>
     </message>
 </context>
 <context>
@@ -1636,297 +1650,297 @@ It can be changed later on DEVICE &gt; SYSTEM &gt; PIN SETTINGS.</source>
     <message>
         <location filename="../qml/NodoMessages.qml" line="51"/>
         <source>CLOSE</source>
-        <translation type="unfinished"></translation>
+        <translation>ЗАКРИТИ</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="52"/>
         <source>CANCEL</source>
-        <translation type="unfinished"></translation>
+        <translation>СКАСУВАТИ</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="53"/>
         <source>NEW CONNECTION</source>
-        <translation type="unfinished"></translation>
+        <translation>НОВЕ ПІДКЛЮЧЕННЯ</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="54"/>
         <location filename="../qml/NodoMessages.qml" line="59"/>
         <source>CONNECT</source>
-        <translation type="unfinished"></translation>
+        <translation>ПІДКЛЮЧИТИСЯ</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="55"/>
         <location filename="../qml/NodoMessages.qml" line="60"/>
         <source>CONNECTING</source>
-        <translation type="unfinished"></translation>
+        <translation>ПІДКЛЮЧЕННЯ</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="56"/>
         <source>APPLY</source>
-        <translation type="unfinished"></translation>
+        <translation>ПОДАТИ ЗАЯВКУ</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="57"/>
         <source>APPLY PORT</source>
-        <translation type="unfinished"></translation>
+        <translation>ЗАСТОСУВАТИ ПОРТ</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="58"/>
         <source>FORGET</source>
-        <translation type="unfinished"></translation>
+        <translation>ЗАБУТИ</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="61"/>
         <source>DISCONNECT</source>
-        <translation type="unfinished"></translation>
+        <translation>ВІДКЛЮЧИТИ</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="62"/>
         <source>DISCONNECTING</source>
-        <translation type="unfinished"></translation>
+        <translation>ВІДКЛЮЧЕННЯ</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="63"/>
         <source>Ethernet</source>
-        <translation type="unfinished"></translation>
+        <translation>Ethernet</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="64"/>
         <source>Wi-Fi</source>
-        <translation type="unfinished"></translation>
+        <translation>Wi-Fi</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="65"/>
         <source>Ethernet Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Назва мережі Ethernet</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="66"/>
         <source>SSID</source>
-        <translation type="unfinished"></translation>
+        <translation>SSID</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="67"/>
         <source>DHCP</source>
-        <translation type="unfinished"></translation>
+        <translation>DHCP</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="68"/>
         <location filename="../qml/NodoMessages.qml" line="82"/>
         <source>Address</source>
-        <translation type="unfinished"></translation>
+        <translation>Адреса</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="69"/>
         <source>Subnet Mask</source>
-        <translation type="unfinished"></translation>
+        <translation>Маска підмережі</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="70"/>
         <source>Router</source>
-        <translation type="unfinished"></translation>
+        <translation>Маршрутизатор</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="71"/>
         <source>DNS</source>
-        <translation type="unfinished"></translation>
+        <translation>DNS</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="72"/>
         <source>Device Speed</source>
-        <translation type="unfinished"></translation>
+        <translation>Швидкість пристрою</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="73"/>
         <source>Signal Strength</source>
-        <translation type="unfinished"></translation>
+        <translation>Рівень сигналу</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="74"/>
         <source>Security Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Тип захисту</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="75"/>
         <source>Frequency</source>
-        <translation type="unfinished"></translation>
+        <translation>Частота</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="76"/>
         <source>Password</source>
-        <translation type="unfinished"></translation>
+        <translation>Пароль</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="77"/>
         <source>Current Network</source>
-        <translation type="unfinished"></translation>
+        <translation>Поточна мережа</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="78"/>
         <source>Available Networks</source>
-        <translation type="unfinished"></translation>
+        <translation>Доступні мережі</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="79"/>
         <source>ADVANCED</source>
-        <translation type="unfinished"></translation>
+        <translation>ПРОСУНУТИЙ РІВЕНЬ</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="81"/>
         <location filename="../qml/NodoMessages.qml" line="120"/>
         <source>Ethernet cable disconnected!</source>
-        <translation type="unfinished"></translation>
+        <translation>Кабель Ethernet від'єднано!</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="84"/>
         <source>Loading</source>
-        <translation type="unfinished"></translation>
+        <translation>Завантаження</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="85"/>
         <source>New PIN is set</source>
-        <translation type="unfinished"></translation>
+        <translation>Новий PIN-код встановлено</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="86"/>
         <source>PIN codes do not match.</source>
-        <translation type="unfinished"></translation>
+        <translation>PIN-коди не збігаються.</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="87"/>
         <source>Failed to change password</source>
-        <translation type="unfinished"></translation>
+        <translation>Не вдалося змінити пароль</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="88"/>
         <source>Password changed successfully</source>
-        <translation type="unfinished"></translation>
+        <translation>Пароль успішно змінено</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="89"/>
-        <source>Input field can&apos;t be empty!</source>
-        <translation type="unfinished"></translation>
+        <source>Input field can't be empty!</source>
+        <translation>Поле введення не може бути порожнім!</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="90"/>
         <source>ACCEPT</source>
-        <translation type="unfinished"></translation>
+        <translation>ПРИЙНЯТИ</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="93"/>
         <source>Old password is incorrect!</source>
-        <translation type="unfinished"></translation>
+        <translation>Старий пароль неправильний!</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="122"/>
         <source>New PIN is set.</source>
-        <translation type="unfinished"></translation>
+        <translation>Новий PIN-код встановлено.</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="123"/>
         <source>Password does not meet requirements.</source>
-        <translation type="unfinished"></translation>
+        <translation>Пароль не відповідає вимогам.</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="151"/>
         <source>Starting</source>
-        <translation type="unfinished"></translation>
+        <translation>Початок</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="152"/>
         <source>Stopping</source>
-        <translation type="unfinished"></translation>
+        <translation>Зупинка</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="80"/>
         <location filename="../qml/NodoMessages.qml" line="119"/>
         <source>No network device found!</source>
-        <translation type="unfinished"></translation>
+        <translation>Мережевих пристроїв не знайдено!</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="83"/>
         <source>Port</source>
-        <translation type="unfinished"></translation>
+        <translation>Порт</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="91"/>
         <source>Blockchain storage not found!</source>
-        <translation type="unfinished"></translation>
+        <translation>Не знайдено сховище на блокчейні!</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="92"/>
         <source>New blockchain storage found!</source>
-        <translation type="unfinished"></translation>
+        <translation>Виявлено нове сховище на основі блокчейну!</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="113"/>
         <source>No Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Помилок немає</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="114"/>
         <source>Restarting tor service failed!</source>
-        <translation type="unfinished"></translation>
+        <translation>Не вдалося перезапустити службу Tor!</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="115"/>
         <source>Restarting monerod service failed!</source>
-        <translation type="unfinished"></translation>
+        <translation>Не вдалося перезапустити службу monerod!</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="116"/>
         <source>Connection to Network Manager service failed!</source>
-        <translation type="unfinished"></translation>
+        <translation>Не вдалося встановити з'єднання зі службою Network Manager!</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="117"/>
         <source>Connection to Nodonm service failed!</source>
-        <translation type="unfinished"></translation>
+        <translation>Не вдалося встановити з'єднання зі службою Nodonm!</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="118"/>
-        <source>IP couldn&apos;t be read!</source>
-        <translation type="unfinished"></translation>
+        <source>IP couldn't be read!</source>
+        <translation>Не вдалося зчитати IP-адресу!</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="121"/>
         <source>Something is wrong!</source>
-        <translation type="unfinished"></translation>
+        <translation>Щось не так!</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="124"/>
         <source>Passwords do not match.</source>
-        <translation type="unfinished"></translation>
+        <translation>Паролі не збігаються.</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="135"/>
         <source>Waiting</source>
-        <translation type="unfinished"></translation>
+        <translation>Очікування</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="136"/>
         <source>Connected</source>
-        <translation type="unfinished"></translation>
+        <translation>Підключено</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="137"/>
         <source>No Internet</source>
-        <translation type="unfinished"></translation>
+        <translation>Немає Інтернету</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="138"/>
         <source>Disconnected</source>
-        <translation type="unfinished"></translation>
+        <translation>Відключено</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="149"/>
         <source>Active</source>
-        <translation type="unfinished"></translation>
+        <translation>Активний</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="150"/>
         <source>Inactive</source>
-        <translation type="unfinished"></translation>
+        <translation>Неактивний</translation>
     </message>
 </context>
 <context>
@@ -1934,7 +1948,7 @@ It can be changed later on DEVICE &gt; SYSTEM &gt; PIN SETTINGS.</source>
     <message>
         <location filename="../qml/NodoPopup.qml" line="17"/>
         <source>Are you sure?</source>
-        <translation type="unfinished"></translation>
+        <translation>Ви впевнені?</translation>
     </message>
 </context>
 <context>
@@ -1942,149 +1956,149 @@ It can be changed later on DEVICE &gt; SYSTEM &gt; PIN SETTINGS.</source>
     <message>
         <location filename="../qml/NodoStatusScreen.qml" line="236"/>
         <source>Synchronized</source>
-        <translation type="unfinished"></translation>
+        <translation>Синхронізовано</translation>
     </message>
     <message>
         <location filename="../qml/NodoStatusScreen.qml" line="236"/>
         <source>Synchronizing</source>
-        <translation type="unfinished"></translation>
+        <translation>Синхронізація</translation>
     </message>
     <message>
         <location filename="../qml/NodoStatusScreen.qml" line="96"/>
         <location filename="../qml/NodoStatusScreen.qml" line="320"/>
         <source>Update available</source>
-        <translation type="unfinished"></translation>
+        <translation>Доступне оновлення</translation>
     </message>
     <message>
         <location filename="../qml/NodoStatusScreen.qml" line="247"/>
         <source>Block Height</source>
-        <translation type="unfinished"></translation>
+        <translation>Висота блоку</translation>
     </message>
     <message>
         <location filename="../qml/NodoStatusScreen.qml" line="259"/>
         <source>Version</source>
-        <translation type="unfinished"></translation>
+        <translation>Версія</translation>
     </message>
     <message>
         <location filename="../qml/NodoStatusScreen.qml" line="271"/>
         <source>Outgoing Peers</source>
-        <translation type="unfinished"></translation>
+        <translation>Вихідні однорангові вузли</translation>
     </message>
     <message>
         <location filename="../qml/NodoStatusScreen.qml" line="283"/>
         <source>Incoming Peers</source>
-        <translation type="unfinished"></translation>
+        <translation>Нові колеги</translation>
     </message>
     <message>
         <location filename="../qml/NodoStatusScreen.qml" line="319"/>
         <source>Update</source>
-        <translation type="unfinished"></translation>
+        <translation>Оновлення</translation>
     </message>
     <message>
         <location filename="../qml/NodoStatusScreen.qml" line="96"/>
         <location filename="../qml/NodoStatusScreen.qml" line="320"/>
         <source>Up to date</source>
-        <translation type="unfinished"></translation>
+        <translation>Актуальна інформація</translation>
     </message>
     <message>
         <location filename="../qml/NodoStatusScreen.qml" line="102"/>
         <source>Disconnected</source>
-        <translation type="unfinished"></translation>
+        <translation>Відключено</translation>
     </message>
     <message>
         <location filename="../qml/NodoStatusScreen.qml" line="107"/>
         <source>Synchronized (100%)</source>
-        <translation type="unfinished"></translation>
+        <translation>Синхронізовано (100 %)</translation>
     </message>
     <message>
         <location filename="../qml/NodoStatusScreen.qml" line="111"/>
         <source>Synchronizing (</source>
-        <translation type="unfinished"></translation>
+        <translation>Синхронізація (</translation>
     </message>
     <message>
         <location filename="../qml/NodoStatusScreen.qml" line="117"/>
         <source>Not Synchronizing</source>
-        <translation type="unfinished"></translation>
+        <translation>Не синхронізується</translation>
     </message>
     <message>
         <location filename="../qml/NodoStatusScreen.qml" line="121"/>
         <source>Waiting</source>
-        <translation type="unfinished"></translation>
+        <translation>Очікування</translation>
     </message>
     <message>
         <location filename="../qml/NodoStatusScreen.qml" line="219"/>
         <source>MONERO DAEMON</source>
-        <translation type="unfinished"></translation>
+        <translation>MONERO DAEMON</translation>
     </message>
     <message>
         <location filename="../qml/NodoStatusScreen.qml" line="331"/>
         <source>Network</source>
-        <translation type="unfinished"></translation>
+        <translation>Мережа</translation>
     </message>
     <message>
         <location filename="../qml/NodoStatusScreen.qml" line="361"/>
         <source>SERVICES</source>
-        <translation type="unfinished"></translation>
+        <translation>ПОСЛУГИ</translation>
     </message>
     <message>
         <location filename="../qml/NodoStatusScreen.qml" line="377"/>
         <source>Daemon</source>
-        <translation type="unfinished"></translation>
+        <translation>Демон</translation>
     </message>
     <message>
         <location filename="../qml/NodoStatusScreen.qml" line="389"/>
         <source>Tor</source>
-        <translation type="unfinished"></translation>
+        <translation>Tor</translation>
     </message>
     <message>
         <location filename="../qml/NodoStatusScreen.qml" line="401"/>
         <source>I2P</source>
-        <translation type="unfinished"></translation>
+        <translation>I2P</translation>
     </message>
     <message>
         <location filename="../qml/NodoStatusScreen.qml" line="413"/>
         <source>LWS</source>
-        <translation type="unfinished"></translation>
+        <translation>LWS</translation>
     </message>
     <message>
         <location filename="../qml/NodoStatusScreen.qml" line="456"/>
         <source>SYSTEM</source>
-        <translation type="unfinished"></translation>
+        <translation>СИСТЕМА</translation>
     </message>
     <message>
         <location filename="../qml/NodoStatusScreen.qml" line="508"/>
         <source>Blockchain</source>
-        <translation type="unfinished"></translation>
+        <translation>Блокчейн</translation>
     </message>
     <message>
         <location filename="../qml/NodoStatusScreen.qml" line="520"/>
         <source>Storage</source>
-        <translation type="unfinished"></translation>
+        <translation>Зберігання</translation>
     </message>
     <message>
         <location filename="../qml/NodoStatusScreen.qml" line="532"/>
         <source>Uptime</source>
-        <translation type="unfinished"></translation>
+        <translation>Час безвідмовної роботи</translation>
     </message>
     <message>
         <location filename="../qml/NodoStatusScreen.qml" line="425"/>
         <source>MoneroPay</source>
-        <translation type="unfinished"></translation>
+        <translation>MoneroPay</translation>
     </message>
     <message>
         <location filename="../qml/NodoStatusScreen.qml" line="472"/>
         <source>CPU</source>
-        <translation type="unfinished"></translation>
+        <translation>Процесор</translation>
     </message>
     <message>
         <location filename="../qml/NodoStatusScreen.qml" line="484"/>
         <source>Temperature</source>
-        <translation type="unfinished"></translation>
+        <translation>Температура</translation>
     </message>
     <message>
         <location filename="../qml/NodoStatusScreen.qml" line="496"/>
         <source>RAM</source>
-        <translation type="unfinished"></translation>
+        <translation>RAM</translation>
     </message>
 </context>
 <context>
@@ -2093,7 +2107,7 @@ It can be changed later on DEVICE &gt; SYSTEM &gt; PIN SETTINGS.</source>
         <location filename="../src/NodoSystemControl.cpp" line="332"/>
         <location filename="../src/NodoSystemControl.cpp" line="337"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Помилка</translation>
     </message>
 </context>
 <context>
@@ -2101,207 +2115,207 @@ It can be changed later on DEVICE &gt; SYSTEM &gt; PIN SETTINGS.</source>
     <message>
         <location filename="../qml/NodoTimezones.qml" line="5"/>
         <source>(UTC +00:00) Coordinated Universal Time (UTC)</source>
-        <translation type="unfinished"></translation>
+        <translation>(UTC +00:00) Універсальний координований час (UTC)</translation>
     </message>
     <message>
         <location filename="../qml/NodoTimezones.qml" line="6"/>
         <source>(UTC +00:00) Greenwich Mean Time (GMT)</source>
-        <translation type="unfinished"></translation>
+        <translation>(UTC +00:00) Гринвіцький середній час (GMT)</translation>
     </message>
     <message>
         <location filename="../qml/NodoTimezones.qml" line="7"/>
         <source>(UTC +01:00) Central European Time (CET)</source>
-        <translation type="unfinished"></translation>
+        <translation>(UTC +01:00) Центральноєвропейський час (CET)</translation>
     </message>
     <message>
         <location filename="../qml/NodoTimezones.qml" line="8"/>
         <source>(UTC +02:00) Eastern European Time (EET)</source>
-        <translation type="unfinished"></translation>
+        <translation>(UTC +02:00) Східноєвропейський час (EET)</translation>
     </message>
     <message>
         <location filename="../qml/NodoTimezones.qml" line="9"/>
         <source>(UTC +03:00) Moscow Standard Time (MSK)</source>
-        <translation type="unfinished"></translation>
+        <translation>(UTC +03:00) Московський стандартний час (MSK)</translation>
     </message>
     <message>
         <location filename="../qml/NodoTimezones.qml" line="10"/>
         <source>(UTC +03:30) Iran Standard Time (IRST)</source>
-        <translation type="unfinished"></translation>
+        <translation>(UTC +03:30) Стандартний час Ірану (IRST)</translation>
     </message>
     <message>
         <location filename="../qml/NodoTimezones.qml" line="11"/>
         <source>(UTC +04:00) Gulf Standard Time (GST)</source>
-        <translation type="unfinished"></translation>
+        <translation>(UTC +04:00) Стандартний час Перської затоки (GST)</translation>
     </message>
     <message>
         <location filename="../qml/NodoTimezones.qml" line="12"/>
         <source>(UTC +04:30) Afghanistan Time (AFT)</source>
-        <translation type="unfinished"></translation>
+        <translation>(UTC +04:30) Афганський час (AFT)</translation>
     </message>
     <message>
         <location filename="../qml/NodoTimezones.qml" line="13"/>
         <source>(UTC +05:00) Pakistan Standard Time (PKT)</source>
-        <translation type="unfinished"></translation>
+        <translation>(UTC +05:00) Стандартний час Пакистану (PKT)</translation>
     </message>
     <message>
         <location filename="../qml/NodoTimezones.qml" line="14"/>
         <source>(UTC +05:30) Indian Standard Time (IST)</source>
-        <translation type="unfinished"></translation>
+        <translation>(UTC +05:30) Індійський стандартний час (IST)</translation>
     </message>
     <message>
         <location filename="../qml/NodoTimezones.qml" line="15"/>
         <source>(UTC +05:45) Nepal Time (NPT)</source>
-        <translation type="unfinished"></translation>
+        <translation>(UTC +05:45) Непальський час (NPT)</translation>
     </message>
     <message>
         <location filename="../qml/NodoTimezones.qml" line="16"/>
         <source>(UTC +06:00) Bangladesh Standard Time (BST)</source>
-        <translation type="unfinished"></translation>
+        <translation>(UTC +06:00) Стандартний час Бангладеш (BST)</translation>
     </message>
     <message>
         <location filename="../qml/NodoTimezones.qml" line="17"/>
         <source>(UTC +06:30) Myanmar Time (MMT)</source>
-        <translation type="unfinished"></translation>
+        <translation>(UTC +06:30) Час М’янми (MMT)</translation>
     </message>
     <message>
         <location filename="../qml/NodoTimezones.qml" line="18"/>
         <source>(UTC +07:00) Indochina Time (ICT)</source>
-        <translation type="unfinished"></translation>
+        <translation>(UTC +07:00) Індокитайський час (ICT)</translation>
     </message>
     <message>
         <location filename="../qml/NodoTimezones.qml" line="19"/>
         <source>(UTC +08:00) China Standard Time (CST)</source>
-        <translation type="unfinished"></translation>
+        <translation>(UTC +08:00) Китайський стандартний час (CST)</translation>
     </message>
     <message>
         <location filename="../qml/NodoTimezones.qml" line="20"/>
         <source>(UTC +08:45) Australian Central Western Standard Time (ACWST)</source>
-        <translation type="unfinished"></translation>
+        <translation>(UTC +08:45) Австралійський центрально-західний стандартний час (ACWST)</translation>
     </message>
     <message>
         <location filename="../qml/NodoTimezones.qml" line="21"/>
         <source>(UTC +09:00) Japan Standard Time (JST)</source>
-        <translation type="unfinished"></translation>
+        <translation>(UTC +09:00) Стандартний час Японії (JST)</translation>
     </message>
     <message>
         <location filename="../qml/NodoTimezones.qml" line="22"/>
         <source>(UTC +09:30) Australian Central Standard Time (ACST)</source>
-        <translation type="unfinished"></translation>
+        <translation>(UTC +09:30) Австралійський центральний стандартний час (ACST)</translation>
     </message>
     <message>
         <location filename="../qml/NodoTimezones.qml" line="23"/>
         <source>(UTC +10:00) Australian Eastern Standard Time (AEST)</source>
-        <translation type="unfinished"></translation>
+        <translation>(UTC +10:00) Східноавстралійський стандартний час (AEST)</translation>
     </message>
     <message>
         <location filename="../qml/NodoTimezones.qml" line="24"/>
         <source>(UTC +10:30) Lord Howe Standard Time (LHST)</source>
-        <translation type="unfinished"></translation>
+        <translation>(UTC +10:30) Стандартний час острова Лорд-Хау (LHST)</translation>
     </message>
     <message>
         <location filename="../qml/NodoTimezones.qml" line="25"/>
         <source>(UTC +11:00) Solomon Islands Time (SBT)</source>
-        <translation type="unfinished"></translation>
+        <translation>(UTC +11:00) Час Соломонових островів (SBT)</translation>
     </message>
     <message>
         <location filename="../qml/NodoTimezones.qml" line="26"/>
         <source>(UTC +11:30) Norfolk Time (NFT)</source>
-        <translation type="unfinished"></translation>
+        <translation>(UTC +11:30) Час Норфолка (NFT)</translation>
     </message>
     <message>
         <location filename="../qml/NodoTimezones.qml" line="27"/>
         <source>(UTC +12:00) New Zealand Standard Time (NZST)</source>
-        <translation type="unfinished"></translation>
+        <translation>(UTC +12:00) Стандартний час Нової Зеландії (NZST)</translation>
     </message>
     <message>
         <location filename="../qml/NodoTimezones.qml" line="28"/>
         <source>(UTC +12:45) Chatham Standard Time (CHAST)</source>
-        <translation type="unfinished"></translation>
+        <translation>(UTC +12:45) Стандартний час Чатема (CHAST)</translation>
     </message>
     <message>
         <location filename="../qml/NodoTimezones.qml" line="29"/>
         <source>(UTC +13:00) Tonga Time (TOT)</source>
-        <translation type="unfinished"></translation>
+        <translation>(UTC +13:00) Час Тонги (TOT)</translation>
     </message>
     <message>
         <location filename="../qml/NodoTimezones.qml" line="30"/>
         <source>(UTC +14:00) Line Islands Time (LINT)</source>
-        <translation type="unfinished"></translation>
+        <translation>(UTC +14:00) Час на Лінійних островах (LINT)</translation>
     </message>
     <message>
         <location filename="../qml/NodoTimezones.qml" line="31"/>
         <source>(UTC -01:00) Azores Time (AZOT)</source>
-        <translation type="unfinished"></translation>
+        <translation>(UTC -01:00) Азорський час (AZOT)</translation>
     </message>
     <message>
         <location filename="../qml/NodoTimezones.qml" line="32"/>
         <source>(UTC -02:00) Fernando de Noronha Time (FNT)</source>
-        <translation type="unfinished"></translation>
+        <translation>(UTC -02:00) Час у Фернанду-де-Нороньї (FNT)</translation>
     </message>
     <message>
         <location filename="../qml/NodoTimezones.qml" line="33"/>
         <source>(UTC -03:00) Amazon Standard Time (AMT)</source>
-        <translation type="unfinished"></translation>
+        <translation>(UTC -03:00) Стандартний час Амазонії (AMT)</translation>
     </message>
     <message>
         <location filename="../qml/NodoTimezones.qml" line="34"/>
         <source>(UTC -03:30) Newfoundland Standard Time (NST)</source>
-        <translation type="unfinished"></translation>
+        <translation>(UTC -03:30) Стандартний час Ньюфаундленду (NST)</translation>
     </message>
     <message>
         <location filename="../qml/NodoTimezones.qml" line="35"/>
         <source>(UTC -04:00) Atlantic Standard Time (AST)</source>
-        <translation type="unfinished"></translation>
+        <translation>(UTC -04:00) Атлантичний стандартний час (AST)</translation>
     </message>
     <message>
         <location filename="../qml/NodoTimezones.qml" line="36"/>
         <source>(UTC -04:30) Venezuelan Standard Time (VET)</source>
-        <translation type="unfinished"></translation>
+        <translation>(UTC -04:30) Венесуельський стандартний час (VET)</translation>
     </message>
     <message>
         <location filename="../qml/NodoTimezones.qml" line="37"/>
         <source>(UTC -05:00) Eastern Standard Time (EST)</source>
-        <translation type="unfinished"></translation>
+        <translation>(UTC -05:00) Східний стандартний час (EST)</translation>
     </message>
     <message>
         <location filename="../qml/NodoTimezones.qml" line="38"/>
         <source>(UTC -06:00) Central Standard Time (CST)</source>
-        <translation type="unfinished"></translation>
+        <translation>(UTC -06:00) Центральний стандартний час (CST)</translation>
     </message>
     <message>
         <location filename="../qml/NodoTimezones.qml" line="39"/>
         <source>(UTC -07:00) Mountain Standard Time (MST)</source>
-        <translation type="unfinished"></translation>
+        <translation>(UTC -07:00) Гірський стандартний час (MST)</translation>
     </message>
     <message>
         <location filename="../qml/NodoTimezones.qml" line="40"/>
         <source>(UTC -08:00) Pacific Standard Time (PST)</source>
-        <translation type="unfinished"></translation>
+        <translation>(UTC -08:00) Тихоокеанський стандартний час (PST)</translation>
     </message>
     <message>
         <location filename="../qml/NodoTimezones.qml" line="41"/>
         <source>(UTC -09:00) Alaska Standard Time (AKST)</source>
-        <translation type="unfinished"></translation>
+        <translation>(UTC -09:00) Стандартний час Аляски (AKST)</translation>
     </message>
     <message>
         <location filename="../qml/NodoTimezones.qml" line="42"/>
         <source>(UTC -10:00) Hawaii-Aleutian Standard Time (HAST)</source>
-        <translation type="unfinished"></translation>
+        <translation>(UTC -10:00) Гавайсько-алеутський стандартний час (HAST)</translation>
     </message>
     <message>
         <location filename="../qml/NodoTimezones.qml" line="43"/>
         <source>(UTC -11:00) Samoa Standard Time (SST)</source>
-        <translation type="unfinished"></translation>
+        <translation>(UTC -11:00) Стандартний час Самоа (SST)</translation>
     </message>
     <message>
         <location filename="../qml/NodoTimezones.qml" line="44"/>
         <source>(UTC -12:00) Baker Island Time (BIT)</source>
-        <translation type="unfinished"></translation>
+        <translation>(UTC -12:00) Час острова Бейкер (BIT)</translation>
     </message>
     <message>
         <location filename="../qml/NodoTimezones.qml" line="45"/>
         <source>(UTC -13:00) Niue Time (NUT)</source>
-        <translation type="unfinished"></translation>
+        <translation>(UTC -13:00) Час Ніуе (NUT)</translation>
     </message>
 </context>
 <context>
@@ -2309,13 +2323,14 @@ It can be changed later on DEVICE &gt; SYSTEM &gt; PIN SETTINGS.</source>
     <message>
         <location filename="../qml/main.qml" line="53"/>
         <source>NodoUI</source>
-        <translation type="unfinished"></translation>
+        <translation>NodoUI</translation>
     </message>
     <message>
         <location filename="../qml/main.qml" line="127"/>
         <source>Shutdown in 5 seconds.
 Release to Cancel.</source>
-        <translation type="unfinished"></translation>
+        <translation>Вимкнення через 5 секунд.
+Відпустіть, щоб скасувати.</translation>
     </message>
 </context>
 </TS>

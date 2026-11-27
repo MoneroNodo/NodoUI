@@ -45,19 +45,19 @@
     <message>
         <location filename="../qml/DeviceDisplayScreen.qml" line="105"/>
         <source>Flip Display</source>
-        <translation type="unfinished"></translation>
+        <translation>Flip-display</translation>
     </message>
     <message>
         <location filename="../qml/DeviceDisplayScreen.qml" line="175"/>
         <source>Sync Dot</source>
-        <translation type="unfinished"></translation>
+        <translation>Sync Dot</translation>
     </message>
     <message>
         <location filename="../qml/DeviceDisplayScreen.qml" line="224"/>
         <location filename="../qml/DeviceDisplayScreen.qml" line="244"/>
         <location filename="../qml/DeviceDisplayScreen.qml" line="527"/>
         <source>News</source>
-        <translation type="unfinished"></translation>
+        <translation>Nieuws</translation>
     </message>
     <message>
         <location filename="../qml/DeviceDisplayScreen.qml" line="224"/>
@@ -66,7 +66,7 @@
         <location filename="../qml/DeviceDisplayScreen.qml" line="249"/>
         <location filename="../qml/DeviceDisplayScreen.qml" line="445"/>
         <source>Price Ticker</source>
-        <translation type="unfinished"></translation>
+        <translation>Prijsticker</translation>
     </message>
     <message>
         <location filename="../qml/DeviceDisplayScreen.qml" line="224"/>
@@ -74,7 +74,7 @@
         <location filename="../qml/DeviceDisplayScreen.qml" line="244"/>
         <location filename="../qml/DeviceDisplayScreen.qml" line="249"/>
         <source>Analog Clock Classic</source>
-        <translation type="unfinished"></translation>
+        <translation>Analoge klok Classic</translation>
     </message>
     <message>
         <location filename="../qml/DeviceDisplayScreen.qml" line="224"/>
@@ -82,7 +82,7 @@
         <location filename="../qml/DeviceDisplayScreen.qml" line="244"/>
         <location filename="../qml/DeviceDisplayScreen.qml" line="249"/>
         <source>Analog Clock Modern</source>
-        <translation type="unfinished"></translation>
+        <translation>Moderne analoge klok</translation>
     </message>
     <message>
         <location filename="../qml/DeviceDisplayScreen.qml" line="224"/>
@@ -90,7 +90,7 @@
         <location filename="../qml/DeviceDisplayScreen.qml" line="244"/>
         <location filename="../qml/DeviceDisplayScreen.qml" line="249"/>
         <source>Display Off</source>
-        <translation type="unfinished"></translation>
+        <translation>Scherm uit</translation>
     </message>
     <message>
         <location filename="../qml/DeviceDisplayScreen.qml" line="224"/>
@@ -98,17 +98,17 @@
         <location filename="../qml/DeviceDisplayScreen.qml" line="244"/>
         <location filename="../qml/DeviceDisplayScreen.qml" line="249"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>Geen</translation>
     </message>
     <message>
         <location filename="../qml/DeviceDisplayScreen.qml" line="270"/>
         <source>Start after</source>
-        <translation type="unfinished"></translation>
+        <translation>Begin na</translation>
     </message>
     <message>
         <location filename="../qml/DeviceDisplayScreen.qml" line="289"/>
         <source>minutes</source>
-        <translation type="unfinished">minuten</translation>
+        <translation>notulen</translation>
     </message>
     <message>
         <location filename="../qml/DeviceDisplayScreen.qml" line="315"/>
@@ -118,12 +118,12 @@
     <message>
         <location filename="../qml/DeviceDisplayScreen.qml" line="347"/>
         <source>Keyboard</source>
-        <translation type="unfinished"></translation>
+        <translation>Toetsenbord</translation>
     </message>
     <message>
         <location filename="../qml/DeviceDisplayScreen.qml" line="381"/>
         <source>24h Time</source>
-        <translation type="unfinished"></translation>
+        <translation>24-uursnotatie</translation>
     </message>
     <message>
         <location filename="../qml/DeviceDisplayScreen.qml" line="411"/>
@@ -138,7 +138,7 @@
     <message>
         <location filename="../qml/DeviceDisplayScreen.qml" line="548"/>
         <source>MANAGE</source>
-        <translation type="unfinished"></translation>
+        <translation>BEHEREN</translation>
     </message>
     <message>
         <source>Keyboard Layout</source>
@@ -165,22 +165,22 @@
     <message>
         <location filename="../qml/DeviceLogsScreen.qml" line="28"/>
         <source>MONERO</source>
-        <translation type="unfinished"></translation>
+        <translation>MONERO</translation>
     </message>
     <message>
         <location filename="../qml/DeviceLogsScreen.qml" line="41"/>
         <source>NODOUI</source>
-        <translation type="unfinished"></translation>
+        <translation>NODOUI</translation>
     </message>
     <message>
         <location filename="../qml/DeviceLogsScreen.qml" line="55"/>
         <source>LWS</source>
-        <translation type="unfinished"></translation>
+        <translation>LWS</translation>
     </message>
     <message>
         <location filename="../qml/DeviceLogsScreen.qml" line="67"/>
         <source>KERNEL</source>
-        <translation type="unfinished"></translation>
+        <translation>KERNEL</translation>
     </message>
 </context>
 <context>
@@ -228,7 +228,7 @@
     <message>
         <location filename="../qml/DevicePinScreen.qml" line="29"/>
         <source>PIN SETTINGS</source>
-        <translation type="unfinished"></translation>
+        <translation>PIN-INSTELLINGEN</translation>
     </message>
 </context>
 <context>
@@ -246,12 +246,12 @@
     <message>
         <location filename="../qml/DeviceSSHScreen.qml" line="168"/>
         <source>CHANGE ADMIN PASSWORD</source>
-        <translation type="unfinished"></translation>
+        <translation>BEHEERDERSWACHTWOORD WIJZIGEN</translation>
     </message>
     <message>
         <location filename="../qml/DeviceSSHScreen.qml" line="291"/>
         <source>Confirm with PIN to change the password</source>
-        <translation type="unfinished"></translation>
+        <translation>Bevestig met je pincode om het wachtwoord te wijzigen</translation>
     </message>
     <message>
         <source>Old Password</source>
@@ -277,12 +277,12 @@
     <message>
         <location filename="../qml/DeviceSystemScreen.qml" line="49"/>
         <source>Change PIN and toggle device lock using PIN</source>
-        <translation type="unfinished"></translation>
+        <translation>PIN wijzigen en de apparaatvergrendeling met de PIN in- of uitschakelen</translation>
     </message>
     <message>
         <location filename="../qml/DeviceSystemScreen.qml" line="77"/>
         <source>Change Admin Password and toggle SSH for remote access</source>
-        <translation type="unfinished"></translation>
+        <translation>Het beheerderswachtwoord wijzigen en SSH in- of uitschakelen voor toegang op afstand</translation>
     </message>
     <message>
         <source>Shutdown</source>
@@ -291,7 +291,7 @@
     <message>
         <location filename="../qml/DeviceSystemScreen.qml" line="168"/>
         <source>Safe Shutdown</source>
-        <translation type="unfinished"></translation>
+        <translation>Veilig afsluiten</translation>
     </message>
     <message>
         <source>Recovery</source>
@@ -300,48 +300,48 @@
     <message>
         <location filename="../qml/DeviceSystemScreen.qml" line="29"/>
         <source>PIN SETTINGS</source>
-        <translation type="unfinished"></translation>
+        <translation>PIN-INSTELLINGEN</translation>
     </message>
     <message>
         <location filename="../qml/DeviceSystemScreen.qml" line="57"/>
         <source>ADMIN &amp; SSH</source>
-        <translation type="unfinished"></translation>
+        <translation>ADMIN &amp; SSH</translation>
     </message>
     <message>
         <location filename="../qml/DeviceSystemScreen.qml" line="85"/>
         <source>LOGS</source>
-        <translation type="unfinished"></translation>
+        <translation>LOGS</translation>
     </message>
     <message>
         <location filename="../qml/DeviceSystemScreen.qml" line="104"/>
         <source>View Logs for Monero Daemon, NodoUI, LWS and Kernel</source>
-        <translation type="unfinished"></translation>
+        <translation>Logbestanden bekijken voor Monero Daemon, NodoUI, LWS en Kernel</translation>
     </message>
     <message>
         <location filename="../qml/DeviceSystemScreen.qml" line="112"/>
         <source>RESTART</source>
-        <translation type="unfinished"></translation>
+        <translation>OPNIEUW STARTEN</translation>
     </message>
     <message>
         <location filename="../qml/DeviceSystemScreen.qml" line="136"/>
         <source>Safe Restart</source>
-        <translation type="unfinished"></translation>
+        <translation>Veilige herstart</translation>
     </message>
     <message>
         <location filename="../qml/DeviceSystemScreen.qml" line="144"/>
         <source>SHUTDOWN</source>
-        <translation type="unfinished"></translation>
+        <translation>AFSLUITING</translation>
     </message>
     <message>
         <location filename="../qml/DeviceSystemScreen.qml" line="176"/>
         <location filename="../qml/DeviceSystemScreen.qml" line="244"/>
         <source>RECOVERY</source>
-        <translation type="unfinished"></translation>
+        <translation>HERSTEL</translation>
     </message>
     <message>
         <location filename="../qml/DeviceSystemScreen.qml" line="200"/>
         <source>Access recovery options</source>
-        <translation type="unfinished"></translation>
+        <translation>Toegang tot herstelopties</translation>
     </message>
     <message>
         <location filename="../qml/DeviceSystemScreen.qml" line="269"/>
@@ -351,27 +351,27 @@
     <message>
         <location filename="../qml/DeviceSystemScreen.qml" line="282"/>
         <source>Attempts to fix filesystem errors without deleting data.</source>
-        <translation type="unfinished"></translation>
+        <translation>Probeert fouten in het bestandssysteem te herstellen zonder gegevens te verwijderen.</translation>
     </message>
     <message>
         <location filename="../qml/DeviceSystemScreen.qml" line="308"/>
         <source>Delete and resync blockchain</source>
-        <translation type="unfinished"></translation>
+        <translation>Blockchain verwijderen en opnieuw synchroniseren</translation>
     </message>
     <message>
         <location filename="../qml/DeviceSystemScreen.qml" line="321"/>
         <source>Also deletes all LWS data.</source>
-        <translation type="unfinished"></translation>
+        <translation>Hiermee worden ook alle LWS-gegevens verwijderd.</translation>
     </message>
     <message>
         <location filename="../qml/DeviceSystemScreen.qml" line="347"/>
         <source>Factory Reset</source>
-        <translation type="unfinished"></translation>
+        <translation>Fabrieksinstellingen herstellen</translation>
     </message>
     <message>
         <location filename="../qml/DeviceSystemScreen.qml" line="360"/>
         <source>Reset all settings back to Factory defaults.</source>
-        <translation type="unfinished"></translation>
+        <translation>Alle instellingen terugzetten naar de fabrieksinstellingen.</translation>
     </message>
     <message>
         <source>Purge and resync blockchain</source>
@@ -381,7 +381,7 @@
         <location filename="../qml/DeviceSystemScreen.qml" line="370"/>
         <location filename="../qml/DeviceSystemScreen.qml" line="377"/>
         <source>START</source>
-        <translation type="unfinished"></translation>
+        <translation>START</translation>
     </message>
     <message>
         <source>Start</source>
@@ -397,17 +397,17 @@
     <message>
         <location filename="../qml/DeviceUpdatesScreen.qml" line="58"/>
         <source>UPDATE ALL</source>
-        <translation type="unfinished"></translation>
+        <translation>ALLES BIJWERKEN</translation>
     </message>
     <message>
         <location filename="../qml/DeviceUpdatesScreen.qml" line="83"/>
         <source>Force Updates, if found, this button will stay greyed out during the update process.</source>
-        <translation type="unfinished"></translation>
+        <translation>Updates geforceerd uitvoeren; indien er updates worden gevonden, blijft deze knop tijdens het updateproces grijs weergegeven.</translation>
     </message>
     <message>
         <location filename="../qml/DeviceUpdatesScreen.qml" line="99"/>
         <source>AUTOMATIC UPDATES</source>
-        <translation type="unfinished"></translation>
+        <translation>AUTOMATISCHE UPDATES</translation>
     </message>
     <message>
         <location filename="../qml/DeviceUpdatesScreen.qml" line="115"/>
@@ -432,12 +432,12 @@
     <message>
         <location filename="../qml/DeviceUpdatesScreen.qml" line="287"/>
         <source>Linux System</source>
-        <translation type="unfinished"></translation>
+        <translation>Linux-systeem</translation>
     </message>
     <message>
         <location filename="../qml/DeviceUpdatesScreen.qml" line="313"/>
         <source>Updates will still run for Monero, LWS and MoneroPay.</source>
-        <translation type="unfinished"></translation>
+        <translation>Er zullen nog steeds updates worden uitgevoerd voor Monero, LWS en MoneroPay.</translation>
     </message>
 </context>
 <context>
@@ -484,7 +484,7 @@ Waarschuwing: Het stortingsadres is publiekelijk in te zien. Voor uw privacy, ge
     <message>
         <location filename="../qml/MoneroLWSActiveScreen.qml" line="59"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>Geen</translation>
     </message>
 </context>
 <context>
@@ -497,12 +497,12 @@ Waarschuwing: Het stortingsadres is publiekelijk in te zien. Voor uw privacy, ge
     <message>
         <location filename="../qml/MoneroLWSActiveScreenDelegate.qml" line="75"/>
         <source>RESCAN</source>
-        <translation type="unfinished"></translation>
+        <translation>OPNIEUW SCANNEN</translation>
     </message>
     <message>
         <location filename="../qml/MoneroLWSActiveScreenDelegate.qml" line="102"/>
         <source>DEACTIVATE</source>
-        <translation type="unfinished"></translation>
+        <translation>UITSCHAKELEN</translation>
     </message>
     <message>
         <source>Deactivate</source>
@@ -523,45 +523,45 @@ Waarschuwing: Het stortingsadres is publiekelijk in te zien. Voor uw privacy, ge
     <message>
         <location filename="../qml/MoneroLWSAddAccountScreen.qml" line="79"/>
         <source>LIGHT WALLET SERVER ADDRESS</source>
-        <translation type="unfinished"></translation>
+        <translation>ADRES VAN DE LIGHT WALLET-SERVER</translation>
     </message>
     <message>
         <location filename="../qml/MoneroLWSAddAccountScreen.qml" line="98"/>
         <source>Clearnet</source>
-        <translation type="unfinished"></translation>
+        <translation>Clearnet</translation>
     </message>
     <message>
         <location filename="../qml/MoneroLWSAddAccountScreen.qml" line="104"/>
         <location filename="../qml/MoneroLWSAddAccountScreen.qml" line="132"/>
         <location filename="../qml/MoneroLWSAddAccountScreen.qml" line="160"/>
         <source>Close</source>
-        <translation type="unfinished">Sluiten</translation>
+        <translation>Sluiten</translation>
     </message>
     <message>
         <location filename="../qml/MoneroLWSAddAccountScreen.qml" line="125"/>
         <source>Tor</source>
-        <translation type="unfinished"></translation>
+        <translation>Tor</translation>
     </message>
     <message>
         <location filename="../qml/MoneroLWSAddAccountScreen.qml" line="153"/>
         <source>I2P</source>
-        <translation type="unfinished"></translation>
+        <translation>I2P</translation>
     </message>
     <message>
         <location filename="../qml/MoneroLWSAddAccountScreen.qml" line="178"/>
         <source>On your Light Wallet, enter a URL as Server Address. If your Light Wallet does not support wallet creation requests, manually add it below.</source>
-        <translation type="unfinished"></translation>
+        <translation>Voer in je Light Wallet een URL in als serveradres. Als je Light Wallet geen verzoeken voor het aanmaken van een wallet ondersteunt, voeg deze dan hieronder handmatig toe.</translation>
     </message>
     <message>
         <location filename="../qml/MoneroLWSAddAccountScreen.qml" line="193"/>
         <location filename="../qml/MoneroLWSAddAccountScreen.qml" line="238"/>
         <source>ADD WALLET</source>
-        <translation type="unfinished"></translation>
+        <translation>PORTEMONNEE TOEVOEGEN</translation>
     </message>
     <message>
         <location filename="../qml/MoneroLWSAddAccountScreen.qml" line="222"/>
         <source>Private View Key</source>
-        <translation type="unfinished"></translation>
+        <translation>Toegangscode voor de besloten vernissage</translation>
     </message>
     <message>
         <source>Private Viewkey</source>
@@ -570,7 +570,7 @@ Waarschuwing: Het stortingsadres is publiekelijk in te zien. Voor uw privacy, ge
     <message>
         <location filename="../qml/MoneroLWSAddAccountScreen.qml" line="263"/>
         <source>Adding wallets is not possible while the Monero Daemon is not synchronized.</source>
-        <translation type="unfinished"></translation>
+        <translation>Het is niet mogelijk om portemonnees toe te voegen zolang de Monero-daemon niet gesynchroniseerd is.</translation>
     </message>
     <message>
         <source>Add Account</source>
@@ -582,7 +582,7 @@ Waarschuwing: Het stortingsadres is publiekelijk in te zien. Voor uw privacy, ge
     <message>
         <location filename="../qml/MoneroLWSInactiveScreen.qml" line="58"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>Geen</translation>
     </message>
 </context>
 <context>
@@ -595,12 +595,12 @@ Waarschuwing: Het stortingsadres is publiekelijk in te zien. Voor uw privacy, ge
     <message>
         <location filename="../qml/MoneroLWSInactiveScreenDelegate.qml" line="67"/>
         <source>REACTIVATE</source>
-        <translation type="unfinished"></translation>
+        <translation>OPNIEUW ACTIVEREN</translation>
     </message>
     <message>
         <location filename="../qml/MoneroLWSInactiveScreenDelegate.qml" line="85"/>
         <source>DELETE</source>
-        <translation type="unfinished"></translation>
+        <translation>VERWIJDEREN</translation>
     </message>
     <message>
         <source>Reactivate</source>
@@ -616,7 +616,7 @@ Waarschuwing: Het stortingsadres is publiekelijk in te zien. Voor uw privacy, ge
     <message>
         <location filename="../qml/MoneroLWSMainScreen.qml" line="72"/>
         <source>ADD WALLET</source>
-        <translation type="unfinished"></translation>
+        <translation>PORTEMONNEE TOEVOEGEN</translation>
     </message>
     <message>
         <location filename="../qml/MoneroLWSMainScreen.qml" line="94"/>
@@ -664,7 +664,7 @@ Waarschuwing: Het stortingsadres is publiekelijk in te zien. Voor uw privacy, ge
     <message>
         <location filename="../qml/MoneroPayPaymentsScreen.qml" line="67"/>
         <source>CLEAR ALL PAYMENTS</source>
-        <translation type="unfinished"></translation>
+        <translation>ALLE BETALINGEN WISSEN</translation>
     </message>
 </context>
 <context>
@@ -682,7 +682,7 @@ Waarschuwing: Het stortingsadres is publiekelijk in te zien. Voor uw privacy, ge
     <message>
         <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="86"/>
         <source>Confirming</source>
-        <translation type="unfinished"></translation>
+        <translation>Bevestigen</translation>
     </message>
     <message>
         <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="89"/>
@@ -692,27 +692,27 @@ Waarschuwing: Het stortingsadres is publiekelijk in te zien. Voor uw privacy, ge
     <message>
         <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="92"/>
         <source>Waiting</source>
-        <translation type="unfinished">Wachten</translation>
+        <translation>Wachten</translation>
     </message>
     <message>
         <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="129"/>
         <source>Address</source>
-        <translation type="unfinished">Adres</translation>
+        <translation>Adres</translation>
     </message>
     <message>
         <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="186"/>
         <source>CLEAR PAYMENT</source>
-        <translation type="unfinished"></translation>
+        <translation>BETALING VOLTOOID</translation>
     </message>
     <message>
         <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="201"/>
         <source>VIEW QR</source>
-        <translation type="unfinished"></translation>
+        <translation>QR-code bekijken</translation>
     </message>
     <message>
         <location filename="../qml/MoneroPayPaymentsScreenDelegate.qml" line="214"/>
         <source>CLOSE</source>
-        <translation type="unfinished"></translation>
+        <translation>SLUITEN</translation>
     </message>
     <message>
         <source>Close</source>
@@ -769,17 +769,17 @@ Waarschuwing: Het stortingsadres is publiekelijk in te zien. Voor uw privacy, ge
     <message>
         <location filename="../qml/MoneroPayReceivePaymentPreviewScreen.qml" line="116"/>
         <source>AWAITING PAYMENT</source>
-        <translation type="unfinished"></translation>
+        <translation>IN AFWACHTING VAN BETALING</translation>
     </message>
     <message>
         <location filename="../qml/MoneroPayReceivePaymentPreviewScreen.qml" line="127"/>
         <source>NEW PAYMENT</source>
-        <translation type="unfinished"></translation>
+        <translation>NIEUWE BETALING</translation>
     </message>
     <message>
         <location filename="../qml/MoneroPayReceivePaymentPreviewScreen.qml" line="170"/>
         <source>Address</source>
-        <translation type="unfinished">Adres</translation>
+        <translation>Adres</translation>
     </message>
     <message>
         <source>Deposit Address</source>
@@ -814,17 +814,17 @@ Waarschuwing: Het stortingsadres is publiekelijk in te zien. Voor uw privacy, ge
     <message>
         <location filename="../qml/MoneroPayReceivePaymentResultScreen.qml" line="122"/>
         <source>PAYMENT RECEIVED</source>
-        <translation type="unfinished"></translation>
+        <translation>BETALING ONTVANGEN</translation>
     </message>
     <message>
         <location filename="../qml/MoneroPayReceivePaymentResultScreen.qml" line="134"/>
         <source>NEW PAYMENT</source>
-        <translation type="unfinished"></translation>
+        <translation>NIEUWE BETALING</translation>
     </message>
     <message>
         <location filename="../qml/MoneroPayReceivePaymentResultScreen.qml" line="152"/>
         <source>VIEW PAYMENTS</source>
-        <translation type="unfinished"></translation>
+        <translation>BETALINGEN BEKIJKEN</translation>
     </message>
     <message>
         <source>Deposit Address</source>
@@ -851,7 +851,7 @@ Waarschuwing: Het stortingsadres is publiekelijk in te zien. Voor uw privacy, ge
     <message>
         <location filename="../qml/MoneroPayReceivePaymentResultScreen.qml" line="189"/>
         <source>Address</source>
-        <translation type="unfinished">Adres</translation>
+        <translation>Adres</translation>
     </message>
 </context>
 <context>
@@ -870,7 +870,7 @@ Waarschuwing: Het stortingsadres is publiekelijk in te zien. Voor uw privacy, ge
     <message>
         <location filename="../qml/MoneroPayReceiveRequestScreen.qml" line="152"/>
         <source>Note (optional)</source>
-        <translation type="unfinished"></translation>
+        <translation>Opmerking (optioneel)</translation>
     </message>
     <message>
         <location filename="../qml/MoneroPayReceiveRequestScreen.qml" line="172"/>
@@ -885,7 +885,7 @@ Waarschuwing: Het stortingsadres is publiekelijk in te zien. Voor uw privacy, ge
     <message>
         <location filename="../qml/MoneroPayReceiveRequestScreen.qml" line="227"/>
         <source>RECEIVE</source>
-        <translation type="unfinished">ONTVANGEN</translation>
+        <translation>ONTVANGEN</translation>
     </message>
     <message>
         <source>Note (Optional)</source>
@@ -921,32 +921,32 @@ Waarschuwing: Het stortingsadres is publiekelijk in te zien. Voor uw privacy, ge
     <message>
         <location filename="../qml/MoneroPaySettingsConfigScreen.qml" line="121"/>
         <source>MONEROPAY DEPOSIT ADDRESS</source>
-        <translation type="unfinished"></translation>
+        <translation>MONEROPAY-STORTINGSADRES</translation>
     </message>
     <message>
         <location filename="../qml/MoneroPaySettingsConfigScreen.qml" line="132"/>
         <source>Address</source>
-        <translation type="unfinished">Adres</translation>
+        <translation>Adres</translation>
     </message>
     <message>
         <location filename="../qml/MoneroPaySettingsConfigScreen.qml" line="154"/>
         <source>SET ADDRESS</source>
-        <translation type="unfinished"></translation>
+        <translation>ADRES INSTELLEN</translation>
     </message>
     <message>
         <location filename="../qml/MoneroPaySettingsConfigScreen.qml" line="177"/>
         <source>CLEAR ADDRESS</source>
-        <translation type="unfinished"></translation>
+        <translation>ADRES WISSEN</translation>
     </message>
     <message>
         <location filename="../qml/MoneroPaySettingsConfigScreen.qml" line="185"/>
         <source>Reset</source>
-        <translation type="unfinished"></translation>
+        <translation>Opnieuw instellen</translation>
     </message>
     <message>
         <location filename="../qml/MoneroPaySettingsConfigScreen.qml" line="200"/>
         <source>Received transactions will periodically be sent to this address.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ontvangen transacties worden regelmatig naar dit adres verzonden.</translation>
     </message>
 </context>
 <context>
@@ -985,27 +985,27 @@ Waarschuwing: Het stortingsadres is publiekelijk in te zien. Voor uw privacy, ge
     <message>
         <location filename="../qml/NodeBandwidthScreen.qml" line="152"/>
         <source>Outgoing Peers</source>
-        <translation type="unfinished">Uitgaande verbindingen</translation>
+        <translation>Vertrekkende leden van het Hogerhuis</translation>
     </message>
     <message>
         <location filename="../qml/NodeBandwidthScreen.qml" line="179"/>
         <source>Incoming Peers</source>
-        <translation type="unfinished">Inkomende verbindingen</translation>
+        <translation>Nieuwe collega’s</translation>
     </message>
     <message>
         <location filename="../qml/NodeBandwidthScreen.qml" line="210"/>
         <source>Upload Speed</source>
-        <translation type="unfinished"></translation>
+        <translation>Uploadsnelheid</translation>
     </message>
     <message>
         <location filename="../qml/NodeBandwidthScreen.qml" line="302"/>
         <source>Download Speed</source>
-        <translation type="unfinished"></translation>
+        <translation>Downloadsnelheid</translation>
     </message>
     <message>
         <location filename="../qml/NodeBandwidthScreen.qml" line="410"/>
         <source>Monero Daemon will restart to apply changes.</source>
-        <translation type="unfinished"></translation>
+        <translation>De Monero-daemon wordt opnieuw opgestart om de wijzigingen door te voeren.</translation>
     </message>
     <message>
         <source>Incoming peers limit</source>
@@ -1035,32 +1035,32 @@ Waarschuwing: Het stortingsadres is publiekelijk in te zien. Voor uw privacy, ge
     <message>
         <location filename="../qml/NodeBanlistScreen.qml" line="43"/>
         <source>NODE IP BANLIST</source>
-        <translation type="unfinished"></translation>
+        <translation>BLOKKERINGSLIJST VOOR NODE-IP-ADRESSEN</translation>
     </message>
     <message>
         <location filename="../qml/NodeBanlistScreen.qml" line="73"/>
         <source>Boog900</source>
-        <translation type="unfinished"></translation>
+        <translation>Boog900</translation>
     </message>
     <message>
         <location filename="../qml/NodeBanlistScreen.qml" line="104"/>
         <source>gui.xmr.pm</source>
-        <translation type="unfinished"></translation>
+        <translation>gui.xmr.pm</translation>
     </message>
     <message>
         <location filename="../qml/NodeBanlistScreen.qml" line="135"/>
         <source>DNS Banlist</source>
-        <translation type="unfinished"></translation>
+        <translation>DNS-blokkeerlijst</translation>
     </message>
     <message>
         <location filename="../qml/NodeBanlistScreen.qml" line="148"/>
         <source>APPLY</source>
-        <translation type="unfinished"></translation>
+        <translation>AANMELDEN</translation>
     </message>
     <message>
         <location filename="../qml/NodeBanlistScreen.qml" line="168"/>
         <source>CLEAR</source>
-        <translation type="unfinished"></translation>
+        <translation>WISSEN</translation>
     </message>
     <message>
         <location filename="../qml/NodeBanlistScreen.qml" line="205"/>
@@ -1068,9 +1068,14 @@ Waarschuwing: Het stortingsadres is publiekelijk in te zien. Voor uw privacy, ge
 
 Blocking the IP addresses by default is technically possible, but it would set a precedent of blocking IP addresses by a decision making process that is not decentralized. MRL has decided to ask node operators to block these IP addresses voluntarily instead of by default. We recommend enabling all banlists until a more permanent solution can be found.
 
-More info on this issue and FAQs can be found on Monero&apos;s Official Repo:
+More info on this issue and FAQs can be found on Monero's Official Repo:
 https://github.com/monero-project/meta/issues/1124</source>
-        <translation type="unfinished"></translation>
+        <translation>Het Monero Research Lab (MRL) heeft besloten om alle Monero-node-beheerders aan te bevelen een blokkeerlijst in te stellen met IP-adressen van vermoedelijke spionagenodes. Deze spionagenodes kunnen de privacy van Monero-gebruikers aantasten.
+
+Het standaard blokkeren van de IP-adressen is technisch mogelijk, maar dit zou een precedent scheppen waarbij IP-adressen worden geblokkeerd via een besluitvormingsproces dat niet gedecentraliseerd is. Het MRL heeft daarom besloten om node-beheerders te vragen deze IP-adressen vrijwillig te blokkeren in plaats van standaard. We raden aan om alle blokkeerlijsten in te schakelen totdat er een meer permanente oplossing kan worden gevonden.
+
+Meer informatie over dit onderwerp en veelgestelde vragen zijn te vinden op de officiële repository van Monero:
+https://github.com/monero-project/meta/issues/1124</translation>
     </message>
     <message>
         <source>Apply</source>
@@ -1083,7 +1088,7 @@ https://github.com/monero-project/meta/issues/1124</source>
     <message>
         <location filename="../qml/NodeBanlistScreen.qml" line="189"/>
         <source>Monero Daemon will restart to apply changes.</source>
-        <translation type="unfinished"></translation>
+        <translation>De Monero-daemon wordt opnieuw opgestart om de wijzigingen door te voeren.</translation>
     </message>
 </context>
 <context>
@@ -1091,17 +1096,17 @@ https://github.com/monero-project/meta/issues/1124</source>
     <message>
         <location filename="../qml/NodeClearnetScreen.qml" line="126"/>
         <source>Hidden RPC</source>
-        <translation type="unfinished"></translation>
+        <translation>Verborgen RPC</translation>
     </message>
     <message>
         <location filename="../qml/NodeClearnetScreen.qml" line="160"/>
         <source>Allow wallets to connect only through Tor and I2P, enable on untrusted networks.</source>
-        <translation type="unfinished"></translation>
+        <translation>Zorg ervoor dat wallets alleen via Tor en I2P verbinding kunnen maken; schakel deze optie in op onbetrouwbare netwerken.</translation>
     </message>
     <message>
         <location filename="../qml/NodeClearnetScreen.qml" line="177"/>
         <source>Enable Hidden RPC with NODE &gt; TOR &gt; Route All Through Tor, to fully anonymize the Monero Daemon.</source>
-        <translation type="unfinished"></translation>
+        <translation>Schakel ‘Hidden RPC’ in via NODE &gt; TOR &gt; ‘Route All Through Tor’, om de Monero-daemon volledig anoniem te maken.</translation>
     </message>
 </context>
 <context>
@@ -1109,17 +1114,17 @@ https://github.com/monero-project/meta/issues/1124</source>
     <message>
         <location filename="../qml/NodeI2PScreen.qml" line="107"/>
         <source>I2P</source>
-        <translation type="unfinished"></translation>
+        <translation>I2P</translation>
     </message>
     <message>
         <location filename="../qml/NodeI2PScreen.qml" line="141"/>
         <source>Broadcast and receive transactions through I2P.</source>
-        <translation type="unfinished"></translation>
+        <translation>Transacties verzenden en ontvangen via I2P.</translation>
     </message>
     <message>
         <location filename="../qml/NodeI2PScreen.qml" line="153"/>
         <source>I2P b32 Address</source>
-        <translation type="unfinished">I2P b32-adres</translation>
+        <translation>I2P b32-adres</translation>
     </message>
 </context>
 <context>
@@ -1131,17 +1136,17 @@ https://github.com/monero-project/meta/issues/1124</source>
     <message>
         <location filename="../qml/NodeMainScreen.qml" line="29"/>
         <source>CLEARNET</source>
-        <translation type="unfinished"></translation>
+        <translation>CLEARNET</translation>
     </message>
     <message>
         <location filename="../qml/NodeMainScreen.qml" line="40"/>
         <source>TOR</source>
-        <translation type="unfinished"></translation>
+        <translation>TOR</translation>
     </message>
     <message>
         <location filename="../qml/NodeMainScreen.qml" line="52"/>
         <source>I2P</source>
-        <translation type="unfinished"></translation>
+        <translation>I2P</translation>
     </message>
     <message>
         <location filename="../qml/NodeMainScreen.qml" line="63"/>
@@ -1151,12 +1156,12 @@ https://github.com/monero-project/meta/issues/1124</source>
     <message>
         <location filename="../qml/NodeMainScreen.qml" line="74"/>
         <source>PRIVATE</source>
-        <translation type="unfinished"></translation>
+        <translation>PRIVÉ</translation>
     </message>
     <message>
         <location filename="../qml/NodeMainScreen.qml" line="85"/>
         <source>BANLIST</source>
-        <translation type="unfinished"></translation>
+        <translation>BANLIJST</translation>
     </message>
 </context>
 <context>
@@ -1169,7 +1174,7 @@ https://github.com/monero-project/meta/issues/1124</source>
     <message>
         <location filename="../qml/NodePrivateNodeScreen.qml" line="106"/>
         <source>Require wallets to enter a username and password to use this node.</source>
-        <translation type="unfinished"></translation>
+        <translation>Stel in dat gebruikers hun gebruikersnaam en wachtwoord moeten invoeren om deze node te kunnen gebruiken.</translation>
     </message>
     <message>
         <location filename="../qml/NodePrivateNodeScreen.qml" line="143"/>
@@ -1184,7 +1189,7 @@ https://github.com/monero-project/meta/issues/1124</source>
     <message>
         <location filename="../qml/NodePrivateNodeScreen.qml" line="199"/>
         <source>Monero Daemon will restart to apply changes.</source>
-        <translation type="unfinished"></translation>
+        <translation>De Monero-daemon wordt opnieuw opgestart om de wijzigingen door te voeren.</translation>
     </message>
 </context>
 <context>
@@ -1192,27 +1197,27 @@ https://github.com/monero-project/meta/issues/1124</source>
     <message>
         <location filename="../qml/NodeTorScreen.qml" line="106"/>
         <source>Tor</source>
-        <translation type="unfinished"></translation>
+        <translation>Tor</translation>
     </message>
     <message>
         <location filename="../qml/NodeTorScreen.qml" line="140"/>
         <source>Broadcast and receive transactions through Tor.</source>
-        <translation type="unfinished"></translation>
+        <translation>Transacties verzenden en ontvangen via Tor.</translation>
     </message>
     <message>
         <location filename="../qml/NodeTorScreen.qml" line="157"/>
         <source>Route All Through Tor</source>
-        <translation type="unfinished"></translation>
+        <translation>Route helemaal door Tor</translation>
     </message>
     <message>
         <location filename="../qml/NodeTorScreen.qml" line="191"/>
         <source>Blockchain sync through Tor, includes Updates, Price Ticker and News.</source>
-        <translation type="unfinished"></translation>
+        <translation>Blockchain-synchronisatie via Tor, inclusief updates, koersweergave en nieuws.</translation>
     </message>
     <message>
         <location filename="../qml/NodeTorScreen.qml" line="203"/>
         <source>Onion Address</source>
-        <translation type="unfinished">Onion-adres</translation>
+        <translation>Onion-adres</translation>
     </message>
 </context>
 <context>
@@ -1781,14 +1786,16 @@ Het Admin-wachtwoord wordt gebruikt om via SSH te kunnen inloggen op de Nodo. De
     <message>
         <location filename="../qml/NodoFirstTimeAdminPasswordScreen.qml" line="106"/>
         <source>Language</source>
-        <translation type="unfinished">Taal</translation>
+        <translation>Taal</translation>
     </message>
     <message>
         <location filename="../qml/NodoFirstTimeAdminPasswordScreen.qml" line="148"/>
         <source>Please set your Admin Password. The Admin Password should be at least 8 characters, with uppercase and lowercase letters, number and a special character.
 
 The Admin Password is used to connect to Nodo remotely via SSH. It can be changed later on DEVICE &gt; SYSTEM &gt; ADMIN &amp; SSH.</source>
-        <translation type="unfinished"></translation>
+        <translation>Stel uw beheerderswachtwoord in. Het beheerderswachtwoord moet uit minimaal 8 tekens bestaan, met hoofdletters en kleine letters, een cijfer en een speciaal teken.
+
+Het beheerderswachtwoord wordt gebruikt om via SSH op afstand verbinding te maken met Nodo. U kunt het later wijzigen via APPARAAT &gt; SYSTEEM &gt; BEHEERDER &amp; SSH.</translation>
     </message>
     <message>
         <location filename="../qml/NodoFirstTimeAdminPasswordScreen.qml" line="168"/>
@@ -1806,17 +1813,17 @@ The Admin Password is used to connect to Nodo remotely via SSH. It can be change
     <message>
         <location filename="../qml/NodoFirstTimeBanlistScreen.qml" line="31"/>
         <source>Enable All Banlists</source>
-        <translation type="unfinished"></translation>
+        <translation>Alle banlijsten inschakelen</translation>
     </message>
     <message>
         <location filename="../qml/NodoFirstTimeBanlistScreen.qml" line="55"/>
         <source>Boog900, gui.xmr.pm, DNS Banlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Boog900, gui.xmr.pm, DNS-blokkeerlijst</translation>
     </message>
     <message>
         <location filename="../qml/NodoFirstTimeBanlistScreen.qml" line="68"/>
         <source>APPLY</source>
-        <translation type="unfinished"></translation>
+        <translation>AANMELDEN</translation>
     </message>
     <message>
         <location filename="../qml/NodoFirstTimeBanlistScreen.qml" line="90"/>
@@ -1824,9 +1831,14 @@ The Admin Password is used to connect to Nodo remotely via SSH. It can be change
 
 Blocking the IP addresses by default is technically possible, but it would set a precedent of blocking IP addresses by a decision making process that is not decentralized. MRL has decided to ask node operators to block these IP addresses voluntarily instead of by default. We recommend enabling all banlists until a more permanent solution can be found.
 
-More info on this issue and FAQs can be found on Monero&apos;s Official Repo:
+More info on this issue and FAQs can be found on Monero's Official Repo:
 https://github.com/monero-project/meta/issues/1124</source>
-        <translation type="unfinished"></translation>
+        <translation>Het Monero Research Lab (MRL) heeft besloten om alle Monero-node-beheerders aan te bevelen een blokkeerlijst in te stellen met IP-adressen van vermoedelijke spionagenodes. Deze spionagenodes kunnen de privacy van Monero-gebruikers aantasten.
+
+Het standaard blokkeren van de IP-adressen is technisch mogelijk, maar dit zou een precedent scheppen waarbij IP-adressen worden geblokkeerd via een besluitvormingsproces dat niet gedecentraliseerd is. Het MRL heeft daarom besloten om node-beheerders te vragen deze IP-adressen vrijwillig te blokkeren in plaats van standaard. We raden aan om alle blokkeerlijsten in te schakelen totdat er een meer permanente oplossing is gevonden.
+
+Meer informatie over dit onderwerp en veelgestelde vragen zijn te vinden op de officiële repository van Monero:
+https://github.com/monero-project/meta/issues/1124</translation>
     </message>
 </context>
 <context>
@@ -1844,7 +1856,9 @@ Deze kan later worden aangepast onder APPARAAT -&gt; PIN-codes</translation>
         <source>Please set your 6 digit Lock PIN. The Lock PIN is used to unlock the device.
 
 It can be changed later on DEVICE &gt; SYSTEM &gt; PIN SETTINGS.</source>
-        <translation type="unfinished"></translation>
+        <translation>Stel je 6-cijferige ontgrendelings-PIN in. De ontgrendelings-PIN wordt gebruikt om het apparaat te ontgrendelen.
+
+Je kunt deze later wijzigen via APPARAAT &gt; SYSTEEM &gt; PIN-INSTELLINGEN.</translation>
     </message>
     <message>
         <location filename="../qml/NodoFirstTimeLockPinScreen.qml" line="86"/>
@@ -1866,7 +1880,7 @@ It can be changed later on DEVICE &gt; SYSTEM &gt; PIN SETTINGS.</source>
     <message>
         <location filename="../qml/NodoFirstTimeRebootScreen.qml" line="33"/>
         <source>Nodo will now reboot.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nodo wordt nu opnieuw opgestart.</translation>
     </message>
 </context>
 <context>
@@ -1888,7 +1902,7 @@ It can be changed later on DEVICE &gt; SYSTEM &gt; PIN SETTINGS.</source>
     <message>
         <location filename="../qml/NodoHomeScreen.qml" line="157"/>
         <source>MONEROPAY</source>
-        <translation type="unfinished"></translation>
+        <translation>MONEROPAY</translation>
     </message>
     <message>
         <location filename="../qml/NodoHomeScreen.qml" line="141"/>
@@ -1921,17 +1935,17 @@ It can be changed later on DEVICE &gt; SYSTEM &gt; PIN SETTINGS.</source>
     <message>
         <location filename="../qml/NodoLockPinControlScreen.qml" line="164"/>
         <source>CHANGE LOCK PIN</source>
-        <translation type="unfinished"></translation>
+        <translation>SLUITPIN VERVANGEN</translation>
     </message>
     <message>
         <location filename="../qml/NodoLockPinControlScreen.qml" line="175"/>
         <source>New Lock PIN</source>
-        <translation type="unfinished">Nieuwe PIN-code</translation>
+        <translation>Nieuwe PIN-code voor het slot</translation>
     </message>
     <message>
         <location filename="../qml/NodoLockPinControlScreen.qml" line="214"/>
         <source>APPLY</source>
-        <translation type="unfinished"></translation>
+        <translation>AANMELDEN</translation>
     </message>
     <message>
         <source>Apply</source>
@@ -2031,59 +2045,59 @@ It can be changed later on DEVICE &gt; SYSTEM &gt; PIN SETTINGS.</source>
     <message>
         <location filename="../qml/NodoMessages.qml" line="51"/>
         <source>CLOSE</source>
-        <translation type="unfinished"></translation>
+        <translation>SLUITEN</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="52"/>
         <source>CANCEL</source>
-        <translation type="unfinished"></translation>
+        <translation>ANNULEREN</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="53"/>
         <source>NEW CONNECTION</source>
-        <translation type="unfinished"></translation>
+        <translation>NIEUWE VERBINDING</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="54"/>
         <location filename="../qml/NodoMessages.qml" line="59"/>
         <source>CONNECT</source>
-        <translation type="unfinished"></translation>
+        <translation>CONNECT</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="55"/>
         <location filename="../qml/NodoMessages.qml" line="60"/>
         <source>CONNECTING</source>
-        <translation type="unfinished"></translation>
+        <translation>VERBINDEN</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="56"/>
         <source>APPLY</source>
-        <translation type="unfinished"></translation>
+        <translation>AANMELDEN</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="57"/>
         <source>APPLY PORT</source>
-        <translation type="unfinished"></translation>
+        <translation>POORT TOEPASSEN</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="58"/>
         <source>FORGET</source>
-        <translation type="unfinished"></translation>
+        <translation>VERGEET</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="61"/>
         <source>DISCONNECT</source>
-        <translation type="unfinished"></translation>
+        <translation>VERBINDING VERBREKEN</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="62"/>
         <source>DISCONNECTING</source>
-        <translation type="unfinished"></translation>
+        <translation>VERBINDING VERBREKEN</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="65"/>
         <source>Ethernet Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Ethernet-naam</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="66"/>
@@ -2144,83 +2158,83 @@ It can be changed later on DEVICE &gt; SYSTEM &gt; PIN SETTINGS.</source>
     <message>
         <location filename="../qml/NodoMessages.qml" line="77"/>
         <source>Current Network</source>
-        <translation type="unfinished"></translation>
+        <translation>Huidig netwerk</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="78"/>
         <source>Available Networks</source>
-        <translation type="unfinished"></translation>
+        <translation>Beschikbare netwerken</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="79"/>
         <source>ADVANCED</source>
-        <translation type="unfinished"></translation>
+        <translation>GEAVANCEERD</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="81"/>
         <location filename="../qml/NodoMessages.qml" line="120"/>
         <source>Ethernet cable disconnected!</source>
-        <translation type="unfinished"></translation>
+        <translation>Ethernetkabel losgeraakt!</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="84"/>
         <source>Loading</source>
-        <translation type="unfinished"></translation>
+        <translation>Bezig met laden</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="85"/>
         <source>New PIN is set</source>
-        <translation type="unfinished"></translation>
+        <translation>De nieuwe pincode is ingesteld</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="86"/>
         <source>PIN codes do not match.</source>
-        <translation type="unfinished"></translation>
+        <translation>De pincodes komen niet overeen.</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="87"/>
         <source>Failed to change password</source>
-        <translation type="unfinished"></translation>
+        <translation>Het wijzigen van het wachtwoord is mislukt</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="88"/>
         <source>Password changed successfully</source>
-        <translation type="unfinished"></translation>
+        <translation>Het wachtwoord is succesvol gewijzigd</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="89"/>
-        <source>Input field can&apos;t be empty!</source>
-        <translation type="unfinished"></translation>
+        <source>Input field can't be empty!</source>
+        <translation>Het invoerveld mag niet leeg zijn!</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="90"/>
         <source>ACCEPT</source>
-        <translation type="unfinished"></translation>
+        <translation>ACCEPTEREN</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="93"/>
         <source>Old password is incorrect!</source>
-        <translation type="unfinished"></translation>
+        <translation>Het oude wachtwoord is onjuist!</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="122"/>
         <source>New PIN is set.</source>
-        <translation type="unfinished"></translation>
+        <translation>De nieuwe pincode is ingesteld.</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="123"/>
         <source>Password does not meet requirements.</source>
-        <translation type="unfinished"></translation>
+        <translation>Het wachtwoord voldoet niet aan de vereisten.</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="151"/>
         <source>Starting</source>
-        <translation type="unfinished"></translation>
+        <translation>Beginnen</translation>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="152"/>
         <source>Stopping</source>
-        <translation type="unfinished"></translation>
+        <translation>Stoppen</translation>
     </message>
     <message>
         <source>Current network</source>
@@ -2266,7 +2280,7 @@ It can be changed later on DEVICE &gt; SYSTEM &gt; PIN SETTINGS.</source>
         <translation type="vanished">Wachtwoord succesvol veranderd.</translation>
     </message>
     <message>
-        <source>Input field can&apos;t be Empty!</source>
+        <source>Input field can't be Empty!</source>
         <translation type="vanished">Invoervelden kunnen niet leeg zijn!</translation>
     </message>
     <message>
@@ -2326,7 +2340,7 @@ It can be changed later on DEVICE &gt; SYSTEM &gt; PIN SETTINGS.</source>
     </message>
     <message>
         <location filename="../qml/NodoMessages.qml" line="118"/>
-        <source>IP couldn&apos;t be read!</source>
+        <source>IP couldn't be read!</source>
         <translation>IP-adres kon niet worden gelezen!</translation>
     </message>
     <message>
@@ -2343,7 +2357,7 @@ It can be changed later on DEVICE &gt; SYSTEM &gt; PIN SETTINGS.</source>
         <translation type="vanished">Kon de Block Explorer service niet aanpassen!</translation>
     </message>
     <message>
-        <source>Password doesn&apos;t meet requirements.</source>
+        <source>Password doesn't meet requirements.</source>
         <translation type="vanished">Wachtwoord voldoet niet aan de vereisten.</translation>
     </message>
     <message>
@@ -2458,7 +2472,7 @@ It can be changed later on DEVICE &gt; SYSTEM &gt; PIN SETTINGS.</source>
     <message>
         <location filename="../qml/NodoStatusScreen.qml" line="102"/>
         <source>Disconnected</source>
-        <translation type="unfinished">Verbinding Verbroken</translation>
+        <translation>Niet verbonden</translation>
     </message>
     <message>
         <location filename="../qml/NodoStatusScreen.qml" line="107"/>
@@ -2483,7 +2497,7 @@ It can be changed later on DEVICE &gt; SYSTEM &gt; PIN SETTINGS.</source>
     <message>
         <location filename="../qml/NodoStatusScreen.qml" line="219"/>
         <source>MONERO DAEMON</source>
-        <translation type="unfinished"></translation>
+        <translation>MONERO-DAEMON</translation>
     </message>
     <message>
         <location filename="../qml/NodoStatusScreen.qml" line="331"/>
@@ -2493,47 +2507,47 @@ It can be changed later on DEVICE &gt; SYSTEM &gt; PIN SETTINGS.</source>
     <message>
         <location filename="../qml/NodoStatusScreen.qml" line="361"/>
         <source>SERVICES</source>
-        <translation type="unfinished"></translation>
+        <translation>DIENSTEN</translation>
     </message>
     <message>
         <location filename="../qml/NodoStatusScreen.qml" line="377"/>
         <source>Daemon</source>
-        <translation type="unfinished"></translation>
+        <translation>Daemon</translation>
     </message>
     <message>
         <location filename="../qml/NodoStatusScreen.qml" line="389"/>
         <source>Tor</source>
-        <translation type="unfinished"></translation>
+        <translation>Tor</translation>
     </message>
     <message>
         <location filename="../qml/NodoStatusScreen.qml" line="401"/>
         <source>I2P</source>
-        <translation type="unfinished"></translation>
+        <translation>I2P</translation>
     </message>
     <message>
         <location filename="../qml/NodoStatusScreen.qml" line="413"/>
         <source>LWS</source>
-        <translation type="unfinished"></translation>
+        <translation>LWS</translation>
     </message>
     <message>
         <location filename="../qml/NodoStatusScreen.qml" line="456"/>
         <source>SYSTEM</source>
-        <translation type="unfinished">SYSTEEM</translation>
+        <translation>SYSTEEM</translation>
     </message>
     <message>
         <location filename="../qml/NodoStatusScreen.qml" line="508"/>
         <source>Blockchain</source>
-        <translation type="unfinished"></translation>
+        <translation>Blockchain</translation>
     </message>
     <message>
         <location filename="../qml/NodoStatusScreen.qml" line="520"/>
         <source>Storage</source>
-        <translation type="unfinished"></translation>
+        <translation>Opslag</translation>
     </message>
     <message>
         <location filename="../qml/NodoStatusScreen.qml" line="532"/>
         <source>Uptime</source>
-        <translation type="unfinished"></translation>
+        <translation>Beschikbaarheid</translation>
     </message>
     <message>
         <location filename="../qml/NodoStatusScreen.qml" line="425"/>
@@ -2574,7 +2588,7 @@ It can be changed later on DEVICE &gt; SYSTEM &gt; PIN SETTINGS.</source>
         <location filename="../src/NodoSystemControl.cpp" line="332"/>
         <location filename="../src/NodoSystemControl.cpp" line="337"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Fout</translation>
     </message>
 </context>
 <context>
@@ -2587,7 +2601,7 @@ It can be changed later on DEVICE &gt; SYSTEM &gt; PIN SETTINGS.</source>
     <message>
         <location filename="../qml/NodoTimezones.qml" line="6"/>
         <source>(UTC +00:00) Greenwich Mean Time (GMT)</source>
-        <translation type="unfinished"></translation>
+        <translation>(UTC +00:00) Greenwich Mean Time (GMT)</translation>
     </message>
     <message>
         <location filename="../qml/NodoTimezones.qml" line="7"/>
@@ -2796,7 +2810,8 @@ It can be changed later on DEVICE &gt; SYSTEM &gt; PIN SETTINGS.</source>
         <location filename="../qml/main.qml" line="127"/>
         <source>Shutdown in 5 seconds.
 Release to Cancel.</source>
-        <translation type="unfinished"></translation>
+        <translation>Wordt over 5 seconden uitgeschakeld.
+Laat los om te annuleren.</translation>
     </message>
     <message>
         <source>The device will shutdown in 3 seconds. Release the power button to cancel.</source>
