@@ -151,6 +151,8 @@ Item {
         height: NodoSystem.nodoItemHeight
         itemText: qsTr("Username")
         valueText: "nodo"
+        valueFontSize: 40
+        fontFamily: NodoSystem.fontJetBrainsMono.name
     }
 
     Text {

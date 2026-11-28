@@ -63,7 +63,7 @@ Item
     property color buttonBGColorNightModeOn: defaultColorNightModeOn //"#AE0000"							//NMCOLOR2//			
 
     property color buttonTextColorNightModeOff: defaultColorNightModeOff //"#F5F5F5"			//1TEXT FONT//
-    property color buttonBGColorNightModeOff: highlightedColorNightModeOff //"#FA5501"				//1COLOR BG//
+    property color buttonBGColorNightModeOff: highlightedColorNightModeOff //"#F86F2A"				//1COLOR BG//
 
     property color dayTextColorNightModeOn: highlightedColorNightModeOn //"#F50000"				//NMCOLOR1 BG//
     property color dayTextColorNightModeOff: "#CFCFCF"				//ANALOG CLOCK DAY COLOR//
@@ -87,15 +87,15 @@ Item
 
     property int comboboxFontSize: 25
 
-    property color comboBoxHighlightedItemBGColorNightModeOff: highlightedColorNightModeOff //"#FA5501" 	//1COLOR BG//
+    property color comboBoxHighlightedItemBGColorNightModeOff: highlightedColorNightModeOff //"#F86F2A" 	//1COLOR BG//
     property color comboBoxHighlightedItemBGColorNightModeOn: highlightedColorNightModeOn //"#F50000"		//NMCOLOR1 BG//
 
     property color comboBoxTextColor: defaultColorNightModeOff //"#F5F5F5"							//1TEXT FONT//
 
     property color lockIndicatorBorderColorNightModeOn: highlightedColorNightModeOn //"#F50000"
     property color lockIndicatorFilledColorNightModeOn: highlightedColorNightModeOn //"#F50000"
-    property color lockIndicatorBorderColor: highlightedColorNightModeOff //"#FA5501"						//1COLOR BG//
-    property color lockIndicatorFilledColor: highlightedColorNightModeOff //"#FA5501"						//1COLOR BG//
+    property color lockIndicatorBorderColor: highlightedColorNightModeOff //"#F86F2A"						//1COLOR BG//
+    property color lockIndicatorFilledColor: highlightedColorNightModeOff //"#F86F2A"						//1COLOR BG//
     property color lockIndicatorEmptyColor: "black"
     property color lockButtonColor: dataFieldTextBGColorNightModeOff//"#232323"												//3COLOR BG//
     property color lockButtonTextColor: defaultColorNightModeOff //"#F5F5F5"						//1TEXT FONT//
@@ -109,7 +109,7 @@ Item
     property color keyboardButtonPressed: switchBackgroundColor//"#323232"						//KBONPRESS//
     property color keyboardBackgroundColor: "black"
     property color textColorOnUnpressedButton: defaultColorNightModeOff //"#F5F5F5"				//1TEXT FONT//
-    property color capsLockOnColor: highlightedColorNightModeOff //"#FA5501"							//1COLOR BG//
+    property color capsLockOnColor: highlightedColorNightModeOff //"#F86F2A"							//1COLOR BG//
 
     property color inputPreviewBackgroundColor: keyboardButtonUnpressed						//3COLOR BG//
     property color inputPreviewTextColor: defaultColorNightModeOff //"#F5F5F5"						//1TEXT FONT//

@@ -217,6 +217,8 @@ NodoCanvas {
             height: networkDelegateItemHeight
             itemText: systemMessages.messages[NodoMessages.Message.IPAddress] //qsTr("Address")
             valueText: mainRect.ssidIP
+            valueFontSize: 40
+            fontFamily: NodoSystem.fontJetBrainsMono.name
         }
 
         NodoInfoField {
@@ -228,7 +230,9 @@ NodoCanvas {
             itemSize: labelSize
             height:  networkDelegateItemHeight
             itemText: systemMessages.messages[NodoMessages.Message.Router] //qsTr("Router")
-            valueText: mainRect.ssidGateway 
+            valueText: mainRect.ssidGateway
+            valueFontSize: 40
+            fontFamily: NodoSystem.fontJetBrainsMono.name 
         }
 
         NodoInfoField {
