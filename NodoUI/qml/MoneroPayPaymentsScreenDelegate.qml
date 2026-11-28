@@ -126,7 +126,7 @@ NodoCanvas {
         height: NodoSystem.nodoItemHeight
         itemSize: 200
         width: 1890
-        valueFontSize: NodoSystem.descriptionTitleFontSize - 6
+        valueFontSize: NodoSystem.monospaceAddressFontSize
         fontFamily: NodoSystem.fontJetBrainsMono.name
         itemText: qsTr("Address")
         valueText: depositAddress
@@ -159,7 +159,7 @@ NodoCanvas {
                     width: ListView.view.width
                     itemText: qsTr("Transaction ID")
                     valueText: model.trID
-                    valueFontSize: NodoSystem.descriptionTitleFontSize - 6
+                    valueFontSize: NodoSystem.monospaceAddressFontSize
                     fontFamily: NodoSystem.fontJetBrainsMono.name
                 }
             }

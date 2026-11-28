@@ -164,7 +164,7 @@ Item {
             height: NodoSystem.nodoItemHeight
             itemSize: labelSize
             itemText: qsTr("New Admin Password")
-            valueFontSize: 40
+            valueFontSize: NodoSystem.monospaceInfoFontSize
             fontFamily: NodoSystem.fontJetBrainsMono.name
             valueText: ""
             passwordInput: true
@@ -202,7 +202,7 @@ Item {
             width: inputFieldWidth
             height: NodoSystem.nodoItemHeight
             itemSize: labelSize
-            valueFontSize: 40
+            valueFontSize: NodoSystem.monospaceInfoFontSize
             fontFamily: NodoSystem.fontJetBrainsMono.name
             itemText: qsTr("Re-enter Admin Password")
             valueText: ""

@@ -183,7 +183,7 @@ Item {
         width: labelSize + 360
         height: NodoSystem.nodoItemHeight
         itemSize: labelSize
-        valueFontSize: 40
+        valueFontSize: NodoSystem.monospaceInfoFontSize
         fontFamily: NodoSystem.fontJetBrainsMono.name
         itemText: systemMessages.messages[NodoMessages.Message.Address]
         valueText: ""
@@ -197,7 +197,7 @@ Item {
         width: labelSize + hiddenRPCSwitch.width
         height: NodoSystem.nodoItemHeight
         itemSize: labelSize
-        valueFontSize: 40
+        valueFontSize: NodoSystem.monospaceInfoFontSize
         fontFamily: NodoSystem.fontJetBrainsMono.name
         itemText: systemMessages.messages[NodoMessages.Message.Port]
         valueText: nodeClearnetScreen.clearnetPort

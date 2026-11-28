@@ -186,7 +186,7 @@ Item {
         width: parent.width - NodoSystem.subMenuLeftMargin
         itemText: qsTr("Address")
         valueText: ""
-        valueFontSize: NodoSystem.descriptionTitleFontSize - 6
+        valueFontSize: NodoSystem.monospaceAddressFontSize
         fontFamily: NodoSystem.fontJetBrainsMono.name
     }
 
@@ -200,7 +200,7 @@ Item {
         itemSize: 290
         itemText: qsTr("Transaction ID")
         valueText: ""
-        valueFontSize: NodoSystem.descriptionTitleFontSize - 6
+        valueFontSize: NodoSystem.monospaceAddressFontSize
         fontFamily: NodoSystem.fontJetBrainsMono.name
     }
 

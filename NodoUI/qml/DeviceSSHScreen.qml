@@ -151,7 +151,7 @@ Item {
         height: NodoSystem.nodoItemHeight
         itemText: qsTr("Username")
         valueText: "nodo"
-        valueFontSize: 40
+        valueFontSize: NodoSystem.monospaceInfoFontSize
         fontFamily: NodoSystem.fontJetBrainsMono.name
     }
 
@@ -225,7 +225,7 @@ Item {
         height: NodoSystem.nodoItemHeight
         itemSize: buttonWidth
         itemText: qsTr("New Password")
-        valueFontSize: 40
+        valueFontSize: NodoSystem.monospaceInfoFontSize
         fontFamily: NodoSystem.fontJetBrainsMono.name
         valueText: ""
         readOnlyFlag: deviceSSHScreen.inputFieldReadOnly
@@ -264,7 +264,7 @@ Item {
         height: NodoSystem.nodoItemHeight
         itemSize: labelSize
         itemText: qsTr("Re-enter New Password")
-        valueFontSize: 40
+        valueFontSize: NodoSystem.monospaceInfoFontSize
         fontFamily: NodoSystem.fontJetBrainsMono.name
         valueText: ""
         readOnlyFlag: deviceSSHScreen.inputFieldReadOnly

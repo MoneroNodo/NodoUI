@@ -198,7 +198,7 @@ Item {
         width: infoFieldWidth
         height: NodoSystem.nodoItemHeight
         itemSize: labelSize
-        valueFontSize: 40
+        valueFontSize: NodoSystem.monospaceInfoFontSize
         fontFamily: NodoSystem.fontJetBrainsMono.name
         itemText: qsTr("Onion Address")
         valueText: nodeTorScreen.torOnionAddress
@@ -212,7 +212,7 @@ Item {
         width: labelSize + torSwitch.width
         height: NodoSystem.nodoItemHeight
         itemSize: labelSize
-        valueFontSize: 40
+        valueFontSize: NodoSystem.monospaceInfoFontSize
         fontFamily: NodoSystem.fontJetBrainsMono.name
         itemText: systemMessages.messages[NodoMessages.Message.Port] //qstr("Port")
         valueText: nodeTorScreen.torPort

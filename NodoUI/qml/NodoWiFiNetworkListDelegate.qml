@@ -281,6 +281,8 @@ NodoCanvas {
             valueText:""
             visible: connectToANetworkRect.visible && mainRect.ssidEncryption != "WEP"
             passwordInput: true
+            valueFontSize: 41
+            fontFamily: NodoSystem.fontJetBrainsMono.name
         }
 
         Rectangle {

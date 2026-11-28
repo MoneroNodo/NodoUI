@@ -83,7 +83,7 @@ Item {
             height: NodoSystem.nodoItemHeight
             itemSize: 380
             itemText: qsTr("New Lock PIN")
-            valueFontSize: 40
+            valueFontSize: NodoSystem.monospaceInfoFontSize
             fontFamily: NodoSystem.fontJetBrainsMono.name
             valueText: ""
             passwordInput: true
@@ -103,7 +103,7 @@ Item {
             height: NodoSystem.nodoItemHeight
             itemSize: 380
             itemText: qsTr("Re-enter Lock PIN")
-            valueFontSize: 40
+            valueFontSize: NodoSystem.monospaceInfoFontSize
             fontFamily: NodoSystem.fontJetBrainsMono.name
             valueText: ""
             passwordInput: true

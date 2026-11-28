@@ -170,7 +170,7 @@ Item {
             width: inputFieldWidth
             height: NodoSystem.nodoItemHeight
             itemSize: buttonWidth
-            valueFontSize: 40
+            valueFontSize: NodoSystem.monospaceInfoFontSize
             fontFamily: NodoSystem.fontJetBrainsMono.name
             itemText: qsTr("New Lock PIN")
             textFlag: Qt.ImhDigitsOnly
@@ -193,7 +193,7 @@ Item {
             width: inputFieldWidth
             height: NodoSystem.nodoItemHeight
             itemSize: buttonWidth
-            valueFontSize: 40
+            valueFontSize: NodoSystem.monospaceInfoFontSize
             fontFamily: NodoSystem.fontJetBrainsMono.name
             itemText: qsTr("Re-enter New PIN")
             textFlag: Qt.ImhDigitsOnly

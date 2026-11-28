@@ -113,7 +113,7 @@ Item {
         height: NodoSystem.nodoItemHeight
         width: buttonWidth + privateNodeSwitch.width 
         itemSize: buttonWidth
-        valueFontSize: 40
+        valueFontSize: NodoSystem.monospaceInfoFontSize
         fontFamily: NodoSystem.fontJetBrainsMono.name
         itemText: systemMessages.messages[NodoMessages.Message.Port]
         valueText: nodePrivateNodeScreen.rpcPort
@@ -141,7 +141,7 @@ Item {
         width: inputFieldWidth
         height: NodoSystem.nodoItemHeight
         itemSize: buttonWidth
-        valueFontSize: 40
+        valueFontSize: NodoSystem.monospaceInfoFontSize
         fontFamily: NodoSystem.fontJetBrainsMono.name
         itemText: qsTr("Username")
         valueText: nodoControl.getrpcUser();
@@ -156,7 +156,7 @@ Item {
         width: inputFieldWidth
         height: NodoSystem.nodoItemHeight
         itemSize: buttonWidth
-        valueFontSize: 40
+        valueFontSize: NodoSystem.monospaceInfoFontSize
         fontFamily: NodoSystem.fontJetBrainsMono.name
         itemText: qsTr("Password")
         valueText: nodoControl.getrpcPassword();

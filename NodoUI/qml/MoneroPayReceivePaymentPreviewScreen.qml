@@ -168,7 +168,7 @@ Item {
         itemSize: labelSize - 60
         itemText: qsTr("Address")
         height: NodoSystem.nodoItemHeight
-        valueFontSize: NodoSystem.descriptionTitleFontSize - 6
+        valueFontSize: NodoSystem.monospaceAddressFontSize
         fontFamily: NodoSystem.fontJetBrainsMono.name
     }
 
