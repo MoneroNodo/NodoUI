@@ -143,6 +143,8 @@ NodoCanvas {
             height: networkDelegateItemHeight
             itemText: systemMessages.messages[NodoMessages.Message.IPAddress]
             valueText: mainRect.profileIP
+            valueFontSize: NodoSystem.monospaceInfoFontSize
+            fontFamily: NodoSystem.fontJetBrainsMono.name
         }
 
         NodoInfoField{
@@ -155,6 +157,8 @@ NodoCanvas {
             height:  networkDelegateItemHeight
             itemText: systemMessages.messages[NodoMessages.Message.Router]
             valueText: mainRect.profileGateway
+            valueFontSize: NodoSystem.monospaceInfoFontSize
+            fontFamily: NodoSystem.fontJetBrainsMono.name
         }
 
         NodoInfoField{

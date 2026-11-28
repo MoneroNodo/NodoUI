@@ -97,7 +97,7 @@ Item {
             itemText: qsTr("Clearnet")
             valueText: "http://" + networkManager.getNetworkIP() + ":18086/basic"
             fontFamily: NodoSystem.fontJetBrainsMono.name
-            valueFontSize: 32
+            valueFontSize: 34
         }
 
         onClicked: {
@@ -126,7 +126,7 @@ Item {
             itemText: qsTr("Tor")
             valueText: "http://" + nodoConfig.getStringValueFromKey("config", "tor_address") + ":18086/basic"
             fontFamily: NodoSystem.fontJetBrainsMono.name
-            valueFontSize: 32
+            valueFontSize: 34
         }
         
         onClicked: {
@@ -154,7 +154,7 @@ Item {
             itemSize: 200 //labelSize - 120
             itemText: qsTr("I2P")
             valueText: "http://" + nodoConfig.getStringValueFromKey("config", "i2p_address") + ":18086/basic"
-            valueFontSize: 32
+            valueFontSize: 34
             fontFamily: NodoSystem.fontJetBrainsMono.name
         }
 

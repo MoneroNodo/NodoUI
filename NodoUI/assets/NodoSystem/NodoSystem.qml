@@ -26,7 +26,7 @@ Item
     property color descriptionTextFontColorNightModeOff: "#A0A0A0" //RGB 160
     property color descriptionTextFontColorNightModeOn: "#870000" //R135
 
-    property int monospaceAddressFontSize: descriptionTitleFontSize - 6
+    property int monospaceAddressFontSize: descriptionTitleFontSize - 5
     property int monospaceInfoFontSize: 41
 
     property int topMenuTextTopPadding: 0

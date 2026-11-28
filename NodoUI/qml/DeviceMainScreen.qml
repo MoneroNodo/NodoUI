@@ -17,7 +17,7 @@ Item {
         anchors.left: deviceMainScreen.left
         height: NodoSystem.subMenuButtonHeight
         //contentWidth: 1460
-        width: 1360//displayButton.x + displayButton.width
+        width: 1480//displayButton.x + displayButton.width
 
         background: Rectangle {
             color: "black"

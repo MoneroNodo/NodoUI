@@ -232,7 +232,7 @@ NodoCanvas {
             itemText: systemMessages.messages[NodoMessages.Message.Router] //qsTr("Router")
             valueText: mainRect.ssidGateway
             valueFontSize: NodoSystem.monospaceInfoFontSize
-            fontFamily: NodoSystem.fontJetBrainsMono.name 
+            fontFamily: NodoSystem.fontJetBrainsMono.name
         }
 
         NodoInfoField {
