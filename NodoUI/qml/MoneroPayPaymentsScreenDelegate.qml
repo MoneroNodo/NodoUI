@@ -140,8 +140,7 @@ NodoCanvas {
         width: 1890
         height: paymentsList.contentHeight
         anchors.bottomMargin: 30
-        valueFontSize: NodoSystem.descriptionTitleFontSize - 6
-        fontFamily: NodoSystem.fontJetBrainsMono.name
+
         color: parent.color
         clip: true
 
@@ -160,7 +159,8 @@ NodoCanvas {
                     width: ListView.view.width
                     itemText: qsTr("Transaction ID")
                     valueText: model.trID
-
+                    valueFontSize: NodoSystem.descriptionTitleFontSize - 6
+                    fontFamily: NodoSystem.fontJetBrainsMono.name
                 }
             }
 
