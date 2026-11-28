@@ -55,7 +55,7 @@ Item {
             verticalAlignment: Text.AlignVCenter
             font.pixelSize: NodoSystem.descriptionTextFontSize
             color: nodoControl.appTheme ? NodoSystem.descriptionTextFontColorNightModeOn : NodoSystem.descriptionTextFontColorNightModeOff
-            text: qsTr("None")
+            text: qsTr("NONE")
         }
     }
 

@@ -131,7 +131,7 @@ Item {
             itemSize: 200
             itemText: qsTr("Address")
             readOnlyFlag: inputFieldReadOnly
-            valueFontSize: NodoSystem.descriptionTitleFontSize - 4
+            valueFontSize: NodoSystem.descriptionTitleFontSize - 6
             validator: RegularExpressionValidator {
                 regularExpression: /^4[0-9A-Za-z]{94}$/
             }

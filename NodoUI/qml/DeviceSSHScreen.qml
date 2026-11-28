@@ -223,6 +223,8 @@ Item {
         height: NodoSystem.nodoItemHeight
         itemSize: buttonWidth
         itemText: qsTr("New Password")
+        valueFontSize: 40
+        fontFamily: NodoSystem.fontJetBrainsMono.name
         valueText: ""
         readOnlyFlag: deviceSSHScreen.inputFieldReadOnly
         passwordInput: true
@@ -260,6 +262,8 @@ Item {
         height: NodoSystem.nodoItemHeight
         itemSize: labelSize
         itemText: qsTr("Re-enter New Password")
+        valueFontSize: 40
+        fontFamily: NodoSystem.fontJetBrainsMono.name
         valueText: ""
         readOnlyFlag: deviceSSHScreen.inputFieldReadOnly
         passwordInput: true

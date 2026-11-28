@@ -186,7 +186,8 @@ Item {
         width: parent.width - NodoSystem.subMenuLeftMargin
         itemText: qsTr("Address")
         valueText: ""
-        valueFontSize: 30
+        valueFontSize: NodoSystem.descriptionTitleFontSize - 6
+        fontFamily: NodoSystem.fontJetBrainsMono.name
     }
 
         NodoInfoField {
@@ -199,6 +200,8 @@ Item {
         itemSize: 290
         itemText: qsTr("Transaction ID")
         valueText: ""
+        valueFontSize: NodoSystem.descriptionTitleFontSize - 6
+        fontFamily: NodoSystem.fontJetBrainsMono.name
     }
 
     NodoPopup {

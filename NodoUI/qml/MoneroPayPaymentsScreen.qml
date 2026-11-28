@@ -71,7 +71,7 @@ Item {
             isActive: paymentsListModel.count > 0 ? true : false
             onClicked: {
                 paymentsPopup.commandID = 0
-                paymentsPopup.applyButtonText = "Apply"
+                paymentsPopup.applyButtonText = "APPLY"
                 paymentsPopup.open()
             }
         }

@@ -96,6 +96,8 @@ Item {
             itemSize: 200 //labelSize - 120
             itemText: qsTr("Clearnet")
             valueText: "http://" + networkManager.getNetworkIP() + ":18086/basic"
+            fontFamily: NodoSystem.fontJetBrainsMono.name
+            valueFontSize: 32
         }
 
         onClicked: {
@@ -123,7 +125,8 @@ Item {
             itemSize: 200 //labelSize - 120
             itemText: qsTr("Tor")
             valueText: "http://" + nodoConfig.getStringValueFromKey("config", "tor_address") + ":18086/basic"
-            //valueFontSize: 40
+            fontFamily: NodoSystem.fontJetBrainsMono.name
+            valueFontSize: 32
         }
         
         onClicked: {
@@ -151,7 +154,8 @@ Item {
             itemSize: 200 //labelSize - 120
             itemText: qsTr("I2P")
             valueText: "http://" + nodoConfig.getStringValueFromKey("config", "i2p_address") + ":18086/basic"
-            //valueFontSize: 40
+            valueFontSize: 32
+            fontFamily: NodoSystem.fontJetBrainsMono.name
         }
 
         onClicked: {
@@ -195,13 +199,13 @@ Item {
         anchors.left: moneroLWSAddAccountScreen.left
         anchors.top: moneroLWSAddWalletTitle.bottom
         anchors.topMargin: NodoSystem.cardTopMargin
+        height: NodoSystem.nodoItemHeight
         width: infoFieldSize
         itemSize: 200
         itemText: systemMessages.messages[NodoMessages.Message.Address]  //LABEL "Address"
         fontFamily: NodoSystem.fontJetBrainsMono.name
         valueText: ""
-        height: NodoSystem.nodoItemHeight
-        valueFontSize: NodoSystem.descriptionTitleFontSize - 4
+        valueFontSize: NodoSystem.descriptionTitleFontSize - 6
         validator: RegularExpressionValidator {
             regularExpression: /^4[0-9A-Za-z]{94}$/
         }
@@ -218,6 +222,7 @@ Item {
         width: infoFieldSize
         itemSize: 380
         itemText: qsTr("Private View Key")
+        valueFontSize: NodoSystem.descriptionTitleFontSize - 6
         fontFamily: NodoSystem.fontJetBrainsMono.name
         valueText: ""
         height: NodoSystem.nodoItemHeight

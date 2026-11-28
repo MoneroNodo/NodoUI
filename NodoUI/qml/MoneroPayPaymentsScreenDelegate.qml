@@ -126,9 +126,10 @@ NodoCanvas {
         height: NodoSystem.nodoItemHeight
         itemSize: 200
         width: 1890
+        valueFontSize: NodoSystem.descriptionTitleFontSize - 6
+        fontFamily: NodoSystem.fontJetBrainsMono.name
         itemText: qsTr("Address")
         valueText: depositAddress
-        valueFontSize: 29
     }
 
     NodoCanvas {
@@ -139,6 +140,8 @@ NodoCanvas {
         width: 1890
         height: paymentsList.contentHeight
         anchors.bottomMargin: 30
+        valueFontSize: NodoSystem.descriptionTitleFontSize - 6
+        fontFamily: NodoSystem.fontJetBrainsMono.name
         color: parent.color
         clip: true
 
@@ -147,7 +150,7 @@ NodoCanvas {
             anchors.left: moneroPayReceivedTransactionIDField.left
             anchors.top: moneroPayReceivedTransactionIDField.top
             anchors.right: moneroPayReceivedTransactionIDField.right
-            anchors.bottom: moneroPayReceivedTransactionIDField.bottom            
+            anchors.bottom: moneroPayReceivedTransactionIDField.bottom    
             model: transactionIDListModel
             delegate: Component {
                 NodoInfoField {

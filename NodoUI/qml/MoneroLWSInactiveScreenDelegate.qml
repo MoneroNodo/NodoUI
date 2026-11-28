@@ -39,7 +39,8 @@ NodoCanvas {
         height: NodoSystem.nodoItemHeight
         itemText: systemMessages.messages[NodoMessages.Message.Address] //Label "Address"
         valueText: inactiveAddress
-        valueFontSize: 31
+        valueFontSize: NodoSytem.descriptionTitleFontSize - 6
+        fontFamily: NodoSystem.fontJetBrainsMono.name 
     }
 
 

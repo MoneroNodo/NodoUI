@@ -149,9 +149,10 @@ Item {
         width: infoFieldWidth
         height: NodoSystem.nodoItemHeight
         itemSize: labelSize
+        valueFontSize: 40
+        fontFamily: NodoSystem.fontJetBrainsMono.name
         itemText: qsTr("I2P b32 Address")
         valueText: nodeI2PScreen.i2pAddress
-        //valueFontSize: 34
     }
 
     NodoInfoField {
@@ -162,6 +163,8 @@ Item {
         width: labelSize + i2pSwitch.width
         height: NodoSystem.nodoItemHeight
         itemSize: labelSize
+        valueFontSize: 40
+        fontFamily: NodoSystem.fontJetBrainsMono.name
         itemText: systemMessages.messages[NodoMessages.Message.Port] //qsTr("Port")
         valueText: nodeI2PScreen.i2pPort
 

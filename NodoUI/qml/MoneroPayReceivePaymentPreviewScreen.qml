@@ -168,7 +168,8 @@ Item {
         itemSize: labelSize - 60
         itemText: qsTr("Address")
         height: NodoSystem.nodoItemHeight
-        valueFontSize: 30
+        valueFontSize: NodoSystem.descriptionTitleFontSize - 6
+        fontFamily: NodoSystem.fontJetBrainsMono.name
     }
 
     NodoPopup {

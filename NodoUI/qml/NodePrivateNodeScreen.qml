@@ -113,6 +113,8 @@ Item {
         height: NodoSystem.nodoItemHeight
         width: buttonWidth + privateNodeSwitch.width 
         itemSize: buttonWidth
+        valueFontSize: 40
+        fontFamily: NodoSystem.fontJetBrainsMono.name
         itemText: systemMessages.messages[NodoMessages.Message.Port]
         valueText: nodePrivateNodeScreen.rpcPort
         /*textFlag: Qt.ImhDigitsOnly
@@ -139,6 +141,8 @@ Item {
         width: inputFieldWidth
         height: NodoSystem.nodoItemHeight
         itemSize: buttonWidth
+        valueFontSize: 40
+        fontFamily: NodoSystem.fontJetBrainsMono.name
         itemText: qsTr("Username")
         valueText: nodoControl.getrpcUser();
         onValueTextChanged: privateNodeApplyButton.isActive = true
@@ -152,6 +156,8 @@ Item {
         width: inputFieldWidth
         height: NodoSystem.nodoItemHeight
         itemSize: buttonWidth
+        valueFontSize: 40
+        fontFamily: NodoSystem.fontJetBrainsMono.name
         itemText: qsTr("Password")
         valueText: nodoControl.getrpcPassword();
         passwordInput: true
