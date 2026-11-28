@@ -35,11 +35,11 @@ Item {
             triggeredOnStart: true
             onTriggered: {
                 var dateTime = nodoControl.getChangedDateTime()
-                var m_daystr = Qt.formatDateTime(dateTime, "ddd")
+                //var m_daystr = Qt.formatDateTime(dateTime, "ddd")
                 var m_day = Qt.formatDateTime(dateTime, "d")
                 var m_month = Qt.formatDateTime(dateTime, "MMM")
 
-                dateText.text = m_daystr.toUpperCase() + " " +m_day + " "  + m_month.toUpperCase()
+                dateText.text = m_day + " "  + m_month.toUpperCase() //m_daystr.toUpperCase() + " " + m_day + " "  + m_month.toUpperCase()
                 if (nodoControl.is24hEnabled())
                     timeText.text = Qt.formatDateTime(nodoControl.getChangedDateTime(), "hh:mm")
                 else
