@@ -99,26 +99,26 @@ Rectangle {
     function updateSyncPercentage(statusCode, syncPercentage) {
         if (statusCode !== 1 /*not connected*/)
         {
-            syncStatusField.itemText = qsTr("Disconnected")
+            syncStatusField.itemText = qsTr("DISCONNECTED")
             return
         }
         if(syncPercentage === 100)
         {
-            syncStatusField.itemText = qsTr("Synchronized (100%)")
+            syncStatusField.itemText = qsTr("SYNCHRONIZED (100%)")
         }
         else if(syncPercentage >= 0)
         {
-            syncStatusField.itemText = qsTr("Synchronizing (") + syncPercentage + "%) " + (nodoSystemStatus.getIntValueFromKey("target_height") - nodoSystemStatus.getIntValueFromKey("height")) + " remaining"
+            syncStatusField.itemText = qsTr("SYNCHRONIZING (") + syncPercentage + "%) " + (nodoSystemStatus.getIntValueFromKey("target_height") - nodoSystemStatus.getIntValueFromKey("height")) + " remaining"
 
 
         }
         else if(syncPercentage === -1)
         {
-            syncStatusField.itemText = qsTr("Not Synchronizing")
+            syncStatusField.itemText = qsTr("NOT SYNCHRONIZING")
         }
         else
         {
-            syncStatusField.itemText = qsTr("Waiting")
+            syncStatusField.itemText = qsTr("WAITING")
         }
     }
 
